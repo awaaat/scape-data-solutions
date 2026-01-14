@@ -249,12 +249,18 @@
 
 .logoIcon {
     height: 40px;
-    width: auto;
+    width: 40px;
     object-fit: contain;
+    background: white;
+    padding: 4px;
+    border-radius: 6px;
 }
 
 .footerLogoIcon {
     height: 35px;
-    width: auto;
+    width: 35px;
     object-fit: contain;
+    background: white;
+    padding: 4px;
+    border-radius: 6px;
 }
