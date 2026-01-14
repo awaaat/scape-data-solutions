@@ -246,3 +246,15 @@
         gap: 2rem;
     }
 }
+
+.logoIcon {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footerLogoIcon {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
