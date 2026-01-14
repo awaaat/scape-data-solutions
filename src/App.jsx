@@ -105,7 +105,7 @@ const Footer = () => {
                 <div className={styles.footerGrid}>
                     <div className={styles.footerBrand}>
                         <div className={styles.footerLogo}>
-                            <img src="/logo.svg" alt="Scape Data Solutions" className={styles.footerLogoIcon} />
+                            <img src="/logo-1.jpeg" alt="Scape Data Solutions" className={styles.footerLogoIcon} />
                             <span className={styles.footerLogoText}>Scape Data Solutions</span>
                         </div>
                         <p className={styles.footerDescription}>
