@@ -37,7 +37,6 @@
     justify-content: space-between;
 }
 
-
 .logo {
     display: flex;
     align-items: center;
@@ -45,21 +44,9 @@
     text-decoration: none;
 }
 
-
 .logo:hover {
     opacity: 0.8;
 }
-
-.logoIcon {
-    height: 32px;
-    width: 32px;
-    object-fit: contain;
-    background: transparent;
-    padding: 0;
-    border-radius: 6px;
-    box-shadow: none;
-}
-
 
 .logoText {
     color: white;
@@ -178,16 +165,6 @@
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 1rem;
-}
-
-.footerLogoIcon {
-    height: 45px;
-    width: 45px;
-    object-fit: contain;
-    background: white;
-    padding: 6px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .footerLogoText {
