@@ -8,7 +8,6 @@ import { apiService } from './services/api';
 
 // Import pages
 import AboutPage from './pages/AboutPage';
-//import CaseStudiesPage from './pages/CaseStudiesPage';
 import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
 import PricingPage from './pages/PricingPage';
@@ -41,7 +40,6 @@ const Navigation = () => {
         { name: 'Services', path: '/services' },
         { name: 'Solutions', path: '/solutions' },
         { name: 'Pricing', path: '/pricing' },
-        //{ name: 'Case Studies', path: '/case-studies' },
         { name: 'About', path: '/about' },
         { name: 'Contact', path: '/contact' },
     ];
