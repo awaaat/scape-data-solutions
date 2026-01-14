@@ -1,6 +1,6 @@
 // frontend/src/App.jsx
 
-import { Database, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import styles from './App.module.css';
@@ -50,7 +50,7 @@ const Navigation = () => {
         <nav className={`${styles.nav} ${isScrolled ? styles.navScrolled : ''}`}>
             <div className={styles.navContainer}>
                 <Link to="/" className={styles.logo}>
-                    <img src="/public/logo-1.png" alt="Scape Data Solutions" className={styles.logoIcon} />
+                    <img src="/logo-1.png" alt="Scape Data Solutions" className={styles.logoIcon} />
                     <span className={styles.logoText}>Scape Data Solutions</span>
                 </Link>
 
@@ -107,7 +107,7 @@ const Footer = () => {
                 <div className={styles.footerGrid}>
                     <div className={styles.footerBrand}>
                         <div className={styles.footerLogo}>
-                            <Database className={styles.footerLogoIcon} size={24} />
+                            <img src="/logo-1.png" alt="Scape Data Solutions" className={styles.footerLogoIcon} />
                             <span className={styles.footerLogoText}>Scape Data Solutions</span>
                         </div>
                         <p className={styles.footerDescription}>
