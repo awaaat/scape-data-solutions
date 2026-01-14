@@ -50,7 +50,7 @@ const Navigation = () => {
         <nav className={`${styles.nav} ${isScrolled ? styles.navScrolled : ''}`}>
             <div className={styles.navContainer}>
                 <Link to="/" className={styles.logo}>
-                    <img src="/logo.jng" alt="Scape Data Solutions" className={styles.logoImage} />
+                    <img src="/logo-1.png" alt="Scape Data Solutions" className={styles.logoImage} />
                     <span className={styles.logoText}>Scape Data Solutions</span>
                 </Link>
 
