@@ -107,7 +107,7 @@ const Footer = () => {
                             <span className={styles.footerLogoText}>Scape Data Solutions</span>
                         </div>
                         <p className={styles.footerDescription}>
-                            Transforming data into actionable business intelligence across East Africa.
+                            Transforming data into actionable business intelligence across the Globe.
                         </p>
                     </div>
 
@@ -133,10 +133,7 @@ const Footer = () => {
                     <div className={styles.footerColumn}>
                         <h3 className={styles.footerTitle}>Contact</h3>
                         <ul className={styles.footerContact}>
-                            <li>Westlands, Nairobi</li>
-                            <li>Kenya</li>
                             <li>info@scapedatasolutions.com</li>
-                            <li>+254 700 000 000</li>
                         </ul>
                     </div>
                 </div>
