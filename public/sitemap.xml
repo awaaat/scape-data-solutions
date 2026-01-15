@@ -19,13 +19,3 @@
     <loc>https://www.scapedatasolutions.com/contact</loc>
   </url>
 </urlset>
-```
-
-**2. Create robots.txt**
-In the same `public/` folder, create: `public/robots.txt`
-
-Paste this:
-```
-User-agent: *
-Allow: /
-Sitemap: https://www.scapedatasolutions.com/sitemap.xml
