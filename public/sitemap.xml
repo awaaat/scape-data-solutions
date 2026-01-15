@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.scapedatasolutions.com/</loc>
+  </url>
+  <url>
+    <loc>https://www.scapedatasolutions.com/about</loc>
+  </url>
+  <url>
+    <loc>https://www.scapedatasolutions.com/services</loc>
+  </url>
+  <url>
+    <loc>https://www.scapedatasolutions.com/solutions</loc>
+  </url>
+  <url>
+    <loc>https://www.scapedatasolutions.com/pricing</loc>
+  </url>
+  <url>
+    <loc>https://www.scapedatasolutions.com/contact</loc>
+  </url>
+</urlset>
+```
+
+**2. Create robots.txt**
+In the same `public/` folder, create: `public/robots.txt`
+
+Paste this:
+```
+User-agent: *
+Allow: /
+Sitemap: https://www.scapedatasolutions.com/sitemap.xml
