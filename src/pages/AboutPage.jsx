@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { apiService } from '../services/api';
 import styles from './AboutPage.module.css';
+import { Helmet } from "react-helmet-async";
 
 const AboutPage = () => {
     useEffect(() => {
@@ -85,6 +86,12 @@ const AboutPage = () => {
 
     return (
         <div className={styles.container}>
+            <Helmet>
+                <title>About Us | Expert Data Science Team - Scape Data Solutions</title>
+                <meta name="description" content="Meet our expert data science team. Founded by scientists and engineers from leading tech companies. 15+ years combined experience delivering data solutions worldwide." />
+                <link rel="canonical" href="https://scapedatasolutions.com/about" />
+            </Helmet>
+
             <section className={styles.hero}>
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>Data Experts You Can Trust</h1>

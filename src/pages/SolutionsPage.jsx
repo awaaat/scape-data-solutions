@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { apiService } from '../services/api';
 import styles from './SolutionsPage.module.css';
+import { Helmet } from "react-helmet-async";
 
 const SolutionsPage = () => {
     // Track selected industry for popup
@@ -248,6 +249,12 @@ const SolutionsPage = () => {
 
     return (
         <div className={styles.container}>
+            <Helmet>
+                <title>Industry Solutions | Data Analytics by Sector - Scape Data Solutions</title>
+                <meta name="description" content="Industry-specific data solutions for finance, healthcare, retail, manufacturing, telecom, logistics. Tailored analytics for your sector" />
+                <link rel="canonical" href="https://scapedatasolutions.com/solutions" />
+            </Helmet>
+
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.heroContent}>

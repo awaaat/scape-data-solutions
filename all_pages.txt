@@ -1,0 +1,2178 @@
+=== src/pages/AboutPage.jsx ===
+// frontend/src/pages/AboutPage.jsx
+
+import { ArrowRight, Award, Target, TrendingUp, Users } from 'lucide-react';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { apiService } from '../services/api';
+import styles from './AboutPage.module.css';
+
+const AboutPage = () => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, []);
+
+    const handleCTAClick = (cta) => {
+        apiService.trackInteraction('conversion', 'about_cta_click', { cta });
+    };
+
+    const team = [
+        {
+            name: "Dr. Robert Chen",
+            role: "Chief Data Scientist & CEO",
+            bio: "PhD in Machine Learning from Stanford. 15+ years leading data science teams at Fortune 500 companies including Google and Amazon.",
+            expertise: ["Deep Learning", "AI Strategy", "Research"],
+            placeholder: true // indicates image placeholder
+        },
+        {
+            name: "Elena Rodriguez",
+            role: "Head of Analytics & Operations",
+            bio: "Former Head of Analytics at McKinsey. Built and scaled analytics practices across 20+ countries.",
+            expertise: ["Business Intelligence", "Analytics Strategy", "Team Leadership"],
+            placeholder: true
+        },
+        {
+            name: "David Kimani",
+            role: "Lead ML Engineer",
+            bio: "10+ years building production ML systems. Former ML Engineer at Microsoft Azure ML team.",
+            expertise: ["MLOps", "Production Systems", "Cloud Architecture"],
+            placeholder: true
+        },
+        {
+            name: "Sarah Mwangi",
+            role: "Senior Data Scientist",
+            bio: "PhD candidate in Statistics. Specializes in predictive modeling and time-series forecasting.",
+            expertise: ["Statistical Modeling", "Forecasting", "Experimentation"],
+            placeholder: true
+        },
+        {
+            name: "Ahmed Hassan",
+            role: "Data Engineering Lead",
+            bio: "Built data infrastructure for scale-ups and enterprises. Expert in cloud-native data architecture.",
+            expertise: ["Data Engineering", "ETL/ELT", "Data Warehousing"],
+            placeholder: true
+        },
+        {
+            name: "Patricia Ochieng",
+            role: "Customer Success Manager",
+            bio: "Ensures client satisfaction and project success. 8+ years in technical account management.",
+            expertise: ["Client Relations", "Project Management", "Strategy"],
+            placeholder: true
+        }
+    ];
+
+    const values = [
+        {
+            icon: <Target size={36} />,
+            title: "Results-Driven",
+            description: "We measure success by your ROI, not just deliverables. Every project must demonstrate clear business value."
+        },
+        {
+            icon: <Users size={36} />,
+            title: "Partnership Mindset",
+            description: "We become an extension of your team, invested in your long-term success, not just project completion."
+        },
+        {
+            icon: <Award size={36} />,
+            title: "Excellence in Execution",
+            description: "We deliver enterprise-grade solutions with attention to detail, security, and scalability."
+        },
+        {
+            icon: <TrendingUp size={36} />,
+            title: "Continuous Innovation",
+            description: "We stay ahead of industry trends, constantly evolving our methods to deliver cutting-edge solutions."
+        }
+    ];
+
+    return (
+        <div className={styles.container}>
+            <section className={styles.hero}>
+                <div className={styles.heroContent}>
+                    <h1 className={styles.heroTitle}>Data Experts You Can Trust</h1>
+                    <p className={styles.heroSubtitle}>
+                        Founded by data scientists and engineers from leading tech companies, we've grown
+                        into a trusted partner for organizations seeking to unlock the power of their data.
+                    </p>
+                    <div className={styles.statsRow}>
+                        <div className={styles.stat}>
+                            <div className={styles.statNumber}>50+</div>
+                            <div className={styles.statLabel}>Client Organizations</div>
+                        </div>
+                        <div className={styles.stat}>
+                            <div className={styles.statNumber}>200+</div>
+                            <div className={styles.statLabel}>Projects Completed</div>
+                        </div>
+                        <div className={styles.stat}>
+                            <div className={styles.statNumber}>98%</div>
+                            <div className={styles.statLabel}>Client Satisfaction</div>
+                        </div>
+                        <div className={styles.stat}>
+                            <div className={styles.statNumber}>15+</div>
+                            <div className={styles.statLabel}>Years Combined Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.missionSection}>
+                <div className={styles.sectionContent}>
+                    <h2 className={styles.sectionTitle}>Our Mission</h2>
+                    <p className={styles.missionText}>
+                        To democratize data science and make world-class analytics accessible to businesses
+                        of all sizes. We believe every company deserves the competitive advantage that comes
+                        from data-driven decision making.
+                    </p>
+                </div>
+            </section>
+
+            <section className={styles.valuesSection}>
+                <div className={styles.sectionContent}>
+                    <h2 className={styles.sectionTitle}>Our Values</h2>
+                    <div className={styles.valuesGrid}>
+                        {values.map((value, index) => (
+                            <div key={index} className={styles.valueCard}>
+                                <div className={styles.valueIcon}>{value.icon}</div>
+                                <h3 className={styles.valueTitle}>{value.title}</h3>
+                                <p className={styles.valueDescription}>{value.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.teamSection}>
+                <div className={styles.sectionContent}>
+                    <h2 className={styles.sectionTitle}>Meet Our Leadership</h2>
+                    <p className={styles.sectionSubtitle}>
+                        Our team combines deep technical expertise with real-world business experience
+                    </p>
+                    <div className={styles.teamGrid}>
+                        {team.map((member, index) => (
+                            <div key={index} className={styles.teamCard}>
+                                <div className={styles.avatarContainer}>
+                                    {member.placeholder && (
+                                        <div className={styles.avatarPlaceholder}>
+                                            <div className={styles.avatarIcon}>👤</div>
+                                            <div className={styles.avatarOverlay}>Photo Coming Soon</div>
+                                        </div>
+                                    )}
+                                </div>
+                                <h3 className={styles.memberName}>{member.name}</h3>
+                                <div className={styles.memberRole}>{member.role}</div>
+                                <p className={styles.memberBio}>{member.bio}</p>
+                                <div className={styles.expertise}>
+                                    {member.expertise.map((skill, idx) => (
+                                        <span key={idx} className={styles.skill}>{skill}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.ctaSection}>
+                <div className={styles.ctaContent}>
+                    <h2 className={styles.ctaTitle}>Let's Build Something Great Together</h2>
+                    <p className={styles.ctaText}>
+                        Partner with a team that's committed to your success
+                    </p>
+                    <Link
+                        to="/contact"
+                        onClick={() => handleCTAClick('about_bottom')}
+                        className={styles.ctaButton}
+                    >
+                        Start Your Journey <ArrowRight size={20} />
+                    </Link>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+export default AboutPage;=== src/pages/ContactPage.jsx ===
+// frontend/src/pages/ContactPage.jsx
+
+import { CheckCircle, Mail, MapPin, Send } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { apiService } from '../services/api';
+import styles from './ContactPage.module.css';
+
+const ContactPage = () => {
+    const formRef = useRef(null);
+
+    useEffect(() => {
+        emailjs.init("DfQQ6N0sBktqMslSo");
+
+        if (formRef.current) {
+            const yOffset = -80;
+            const y = formRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    }, []);
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        company: '',
+        phone: '',
+        service: '',
+        message: ''
+    });
+    const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        try {
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                company: formData.company || 'Not provided',
+                phone: formData.phone || 'Not provided',
+                service: formData.service,
+                message: formData.message
+            };
+
+            await emailjs.send(
+                'service_ua6lgof',
+                'template_e53h9hi',
+                templateParams
+            );
+
+            await apiService.submitLead({
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                company: formData.company,
+                service_interest: formData.service,
+                message: formData.message,
+                source: 'contact_form'
+            });
+
+            setSubmitted(true);
+            setLoading(false);
+
+            setFormData({
+                name: '',
+                email: '',
+                company: '',
+                phone: '',
+                service: '',
+                message: ''
+            });
+        } catch (err) {
+            console.error('Error submitting form:', err);
+            setError('Failed to send message. Please email us directly at info@scapedatasolutions.com');
+            setLoading(false);
+        }
+    };
+
+    if (submitted) {
+        return (
+            <div className={styles.container}>
+                <section className={styles.successSection}>
+                    <div className={styles.successContent}>
+                        <div className={styles.successIcon}>
+                            <CheckCircle size={64} />
+                        </div>
+                        <h1 className={styles.successTitle}>Message Received!</h1>
+                        <p className={styles.successText}>
+                            Thank you for reaching out! We've received your message and will
+                            get back to you within 24 hours.
+                        </p>
+                        <div className={styles.nextSteps}>
+                            <h3>What happens next?</h3>
+                            <ul>
+                                <li>We'll review your inquiry</li>
+                                <li>A team member will reach out within 24 hours</li>
+                                <li>We'll schedule a free consultation call</li>
+                                <li>You'll receive a custom proposal</li>
+                            </ul>
+                        </div>
+                        <a href="/" className={styles.homeButton}>Return to Home</a>
+                    </div>
+                </section>
+            </div>
+        );
+    }
+
+    return (
+        <div className={styles.container}>
+            <section className={styles.hero}>
+                <div className={styles.heroContent}>
+                    <h1 className={styles.heroTitle}>Let's Start a Conversation</h1>
+                    <p className={styles.heroSubtitle}>
+                        Ready to transform your data into your biggest competitive advantage?
+                        Schedule a free consultation with our team.
+                    </p>
+                </div>
+            </section>
+
+            <section className={styles.contactSection}>
+                <div className={styles.sectionContent}>
+                    <div className={styles.contactGrid}>
+                        <div className={styles.contactInfo}>
+                            <h2 className={styles.infoTitle}>Get in Touch</h2>
+                            <p className={styles.infoText}>
+                                We respond to all inquiries within 24 hours. Let's discuss how we can
+                                help solve your data challenges.
+                            </p>
+
+                            <div className={styles.contactMethods}>
+                                <div className={styles.contactMethod}>
+                                    <div className={styles.methodIcon}>
+                                        <Mail size={24} />
+                                    </div>
+                                    <div>
+                                        <div className={styles.methodLabel}>Email</div>
+                                        <div className={styles.methodValue}>
+                                            info@scapedatasolutions.com<br />
+                                            scapedatasolutions@gmail.com
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.contactMethod}>
+                                    <div className={styles.methodIcon}>
+                                        <MapPin size={24} />
+                                    </div>
+                                    <div>
+                                        <div className={styles.methodLabel}>Office</div>
+                                        <div className={styles.methodValue}>
+                                            Delta Corner Tower (Chiromo Road) Westlands<br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className={styles.benefits}>
+                                <h3 className={styles.benefitsTitle}>What to Expect:</h3>
+                                <ul className={styles.benefitsList}>
+                                    <li>Free 30-minute consultation</li>
+                                    <li>Custom solution proposal</li>
+                                    <li>No obligation quote</li>
+                                    <li>Response within 24 hours</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className={styles.formContainer} ref={formRef}>
+                            <form onSubmit={handleSubmit} className={styles.form}>
+                                {error && (
+                                    <div className={styles.errorBox}>
+                                        {error}
+                                    </div>
+                                )}
+
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Full Name *</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className={styles.input}
+                                        required
+                                        placeholder="John Doe"
+                                    />
+                                </div>
+
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Email Address *</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className={styles.input}
+                                        required
+                                        placeholder="john@company.com"
+                                    />
+                                </div>
+
+                                <div className={styles.formRow}>
+                                    <div className={styles.formGroup}>
+                                        <label className={styles.label}>Company</label>
+                                        <input
+                                            type="text"
+                                            name="company"
+                                            value={formData.company}
+                                            onChange={handleChange}
+                                            className={styles.input}
+                                            placeholder="Your Company"
+                                        />
+                                    </div>
+
+                                    <div className={styles.formGroup}>
+                                        <label className={styles.label}>Phone</label>
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            className={styles.input}
+                                            placeholder="+254 712 345 678"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Service Interested In *</label>
+                                    <select
+                                        name="service"
+                                        value={formData.service}
+                                        onChange={handleChange}
+                                        className={styles.select}
+                                        required
+                                    >
+                                        <option value="">Select a service...</option>
+                                        <option value="Advanced Analytics">Advanced Analytics</option>
+                                        <option value="Machine Learning">Machine Learning</option>
+                                        <option value="Deep Learning">Deep Learning</option>
+                                        <option value="Data Engineering">Data Engineering</option>
+                                        <option value="Business Intelligence">Business Intelligence</option>
+                                        <option value="Predictive Analytics">Predictive Analytics</option>
+                                        <option value="Customer Analytics">Customer Analytics</option>
+                                        <option value="Consulting & Strategy">Consulting & Strategy</option>
+                                        <option value="MLOps">MLOps</option>
+                                        <option value="Report Writing">Report Writing</option>
+                                        <option value="Other / Not Sure">Other / Not Sure</option>
+                                    </select>
+                                </div>
+
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Tell Us About Your Project *</label>
+                                    <textarea
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        className={styles.textarea}
+                                        required
+                                        placeholder="Tell us about your data challenges, goals, and what you're hoping to achieve..."
+                                        rows={6}
+                                    />
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    className={styles.submitButton}
+                                    disabled={loading}
+                                >
+                                    {loading ? (
+                                        <>Processing...</>
+                                    ) : (
+                                        <>
+                                            Send Message <Send size={20} />
+                                        </>
+                                    )}
+                                </button>
+
+                                <p className={styles.disclaimer}>
+                                    By submitting this form, you agree to our privacy policy. We'll never share your information.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+export default ContactPage;=== src/pages/HomePage.jsx ===
+// frontend/src/pages/HomePage.jsx
+
+import { ArrowRight, BarChart3, CheckCircle, ChevronRight, Database, Globe, LineChart, PieChart, Play, Shield, Star, TrendingUp, Users, Zap } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { apiService } from '../services/api';
+import styles from './HomePage.module.css';
+
+const HomePage = () => {
+    const [activeService, setActiveService] = useState(0);
+    const [activeTestimonial, setActiveTestimonial] = useState(0);
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, []);
+
+    useEffect(() => {
+        const startTime = Date.now();
+        return () => {
+            const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+            apiService.trackInteraction('engagement', 'time_on_page', {
+                page: 'home',
+                seconds: timeSpent
+            });
+        };
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => setScrollY(window.scrollY);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const handleCTAClick = (ctaName) => {
+        apiService.trackInteraction('conversion', 'cta_click', {
+            cta: ctaName,
+            page: 'home'
+        });
+    };
+
+    const services = [
+        {
+            icon: BarChart3,
+            color: '#2563eb',
+            title: 'Business Intelligence & Analytics',
+            description: 'Transform raw data into interactive dashboards and reports.',
+            features: ['Custom Dashboards', 'Real-time Reporting', 'KPI Tracking', 'Predictive Analytics'],
+            image: '/Images/site-images/dashboard-1.jpg'
+        },
+        {
+            icon: Database,
+            color: '#16a34a',
+            title: 'Data Engineering & Integration',
+            description: 'Build robust data pipelines that centralize your data.',
+            features: ['ETL Pipelines', 'Data Warehousing', 'API Integration', 'Database Optimization'],
+            image: '/Images/site-images/dashboard-2.jpg'
+        },
+        {
+            icon: LineChart,
+            color: '#9333ea',
+            title: 'Advanced Analytics & ML',
+            description: 'Leverage AI to predict outcomes and automate decisions.',
+            features: ['Predictive Modeling', 'Customer Segmentation', 'Churn Prediction', 'Demand Forecasting'],
+            image: '/Images/site-images/dashboard-3.jpg'
+        },
+        {
+            icon: PieChart,
+            color: '#ea580c',
+            title: 'Data Strategy Consulting',
+            description: 'Develop comprehensive data strategy aligned with goals.',
+            features: ['Maturity Assessment', 'Roadmap Development', 'Stack Selection', 'Team Training'],
+            image: '/Images/site-images/data-image-1.jpg'
+        }
+    ];
+
+    const testimonials = [
+        {
+            text: "The analytics dashboards transformed how we track performance across East African operations. Real-time decisions instead of waiting weeks.",
+            author: "James Kariuki",
+            title: "Director of Operations",
+            company: "Regional Tech Group",
+            rating: 5,
+            color: '#bfdbfe'
+        },
+        {
+            text: "Game-changer for our US operations. Their insights optimized our supply chain and reduced costs significantly.",
+            author: "Sarah Mitchell",
+            title: "VP of Finance",
+            company: "Continental Manufacturing",
+            rating: 5,
+            color: '#bbf7d0'
+        },
+        {
+            text: "Expertise spans African and Western markets perfectly. Complex analytics delivered on time with excellent support.",
+            author: "Dr. Amina Hassan",
+            title: "Chief Data Officer",
+            company: "Healthcare Network Africa",
+            rating: 5,
+            color: '#e9d5ff'
+        }
+    ];
+
+    const stats = [
+        { value: '180+', label: 'Projects Delivered', color: '#2563eb' },
+        { value: '35+', label: 'Enterprise Clients', color: '#16a34a' },
+        { value: '85%', label: 'Client Retention', color: '#9333ea' },
+        { value: '12+', label: 'Years Experience', color: '#ea580c' }
+    ];
+
+    return (
+        <div className={styles.container}>
+            {/* Hero Section */}
+            <section className={styles.hero}>
+                <div className={styles.heroContent}>
+                    <div className={styles.heroGrid}>
+                        <div className={styles.heroText} style={{ transform: `translateY(${scrollY * 0.05}px)` }}>
+                            <div className={styles.badge}>
+                                <Star size={16} style={{ display: 'inline', marginRight: '8px' }} />
+                                Serving Enterprises Across the Globe
+                            </div>
+
+                            <h1 className={styles.heroTitle}>
+                                Transform Your Data Into
+                                <span className={styles.highlight}> Strategic Advantage</span>
+                            </h1>
+
+                            <p className={styles.heroSubtitle}>
+                                Stop drowning in data. Start making decisions that drive measurable ROI.
+                                We turn complex datasets into clear, actionable insights that fuel growth.
+                            </p>
+
+                            <div className={styles.ctaButtons}>
+                                <Link
+                                    to="/contact"
+                                    onClick={() => handleCTAClick('hero_primary')}
+                                    className={styles.primaryCta}
+                                >
+                                    Get Your Free Data Audit
+                                    <ArrowRight size={20} />
+                                </Link>
+
+                                <button className={styles.secondaryCta}>
+                                    <Play size={20} />
+                                    Watch Demo
+                                </button>
+                            </div>
+
+                            <div className={styles.trustIndicators}>
+                                <div className={styles.trustItem}>
+                                    <CheckCircle size={16} />
+                                    <span>No Credit Card Required</span>
+                                </div>
+                                <div className={styles.trustItem}>
+                                    <CheckCircle size={16} />
+                                    <span>Free Consultation</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={styles.statsPanel}>
+                            <div className={styles.statsGrid}>
+                                {stats.map((stat, idx) => (
+                                    <div
+                                        key={idx}
+                                        className={styles.statItem}
+                                        style={{
+                                            animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both`,
+                                            borderTop: `4px solid ${stat.color}`,
+                                            padding: '1.5rem',
+                                            background: 'rgba(255, 255, 255, 0.05)',
+                                            borderRadius: '12px',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s ease'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.transform = 'scale(1.05)';
+                                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.transform = 'scale(1)';
+                                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                                        }}
+                                    >
+                                        <div className={styles.statNumber} style={{ color: stat.color }}>
+                                            {stat.value}
+                                        </div>
+                                        <div className={styles.statLabel}>{stat.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className={styles.heroImageWrapper}>
+                                <img
+                                    src="/Images/site-images/chart-1.jpg"
+                                    alt="Analytics Dashboard"
+                                    className={styles.heroImage}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Full-Width Image Section with Overlay Text */}
+            <section className={styles.fullWidthImageSection}>
+                <div className={styles.imageOverlay}>
+                    <img src="/Images/site-images/dashboard-1.jpg" alt="Data Analytics" className={styles.bgImage} />
+                    <div className={styles.overlayContent}>
+                        <h2 className={styles.overlayTitle}>Real-Time Insights, Real Results</h2>
+                        <p className={styles.overlayText}>
+                            See how our clients transformed scattered data into strategic intelligence
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Interactive Services Showcase */}
+            <section className={styles.servicesShowcase}>
+                <div className={styles.sectionContent}>
+                    <div className={styles.sectionHeader}>
+                        <h2 className={styles.sectionTitle}>Our Core Services</h2>
+                        <p className={styles.sectionSubtitle}>End-to-end data solutions tailored to your needs</p>
+                    </div>
+
+                    <div className={styles.servicesShowcaseGrid}>
+                        {services.map((service, idx) => {
+                            const Icon = service.icon;
+                            const isActive = activeService === idx;
+                            return (
+                                <div
+                                    key={idx}
+                                    onClick={() => setActiveService(idx)}
+                                    className={`${styles.showcaseCard} ${isActive ? styles.showcaseCardActive : ''}`}
+                                >
+                                    <div className={styles.showcaseCardImage}>
+                                        <img src={service.image} alt={service.title} />
+                                        <div className={styles.showcaseCardOverlay}>
+                                            <div className={styles.showcaseCardContent}>
+                                                <div className={styles.showcaseIcon} style={{ background: service.color }}>
+                                                    <Icon size={32} color="white" />
+                                                </div>
+                                                <h3 className={styles.showcaseCardTitle}>{service.title}</h3>
+                                                <p className={styles.showcaseCardDesc}>{service.description}</p>
+                                                {isActive && (
+                                                    <ul className={styles.showcaseFeatures}>
+                                                        {service.features.map((feature, fidx) => (
+                                                            <li key={fidx}>
+                                                                <ChevronRight size={16} />
+                                                                {feature}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
+                                                <div className={styles.showcaseCardArrow}>
+                                                    <ArrowRight size={24} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            {/* Split Image Section */}
+            <section className={styles.splitSection}>
+                <div className={styles.splitImage}>
+                    <img src="/Images/site-images/data-image-2.jpg" alt="Data Processing" />
+                </div>
+                <div className={styles.splitContent}>
+                    <h2 className={styles.splitTitle}>From Chaos to Clarity</h2>
+                    <p className={styles.splitText}>
+                        We don't just analyze data – we transform it into a strategic asset. Our proven process
+                        takes your scattered information and turns it into actionable intelligence that drives growth.
+                    </p>
+                    <ul className={styles.splitList}>
+                        <li><CheckCircle size={20} /> Automated data pipelines</li>
+                        <li><CheckCircle size={20} /> Real-time dashboards</li>
+                        <li><CheckCircle size={20} /> Predictive analytics</li>
+                        <li><CheckCircle size={20} /> Custom ML models</li>
+                    </ul>
+                    <Link to="/services" className={styles.splitBtn}>
+                        Explore Services
+                        <ArrowRight size={20} />
+                    </Link>
+                </div>
+            </section>
+
+            {/* Reverse Split Section */}
+            <section className={styles.splitSection}>
+                <div className={styles.splitContent}>
+                    <h2 className={styles.splitTitle}>Enterprise-Grade Security</h2>
+                    <p className={styles.splitText}>
+                        Your data stays yours. We implement bank-level encryption, comply with international
+                        standards, and ensure your sensitive information is protected at every step.
+                    </p>
+                    <div className={styles.securityBadges}>
+                        <div className={styles.securityBadge}>
+                            <Shield size={24} />
+                            <span>SOC 2 Compliant</span>
+                        </div>
+                        <div className={styles.securityBadge}>
+                            <Shield size={24} />
+                            <span>GDPR Ready</span>
+                        </div>
+                        <div className={styles.securityBadge}>
+                            <Shield size={24} />
+                            <span>256-bit Encryption</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.splitImage}>
+                    <img src="/Images/site-images/data-image-3.jpg" alt="Security" />
+                </div>
+            </section>
+
+            {/* Benefits Grid with Background */}
+            <section className={styles.benefitsSection}>
+                <div className={styles.benefitsBackground}>
+                    <img src="/Images/site-images/dashboard-2.jpg" alt="Background" />
+                    <div className={styles.benefitsOverlay}></div>
+                </div>
+                <div className={styles.sectionContent}>
+                    <div className={styles.sectionHeader}>
+                        <h2 className={styles.sectionTitle} style={{ color: 'white' }}>
+                            What Sets Us Apart
+                        </h2>
+                        <p className={styles.sectionSubtitle} style={{ color: 'rgba(255,255,255,0.9)' }}>
+                            We don't just analyze data. We partner with you to transform it into revenue.
+                        </p>
+                    </div>
+
+                    <div className={styles.benefitsGrid}>
+                        <div className={styles.benefitCard}>
+                            <TrendingUp size={32} style={{ color: '#2563eb' }} />
+                            <h3>Proven ROI</h3>
+                            <p>Measurable improvements within the first quarter</p>
+                        </div>
+                        <div className={styles.benefitCard}>
+                            <Zap size={32} style={{ color: '#16a34a' }} />
+                            <h3>Fast Deployment</h3>
+                            <p>See insights in weeks, not months</p>
+                        </div>
+                        <div className={styles.benefitCard}>
+                            <Users size={32} style={{ color: '#9333ea' }} />
+                            <h3>Expert Team</h3>
+                            <p>Work with experienced data professionals</p>
+                        </div>
+                        <div className={styles.benefitCard}>
+                            <Globe size={32} style={{ color: '#ea580c' }} />
+                            <h3>Global Reach</h3>
+                            <p>African expertise, international standards</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Testimonials */}
+            <section className={styles.testimonialsSection}>
+                <div className={styles.sectionContent}>
+                    <h2 className={styles.sectionTitle}>What Our Clients Say</h2>
+
+                    <div className={styles.testimonialCarousel}>
+                        <div className={styles.testimonialCardActive}>
+                            <div className={styles.stars}>
+                                {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
+                                    <Star key={i} size={24} fill="#fbbf24" color="#fbbf24" />
+                                ))}
+                            </div>
+
+                            <p className={styles.testimonialQuote}>
+                                "{testimonials[activeTestimonial].text}"
+                            </p>
+
+                            <div className={styles.testimonialAuthor}>
+                                <div
+                                    className={styles.avatar}
+                                    style={{ background: testimonials[activeTestimonial].color }}
+                                />
+                                <div>
+                                    <div className={styles.authorName}>
+                                        {testimonials[activeTestimonial].author}
+                                    </div>
+                                    <div className={styles.authorTitle}>
+                                        {testimonials[activeTestimonial].title}
+                                    </div>
+                                    <div className={styles.authorCompany}>
+                                        {testimonials[activeTestimonial].company}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className={styles.testimonialDots}>
+                                {testimonials.map((_, idx) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => setActiveTestimonial(idx)}
+                                        className={`${styles.dot} ${idx === activeTestimonial ? styles.dotActive : ''}`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Final CTA with Background Image */}
+            <section className={styles.finalCta}>
+                <div className={styles.ctaBackground}>
+                    <img src="/Images/site-images/dashboard-3.jpg" alt="Background" />
+                    <div className={styles.ctaOverlay}></div>
+                </div>
+                <div className={styles.ctaContentBox}>
+                    <div className={styles.urgencyBadge}>
+                        <Zap size={20} style={{ display: 'inline', marginRight: '8px' }} />
+                        Start Your Data Transformation Today
+                    </div>
+
+                    <h2 className={styles.ctaTitle}>
+                        Ready to Turn Your Data Into Your Biggest Competitive Advantage?
+                    </h2>
+
+                    <p className={styles.ctaText}>
+                        Join organizations across Africa, the US, and worldwide that are making smarter, data-driven decisions.
+                    </p>
+
+                    <div className={styles.finalCtaButtons}>
+                        <Link
+                            to="/contact"
+                            onClick={() => handleCTAClick('bottom_primary')}
+                            className={styles.whiteBtn}
+                        >
+                            Schedule Your Free Consultation
+                            <ArrowRight size={20} />
+                        </Link>
+
+                        <Link
+                            to="/services"
+                            onClick={() => handleCTAClick('bottom_secondary')}
+                            className={styles.outlineBtn}
+                        >
+                            Explore Our Services
+                        </Link>
+                    </div>
+
+                    <p className={styles.disclaimer}>
+                        No pressure. No obligation. Just a conversation about your data goals.
+                    </p>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+export default HomePage;=== src/pages/PricingPage.jsx ===
+// frontend/src/pages/PricingPage.jsx
+
+import { ArrowRight, Award, Check, ChevronDown, TrendingUp, Zap } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { apiService } from '../services/api';
+import styles from './PricingPage.module.css';
+
+const PricingPage = () => {
+    const [expandedFaq, setExpandedFaq] = useState(null);
+    const [expandedAddons, setExpandedAddons] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, []);
+
+    const handlePlanClick = (plan) => {
+        apiService.trackInteraction('conversion', 'pricing_plan_click', { plan });
+    };
+
+    const toggleFaq = (index) => {
+        setExpandedFaq(expandedFaq === index ? null : index);
+    };
+
+    const plans = [
+        {
+            name: "Starter",
+            icon: <Zap size={32} />,
+            tagline: "Perfect for small businesses & startups",
+            priceLabel: "Affordable Entry Point",
+            priceDescription: "Starting from low monthly rates",
+            description: "Essential analytics to get started with data-driven decisions",
+            features: [
+                "Custom analytics dashboard",
+                "Up to 3 data sources",
+                "Monthly reporting",
+                "Email support (48hr response)",
+                "Basic data integration",
+                "Shared analyst support",
+                "Quarterly strategy sessions",
+                "Standard security protocols"
+            ],
+            cta: "Get a Quote",
+            popular: false,
+            minContract: "3 months minimum"
+        },
+        {
+            name: "Professional",
+            icon: <TrendingUp size={32} />,
+            tagline: "Most popular for growing companies",
+            priceLabel: "Best Value",
+            priceDescription: "Competitive pricing for scaling teams",
+            description: "Advanced analytics and predictive models for scaling businesses",
+            features: [
+                "Everything in Starter, plus:",
+                "Unlimited data sources",
+                "Real-time dashboards",
+                "Predictive analytics",
+                "Machine learning models (basic)",
+                "Priority email support",
+                "Shared data scientist access",
+                "Bi-weekly strategy sessions",
+                "API access",
+                "Custom integrations (up to 5)"
+            ],
+            cta: "Get a Quote",
+            popular: true,
+            minContract: "6 months minimum"
+        },
+        {
+            name: "Enterprise",
+            icon: <Award size={32} />,
+            tagline: "For established organizations",
+            priceLabel: "Custom Solutions",
+            priceDescription: "Tailored pricing for your needs",
+            description: "Full-scale data transformation with dedicated support",
+            features: [
+                "Everything in Professional, plus:",
+                "Dedicated analyst/scientist",
+                "Custom AI/ML development",
+                "Deep learning solutions",
+                "Data engineering support",
+                "Advanced security & compliance",
+                "Priority onboarding",
+                "Weekly check-ins",
+                "Custom SLAs",
+                "Phone & email support",
+                "Strategic consulting included"
+            ],
+            cta: "Contact Sales",
+            popular: false,
+            minContract: "12 months minimum"
+        }
+    ];
+
+    const addOns = [
+        {
+            name: "Data Engineering",
+            description: "Build and maintain scalable data infrastructure"
+        },
+        {
+            name: "Custom ML Model Development",
+            description: "Custom machine learning models for your specific use case"
+        },
+        {
+            name: "Deep Learning Solutions",
+            description: "Advanced neural networks and computer vision"
+        },
+        {
+            name: "Training & Workshops",
+            description: "Upskill your team on data literacy and analytics"
+        },
+        {
+            name: "Data Audit & Assessment",
+            description: "Comprehensive assessment of your data landscape"
+        },
+        {
+            name: "Report Writing & Documentation",
+            description: "Professional technical reports and documentation"
+        }
+    ];
+
+    const faqs = [
+        {
+            question: "What's included in the free consultation?",
+            answer: "A 30-minute call to discuss your data challenges, review your current setup, and outline a potential roadmap. No pressure, no obligation."
+        },
+        {
+            question: "How is pricing determined?",
+            answer: "Pricing is customized based on your specific needs, team size, data volume, and required features. Contact us for a detailed quote tailored to your requirements."
+        },
+        {
+            question: "Why minimum contracts?",
+            answer: "Data transformation takes time to show real results. Minimum contracts ensure we can deliver sustainable value rather than quick fixes that don't last."
+        },
+        {
+            question: "Can I upgrade or downgrade my plan?",
+            answer: "Yes! You can change plans at any renewal period. We'll adjust your billing and service level accordingly."
+        },
+        {
+            question: "What payment methods do you accept?",
+            answer: "We accept bank transfers, credit cards, mobile money, and can work with purchase orders. International payments via PayPal or Wise."
+        },
+        {
+            question: "Do you offer custom packages?",
+            answer: "Absolutely! For unique requirements, we can create a custom package that fits your specific needs and budget. Just contact us to discuss."
+        },
+        {
+            question: "Can I cancel my subscription?",
+            answer: "After your minimum contract period, you can cancel anytime with 30 days notice. We'll help with a smooth transition of your data and systems."
+        }
+    ];
+
+    return (
+        <div className={styles.container}>
+            <section className={styles.hero}>
+                <div className={styles.heroContent}>
+                    <h1 className={styles.heroTitle}>
+                        Flexible Pricing That Grows With You
+                    </h1>
+                    <p className={styles.heroSubtitle}>
+                        Contract-based solutions designed for businesses of all sizes.
+                        Get a custom quote that matches your exact needs.
+                    </p>
+                </div>
+            </section>
+
+            <section className={styles.plansSection}>
+                <div className={styles.sectionContent}>
+                    <div className={styles.plansGrid}>
+                        {plans.map((plan, index) => (
+                            <div
+                                key={index}
+                                className={`${styles.planCard} ${plan.popular ? styles.popular : ''}`}
+                            >
+                                {plan.popular && (
+                                    <div className={styles.popularBadge}>Most Popular</div>
+                                )}
+
+                                <div className={styles.planHeader}>
+                                    <div className={styles.planIcon}>{plan.icon}</div>
+                                    <h3 className={styles.planName}>{plan.name}</h3>
+                                    <p className={styles.planTagline}>{plan.tagline}</p>
+                                </div>
+
+                                <div className={styles.planPricing}>
+                                    <div className={styles.priceLabel}>{plan.priceLabel}</div>
+                                    <div className={styles.priceDescription}>{plan.priceDescription}</div>
+                                    <div className={styles.minContract}>{plan.minContract}</div>
+                                </div>
+
+                                <p className={styles.planDescription}>{plan.description}</p>
+
+                                <ul className={styles.featuresList}>
+                                    {plan.features.map((feature, idx) => (
+                                        <li key={idx} className={styles.feature}>
+                                            <Check size={20} className={styles.checkIcon} />
+                                            <span>{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <Link
+                                    to="/contact"
+                                    onClick={() => handlePlanClick(plan.name)}
+                                    className={styles.planCTA}
+                                >
+                                    {plan.cta} <ArrowRight size={20} />
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.addOnsSection}>
+                <div className={styles.sectionContent}>
+                    <div
+                        className={styles.addOnsHeader}
+                        onClick={() => setExpandedAddons(!expandedAddons)}
+                    >
+                        <div>
+                            <h2 className={styles.sectionTitle}>Additional Services & Add-Ons</h2>
+                            <p className={styles.sectionSubtitle}>
+                                Enhance your plan with specialized project-based services
+                            </p>
+                        </div>
+                        <div className={`${styles.expandIcon} ${expandedAddons ? styles.rotated : ''}`}>
+                            <ChevronDown size={32} />
+                        </div>
+                    </div>
+
+                    <div className={`${styles.addOnsGrid} ${expandedAddons ? styles.visible : ''}`}>
+                        {addOns.map((addon, index) => (
+                            <div key={index} className={styles.addonCard}>
+                                <h3 className={styles.addonName}>{addon.name}</h3>
+                                <p className={styles.addonDescription}>{addon.description}</p>
+                                <Link to="/contact" className={styles.addonLink}>
+                                    Get Pricing <ArrowRight size={16} />
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.faqSection}>
+                <div className={styles.sectionContent}>
+                    <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
+
+                    <div className={styles.faqGrid}>
+                        {faqs.map((faq, index) => (
+                            <div
+                                key={index}
+                                className={`${styles.faqItem} ${expandedFaq === index ? styles.expanded : ''}`}
+                                onClick={() => toggleFaq(index)}
+                            >
+                                <div className={styles.faqHeader}>
+                                    <h3 className={styles.faqQuestion}>{faq.question}</h3>
+                                    <div className={`${styles.faqIcon} ${expandedFaq === index ? styles.rotated : ''}`}>
+                                        <ChevronDown size={24} />
+                                    </div>
+                                </div>
+                                <div className={`${styles.faqAnswer} ${expandedFaq === index ? styles.visible : ''}`}>
+                                    <p>{faq.answer}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.ctaSection}>
+                <div className={styles.ctaContent}>
+                    <h2 className={styles.ctaTitle}>Ready to Get Started?</h2>
+                    <p className={styles.ctaText}>
+                        Schedule a free consultation to discuss your needs and get a custom quote
+                    </p>
+                    <Link to="/contact" className={styles.ctaButton}>
+                        Get Your Custom Quote <ArrowRight size={20} />
+                    </Link>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+export default PricingPage;=== src/pages/ServicesPage.jsx ===
+// frontend/src/pages/ServicesPage.jsx
+
+import {
+    ArrowRight,
+    BarChart3,
+    Brain,
+    CheckCircle,
+    Code,
+    Database,
+    FileText,
+    GitBranch,
+    LineChart,
+    PieChart,
+    Sparkles,
+    Target,
+    TrendingUp,
+    Zap
+} from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { apiService } from '../services/api';
+import styles from './ServicesPage.module.css';
+
+const ServicesPage = () => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, []);
+
+    const [activeService, setActiveService] = useState(0);
+
+    const handleServiceClick = (serviceName) => {
+        apiService.trackInteraction('engagement', 'service_click', { service: serviceName });
+    };
+
+    const services = [
+        {
+            icon: <BarChart3 size={40} />,
+            title: "Advanced Analytics & Business Intelligence",
+            shortDesc: "Transform raw data into strategic business intelligence",
+            fullDesc: "Stop guessing and start knowing. Our advanced analytics uncover hidden patterns, predict trends, and reveal opportunities your competitors are missing. We deliver insights that directly impact your bottom line.",
+            benefits: [
+                "Identify revenue opportunities and cost savings",
+                "Predict customer behavior with high accuracy",
+                "Reduce operational inefficiencies significantly",
+                "Make data-driven decisions in real-time",
+                "Interactive dashboards for all stakeholders"
+            ],
+            deliverables: [
+                "Custom analytics dashboards (Tableau, Power BI, Looker)",
+                "Automated reporting systems",
+                "Statistical analysis and insights",
+                "Strategic recommendations report",
+                "KPI tracking and monitoring"
+            ],
+            complexity: "Moderate Complexity",
+            engagement: "Project-Based or Retainer",
+            color: "blue",
+            image: '/Images/site-images/dashboard-1.jpg'
+        },
+        {
+            icon: <Brain size={40} />,
+            title: "Machine Learning Solutions",
+            shortDesc: "Automate decisions with intelligent ML models",
+            fullDesc: "Leverage machine learning to automate complex decision-making, predict outcomes, and gain competitive advantages. Our ML models learn from your data and improve over time.",
+            benefits: [
+                "Automate repetitive analytical tasks",
+                "Forecast demand and trends accurately",
+                "Detect anomalies and fraud in real-time",
+                "Personalize customer experiences at scale",
+                "Optimize pricing and inventory management"
+            ],
+            deliverables: [
+                "Custom ML models (regression, classification, clustering)",
+                "Predictive forecasting systems",
+                "Recommendation engines",
+                "Churn prediction models",
+                "Model deployment and monitoring"
+            ],
+            complexity: "Advanced Complexity",
+            engagement: "Project-Based",
+            color: "purple",
+            image: '/Images/site-images/dashboard-2.jpg'
+        },
+        {
+            icon: <Zap size={40} />,
+            title: "Deep Learning & Neural Networks",
+            shortDesc: "Advanced AI for complex pattern recognition",
+            fullDesc: "Harness the power of deep learning for computer vision, natural language processing, and complex pattern recognition. Perfect for unstructured data like images, text, and audio.",
+            benefits: [
+                "Process and analyze images and video",
+                "Extract insights from text documents",
+                "Speech recognition and generation",
+                "Advanced pattern recognition",
+                "State-of-the-art accuracy on complex tasks"
+            ],
+            deliverables: [
+                "Custom neural networks (CNN, RNN, LSTM, Transformers)",
+                "Computer vision solutions",
+                "NLP and text analytics",
+                "Time series forecasting",
+                "Transfer learning implementations"
+            ],
+            complexity: "Expert Level",
+            engagement: "Project-Based",
+            color: "indigo",
+            image: '/Images/site-images/dashboard-3.jpg'
+        },
+        {
+            icon: <Database size={40} />,
+            title: "Data Engineering & Infrastructure",
+            shortDesc: "Build scalable, robust data pipelines",
+            fullDesc: "Your data infrastructure is the foundation of everything. We build enterprise-grade data pipelines, warehouses, and lakes that scale with your business and ensure data quality.",
+            benefits: [
+                "Eliminate data silos and inconsistencies",
+                "Process millions of records efficiently",
+                "High uptime and data availability",
+                "Seamless integration with existing systems",
+                "Cloud-native and scalable architecture"
+            ],
+            deliverables: [
+                "Data warehouses and data lakes",
+                "ETL/ELT pipelines (Airflow, dbt)",
+                "Data quality frameworks",
+                "API integrations",
+                "Cloud infrastructure setup (AWS, Azure, GCP)"
+            ],
+            complexity: "Advanced Complexity",
+            engagement: "Project-Based or Ongoing",
+            color: "green",
+            image: '/Images/site-images/data-image-1.jpg'
+        },
+        {
+            icon: <LineChart size={40} />,
+            title: "Predictive Analytics & Forecasting",
+            shortDesc: "Anticipate future trends and outcomes",
+            fullDesc: "Stop reacting and start anticipating. Our predictive models forecast sales, demand, churn, and market trends so you can stay ahead and make proactive decisions.",
+            benefits: [
+                "Forecast revenue with high accuracy",
+                "Predict customer churn before it happens",
+                "Optimize inventory and reduce waste",
+                "Plan capacity and resources efficiently",
+                "Scenario planning and what-if analysis"
+            ],
+            deliverables: [
+                "Time series forecasting models (ARIMA, Prophet, LSTM)",
+                "Churn prediction systems",
+                "Demand forecasting tools",
+                "Scenario planning frameworks",
+                "Risk assessment models"
+            ],
+            complexity: "Moderate to Advanced",
+            engagement: "Project-Based",
+            color: "red",
+            image: '/Images/site-images/data-image-2.jpg'
+        },
+        {
+            icon: <PieChart size={40} />,
+            title: "Customer Analytics & Segmentation",
+            shortDesc: "Understand and serve customers better",
+            fullDesc: "Not all customers are equal. We help you identify your most valuable segments, understand their behavior, and tailor your approach to maximize lifetime value and retention.",
+            benefits: [
+                "Increase customer lifetime value significantly",
+                "Reduce churn by identifying at-risk customers",
+                "Personalize marketing with precision",
+                "Identify high-value customer segments",
+                "Optimize customer acquisition costs"
+            ],
+            deliverables: [
+                "Customer segmentation models (RFM, K-means)",
+                "Lifetime value predictions",
+                "Churn analysis and prevention",
+                "Behavioral analytics dashboards",
+                "Behavioral analytics dashboards",
+                "Marketing attribution models"
+            ],
+            complexity: "Moderate Complexity",
+            engagement: "Project-Based",
+            color: "orange",
+            image: '/Images/site-images/data-image-3.jpg'
+        },
+        {
+            icon: <Code size={40} />,
+            title: "Data Science Consulting & Strategy",
+            shortDesc: "Expert guidance for your data journey",
+            fullDesc: "Not sure where to start? Our data scientists and strategists will audit your current state, identify opportunities, and create a comprehensive roadmap for data transformation.",
+            benefits: [
+                "Clear data strategy and roadmap",
+                "Identify quick wins and long-term goals",
+                "Technology stack recommendations",
+                "Team training and upskilling",
+                "Best practices and governance frameworks"
+            ],
+            deliverables: [
+                "Data maturity assessment",
+                "Strategic roadmap and priorities",
+                "Technology recommendations",
+                "Team training sessions",
+                "Governance and security frameworks"
+            ],
+            complexity: "Advisory Level",
+            engagement: "Consulting Engagement",
+            color: "cyan",
+            image: '/Images/site-images/chart-1.jpg'
+        },
+        {
+            icon: <FileText size={40} />,
+            title: "Technical Report Writing & Documentation",
+            shortDesc: "Professional reports and documentation",
+            fullDesc: "Clear, professional documentation of your data projects, analyses, and models. Perfect for stakeholder communication, compliance, or publication.",
+            benefits: [
+                "Professional presentation of findings",
+                "Reproducible research documentation",
+                "Compliance-ready reports",
+                "Stakeholder-friendly visualizations",
+                "Publication-quality documents"
+            ],
+            deliverables: [
+                "Technical analysis reports",
+                "Model documentation",
+                "Data dictionaries",
+                "Executive summaries",
+                "Methodology documentation"
+            ],
+            complexity: "Foundational Level",
+            engagement: "Per Deliverable",
+            color: "slate",
+            image: '/Images/site-images/dashboard-1.jpg'
+        },
+        {
+            icon: <GitBranch size={40} />,
+            title: "MLOps & Model Deployment",
+            shortDesc: "Production-ready ML systems",
+            fullDesc: "Take your models from notebooks to production. We build robust ML pipelines with monitoring, versioning, and automated retraining.",
+            benefits: [
+                "Automated model deployment",
+                "Continuous model monitoring",
+                "Version control for models",
+                "A/B testing infrastructure",
+                "Performance tracking and alerts"
+            ],
+            deliverables: [
+                "CI/CD pipelines for ML",
+                "Model serving infrastructure",
+                "Monitoring dashboards",
+                "Automated retraining pipelines",
+                "API endpoints for predictions"
+            ],
+            complexity: "Advanced Complexity",
+            engagement: "Project-Based",
+            color: "teal",
+            image: '/Images/site-images/dashboard-2.jpg'
+        },
+        {
+            icon: <TrendingUp size={40} />,
+            title: "Statistical Analysis & Research",
+            shortDesc: "Rigorous statistical analysis",
+            fullDesc: "Hypothesis testing, A/B testing, experimental design, and statistical modeling. Perfect for research projects or validating business decisions.",
+            benefits: [
+                "Scientific rigor in decision making",
+                "Validate hypotheses with confidence",
+                "Design effective experiments",
+                "Understand causal relationships",
+                "Publication-ready analysis"
+            ],
+            deliverables: [
+                "Hypothesis testing and confidence intervals",
+                "A/B test design and analysis",
+                "Regression analysis",
+                "Causal inference studies",
+                "Statistical reports with visualizations"
+            ],
+            complexity: "Moderate Complexity",
+            engagement: "Project-Based",
+            color: "emerald",
+            image: '/Images/site-images/dashboard-3.jpg'
+        }
+    ];
+
+    const getColorStyles = (color) => {
+        const colors = {
+            blue: { bg: '#eff6ff', text: '#2563eb', gradient: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)' },
+            purple: { bg: '#f3e8ff', text: '#9333ea', gradient: 'linear-gradient(135deg, #a855f7 0%, #9333ea 100%)' },
+            green: { bg: '#dcfce7', text: '#16a34a', gradient: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)' },
+            orange: { bg: '#ffedd5', text: '#ea580c', gradient: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' },
+            red: { bg: '#fee2e2', text: '#dc2626', gradient: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)' },
+            indigo: { bg: '#e0e7ff', text: '#4f46e5', gradient: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)' },
+            cyan: { bg: '#cffafe', text: '#0891b2', gradient: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)' },
+            slate: { bg: '#f1f5f9', text: '#475569', gradient: 'linear-gradient(135deg, #64748b 0%, #475569 100%)' },
+            teal: { bg: '#ccfbf1', text: '#0d9488', gradient: 'linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)' },
+            emerald: { bg: '#d1fae5', text: '#059669', gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)' }
+        };
+        return colors[color];
+    };
+
+    return (
+        <div className={styles.container}>
+            <section className={styles.hero}>
+                <div className={styles.heroContent}>
+                    <div className={styles.heroBadge}>
+                        <Sparkles size={16} />
+                        <span>10+ Specialized Service Areas</span>
+                    </div>
+                    <h1 className={styles.heroTitle}>
+                        Comprehensive Data Science Services
+                    </h1>
+                    <p className={styles.heroSubtitle}>
+                        From strategic consulting to production ML systems, we offer flexible data science services
+                        tailored to your unique needs and business objectives.
+                    </p>
+                    <div className={styles.heroFeatures}>
+                        <div className={styles.heroFeatureItem}>
+                            <CheckCircle size={20} />
+                            <span>Expert Team</span>
+                        </div>
+                        <div className={styles.heroFeatureItem}>
+                            <CheckCircle size={20} />
+                            <span>Flexible Engagement</span>
+                        </div>
+                        <div className={styles.heroFeatureItem}>
+                            <CheckCircle size={20} />
+                            <span>Proven Results</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.servicesSection}>
+                <div className={styles.sectionContent}>
+                    <div className={styles.servicesGrid}>
+                        {services.map((service, index) => {
+                            const colors = getColorStyles(service.color);
+                            return (
+                                <div
+                                    key={index}
+                                    onClick={() => {
+                                        setActiveService(index);
+                                        handleServiceClick(service.title);
+                                        document.getElementById('service-details')?.scrollIntoView({ behavior: 'smooth' });
+                                    }}
+                                    className={styles.serviceCard}
+                                >
+                                    <div className={styles.serviceIconBox} style={{ background: colors.bg }}>
+                                        <div style={{ color: colors.text }}>
+                                            {service.icon}
+                                        </div>
+                                    </div>
+                                    <h3 className={styles.serviceTitle}>
+                                        {service.title}
+                                    </h3>
+                                    <p className={styles.serviceShortDesc}>
+                                        {service.shortDesc}
+                                    </p>
+                                    <div className={styles.learnMoreLink}>
+                                        Learn More <ArrowRight size={18} />
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            <section id="service-details" className={styles.detailSection}>
+                <div className={styles.detailContainer}>
+                    <div className={styles.detailCard}>
+                        <div className={styles.detailHeader}>
+                            <div className={styles.detailHeaderLeft}>
+                                <div className={styles.detailIconTitle}>
+                                    <div
+                                        className={styles.detailIconWrapper}
+                                        style={{ background: getColorStyles(services[activeService].color).gradient }}
+                                    >
+                                        {services[activeService].icon}
+                                    </div>
+                                    <div>
+                                        <h2 className={styles.detailTitle}>
+                                            {services[activeService].title}
+                                        </h2>
+                                        <div className={styles.serviceMeta}>
+                                            <span className={styles.metaPill} style={{
+                                                background: getColorStyles(services[activeService].color).bg,
+                                                color: getColorStyles(services[activeService].color).text
+                                            }}>
+                                                {services[activeService].complexity}
+                                            </span>
+                                            <span className={styles.metaPill} style={{
+                                                background: getColorStyles(services[activeService].color).bg,
+                                                color: getColorStyles(services[activeService].color).text
+                                            }}>
+                                                {services[activeService].engagement}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p className={styles.detailDescription}>
+                                    {services[activeService].fullDesc}
+                                </p>
+                            </div>
+
+                            <div className={styles.detailImageWrapper}>
+                                <img
+                                    src={services[activeService].image}
+                                    alt={services[activeService].title}
+                                    className={styles.detailImage}
+                                />
+                            </div>
+                        </div>
+
+                        <div className={styles.detailBody}>
+                            <div className={styles.detailGrid}>
+                                <div className={styles.detailBlock}>
+                                    <h3 className={styles.detailSectionTitle}>
+                                        <Target size={24} style={{ color: '#16a34a' }} />
+                                        Key Benefits
+                                    </h3>
+                                    <ul className={styles.benefitsList}>
+                                        {services[activeService].benefits.map((benefit, idx) => (
+                                            <li key={idx} className={styles.benefitItem}>
+                                                <CheckCircle size={20} style={{ color: '#22c55e', flexShrink: 0 }} />
+                                                <span>{benefit}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className={styles.detailBlock}>
+                                    <h3 className={styles.detailSectionTitle}>
+                                        <Sparkles size={24} style={{ color: '#2563eb' }} />
+                                        What You Get
+                                    </h3>
+                                    <ul className={styles.deliverablesList}>
+                                        {services[activeService].deliverables.map((item, idx) => (
+                                            <li key={idx} className={styles.deliverableItem}>
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className={styles.detailFooter}>
+                                <Link
+                                    to="/contact"
+                                    onClick={() => handleServiceClick(`${services[activeService].title}_cta`)}
+                                    className={styles.detailCtaBtn}
+                                    style={{ background: getColorStyles(services[activeService].color).gradient }}
+                                >
+                                    Let's Discuss Your Project
+                                    <ArrowRight size={20} />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={styles.pagination}>
+                        {services.map((service, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setActiveService(index)}
+                                className={`${styles.pagDot} ${index === activeService ? styles.active : ''}`}
+                                style={{
+                                    background: index === activeService ? getColorStyles(service.color).text : '#e2e8f0'
+                                }}
+                                title={service.title}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.processSection}>
+                <div className={styles.sectionContent}>
+                    <h2 className={styles.sectionTitle}>
+                        Our Proven Process
+                    </h2>
+                    <p className={styles.sectionSubtitle}>
+                        We've refined our approach over hundreds of projects to deliver results faster and more reliably.
+                    </p>
+
+                    <div className={styles.processGrid}>
+                        {[
+                            {
+                                step: "01",
+                                title: "Discovery & Audit",
+                                desc: "We analyze your current data landscape and identify quick wins",
+                                color: "#3b82f6"
+                            },
+                            {
+                                step: "02",
+                                title: "Strategy & Roadmap",
+                                desc: "We create a custom plan aligned with your business objectives",
+                                color: "#9333ea"
+                            },
+                            {
+                                step: "03",
+                                title: "Build & Deploy",
+                                desc: "Our team builds and implements your solution with zero disruption",
+                                color: "#16a34a"
+                            },
+                            {
+                                step: "04",
+                                title: "Optimize & Scale",
+                                desc: "We continuously improve and expand as your needs evolve",
+                                color: "#ea580c"
+                            }
+                        ].map((phase, idx) => (
+                            <div key={idx} className={styles.processStep}>
+                                <div className={styles.stepNumber} style={{ background: phase.color }}>
+                                    {phase.step}
+                                </div>
+                                <h3 className={styles.stepTitle}>{phase.title}</h3>
+                                <p className={styles.stepDescription}>{phase.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.ctaSection}>
+                <div className={styles.ctaContent}>
+                    <div className={styles.ctaBadge}>
+                        <Sparkles size={16} />
+                        Ready to Get Started?
+                    </div>
+                    <h2 className={styles.ctaTitle}>
+                        Transform Your Data Into Results
+                    </h2>
+                    <p className={styles.ctaText}>
+                        Schedule a free consultation to discuss which services are right for your unique situation.
+                        We'll help you understand the possibilities and create a custom plan.
+                    </p>
+                    <Link
+                        to="/contact"
+                        className={styles.ctaButton}
+                    >
+                        Schedule Free Consultation
+                        <ArrowRight size={20} />
+                    </Link>
+                    <p className={styles.ctaDisclaimer}>
+                        No obligation. Just an honest conversation about your data goals and how we can help.
+                    </p>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+export default ServicesPage;=== src/pages/SolutionsPage.jsx ===
+// frontend/src/pages/SolutionsPage.jsx
+
+import { ArrowRight, Building2, Factory, GraduationCap, Heart, Landmark, Plane, ShoppingCart, Smartphone, TrendingUp, Truck, X, Zap } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { apiService } from '../services/api';
+import styles from './SolutionsPage.module.css';
+
+const SolutionsPage = () => {
+    // Track selected industry for popup
+    const [selectedIndustry, setSelectedIndustry] = useState(null);
+
+    // Scroll to top on component mount
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, []);
+
+    const handleSolutionClick = (solution) => {
+        apiService.trackInteraction('engagement', 'solution_click', { solution });
+    };
+
+    const handleCardClick = (industry) => {
+        setSelectedIndustry(industry);
+    };
+
+    const closePopup = () => {
+        setSelectedIndustry(null);
+    };
+
+    const industries = [
+        {
+            icon: <Building2 size={40} />,
+            name: "Financial Services",
+            description: "Banks, Insurance, Fintech",
+            challenges: [
+                "Fraud detection and prevention",
+                "Risk assessment and management",
+                "Customer lifetime value prediction",
+                "Regulatory compliance reporting"
+            ],
+            solutions: [
+                "Real-time fraud detection systems",
+                "Credit risk scoring models",
+                "Customer segmentation and targeting",
+                "Automated compliance dashboards"
+            ],
+            results: "45% reduction in fraud losses, 30% increase in approval rates"
+        },
+        {
+            icon: <ShoppingCart size={40} />,
+            name: "Retail & E-commerce",
+            description: "Online and brick-and-mortar retailers",
+            challenges: [
+                "Inventory optimization",
+                "Customer churn prediction",
+                "Demand forecasting",
+                "Price optimization"
+            ],
+            solutions: [
+                "AI-powered demand forecasting",
+                "Dynamic pricing engines",
+                "Customer behavior analytics",
+                "Supply chain optimization"
+            ],
+            results: "60% reduction in stockouts, 25% increase in profit margins"
+        },
+        {
+            icon: <Heart size={40} />,
+            name: "Healthcare",
+            description: "Hospitals, Clinics, Health Insurance",
+            challenges: [
+                "Patient outcome prediction",
+                "Resource allocation",
+                "Claims processing optimization",
+                "Operational efficiency"
+            ],
+            solutions: [
+                "Predictive health analytics",
+                "Capacity planning systems",
+                "Claims fraud detection",
+                "Patient flow optimization"
+            ],
+            results: "40% faster claims processing, 35% improvement in resource utilization"
+        },
+        {
+            icon: <Factory size={40} />,
+            name: "Manufacturing",
+            description: "Production and industrial companies",
+            challenges: [
+                "Quality control",
+                "Predictive maintenance",
+                "Production optimization",
+                "Supply chain visibility"
+            ],
+            solutions: [
+                "IoT sensor analytics",
+                "Predictive maintenance models",
+                "Production forecasting",
+                "Quality assurance automation"
+            ],
+            results: "50% reduction in downtime, 20% increase in production efficiency"
+        },
+        {
+            icon: <TrendingUp size={40} />,
+            name: "Telecommunications",
+            description: "Telecom operators and service providers",
+            challenges: [
+                "Network optimization",
+                "Customer churn reduction",
+                "Revenue assurance",
+                "Service quality monitoring"
+            ],
+            solutions: [
+                "Network performance analytics",
+                "Churn prediction models",
+                "Revenue leakage detection",
+                "Customer experience tracking"
+            ],
+            results: "35% reduction in churn, 15% increase in ARPU"
+        },
+        {
+            icon: <Truck size={40} />,
+            name: "Logistics & Transportation",
+            description: "Shipping, delivery, freight companies",
+            challenges: [
+                "Route optimization",
+                "Fleet management",
+                "Delivery time prediction",
+                "Cost reduction"
+            ],
+            solutions: [
+                "AI-powered route planning",
+                "Real-time tracking systems",
+                "Predictive maintenance for vehicles",
+                "Demand forecasting for capacity"
+            ],
+            results: "30% reduction in fuel costs, 40% improvement in delivery times"
+        },
+        {
+            icon: <Zap size={40} />,
+            name: "Energy & Utilities",
+            description: "Power, water, renewable energy providers",
+            challenges: [
+                "Demand forecasting",
+                "Grid optimization",
+                "Outage prediction",
+                "Energy consumption patterns"
+            ],
+            solutions: [
+                "Smart grid analytics",
+                "Predictive maintenance systems",
+                "Load forecasting models",
+                "Customer usage analytics"
+            ],
+            results: "25% improvement in grid efficiency, 40% reduction in outages"
+        },
+        {
+            icon: <GraduationCap size={40} />,
+            name: "Education",
+            description: "Universities, schools, e-learning platforms",
+            challenges: [
+                "Student performance tracking",
+                "Enrollment predictions",
+                "Resource allocation",
+                "Personalized learning paths"
+            ],
+            solutions: [
+                "Learning analytics platforms",
+                "Predictive enrollment models",
+                "Student success prediction",
+                "Curriculum optimization"
+            ],
+            results: "35% improvement in student outcomes, 20% increase in retention"
+        },
+        {
+            icon: <Landmark size={40} />,
+            name: "Government & Public Sector",
+            description: "Federal, state, and local agencies",
+            challenges: [
+                "Citizen service optimization",
+                "Budget allocation",
+                "Fraud detection",
+                "Policy impact analysis"
+            ],
+            solutions: [
+                "Citizen engagement analytics",
+                "Resource optimization models",
+                "Compliance monitoring systems",
+                "Performance dashboards"
+            ],
+            results: "45% faster service delivery, 30% cost savings"
+        },
+        {
+            icon: <Plane size={40} />,
+            name: "Travel & Hospitality",
+            description: "Hotels, airlines, travel agencies",
+            challenges: [
+                "Dynamic pricing",
+                "Demand forecasting",
+                "Customer satisfaction",
+                "Revenue management"
+            ],
+            solutions: [
+                "Revenue optimization systems",
+                "Customer sentiment analysis",
+                "Booking prediction models",
+                "Personalization engines"
+            ],
+            results: "20% increase in revenue per room, 35% higher customer satisfaction"
+        },
+        {
+            icon: <Smartphone size={40} />,
+            name: "Technology & SaaS",
+            description: "Software companies, tech startups",
+            challenges: [
+                "User behavior analysis",
+                "Churn prediction",
+                "Product analytics",
+                "Growth optimization"
+            ],
+            solutions: [
+                "Product usage analytics",
+                "Cohort analysis tools",
+                "Predictive churn models",
+                "A/B testing frameworks"
+            ],
+            results: "50% reduction in churn, 40% increase in user engagement"
+        },
+        {
+            icon: <Building2 size={40} />,
+            name: "Real Estate",
+            description: "Property management, real estate firms",
+            challenges: [
+                "Property valuation",
+                "Market trend analysis",
+                "Tenant screening",
+                "Investment optimization"
+            ],
+            solutions: [
+                "Automated valuation models",
+                "Market prediction analytics",
+                "Risk assessment tools",
+                "Portfolio optimization"
+            ],
+            results: "25% more accurate valuations, 30% faster deal closing"
+        }
+    ];
+
+    return (
+        <div className={styles.container}>
+            {/* Hero Section */}
+            <section className={styles.hero}>
+                <div className={styles.heroContent}>
+                    <h1 className={styles.heroTitle}>
+                        Industry-Specific Data Solutions
+                    </h1>
+                    <p className={styles.heroSubtitle}>
+                        We understand that every industry has unique data challenges. Our solutions are
+                        tailored to deliver maximum impact in your specific sector.
+                    </p>
+                    <div className={styles.heroStats}>
+                        <div className={styles.stat}>
+                            <div className={styles.statNumber}>20+</div>
+                            <div className={styles.statLabel}>Industries Served</div>
+                        </div>
+                        <div className={styles.stat}>
+                            <div className={styles.statNumber}>200+</div>
+                            <div className={styles.statLabel}>Solutions Deployed</div>
+                        </div>
+                        <div className={styles.stat}>
+                            <div className={styles.statNumber}>90%</div>
+                            <div className={styles.statLabel}>Client Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Industries Section */}
+            <section className={styles.industriesSection}>
+                <div className={styles.sectionContent}>
+                    <h2 className={styles.sectionTitle}>Solutions by Industry</h2>
+                    <p className={styles.sectionSubtitle}>
+                        Deep expertise across multiple sectors means we understand your business from day one
+                    </p>
+
+                    <div className={styles.industriesGrid}>
+                        {industries.map((industry, index) => (
+                            <div
+                                key={`industry-${index}`}
+                                className={styles.industryCard}
+                                onClick={() => handleCardClick(industry)}
+                            >
+                                <div className={styles.cardHeader}>
+                                    <div className={styles.industryIcon}>
+                                        {industry.icon}
+                                    </div>
+                                    <div className={styles.cardHeaderText}>
+                                        <h3 className={styles.industryName}>{industry.name}</h3>
+                                        <p className={styles.industryDescription}>{industry.description}</p>
+                                    </div>
+                                    <div className={styles.expandIcon}>
+                                        <ArrowRight size={24} />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Popup Modal */}
+            {selectedIndustry && (
+                <div className={styles.modalOverlay} onClick={closePopup}>
+                    <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                        <button className={styles.closeButton} onClick={closePopup}>
+                            <X size={24} />
+                        </button>
+                        <div className={styles.modalHeader}>
+                            <div className={styles.industryIcon}>
+                                {selectedIndustry.icon}
+                            </div>
+                            <div>
+                                <h3 className={styles.industryName}>{selectedIndustry.name}</h3>
+                                <p className={styles.industryDescription}>{selectedIndustry.description}</p>
+                            </div>
+                        </div>
+                        <div className={styles.industryDetails}>
+                            <div className={styles.detailSection}>
+                                <h4 className={styles.detailTitle}>Common Challenges</h4>
+                                <ul className={styles.detailList}>
+                                    {selectedIndustry.challenges.map((challenge, idx) => (
+                                        <li key={`challenge-${idx}`}>{challenge}</li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div className={styles.detailSection}>
+                                <h4 className={styles.detailTitle}>Our Solutions</h4>
+                                <ul className={styles.detailList}>
+                                    {selectedIndustry.solutions.map((solution, idx) => (
+                                        <li key={`solution-${idx}`}>{solution}</li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div className={styles.resultsBox}>
+                                <strong>Typical Results: </strong>
+                                {selectedIndustry.results}
+                            </div>
+
+                            <Link
+                                to="/contact"
+                                onClick={() => handleSolutionClick(selectedIndustry.name)}
+                                className={styles.learnMoreBtn}
+                            >
+                                Contact Us <ArrowRight size={16} />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* CTA Section */}
+            <section className={styles.ctaSection}>
+                <div className={styles.ctaContent}>
+                    <h2 className={styles.ctaTitle}>Don't See Your Industry?</h2>
+                    <p className={styles.ctaText}>
+                        We've worked with businesses across dozens of sectors. Let's discuss how we can
+                        help solve your specific data challenges.
+                    </p>
+                    <Link
+                        to="/contact"
+                        className={styles.ctaButton}
+                        onClick={() => handleSolutionClick('cta_contact')}
+                    >
+                        Schedule a Consultation <ArrowRight size={20} />
+                    </Link>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+export default SolutionsPage;

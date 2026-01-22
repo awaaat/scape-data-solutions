@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { apiService } from '../services/api';
 import styles from './PricingPage.module.css';
+import { Helmet } from "react-helmet-async";
 
 const PricingPage = () => {
     const [expandedFaq, setExpandedFaq] = useState(null);
@@ -153,6 +154,12 @@ const PricingPage = () => {
 
     return (
         <div className={styles.container}>
+            <Helmet>
+                <title>Pricing & Plans | Flexible Data Science Solutions - Scape Data Solutions</title>
+                <meta name="description" content="Transparent pricing for data analytics, machine learning, and AI services. Starter, Professional, and Enterprise plans" />
+                <link rel="canonical" href="https://scapedatasolutions.com/pricing" />
+            </Helmet>
+
             <section className={styles.hero}>
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>

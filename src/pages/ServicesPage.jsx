@@ -20,6 +20,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { apiService } from '../services/api';
 import styles from './ServicesPage.module.css';
+import { Helmet } from "react-helmet-async";
 
 const ServicesPage = () => {
     useEffect(() => {
@@ -294,6 +295,12 @@ const ServicesPage = () => {
 
     return (
         <div className={styles.container}>
+            <Helmet>
+                <title>Data Science Services | Analytics, ML, AI Solutions - Scape Data Solutions</title>
+                <meta name="description" content="Comprehensive data science services including advanced analytics, machine learning, deep learning, data engineering, predictive analytics" />
+                <link rel="canonical" href="https://scapedatasolutions.com/services" />
+            </Helmet>
+
             <section className={styles.hero}>
                 <div className={styles.heroContent}>
                     <div className={styles.heroBadge}>

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { apiService } from '../services/api';
 import styles from './HomePage.module.css';
+import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
     const [activeService, setActiveService] = useState(0);
@@ -117,6 +118,12 @@ const HomePage = () => {
 
     return (
         <div className={styles.container}>
+            <Helmet>
+                <title>Scape Data Solutions | Transform Data Into Strategic Advantage</title>
+                <meta name="description" content="Expert data analytics, machine learning, and AI solutions for enterprises. Transform complex data into actionable insights that drive measurable ROI" />
+                <link rel="canonical" href="https://scapedatasolutions.com" />
+            </Helmet>
+
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.heroContent}>

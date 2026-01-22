@@ -2,27 +2,24 @@
 
 import { CheckCircle, Mail, MapPin, Send } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { apiService } from '../services/api';
 import styles from './ContactPage.module.css';
+import { Helmet } from "react-helmet-async";
 
 const ContactPage = () => {
     const formRef = useRef(null);
 
     useEffect(() => {
-        if (formRef.current) {
-            const yOffset = -80; // adjust this value (px)
-            const y =
-                formRef.current.getBoundingClientRect().top +
-                window.pageYOffset +
-                yOffset;
+        emailjs.init("DfQQ6N0sBktqMslSo");
 
+        if (formRef.current) {
+            const yOffset = -80;
+            const y = formRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
             window.scrollTo({ top: y, behavior: 'smooth' });
         }
     }, []);
 
-    const handleCTAClick = (cta) => {
-        apiService.trackInteraction('conversion', 'about_cta_click', { cta });
-    };
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -48,7 +45,21 @@ const ContactPage = () => {
         setError(null);
 
         try {
-            // Submit lead (stores in localStorage)
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                company: formData.company || 'Not provided',
+                phone: formData.phone || 'Not provided',
+                service: formData.service,
+                message: formData.message
+            };
+
+            await emailjs.send(
+                'service_ua6lgof',
+                'template_e53h9hi',
+                templateParams
+            );
+
             await apiService.submitLead({
                 name: formData.name,
                 email: formData.email,
@@ -62,7 +73,6 @@ const ContactPage = () => {
             setSubmitted(true);
             setLoading(false);
 
-            // Reset form
             setFormData({
                 name: '',
                 email: '',
@@ -73,7 +83,7 @@ const ContactPage = () => {
             });
         } catch (err) {
             console.error('Error submitting form:', err);
-            setError('Something went wrong. Please try again.');
+            setError('Failed to send message. Please email us directly at info@scapedatasolutions.com');
             setLoading(false);
         }
     };
@@ -81,6 +91,12 @@ const ContactPage = () => {
     if (submitted) {
         return (
             <div className={styles.container}>
+            <Helmet>
+                <title>Contact Us | Get Free Data Consultation - Scape Data Solutions</title>
+                <meta name="description" content="Contact Scape Data Solutions for a free consultation. Located in Westlands, Nairobi. Email: info@scapedatasolutions.com" />
+                <link rel="canonical" href="https://scapedatasolutions.com/contact" />
+            </Helmet>
+
                 <section className={styles.successSection}>
                     <div className={styles.successContent}>
                         <div className={styles.successIcon}>
@@ -88,8 +104,8 @@ const ContactPage = () => {
                         </div>
                         <h1 className={styles.successTitle}>Message Received!</h1>
                         <p className={styles.successText}>
-                            Thank you for reaching out! Your information has been saved and we'll
-                            get back to you as soon as possible.
+                            Thank you for reaching out! We've received your message and will
+                            get back to you within 24 hours.
                         </p>
                         <div className={styles.nextSteps}>
                             <h3>What happens next?</h3>
@@ -136,7 +152,10 @@ const ContactPage = () => {
                                     </div>
                                     <div>
                                         <div className={styles.methodLabel}>Email</div>
-                                        <div className={styles.methodValue}>info@scapedatasolutions.com</div>
+                                        <div className={styles.methodValue}>
+                                            info@scapedatasolutions.com<br />
+                                            scapedatasolutions@gmail.com
+                                        </div>
                                     </div>
                                 </div>
                                 <div className={styles.contactMethod}>
@@ -163,7 +182,6 @@ const ContactPage = () => {
                             </div>
                         </div>
                         <div className={styles.formContainer} ref={formRef}>
-
                             <form onSubmit={handleSubmit} className={styles.form}>
                                 {error && (
                                     <div className={styles.errorBox}>
@@ -218,7 +236,7 @@ const ContactPage = () => {
                                             value={formData.phone}
                                             onChange={handleChange}
                                             className={styles.input}
-                                            placeholder="+1 202 555 0123"
+                                            placeholder="+254 712 345 678"
                                         />
                                     </div>
                                 </div>
@@ -233,17 +251,17 @@ const ContactPage = () => {
                                         required
                                     >
                                         <option value="">Select a service...</option>
-                                        <option value="analytics">Advanced Analytics</option>
-                                        <option value="ml">Machine Learning</option>
-                                        <option value="dl">Deep Learning</option>
-                                        <option value="engineering">Data Engineering</option>
-                                        <option value="bi">Business Intelligence</option>
-                                        <option value="predictive">Predictive Analytics</option>
-                                        <option value="customer">Customer Analytics</option>
-                                        <option value="consulting">Consulting & Strategy</option>
-                                        <option value="mlops">MLOps</option>
-                                        <option value="reports">Report Writing</option>
-                                        <option value="other">Other / Not Sure</option>
+                                        <option value="Advanced Analytics">Advanced Analytics</option>
+                                        <option value="Machine Learning">Machine Learning</option>
+                                        <option value="Deep Learning">Deep Learning</option>
+                                        <option value="Data Engineering">Data Engineering</option>
+                                        <option value="Business Intelligence">Business Intelligence</option>
+                                        <option value="Predictive Analytics">Predictive Analytics</option>
+                                        <option value="Customer Analytics">Customer Analytics</option>
+                                        <option value="Consulting & Strategy">Consulting & Strategy</option>
+                                        <option value="MLOps">MLOps</option>
+                                        <option value="Report Writing">Report Writing</option>
+                                        <option value="Other / Not Sure">Other / Not Sure</option>
                                     </select>
                                 </div>
 
