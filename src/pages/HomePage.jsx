@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, BarChart3, CheckCircle, ChevronRight, Database, BookOpen, Shield, Star, TrendingUp, Users, Zap, Globe, LineChart, PieChart, Brain, Target, Clock, Award, Play, Sparkles } from 'lucide-react';
-import './HomePage.css';
+import './HomePage.module.css';
 
 const HomePage = () => {
   const [typedText, setTypedText] = useState('');
