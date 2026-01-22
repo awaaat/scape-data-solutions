@@ -1,524 +1,603 @@
-// frontend/src/pages/HomePage.jsx
-
-import { ArrowRight, BarChart3, CheckCircle, ChevronRight, Database, Globe, LineChart, PieChart, Play, Shield, Star, TrendingUp, Users, Zap, BookOpen } from 'lucide-react';
-import { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { apiService } from '../services/api';
-import styles from './HomePage.module.css';
-import { Helmet } from "react-helmet-async";
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, BarChart3, CheckCircle, ChevronRight, Database, BookOpen, Shield, Star, TrendingUp, Users, Zap, Globe, LineChart, PieChart, Brain, Target, Clock, Award, Play, Sparkles } from 'lucide-react';
+import './HomePage.css';
 
 const HomePage = () => {
-    const [activeService, setActiveService] = useState(0);
-    const [activeTestimonial, setActiveTestimonial] = useState(0);
-    const [scrollY, setScrollY] = useState(0);
-    const [typedText, setTypedText] = useState('');
-    const typingRef = useRef(null);
+  const [typedText, setTypedText] = useState('');
+  const [activeService, setActiveService] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-    }, []);
+  // Typing animation
+  useEffect(() => {
+    const text = 'Strategic Advantage';
+    let i = 0;
+    const timer = setInterval(() => {
+      if (i <= text.length) {
+        setTypedText(text.substring(0, i));
+        i++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 100);
+    return () => clearInterval(timer);
+  }, []);
 
-    useEffect(() => {
-        const startTime = Date.now();
-        return () => {
-            const timeSpent = Math.floor((Date.now() - startTime) / 1000);
-            apiService.trackInteraction('engagement', 'time_on_page', {
-                page: 'home',
-                seconds: timeSpent
-            });
-        };
-    }, []);
-
-    useEffect(() => {
-        const handleScroll = () => setScrollY(window.scrollY);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, []);
-
-    // Typing animation effect
-    useEffect(() => {
-        const fullText = 'Strategic Advantage';
-        let i = 0;
-        const typingInterval = setInterval(() => {
-            if (i < fullText.length) {
-                setTypedText((prev) => prev + fullText.charAt(i));
-                i++;
-            } else {
-                clearInterval(typingInterval);
-                // Blink cursor then stop
-                typingRef.current.classList.add(styles.blink);
-                setTimeout(() => {
-                    typingRef.current.classList.remove(styles.blink);
-                }, 2000);
-            }
-        }, 100);
-
-        return () => clearInterval(typingInterval);
-    }, []);
-
-    const handleCTAClick = (ctaName) => {
-        apiService.trackInteraction('conversion', 'cta_click', {
-            cta: ctaName,
-            page: 'home'
-        });
+  // Mouse tracking
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
     };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
-    // Added writing services explicitly
-    const services = [
-        {
-            icon: BarChart3,
-            color: '#2563eb',
-            title: 'Business Intelligence & Analytics',
-            description: 'Transform raw data into interactive dashboards and reports that tell compelling stories.',
-            features: ['Custom Dashboards', 'Real-time Reporting', 'KPI Tracking', 'Predictive Analytics'],
-            image: '/Images/site-images/dashboard-1.jpg'
-        },
-        {
-            icon: Database,
-            color: '#16a34a',
-            title: 'Data Engineering & Integration',
-            description: 'Build robust data pipelines that centralize your data for seamless access and analysis.',
-            features: ['ETL Pipelines', 'Data Warehousing', 'API Integration', 'Database Optimization'],
-            image: '/Images/site-images/dashboard-2.jpg'
-        },
-        {
-            icon: LineChart,
-            color: '#9333ea',
-            title: 'Advanced Analytics & ML',
-            description: 'Leverage AI to predict outcomes, automate decisions, and uncover hidden patterns.',
-            features: ['Predictive Modeling', 'Customer Segmentation', 'Churn Prediction', 'Demand Forecasting'],
-            image: '/Images/site-images/dashboard-3.jpg'
-        },
-        {
-            icon: PieChart,
-            color: '#ea580c',
-            title: 'Data Strategy Consulting',
-            description: 'Develop comprehensive data strategy aligned with your business goals for maximum impact.',
-            features: ['Maturity Assessment', 'Roadmap Development', 'Stack Selection', 'Team Training'],
-            image: '/Images/site-images/data-image-1.jpg'
-        },
-        {
-            icon: BookOpen,
-            color: '#d97706',
-            title: 'Writing-Related Services',
-            description: 'Expert content creation, technical writing, data storytelling, and report generation to communicate insights effectively.',
-            features: ['Data-Driven Content Writing', 'Technical Documentation', 'Business Reports', 'Copywriting for Analytics'],
-            image: '/Images/site-images/data-image-2.jpg'
+  // Scroll tracking
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Testimonial rotation
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const services = [
+    {
+      icon: BarChart3,
+      color: '#3b82f6',
+      gradient: 'from-blue-500 to-cyan-500',
+      title: 'Business Intelligence & Analytics',
+      description: 'Transform raw data into interactive dashboards and actionable insights that drive informed decision-making.',
+      features: ['Custom Dashboards', 'Real-time Reporting', 'KPI Tracking', 'Predictive Analytics'],
+      metric: '98% accuracy',
+      impact: '3x faster insights',
+      image: '/Images/site-images/dashboard-1.jpg'
+    },
+    {
+      icon: BookOpen,
+      color: '#f59e0b',
+      gradient: 'from-amber-500 to-orange-500',
+      title: 'Professional Writing Services',
+      description: 'Expert content creation, technical documentation, and data storytelling that communicates insights effectively.',
+      features: ['Data Storytelling', 'Technical Writing', 'Business Reports', 'Copywriting'],
+      metric: '85% engagement',
+      impact: '2.5x conversions',
+      image: '/Images/site-images/data-image-2.jpg'
+    },
+    {
+      icon: Database,
+      color: '#10b981',
+      gradient: 'from-emerald-500 to-teal-500',
+      title: 'Data Engineering & Integration',
+      description: 'Build robust data pipelines that centralize information from multiple sources for seamless access.',
+      features: ['ETL Automation', 'Cloud Migration', 'API Integration', 'Real-time Sync'],
+      metric: '99.9% uptime',
+      impact: '70% cost savings',
+      image: '/Images/site-images/dashboard-2.jpg'
+    },
+    {
+      icon: Brain,
+      color: '#8b5cf6',
+      gradient: 'from-violet-500 to-purple-500',
+      title: 'AI & Machine Learning',
+      description: 'Deploy intelligent models that predict outcomes, automate decisions, and uncover hidden patterns.',
+      features: ['Predictive Models', 'NLP Solutions', 'Computer Vision', 'AutoML'],
+      metric: '92% accuracy',
+      impact: '5x ROI',
+      image: '/Images/site-images/dashboard-3.jpg'
+    },
+    {
+      icon: LineChart,
+      color: '#ec4899',
+      gradient: 'from-pink-500 to-rose-500',
+      title: 'Advanced Analytics',
+      description: 'Leverage statistical modeling and AI to discover insights that give you a competitive advantage.',
+      features: ['Customer Segmentation', 'Churn Prediction', 'Demand Forecasting', 'A/B Testing'],
+      metric: '90% precision',
+      impact: '4x revenue',
+      image: '/Images/site-images/data-image-1.jpg'
+    }
+  ];
+
+  const stats = [
+    { value: 180, label: 'Projects Delivered', color: '#3b82f6', icon: Target },
+    { value: 35, label: 'Enterprise Clients', color: '#10b981', icon: Users },
+    { value: 85, label: 'Client Retention', color: '#8b5cf6', icon: Award },
+    { value: 12, label: 'Years Experience', color: '#f59e0b', icon: Clock }
+  ];
+
+  const testimonials = [
+    {
+      text: "Their analytics and writing services revolutionized our reporting. Now our insights are not just data – they're compelling stories that drive action.",
+      author: "James Kariuki",
+      title: "Director of Operations",
+      company: "Regional Tech Group",
+      rating: 5,
+      color: '#bfdbfe'
+    },
+    {
+      text: "The combination of ML predictions and professional writing helped us communicate complex ideas simply to stakeholders.",
+      author: "Sarah Mitchell",
+      title: "VP of Finance",
+      company: "Continental Manufacturing",
+      rating: 5,
+      color: '#bbf7d0'
+    },
+    {
+      text: "Outstanding data strategy consulting paired with top-notch writing services. Perfect for our global needs.",
+      author: "Dr. Amina Hassan",
+      title: "Chief Data Officer",
+      company: "Healthcare Network Africa",
+      rating: 5,
+      color: '#e9d5ff'
+    }
+  ];
+
+  const [animatedStats, setAnimatedStats] = useState(stats.map(() => 0));
+
+  useEffect(() => {
+    stats.forEach((stat, idx) => {
+      let current = 0;
+      const increment = stat.value / 50;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= stat.value) {
+          current = stat.value;
+          clearInterval(timer);
         }
-    ];
-
-    const testimonials = [
-        {
-            text: "Their analytics and writing services revolutionized our reporting. Now our insights are not just data – they're compelling stories that drive action.",
-            author: "James Kariuki",
-            title: "Director of Operations",
-            company: "Regional Tech Group",
-            rating: 5,
-            color: '#bfdbfe'
-        },
-        {
-            text: "The combination of ML predictions and professional writing helped us communicate complex ideas simply to stakeholders.",
-            author: "Sarah Mitchell",
-            title: "VP of Finance",
-            company: "Continental Manufacturing",
-            rating: 5,
-            color: '#bbf7d0'
-        },
-        {
-            text: "Outstanding data strategy consulting paired with top-notch writing services. Perfect for our global needs.",
-            author: "Dr. Amina Hassan",
-            title: "Chief Data Officer",
-            company: "Healthcare Network Africa",
-            rating: 5,
-            color: '#e9d5ff'
-        }
-    ];
-
-    const stats = [
-        { value: '180+', label: 'Projects Delivered', color: '#2563eb' },
-        { value: '35+', label: 'Enterprise Clients', color: '#16a34a' },
-        { value: '85%', label: 'Client Retention', color: '#9333ea' },
-        { value: '12+', label: 'Years Experience', color: '#ea580c' }
-    ];
-
-    // Animated stats counter
-    const [animatedStats, setAnimatedStats] = useState(stats.map(() => 0));
-
-    useEffect(() => {
-        const statTimers = stats.map((stat, idx) => {
-            let count = 0;
-            const target = parseInt(stat.value);
-            return setInterval(() => {
-                if (count < target) {
-                    count += Math.ceil(target / 50);
-                    setAnimatedStats((prev) => {
-                        const newStats = [...prev];
-                        newStats[idx] = Math.min(count, target);
-                        return newStats;
-                    });
-                }
-            }, 20);
+        setAnimatedStats(prev => {
+          const next = [...prev];
+          next[idx] = Math.floor(current);
+          return next;
         });
+      }, 30);
+    });
+  }, []);
 
-        return () => statTimers.forEach(clearInterval);
-    }, []);
+  return (
+    <div className="homepage-container">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div
+          className="hero-parallax-bg"
+          style={{
+            transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`
+          }}
+        />
 
-    return (
-        <div className={styles.container}>
-            <Helmet>
-                <title>Scape Data Solutions | Unlock Your Data's True Potential</title>
-                <meta name="description" content="Expert data analytics, machine learning, AI, and writing services to transform your data into captivating stories and actionable insights that drive real business growth." />
-                <link rel="canonical" href="https://scapedatasolutions.com" />
-            </Helmet>
+        <div className="hero-content-wrapper">
+          <div className="hero-grid">
+            <div className="hero-text-content" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
+              <div className="hero-badge">
+                <Star className="badge-icon" />
+                <span>Trusted by 35+ Enterprise Clients</span>
+              </div>
 
-            {/* Enhanced Hero with Typing Animation and Parallax */}
-            <section className={styles.hero}>
-                <div className={styles.heroContent}>
-                    <div className={styles.heroGrid}>
-                        <div className={styles.heroText} style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
-                            <div className={styles.badge} style={{ animation: 'pulse 2s infinite' }}>
-                                <Star size={16} style={{ display: 'inline', marginRight: '8px' }} />
-                                Global Expertise in Data & Writing Services
-                            </div>
+              <h1 className="hero-title">
+                Transform Your Data Into
+                <span className="hero-title-highlight">
+                  {typedText}
+                  <span className="cursor-blink">|</span>
+                </span>
+              </h1>
 
-                            <h1 className={styles.heroTitle}>
-                                Transform Your Data Into
-                                <span className={styles.highlight} ref={typingRef}>{typedText}</span>
-                            </h1>
+              <p className="hero-subtitle">
+                Expert analytics and professional writing services that turn complex data into clear, actionable insights. We help you make better decisions faster.
+              </p>
 
-                            <p className={styles.heroSubtitle}>
-                                Imagine turning overwhelming data chaos into crystal-clear, story-driven insights that compel your team to act. Our blend of advanced analytics and professional writing services makes it happen – don't miss out on the competitive edge others are already gaining.
-                            </p>
+              <div className="hero-cta-buttons">
+                <button className="cta-primary">
+                  <span className="cta-content">
+                    Get Started
+                    <ArrowRight className="cta-icon" />
+                  </span>
+                </button>
 
-                            <div className={styles.ctaButtons}>
-                                <Link
-                                    to="/contact"
-                                    onClick={() => handleCTAClick('hero_message')}
-                                    className={`${styles.primaryCta} ${styles.pulseCta}`}
-                                >
-                                    Message Us Now for Free Insights
-                                    <ArrowRight size={20} />
-                                </Link>
+                <button className="cta-secondary">
+                  <span className="cta-content">
+                    <Play className="cta-icon" />
+                    View Demo
+                  </span>
+                </button>
+              </div>
 
-                                <button className={styles.secondaryCta}>
-                                    <Play size={20} />
-                                    Watch Interactive Demo
-                                </button>
-                            </div>
+              <div className="trust-indicators">
+                <div className="trust-item">
+                  <CheckCircle className="trust-icon" />
+                  <span>Free Consultation</span>
+                </div>
+                <div className="trust-item">
+                  <CheckCircle className="trust-icon" />
+                  <span>Quick Turnaround</span>
+                </div>
+                <div className="trust-item">
+                  <CheckCircle className="trust-icon" />
+                  <span>Proven Results</span>
+                </div>
+              </div>
+            </div>
 
-                            <div className={styles.trustIndicators}>
-                                <div className={styles.trustItem}>
-                                    <CheckCircle size={16} />
-                                    <span>Proven Results in Weeks</span>
-                                </div>
-                                <div className={styles.trustItem}>
-                                    <CheckCircle size={16} />
-                                    <span>Limited Spots Available</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className={styles.statsPanel} style={{ transform: `translateY(-${scrollY * 0.05}px)` }}>
-                            <div className={styles.statsGrid}>
-                                {stats.map((stat, idx) => (
-                                    <div
-                                        key={idx}
-                                        className={styles.statItem}
-                                        style={{
-                                            animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both`,
-                                            borderTop: `4px solid ${stat.color}`,
-                                            padding: '1.5rem',
-                                            background: 'rgba(255, 255, 255, 0.05)',
-                                            borderRadius: '12px',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.3s ease'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.transform = 'scale(1.05)';
-                                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.transform = 'scale(1)';
-                                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                                        }}
-                                    >
-                                        <div className={styles.statNumber} style={{ color: stat.color }}>
-                                            {animatedStats[idx]}+
-                                        </div>
-                                        <div className={styles.statLabel}>{stat.label}</div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className={styles.heroImageWrapper}>
-                                <img
-                                    src="/Images/site-images/chart-1.jpg"
-                                    alt="Interactive Analytics Dashboard"
-                                    className={`${styles.heroImage} ${styles.floatAnimation}`}
-                                />
-                            </div>
-                        </div>
+            <div className="hero-stats-panel" style={{ transform: `translateY(-${scrollY * 0.05}px)` }}>
+              <div className="stats-grid">
+                {stats.map((stat, idx) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div key={idx} className="stat-card" style={{ borderTop: `4px solid ${stat.color}` }}>
+                      <Icon className="stat-icon" style={{ color: stat.color }} />
+                      <div className="stat-number" style={{ color: stat.color }}>
+                        {animatedStats[idx]}+
+                      </div>
+                      <div className="stat-label">{stat.label}</div>
                     </div>
-                </div>
-            </section>
+                  );
+                })}
+              </div>
 
-            {/* Interactive Full-Width Section with Hover Effects */}
-            <section className={styles.fullWidthImageSection}>
-                <div className={styles.imageOverlay}>
-                    <img src="/Images/site-images/dashboard-1.jpg" alt="Data Analytics Visualization" className={`${styles.bgImage} ${styles.zoomAnimation}`} />
-                    <div className={styles.overlayContent}>
-                        <h2 className={styles.overlayTitle}>Discover Insights That Captivate and Convert</h2>
-                        <p className={styles.overlayText}>
-                            Why settle for boring reports when our writing and analytics services create narratives that hook your audience and drive decisions?
-                        </p>
-                        <Link to="/contact" className={`${styles.overlayBtn} ${styles.bounceAnimation}`}>Message for Custom Demo</Link>
-                    </div>
-                </div>
-            </section>
-
-            {/* Highly Interactive Services with Click Expansion and Hover Arts */}
-            <section className={styles.servicesShowcase}>
-                <div className={styles.sectionContent}>
-                    <div className={styles.sectionHeader}>
-                        <h2 className={styles.sectionTitle}>Our Interactive Service Suite</h2>
-                        <p className={styles.sectionSubtitle}>Click to explore – each service blends data mastery with persuasive writing</p>
-                    </div>
-
-                    <div className={styles.servicesShowcaseGrid}>
-                        {services.map((service, idx) => {
-                            const Icon = service.icon;
-                            const isActive = activeService === idx;
-                            return (
-                                <div
-                                    key={idx}
-                                    onClick={() => setActiveService(idx)}
-                                    className={`${styles.showcaseCard} ${isActive ? styles.showcaseCardActive : ''}`}
-                                >
-                                    <div className={styles.showcaseCardImage}>
-                                        <img src={service.image} alt={service.title} className={styles.rotateOnHover} />
-                                        <div className={styles.showcaseCardOverlay}>
-                                            <div className={styles.showcaseCardContent}>
-                                                <div className={styles.showcaseIcon} style={{ background: service.color }}>
-                                                    <Icon size={32} color="white" />
-                                                </div>
-                                                <h3 className={styles.showcaseCardTitle}>{service.title}</h3>
-                                                <p className={styles.showcaseCardDesc}>{service.description}</p>
-                                                {isActive && (
-                                                    <ul className={styles.showcaseFeatures}>
-                                                        {service.features.map((feature, fidx) => (
-                                                            <li key={fidx} className={styles.fadeInFeature}>
-                                                                <ChevronRight size={16} />
-                                                                {feature}
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                )}
-                                                <div className={styles.showcaseCardArrow}>
-                                                    <ArrowRight size={24} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-
-            {/* Split Section with Interactive Hover */}
-            <section className={styles.splitSection}>
-                <div className={styles.splitImage}>
-                    <img src="/Images/site-images/data-image-2.jpg" alt="Data Processing Art" className={styles.zoomOnHover} />
-                </div>
-                <div className={styles.splitContent}>
-                    <h2 className={styles.splitTitle}>From Data Overload to Persuasive Power</h2>
-                    <p className={styles.splitText}>
-                        What if your data could speak for itself? Our services, including expert writing, turn raw numbers into magnetic stories that captivate stakeholders and spark immediate action.
-                    </p>
-                    <ul className={styles.splitList}>
-                        <li><CheckCircle size={20} /> Dynamic Data Pipelines</li>
-                        <li><CheckCircle size={20} /> Interactive Dashboards</li>
-                        <li><CheckCircle size={20} /> AI-Powered Predictions</li>
-                        <li><CheckCircle size={20} /> Compelling Report Writing</li>
-                    </ul>
-                    <Link to="/services" className={`${styles.splitBtn} ${styles.pulseCta}`}>
-                        Discover More
-                        <ArrowRight size={20} />
-                    </Link>
-                </div>
-            </section>
-
-            {/* Reverse Split with Animation */}
-            <section className={styles.splitSection}>
-                <div className={styles.splitContent}>
-                    <h2 className={styles.splitTitle}>Fortress-Level Security with Story-Telling Flair</h2>
-                    <p className={styles.splitText}>
-                        Protect your data while we craft narratives that build trust. Our writing services ensure even security reports are engaging and easy to understand.
-                    </p>
-                    <div className={styles.securityBadges}>
-                        <div className={styles.securityBadge}>
-                            <Shield size={24} />
-                            <span>SOC 2 Compliant</span>
-                        </div>
-                        <div className={styles.securityBadge}>
-                            <Shield size={24} />
-                            <span>GDPR Ready</span>
-                        </div>
-                        <div className={styles.securityBadge}>
-                            <Shield size={24} />
-                            <span>256-bit Encryption</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.splitImage}>
-                    <img src="/Images/site-images/data-image-3.jpg" alt="Security Visualization" className={styles.zoomOnHover} />
-                </div>
-            </section>
-
-            {/* Benefits with Interactive Cards */}
-            <section className={styles.benefitsSection}>
-                <div className={styles.benefitsBackground}>
-                    <img src="/Images/site-images/dashboard-2.jpg" alt="Background Art" />
-                    <div className={styles.benefitsOverlay}></div>
-                </div>
-                <div className={styles.sectionContent}>
-                    <div className={styles.sectionHeader}>
-                        <h2 className={styles.sectionTitle} style={{ color: 'white' }}>
-                            Why Choose Us? The Proof is in the Engagement
-                        </h2>
-                        <p className={styles.sectionSubtitle} style={{ color: 'rgba(255,255,255,0.9)' }}>
-                            Join the elite group transforming data into stories that sell – limited time offer for new clients.
-                        </p>
-                    </div>
-
-                    <div className={styles.benefitsGrid}>
-                        <div className={`${styles.benefitCard} ${styles.flipCard}`}>
-                            <TrendingUp size={32} style={{ color: '#2563eb' }} />
-                            <h3>Proven ROI</h3>
-                            <p>See 30%+ efficiency gains in the first quarter</p>
-                        </div>
-                        <div className={`${styles.benefitCard} ${styles.flipCard}`}>
-                            <Zap size={32} style={{ color: '#16a34a' }} />
-                            <h3>Rapid Results</h3>
-                            <p>Interactive prototypes in days</p>
-                        </div>
-                        <div className={`${styles.benefitCard} ${styles.flipCard}`}>
-                            <Users size={32} style={{ color: '#9333ea' }} />
-                            <h3>Expert Storytellers</h3>
-                            <p>Data scientists + writers</p>
-                        </div>
-                        <div className={`${styles.benefitCard} ${styles.flipCard}`}>
-                            <Globe size={32} style={{ color: '#ea580c' }} />
-                            <h3>Worldwide Impact</h3>
-                            <p>Localized content for global reach</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Interactive Testimonials with Click Navigation */}
-            <section className={styles.testimonialsSection}>
-                <div className={styles.sectionContent}>
-                    <h2 className={styles.sectionTitle}>Real Stories from Satisfied Clients</h2>
-
-                    <div className={styles.testimonialCarousel}>
-                        <div className={styles.testimonialCardActive}>
-                            <div className={styles.stars}>
-                                {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
-                                    <Star key={i} size={24} fill="#fbbf24" color="#fbbf24" className={styles.starPulse} />
-                                ))}
-                            </div>
-
-                            <p className={styles.testimonialQuote}>
-                                "{testimonials[activeTestimonial].text}"
-                            </p>
-
-                            <div className={styles.testimonialAuthor}>
-                                <div
-                                    className={styles.avatar}
-                                    style={{ background: testimonials[activeTestimonial].color }}
-                                />
-                                <div>
-                                    <div className={styles.authorName}>
-                                        {testimonials[activeTestimonial].author}
-                                    </div>
-                                    <div className={styles.authorTitle}>
-                                        {testimonials[activeTestimonial].title}
-                                    </div>
-                                    <div className={styles.authorCompany}>
-                                        {testimonials[activeTestimonial].company}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={styles.testimonialDots}>
-                                {testimonials.map((_, idx) => (
-                                    <button
-                                        key={idx}
-                                        onClick={() => setActiveTestimonial(idx)}
-                                        className={`${styles.dot} ${idx === activeTestimonial ? styles.dotActive : ''}`}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Urgent CTA with Countdown Animation */}
-            <section className={styles.finalCta}>
-                <div className={styles.ctaBackground}>
-                    <img src="/Images/site-images/dashboard-3.jpg" alt="Background Visualization" />
-                    <div className={styles.ctaOverlay}></div>
-                </div>
-                <div className={styles.ctaContentBox}>
-                    <div className={styles.urgencyBadge}>
-                        <Zap size={20} style={{ display: 'inline', marginRight: '8px' }} />
-                        Act Now – Spots Filling Fast!
-                    </div>
-
-                    <h2 className={styles.ctaTitle}>
-                        Ready to Make Your Data Irresistibly Engaging?
-                    </h2>
-
-                    <p className={styles.ctaText}>
-                        Thousands are already using our data and writing services to skyrocket engagement. Don't be left behind – message us today!
-                    </p>
-
-                    <div className={styles.finalCtaButtons}>
-                        <Link
-                            to="/contact"
-                            onClick={() => handleCTAClick('bottom_message')}
-                            className={`${styles.whiteBtn} ${styles.bounceAnimation}`}
-                        >
-                            Message for Free Consultation
-                            <ArrowRight size={20} />
-                        </Link>
-
-                        <Link
-                            to="/services"
-                            onClick={() => handleCTAClick('bottom_secondary')}
-                            className={styles.outlineBtn}
-                        >
-                            Explore Interactive Services
-                        </Link>
-                    </div>
-
-                    <p className={styles.disclaimer}>
-                        Exclusive offer: First 10 messages get priority access.
-                    </p>
-                </div>
-            </section>
+              <div className="hero-image-wrapper">
+                <img
+                  src="/Images/site-images/chart-1.jpg"
+                  alt="Interactive Analytics Dashboard"
+                  className="hero-image hero-image-float"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </section>
+
+      {/* Social Proof Bar */}
+      <div className="social-proof-bar">
+        <div className="social-proof-content">
+          <div className="proof-item">
+            <Star className="proof-icon proof-star" />
+            <span>4.9/5 Client Rating</span>
+          </div>
+          <div className="proof-divider" />
+          <div className="proof-item">
+            <Users className="proof-icon" />
+            <span>180+ Projects Delivered</span>
+          </div>
+          <div className="proof-divider" />
+          <div className="proof-item">
+            <Globe className="proof-icon" />
+            <span>Global Service Coverage</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Full Width Interactive Image Section */}
+      <section className="fullwidth-image-section">
+        <div className="fullwidth-image-overlay">
+          <img
+            src="/Images/site-images/dashboard-1.jpg"
+            alt="Data Analytics Visualization"
+            className="fullwidth-bg-image"
+            style={{
+              transform: hoveredCard === 'fullwidth' ? 'scale(1.1)' : 'scale(1)'
+            }}
+          />
+          <div className="fullwidth-overlay-gradient" />
+          <div
+            className="fullwidth-overlay-content"
+            onMouseEnter={() => setHoveredCard('fullwidth')}
+            onMouseLeave={() => setHoveredCard(null)}
+          >
+            <h2 className="fullwidth-title">Discover Insights That Captivate</h2>
+            <p className="fullwidth-text">
+              Transform boring reports into narratives that hook your audience and drive decisions
+            </p>
+            <button className="fullwidth-cta-btn">
+              <Sparkles className="btn-icon" />
+              Explore Our Services
+              <ArrowRight className="btn-icon" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Services Grid */}
+      <section className="services-section">
+        <div className="section-container">
+          <div className="section-header">
+            <h2 className="section-title">Comprehensive Data Solutions</h2>
+            <p className="section-subtitle">
+              Click each card to explore how we blend data science with persuasive storytelling
+            </p>
+          </div>
+
+          <div className="services-grid">
+            {services.map((service, idx) => {
+              const Icon = service.icon;
+              const isActive = activeService === idx;
+
+              return (
+                <div
+                  key={idx}
+                  onClick={() => setActiveService(idx)}
+                  onMouseEnter={() => setHoveredCard(`service-${idx}`)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  className={`service-card ${isActive ? 'service-card-active' : ''}`}
+                >
+                  <div className="service-image-wrapper">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="service-image"
+                      style={{
+                        transform: hoveredCard === `service-${idx}` ? 'scale(1.15) rotate(2deg)' : 'scale(1)',
+                        filter: isActive ? 'brightness(0.4)' : 'brightness(0.6)'
+                      }}
+                    />
+                    <div className="service-overlay">
+                      <div className="service-content">
+                        <div
+                          className={`service-icon bg-gradient-to-br ${service.gradient}`}
+                          style={{
+                            transform: hoveredCard === `service-${idx}` ? 'rotate(360deg) scale(1.1)' : 'rotate(0deg) scale(1)'
+                          }}
+                        >
+                          <Icon className="icon-svg" />
+                        </div>
+
+                        <h3 className="service-title">{service.title}</h3>
+                        <p className="service-description">{service.description}</p>
+
+                        <div className={`service-features ${isActive ? 'features-visible' : 'features-hidden'}`}>
+                          {service.features.map((feature, fidx) => (
+                            <div key={fidx} className="feature-item">
+                              <ChevronRight className="feature-icon" />
+                              <span>{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="service-metrics">
+                          <div className="metric-item">
+                            <div className="metric-value" style={{ color: service.color }}>
+                              {service.metric}
+                            </div>
+                            <div className="metric-label">Success Rate</div>
+                          </div>
+                          <div className="metric-item">
+                            <div className="metric-value metric-impact">{service.impact}</div>
+                            <div className="metric-label">Impact</div>
+                          </div>
+                        </div>
+
+                        <button className={`service-cta ${isActive ? 'cta-active' : ''}`}>
+                          {isActive ? 'Get Started' : 'Learn More'}
+                          <ArrowRight className="service-cta-icon" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Split Section with Interactive Images */}
+      <section className="split-section">
+        <div
+          className="split-image-container"
+          onMouseEnter={() => setHoveredCard('split-1')}
+          onMouseLeave={() => setHoveredCard(null)}
+        >
+          <img
+            src="/Images/site-images/data-image-2.jpg"
+            alt="Data Processing"
+            className="split-image"
+            style={{
+              transform: hoveredCard === 'split-1' ? 'scale(1.15)' : 'scale(1)'
+            }}
+          />
+        </div>
+        <div className="split-content">
+          <h2 className="split-title">From Data Overload to Persuasive Power</h2>
+          <p className="split-text">
+            Transform raw numbers into magnetic stories that captivate stakeholders and spark immediate action.
+          </p>
+          <ul className="split-features">
+            <li className="split-feature-item">
+              <CheckCircle className="feature-check-icon" />
+              Dynamic Data Pipelines
+            </li>
+            <li className="split-feature-item">
+              <CheckCircle className="feature-check-icon" />
+              Interactive Dashboards
+            </li>
+            <li className="split-feature-item">
+              <CheckCircle className="feature-check-icon" />
+              AI-Powered Predictions
+            </li>
+            <li className="split-feature-item">
+              <CheckCircle className="feature-check-icon" />
+              Compelling Report Writing
+            </li>
+          </ul>
+          <button className="split-cta-btn">
+            Discover More
+            <ArrowRight className="btn-arrow-icon" />
+          </button>
+        </div>
+      </section>
+
+      {/* Reverse Split Section */}
+      <section className="split-section split-section-reverse">
+        <div className="split-content">
+          <h2 className="split-title">Enterprise-Grade Security Meets Storytelling</h2>
+          <p className="split-text">
+            Protect your data while we craft narratives that build trust and engagement.
+          </p>
+          <div className="security-badges">
+            <div className="security-badge">
+              <Shield className="security-icon" />
+              <span>SOC 2 Compliant</span>
+            </div>
+            <div className="security-badge">
+              <Shield className="security-icon" />
+              <span>GDPR Ready</span>
+            </div>
+            <div className="security-badge">
+              <Shield className="security-icon" />
+              <span>256-bit Encryption</span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="split-image-container"
+          onMouseEnter={() => setHoveredCard('split-2')}
+          onMouseLeave={() => setHoveredCard(null)}
+        >
+          <img
+            src="/Images/site-images/data-image-3.jpg"
+            alt="Security Visualization"
+            className="split-image"
+            style={{
+              transform: hoveredCard === 'split-2' ? 'scale(1.15)' : 'scale(1)'
+            }}
+          />
+        </div>
+      </section>
+
+      {/* Benefits Section with Background Image */}
+      <section className="benefits-section">
+        <div className="benefits-bg-wrapper">
+          <img src="/Images/site-images/dashboard-2.jpg" alt="Background" className="benefits-bg-image" />
+          <div className="benefits-overlay" />
+        </div>
+        <div className="section-container benefits-container">
+          <div className="section-header">
+            <h2 className="section-title benefits-title">Why Choose Us</h2>
+            <p className="section-subtitle benefits-subtitle">
+              Proven expertise delivering measurable results
+            </p>
+          </div>
+
+          <div className="benefits-grid">
+            <div className="benefit-card">
+              <TrendingUp className="benefit-icon" style={{ color: '#3b82f6' }} />
+              <h3 className="benefit-title">Proven ROI</h3>
+              <p className="benefit-text">30%+ efficiency gains in first quarter</p>
+            </div>
+
+            <div className="benefit-card">
+              <Zap className="benefit-icon" style={{ color: '#10b981' }} />
+              <h3 className="benefit-title">Rapid Delivery</h3>
+              <p className="benefit-text">Working prototypes in days, not months</p>
+            </div>
+
+            <div className="benefit-card">
+              <Users className="benefit-icon" style={{ color: '#8b5cf6' }} />
+              <h3 className="benefit-title">Expert Team</h3>
+              <p className="benefit-text">Data scientists and professional writers</p>
+            </div>
+
+            <div className="benefit-card">
+              <Shield className="benefit-icon" style={{ color: '#f59e0b' }} />
+              <h3 className="benefit-title">Secure & Compliant</h3>
+              <p className="benefit-text">Enterprise-grade security standards</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="testimonials-section">
+        <div className="section-container">
+          <h2 className="section-title">What Our Clients Say</h2>
+
+          <div className="testimonial-card">
+            <div className="testimonial-stars">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="star-icon star-filled" />
+              ))}
+            </div>
+
+            <blockquote className="testimonial-quote">
+              "{testimonials[activeTestimonial].text}"
+            </blockquote>
+
+            <div className="testimonial-author-section">
+              <div
+                className="author-avatar"
+                style={{ backgroundColor: testimonials[activeTestimonial].color }}
+              />
+              <div className="author-info">
+                <div className="author-name">{testimonials[activeTestimonial].author}</div>
+                <div className="author-title">{testimonials[activeTestimonial].title}</div>
+                <div className="author-company">{testimonials[activeTestimonial].company}</div>
+              </div>
+            </div>
+
+            <div className="testimonial-dots">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveTestimonial(idx)}
+                  className={`testimonial-dot ${idx === activeTestimonial ? 'dot-active' : ''}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA with Background Image */}
+      <section className="final-cta-section">
+        <div className="cta-bg-wrapper">
+          <img src="/Images/site-images/dashboard-3.jpg" alt="Background" className="cta-bg-image" />
+          <div className="cta-overlay" />
+        </div>
+        <div className="cta-content-box">
+          <h2 className="cta-main-title">
+            Ready to Transform Your
+            <span className="cta-title-highlight">
+              Data Into Decisions?
+            </span>
+          </h2>
+
+          <p className="cta-main-text">
+            Join 180+ companies leveraging our analytics and writing expertise to drive growth
+          </p>
+
+          <div className="cta-buttons-wrapper">
+            <button className="cta-btn-primary">
+              <span className="cta-btn-content">
+                Get Started Today
+                <ArrowRight className="cta-btn-icon" />
+              </span>
+            </button>
+
+            <button className="cta-btn-outline">
+              Schedule Consultation
+            </button>
+          </div>
+
+          <div className="cta-trust-items">
+            <div className="cta-trust-item">
+              <Shield className="cta-trust-icon" />
+              <span>No Long-term Contracts</span>
+            </div>
+            <div className="cta-trust-item">
+              <Zap className="cta-trust-icon cta-trust-icon-yellow" />
+              <span>Quick Response Time</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default HomePage;
