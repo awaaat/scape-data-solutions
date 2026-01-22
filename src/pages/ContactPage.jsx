@@ -236,7 +236,7 @@ const ContactPage = () => {
                                             value={formData.phone}
                                             onChange={handleChange}
                                             className={styles.input}
-                                            placeholder="+254 712 345 678"
+                                            placeholder="+1 2712 345 678"
                                         />
                                     </div>
                                 </div>
