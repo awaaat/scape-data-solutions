@@ -1,25 +1,3 @@
 {
-    "version": 2,
-    "routes": [
-        {
-            "src": "/sitemap.xml",
-            "dest": "/sitemap.xml"
-        },
-        {
-            "src": "/robots.txt",
-            "dest": "/robots.txt"
-        },
-        {
-            "src": "/assets/(.*)",
-            "dest": "/assets/$1"
-        },
-        {
-            "src": "/Images/(.*)",
-            "dest": "/Images/$1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/index.html"
-        }
-    ]
+  "buildCommand": "npm install --legacy-peer-deps && npm run build"
 }
