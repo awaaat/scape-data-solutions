@@ -1,0 +1,8 @@
+
+/* Performance optimizations */
+.gradientOrb1, .gradientOrb2, .gradientOrb3, .gradientOrb4 { filter: none !important; opacity: 0.2; }
+@keyframes particleFloat { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(10px, -15px); } }
+@keyframes orbPulse { 0% { transform: scale(1); opacity: 0.2; } 100% { transform: scale(1.1); opacity: 0.3; } }
+.badgePulse, .iconGlow, .cardGlow, .techCardGlow, .imageGlow { display: none !important; }
+.badgeIcon, .demoOverlay { animation: none !important; }
+* { transition-duration: 0.2s !important; }
