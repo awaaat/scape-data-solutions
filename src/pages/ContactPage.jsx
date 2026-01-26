@@ -1,11 +1,11 @@
 // frontend/src/pages/ContactPage.jsx
 
+import emailjs from '@emailjs/browser';
 import { CheckCircle, Mail, MapPin, Send } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import { Helmet } from "react-helmet-async";
 import { apiService } from '../services/api';
 import styles from './ContactPage.module.css';
-import { Helmet } from "react-helmet-async";
 
 const ContactPage = () => {
     const formRef = useRef(null);
@@ -91,11 +91,40 @@ const ContactPage = () => {
     if (submitted) {
         return (
             <div className={styles.container}>
-            <Helmet>
-                <title>Contact Us | Get Free Data Consultation - Scape Data Solutions</title>
-                <meta name="description" content="Contact Scape Data Solutions for a free consultation. Located in Westlands, Nairobi. Email: info@scapedatasolutions.com" />
-                <link rel="canonical" href="https://scapedatasolutions.com/contact" />
-            </Helmet>
+                <Helmet>
+                    <title>Contact Us | Get Free Data Consultation - Scape Data Solutions</title>
+                    <meta name="description" content="Contact Scape Data Solutions for a free consultation. Located in Westlands, Nairobi. Email: info@scapedatasolutions.com. 24-hour response time." />
+                    <link rel="canonical" href="https://scapedatasolutions.com/contact" />
+
+                    <meta property="og:title" content="Contact Us | Get Free Data Consultation - Scape Data Solutions" />
+                    <meta property="og:description" content="Get a free consultation. Located in Westlands, Nairobi. 24-hour response time guaranteed." />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:url" content="https://scapedatasolutions.com/contact" />
+                    <meta property="og:image" content="https://scapedatasolutions.com/logo-1.jpeg" />
+
+                    <meta name="twitter:card" content="summary" />
+                    <meta name="twitter:title" content="Contact Us | Free Consultation" />
+                    <meta name="twitter:description" content="Get a free consultation. 24-hour response time." />
+
+                    <script type="application/ld+json">
+                        {JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "ContactPage",
+                            "mainEntity": {
+                                "@type": "Organization",
+                                "name": "Scape Data Solutions",
+                                "email": "info@scapedatasolutions.com",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "streetAddress": "Delta Corner Tower, Chiromo Road",
+                                    "addressLocality": "Westlands",
+                                    "addressRegion": "Nairobi",
+                                    "addressCountry": "KE"
+                                }
+                            }
+                        })}
+                    </script>
+                </Helmet>
 
                 <section className={styles.successSection}>
                     <div className={styles.successContent}>

@@ -446,8 +446,44 @@ const SolutionsPage = () => {
         <div className={styles.container}>
             <Helmet>
                 <title>Industry Solutions | Data Analytics by Sector - Scape Data Solutions</title>
-                <meta name="description" content="Industry-specific data solutions for finance, healthcare, retail, manufacturing, telecom, logistics. Tailored analytics for your sector" />
+                <meta name="description" content="Industry-specific data solutions for finance, healthcare, retail, manufacturing, telecom, logistics, education, government. Tailored analytics delivering 400% average ROI." />
                 <link rel="canonical" href="https://scapedatasolutions.com/solutions" />
+
+                <meta property="og:title" content="Industry Solutions | Data Analytics by Sector" />
+                <meta property="og:description" content="Tailored data solutions for 20+ industries. Finance, healthcare, retail, manufacturing, and more. 400% average ROI." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://scapedatasolutions.com/solutions" />
+                <meta property="og:image" content="https://scapedatasolutions.com/logo-1.jpeg" />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Industry Solutions | 20+ Sectors" />
+                <meta name="twitter:description" content="Tailored data analytics for your industry. 400% average ROI." />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "ItemList",
+                        "name": "Industry-Specific Data Solutions",
+                        "description": "Data analytics solutions tailored for 20+ industries",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Financial Services Solutions"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Healthcare Data Analytics"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Retail & E-commerce Solutions"
+                            }
+                        ]
+                    })}
+                </script>
             </Helmet>
 
             {/* Hero Section */}

@@ -98,8 +98,40 @@ const AboutPage = () => {
         <div className={styles.container}>
             <Helmet>
                 <title>About Us | Expert Data Science Team - Scape Data Solutions</title>
-                <meta name="description" content="Meet our expert data science team. Founded by scientists and engineers from leading tech companies. 15+ years combined experience delivering data solutions worldwide." />
+                <meta name="description" content="Meet our expert data science team. Founded by scientists and engineers from leading tech companies. 50+ clients, 200+ projects, 98% satisfaction rate." />
                 <link rel="canonical" href="https://scapedatasolutions.com/about" />
+
+                <meta property="og:title" content="About Us | Expert Data Science Team - Scape Data Solutions" />
+                <meta property="og:description" content="Meet our expert data science team. 50+ clients, 200+ projects completed, 98% satisfaction rate." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://scapedatasolutions.com/about" />
+                <meta property="og:image" content="https://scapedatasolutions.com/Images/site-images/Dr-Robert-Chen.Webp" />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="About Us | Expert Data Science Team" />
+                <meta name="twitter:description" content="Meet our expert data science team. 50+ clients, 98% satisfaction." />
+                <meta name="twitter:image" content="https://scapedatasolutions.com/Images/site-images/Dr-Robert-Chen.Webp" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "AboutPage",
+                        "mainEntity": {
+                            "@type": "Organization",
+                            "name": "Scape Data Solutions",
+                            "description": "Expert data science and analytics team serving 50+ organizations worldwide",
+                            "url": "https://scapedatasolutions.com/about",
+                            "foundingDate": "2018",
+                            "numberOfEmployees": "50+",
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "4.9",
+                                "ratingCount": "200",
+                                "bestRating": "5"
+                            }
+                        }
+                    })}
+                </script>
             </Helmet>
 
             <section className={styles.hero}>

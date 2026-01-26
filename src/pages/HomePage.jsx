@@ -24,8 +24,11 @@ import {
     TrendingUp, Users, Zap
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Helmet } from "react-helmet-async";
 import { Link } from 'react-router-dom';
 import styles from './HomePage.module.css';
+
+
 
 const HomePage = () => {
     const [typedText, setTypedText] = useState('');
@@ -401,289 +404,323 @@ const HomePage = () => {
     }, []);
 
     return (
-        <div className={styles.homePage}>
-            <div className={styles.progressBar} style={{ width: `${scrollProgress}%` }} />
+        <>
+            <Helmet>
+                <title>Scape Data Solutions | AI-Powered Data Analytics & Business Intelligence</title>
+                <meta name="description" content="Transform your business with AI-powered data analytics. 1200+ clients, 3500+ projects, 99.5% satisfaction. Get expert data science, machine learning, and BI solutions." />
+                <link rel="canonical" href="https://scapedatasolutions.com/" />
 
-            <div className={styles.particlesContainer}>
-                {particles.map((p, i) => (
-                    <div
-                        key={i}
-                        className={styles.dynamicParticle}
-                        style={{
-                            left: `${p.x}%`,
-                            top: `${p.y}%`,
-                            width: `${p.size}px`,
-                            height: `${p.size}px`
-                        }}
-                    />
-                ))}
-            </div>
+                <meta property="og:title" content="Scape Data Solutions | AI-Powered Data Analytics" />
+                <meta property="og:description" content="Transform your business with expert data analytics and AI. 1200+ clients, 99.5% satisfaction rate." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://scapedatasolutions.com/" />
+                <meta property="og:image" content="https://scapedatasolutions.com/Images/site-images/dashboard-1.jpg" />
 
-            {/* Hero Section */}
-            <section className={styles.hero}>
-                <div className={styles.heroContent}>
-                    <div className={styles.badge}>
-                        <Sparkles size={20} className={styles.badgeIcon} />
-                        <span>AI-Powered Analytics Platform</span>
-                    </div>
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="AI-Powered Data Analytics & Business Intelligence" />
+                <meta name="twitter:description" content="1200+ clients trust us for data analytics and AI solutions." />
+                <meta name="twitter:image" content="https://scapedatasolutions.com/Images/site-images/dashboard-1.jpg" />
 
-                    <h1 className={styles.heroTitle}>
-                        {typedText}
-                        <span className={styles.cursor}>|</span>
-                    </h1>
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Scape Data Solutions",
+                        "url": "https://scapedatasolutions.com",
+                        "logo": "https://scapedatasolutions.com/logo-1.jpeg",
+                        "description": "AI-powered data analytics and business intelligence solutions",
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.95",
+                            "ratingCount": "1200",
+                            "bestRating": "5"
+                        }
+                    })}
+                </script>
+            </Helmet>
+            <div className={styles.homePage}>
+                <div className={styles.progressBar} style={{ width: `${scrollProgress}%` }} />
 
-                    <p className={styles.heroSubtitle}>
-                        Unlock insights • Make data-driven decisions • Scale your success
-                    </p>
-
-                    <div className={styles.heroCta}>
-                        <Link to="/contact" className={styles.primaryBtn}>
-                            Get Started Free
-                            <ArrowRight size={20} />
-                        </Link>
-                        <Link to="/contact" className={styles.secondaryBtn}>
-                            <Play size={20} />
-                            Watch Demo
-                        </Link>
-                    </div>
-
-                    <div className={styles.trustBadges}>
-                        <div className={styles.trustItem}>
-                            <Shield size={20} />
-                            <span>Enterprise Security</span>
-                        </div>
-                        <div className={styles.trustItem}>
-                            <Award size={20} />
-                            <span>Industry Leader</span>
-                        </div>
-                        <div className={styles.trustItem}>
-                            <Users size={20} />
-                            <span>1200+ Clients</span>
-                        </div>
-                        <div className={styles.trustItem}>
-                            <Star size={20} />
-                            <span>5-Star Rated</span>
-                        </div>
-                    </div>
-
-                    <div className={styles.statsGrid}>
-                        <div className={styles.statCard}>
-                            <div className={styles.statIcon}><Users size={32} /></div>
-                            <div className={styles.statNumber}>{Math.floor(counters.clients)}+</div>
-                            <div className={styles.statLabel}>Happy Clients</div>
-                        </div>
-                        <div className={styles.statCard}>
-                            <div className={styles.statIcon}><Award size={32} /></div>
-                            <div className={styles.statNumber}>{Math.floor(counters.projects)}+</div>
-                            <div className={styles.statLabel}>Projects Completed</div>
-                        </div>
-                        <div className={styles.statCard}>
-                            <div className={styles.statIcon}><Star size={32} /></div>
-                            <div className={styles.statNumber}>{counters.satisfaction.toFixed(1)}%</div>
-                            <div className={styles.statLabel}>Satisfaction Rate</div>
-                        </div>
-                        <div className={styles.statCard}>
-                            <div className={styles.statIcon}><Globe size={32} /></div>
-                            <div className={styles.statNumber}>{Math.floor(counters.countries)}+</div>
-                            <div className={styles.statLabel}>Countries Served</div>
-                        </div>
-                    </div>
+                <div className={styles.particlesContainer}>
+                    {particles.map((p, i) => (
+                        <div
+                            key={i}
+                            className={styles.dynamicParticle}
+                            style={{
+                                left: `${p.x}%`,
+                                top: `${p.y}%`,
+                                width: `${p.size}px`,
+                                height: `${p.size}px`
+                            }}
+                        />
+                    ))}
                 </div>
-            </section>
 
-            {/* Image Slider */}
-            <section className={styles.animatedImageSection}>
-                <div className={styles.imageSlider}>
-                    <div className={styles.slidingTrack}>
-                        {[...Array(4)].flatMap((_, i) => [
-                            <div key={`dash1-${i}`} className={styles.slideItem}>
-                                <img src="/Images/site-images/dashboard-1.jpg" alt="Analytics Dashboard" loading="lazy" />
-                            </div>,
-                            <div key={`chart1-${i}`} className={styles.slideItem}>
-                                <img src="/Images/site-images/chart-1.jpg" alt="Data Visualization" loading="lazy" />
-                            </div>,
-                            <div key={`dash2-${i}`} className={styles.slideItem}>
-                                <img src="/Images/site-images/dashboard-2.jpg" alt="Real-Time Monitoring" loading="lazy" />
+                {/* Hero Section */}
+                <section className={styles.hero}>
+                    <div className={styles.heroContent}>
+                        <div className={styles.badge}>
+                            <Sparkles size={20} className={styles.badgeIcon} />
+                            <span>AI-Powered Analytics Platform</span>
+                        </div>
+
+                        <h1 className={styles.heroTitle}>
+                            {typedText}
+                            <span className={styles.cursor}>|</span>
+                        </h1>
+
+                        <p className={styles.heroSubtitle}>
+                            Unlock insights • Make data-driven decisions • Scale your success
+                        </p>
+
+                        <div className={styles.heroCta}>
+                            <Link to="/contact" className={styles.primaryBtn}>
+                                Get Started Free
+                                <ArrowRight size={20} />
+                            </Link>
+                            <Link to="/contact" className={styles.secondaryBtn}>
+                                <Play size={20} />
+                                Watch Demo
+                            </Link>
+                        </div>
+
+                        <div className={styles.trustBadges}>
+                            <div className={styles.trustItem}>
+                                <Shield size={20} />
+                                <span>Enterprise Security</span>
                             </div>
-                        ])}
-                    </div>
-                </div>
-            </section>
+                            <div className={styles.trustItem}>
+                                <Award size={20} />
+                                <span>Industry Leader</span>
+                            </div>
+                            <div className={styles.trustItem}>
+                                <Users size={20} />
+                                <span>1200+ Clients</span>
+                            </div>
+                            <div className={styles.trustItem}>
+                                <Star size={20} />
+                                <span>5-Star Rated</span>
+                            </div>
+                        </div>
 
-            {/* Services Section */}
-            <section className={styles.section} id="services">
-                <div className={styles.servicesSection}>
+                        <div className={styles.statsGrid}>
+                            <div className={styles.statCard}>
+                                <div className={styles.statIcon}><Users size={32} /></div>
+                                <div className={styles.statNumber}>{Math.floor(counters.clients)}+</div>
+                                <div className={styles.statLabel}>Happy Clients</div>
+                            </div>
+                            <div className={styles.statCard}>
+                                <div className={styles.statIcon}><Award size={32} /></div>
+                                <div className={styles.statNumber}>{Math.floor(counters.projects)}+</div>
+                                <div className={styles.statLabel}>Projects Completed</div>
+                            </div>
+                            <div className={styles.statCard}>
+                                <div className={styles.statIcon}><Star size={32} /></div>
+                                <div className={styles.statNumber}>{counters.satisfaction.toFixed(1)}%</div>
+                                <div className={styles.statLabel}>Satisfaction Rate</div>
+                            </div>
+                            <div className={styles.statCard}>
+                                <div className={styles.statIcon}><Globe size={32} /></div>
+                                <div className={styles.statNumber}>{Math.floor(counters.countries)}+</div>
+                                <div className={styles.statLabel}>Countries Served</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Image Slider */}
+                <section className={styles.animatedImageSection}>
+                    <div className={styles.imageSlider}>
+                        <div className={styles.slidingTrack}>
+                            {[...Array(4)].flatMap((_, i) => [
+                                <div key={`dash1-${i}`} className={styles.slideItem}>
+                                    <img src="/Images/site-images/dashboard-1.jpg" alt="Analytics Dashboard" loading="lazy" />
+                                </div>,
+                                <div key={`chart1-${i}`} className={styles.slideItem}>
+                                    <img src="/Images/site-images/chart-1.jpg" alt="Data Visualization" loading="lazy" />
+                                </div>,
+                                <div key={`dash2-${i}`} className={styles.slideItem}>
+                                    <img src="/Images/site-images/dashboard-2.jpg" alt="Real-Time Monitoring" loading="lazy" />
+                                </div>
+                            ])}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Services Section */}
+                <section className={styles.section} id="services">
+                    <div className={styles.servicesSection}>
+                        <div className={styles.container}>
+                            <div className={styles.sectionHeader}>
+                                <div className={styles.sectionBadge}>
+                                    <Layers size={20} />
+                                    <span>Our Services</span>
+                                </div>
+                                <h2 className={styles.sectionTitle}>Comprehensive Data Solutions</h2>
+                                <p className={styles.sectionSubtitle}>
+                                    From AI to analytics—everything you need to succeed with data
+                                </p>
+                            </div>
+
+                            <div className={styles.servicesGrid}>
+                                {services.map((service, idx) => (
+                                    <div
+                                        key={idx}
+                                        className={styles.serviceCard}
+                                        onMouseEnter={() => setHoveredService(idx)}
+                                        onMouseLeave={() => setHoveredService(null)}
+                                    >
+                                        <div className={styles.serviceHeader}>
+                                            <div className={styles.serviceIcon}>{service.icon}</div>
+                                            <div>
+                                                <h3 className={styles.serviceTitle}>{service.title}</h3>
+                                                <p className={styles.serviceShortDesc}>{service.shortDesc}</p>
+                                            </div>
+                                        </div>
+                                        <p className={styles.serviceDescription}>{service.description}</p>
+                                        <div className={styles.serviceMetrics}>
+                                            {Object.entries(service.metrics).map(([key, value]) => (
+                                                <div key={key} className={styles.metricBadge}>
+                                                    {key}: {value}
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className={styles.techStack}>
+                                            {service.technologies.map((tech, i) => (
+                                                <span key={i} className={styles.techBadge}>{tech}</span>
+                                            ))}
+                                        </div>
+                                        <Link to="/contact" className={styles.serviceBtn}>
+                                            Learn More <ArrowRight size={18} />
+                                        </Link>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Industries Section */}
+                <section className={styles.section}>
                     <div className={styles.container}>
                         <div className={styles.sectionHeader}>
-                            <div className={styles.sectionBadge}>
-                                <Layers size={20} />
-                                <span>Our Services</span>
-                            </div>
-                            <h2 className={styles.sectionTitle}>Comprehensive Data Solutions</h2>
+                            <h2 className={styles.sectionTitle}>Industries We Serve</h2>
                             <p className={styles.sectionSubtitle}>
-                                From AI to analytics—everything you need to succeed with data
+                                Tailored solutions for every sector
                             </p>
                         </div>
-
                         <div className={styles.servicesGrid}>
-                            {services.map((service, idx) => (
-                                <div
-                                    key={idx}
-                                    className={styles.serviceCard}
-                                    onMouseEnter={() => setHoveredService(idx)}
-                                    onMouseLeave={() => setHoveredService(null)}
-                                >
-                                    <div className={styles.serviceHeader}>
-                                        <div className={styles.serviceIcon}>{service.icon}</div>
-                                        <div>
-                                            <h3 className={styles.serviceTitle}>{service.title}</h3>
-                                            <p className={styles.serviceShortDesc}>{service.shortDesc}</p>
+                            {industries.map((industry, idx) => (
+                                <div key={idx} className={styles.serviceCard}>
+                                    <div className={styles.serviceIcon}>{industry.icon}</div>
+                                    <h3 className={styles.serviceTitle}>{industry.name}</h3>
+                                    <p className={styles.serviceDescription}>{industry.description}</p>
+                                    <div className={styles.serviceMetrics}>
+                                        <div className={styles.metricBadge}>{industry.clients}+ Clients</div>
+                                        <div className={styles.metricBadge}>{industry.growth} Growth</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Testimonials Section */}
+                <section className={styles.section}>
+                    <div className={styles.testimonialsSection}>
+                        <div className={styles.container}>
+                            <div className={styles.sectionHeader}>
+                                <div className={styles.sectionBadge}>
+                                    <Star size={20} />
+                                    <span>Client Success</span>
+                                </div>
+                                <h2 className={styles.sectionTitle}>What Our Clients Say</h2>
+                                <p className={styles.sectionSubtitle}>
+                                    Hear from industry leaders who transformed with data
+                                </p>
+                            </div>
+
+                            <div className={styles.testimonialCard}>
+                                <div className={styles.testimonialHeader}>
+                                    <div className={styles.testimonialImage}>
+                                        <img src={testimonials[currentTestimonial].image} alt={testimonials[currentTestimonial].name} />
+                                    </div>
+                                    <div>
+                                        <h4>{testimonials[currentTestimonial].name}</h4>
+                                        <p>{testimonials[currentTestimonial].role}</p>
+                                        <p>{testimonials[currentTestimonial].company}</p>
+                                    </div>
+                                    <div className={styles.ratingStars}>
+                                        {[...Array(5)].map((_, i) => (
+                                            <Star key={i} size={20} fill="#FFD700" color="#FFD700" />
+                                        ))}
+                                    </div>
+                                </div>
+                                <blockquote className={styles.testimonialText}>
+                                    "{testimonials[currentTestimonial].text}"
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* FAQ Section */}
+                <section className={styles.section}>
+                    <div className={styles.faqSection}>
+                        <div className={styles.container}>
+                            <div className={styles.sectionHeader}>
+                                <div className={styles.sectionBadge}>
+                                    <MessageCircle size={20} />
+                                    <span>FAQ</span>
+                                </div>
+                                <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
+                                <p className={styles.sectionSubtitle}>
+                                    Get answers to common questions about our services
+                                </p>
+                            </div>
+
+                            <div className={styles.faqGrid}>
+                                {faqs.map((faq, idx) => (
+                                    <div
+                                        key={idx}
+                                        className={styles.faqItem}
+                                        onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
+                                    >
+                                        <div className={styles.faqQuestion}>
+                                            <h3>{faq.question}</h3>
+                                            {expandedFaq === idx ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                                        </div>
+                                        <div className={`${styles.faqAnswer} ${expandedFaq === idx ? styles.faqAnswerExpanded : ''}`}>
+                                            <p>{faq.answer}</p>
                                         </div>
                                     </div>
-                                    <p className={styles.serviceDescription}>{service.description}</p>
-                                    <div className={styles.serviceMetrics}>
-                                        {Object.entries(service.metrics).map(([key, value]) => (
-                                            <div key={key} className={styles.metricBadge}>
-                                                {key}: {value}
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className={styles.techStack}>
-                                        {service.technologies.map((tech, i) => (
-                                            <span key={i} className={styles.techBadge}>{tech}</span>
-                                        ))}
-                                    </div>
-                                    <Link to="/contact" className={styles.serviceBtn}>
-                                        Learn More <ArrowRight size={18} />
-                                    </Link>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Industries Section */}
-            <section className={styles.section}>
-                <div className={styles.container}>
-                    <div className={styles.sectionHeader}>
-                        <h2 className={styles.sectionTitle}>Industries We Serve</h2>
-                        <p className={styles.sectionSubtitle}>
-                            Tailored solutions for every sector
+                {/* CTA Section */}
+                <section className={styles.ctaSection}>
+                    <div className={styles.ctaContent}>
+                        <h2 className={styles.ctaTitle}>Ready to Transform Your Business?</h2>
+                        <p className={styles.ctaSubtitle}>
+                            Join 1200+ companies leveraging data for growth
                         </p>
-                    </div>
-                    <div className={styles.servicesGrid}>
-                        {industries.map((industry, idx) => (
-                            <div key={idx} className={styles.serviceCard}>
-                                <div className={styles.serviceIcon}>{industry.icon}</div>
-                                <h3 className={styles.serviceTitle}>{industry.name}</h3>
-                                <p className={styles.serviceDescription}>{industry.description}</p>
-                                <div className={styles.serviceMetrics}>
-                                    <div className={styles.metricBadge}>{industry.clients}+ Clients</div>
-                                    <div className={styles.metricBadge}>{industry.growth} Growth</div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Testimonials Section */}
-            <section className={styles.section}>
-                <div className={styles.testimonialsSection}>
-                    <div className={styles.container}>
-                        <div className={styles.sectionHeader}>
-                            <div className={styles.sectionBadge}>
-                                <Star size={20} />
-                                <span>Client Success</span>
-                            </div>
-                            <h2 className={styles.sectionTitle}>What Our Clients Say</h2>
-                            <p className={styles.sectionSubtitle}>
-                                Hear from industry leaders who transformed with data
-                            </p>
-                        </div>
-
-                        <div className={styles.testimonialCard}>
-                            <div className={styles.testimonialHeader}>
-                                <div className={styles.testimonialImage}>
-                                    <img src={testimonials[currentTestimonial].image} alt={testimonials[currentTestimonial].name} />
-                                </div>
-                                <div>
-                                    <h4>{testimonials[currentTestimonial].name}</h4>
-                                    <p>{testimonials[currentTestimonial].role}</p>
-                                    <p>{testimonials[currentTestimonial].company}</p>
-                                </div>
-                                <div className={styles.ratingStars}>
-                                    {[...Array(5)].map((_, i) => (
-                                        <Star key={i} size={20} fill="#FFD700" color="#FFD700" />
-                                    ))}
-                                </div>
-                            </div>
-                            <blockquote className={styles.testimonialText}>
-                                "{testimonials[currentTestimonial].text}"
-                            </blockquote>
+                        <div className={styles.ctaButtons}>
+                            <Link to="/contact" className={styles.ctaButton}>
+                                Get Started Now
+                                <ArrowRight size={20} />
+                            </Link>
+                            <Link to="/contact" className={styles.ctaButton}>
+                                <Phone size={20} />
+                                Schedule a Call
+                            </Link>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            {/* FAQ Section */}
-            <section className={styles.section}>
-                <div className={styles.faqSection}>
-                    <div className={styles.container}>
-                        <div className={styles.sectionHeader}>
-                            <div className={styles.sectionBadge}>
-                                <MessageCircle size={20} />
-                                <span>FAQ</span>
-                            </div>
-                            <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
-                            <p className={styles.sectionSubtitle}>
-                                Get answers to common questions about our services
-                            </p>
-                        </div>
-
-                        <div className={styles.faqGrid}>
-                            {faqs.map((faq, idx) => (
-                                <div
-                                    key={idx}
-                                    className={styles.faqItem}
-                                    onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
-                                >
-                                    <div className={styles.faqQuestion}>
-                                        <h3>{faq.question}</h3>
-                                        {expandedFaq === idx ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
-                                    </div>
-                                    <div className={`${styles.faqAnswer} ${expandedFaq === idx ? styles.faqAnswerExpanded : ''}`}>
-                                        <p>{faq.answer}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className={styles.ctaSection}>
-                <div className={styles.ctaContent}>
-                    <h2 className={styles.ctaTitle}>Ready to Transform Your Business?</h2>
-                    <p className={styles.ctaSubtitle}>
-                        Join 1200+ companies leveraging data for growth
-                    </p>
-                    <div className={styles.ctaButtons}>
-                        <Link to="/contact" className={styles.ctaButton}>
-                            Get Started Now
-                            <ArrowRight size={20} />
-                        </Link>
-                        <Link to="/contact" className={styles.ctaButton}>
-                            <Phone size={20} />
-                            Schedule a Call
-                        </Link>
-                    </div>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
+        </>
     );
 };
-
 export default HomePage;

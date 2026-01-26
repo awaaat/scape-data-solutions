@@ -2,10 +2,10 @@
 
 import { ArrowRight, Award, Check, ChevronDown, TrendingUp, Zap } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Helmet } from "react-helmet-async";
 import { Link } from 'react-router-dom';
 import { apiService } from '../services/api';
 import styles from './PricingPage.module.css';
-import { Helmet } from "react-helmet-async";
 
 const PricingPage = () => {
     const [expandedFaq, setExpandedFaq] = useState(null);
@@ -156,8 +156,45 @@ const PricingPage = () => {
         <div className={styles.container}>
             <Helmet>
                 <title>Pricing & Plans | Flexible Data Science Solutions - Scape Data Solutions</title>
-                <meta name="description" content="Transparent pricing for data analytics, machine learning, and AI services. Starter, Professional, and Enterprise plans" />
+                <meta name="description" content="Transparent pricing for data analytics, machine learning, and AI services. Starter, Professional, and Enterprise plans. Free consultation included." />
                 <link rel="canonical" href="https://scapedatasolutions.com/pricing" />
+
+                <meta property="og:title" content="Pricing & Plans | Flexible Data Science Solutions" />
+                <meta property="og:description" content="Transparent pricing for data analytics and AI. Starter, Professional, and Enterprise plans available." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://scapedatasolutions.com/pricing" />
+                <meta property="og:image" content="https://scapedatasolutions.com/logo-1.jpeg" />
+
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:title" content="Pricing & Plans | Data Science Solutions" />
+                <meta name="twitter:description" content="Flexible pricing plans for all business sizes." />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "PriceSpecification",
+                        "name": "Data Analytics Services Pricing",
+                        "description": "Flexible pricing plans for data analytics and AI services",
+                        "priceCurrency": "USD",
+                        "offers": [
+                            {
+                                "@type": "Offer",
+                                "name": "Starter Plan",
+                                "description": "Essential analytics for small businesses"
+                            },
+                            {
+                                "@type": "Offer",
+                                "name": "Professional Plan",
+                                "description": "Advanced analytics for growing companies"
+                            },
+                            {
+                                "@type": "Offer",
+                                "name": "Enterprise Plan",
+                                "description": "Full-scale data transformation"
+                            }
+                        ]
+                    })}
+                </script>
             </Helmet>
 
             <section className={styles.hero}>

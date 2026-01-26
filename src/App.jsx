@@ -2,6 +2,7 @@
 
 import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { Link, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import styles from './App.module.css';
 import { apiService } from './services/api';
@@ -149,22 +150,24 @@ const Footer = () => {
 // Main App Component
 function App() {
     return (
-        <Router>
-            <div className={styles.app}>
-                <Navigation />
-                <main className={styles.main}>
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/services" element={<ServicesPage />} />
-                        <Route path="/solutions" element={<SolutionsPage />} />
-                        <Route path="/pricing" element={<PricingPage />} />
-                        <Route path="/about" element={<AboutPage />} />
-                        <Route path="/contact" element={<ContactPage />} />
-                    </Routes>
-                </main>
-                <Footer />
-            </div>
-        </Router>
+        <HelmetProvider>
+            <Router>
+                <div className={styles.app}>
+                    <Navigation />
+                    <main className={styles.main}>
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/services" element={<ServicesPage />} />
+                            <Route path="/solutions" element={<SolutionsPage />} />
+                            <Route path="/pricing" element={<PricingPage />} />
+                            <Route path="/about" element={<AboutPage />} />
+                            <Route path="/contact" element={<ContactPage />} />
+                        </Routes>
+                    </main>
+                    <Footer />
+                </div>
+            </Router>
+        </HelmetProvider>
     );
 }
 
