@@ -386,7 +386,7 @@ export default function CompanyPage() {
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                       whileHover={{ scale: 1.08, rotate: 4 }}
                     >
-                      <img src="/scape_data_files/desktop_applications.webp" alt="PC Component" />
+                      <img src="/Images/site-images/desktop_applications.webp" alt="PC Component" />
                     </motion.div>
                   </motion.div>
                 </div>

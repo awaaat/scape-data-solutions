@@ -30,7 +30,7 @@
 .heroBgImage {
   position: absolute;
   inset: 0;
-  background-image: url("/scape_data_files/company.avif");
+  background-image: url("/Images/site-images/company.avif");
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -333,7 +333,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/scape_data_files/company-3-image.webp");
+  background-image: url("/Images/site-images/company-3-image.webp");
   background-size: cover;
   background-position: center;
   z-index: 0;

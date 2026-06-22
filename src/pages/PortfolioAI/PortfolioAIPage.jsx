@@ -171,7 +171,7 @@ const PortfolioAIPage = () => {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          style={{ backgroundImage: 'url(/scape_data_files/ai-hero.jpg)' }}
+          style={{ backgroundImage: 'url(/Images/site-images/ai-hero.jpg)' }}
         >
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>

@@ -1,7 +1,7 @@
 
 .page { font-family: "Helvetica Neue", Arial, sans-serif; background: #fff; color: #1a1a2e; }
 
-.hero { position: relative; color: #fff; padding: 120px 40px 80px; text-align: left; background-image: url(/scape_data_files/sitemap--200.jpg); background-size: cover; background-position: center; background-attachment: fixed; isolation: isolate; } .hero::before { content: ""; position: absolute; inset: 0; background: rgba(10,18,40,0.72); z-index: 0; } .hero > * { position: relative; z-index: 1; }
+.hero { position: relative; color: #fff; padding: 120px 40px 80px; text-align: left; background-image: url(/Images/site-images/sitemap--200.jpg); background-size: cover; background-position: center; background-attachment: fixed; isolation: isolate; } .hero::before { content: ""; position: absolute; inset: 0; background: rgba(10,18,40,0.72); z-index: 0; } .hero > * { position: relative; z-index: 1; }
 .heroBadge { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fdb840; margin-bottom: 14px; display: block; }
 .heroTitle { font-size: clamp(36px, 5vw, 60px); font-weight: 800; margin: 0 0 16px; line-height: 1.1; }
 .heroSub { font-size: 17px; color: rgba(255,255,255,0.65); margin: 0; }

@@ -37,9 +37,9 @@ const SLIDES = [
     headline2: "Revenue & Growth",
     sub: "Stop guessing. Start knowing. We help you make smarter business decisions, reduce costs, and unlock new revenue streams with data you already have.",
     accent: "#fdb840",
-    imgLaptop: "/scape_data_files/home-bnr-lap-img.png",
-    imgTab: "/scape_data_files/home-bnr-tab-img.png",
-    imgMobile: "/scape_data_files/home-bnr-mob-img.png",
+    imgLaptop: "/Images/site-images/home-bnr-lap-img.png",
+    imgTab: "/Images/site-images/home-bnr-tab-img.png",
+    imgMobile: "/Images/site-images/home-bnr-mob-img.png",
     stat: { val: "98%", label: "Accuracy" },
     tag: "SMARTER DECISIONS",
   },
@@ -48,9 +48,9 @@ const SLIDES = [
     headline2: "Business Intelligence",
     sub: "Make faster, smarter decisions with real-time analytics. Spot trends instantly, respond to market shifts, and stay ahead of competitors.",
     accent: "#fdb840",
-    imgLaptop: "/scape_data_files/vetvine_1.webp",
-    imgTab: "/scape_data_files/vetvine_2.webp",
-    imgMobile: "/scape_data_files/vetvine_3.webp",
+    imgLaptop: "/Images/site-images/vetvine_1.webp",
+    imgTab: "/Images/site-images/vetvine_2.webp",
+    imgMobile: "/Images/site-images/vetvine_3.webp",
     stat: { val: "99.9%", label: "Uptime" },
     tag: "REAL-TIME INSIGHTS",
   },
@@ -59,9 +59,9 @@ const SLIDES = [
     headline2: "Business With Confidence",
     sub: "Build a data foundation that grows with you. Handle growth seamlessly with enterprise-grade solutions that protect your business and your customers.",
     accent: "#fdb840",
-    imgLaptop: "/scape_data_files/mb-lap.webp",
-    imgTab: "/scape_data_files/mb-tab.webp",
-    imgMobile: "/scape_data_files/mb-mob.webp",
+    imgLaptop: "/Images/site-images/mb-lap.webp",
+    imgTab: "/Images/site-images/mb-tab.webp",
+    imgMobile: "/Images/site-images/mb-mob.webp",
     stat: { val: "3,500+", label: "Projects Delivered" },
     tag: "SCALABLE GROWTH",
   },
@@ -135,48 +135,48 @@ const TECH_ROW2 = [
 
 // ── Clients: with logo image paths (kept for potential use, but the section is removed) ──
 const CLIENTS_WITH_LOGOS = [
-  { name:"Versi Systems",          logo:"/scape_data_files/versi-logo.webp",       fallback:"Versi Systems" },
-  { name:"Valley King Properties", logo:"/scape_data_files/valleyking-logo.webp",  fallback:"Valley King" },
-  { name:"ZillaOnline",            logo:"/scape_data_files/zilla-logo.webp",       fallback:"ZillaOnline" },
-  { name:"TopSwap",                logo:"/scape_data_files/topswap-logo.webp",     fallback:"TopSwap" },
-  { name:"ArchCrown",              logo:"/scape_data_files/archcrown-logo.webp",   fallback:"ArchCrown" },
-  { name:"King's Liquidation",     logo:"/scape_data_files/kings-logo.webp",       fallback:"King's Liquidation" },
-  { name:"BilBio Kuwait",          logo:"/scape_data_files/bilbio-logo.webp",      fallback:"BilBio Kuwait" },
-  { name:"GoGuess Portugal",       logo:"/scape_data_files/goguess-logo.webp",     fallback:"GoGuess" },
-  { name:"Odontyn",                logo:"/scape_data_files/odontyn-logo.webp",     fallback:"Odontyn" },
-  { name:"CastNet Commerce",       logo:"/scape_data_files/castnet-logo.webp",     fallback:"CastNet" },
-  { name:"Aerocast LLC",           logo:"/scape_data_files/aerocast-logo.webp",    fallback:"Aerocast LLC" },
-  { name:"PrimeCad",               logo:"/scape_data_files/primecad-logo.webp",    fallback:"PrimeCad" },
-  { name:"TechCorp Global",        logo:"/scape_data_files/techcorp-logo.webp",    fallback:"TechCorp Global" },
-  { name:"FinanceHub Inc",         logo:"/scape_data_files/financehub-logo.webp",  fallback:"FinanceHub Inc" },
-  { name:"RetailMax",              logo:"/scape_data_files/retailmax-logo.webp",   fallback:"RetailMax" },
-  { name:"DataDrive",              logo:"/scape_data_files/datadrive-logo.webp",   fallback:"DataDrive" },
-  { name:"InsightIQ",              logo:"/scape_data_files/insightiq-logo.webp",   fallback:"InsightIQ" },
-  { name:"Predictix",              logo:"/scape_data_files/predictix-logo.webp",   fallback:"Predictix" },
+  { name:"Versi Systems",          logo:"/Images/site-images/versi-logo.webp",       fallback:"Versi Systems" },
+  { name:"Valley King Properties", logo:"/Images/site-images/valleyking-logo.webp",  fallback:"Valley King" },
+  { name:"ZillaOnline",            logo:"/Images/site-images/zilla-logo.webp",       fallback:"ZillaOnline" },
+  { name:"TopSwap",                logo:"/Images/site-images/topswap-logo.webp",     fallback:"TopSwap" },
+  { name:"ArchCrown",              logo:"/Images/site-images/archcrown-logo.webp",   fallback:"ArchCrown" },
+  { name:"King's Liquidation",     logo:"/Images/site-images/kings-logo.webp",       fallback:"King's Liquidation" },
+  { name:"BilBio Kuwait",          logo:"/Images/site-images/bilbio-logo.webp",      fallback:"BilBio Kuwait" },
+  { name:"GoGuess Portugal",       logo:"/Images/site-images/goguess-logo.webp",     fallback:"GoGuess" },
+  { name:"Odontyn",                logo:"/Images/site-images/odontyn-logo.webp",     fallback:"Odontyn" },
+  { name:"CastNet Commerce",       logo:"/Images/site-images/castnet-logo.webp",     fallback:"CastNet" },
+  { name:"Aerocast LLC",           logo:"/Images/site-images/aerocast-logo.webp",    fallback:"Aerocast LLC" },
+  { name:"PrimeCad",               logo:"/Images/site-images/primecad-logo.webp",    fallback:"PrimeCad" },
+  { name:"TechCorp Global",        logo:"/Images/site-images/techcorp-logo.webp",    fallback:"TechCorp Global" },
+  { name:"FinanceHub Inc",         logo:"/Images/site-images/financehub-logo.webp",  fallback:"FinanceHub Inc" },
+  { name:"RetailMax",              logo:"/Images/site-images/retailmax-logo.webp",   fallback:"RetailMax" },
+  { name:"DataDrive",              logo:"/Images/site-images/datadrive-logo.webp",   fallback:"DataDrive" },
+  { name:"InsightIQ",              logo:"/Images/site-images/insightiq-logo.webp",   fallback:"InsightIQ" },
+  { name:"Predictix",              logo:"/Images/site-images/predictix-logo.webp",   fallback:"Predictix" },
 ];
 
 const TESTIMONIALS = [
-  { name:"Omar AlQabandi",       role:"CEO",                     company:"BilBio Kuwait",        img:"/scape_data_files/Omar-AlQabandi.webp",        quote:"The team delivered on time and on budget, with quality work. A true partner who understands our business.",                                            rating:5 },
-  { name:"Nathan French",        role:"Director of I.T./ Marketing", company:"Treaterpro.com", img:"/scape_data_files/nathan.webp", quote:"The best team I've worked with for complex projects. They deliver results, not excuses.",                                 rating:5 },
-  { name:"Edward Mazzer",        role:"CEO",                     company:"Italy",                 img:"/scape_data_files/tesi_img.webp",               quote:"They understood our business needs and executed flawlessly on our data integration project.",                                rating:5 },
-  { name:"Charles Johnson",      role:"CEO",                     company:"BidLock, LLC",          img:"/scape_data_files/charles_johnson.webp",       quote:"Phenomenal team. Professional, patient, and truly the best in the business.",                                rating:5 },
-  { name:"Pedro Madeira Gomes",  role:"CEO",                     company:"GoGuess, Portugal",     img:"/scape_data_files/tesi_img.webp",               quote:"Reliable, effective, and trustworthy. They understand our business needs and communicate clearly.",                       rating:5 },
-  { name:"Paul Duhamel",         role:"CEO",                     company:"Duhamel Psychology",    img:"/scape_data_files/tesi_img.webp",               quote:"Professional, cooperative, and delivered beyond expectations. Highly recommended.",                                  rating:5 },
-  { name:"Jessica Hoff",         role:"CEO",                     company:"ID Solutions",          img:"/scape_data_files/tesi_img.webp",               quote:"Timely communication and exceptional service. A true partner, not just a vendor.",                   rating:5 },
-  { name:"Mike Carlson",         role:"CEO",                     company:"Luxxle App",            img:"/scape_data_files/tesi_img.webp",               quote:"The best team I've worked with. Outstanding professionalism and technical expertise.",            rating:5 },
-  { name:"Heather Atencio",      role:"CEO",                     company:"Valley King Properties", img:"/scape_data_files/heather.webp",              quote:"We've worked with them for over 2 years on a complex project. They're integral to our success.",                                           rating:5 },
-  { name:"Joshua DuBois",        role:"CEO",                     company:"Aerocast LLC",          img:"/scape_data_files/joshua.webp",                 quote:"One of the best teams we've worked with. Highly recommended.",                                            rating:5 },
+  { name:"Omar AlQabandi",       role:"CEO",                     company:"BilBio Kuwait",        img:"/Images/site-images/Omar-AlQabandi.webp",        quote:"The team delivered on time and on budget, with quality work. A true partner who understands our business.",                                            rating:5 },
+  { name:"Nathan French",        role:"Director of I.T./ Marketing", company:"Treaterpro.com", img:"/Images/site-images/nathan.webp", quote:"The best team I've worked with for complex projects. They deliver results, not excuses.",                                 rating:5 },
+  { name:"Edward Mazzer",        role:"CEO",                     company:"Italy",                 img:"/Images/site-images/tesi_img.webp",               quote:"They understood our business needs and executed flawlessly on our data integration project.",                                rating:5 },
+  { name:"Charles Johnson",      role:"CEO",                     company:"BidLock, LLC",          img:"/Images/site-images/charles_johnson.webp",       quote:"Phenomenal team. Professional, patient, and truly the best in the business.",                                rating:5 },
+  { name:"Pedro Madeira Gomes",  role:"CEO",                     company:"GoGuess, Portugal",     img:"/Images/site-images/tesi_img.webp",               quote:"Reliable, effective, and trustworthy. They understand our business needs and communicate clearly.",                       rating:5 },
+  { name:"Paul Duhamel",         role:"CEO",                     company:"Duhamel Psychology",    img:"/Images/site-images/tesi_img.webp",               quote:"Professional, cooperative, and delivered beyond expectations. Highly recommended.",                                  rating:5 },
+  { name:"Jessica Hoff",         role:"CEO",                     company:"ID Solutions",          img:"/Images/site-images/tesi_img.webp",               quote:"Timely communication and exceptional service. A true partner, not just a vendor.",                   rating:5 },
+  { name:"Mike Carlson",         role:"CEO",                     company:"Luxxle App",            img:"/Images/site-images/tesi_img.webp",               quote:"The best team I've worked with. Outstanding professionalism and technical expertise.",            rating:5 },
+  { name:"Heather Atencio",      role:"CEO",                     company:"Valley King Properties", img:"/Images/site-images/heather.webp",              quote:"We've worked with them for over 2 years on a complex project. They're integral to our success.",                                           rating:5 },
+  { name:"Joshua DuBois",        role:"CEO",                     company:"Aerocast LLC",          img:"/Images/site-images/joshua.webp",                 quote:"One of the best teams we've worked with. Highly recommended.",                                            rating:5 },
 ];
 
 const GROWTH_CARDS = [
-  { img:"/scape_data_files/card7.webp", title:"Global Client References",     text:"We can provide references from our global clients to verify our reputation and past work. Talk directly to business leaders who've seen real results." },
-  { img:"/scape_data_files/card2.webp", title:"Flexible Payment Options",     text:"We offer customised payment plans based on your project scope and budget. Client satisfaction and partnership are our top priorities." },
-  { img:"/scape_data_files/card3.webp", title:"Regular Progress Updates",     text:"We provide regular updates from our demo servers so you can track progress and ensure we're aligned with your business goals." },
-  { img:"/scape_data_files/card4.webp", title:"Multiple Payment Methods",     text:"We accept payments from Credit Cards, PayPal, US Bank Wire Transfer, and International Wire Transfers for your convenience." },
-  { img:"/scape_data_files/card5.webp", title:"Direct Developer Access",    text:"We provide direct access to our developers and team leads to ensure quick turnarounds and clear, efficient communication." },
-  { img:"/scape_data_files/card6.webp", title:"Hire Dedicated Virtual Teams",  text:"We offer dedicated resources to work for you full-time, virtually, at a fraction of the local cost — with the same quality and reliability." },
-  { img:"/scape_data_files/card1.webp", title:"24/7 Global Support",    text:"We provide 24/7 online communication and support worldwide via Phone, Skype, and Email. We're always available when you need us." },
-  { img:"/scape_data_files/card8.webp", title:"Secure Partnerships",        text:"We offer NDA and contract agreements signed by both parties to ensure a secure, professional, and trustworthy partnership." },
+  { img:"/Images/site-images/card7.webp", title:"Global Client References",     text:"We can provide references from our global clients to verify our reputation and past work. Talk directly to business leaders who've seen real results." },
+  { img:"/Images/site-images/card2.webp", title:"Flexible Payment Options",     text:"We offer customised payment plans based on your project scope and budget. Client satisfaction and partnership are our top priorities." },
+  { img:"/Images/site-images/card3.webp", title:"Regular Progress Updates",     text:"We provide regular updates from our demo servers so you can track progress and ensure we're aligned with your business goals." },
+  { img:"/Images/site-images/card4.webp", title:"Multiple Payment Methods",     text:"We accept payments from Credit Cards, PayPal, US Bank Wire Transfer, and International Wire Transfers for your convenience." },
+  { img:"/Images/site-images/card5.webp", title:"Direct Developer Access",    text:"We provide direct access to our developers and team leads to ensure quick turnarounds and clear, efficient communication." },
+  { img:"/Images/site-images/card6.webp", title:"Hire Dedicated Virtual Teams",  text:"We offer dedicated resources to work for you full-time, virtually, at a fraction of the local cost — with the same quality and reliability." },
+  { img:"/Images/site-images/card1.webp", title:"24/7 Global Support",    text:"We provide 24/7 online communication and support worldwide via Phone, Skype, and Email. We're always available when you need us." },
+  { img:"/Images/site-images/card8.webp", title:"Secure Partnerships",        text:"We offer NDA and contract agreements signed by both parties to ensure a secure, professional, and trustworthy partnership." },
 ];
 
 const WHY_CHOOSE = [
@@ -198,10 +198,10 @@ const PROCESS = [
 ];
 
 const CASE_STUDIES = [
-  { title:"E-Commerce Revenue Boost",    client:"RetailMax",             industry:"Retail",        challenge:"Stagnant sales and a 74% cart abandonment rate were throttling growth despite heavy ad spend.", solution:"AI-driven personalisation engine with dynamic pricing, product recommendations, and cart recovery flows.", result:"85% revenue growth in 6 months with 35% higher conversion and 42% lower cart abandonment.",    img:"/scape_data_files/dashboard-1.jpg", fullDesc:"We implemented a real-time machine learning model that analysed customer behaviour — browsing patterns, purchase history, session context — and dynamically adjusted pricing and product recommendations. We also built an automated cart recovery workflow that sent personalised re-engagement at optimal intervals. The outcome was an 85% revenue increase within six months, a 42% reduction in cart abandonment, and a measurably higher customer lifetime value across all segments." },
-  { title:"Healthcare Cost Reduction",   client:"HealthTech Solutions",  industry:"Healthcare",    challenge:"Rising operational costs and inefficient resource allocation were straining hospital budgets while patient wait times climbed.", solution:"Predictive analytics platform for patient flow optimisation, staff scheduling, and resource allocation.", result:"45% cost reduction and 30% faster patient throughput with 18-point improvement in satisfaction scores.", img:"/scape_data_files/chart-1.jpg",     fullDesc:"We built a predictive model that forecasted patient admissions and resource requirements 48 hours in advance, drawing on historical admission patterns, seasonal data, and real-time bed availability. This allowed administrators to align staffing with demand dynamically. The result was a 45% cost reduction, 30% throughput improvement, and an 18-point jump in patient satisfaction scores — all within eight months of go-live." },
-  { title:"Supply Chain Excellence",     client:"Industrial Leader",     industry:"Manufacturing", challenge:"Inefficient inventory management and cascading delays were costing millions annually across a 12-warehouse network.", solution:"Real-time analytics with ML demand forecasting and automated replenishment triggers integrated with IoT sensors.", result:"50% cost savings and 99.8% on-time delivery, eliminating $8M in waste across the full network.",          img:"/scape_data_files/dashboard-2.jpg", fullDesc:"We deployed a real-time analytics platform that integrated IoT sensor data from 50,000+ devices with historical demand signals to predict inventory needs and trigger automated replenishment at optimal order quantities. The result was a 50% reduction in holding costs, near-perfect delivery performance, and a 65% reduction in waste across the network — delivering $8M in savings in the first year alone." },
-  { title:"Fintech Fraud Prevention",    client:"FinanceHub Inc",        industry:"FinTech",       challenge:"$15M annual fraud losses and slow manual review processes were damaging customer trust and profitability.", solution:"Real-time anomaly detection with machine learning, integrating with transaction processing systems.", result:"99.7% fraud capture rate, 70% reduction in false positives, and $12M recovered in first year.", img:"/scape_data_files/dashboard-1.jpg", fullDesc:"We deployed a hybrid ML model (ensemble of isolation forest and neural networks) that scored each transaction in under 50ms. The system integrated with the client's existing payment gateway, automatically flagging suspicious transactions for review and even blocking high-risk ones. Over the first year, fraud losses dropped by 80%, false positives were reduced by 70%, and customer satisfaction improved as legitimate transactions sailed through without friction." },
+  { title:"E-Commerce Revenue Boost",    client:"RetailMax",             industry:"Retail",        challenge:"Stagnant sales and a 74% cart abandonment rate were throttling growth despite heavy ad spend.", solution:"AI-driven personalisation engine with dynamic pricing, product recommendations, and cart recovery flows.", result:"85% revenue growth in 6 months with 35% higher conversion and 42% lower cart abandonment.",    img:"/Images/site-images/dashboard-1.jpg", fullDesc:"We implemented a real-time machine learning model that analysed customer behaviour — browsing patterns, purchase history, session context — and dynamically adjusted pricing and product recommendations. We also built an automated cart recovery workflow that sent personalised re-engagement at optimal intervals. The outcome was an 85% revenue increase within six months, a 42% reduction in cart abandonment, and a measurably higher customer lifetime value across all segments." },
+  { title:"Healthcare Cost Reduction",   client:"HealthTech Solutions",  industry:"Healthcare",    challenge:"Rising operational costs and inefficient resource allocation were straining hospital budgets while patient wait times climbed.", solution:"Predictive analytics platform for patient flow optimisation, staff scheduling, and resource allocation.", result:"45% cost reduction and 30% faster patient throughput with 18-point improvement in satisfaction scores.", img:"/Images/site-images/chart-1.jpg",     fullDesc:"We built a predictive model that forecasted patient admissions and resource requirements 48 hours in advance, drawing on historical admission patterns, seasonal data, and real-time bed availability. This allowed administrators to align staffing with demand dynamically. The result was a 45% cost reduction, 30% throughput improvement, and an 18-point jump in patient satisfaction scores — all within eight months of go-live." },
+  { title:"Supply Chain Excellence",     client:"Industrial Leader",     industry:"Manufacturing", challenge:"Inefficient inventory management and cascading delays were costing millions annually across a 12-warehouse network.", solution:"Real-time analytics with ML demand forecasting and automated replenishment triggers integrated with IoT sensors.", result:"50% cost savings and 99.8% on-time delivery, eliminating $8M in waste across the full network.",          img:"/Images/site-images/dashboard-2.jpg", fullDesc:"We deployed a real-time analytics platform that integrated IoT sensor data from 50,000+ devices with historical demand signals to predict inventory needs and trigger automated replenishment at optimal order quantities. The result was a 50% reduction in holding costs, near-perfect delivery performance, and a 65% reduction in waste across the network — delivering $8M in savings in the first year alone." },
+  { title:"Fintech Fraud Prevention",    client:"FinanceHub Inc",        industry:"FinTech",       challenge:"$15M annual fraud losses and slow manual review processes were damaging customer trust and profitability.", solution:"Real-time anomaly detection with machine learning, integrating with transaction processing systems.", result:"99.7% fraud capture rate, 70% reduction in false positives, and $12M recovered in first year.", img:"/Images/site-images/dashboard-1.jpg", fullDesc:"We deployed a hybrid ML model (ensemble of isolation forest and neural networks) that scored each transaction in under 50ms. The system integrated with the client's existing payment gateway, automatically flagging suspicious transactions for review and even blocking high-risk ones. Over the first year, fraud losses dropped by 80%, false positives were reduced by 70%, and customer satisfaction improved as legitimate transactions sailed through without friction." },
 ];
 
 const PARTNERS = ["AWS Partner","Microsoft Gold","Google Cloud","Snowflake Elite","Tableau Partner","Power BI Partner","Databricks","Confluent","dbt Partner","Fivetran","Collibra","OneTrust"];
@@ -705,7 +705,7 @@ export default function HomePage() {
         {/* Growth Cards */}
         <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={REPLAY_VIEWPORT_LOW} variants={stagger}>
           <div className={styles.container}>
-            <div className={styles.secHead}><h3 className={styles.secTitle}>Unlock Business Growth</h3><img src="/scape_data_files/client-icon.webp" className={styles.secIcon} alt=""/></div>
+            <div className={styles.secHead}><h3 className={styles.secTitle}>Unlock Business Growth</h3><img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/></div>
             <div className={styles.growthGrid}>
               {GROWTH_CARDS.map((card,i)=>(
                 <motion.div key={i} className={styles.growthCard} variants={fadeUp}
@@ -725,7 +725,7 @@ export default function HomePage() {
           <div className={styles.container}>
             <div className={styles.secHead}>
               <h3 className={styles.secTitle}>Why Choose Us</h3>
-              <img src="/scape_data_files/client-icon.webp" className={styles.secIcon} alt=""/>
+              <img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/>
             </div>
             <div className={styles.whyGrid}>
               {WHY_CHOOSE.map((item,i)=>(
@@ -747,7 +747,7 @@ export default function HomePage() {
         {/* ═══ SERVICES ═══ */}
         <section className={`${styles.sec} ${styles.secLight}`}>
           <div className={styles.container}>
-            <div className={styles.secHead}><h3 className={styles.secTitle}>Our Services</h3><img src="/scape_data_files/client-icon.webp" className={styles.secIcon} alt=""/></div>
+            <div className={styles.secHead}><h3 className={styles.secTitle}>Our Services</h3><img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/></div>
             <motion.div className={styles.servGrid} initial="hidden" whileInView="visible" viewport={REPLAY_VIEWPORT_LOW} variants={stagger}>
               {SERVICES.map((svc,i)=>(
                 <motion.div key={i} className={styles.servCard} variants={fadeUp}
@@ -853,7 +853,7 @@ export default function HomePage() {
         {/* Partners & Awards */}
         <section className={`${styles.sec} ${styles.secLight}`}>
           <div className={styles.container}>
-            <div className={styles.secHead}><h3 className={styles.secTitle}>Partners & Awards</h3><img src="/scape_data_files/client-icon.webp" className={styles.secIcon} alt=""/></div>
+            <div className={styles.secHead}><h3 className={styles.secTitle}>Partners & Awards</h3><img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/></div>
           </div>
           <div className={styles.partnersMarquee}><div className={styles.partnersTrack}>{PARTNERS_DUP.map((p,i)=><motion.div key={i} className={styles.partnerChip} whileHover={{scale:1.07,backgroundColor:"#fdb840",color:"#fff"}} transition={{duration:0.2}}>{p}</motion.div>)}</div></div>
         </section>
@@ -863,7 +863,7 @@ export default function HomePage() {
           <div className={styles.container}>
             <div className={styles.secHead}>
               <h3 className={styles.secTitle}>Case Studies</h3>
-              <img src="/scape_data_files/client-icon.webp" className={styles.secIcon} alt=""/>
+              <img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/>
             </div>
             <div className={styles.caseGrid}>
               {CASE_STUDIES.map((s, i) => (
@@ -906,7 +906,7 @@ export default function HomePage() {
         {/* Process */}
         <section className={`${styles.sec} ${styles.secLight}`}>
           <div className={styles.container}>
-            <div className={styles.secHead}><h3 className={styles.secTitle}>Our Process</h3><img src="/scape_data_files/client-icon.webp" className={styles.secIcon} alt=""/></div>
+            <div className={styles.secHead}><h3 className={styles.secTitle}>Our Process</h3><img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/></div>
             <div className={styles.processTimeline}>
               {PROCESS.map((step,i)=>(
                 <motion.div key={i} className={`${styles.processStep}${activeProcStep===i?" "+styles.processStepOn:""}`}
@@ -932,7 +932,7 @@ export default function HomePage() {
         {/* FAQ */}
         <section className={styles.sec}>
           <div className={styles.container}>
-            <div className={styles.secHead}><h3 className={styles.secTitle}>Frequently Asked Questions</h3><img src="/scape_data_files/client-icon.webp" className={styles.secIcon} alt=""/></div>
+            <div className={styles.secHead}><h3 className={styles.secTitle}>Frequently Asked Questions</h3><img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/></div>
             <div className={styles.faqGrid}>
               {FAQS.map((faq,i)=>(
                 <motion.div key={i} className={`${styles.faqItem}${expandedFaq===i?" "+styles.faqItemOpen:""}`}
@@ -957,7 +957,7 @@ export default function HomePage() {
         {/* Blog */}
         <section className={`${styles.sec} ${styles.secLight}`}>
           <div className={styles.container}>
-            <div className={styles.secHead}><h3 className={styles.secTitle}>Latest Insights</h3><img src="/scape_data_files/client-icon.webp" className={styles.secIcon} alt=""/></div>
+            <div className={styles.secHead}><h3 className={styles.secTitle}>Latest Insights</h3><img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/></div>
             <motion.div className={styles.blogGrid} initial="hidden" whileInView="visible" viewport={REPLAY_VIEWPORT_LOW} variants={stagger}>
               {BLOG_POSTS.map((post,i)=>(
                 <motion.div key={i} className={styles.blogCard} variants={fadeUp} whileHover={{y:-6,boxShadow:"0 12px 36px rgba(0,0,0,0.06)"}}>
@@ -1002,7 +1002,7 @@ export default function HomePage() {
         {/* Testimonials */}
         <section className={styles.sec}>
           <div className={styles.container}>
-            <div className={styles.secHead}><h3 className={styles.secTitle}>What Our Clients Say</h3><img src="/scape_data_files/client-icon.webp" className={styles.secIcon} alt=""/></div>
+            <div className={styles.secHead}><h3 className={styles.secTitle}>What Our Clients Say</h3><img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/></div>
             <div className={styles.testiWrap}>
               <AnimatePresence mode="wait">
                 <motion.div key={testi} className={styles.testiCard} initial={{opacity:0,x:30}} animate={{opacity:1,x:0}} exit={{opacity:0,x:-30}} transition={{duration:0.4}}>
@@ -1035,7 +1035,7 @@ export default function HomePage() {
           <div className={styles.container}>
             <div className={styles.secHead}>
               <h3 className={`${styles.secTitle} ${styles.secTitleLight}`}>Get In Touch</h3>
-              <img src="/scape_data_files/client-icon.webp" className={styles.secIcon} alt=""/>
+              <img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/>
             </div>
             <p className={styles.secLead}>We believe that strong outcomes begin with a clear understanding of your data needs. Your feedback, questions, and inquiries are always welcome.</p>
             {submitted ? (

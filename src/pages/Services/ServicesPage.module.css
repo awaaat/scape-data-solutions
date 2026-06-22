@@ -299,7 +299,7 @@
   padding: 50px 0;
   position: relative;
   background: #ffffff; /* fallback */
-  background-image: url('/scape_data_files/ai-i.avif');
+  background-image: url('/Images/site-images/ai-i.avif');
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* optional parallax effect */

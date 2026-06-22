@@ -175,7 +175,7 @@ const PortfolioBIPage = () => {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          style={{ backgroundImage: 'url(/scape_data_files/bi-hero.jpg)' }}
+          style={{ backgroundImage: 'url(/Images/site-images/bi-hero.jpg)' }}
         >
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>

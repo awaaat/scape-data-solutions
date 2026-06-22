@@ -174,7 +174,7 @@ const PortfolioMobilePage = () => {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          style={{ backgroundImage: 'url(/scape_data_files/mobile-hero.jpg)' }}
+          style={{ backgroundImage: 'url(/Images/site-images/mobile-hero.jpg)' }}
         >
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>

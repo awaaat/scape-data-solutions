@@ -22,7 +22,7 @@ const TESTIMONIALS = [
     name: "Omar AlQabandi",
     role: "CEO",
     company: "BilBio Kuwait",
-    img: "/scape_data_files/Omar-AlQabandi.webp",
+    img: "/Images/site-images/Omar-AlQabandi.webp",
     quote:
       "The team delivered on time and on budget, with quality work. A true partner who understands our business.",
     rating: 5,
@@ -31,7 +31,7 @@ const TESTIMONIALS = [
     name: "Nathan French",
     role: "Director of I.T. / Marketing",
     company: "Treaterpro.com",
-    img: "/scape_data_files/nathan.webp",
+    img: "/Images/site-images/nathan.webp",
     quote:
       "The best team I've worked with for complex projects. They deliver results, not excuses.",
     rating: 5,
@@ -40,7 +40,7 @@ const TESTIMONIALS = [
     name: "Edward Mazzer",
     role: "CEO",
     company: "Tesi Group (Italy)",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "They understood our business needs and executed flawlessly on our data integration project.",
     rating: 5,
@@ -49,7 +49,7 @@ const TESTIMONIALS = [
     name: "Charles Johnson",
     role: "CEO",
     company: "BidLock, LLC",
-    img: "/scape_data_files/charles_johnson.webp",
+    img: "/Images/site-images/charles_johnson.webp",
     quote:
       "Phenomenal team. Professional, patient, and truly the best in the business.",
     rating: 5,
@@ -58,7 +58,7 @@ const TESTIMONIALS = [
     name: "Pedro Madeira Gomes",
     role: "CEO",
     company: "GoGuess, Portugal",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "Reliable, effective, and trustworthy. They understand our business needs and communicate clearly.",
     rating: 5,
@@ -67,7 +67,7 @@ const TESTIMONIALS = [
     name: "Paul Duhamel",
     role: "CEO",
     company: "Duhamel Psychology",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "Professional, cooperative, and delivered beyond expectations. Highly recommended.",
     rating: 5,
@@ -76,7 +76,7 @@ const TESTIMONIALS = [
     name: "Jessica Hoff",
     role: "CEO",
     company: "ID Solutions",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "Timely communication and exceptional service. A true partner, not just a vendor.",
     rating: 5,
@@ -85,7 +85,7 @@ const TESTIMONIALS = [
     name: "Mike Carlson",
     role: "CEO",
     company: "Luxxle App",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "The best team I've worked with. Outstanding professionalism and technical expertise.",
     rating: 5,
@@ -94,7 +94,7 @@ const TESTIMONIALS = [
     name: "Heather Atencio",
     role: "CEO",
     company: "Valley King Properties",
-    img: "/scape_data_files/heather.webp",
+    img: "/Images/site-images/heather.webp",
     quote:
       "We've worked with them for over 2 years on a complex project. They're integral to our success.",
     rating: 5,
@@ -103,7 +103,7 @@ const TESTIMONIALS = [
     name: "Joshua DuBois",
     role: "CEO",
     company: "Aerocast LLC",
-    img: "/scape_data_files/joshua.webp",
+    img: "/Images/site-images/joshua.webp",
     quote:
       "One of the best teams we've worked with. Highly recommended.",
     rating: 5,
@@ -112,7 +112,7 @@ const TESTIMONIALS = [
     name: "Sarah Chen",
     role: "CTO",
     company: "TechCorp Global",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "Their data engineering expertise helped us scale our platform to handle 10x the traffic without a hitch.",
     rating: 5,
@@ -121,7 +121,7 @@ const TESTIMONIALS = [
     name: "James Park",
     role: "VP of Analytics",
     company: "FinanceHub Inc",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "We reduced our reporting time from days to hours. Their dashboards are a game-changer.",
     rating: 5,
@@ -130,7 +130,7 @@ const TESTIMONIALS = [
     name: "Emily Watson",
     role: "Head of Product",
     company: "HealthTech Solutions",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "Our patient analytics went from zero to hero. The team built a solution that our doctors actually use.",
     rating: 5,
@@ -139,7 +139,7 @@ const TESTIMONIALS = [
     name: "Michael Rodriguez",
     role: "Director of Operations",
     company: "RetailMax",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "We saw a 35% increase in conversion within weeks of implementing their recommendation engine.",
     rating: 5,
@@ -148,7 +148,7 @@ const TESTIMONIALS = [
     name: "Lisa Thompson",
     role: "CIO",
     company: "Industrial Leader",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "They cut our downtime by 70% with predictive maintenance. The ROI was immediate.",
     rating: 5,
@@ -157,7 +157,7 @@ const TESTIMONIALS = [
     name: "David Kimani",
     role: "CEO",
     company: "CloudMatrix Solutions",
-    img: "/scape_data_files/tesi_img.webp",
+    img: "/Images/site-images/tesi_img.webp",
     quote:
       "A truly global team that delivers top‑tier results. We've partnered with them on multiple projects.",
     rating: 5,
@@ -218,7 +218,7 @@ const TestimonialsPage = () => {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          style={{ backgroundImage: 'url(/scape_data_files/Testimonials-Blog3-01.jpg)' }}
+          style={{ backgroundImage: 'url(/Images/site-images/Testimonials-Blog3-01.jpg)' }}
         >
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
@@ -234,7 +234,7 @@ const TestimonialsPage = () => {
           </div>
           {/* Floating second hero image */}
           <motion.img
-            src="/scape_data_files/Customer-Testimonials-SMB.webp"
+            src="/Images/site-images/Customer-Testimonials-SMB.webp"
             alt="Customer testimonials illustration"
             className={styles.heroImageFloat}
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
@@ -274,7 +274,7 @@ const TestimonialsPage = () => {
                         alt={TESTIMONIALS[index].name}
                         className={styles.carouselAvatar}
                         whileHover={{ scale: 1.05, borderColor: '#fdb840' }}
-                        onError={(e) => { e.target.src = '/scape_data_files/tesi_img.webp'; }} // fallback
+                        onError={(e) => { e.target.src = '/Images/site-images/tesi_img.webp'; }} // fallback
                       />
                       <div>
                         <strong className={styles.carouselName}>
@@ -360,7 +360,7 @@ const TestimonialsPage = () => {
                     alt={t.name}
                     className={styles.cardAvatar}
                     whileHover={{ scale: 1.05 }}
-                    onError={(e) => { e.target.src = '/scape_data_files/tesi_img.webp'; }}
+                    onError={(e) => { e.target.src = '/Images/site-images/tesi_img.webp'; }}
                   />
                   <div>
                     <h4 className={styles.cardName}>{t.name}</h4>

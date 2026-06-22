@@ -626,7 +626,7 @@ const ServicesPage = () => {
         <section
           className={styles.heroSection}
           style={{
-            backgroundImage: `url(/scape_data_files/services-banner.jpg)`,
+            backgroundImage: `url(/Images/site-images/services-banner.jpg)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             position: 'relative',
@@ -903,7 +903,7 @@ const ServicesPage = () => {
                             transition={{ type: "spring", stiffness: 300 }}
                           >
                             <img
-                              src="/scape_data_files/contentul-arroe.webp"
+                              src="/Images/site-images/contentul-arroe.webp"
                               alt=""
                               className={styles.arrowIcon}
                               onError={(e) => { e.target.style.display = "none"; }}

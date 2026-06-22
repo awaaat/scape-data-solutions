@@ -25,7 +25,7 @@ const PinterestSvg = () => (
 // ── Contact / office items (6 cells → 3 columns × 2 rows) ──────────
 const OFFICES = [
   {
-    icon: "/scape_data_files/phone_icon.webp",
+    icon: "/Images/site-images/phone_icon.webp",
     title: "Phone:",
     lines: [
       { text: "US: +1 (757) 598-0582",   href: "tel:+17575980582"   },
@@ -33,7 +33,7 @@ const OFFICES = [
     ],
   },
   {
-    icon: "/scape_data_files/email_icon.webp",
+    icon: "/Images/site-images/email_icon.webp",
     title: "General Inquiry:",
     lines: [
       { text: "info@scapedatasolutions.com",  href: "mailto:info@scapedatasolutions.com"  },
@@ -41,7 +41,7 @@ const OFFICES = [
     ],
   },
   {
-    icon: "/scape_data_files/us_flag.webp",
+    icon: "/Images/site-images/us_flag.webp",
     title: "US Office:",
     lines: [
       { text: "1024 Iron Point Road, Suite 200" },
@@ -50,7 +50,7 @@ const OFFICES = [
     ],
   },
   {
-    icon: "/scape_data_files/canada-flag.webp.webp",
+    icon: "/Images/site-images/canada-flag.webp.webp",
     title: "Canada Office:",
     lines: [
       { text: "400 Centre Street South" },
@@ -58,7 +58,7 @@ const OFFICES = [
     ],
   },
   {
-    icon: "/scape_data_files/pak_flag.webp",
+    icon: "/Images/site-images/pak_flag.webp",
     title: "Pakistan Office:",
     lines: [
       { text: "9th Floor, Tricon Corporate Centre" },
@@ -67,7 +67,7 @@ const OFFICES = [
     ],
   },
   {
-    icon: "/scape_data_files/nairobi-k.jpg",
+    icon: "/Images/site-images/nairobi-k.jpg",
     title: "Nairobi Office:",
     lines: [
       { text: "Global Trade Centre, 14th Floor"  },
@@ -89,14 +89,14 @@ const SOCIALS = [
 
 // ── Payment methods (doubled for infinite scroll) ───────────────────
 const PAYMENTS_BASE = [
-  { label: "PayPal",        img: "/scape_data_files/paypal.webp",        href: "https://www.paypal.com"     },
-  { label: "Wire Transfer", img: "/scape_data_files/wire-transfer.webp", href: "https://wiretransfer.io"    },
-  { label: "Mastercard",    img: "/scape_data_files/master.webp",        href: "https://www.mastercard.us"  },
-  { label: "Visa",          img: "/scape_data_files/visa.webp",          href: "https://visa.com"           },
-  { label: "Wise",          img: "/scape_data_files/wise.png",           href: "https://wise.com"           },
-  { label: "Payoneer",      img: "/scape_data_files/payoneer_f.webp",    href: "https://www.payoneer.com"   },
-  { label: "Remitly",       img: "/scape_data_files/RELY_BIG.webp",      href: "https://www.remitly.com"    },
-  { label: "WorldRemit",    img: "/scape_data_files/WorldRemit.webp",    href: "https://www.worldremit.com" },
+  { label: "PayPal",        img: "/Images/site-images/paypal.webp",        href: "https://www.paypal.com"     },
+  { label: "Wire Transfer", img: "/Images/site-images/wire-transfer.webp", href: "https://wiretransfer.io"    },
+  { label: "Mastercard",    img: "/Images/site-images/master.webp",        href: "https://www.mastercard.us"  },
+  { label: "Visa",          img: "/Images/site-images/visa.webp",          href: "https://visa.com"           },
+  { label: "Wise",          img: "/Images/site-images/wise.png",           href: "https://wise.com"           },
+  { label: "Payoneer",      img: "/Images/site-images/payoneer_f.webp",    href: "https://www.payoneer.com"   },
+  { label: "Remitly",       img: "/Images/site-images/RELY_BIG.webp",      href: "https://www.remitly.com"    },
+  { label: "WorldRemit",    img: "/Images/site-images/WorldRemit.webp",    href: "https://www.worldremit.com" },
 ];
 const PAYMENTS = [...PAYMENTS_BASE, ...PAYMENTS_BASE];
 

@@ -350,11 +350,11 @@ const PortfolioPage = () => {
 
             <div className={styles.heroImageStack}>
               <motion.div className={styles.heroImgSecondary} initial="hidden" animate={pageLoaded ? "visible" : "hidden"} variants={heroImgSecondaryVariant} whileHover={{ y: -6, transition: { duration: 0.35 } }}>
-                <img src="/scape_data_files/portfolio-1000x500-1-768x384.jpg" alt="Detail from a recent client engagement" />
+                <img src="/Images/site-images/portfolio-1000x500-1-768x384.jpg" alt="Detail from a recent client engagement" />
                 <div className={styles.heroImgFrame} />
               </motion.div>
               <motion.div className={styles.heroImgPrimary} initial="hidden" animate={pageLoaded ? "visible" : "hidden"} variants={heroImgPrimaryVariant} whileHover={{ y: -6, transition: { duration: 0.35 } }}>
-                <img src="/scape_data_files/Professional-portfolio-1472x828.webp" alt="Scape Data Solutions portfolio overview" />
+                <img src="/Images/site-images/Professional-portfolio-1472x828.webp" alt="Scape Data Solutions portfolio overview" />
                 <div className={styles.heroImgFrame} />
                 <span className={styles.heroImgCaption}>Field notes, 2022–2025</span>
               </motion.div>

@@ -152,7 +152,7 @@ const ClientsPage = () => {
         {/* HERO */}
         <motion.section className={styles.hero} initial="hidden" animate="visible" variants={fadeUp}>
           <div className={styles.heroBg}>
-            <img src="/scape_data_files/clients-1.jpg" alt="Our Clients" className={styles.heroBgImg} />
+            <img src="/Images/site-images/clients-1.jpg" alt="Our Clients" className={styles.heroBgImg} />
             <div className={styles.heroBgOverlay} />
           </div>
           <div className={styles.heroContent}>

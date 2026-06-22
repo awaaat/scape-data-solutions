@@ -216,7 +216,7 @@ export default function WhyUsPage() {
         <section
           className={pageStyles.hero}
           style={{
-            backgroundImage: `url('/scape_data_files/why-choose-us.png')`,
+            backgroundImage: `url('/Images/site-images/why-choose-us.png')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundAttachment: "fixed",
