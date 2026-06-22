@@ -122,7 +122,7 @@ export default function Navbar({ activeNav = "" }) {
       <div className={styles.mobileHeader}>
         <div className={styles.mContainer}>
           <Link to="/" className={styles.mobileLogo}>
-            <img src="/Images/site-images/logo.webp" alt="Scape Data Solutions" />
+            <img src="/Images/site-images/logo.svg" alt="Scape Data Solutions" />
           </Link>
           <button
             className={`${styles.burger}${navOpen ? " " + styles.burgerOpen : ""}`}
