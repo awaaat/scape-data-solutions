@@ -416,7 +416,7 @@ export default function HomePage() {
   const isCounterInView = useInView(counterRef,{once:false,amount:0.4});
   useEffect(()=>{
     if(!isCounterInView) return;
-    const targets={clients:1200,projects:3500,satisfaction:99.5,countries:60,years:23};
+    const targets={clients:1200,projects:3500,satisfaction:99.5,countries:60,years:6};
     let step=0; const steps=90;
     const iv=setInterval(()=>{
       step++; const ease=1-Math.pow(1-step/steps,3);

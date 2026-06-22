@@ -243,7 +243,7 @@ export default function CompanyPage() {
 
               {/* Subtext */}
               <p className={companyStyles.heroSubtext}>
-                {"A premier data analytics firm with over 50 years of combined experience, driving measurable results for businesses across the US & Canada."
+                {"A premier data analytics firm with over 7 years of combined experience, driving measurable results for businesses across the US & Canada."
                   .split(" ")
                   .map((word, i) => (
                     <motion.span
