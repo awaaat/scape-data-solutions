@@ -322,7 +322,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   padding: 16px 20px;
   min-width: 220px;
@@ -454,7 +454,7 @@
   position: absolute;
   top: -12px;
   right: -12px;
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   padding: 8px 14px;
   text-align: center;
@@ -572,7 +572,7 @@
   height: 38px;
   border-radius: 0;
   border: 1px solid #ddd;
-  background: #fff;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -613,7 +613,7 @@
   font-size: 11px;
   font-weight: 500;
   color: #555;
-  background: #fff;
+  background: transparent;
   transition: all 0.2s;
 }
 .trustBadge:hover {
@@ -640,11 +640,11 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   margin-top: 40px;
-  background: #fff;
+  background: transparent;
   border-radius: 0;
-  padding: 20px 24px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.03);
-  border: 1px solid #eee;
+  padding: 0;
+  box-shadow: none;
+  border: none;
   position: relative;
   z-index: 1;
 }
@@ -667,8 +667,8 @@
 .statCell:hover .statIcon {
   color: #fdb840 !important;
 }
-.statNum { font-size: 28px; font-weight: 800; color: #1a1a2e; }
-.statLbl { font-size: 13px; color: #888; }
+.statNum { font-size: 28px; font-weight: 900; color: #000000; }
+.statLbl { font-size: 13px; font-weight: 600; color: #222222; }
 
 /* -------- Fact Ticker -------- */
 .factTicker {
@@ -762,7 +762,7 @@
 /* -------- Intro Section -------- */
 .intro {
   padding: 60px 0;
-  background: #fff;
+  background: transparent;
 }
 .introWrap {
   display: grid;
@@ -806,7 +806,7 @@
   gap: 6px;
   padding: 4px 12px;
   background: #f8f9fc;
-  border: 1px solid #eee;
+  border: none;
   font-size: 11px;
   transition: all 0.2s;
 }
@@ -817,7 +817,7 @@
   background: #f8f9fc;
   border-radius: 0;
   padding: 24px 28px;
-  border: 1px solid #eee;
+  border: none;
 }
 .ipHeader {
   display: flex;
@@ -874,7 +874,7 @@
   color: #666;
   background: #ffffff;
   padding: 2px 10px;
-  border: 1px solid #eee;
+  border: none;
 }
 
 /* -------- Industries -------- */
@@ -884,11 +884,11 @@
   gap: 16px;
 }
 .industryCard {
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   padding: 20px 16px;
   text-align: center;
-  border: 1px solid #eee;
+  border: none;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -904,11 +904,11 @@
   gap: 20px;
 }
 .growthCard {
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0,0,0,0.03);
-  border: 1px solid #eee;
+  border: none;
   transition: all 0.3s;
   padding: 24px 20px;
   display: flex;
@@ -960,11 +960,11 @@
   gap: 20px;
 }
 .servCard {
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   padding: 28px 18px 22px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.03);
-  border: 1px solid #eee;
+  border: none;
   transition: all 0.3s;
   cursor: pointer;
   min-height: 200px;
@@ -1034,7 +1034,7 @@
   display: none;
   position: absolute;
   inset: 0;
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   padding: 20px;
   flex-direction: column;
@@ -1078,7 +1078,7 @@
   padding: 20px;
 }
 .lightboxContent {
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   max-width: 720px;
   width: 100%;
@@ -1266,7 +1266,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #fff;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1323,7 +1323,7 @@
   justify-content: center;
   width: 180px;
   height: 100px;
-  background: #fff;
+  background: transparent;
   border-radius: 8px;
   border: 1px solid #e8e8e8;
   padding: 12px 16px;           /* reduce padding slightly */
@@ -1350,7 +1350,7 @@
   justify-content: center;
   height: 100px;
   padding: 16px 24px;
-  background: #fff;
+  background: transparent;
   border-radius: 8px;
   border: 1px solid #e8e8e8;
   flex-shrink: 0;
@@ -1447,12 +1447,12 @@
   padding: 0;
 }
 .projCard {
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s;
-  border: 1px solid #eee;
+  border: none;
 }
 .projImg { position: relative; overflow: hidden; }
 .projImg img {
@@ -1647,8 +1647,8 @@
   align-items: center;
   gap: 18px;
   padding: 12px 18px;
-  background: #fff;
-  border: 1px solid #eee;
+  background: transparent;
+  border: none;
   transition: all 0.3s;
   cursor: pointer;
 }
@@ -1670,7 +1670,7 @@
 .processContent { flex: 1; }
 .processTitle { font-size: 16px; font-weight: 600; margin: 0; }
 .processDesc { font-size: 14px; color: #666; line-height: 1.6; margin: 4px 0 0; }
-.procHint { text-align: center; font-size: 13px; color: #888; margin-top: 12px; }
+.procHint { text-align: center; font-size: 13px; font-weight: 600; color: #222222; margin-top: 12px; }
 
 /* -------- FAQ -------- */
 .faqGrid {
@@ -1679,8 +1679,8 @@
   gap: 16px;
 }
 .faqItem {
-  background: #fff;
-  border: 1px solid #eee;
+  background: transparent;
+  border: none;
   padding: 14px 18px;
   transition: all 0.3s;
 }
@@ -1712,11 +1712,11 @@
   gap: 24px;
 }
 .blogCard {
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0,0,0,0.03);
-  border: 1px solid #eee;
+  border: none;
   transition: all 0.3s;
   padding: 20px 22px 22px;
 }
@@ -1766,11 +1766,11 @@
 /* -------- Testimonials -------- */
 .testiWrap { max-width: 700px; margin: 0 auto; }
 .testiCard {
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   padding: 28px 32px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-  border: 1px solid #eee;
+  border: none;
 }
 .testiTop {
   display: flex;
@@ -1786,7 +1786,7 @@
   transition: all 0.3s;
 }
 .testiName { font-size: 16px; font-weight: 600; }
-.testiRole { font-size: 13px; color: #888; margin: 0; }
+.testiRole { font-size: 13px; font-weight: 600; color: #222222; margin: 0; }
 .stars { display: flex; gap: 2px; }
 .testiQ {
   font-size: 18px;
@@ -1822,7 +1822,7 @@
   height: 40px;
   border-radius: 0;
   border: 1px solid #ddd;
-  background: #fff;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1860,7 +1860,7 @@
   width: 100%;
   padding: 10px 14px;
   border: 1px solid #ddd;
-  background: #fff;
+  background: transparent;
   color: #333;
   font-size: 14px;
   transition: border 0.2s;
@@ -1948,7 +1948,7 @@
 .offItem p { font-size: 13px; color: #666; margin: 0; line-height: 1.4; }
 
 .footMain {
-  background: #fff;
+  background: transparent;
   padding: 40px 0 20px;
   border-top: 1px solid #e8e8e8;
 }
@@ -2041,7 +2041,7 @@
   padding: 14px 0;
   border-top: 1px solid #e8e8e8;
 }
-.copyright p { margin: 0; font-size: 13px; color: #888; }
+.copyright p { margin: 0; font-size: 13px; font-weight: 600; color: #222222; }
 
 /* -------- Side Fixed -------- */
 .sideFixed {
@@ -2112,11 +2112,11 @@
   right: 0;
   width: 340px;
   max-width: 80vw;
-  background: #fff;
+  background: transparent;
   border-radius: 0;
   box-shadow: 0 8px 40px rgba(0,0,0,0.06);
   overflow: hidden;
-  border: 1px solid #eee;
+  border: none;
 }
 .chatHeader {
   display: flex;
@@ -2167,13 +2167,13 @@
   max-width: 80%;
   line-height: 1.4;
 }
-.chatMsgBot { background: #fff; border: 1px solid #eee; align-self: flex-start; }
+.chatMsgBot { background: transparent; border: none; align-self: flex-start; }
 .chatMsgUser { background: #fdb840; color: #fff; align-self: flex-end; }
 .chatInput {
   display: flex;
   gap: 8px;
   padding: 10px 14px;
-  background: #fff;
+  background: transparent;
   border-top: 1px solid #eee;
 }
 .chatInput input {
@@ -2206,7 +2206,7 @@
   width: 44px;
   height: 44px;
   border-radius: 0;
-  background: #fff;
+  background: transparent;
   color: #1a1a2e;
   border: 2px solid #fdb840;
   cursor: pointer;
@@ -2495,26 +2495,6 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(253,184,64,0.2);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .whyGrid { display: flex; flex-direction: column; max-width: 780px; margin: 0 auto; }
 .whyCardHeader { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
