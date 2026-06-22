@@ -214,15 +214,6 @@ export default function PageLayout({ children, activeNav = "" }) {
         >
           <i className="fab fa-whatsapp" /> WhatsApp
         </motion.a>
-        <motion.a
-          href="https://teams.live.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${styles.sideBtn} ${styles.sideBtnT}`}
-          whileHover={{ x: 6 }}
-        >
-          <i className="fab fa-microsoft" /> Ms Teams
-        </motion.a>
       </div>
 
       {/* ── Chat widget ── */}

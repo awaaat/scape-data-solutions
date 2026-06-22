@@ -392,8 +392,9 @@
   min-height: 100vh;
   background: #fafafa;
   display: flex;
-  align-items: center;
-  padding: 80px 0 60px;
+  align-items: flex-start;    /* ← change from "center" to "flex-start" */
+  padding: 15px 0 0 60px;          /* ← change "80px 0 60px" to "0 0 60px" */
+  margin: 0;                  /* ← add this to be safe */
   overflow: hidden;
 }
 .heroBg {
@@ -426,18 +427,44 @@
 }
 .heroWrap {
   display: flex;
-  align-items: center;
+  align-items: flex-start;   /* ← change from center to flex-start */
   gap: 60px;
   position: relative;
   z-index: 1;
 }
-.heroText { flex: 1; }
+.heroText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ← add this */
+}
+
+.heroBtnRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
 .heroDevices { flex: 1.1; position: relative; }
+
+.heroStatsParagraph {
+  margin-top: 28px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+  padding: 0 12px;
+}
+
 .devGroup {
   display: flex;
   align-items: flex-end;
   gap: 16px;
+  margin-top: 30px;   
 }
+
 .devLaptop { flex: 2; }
 .devLaptop img,
 .devTablet img,
@@ -454,13 +481,14 @@
   position: absolute;
   top: -12px;
   right: -12px;
-  background: transparent;
+  background: #ffffff;        /* ← was transparent */
   border-radius: 0;
   padding: 8px 14px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
   border: 2px solid #fdb840;
-}
+} 
+
 .devBadgeVal { display: block; font-size: 20px; font-weight: 800; color: #fdb840; }
 .devBadgeLbl { display: block; font-size: 8px; text-transform: uppercase; color: #888; letter-spacing: 0.5px; }
 
@@ -566,7 +594,9 @@
   align-items: center;
   gap: 16px;
   margin-top: 20px;
+  justify-content: center;   /* ← add this */
 }
+
 .heroArrow {
   width: 38px;
   height: 38px;
@@ -1078,7 +1108,7 @@
   padding: 20px;
 }
 .lightboxContent {
-  background: transparent;
+  background: #ffffff;
   border-radius: 0;
   max-width: 720px;
   width: 100%;
@@ -1751,6 +1781,7 @@
 }
 .blogExcerpt { font-size: 14px; color: #666; line-height: 1.6; }
 .blogLink {
+  color: #fdb840;
   background: transparent;
   border: none;
   font-weight: 600;

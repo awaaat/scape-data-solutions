@@ -1,5 +1,6 @@
 // src/pages/Home/HomePage.jsx
-// Final version with fixed reCAPTCHA and visible "Why Choose Us" heading
+// Final version with fixed reCAPTCHA, visible "Why Choose Us" heading,
+// always-visible stats numbers, and full-length blog content
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
@@ -60,7 +61,7 @@ const SLIDES = [
     sub: "Build a data foundation that grows with you. Handle growth seamlessly with enterprise-grade solutions that protect your business and your customers.",
     accent: "#fdb840",
     imgLaptop: "/Images/site-images/mb-lap.webp",
-    imgTab: "/Images/site-images/mb-tab.webp",
+    imgTab: "/Images/site-images/home-bnr-tab-img.png",
     imgMobile: "/Images/site-images/mb-mob.webp",
     stat: { val: "3,500+", label: "Projects Delivered" },
     tag: "SCALABLE GROWTH",
@@ -83,15 +84,68 @@ const SERVICES = [
 ];
 
 const BLOG_POSTS = [
-  { title:"How AI Can Grow Your Business",        excerpt:"Practical ways businesses are using AI to reduce costs, increase revenue, and stay ahead of competitors.",                              date:"June 15, 2026", slug:"future-of-ai-analytics",         category:"AI",         readTime:"5 min", color:"#fdb840", content:`Businesses that adopt AI are growing faster and reducing costs. We share practical examples of how companies are using AI to predict customer behavior, automate operations, and make smarter decisions.` },
-  { title:"Data Security Without The Headache",  excerpt:"Simple strategies to protect your business and build customer trust without becoming a security expert.",    date:"June 5, 2026",  slug:"data-governance-strategies",    category:"Governance", readTime:"7 min", color:"#00d4ff", content:`Data security doesn't have to be complicated. We break down simple, practical steps to protect your business and your customers — without overwhelming your team.` },
-  { title:"Real-Time Decisions = Real Results",       excerpt:"Why businesses that act on data in real-time are winning — and how you can too.",           date:"May 20, 2026",  slug:"real-time-analytics-game-changer", category:"Analytics", readTime:"6 min", color:"#a259ff", content:`The businesses that succeed today are the ones that act fast. We show you how real-time insights help you spot problems instantly, seize opportunities immediately, and stay ahead of competition.` },
-  { title:"Cloud vs On-Premise: What's Right For You?",            excerpt:"A straightforward guide to help you decide the best deployment strategy for YOUR business.",  date:"May 10, 2026",  slug:"cloud-vs-on-premise-analytics",  category:"Cloud",      readTime:"8 min", color:"#00e676", content:`Cloud or on-premise? We break down the pros and cons in plain English — so you can make the right decision for your business.` },
-  { title:"Building A Data-Driven Culture",            excerpt:"Practical steps to get your whole organization making smarter, data-backed decisions.",  date:"April 28, 2026", slug:"data-driven-culture",            category:"Culture",    readTime:"6 min", color:"#ff6b6b", content:`Technology is the easy part. Culture is the hard part. We share practical steps to shift your organization from gut-feel decisions to data-backed strategy.` },
-  { title:"MLOps: Making AI Actually Work",                         excerpt:"How to move AI from experiments to real business impact without the headaches.", date:"April 15, 2026", slug:"rise-of-mlops",                  category:"MLOps",      readTime:"7 min", color:"#fdb840", content:`Most AI never makes it to production. We show you how to build AI that actually delivers business value — reliably and at scale.` },
+  {
+    title: "How AI Can Grow Your Business",
+    excerpt: "Most companies are sitting on AI use cases they haven't identified yet, things like demand forecasting, churn prediction, and automated quality checks that pay for themselves within a quarter. We walk through the three areas where AI tends to deliver the fastest return, and how to tell if your data is actually ready for it.",
+    date: "June 15, 2026",
+    slug: "future-of-ai-analytics",
+    category: "AI",
+    readTime: "5 min",
+    color: "#fdb840",
+    content: `Most companies don't lack data, they lack a clear view of which AI use case will actually move the needle for their specific business. We've found that the fastest wins tend to cluster around three areas: predicting which customers are about to churn so you can intervene before they leave, forecasting demand closely enough to cut excess inventory without risking stockouts, and automating the repetitive review work that eats up your team's time without adding real value. In each case, the businesses that succeed start small. They pick one well defined problem, use the data they already have, and measure results in weeks rather than waiting for a sweeping transformation. The companies that struggle tend to do the opposite: they try to overhaul everything at once before proving the model works on a narrow case. If you're evaluating where to start, look first at whichever process currently relies on someone's gut feeling and a spreadsheet. That's usually where AI earns its keep fastest.`,
+  },
+  {
+    title: "Data Security Without The Headache",
+    excerpt: "Compliance doesn't have to mean hiring a dedicated security team or grinding your roadmap to a halt. We break down a practical, staged approach to GDPR, HIPAA, and SOC 2 readiness that most growing companies can implement in a few months, starting with the controls that matter most.",
+    date: "June 5, 2026",
+    slug: "data-governance-strategies",
+    category: "Governance",
+    readTime: "7 min",
+    color: "#00d4ff",
+    content: `Security and compliance work tends to get postponed because it feels like an enormous, vague project with no clear starting point. In practice, it breaks down into a manageable sequence. Start by mapping where sensitive data actually lives across your systems, since most teams are surprised by how scattered it is. From there, prioritize access controls: limiting who can see what is usually the single highest impact change you can make, and it's also the one auditors check first. Encryption at rest and in transit should come next, followed by a logging setup that lets you answer "who accessed this and when" without digging through raw server logs. Finally, build a lightweight incident response plan before you need one, not after. None of this requires a large dedicated team. With the right tooling and a clear sequence, a small group can get a mid sized company to GDPR and SOC 2 readiness within a few months, and HIPAA readiness shortly after if health data is involved. The key is treating it as a series of concrete, scoped steps rather than one intimidating initiative.`,
+  },
+  {
+    title: "Real-Time Decisions = Real Results",
+    excerpt: "The gap between businesses that see a problem in real time and those that find out about it the next morning is widening fast. We look at what real-time analytics actually requires in practice, what it costs, and which businesses get the most value from making the jump.",
+    date: "May 20, 2026",
+    slug: "real-time-analytics-game-changer",
+    category: "Analytics",
+    readTime: "6 min",
+    color: "#a259ff",
+    content: `There's a meaningful difference between knowing what happened in your business yesterday and knowing what's happening right now. A retailer that notices a sudden spike in cart abandonment within minutes can investigate and fix a broken checkout flow before it costs thousands of dollars in lost sales. The same retailer relying on next day reports finds out only after the damage is done. Real time analytics doesn't require ripping out your existing systems. Most businesses can start by identifying the two or three metrics where speed actually changes the outcome, things like fraud signals, site errors, or inventory thresholds, and building lightweight streaming pipelines around just those. The infrastructure choices matter less than people assume. What matters more is defining clear thresholds for when a metric should trigger a human response, because a real time dashboard nobody is watching delivers no more value than a weekly report. Businesses that get this right typically see faster issue resolution within the first month and meaningfully better customer retention within two or three quarters.`,
+  },
+  {
+    title: "Cloud vs On-Premise: What's Right For You?",
+    excerpt: "There's no universal right answer here, despite what most vendors will tell you. We compare the real cost, security, and performance tradeoffs of cloud and on-premise infrastructure for different company sizes and industries, so you can make the call with your specific numbers instead of someone else's marketing.",
+    date: "May 10, 2026",
+    slug: "cloud-vs-on-premise-analytics",
+    category: "Cloud",
+    readTime: "8 min",
+    color: "#00e676",
+    content: `Cloud providers will tell you cloud is always cheaper and more flexible. On-premise vendors will tell you the opposite. The honest answer depends heavily on your usage pattern and industry. If your workloads are spiky, meaning you need a lot of computing power some days and very little on others, cloud almost always wins because you only pay for what you use. If your workloads are steady and predictable around the clock, the economics shift, and a well utilized on-premise setup can end up costing less over a three to five year horizon. Regulated industries like healthcare and finance often lean on-premise or hybrid for specific data sets due to compliance requirements, even when cloud would otherwise make sense. The mistake we see most often is companies choosing based on what's trendy rather than running the actual numbers for their workload. Before deciding, model out your realistic usage over the next two years, including growth, and price both options honestly. That fifteen minutes of math will tell you more than any vendor pitch.`,
+  },
+  {
+    title: "Building A Data-Driven Culture",
+    excerpt: "Buying the right tools is the easy part. Getting your team to actually trust and use data when making decisions is the hard part, and it's where most data initiatives quietly fail. We share what's worked for organizations that successfully made the shift from gut feeling to evidence.",
+    date: "April 28, 2026",
+    slug: "data-driven-culture",
+    category: "Culture",
+    readTime: "6 min",
+    color: "#ff6b6b",
+    content: `Plenty of companies invest heavily in dashboards and analytics platforms only to find that decisions in the room still get made based on whoever speaks most confidently. The technology was never the bottleneck. The real obstacle is usually trust: people don't act on data they don't understand or believe in. Building a genuinely data driven culture starts with making data accessible and explainable to the people who need to use it, not just to the analysts who built the dashboard. It also requires leadership to visibly change a decision based on data at least once, publicly, so the team sees that the numbers actually carry weight. Training matters less than people expect. What matters more is repetition: small wins where a data backed decision clearly outperformed a gut call, repeated often enough that it becomes the default way people think. Organizations that pull this off usually see the shift happen gradually over six to twelve months, not overnight, and it tends to start with one or two visible champions rather than a company wide mandate.`,
+  },
+  {
+    title: "MLOps: Making AI Actually Work",
+    excerpt: "The majority of machine learning models built inside companies never make it into production, and the ones that do often degrade quietly within months without anyone noticing. We explain what MLOps actually involves and why it's the difference between a model that works in a demo and one that keeps working for years.",
+    date: "April 15, 2026",
+    slug: "rise-of-mlops",
+    category: "MLOps",
+    readTime: "7 min",
+    color: "#fdb840",
+    content: `Building a machine learning model that performs well in a notebook is the easy part. Keeping that model accurate and reliable once it's deployed and facing real world data is where most projects quietly fail. Models drift over time as customer behavior, market conditions, and underlying data patterns shift, and without monitoring in place, a model can degrade for months before anyone realizes its predictions have become unreliable. MLOps is the discipline that closes this gap. It covers automated retraining pipelines, monitoring for performance drift, version control for both data and models, and clear rollback procedures when something goes wrong. None of this is exciting work, which is exactly why it gets skipped. But the businesses that invest in it see a very different outcome: models that stay accurate for years instead of months, and engineering teams that catch problems in dashboards instead of in angry customer emails. If you have a model running in production today with no monitoring around it, that's the single highest priority gap to close before building anything new.`,
+  },
 ];
 
-// ── Technologies: pill chips with icon URL + name (LEADconcept style) ──
 const TECH_ROW1 = [
   { name:"Python",        icon:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
   { name:"TensorFlow",    icon:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
@@ -133,7 +187,6 @@ const TECH_ROW2 = [
   { name:"Vertex AI",     icon:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
 ];
 
-// ── Clients: with logo image paths (kept for potential use, but the section is removed) ──
 const CLIENTS_WITH_LOGOS = [
   { name:"Versi Systems",          logo:"/Images/site-images/versi-logo.webp",       fallback:"Versi Systems" },
   { name:"Valley King Properties", logo:"/Images/site-images/valleyking-logo.webp",  fallback:"Valley King" },
@@ -255,7 +308,6 @@ const DATA_FACTS = [
   "Our clients save an average of $4.2M per year with our solutions.",
 ];
 
-// Duplicate for seamless marquee
 const T1_DUP = [...TECH_ROW1, ...TECH_ROW1];
 const T2_DUP = [...TECH_ROW2, ...TECH_ROW2];
 const PARTNERS_DUP = [...PARTNERS, ...PARTNERS];
@@ -434,23 +486,14 @@ export default function HomePage() {
 
   const maxLive = Math.max(...liveData);
 
-  // ── ClientLogoCard component – no longer used because the section is removed, but kept for safety ──
   const ClientCard = ({ client }) => {
     const [imgErr, setImgErr] = useState(false);
     if (imgErr) {
-      return (
-        <div className={styles.clientTextCard}>
-          {client.fallback || client.name}
-        </div>
-      );
+      return <div className={styles.clientTextCard}>{client.fallback || client.name}</div>;
     }
     return (
       <div className={styles.clientLogoCard}>
-        <img
-          src={client.logo}
-          alt={client.name}
-          onError={() => setImgErr(true)}
-        />
+        <img src={client.logo} alt={client.name} onError={() => setImgErr(true)} />
       </div>
     );
   };
@@ -474,8 +517,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-
-      {/* Floating live metrics widget - REMOVED as requested */}
 
       {/* Live metrics ticker */}
       <div className={styles.metricsTicker}>
@@ -510,11 +551,11 @@ export default function HomePage() {
           </div>
           <div className={styles.heroGrid}/>
           <motion.div className={styles.heroBg} style={{y:heroParallax}}/>
-          <motion.div className={styles.container} style={{opacity:heroOpacity}}>
+          <motion.div className={styles.container}>
             <div className={styles.heroWrap}>
 
               {/* Left */}
-              <motion.div className={styles.heroText} initial="hidden" whileInView="visible" viewport={REPLAY_VIEWPORT} variants={slideL}>
+              <motion.div className={styles.heroText} style={{opacity:heroOpacity}} initial="hidden" whileInView="visible" viewport={REPLAY_VIEWPORT} variants={slideL}>
                 <AnimatePresence mode="wait">
                   <motion.div key={slide} initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-20}} transition={{duration:0.5}}>
                     <motion.div className={styles.heroBadge} initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{delay:0.2}}>
@@ -532,7 +573,7 @@ export default function HomePage() {
                   <Terminal size={13}/>&nbsp;We help you achieve&nbsp;<span className={styles.typed}>{typedText}<span className={styles.caret}>|</span></span>
                 </div>
 
-                <motion.div initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={REPLAY_VIEWPORT} transition={{duration:0.5}}>
+                <motion.div initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={REPLAY_VIEWPORT} transition={{duration:0.5}} style={{display:"flex",gap:"12px",flexWrap:"wrap",justifyContent:"center"}}>
                   <Link to="/contact" className={styles.heroBtn} onClick={addRipple} style={{borderColor:SLIDES[slide].accent}}>
                     {ripples.map(r=><span key={r.id} className={styles.ripple} style={{left:r.x,top:r.y}}/>)}
                     Start Growing Your Business <ArrowRight size={16}/>
@@ -567,7 +608,7 @@ export default function HomePage() {
               </motion.div>
 
               {/* Right - Devices */}
-              <motion.div className={styles.heroDevices} initial="hidden" whileInView="visible" viewport={REPLAY_VIEWPORT} variants={slideR}>
+              <div className={styles.heroDevices}>
                 <AnimatePresence mode="wait">
                   <motion.div key={`dev-${slide}`} className={styles.devGroup}
                     initial={{opacity:0,scale:0.9,rotateY:5}} animate={{opacity:1,scale:1,rotateY:0}} exit={{opacity:0,scale:0.9,rotateY:-5}}
@@ -587,7 +628,18 @@ export default function HomePage() {
                     </motion.div>
                   </motion.div>
                 </AnimatePresence>
-              </motion.div>
+                {/* ── Stats strip below devices ── */}
+                
+                <p className={styles.heroStatsParagraph}>
+                    You didn't build your business by guessing, and you shouldn't have to run it that way. 
+                    With 98% model accuracy, 99.9% uptime, and 3,500+ successful projects across 60+ countries, 
+                    you get more than just reports. You get certainty, clear insights and 
+                    predictive insights that reveal your next revenue opportunity before your competitors see it. 
+                    This is about reducing your risk, saving your team's time, and putting control back where it belongs – 
+                   The fastest way to grow isn't working harder, it's knowing exactly 
+                    where to focus.
+                </p>
+              </div>
 
             </div>
 
@@ -718,9 +770,7 @@ export default function HomePage() {
           </div>
         </motion.section>
 
-        {/* ════════════════════════════════════════════════════════════════
-            WHY CHOOSE US – with background image, transparent icons, and highly visible heading
-            ════════════════════════════════════════════════════════════════ */}
+        {/* WHY CHOOSE US */}
         <section className={styles.sec} style={{}}>
           <div className={styles.container}>
             <div className={styles.secHead}>
@@ -744,7 +794,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ═══ SERVICES ═══ */}
+        {/* SERVICES */}
         <section className={`${styles.sec} ${styles.secLight}`}>
           <div className={styles.container}>
             <div className={styles.secHead}><h3 className={styles.secTitle}>Our Services</h3><img src="/Images/site-images/client-icon.webp" className={styles.secIcon} alt=""/></div>
@@ -797,7 +847,7 @@ export default function HomePage() {
           )}
         </AnimatePresence>
 
-        {/* ═══ TECHNOLOGIES – LEADconcept pill chips with icon + name ═══ */}
+        {/* TECHNOLOGIES */}
         <section className={`${styles.sec} ${styles.secGrey}`}>
           <div className={styles.container}>
             <div className={styles.secHead}>
@@ -805,40 +855,24 @@ export default function HomePage() {
             </div>
           </div>
           <div className={styles.techBlock}>
-            {/* Row 1 – left to right */}
             <div className={styles.marqueeRow}>
               <div className={styles.marqueeTrack}>
                 {T1_DUP.map((tech, i) => (
                   <div key={i} className={styles.techChip}>
                     <div className={styles.techChipIcon}>
-                      <img
-                        src={tech.icon}
-                        alt={tech.name}
-                        onError={e => {
-                          e.target.style.display = "none";
-                          e.target.parentNode.innerHTML = `<span style="font-size:10px;font-weight:700;color:#1a3a8f">${tech.name.slice(0,2).toUpperCase()}</span>`;
-                        }}
-                      />
+                      <img src={tech.icon} alt={tech.name} onError={e => { e.target.style.display = "none"; e.target.parentNode.innerHTML = `<span style="font-size:10px;font-weight:700;color:#1a3a8f">${tech.name.slice(0,2).toUpperCase()}</span>`; }} />
                     </div>
                     <span className={styles.techChipName}>{tech.name}</span>
                   </div>
                 ))}
               </div>
             </div>
-            {/* Row 2 – right to left */}
             <div className={styles.marqueeRow}>
               <div className={`${styles.marqueeTrack} ${styles.marqueeRev}`}>
                 {T2_DUP.map((tech, i) => (
                   <div key={i} className={styles.techChip}>
                     <div className={styles.techChipIcon}>
-                      <img
-                        src={tech.icon}
-                        alt={tech.name}
-                        onError={e => {
-                          e.target.style.display = "none";
-                          e.target.parentNode.innerHTML = `<span style="font-size:10px;font-weight:700;color:#1a3a8f">${tech.name.slice(0,2).toUpperCase()}</span>`;
-                        }}
-                      />
+                      <img src={tech.icon} alt={tech.name} onError={e => { e.target.style.display = "none"; e.target.parentNode.innerHTML = `<span style="font-size:10px;font-weight:700;color:#1a3a8f">${tech.name.slice(0,2).toUpperCase()}</span>`; }} />
                     </div>
                     <span className={styles.techChipName}>{tech.name}</span>
                   </div>
@@ -847,8 +881,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
-        {/* ═══ Our Clients section REMOVED per request ═══ */}
 
         {/* Partners & Awards */}
         <section className={`${styles.sec} ${styles.secLight}`}>
@@ -858,7 +890,7 @@ export default function HomePage() {
           <div className={styles.partnersMarquee}><div className={styles.partnersTrack}>{PARTNERS_DUP.map((p,i)=><motion.div key={i} className={styles.partnerChip} whileHover={{scale:1.07,backgroundColor:"#fdb840",color:"#fff"}} transition={{duration:0.2}}>{p}</motion.div>)}</div></div>
         </section>
 
-        {/* Case Studies – images removed */}
+        {/* Case Studies */}
         <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={REPLAY_VIEWPORT_LOW} variants={stagger}>
           <div className={styles.container}>
             <div className={styles.secHead}>
@@ -872,7 +904,6 @@ export default function HomePage() {
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   onClick={() => setExpandedCase(expandedCase === i ? null : i)}>
-                  {/* Image wrapper and badge completely removed */}
                   <div className={styles.caseBody}>
                     <h5 className={styles.caseTitle}>{s.title}</h5>
                     <p className={styles.caseClient}>{s.client}</p>
@@ -969,7 +1000,7 @@ export default function HomePage() {
                   <div className={styles.blogDate}>{post.date}</div>
                   <h4 className={styles.blogTitle}>{post.title}</h4>
                   <p className={styles.blogExcerpt}>{post.excerpt}</p>
-                  <button className={styles.blogLink} onClick={()=>setSelectedBlog(post)} style={{color:post.color}}>
+                  <button className={styles.blogLink} onClick={()=>setSelectedBlog(post)}>
                     Read More <ArrowRight size={12}/>
                   </button>
                 </motion.div>
@@ -1079,7 +1110,6 @@ export default function HomePage() {
                     <input type="checkbox" checked={formData.human} onChange={e => change("human", e.target.checked)} />
                     <span>I'm not a robot</span>
                     <div className={styles.captchaLogo}>
-                      {/* Fixed: use a reliable inline SVG instead of broken image */}
                       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         <path d="M9 12l2 2 4-4"/>
@@ -1106,7 +1136,6 @@ export default function HomePage() {
       {/* Side fixed */}
       <div className={styles.sideFixed}>
         <motion.a href="https://wa.me/+923218465214" className={`${styles.sideBtn} ${styles.sideBtnWA}`} whileHover={{x:6}} transition={{type:"spring",stiffness:380}}><i className="fab fa-whatsapp"/> WhatsApp</motion.a>
-        <motion.a href="https://teams.live.com" target="_blank" rel="noopener noreferrer" className={`${styles.sideBtn} ${styles.sideBtnT}`} whileHover={{x:6}} transition={{type:"spring",stiffness:380}}><i className="fab fa-microsoft"/> Ms Teams</motion.a>
       </div>
 
       {/* Chat widget */}
