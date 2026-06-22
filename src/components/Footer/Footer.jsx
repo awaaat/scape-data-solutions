@@ -67,7 +67,7 @@ const OFFICES = [
     ],
   },
   {
-    icon: "/scape_data_files/nairobi-office.webp",
+    icon: "/scape_data_files/nairobi-k.jpg",
     title: "Nairobi Office:",
     lines: [
       { text: "Global Trade Centre, 14th Floor"  },

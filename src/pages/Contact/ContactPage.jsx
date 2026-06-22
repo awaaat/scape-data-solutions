@@ -1,8 +1,8 @@
 // src/pages/ContactPage.jsx
 import {
-  CheckCircle, Mail, MapPin, Phone, Send, ChevronUp
+  CheckCircle, Mail, MapPin, Phone, Send, ChevronUp, Sparkles, ArrowRight
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./ContactPage.module.css";
@@ -11,7 +11,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { apiService } from "../../services/api";
 
-// ─── Motion variants ──────────────────────────────────────────────
+// ─── Motion variants ─────────────────────────────────────────────
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -26,40 +26,91 @@ const slideR = {
 };
 const REPLAY_VIEWPORT = { once: false, amount: 0.15 };
 
+// Typed headline words cycling through
+const TYPED_WORDS = [
+  "a Free Consultation",
+  "Real Business Results",
+  "a Clear Data Roadmap",
+  "Measurable ROI",
+  "Your Competitive Advantage",
+];
+
 export default function ContactPage() {
   const formRef = useRef(null);
 
-  const [showTop, setShowTop] = useState(false);
+  // ── State ──────────────────────────────────────────────────────
+  const [showTop,    setShowTop]    = useState(false);
+  const [submitted,  setSubmitted]  = useState(false);
+  const [loading,    setLoading]    = useState(false);
+  const [error,      setError]      = useState(null);
+  const [particles,  setParticles]  = useState([]);
+  const [ripples,    setRipples]    = useState([]);
+  const [typedText,  setTypedText]  = useState("");
+  const [wordIdx,    setWordIdx]    = useState(0);
+  const [pulse,      setPulse]      = useState(false);
 
   const [formData, setFormData] = useState({
     name: "", email: "", company: "", phone: "", service: "", message: ""
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  // ─── Effects ──────────────────────────────────────────────────
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, []);
+  // ── Effects ────────────────────────────────────────────────────
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, []);
 
   useEffect(() => {
-    const handleScroll = () => setShowTop(window.scrollY > 500);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const h = () => setShowTop(window.scrollY > 500);
+    window.addEventListener("scroll", h);
+    return () => window.removeEventListener("scroll", h);
   }, []);
 
-  // ─── Handlers ──────────────────────────────────────────────────
+  // Spawn floating particles on hero
+  useEffect(() => {
+    setParticles(Array.from({ length: 40 }, () => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 1,
+      duration: Math.random() * 12 + 6,
+      delay: Math.random() * 5,
+      opacity: Math.random() * 0.25 + 0.05,
+    })));
+  }, []);
+
+  // Typewriter effect cycling through words
+  useEffect(() => {
+    let i = 0;
+    const word = TYPED_WORDS[wordIdx];
+    setTypedText("");
+    const iv = setInterval(() => {
+      setTypedText(word.slice(0, i + 1));
+      i++;
+      if (i >= word.length) {
+        clearInterval(iv);
+        setTimeout(() => setWordIdx(p => (p + 1) % TYPED_WORDS.length), 2000);
+      }
+    }, 65);
+    return () => clearInterval(iv);
+  }, [wordIdx]);
+
+  // Periodic live pulse on form
+  useEffect(() => {
+    const iv = setInterval(() => { setPulse(true); setTimeout(() => setPulse(false), 600); }, 4000);
+    return () => clearInterval(iv);
+  }, []);
+
+  // ── Handlers ──────────────────────────────────────────────────
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const addRipple = useCallback((e) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    const id = Date.now();
+    setRipples(p => [...p, { id, x: e.clientX - r.left, y: e.clientY - r.top }]);
+    setTimeout(() => setRipples(p => p.filter(r => r.id !== id)), 700);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     try {
-      // Single source of truth: the backend handles the user confirmation
-      // email, the internal team notification, and the Brevo sync — all
-      // server-side, fire-and-forget, on this one call.
       await apiService.submitLead(formData);
       setSubmitted(true);
       setFormData({ name: "", email: "", company: "", phone: "", service: "", message: "" });
@@ -70,7 +121,7 @@ export default function ContactPage() {
     }
   };
 
-  // ─── Render ────────────────────────────────────────────────────
+  // ─── Render ───────────────────────────────────────────────────
   return (
     <div className={hStyles.page}>
       <Helmet>
@@ -81,25 +132,21 @@ export default function ContactPage() {
 
       <Navbar activeNav="contact" />
 
-      {/* ─── MAIN CONTENT ──────────────────────────────────────────── */}
-      <main className={hStyles.mainContent} style={{ paddingTop: "80px" }}>
-
+      <main className={hStyles.mainContent} style={{ paddingTop: "0" }}>
         <div className={styles.container}>
 
           {submitted ? (
-            // ─── Success State ──────────────────────────────────
+            // ─── SUCCESS STATE ──────────────────────────────────
             <motion.section
               className={styles.successSection}
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
+              initial="hidden" animate="visible" variants={fadeUp}
               style={{ paddingTop: "40px", paddingBottom: "60px" }}
             >
               <div className={styles.successContent}>
                 <motion.div
                   className={styles.successIcon}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 350, delay: 0.2 }}
                 >
                   <CheckCircle size={64} />
@@ -121,9 +168,9 @@ export default function ContactPage() {
                     ].map((s, i) => (
                       <motion.li
                         key={i}
-                        initial={{ opacity: 0, x: -10 }}
+                        initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 + i * 0.1 }}
+                        transition={{ delay: 0.3 + i * 0.12, type: "spring", stiffness: 280 }}
                       >
                         {s}
                       </motion.li>
@@ -134,63 +181,119 @@ export default function ContactPage() {
                   href="/"
                   className={styles.homeButton}
                   variants={fadeUp}
-                  whileHover={{ backgroundColor: "#1d4ed8", transform: "translateY(-2px)" }}
+                  whileHover={{ scale: 1.03, backgroundColor: "#1a1a2e", color: "#fdb840" }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   Return to Home
                 </motion.a>
               </div>
             </motion.section>
+
           ) : (
-            // ─── Contact Form ────────────────────────────────────
             <>
-              {/* Hero */}
-              <motion.section className={styles.hero} initial="hidden" animate="visible" variants={fadeUp}>
+              {/* ─── HERO ─────────────────────────────────────── */}
+              <motion.section
+                className={styles.hero}
+                initial="hidden" animate="visible" variants={fadeUp}
+              >
+                {/* Floating particles like HomePage hero */}
+                <div style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none", overflow: "hidden" }}>
+                  {particles.map((p, i) => (
+                    <motion.div key={i}
+                      style={{
+                        position: "absolute",
+                        left: `${p.x}%`, top: `${p.y}%`,
+                        width: p.size, height: p.size,
+                        borderRadius: "50%",
+                        backgroundColor: "#fdb840",
+                        opacity: p.opacity,
+                      }}
+                      animate={{ y: [0, -28, 0], x: [0, 12, 0], opacity: [p.opacity, p.opacity * 3.5, p.opacity] }}
+                      transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                  ))}
+                </div>
+
                 <div className={styles.heroContent}>
-                  <motion.div className={hStyles.heroBadge} variants={fadeUp} style={{ marginBottom: 16 }}>
-                    <Mail size={13} /> Free Consultation
+                  {/* Badge — animated in like HomePage */}
+                  <motion.div
+                    className={hStyles.heroBadge}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.2 }}
+                    style={{ marginBottom: 16 }}
+                  >
+                    <Sparkles size={13} /> Free Consultation
                   </motion.div>
-                  <motion.h1 className={styles.heroTitle} variants={slideL}>Let's Start a Conversation</motion.h1>
+
+                  <motion.h1 className={styles.heroTitle} variants={slideL}>
+                    Let's Start a Conversation
+                  </motion.h1>
+
                   <motion.p className={styles.heroSubtitle} variants={fadeUp}>
                     Ready to transform your data into your biggest competitive advantage?
                     Schedule a free consultation with our team.
                   </motion.p>
+
+                  {/* Typewriter row — mirrors HomePage typed text */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.55 }}
+                    style={{
+                      display: "flex", alignItems: "center", gap: 8,
+                      marginTop: 18, fontSize: 13.5,
+                      color: "rgba(255,255,255,0.85)",
+                      fontFamily: "monospace",
+                    }}
+                  >
+                    <span style={{ color: "#fdb840", fontSize: 12 }}>›</span>
+                    Book&nbsp;
+                    <span style={{ color: "#fdb840", fontWeight: 700 }}>
+                      {typedText}
+                      <motion.span
+                        animate={{ opacity: [1, 0, 1] }}
+                        transition={{ duration: 0.75, repeat: Infinity }}
+                        style={{ marginLeft: 1 }}
+                      >|</motion.span>
+                    </span>
+                  </motion.div>
                 </div>
               </motion.section>
 
-              {/* Contact Grid */}
+              {/* ─── CONTACT GRID ──────────────────────────────── */}
               <section className={styles.contactSection}>
                 <div className={styles.sectionContent}>
                   <div className={styles.contactGrid}>
 
-                    {/* Info */}
+                    {/* ── LEFT: Info ── */}
                     <motion.div
                       className={styles.contactInfo}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={REPLAY_VIEWPORT}
-                      variants={slideL}
+                      initial="hidden" whileInView="visible"
+                      viewport={REPLAY_VIEWPORT} variants={slideL}
                     >
                       <h2 className={styles.infoTitle}>Get in Touch</h2>
                       <p className={styles.infoText}>
                         We respond to all inquiries within 24 hours. Let's discuss how we can help solve your data challenges.
                       </p>
+
                       <div className={styles.contactMethods}>
                         {[
-                          { icon: <Mail size={24} />, label: "Email", value: "info@scapedatasolutions.com\nscapedatasolutions@gmail.com" },
-                          { icon: <MapPin size={24} />, label: "Office", value: "Delta Corner Tower (Chiromo Road) Westlands, Nairobi" },
-                          { icon: <Phone size={24} />, label: "Phone", value: "+1 (312) 212-3396\n+92 (300) 159-6662" },
+                          { icon: <Mail size={17} />, label: "Email", value: "info@scapedatasolutions.com\nhello@scapedatasolutions.com" },
+                          { icon: <MapPin size={17} />, label: "Office", value: "Delta Corner Tower (Chiromo Road) Westlands, Nairobi" },
+                          { icon: <Phone size={17} />, label: "Phone", value: "+1 (757) 598-0582\n+44 7454 744014" },
                         ].map((m, i) => (
                           <motion.div
                             key={i}
                             className={styles.contactMethod}
-                            initial={{ opacity: 0, x: -20 }}
+                            initial={{ opacity: 0, x: -24 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={REPLAY_VIEWPORT}
-                            transition={{ delay: i * 0.1 }}
+                            transition={{ delay: i * 0.12, type: "spring", stiffness: 260 }}
                           >
                             <motion.div
                               className={styles.methodIcon}
-                              whileHover={{ scale: 1.1, backgroundColor: "#fdb840", color: "#fff" }}
+                              whileHover={{ scale: 1.12, backgroundColor: "#fdb840", color: "#fff", borderColor: "#fdb840" }}
                               transition={{ duration: 0.2 }}
                             >
                               {m.icon}
@@ -206,9 +309,10 @@ export default function ContactPage() {
                           </motion.div>
                         ))}
                       </div>
+
                       <motion.div
                         className={styles.benefits}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={REPLAY_VIEWPORT}
                         transition={{ delay: 0.3 }}
@@ -219,11 +323,11 @@ export default function ContactPage() {
                             "Free 30-minute consultation",
                             "Custom solution proposal",
                             "No obligation quote",
-                            "Response within 24 hours"
+                            "Response within 24 hours",
                           ].map((b, i) => (
                             <motion.li
                               key={i}
-                              initial={{ opacity: 0, x: -10 }}
+                              initial={{ opacity: 0, x: -12 }}
                               whileInView={{ opacity: 1, x: 0 }}
                               viewport={REPLAY_VIEWPORT}
                               transition={{ delay: 0.4 + i * 0.1 }}
@@ -235,16 +339,37 @@ export default function ContactPage() {
                       </motion.div>
                     </motion.div>
 
-                    {/* Form */}
+                    {/* ── RIGHT: Form ── */}
                     <motion.div
                       className={styles.formContainer}
                       ref={formRef}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={REPLAY_VIEWPORT}
-                      variants={slideR}
+                      initial="hidden" whileInView="visible"
+                      viewport={REPLAY_VIEWPORT} variants={slideR}
+                      animate={pulse ? { boxShadow: "0 0 0 3px rgba(253,184,64,0.35)" } : { boxShadow: "none" }}
+                      transition={{ duration: 0.4 }}
                     >
                       <form onSubmit={handleSubmit} className={styles.form}>
+
+                        {/* Live "agent online" bar */}
+                        <motion.div
+                          style={{
+                            display: "flex", alignItems: "center", gap: 8,
+                            fontSize: 11.5, color: "#555",
+                            paddingBottom: 10,
+                            borderBottom: "1px solid #f0f0f0",
+                          }}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.6 }}
+                        >
+                          <motion.span
+                            style={{ width: 7, height: 7, borderRadius: "50%", backgroundColor: "#00e676", display: "inline-block" }}
+                            animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
+                            transition={{ duration: 1.4, repeat: Infinity }}
+                          />
+                          Our team is online and ready to help
+                        </motion.div>
+
                         <AnimatePresence>
                           {error && (
                             <motion.div
@@ -258,11 +383,19 @@ export default function ContactPage() {
                           )}
                         </AnimatePresence>
 
+                        {/* Name + Email */}
                         {[
                           { label: "Full Name *", name: "name", type: "text", placeholder: "John Doe", required: true },
                           { label: "Email Address *", name: "email", type: "email", placeholder: "john@company.com", required: true },
                         ].map((f, i) => (
-                          <div key={i} className={styles.formGroup}>
+                          <motion.div
+                            key={i}
+                            className={styles.formGroup}
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={REPLAY_VIEWPORT}
+                            transition={{ delay: 0.1 + i * 0.08 }}
+                          >
                             <label className={styles.label}>{f.label}</label>
                             <input
                               type={f.type}
@@ -273,87 +406,102 @@ export default function ContactPage() {
                               required={f.required}
                               placeholder={f.placeholder}
                             />
-                          </div>
+                          </motion.div>
                         ))}
 
-                        <div className={styles.formRow}>
+                        {/* Company + Phone */}
+                        <motion.div
+                          className={styles.formRow}
+                          initial={{ opacity: 0, y: 12 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={REPLAY_VIEWPORT}
+                          transition={{ delay: 0.25 }}
+                        >
                           <div className={styles.formGroup}>
                             <label className={styles.label}>Company</label>
-                            <input
-                              type="text"
-                              name="company"
-                              value={formData.company}
-                              onChange={handleChange}
-                              className={styles.input}
-                              placeholder="Your Company"
-                            />
+                            <input type="text" name="company" value={formData.company} onChange={handleChange} className={styles.input} placeholder="Your Company" />
                           </div>
                           <div className={styles.formGroup}>
                             <label className={styles.label}>Phone</label>
-                            <input
-                              type="tel"
-                              name="phone"
-                              value={formData.phone}
-                              onChange={handleChange}
-                              className={styles.input}
-                              placeholder="+1 2712 345 678"
-                            />
+                            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={styles.input} placeholder="+1 2712 345 678" />
                           </div>
-                        </div>
+                        </motion.div>
 
-                        <div className={styles.formGroup}>
+                        {/* Service select */}
+                        <motion.div
+                          className={styles.formGroup}
+                          initial={{ opacity: 0, y: 12 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={REPLAY_VIEWPORT}
+                          transition={{ delay: 0.32 }}
+                        >
                           <label className={styles.label}>Service Interested In *</label>
-                          <select
-                            name="service"
-                            value={formData.service}
-                            onChange={handleChange}
-                            className={styles.select}
-                            required
-                          >
+                          <select name="service" value={formData.service} onChange={handleChange} className={styles.select} required>
                             <option value="">Select a service...</option>
                             {[
-                              "Advanced Analytics",
-                              "Machine Learning",
-                              "Deep Learning",
-                              "Data Engineering",
-                              "Business Intelligence",
-                              "Predictive Analytics",
-                              "Customer Analytics",
-                              "Consulting & Strategy",
-                              "MLOps",
-                              "Report Writing",
-                              "Other / Not Sure"
-                            ].map(o => (
-                              <option key={o} value={o}>{o}</option>
-                            ))}
+                              "Advanced Analytics","Machine Learning","Deep Learning","Data Engineering",
+                              "Business Intelligence","Predictive Analytics","Customer Analytics",
+                              "Consulting & Strategy","MLOps","Report Writing","Other / Not Sure"
+                            ].map(o => <option key={o} value={o}>{o}</option>)}
                           </select>
-                        </div>
+                        </motion.div>
 
-                        <div className={styles.formGroup}>
+                        {/* Message */}
+                        <motion.div
+                          className={styles.formGroup}
+                          initial={{ opacity: 0, y: 12 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={REPLAY_VIEWPORT}
+                          transition={{ delay: 0.38 }}
+                        >
                           <label className={styles.label}>Tell Us About Your Project *</label>
                           <textarea
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
                             className={styles.textarea}
-                            required
-                            rows={6}
+                            required rows={4}
                             placeholder="Tell us about your data challenges, goals, and what you're hoping to achieve..."
                           />
-                        </div>
+                        </motion.div>
 
+                        {/* Submit button with ripple effect like HomePage CTA */}
                         <motion.button
                           type="submit"
                           className={styles.submitButton}
                           disabled={loading}
-                          whileHover={
-                            !loading
-                              ? { backgroundColor: "#2563eb", transform: "translateY(-2px)", boxShadow: "0 8px 16px rgba(59,130,246,0.3)" }
-                              : {}
-                          }
-                          whileTap={!loading ? { scale: 0.98 } : {}}
+                          onClick={!loading ? addRipple : undefined}
+                          style={{ position: "relative", overflow: "hidden" }}
+                          whileHover={!loading ? { scale: 1.02, backgroundColor: "#1a1a2e", color: "#fdb840", borderColor: "#1a1a2e" } : {}}
+                          whileTap={!loading ? { scale: 0.97 } : {}}
                         >
-                          {loading ? "Processing..." : <><Send size={20} /> Send Message</>}
+                          {ripples.map(r => (
+                            <motion.span
+                              key={r.id}
+                              style={{
+                                position: "absolute", borderRadius: "50%",
+                                width: 140, height: 140,
+                                left: r.x - 70, top: r.y - 70,
+                                backgroundColor: "rgba(255,255,255,0.25)",
+                                pointerEvents: "none",
+                              }}
+                              initial={{ scale: 0, opacity: 1 }}
+                              animate={{ scale: 2.5, opacity: 0 }}
+                              transition={{ duration: 0.65, ease: "easeOut" }}
+                            />
+                          ))}
+                          {loading ? (
+                            <>
+                              <motion.span
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                style={{ display: "inline-block", width: 16, height: 16, border: "2px solid #1a1a2e", borderTopColor: "transparent", borderRadius: "50%" }}
+                              />
+                              Processing...
+                            </>
+                          ) : (
+                            <><Send size={16} /> Send Message</>
+                          )}
                         </motion.button>
 
                         <p className={styles.privacy}>
@@ -373,7 +521,7 @@ export default function ContactPage() {
 
       <Footer />
 
-      {/* ─── Scroll to Top ──────────────────────────────────────────── */}
+      {/* ─── Scroll to Top ────────────────────────────────────────── */}
       <AnimatePresence>
         {showTop && (
           <motion.button
