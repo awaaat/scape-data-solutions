@@ -1,0 +1,43 @@
+
+.page { font-family: "Helvetica Neue", Arial, sans-serif; background: #fff; color: #1a1a2e; }
+
+.hero { position: relative; color: #fff; padding: 130px 40px 90px; text-align: left; background-size: cover; background-position: center; background-attachment: fixed; isolation: isolate; } .hero::before { content: ""; position: absolute; inset: 0; background: rgba(10,18,40,0.72); z-index: 0; } .hero > * { position: relative; z-index: 1; }
+.heroBadge { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #fdb840; margin-bottom: 16px; display: block; }
+.heroTitle { font-size: clamp(40px, 6vw, 72px); font-weight: 800; margin: 0 0 20px; line-height: 1.1; }
+.heroAccent { color: #fdb840; }
+.heroSub { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 640px; margin: 0; line-height: 1.8; }
+
+.timelineSection { max-width: 860px; margin: 0 auto; padding: 80px 40px 100px; display: flex; flex-direction: column; }
+
+.block { display: grid; grid-template-columns: 160px 1fr; gap: 48px; padding: 52px 0; border-top: 1px solid #e8eaed; }
+.block:last-child { border-bottom: 1px solid #e8eaed; }
+
+.blockMeta { display: flex; flex-direction: column; align-items: flex-start; padding-top: 4px; }
+.blockYear { font-size: 36px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+.blockLabel { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 16px; }
+.blockLine { width: 32px; height: 3px; }
+
+.blockBody { padding-top: 4px; }
+.blockHeading { font-size: clamp(20px, 2.5vw, 26px); font-weight: 700; color: #1a1a2e; margin: 0 0 18px; line-height: 1.3; }
+.blockText { font-size: 16.5px; color: #475569; line-height: 1.85; margin: 0; }
+
+.statsStrip { background: #0f172a; display: grid; grid-template-columns: repeat(6, 1fr); }
+.stripStat { text-align: center; padding: 40px 20px; border-right: 1px solid rgba(255,255,255,0.08); }
+.stripStat:last-child { border-right: none; }
+.stripVal { display: block; font-size: 32px; font-weight: 800; color: #fdb840; margin-bottom: 6px; }
+.stripLbl { display: block; font-size: 12px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+.cta { background: #fdb840; text-align: center; padding: 80px 40px; }
+.cta h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 800; color: #0f172a; margin: 0 0 12px; }
+.cta p { font-size: 17px; color: #1e293b; margin: 0 0 32px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.ctaBtn { display: inline-flex; align-items: center; gap: 8px; background: #0f172a; color: #fff; padding: 16px 40px; font-size: 15px; font-weight: 700; text-decoration: none; border: 2px solid #0f172a; transition: all 0.3s; }
+.ctaBtn:hover { background: transparent; color: #0f172a; }
+
+@media (max-width: 768px) {
+  .hero { padding: 100px 20px 60px; }
+  .timelineSection { padding: 48px 20px 60px; }
+  .block { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+  .blockYear { font-size: 28px; }
+  .statsStrip { grid-template-columns: repeat(2, 1fr); }
+  .stripStat { border-bottom: 1px solid rgba(255,255,255,0.08); }
+}

@@ -1,171 +1,106 @@
 // frontend/src/App.jsx
-
-import { Menu, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { Link, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import styles from './App.module.css';
 import { apiService } from './services/api';
 
-// Import pages
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import HomePage from './pages/HomePage';
-import PricingPage from './pages/PricingPage';
-import ServicesPage from './pages/ServicesPage';
-import SolutionsPage from './pages/SolutionsPage';
+// ─── Existing Pages ──────────────────────────────────────────────
+import AboutPage from './pages/About/AboutPage';
+import ContactPage from './pages/Contact/ContactPage';
+import HomePage from './pages/Home/HomePage';
+import ServicesPage from './pages/Services/ServicesPage';
+import SolutionsPage from './pages/Solutions/SolutionsPage';
 
-// Navigation Component
-const Navigation = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+// ─── New Pages (Company & more) ──────────────────────────────────
+import CompanyPage from './pages/Company/CompanyPage';
+import HistoryPage from './pages/History/HistoryPage';
+import WhyUsPage from './pages/WhyUs/WhyUsPage';
+import TeamPage from './pages/Team/TeamPage';
+import ExpertisePage from './pages/Expertise/ExpertisePage';
+import CareerPage from './pages/Career/CareerPage';
+import BlogPage from './pages/Blog/BlogPage';
+import FAQPage from './pages/FAQ/FAQPage';
+
+// ─── Portfolio Pages (now separate components) ──────────────────
+import PortfolioPage from './pages/Portfolio/PortfolioPage';
+import PortfolioBIPage from './pages/PortfolioBI/PortfolioBIPage';
+import PortfolioAIPage from './pages/PortfolioAI/PortfolioAIPage';
+import PortfolioPipelinesPage from './pages/PortfolioPipelines/PortfolioPipelinesPage';
+import PortfolioMobilePage from './pages/PortfolioMobile/PortfolioMobilePage';
+
+// ─── Other Pages ─────────────────────────────────────────────────
+import ClientsPage from './pages/Clients/ClientsPage';
+import TestimonialsPage from './pages/Testimonials/TestimonialsPage';
+import SitemapPage from './pages/Sitemap/SitemapPage';
+import CaseStudiesPage from './pages/CaseStudies/CaseStudiesPage';
+
+// ────────────────────────────────────────────────────────────────
+// NOTE: The old Navigation + Footer components were removed from
+// here. Every page now gets its nav/footer from PageLayout.jsx
+// (inner pages) or renders its own inline (HomePage.jsx /
+// CompanyPage.jsx). Rendering them again here caused the old
+// plain nav to show faintly behind the real nav.
+// ────────────────────────────────────────────────────────────────
+
+// AppContent – all routes
+const AppContent = () => {
     const location = useLocation();
 
+    // Page-view tracking (previously lived inside the old Navigation component)
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    useEffect(() => {
-        // Track page views
         const pageName = location.pathname.replace('/', '') || 'home';
         apiService.trackPageView(pageName);
-
-        // Close mobile menu on route change
-        setIsMobileMenuOpen(false);
-    }, [location]);
-
-    const navLinks = [
-        { name: 'Home', path: '/' },
-        { name: 'Services', path: '/services' },
-        { name: 'Solutions', path: '/solutions' },
-        { name: 'Pricing', path: '/pricing' },
-        { name: 'About', path: '/about' },
-        { name: 'Contact', path: '/contact' },
-    ];
+        window.scrollTo(0, 0);
+    }, [location.pathname]);
 
     return (
-        <nav className={`${styles.nav} ${isScrolled ? styles.navScrolled : ''}`}>
-            <div className={styles.navContainer}>
-                <Link to="/" className={styles.logo}>
-                    <span className={styles.logoText}>Scape Data Solutions</span>
-                </Link>
+        <div className={styles.app}>
+            <main className={styles.main}>
+                <Routes>
+                    {/* Existing */}
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/services" element={<ServicesPage />} />
+                    <Route path="/solutions" element={<SolutionsPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
 
-                {/* Desktop Menu */}
-                <div className={styles.desktopMenu}>
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.path}
-                            to={link.path}
-                            onClick={() => apiService.trackInteraction('navigation', 'nav_click', { page: link.name })}
-                            className={styles.navLink}
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                </div>
+                    {/* Company & related */}
+                    <Route path="/company" element={<CompanyPage />} />
+                    <Route path="/history" element={<HistoryPage />} />
+                    <Route path="/why-us" element={<WhyUsPage />} />
+                    <Route path="/team" element={<TeamPage />} />
+                    <Route path="/expertise" element={<ExpertisePage />} />
+                    <Route path="/career" element={<CareerPage />} />
+                    <Route path="/blog" element={<BlogPage />} />
+                    <Route path="/faq" element={<FAQPage />} />
 
-                {/* Mobile Menu Button */}
-                <button
-                    className={styles.mobileMenuBtn}
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-            </div>
+                    {/* Portfolio main page */}
+                    <Route path="/portfolio" element={<PortfolioPage />} />
+                    {/* Portfolio sub‑categories – each uses its own component */}
+                    <Route path="/portfolio/bi" element={<PortfolioBIPage />} />
+                    <Route path="/portfolio/ai" element={<PortfolioAIPage />} />
+                    <Route path="/portfolio/pipelines" element={<PortfolioPipelinesPage />} />
+                    <Route path="/portfolio/mobile" element={<PortfolioMobilePage />} />
 
-            {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-                <div className={styles.mobileMenu}>
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.path}
-                            to={link.path}
-                            onClick={() => {
-                                setIsMobileMenuOpen(false);
-                                apiService.trackInteraction('navigation', 'mobile_nav_click', { page: link.name });
-                            }}
-                            className={styles.mobileNavLink}
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                </div>
-            )}
-        </nav>
+                    {/* Other */}
+                    <Route path="/clients" element={<ClientsPage />} />
+                    <Route path="/testimonials" element={<TestimonialsPage />} />
+                    <Route path="/sitemap" element={<SitemapPage />} />
+                    <Route path="/case-studies" element={<CaseStudiesPage />} />
+                </Routes>
+            </main>
+        </div>
     );
 };
 
-// Footer Component
-const Footer = () => {
-    return (
-        <footer className={styles.footer}>
-            <div className={styles.footerContainer}>
-                <div className={styles.footerGrid}>
-                    <div className={styles.footerBrand}>
-                        <div className={styles.footerLogo}>
-                            <span className={styles.footerLogoText}>Scape Data Solutions</span>
-                        </div>
-                        <p className={styles.footerDescription}>
-                            Transforming data into actionable business intelligence across the Globe.
-                        </p>
-                    </div>
-
-                    <div className={styles.footerColumn}>
-                        <h3 className={styles.footerTitle}>Services</h3>
-                        <ul className={styles.footerLinks}>
-                            <li><Link to="/services">Data Analytics</Link></li>
-                            <li><Link to="/services">Business Intelligence</Link></li>
-                            <li><Link to="/services">AI & Machine Learning</Link></li>
-                            <li><Link to="/services">Data Engineering</Link></li>
-                        </ul>
-                    </div>
-
-                    <div className={styles.footerColumn}>
-                        <h3 className={styles.footerTitle}>Company</h3>
-                        <ul className={styles.footerLinks}>
-                            <li><Link to="/about">About Us</Link></li>
-                            <li><Link to="/pricing">Pricing</Link></li>
-                            <li><Link to="/contact">Contact</Link></li>
-                        </ul>
-                    </div>
-
-                    <div className={styles.footerColumn}>
-                        <h3 className={styles.footerTitle}>Contact</h3>
-                        <ul className={styles.footerContact}>
-                            <li>info@scapedatasolutions.com</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className={styles.footerBottom}>
-                    <p>&copy; {new Date().getFullYear()} Scape Data Solutions. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
-    );
-};
-
-// Main App Component
+// ────────────────────────────────────────────────────────────────
+// Main App
 function App() {
     return (
         <HelmetProvider>
             <Router>
-                <div className={styles.app}>
-                    <Navigation />
-                    <main className={styles.main}>
-                        <Routes>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="/services" element={<ServicesPage />} />
-                            <Route path="/solutions" element={<SolutionsPage />} />
-                            <Route path="/pricing" element={<PricingPage />} />
-                            <Route path="/about" element={<AboutPage />} />
-                            <Route path="/contact" element={<ContactPage />} />
-                        </Routes>
-                    </main>
-                    <Footer />
-                </div>
+                <AppContent />
             </Router>
         </HelmetProvider>
     );

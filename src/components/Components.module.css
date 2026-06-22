@@ -1,0 +1,839 @@
+/* src/components/Components.module.css
+   Shared styles – Navbar, Footer, Layout
+*/
+
+/* -------- Container -------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* -------- Scroll Progress -------- */
+.progressTrack {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #e8e8e8;
+  z-index: 99999;
+}
+.progressBar {
+  height: 3px;
+  background: #1a3a8f;
+  transition: width 0.1s;
+  width: 0%;
+}
+
+/* -------- News Ticker -------- */
+.newsTicker {
+  display: none;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 4px 0;
+  z-index: 9999;
+  margin-top: 3px;
+}
+.newsRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #333;
+}
+.newsLabel {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #1a3a8f;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.newsText {
+  font-weight: 400;
+  color: #444;
+}
+
+/* -------- Floating Live Widget -------- */
+.floatingWidget {
+  position: fixed;
+  right: 20px;
+  top: 90px;
+  background: #ffffff;
+  border-radius: 0;
+  padding: 14px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  border: 1px solid #eaeaea;
+  z-index: 9998;
+  min-width: 140px;
+}
+.fwHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.livePulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #1a3a8f;
+  border-radius: 50%;
+  margin-left: 4px;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+.fwBars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 36px;
+}
+.fwBar {
+  flex: 1;
+  background: #1a3a8f;
+  border-radius: 0;
+  min-height: 2px;
+  transition: height 0.3s;
+}
+.fwFoot {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 11px;
+}
+.fwVal { font-weight: 700; color: #1a3a8f; }
+.fwLbl { color: #999; }
+
+/* -------- Metrics Ticker -------- */
+.metricsTicker {
+  display: none;
+  background: #f8f8f8;
+  padding: 6px 0;
+  overflow: hidden;
+  border-bottom: 2px solid #1a3a8f;
+}
+.metricsTrack {
+  display: flex;
+  gap: 32px;
+  white-space: nowrap;
+  animation: tickerScroll 28s linear infinite;
+}
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.metricsItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #444;
+  font-size: 13px;
+}
+.metricsLabel { color: #777; font-weight: 300; }
+.metricsVal { font-weight: 600; color: #1a3a8f; }
+.metricsDelta { font-size: 11px; font-weight: 500; margin-left: 2px; }
+
+/* ================================================================
+   NAVBAR – LEADCONCEPT STYLE
+   Two-part: top bar (contacts + socials) + main nav (logo + links)
+   ================================================================ */
+
+/* ── Top bar ── */
+.navTopBar {
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 7px 0;
+}
+.navTopInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.navTopLeft {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.navTopContact {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #444;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.navTopContact:hover { color: #1a3a8f; }
+.navTopContact svg { color: #1a3a8f; flex-shrink: 0; }
+.navTopSep {
+  width: 1px;
+  height: 14px;
+  background: #d0d0d0;
+}
+.navTopRight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+/* Branded square social icons – each platform gets its own color */
+.navSocBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+.navSocBtn:hover { opacity: 0.82; transform: translateY(-1px); }
+.navSocFb   { background: #1877f2; }
+.navSocIg   { background: #e1306c; }
+.navSocX    { background: #000; }
+.navSocLi   { background: #0a66c2; }
+.navSocPi   { background: #e60023; }
+.navSocYt   { background: #ff0000; }
+
+/* ── Main nav bar ── */
+.navbarFixed {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #fff;
+  border-bottom: none;
+  padding: 0 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.navbarInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 88px;
+}
+.navbarBrand img { height: 68px; }
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.navLink {
+  color: #222;
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 500;
+  padding: 28px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  transition: color 0.2s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+/* Blue underline on hover and active */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  height: 3px;
+  background: #1a3a8f;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+.navLink:hover { color: #1a3a8f; }
+.navLink:hover::after { transform: scaleX(1); }
+.navActive { color: #1a3a8f; }
+.navActive::after { transform: scaleX(1); }
+
+/* Dropdown */
+.hasDrop { position: relative; }
+.drop {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  padding: 16px 20px;
+  min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: all 0.22s;
+  z-index: 100;
+}
+.hasDrop:hover .drop {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropWide { min-width: 400px; }
+.dropGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 16px; }
+.dropGrid1 { display: flex; flex-direction: column; gap: 2px; }
+.dropLink {
+  color: #444;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 5px 0;
+  transition: color 0.2s, padding-left 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+  display: block;
+}
+.dropLink:hover { color: #1a3a8f; padding-left: 6px; }
+
+/* Right side of navbar – hidden on desktop, only socials visible */
+.navbarRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* We keep navbarRight only for a "Get a Quote" CTA button */
+.navCta {
+  background: #1a3a8f;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  letter-spacing: 0.03em;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.navCta:hover { background: #0f2460; color: #fff; }
+
+/* -------- Mobile Header -------- */
+.mobileHeader {
+  display: none;
+  background: #ffffff;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  border-bottom: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.mContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+.mobileLogo img { height: 48px; }
+.burger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+.burger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: #1a3a8f;
+  transition: all 0.25s;
+}
+.burgerOpen span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.burgerOpen span:nth-child(2) { opacity: 0; }
+.burgerOpen span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* -------- Mobile Drawer -------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 99999;
+}
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  max-width: 80vw;
+  height: 100%;
+  background: #ffffff;
+  z-index: 100000;
+  padding: 20px 18px;
+  overflow-y: auto;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.08);
+}
+.drawerClose {
+  background: transparent;
+  border: none;
+  color: #1a3a8f;
+  font-size: 24px;
+  float: right;
+  cursor: pointer;
+}
+.drawerList {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
+}
+.drawerList li { margin-bottom: 6px; }
+.drawerList a {
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+.drawerAcc {
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 15px;
+  width: 100%;
+  text-align: left;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.drawerSub {
+  list-style: none;
+  padding-left: 16px;
+}
+.drawerSub a {
+  color: #666;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* ================================================================
+   FOOTER – LEADCONCEPT STYLE
+   Navy background, 6-column contact strip with dividers, links grid
+   ================================================================ */
+.navyFooter {
+  background: #0d2b6b;
+  color: #fff;
+}
+
+/* ── Section 1: 6-column office/contact strip ── */
+.navyOffStrip {
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  position: relative;
+}
+
+/* The 6 items in one horizontal row with vertical dividers */
+.navyOffGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+/* vertical divider lines between cells */
+.navyOffItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 28px;
+  position: relative;
+}
+/* right border as divider (skip last in row) */
+.navyOffItem:not(:nth-child(3n)) {
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+/* bottom border for first row */
+.navyOffItem:nth-child(-n+3) {
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.navyOffIcon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+}
+.navyOffIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navyOffText h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.navyOffText p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+  line-height: 1.7;
+}
+.navyOffText a {
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.navyOffText a:hover { color: #fff; }
+
+/* ── Section 2: Links grid ── */
+.navyFootMain {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.navyFootGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.navyFootH {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #fff;
+  display: inline-block;
+}
+.navyFootLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navyFootLinks li { margin-bottom: 8px; }
+.navyFootLinks a {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.70);
+  text-decoration: none;
+  transition: color 0.2s, padding-left 0.2s;
+}
+.navyFootLinks a:hover { color: #fff; padding-left: 4px; }
+.navyFootHMt { margin-top: 28px; }
+
+/* Social icons – square bordered, colored on hover */
+.navyFootSocials {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.navySocIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.22s;
+  opacity: 0.85;
+}
+.navySocIcon:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+.navySocIconFb  { background: #1877f2; }
+.navySocIconIg  { background: #e1306c; }
+.navySocIconX   { background: #222; }
+.navySocIconLi  { background: #0a66c2; }
+.navySocIconPi  { background: #e60023; }
+.navySocIconYt  { background: #ff0000; }
+/* keep hover rules for specificity */
+.navySocIconFb:hover  { background: #1877f2; }
+.navySocIconIg:hover  { background: #e1306c; }
+.navySocIconX:hover   { background: #000; }
+.navySocIconLi:hover  { background: #0a66c2; }
+.navySocIconPi:hover  { background: #e60023; }
+.navySocIconYt:hover  { background: #ff0000; }
+
+/* ── Section 3: Payment strip ── */
+.navyPayStrip {
+  padding: 24px 0 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.navyPayLabel {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 18px;
+  letter-spacing: 0.02em;
+}
+.navyPayInner {
+  overflow: hidden;
+}
+.navyPayScroll { overflow: hidden; }
+.navyPayTrack {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  animation: navyPayScroll 28s linear infinite;
+}
+.navyPayTrack:hover { animation-play-state: paused; }
+@keyframes navyPayScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.navyPayItem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.navyPayItem img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  filter: none;
+}
+.navyPayItem:hover { transform: translateY(-2px); }
+
+/* ── Section 4: Copyright ── */
+.navyCopyright {
+  padding: 18px 0;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.40);
+}
+
+/* -------- Chat Widget -------- */
+.chatWidget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+}
+.chatToggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  background: #1a3a8f;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(26,58,143,0.30);
+  transition: all 0.2s;
+  position: relative;
+}
+.chatToggle:hover { transform: scale(1.06); background: #0f2460; }
+.chatBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #e74c3c;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chatBox {
+  position: absolute;
+  bottom: 72px;
+  right: 0;
+  width: 340px;
+  max-width: 80vw;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+.chatHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #0d2b6b;
+  color: #fff;
+}
+.chatHeaderInfo { display: flex; align-items: center; gap: 10px; }
+.chatAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.chatHeaderInfo strong { display: block; font-size: 14px; color: #fff; }
+.chatHeaderInfo span {
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.chatHeader button { background: transparent; border: none; color: rgba(255,255,255,0.7); cursor: pointer; }
+.chatLog {
+  padding: 12px 16px;
+  max-height: 260px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f8faff;
+}
+.chatMsg {
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  max-width: 80%;
+  line-height: 1.4;
+}
+.chatMsgBot { background: #fff; border: 1px solid #e0e6f4; align-self: flex-start; color: #333; }
+.chatMsgUser { background: #1a3a8f; color: #fff; align-self: flex-end; }
+.chatInput {
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+.chatInput input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 14px;
+  outline: none;
+}
+.chatInput input:focus { border-color: #1a3a8f; }
+.chatInput button {
+  background: #1a3a8f;
+  border: none;
+  border-radius: 4px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.2s;
+}
+.chatInput button:hover { background: #0f2460; }
+
+/* -------- Side Fixed Buttons -------- */
+.sideFixed {
+  display: none;
+  position: fixed;
+  right: 12px;
+  bottom: 100px;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 999;
+}
+.sideBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  transition: all 0.2s;
+}
+.sideBtnWA { background: #25D366; }
+.sideBtnT  { background: #464EB8; }
+.sideBtn i { font-size: 18px; }
+
+/* -------- Scroll Top -------- */
+.scrollTop {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background: #0d2b6b;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(13,43,107,0.25);
+}
+.scrollTop:hover { background: #1a3a8f; }
+
+/* -------- Main Content -------- */
+.mainContent { flex: 1; }
+.page { display: flex; flex-direction: column; min-height: 100vh; }
+
+/* -------- Responsive -------- */
+@media (max-width: 1024px) {
+  .navTopBar   { display: none; }
+  .navbarFixed { display: none; }
+  .mobileHeader { display: block; }
+  .metricsTicker { display: none; }
+  .floatingWidget { display: none; }
+  .navyOffGrid { grid-template-columns: repeat(2, 1fr); }
+  .navyOffItem:not(:nth-child(3n)) { border-right: none; }
+  .navyOffItem:nth-child(-n+3) { border-bottom: none; }
+  .navyOffItem:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
+  .navyOffItem { border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .navyFootGrid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+@media (max-width: 600px) {
+  .navyOffGrid { grid-template-columns: 1fr; }
+  .navyOffItem,
+  .navyOffItem:nth-child(odd),
+  .navyOffItem:not(:nth-child(3n)) { border-right: none; }
+  .navyFootGrid { grid-template-columns: 1fr; gap: 20px; }
+}

@@ -1,0 +1,393 @@
+/* frontend/src/pages/ContactPage.module.css */
+/* Flat, site-wide style: navy #1a1a2e + #fdb840 accent, zero border-radius. */
+
+.container {
+  padding-top: 0;
+}
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+.hero {
+  background: #1a1a2e;
+  color: #ffffff;
+  padding: 64px 40px;
+  text-align: left;
+}
+
+.heroContent {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: clamp(28px, 3.5vw, 38px);
+  font-weight: 700;
+  margin: 0 0 12px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.heroSubtitle {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 560px;
+}
+
+/* ── CONTACT SECTION ──────────────────────────────────────────── */
+.contactSection {
+  padding: 70px 40px;
+  background: #ffffff;
+}
+
+.sectionContent {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+}
+
+.contactInfo {
+  padding: 0;
+}
+
+.infoTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 10px;
+}
+
+.infoText {
+  color: #666;
+  line-height: 1.7;
+  font-size: 14.5px;
+  margin: 0 0 28px;
+}
+
+.contactMethods {
+  margin-bottom: 28px;
+}
+
+.contactMethod {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 0;
+  border-top: 1px solid #e8eaed;
+}
+
+.contactMethod:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.methodIcon {
+  width: 38px;
+  height: 38px;
+  background: rgba(253, 184, 64, 0.1);
+  border: 1px solid rgba(253, 184, 64, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fdb840;
+  flex-shrink: 0;
+}
+
+.methodIcon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.methodLabel {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.methodValue {
+  color: #1a1a2e;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.benefits {
+  background: #f8f9fc;
+  padding: 22px;
+  border-left: 3px solid #fdb840;
+}
+
+.benefitsTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefitsList li {
+  padding: 5px 0 5px 20px;
+  color: #555;
+  position: relative;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.benefitsList li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #fdb840;
+  font-weight: 700;
+}
+
+/* ── FORM ─────────────────────────────────────────────────────── */
+.formContainer {
+  background: #ffffff;
+  padding: 0;
+  border: 1px solid #e8eaed;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 32px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
+}
+
+.input,
+.select,
+.textarea {
+  padding: 11px 13px;
+  border: 1px solid #d8dbe0;
+  border-radius: 0;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+  color: #1a1a2e;
+  background: #fff;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #aaa;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #fdb840;
+  box-shadow: 0 0 0 3px rgba(253, 184, 64, 0.12);
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.submitButton {
+  background: #fdb840;
+  color: #1a1a2e;
+  padding: 13px 28px;
+  border: 2px solid #fdb840;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: transparent;
+  color: #fdb840;
+}
+
+.submitButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.privacy {
+  font-size: 11.5px;
+  color: #999;
+  text-align: center;
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.errorBox {
+  background: #fdf0f0;
+  border-left: 3px solid #ff6b6b;
+  color: #c0392b;
+  padding: 11px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ── SUCCESS STATE ────────────────────────────────────────────── */
+.successSection {
+  padding: 100px 40px;
+  background: #ffffff;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successContent {
+  text-align: center;
+  max-width: 520px;
+}
+
+.successIcon {
+  color: #fdb840;
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.successTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 12px;
+}
+
+.successText {
+  font-size: 14.5px;
+  color: #666;
+  line-height: 1.7;
+  margin: 0 0 30px;
+}
+
+.nextSteps {
+  background: #f8f9fc;
+  border-left: 3px solid #fdb840;
+  padding: 22px 26px;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.nextSteps h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nextSteps ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nextSteps li {
+  padding: 6px 0 6px 20px;
+  color: #555;
+  position: relative;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.nextSteps li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #fdb840;
+  font-weight: 700;
+}
+
+.homeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fdb840;
+  color: #1a1a2e;
+  padding: 13px 32px;
+  border: 2px solid #fdb840;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+}
+
+.homeButton:hover {
+  background: transparent;
+  color: #fdb840;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px 20px;
+  }
+  .heroTitle {
+    font-size: 26px;
+  }
+  .heroSubtitle {
+    font-size: 14px;
+  }
+  .contactSection {
+    padding: 50px 20px;
+  }
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+  .form {
+    padding: 24px 20px;
+  }
+  .successSection {
+    padding: 70px 20px;
+  }
+  .successTitle {
+    font-size: 24px;
+  }
+}

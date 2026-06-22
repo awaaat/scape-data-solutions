@@ -1,169 +1,141 @@
-// frontend/src/services/api.js
-// Frontend-only API service - stores data in localStorage
+// src/services/api.js
+//
+// Talks to the real Django backend (see leads/views.py — ContactView).
+// Single live endpoint right now: POST /api/contact/
+//
+// Required fields the backend validates: name, email, service, message
+// Optional: company, phone, page_url
+//
+// `withCredentials: true` is mandatory — the backend's VisitorTrackingMiddleware
+// links every lead to a session cookie (Visitor model), and CORS_ALLOW_CREDENTIALS
+// is True specifically to allow that cookie across origins in dev/staging.
 
-// Generate or get session ID
-const getSessionId = () => {
-    let sessionId = sessionStorage.getItem('session_id');
-    if (!sessionId) {
-        sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-        sessionStorage.setItem('session_id', sessionId);
+// In dev, falls back to the local Django runserver default (port 8000).
+// In production, set VITE_API_URL=https://api.scapedatasolutions.com/api
+// in your .env (or hosting platform's env vars) — that's the domain implied
+// by ALLOWED_HOSTS in the backend's .env.example.
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
+
+class ApiError extends Error {
+  constructor(message, status, fieldErrors) {
+    super(message);
+    this.status = status;
+    this.fieldErrors = fieldErrors || null;
+  }
+}
+
+/**
+ * Submits a contact/lead form to POST /api/contact/
+ * Accepts whatever shape the various forms collect and maps it onto the
+ * exact fields the backend's LeadSerializer expects.
+ */
+async function submitLead(formData = {}) {
+  const payload = {
+    name: formData.name?.trim() || "",
+    email: formData.email?.trim() || "",
+    service: formData.service || formData.service_interest || formData.subject || "General Inquiry",
+    message: formData.message || "",
+    company: formData.company || "",
+    phone: formData.phone || "",
+    page_url: typeof window !== "undefined" ? window.location.href : "",
+  };
+
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}/contact/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include", // sends the session cookie the visitor middleware relies on
+      body: JSON.stringify(payload),
+    });
+  } catch (networkErr) {
+    throw new ApiError(
+      "Couldn't reach the server. Check your connection and try again, or email us directly at info@scapedatasolutions.com",
+      0
+    );
+  }
+
+  if (response.status === 429) {
+    throw new ApiError("Too many submissions — please wait a minute and try again.", 429);
+  }
+
+  let data = null;
+  try {
+    data = await response.json();
+  } catch {
+    // empty/non-JSON body — fall through to status handling below
+  }
+
+  if (!response.ok) {
+    // DRF validation errors come back as { field: ["msg", ...], ... }
+    if (response.status === 400 && data && typeof data === "object") {
+      const firstField = Object.keys(data)[0];
+      const firstMsg = Array.isArray(data[firstField]) ? data[firstField][0] : data[firstField];
+      throw new ApiError(firstMsg || "Please check the form and try again.", 400, data);
     }
-    return sessionId;
-};
+    throw new ApiError(
+      "Something went wrong sending your message. Please try again or email us directly at info@scapedatasolutions.com",
+      response.status
+    );
+  }
 
-// Storage helper functions
-const storage = {
-    get: (key) => {
-        try {
-            const item = localStorage.getItem(key);
-            return item ? JSON.parse(item) : null;
-        } catch (error) {
-            console.error('Error reading from storage:', error);
-            return null;
-        }
-    },
+  return data; // { message: "Thanks — we've received your message..." }
+}
 
-    set: (key, value) => {
-        try {
-            localStorage.setItem(key, JSON.stringify(value));
-            return true;
-        } catch (error) {
-            console.error('Error writing to storage:', error);
-            return false;
-        }
-    },
+/**
+ * Logs a page view to POST /api/track-visit/ (see visitors/views.py — TrackPageView).
+ * Fire-and-forget by design: a failed tracking call should never break navigation
+ * or surface an error to the visitor, so this never throws — it just logs.
+ *
+ * Matches the actual call site in App.jsx:
+ *   const pageName = location.pathname.replace('/', '') || 'home';
+ *   apiService.trackPageView(pageName);
+ * — i.e. a bare path segment with NO leading slash (e.g. "portfolio/ai", "home").
+ *
+ * Also accepts an object for flexibility if other call sites need more control:
+ *   trackPageView({ url, title, referrer })
+ */
+async function trackPageView(arg) {
+  const loc = typeof window !== "undefined" ? window.location : null;
 
-    append: (key, value) => {
-        const existing = storage.get(key) || [];
-        existing.push(value);
-        return storage.set(key, existing);
+  let url = loc ? loc.href : "";
+  let title = typeof document !== "undefined" ? document.title : "";
+  let referrer = typeof document !== "undefined" ? document.referrer : "";
+
+  if (typeof arg === "string") {
+    const path = arg.startsWith("/") ? arg : `/${arg}`;
+    url = loc ? `${loc.origin}${path}` : path;
+  } else if (arg && typeof arg === "object") {
+    url = arg.url || url;
+    title = arg.title ?? title;
+    referrer = arg.referrer ?? referrer;
+  }
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/track-visit/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include", // same session cookie the visitor middleware reads
+      body: JSON.stringify({ url, title, referrer }),
+    });
+
+    if (!response.ok) {
+      // Non-fatal — log only. A 400 "No active session" can happen on the very
+      // first request before the session cookie round-trips; nothing to do about it.
+      console.warn("trackPageView: backend returned", response.status);
     }
-};
+  } catch (err) {
+    // Network issue, ad blocker, etc. — never let this break the app.
+    console.warn("trackPageView failed:", err.message);
+  }
+}
 
-// API methods
-export const apiService = {
-    // Submit lead/contact form
-    submitLead: async (leadData) => {
-        try {
-            const lead = {
-                ...leadData,
-                id: Date.now(),
-                created_at: new Date().toISOString(),
-                session_id: getSessionId()
-            };
+// Object-style export — used by pages that do `apiService.submitLead(...)` /
+// `apiService.trackPageView(...)`
+export const apiService = { submitLead, trackPageView };
 
-            // Store lead in localStorage
-            storage.append('leads', lead);
+// Named exports — used by pages that do
+// `import { submitLead } from "../../services/api"` or `import { trackPageView } ...`
+export { submitLead, trackPageView };
 
-            // Track conversion
-            await apiService.trackConversion('contact_form', 'contact', {
-                service: leadData.service_interest
-            });
-
-            return lead;
-        } catch (error) {
-            console.error('Error submitting lead:', error);
-            throw error;
-        }
-    },
-
-    // Track page view
-    trackPageView: async (page) => {
-        try {
-            const pageView = {
-                page,
-                session_id: getSessionId(),
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                referrer: document.referrer
-            };
-
-            storage.append('page_views', pageView);
-            return pageView;
-        } catch (error) {
-            console.error('Error tracking page view:', error);
-        }
-    },
-
-    // Track user interaction
-    trackInteraction: async (page, action, details = {}) => {
-        try {
-            const interaction = {
-                session_id: getSessionId(),
-                page,
-                action,
-                details,
-                timestamp: new Date().toISOString()
-            };
-
-            storage.append('interactions', interaction);
-            return interaction;
-        } catch (error) {
-            console.error('Error tracking interaction:', error);
-        }
-    },
-
-    // Track conversion
-    trackConversion: async (conversionType, page, details = {}) => {
-        try {
-            const conversion = {
-                conversion_type: conversionType,
-                session_id: getSessionId(),
-                page,
-                details,
-                timestamp: new Date().toISOString()
-            };
-
-            storage.append('conversions', conversion);
-            return conversion;
-        } catch (error) {
-            console.error('Error tracking conversion:', error);
-        }
-    },
-
-    // Get analytics dashboard data (for internal use)
-    getAnalytics: async () => {
-        try {
-            const leads = storage.get('leads') || [];
-            const pageViews = storage.get('page_views') || [];
-            const interactions = storage.get('interactions') || [];
-            const conversions = storage.get('conversions') || [];
-
-            const today = new Date().toISOString().split('T')[0];
-
-            return {
-                total_leads: leads.length,
-                leads_today: leads.filter(l => l.created_at.startsWith(today)).length,
-                total_page_views: pageViews.length,
-                page_views_today: pageViews.filter(pv => pv.timestamp.startsWith(today)).length,
-                total_conversions: conversions.length,
-                conversion_rate: pageViews.length > 0
-                    ? ((conversions.length / pageViews.length) * 100).toFixed(2)
-                    : 0,
-                top_pages: Object.entries(
-                    pageViews.reduce((acc, pv) => {
-                        acc[pv.page] = (acc[pv.page] || 0) + 1;
-                        return acc;
-                    }, {})
-                )
-                    .map(([page, views]) => ({ page, views }))
-                    .sort((a, b) => b.views - a.views)
-                    .slice(0, 5)
-            };
-        } catch (error) {
-            console.error('Error fetching analytics:', error);
-            throw error;
-        }
-    },
-
-    // Clear all analytics data
-    clearAnalytics: () => {
-        localStorage.removeItem('leads');
-        localStorage.removeItem('page_views');
-        localStorage.removeItem('interactions');
-        localStorage.removeItem('conversions');
-    }
-};
-
-export { getSessionId };
 export default apiService;

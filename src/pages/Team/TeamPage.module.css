@@ -1,0 +1,51 @@
+.container { padding-top: 80px; }
+.hero {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #fff;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+.hero h1 { font-size: 3rem; font-weight: 700; }
+.hero p { font-size: 1.2rem; color: #cbd5e1; margin-top: 0.5rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+.card {
+  text-align: center;
+  background: #fff;
+  padding: 2rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+.card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fdb840;
+}
+.card h3 { margin: 0.5rem 0 0.2rem; }
+.card p { color: #64748b; }
+
+.cta {
+  background: #fdb840;
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+.cta h2 { font-size: 2.5rem; color: #0f172a; }
+.cta p { font-size: 1.2rem; color: #1e293b; margin-bottom: 1.5rem; }
+.ctaBtn {
+  display: inline-block;
+  background: #0f172a;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+}

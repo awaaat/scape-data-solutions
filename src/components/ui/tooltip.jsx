@@ -1,5 +1,7 @@
+// src/components/ui/tooltip.jsx
 import * as React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import styles from "./Tooltip.module.css";
 
 const TooltipProvider = TooltipPrimitive.Provider;
 const Tooltip = TooltipPrimitive.Root;
@@ -9,7 +11,7 @@ const TooltipContent = React.forwardRef(({ className, sideOffset = 4, ...props }
   <TooltipPrimitive.Content
     ref={ref}
     sideOffset={sideOffset}
-    className={`z-50 overflow-hidden rounded-md border bg-gray-900 px-3 py-1.5 text-sm text-white shadow-md ${className || ''}`}
+    className={`${styles.tooltipContent} ${className || ""}`}
     {...props}
   />
 ));

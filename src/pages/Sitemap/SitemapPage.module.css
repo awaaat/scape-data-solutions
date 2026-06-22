@@ -1,0 +1,31 @@
+
+.page { font-family: "Helvetica Neue", Arial, sans-serif; background: #fff; color: #1a1a2e; }
+
+.hero { position: relative; color: #fff; padding: 120px 40px 80px; text-align: left; background-image: url(/scape_data_files/sitemap--200.jpg); background-size: cover; background-position: center; background-attachment: fixed; isolation: isolate; } .hero::before { content: ""; position: absolute; inset: 0; background: rgba(10,18,40,0.72); z-index: 0; } .hero > * { position: relative; z-index: 1; }
+.heroBadge { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fdb840; margin-bottom: 14px; display: block; }
+.heroTitle { font-size: clamp(36px, 5vw, 60px); font-weight: 800; margin: 0 0 16px; line-height: 1.1; }
+.heroSub { font-size: 17px; color: rgba(255,255,255,0.65); margin: 0; }
+
+.body { max-width: 900px; margin: 0 auto; padding: 80px 40px 100px; display: flex; flex-direction: column; }
+
+.section { display: grid; grid-template-columns: 160px 1fr; gap: 48px; padding: 52px 0; border-top: 1px solid #e8eaed; }
+.section:last-child { border-bottom: 1px solid #e8eaed; }
+
+.secMeta { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 4px; }
+.secTitle { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; }
+.secLine { width: 28px; height: 3px; flex-shrink: 0; }
+
+.linkList { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0; }
+.linkItem { border-bottom: 1px solid #f1f3f6; }
+.linkItem:first-child { border-top: 1px solid #f1f3f6; }
+
+.link { display: inline-flex; align-items: center; gap: 8px; padding: 14px 0; font-size: 15.5px; color: #334155; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.link:hover { color: #fdb840; }
+.linkIcon { opacity: 0.4; flex-shrink: 0; transition: opacity 0.2s; }
+.link:hover .linkIcon { opacity: 1; }
+
+@media (max-width: 768px) {
+  .hero { padding: 100px 20px 60px; }
+  .body { padding: 48px 20px 60px; }
+  .section { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+}

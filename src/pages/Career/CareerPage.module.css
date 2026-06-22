@@ -1,0 +1,293 @@
+/* src/pages/Career/CareerPage.module.css */
+/* Clean, professional career page */
+
+/* ─── Hero ──────────────────────────────────────────────────────── */
+.hero {
+  min-height: 30vh;
+  display: flex;
+  align-items: center;
+  background: #f8f9fc;
+  padding: 24px 0 18px;
+}
+.heroContent {
+  max-width: 900px;
+  text-align: left;
+  margin: 0;
+}
+.heroLabel {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+  text-align: left;
+}
+.heroTitle {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-align: left;
+}
+.accent {
+  color: #fdb840;
+}
+.heroSubtext {
+  font-size: 18px;
+  color: #1a1a2e;
+  line-height: 1.5;
+  max-width: 750px;
+  margin: 0 0 14px;
+  text-align: left;
+}
+.heroSubtext span {
+  display: inline-block;
+}
+.scrollIndicator {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+  letter-spacing: 0.5px;
+  opacity: 1;
+  cursor: default;
+  text-align: left;
+}
+
+/* ─── No Openings Section ──────────────────────────────────────── */
+.noOpeningsSection {
+  background: #ffffff;
+  padding: 40px 0 50px;
+}
+.noOpeningsContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+.noOpeningsTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 16px;
+  border-bottom: 3px solid #fdb840;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+.noOpeningsText {
+  font-size: 17px;
+  color: #1a1a2e;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.noOpeningsText:last-of-type {
+  margin-bottom: 24px;
+}
+.noOpeningsBtn {
+  display: inline-block;
+  padding: 12px 36px;
+  background: #fdb840;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.noOpeningsBtn:hover {
+  background: #e6a730;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(253, 184, 64, 0.3);
+}
+
+/* ─── Culture Sections — icon-led, asymmetric ──────────────────── */
+.sectionLight {
+  background: #ffffff;
+}
+.sectionDark {
+  background: #f8f9fc;
+}
+
+.cultureBlock {
+  padding: 30px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.cultureBlockRight {
+  flex-direction: row-reverse;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+.cultureBlockRight .cultureText {
+  text-align: right;
+}
+.cultureBlockRight .cultureTitle {
+  border-bottom: none;
+  border-top: 3px solid #fdb840;
+  padding-top: 8px;
+  padding-bottom: 0;
+}
+
+.cultureIconWrap {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(253, 184, 64, 0.12);
+  color: #fdb840;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cultureText {
+  padding-top: 6px;
+}
+.cultureTitle {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 12px;
+  border-bottom: 3px solid #fdb840;
+  padding-bottom: 6px;
+  display: inline-block;
+}
+.cultureParagraph {
+  font-size: 16px;
+  color: #1a1a2e;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+/* ─── CTA ──────────────────────────────────────────────────────── */
+.ctaSection {
+  background: #fafafa;
+  border-top: 1px solid #e8eaed;
+}
+.ctaBox {
+  text-align: center;
+  padding: 30px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.ctaTitle {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 10px;
+}
+.ctaSub {
+  font-size: 18px;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.ctaBtn {
+  display: inline-block;
+  padding: 14px 44px;
+  background: #fdb840;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.ctaBtn:hover {
+  background: #e6a730;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(253, 184, 64, 0.3);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 18px 0 14px;
+    min-height: auto;
+  }
+  .heroTitle {
+    font-size: 36px;
+  }
+  .heroSubtext {
+    font-size: 17px;
+  }
+  .heroLabel {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .noOpeningsTitle {
+    font-size: 24px;
+  }
+  .noOpeningsText {
+    font-size: 16px;
+  }
+
+  .cultureBlock,
+  .cultureBlockRight {
+    flex-direction: column;
+    text-align: left !important;
+    gap: 16px;
+  }
+  .cultureBlockRight .cultureTitle {
+    border-top: none;
+    border-bottom: 3px solid #fdb840;
+    padding-top: 0;
+    padding-bottom: 6px;
+  }
+  .cultureIconWrap {
+    width: 52px;
+    height: 52px;
+  }
+  .cultureTitle {
+    font-size: 22px;
+  }
+  .cultureParagraph {
+    font-size: 15px;
+  }
+
+  .ctaTitle {
+    font-size: 24px;
+  }
+  .ctaSub {
+    font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 28px;
+  }
+  .heroSubtext {
+    font-size: 15px;
+  }
+
+  .noOpeningsTitle {
+    font-size: 20px;
+  }
+  .noOpeningsText {
+    font-size: 15px;
+  }
+
+  .cultureIconWrap {
+    width: 44px;
+    height: 44px;
+  }
+  .cultureTitle {
+    font-size: 18px;
+  }
+
+  .ctaTitle {
+    font-size: 20px;
+  }
+  .ctaBtn {
+    width: 100%;
+    text-align: center;
+  }
+  .noOpeningsBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
