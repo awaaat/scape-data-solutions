@@ -328,6 +328,21 @@ const spring  = { hidden:{opacity:0,scale:0.9}, visible:{opacity:1,scale:1,trans
 const REPLAY_VIEWPORT = { once:false, amount:0.15 };
 const REPLAY_VIEWPORT_LOW = { once:false, amount:0.08 };
 
+const HeroStatsParagraph = () => (
+  <motion.p
+    className={styles.heroStatsParagraph}
+    initial={{ opacity: 0, y: 24 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+  >
+    You didn't build your business by guessing, and you shouldn't run it that way.{" "}
+    With 98% model accuracy, 99.9% uptime, and 3,500+ successful projects across 60+ countries,
+    you get more than just reports. You get certainty and clear insights that reveal
+    your next revenue opportunity before your competitors see it.{" "}
+    The fastest way to grow isn't working harder but knowing exactly
+    where to focus.
+  </motion.p>
+);
 export default function HomePage() {
 
   const [slide,           setSlide]           = useState(0);
@@ -608,7 +623,7 @@ export default function HomePage() {
               </motion.div>
 
               {/* Right - Devices */}
-              <div className={styles.heroDevices}>
+              <motion.div className={styles.heroDevices} initial="hidden" whileInView="visible" viewport={REPLAY_VIEWPORT} variants={slideR}>
                 <AnimatePresence mode="wait">
                   <motion.div key={`dev-${slide}`} className={styles.devGroup}
                     initial={{opacity:0,scale:0.9,rotateY:5}} animate={{opacity:1,scale:1,rotateY:0}} exit={{opacity:0,scale:0.9,rotateY:-5}}
@@ -629,18 +644,8 @@ export default function HomePage() {
                   </motion.div>
                 </AnimatePresence>
                 {/* ── Stats strip below devices ── */}
-                
-                <p className={styles.heroStatsParagraph}>
-                    You didn't build your business by guessing, and you shouldn't have to run it that way. 
-                    With 98% model accuracy, 99.9% uptime, and 3,500+ successful projects across 60+ countries, 
-                    you get more than just reports. You get certainty, clear insights and 
-                    predictive insights that reveal your next revenue opportunity before your competitors see it. 
-                    This is about reducing your risk, saving your team's time, and putting control back where it belongs – 
-                   The fastest way to grow isn't working harder, it's knowing exactly 
-                    where to focus.
-                </p>
-              </div>
-
+                <HeroStatsParagraph />
+              </motion.div>
             </div>
 
             {/* Stats bar */}
