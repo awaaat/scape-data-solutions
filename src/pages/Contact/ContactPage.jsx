@@ -99,31 +99,14 @@ export default function ContactPage() {
     return () => clearInterval(iv);
   }, []);
 
-  // ── Scroll to success message when it appears ─────────────────
-  // Uses a MutationObserver so we wait until the element is actually
-  // painted before scrolling, rather than relying on an arbitrary timeout.
+  // ── Scroll to top when success state appears ──────────────────
   useEffect(() => {
     if (!submitted) return;
-
-    // The element may not be in the DOM yet; poll briefly then scroll.
-    let attempts = 0;
-    const tryScroll = () => {
-      attempts++;
-      if (successRef.current) {
-        // Scroll the page so the top of the success section sits just
-        // below the navbar (~80px).
-        const top =
-          successRef.current.getBoundingClientRect().top +
-          window.pageYOffset -
-          80;
-        window.scrollTo({ top, behavior: "smooth" });
-      } else if (attempts < 20) {
-        // Not mounted yet — try again in 50 ms (up to 1 s total)
-        setTimeout(tryScroll, 50);
-      }
-    };
-    // Give React one frame to commit the new subtree, then start polling.
-    requestAnimationFrame(tryScroll);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
   }, [submitted]);
 
   // ── Handlers ─────────────────────────────────────────────────
@@ -349,7 +332,6 @@ export default function ContactPage() {
                           {
                             icon: <MapPin size={17} />,
                             label: "Nairobi Office",
-                            // Matches footer: Global Trade Centre, 14th Floor, Westlands Road
                             value: "Global Trade Centre, 14th Floor\nWestlands Road, Nairobi, Kenya",
                           },
                           {
