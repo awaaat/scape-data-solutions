@@ -512,17 +512,22 @@ export default function ContactPage() {
                           viewport={REPLAY_VIEWPORT}
                           transition={{ delay: 0.32 }}
                         >
-                          <label className={styles.label}>Service Interested In *</label>
+                          <label className={styles.label}>What can we help you with? *</label>
                           <select
                             name="service" value={formData.service}
                             onChange={handleChange} className={styles.select} required
                           >
-                            <option value="">Select a service...</option>
+                            <option value="">Select an area...</option>
                             {[
-                              "Advanced Analytics", "Machine Learning", "Deep Learning",
-                              "Data Engineering", "Business Intelligence", "Predictive Analytics",
-                              "Customer Analytics", "Consulting & Strategy", "MLOps",
-                              "Report Writing", "Other / Not Sure",
+                              "I want to understand my business data better",
+                              "I need a dashboard or reporting system",
+                              "I want to predict customer behaviour or sales",
+                              "I need help automating decisions with data",
+                              "I want to improve my marketing with data",
+                              "I need to clean up or organise my data",
+                              "I want to reduce costs using data insights",
+                              "I need a data strategy for my business",
+                              "I'm not sure — I just know data can help me",
                             ].map(o => <option key={o} value={o}>{o}</option>)}
                           </select>
                         </motion.div>
