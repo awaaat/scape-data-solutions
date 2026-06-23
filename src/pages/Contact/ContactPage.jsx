@@ -1,6 +1,6 @@
 // src/pages/ContactPage.jsx
 import {
-  CheckCircle, Mail, MapPin, Phone, Send, ChevronUp, Sparkles, ArrowRight
+  CheckCircle, Mail, MapPin, Phone, Send, ChevronUp, Sparkles,
 } from "lucide-react";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
@@ -26,7 +26,6 @@ const slideR = {
 };
 const REPLAY_VIEWPORT = { once: false, amount: 0.15 };
 
-// Typed headline words cycling through
 const TYPED_WORDS = [
   "a Free Consultation",
   "Real Business Results",
@@ -36,34 +35,34 @@ const TYPED_WORDS = [
 ];
 
 export default function ContactPage() {
-  const formRef = useRef(null);
-  const successRef = useRef(null);
+  const formRef     = useRef(null);
+  const successRef  = useRef(null);
 
-  // ── State ──────────────────────────────────────────────────────
-  const [showTop,    setShowTop]    = useState(false);
-  const [submitted,  setSubmitted]  = useState(false);
-  const [loading,    setLoading]    = useState(false);
-  const [error,      setError]      = useState(null);
-  const [particles,  setParticles]  = useState([]);
-  const [ripples,    setRipples]    = useState([]);
-  const [typedText,  setTypedText]  = useState("");
-  const [wordIdx,    setWordIdx]    = useState(0);
-  const [pulse,      setPulse]      = useState(false);
+  const [showTop,   setShowTop]   = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [loading,   setLoading]   = useState(false);
+  const [error,     setError]     = useState(null);
+  const [particles, setParticles] = useState([]);
+  const [ripples,   setRipples]   = useState([]);
+  const [typedText, setTypedText] = useState("");
+  const [wordIdx,   setWordIdx]   = useState(0);
+  const [pulse,     setPulse]     = useState(false);
 
   const [formData, setFormData] = useState({
-    name: "", email: "", company: "", phone: "", service: "", message: ""
+    name: "", email: "", company: "", phone: "", service: "", message: "",
   });
 
-  // ── Effects ────────────────────────────────────────────────────
+  // ── Scroll to top on mount ────────────────────────────────────
   useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, []);
 
+  // ── Show/hide scroll-to-top button ───────────────────────────
   useEffect(() => {
     const h = () => setShowTop(window.scrollY > 500);
     window.addEventListener("scroll", h);
     return () => window.removeEventListener("scroll", h);
   }, []);
 
-  // Spawn floating particles on hero
+  // ── Floating particles ────────────────────────────────────────
   useEffect(() => {
     setParticles(Array.from({ length: 40 }, () => ({
       x: Math.random() * 100,
@@ -75,7 +74,7 @@ export default function ContactPage() {
     })));
   }, []);
 
-  // Typewriter effect cycling through words
+  // ── Typewriter ────────────────────────────────────────────────
   useEffect(() => {
     let i = 0;
     const word = TYPED_WORDS[wordIdx];
@@ -91,25 +90,45 @@ export default function ContactPage() {
     return () => clearInterval(iv);
   }, [wordIdx]);
 
-  // Periodic live pulse on form
+  // ── Periodic pulse on form ────────────────────────────────────
   useEffect(() => {
-    const iv = setInterval(() => { setPulse(true); setTimeout(() => setPulse(false), 600); }, 4000);
+    const iv = setInterval(() => {
+      setPulse(true);
+      setTimeout(() => setPulse(false), 600);
+    }, 4000);
     return () => clearInterval(iv);
   }, []);
 
-  // Scroll the success message into view once it appears
+  // ── Scroll to success message when it appears ─────────────────
+  // Uses a MutationObserver so we wait until the element is actually
+  // painted before scrolling, rather than relying on an arbitrary timeout.
   useEffect(() => {
-    if (submitted && successRef.current) {
-      // Small delay lets the section mount/animate in before we scroll
-      const t = setTimeout(() => {
-        successRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 80);
-      return () => clearTimeout(t);
-    }
+    if (!submitted) return;
+
+    // The element may not be in the DOM yet; poll briefly then scroll.
+    let attempts = 0;
+    const tryScroll = () => {
+      attempts++;
+      if (successRef.current) {
+        // Scroll the page so the top of the success section sits just
+        // below the navbar (~80px).
+        const top =
+          successRef.current.getBoundingClientRect().top +
+          window.pageYOffset -
+          80;
+        window.scrollTo({ top, behavior: "smooth" });
+      } else if (attempts < 20) {
+        // Not mounted yet — try again in 50 ms (up to 1 s total)
+        setTimeout(tryScroll, 50);
+      }
+    };
+    // Give React one frame to commit the new subtree, then start polling.
+    requestAnimationFrame(tryScroll);
   }, [submitted]);
 
-  // ── Handlers ──────────────────────────────────────────────────
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  // ── Handlers ─────────────────────────────────────────────────
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const addRipple = useCallback((e) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -127,7 +146,10 @@ export default function ContactPage() {
       setSubmitted(true);
       setFormData({ name: "", email: "", company: "", phone: "", service: "", message: "" });
     } catch (err) {
-      setError(err.message || "Failed to send message. Please email us directly at info@scapedatasolutions.com");
+      setError(
+        err.message ||
+        "Failed to send message. Please email us directly at info@scapedatasolutions.com",
+      );
     } finally {
       setLoading(false);
     }
@@ -138,7 +160,10 @@ export default function ContactPage() {
     <div className={hStyles.page}>
       <Helmet>
         <title>Contact Us | Get Free Data Consultation - Scape Data Solutions</title>
-        <meta name="description" content="Contact Scape Data Solutions for a free consultation. Located in Westlands, Nairobi. Email: info@scapedatasolutions.com. 24-hour response time." />
+        <meta
+          name="description"
+          content="Contact Scape Data Solutions for a free consultation. Located in Westlands, Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
+        />
         <link rel="canonical" href="https://scapedatasolutions.com/contact" />
       </Helmet>
 
@@ -148,11 +173,13 @@ export default function ContactPage() {
         <div className={styles.container}>
 
           {submitted ? (
-            // ─── SUCCESS STATE ──────────────────────────────────
+            /* ─── SUCCESS STATE ─────────────────────────────── */
             <motion.section
               ref={successRef}
               className={styles.successSection}
-              initial="hidden" animate="visible" variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
               style={{ paddingTop: "40px", paddingBottom: "60px" }}
             >
               <div className={styles.successContent}>
@@ -164,12 +191,16 @@ export default function ContactPage() {
                 >
                   <CheckCircle size={64} />
                 </motion.div>
+
                 <motion.h1 className={styles.successTitle} variants={slideL}>
                   Message Received!
                 </motion.h1>
+
                 <motion.p className={styles.successText} variants={fadeUp}>
-                  Thank you for reaching out! We've received your message and will get back to you within 24 hours.
+                  Thank you for reaching out! We've received your message and will
+                  get back to you within 24 hours.
                 </motion.p>
+
                 <motion.div className={styles.nextSteps} variants={fadeUp}>
                   <h3>What happens next?</h3>
                   <ul>
@@ -177,19 +208,24 @@ export default function ContactPage() {
                       "We'll review your inquiry",
                       "A team member will reach out within 24 hours",
                       "We'll schedule a free consultation call",
-                      "You'll receive a custom proposal"
+                      "You'll receive a custom proposal",
                     ].map((s, i) => (
                       <motion.li
                         key={i}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 + i * 0.12, type: "spring", stiffness: 280 }}
+                        transition={{
+                          delay: 0.3 + i * 0.12,
+                          type: "spring",
+                          stiffness: 280,
+                        }}
                       >
                         {s}
                       </motion.li>
                     ))}
                   </ul>
                 </motion.div>
+
                 <motion.a
                   href="/"
                   className={styles.homeButton}
@@ -204,15 +240,23 @@ export default function ContactPage() {
 
           ) : (
             <>
-              {/* ─── HERO ─────────────────────────────────────── */}
+              {/* ─── HERO ──────────────────────────────────── */}
               <motion.section
                 className={styles.hero}
-                initial="hidden" animate="visible" variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                variants={fadeUp}
               >
-                {/* Floating particles like HomePage hero */}
-                <div style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none", overflow: "hidden" }}>
+                {/* Floating particles */}
+                <div
+                  style={{
+                    position: "absolute", inset: 0, zIndex: 1,
+                    pointerEvents: "none", overflow: "hidden",
+                  }}
+                >
                   {particles.map((p, i) => (
-                    <motion.div key={i}
+                    <motion.div
+                      key={i}
                       style={{
                         position: "absolute",
                         left: `${p.x}%`, top: `${p.y}%`,
@@ -221,14 +265,19 @@ export default function ContactPage() {
                         backgroundColor: "#fdb840",
                         opacity: p.opacity,
                       }}
-                      animate={{ y: [0, -28, 0], x: [0, 12, 0], opacity: [p.opacity, p.opacity * 3.5, p.opacity] }}
-                      transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: "easeInOut" }}
+                      animate={{
+                        y: [0, -28, 0], x: [0, 12, 0],
+                        opacity: [p.opacity, p.opacity * 3.5, p.opacity],
+                      }}
+                      transition={{
+                        duration: p.duration, delay: p.delay,
+                        repeat: Infinity, ease: "easeInOut",
+                      }}
                     />
                   ))}
                 </div>
 
                 <div className={styles.heroContent}>
-                  {/* Badge — animated in like HomePage */}
                   <motion.div
                     className={hStyles.heroBadge}
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -248,7 +297,6 @@ export default function ContactPage() {
                     Schedule a free consultation with our team.
                   </motion.p>
 
-                  {/* Typewriter row — mirrors HomePage typed text */}
                   <motion.div
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -274,7 +322,7 @@ export default function ContactPage() {
                 </div>
               </motion.section>
 
-              {/* ─── CONTACT GRID ──────────────────────────────── */}
+              {/* ─── CONTACT GRID ──────────────────────────── */}
               <section className={styles.contactSection}>
                 <div className={styles.sectionContent}>
                   <div className={styles.contactGrid}>
@@ -287,14 +335,28 @@ export default function ContactPage() {
                     >
                       <h2 className={styles.infoTitle}>Get in Touch</h2>
                       <p className={styles.infoText}>
-                        We respond to all inquiries within 24 hours. Let's discuss how we can help solve your data challenges.
+                        We respond to all inquiries within 24 hours. Let's discuss
+                        how we can help solve your data challenges.
                       </p>
 
                       <div className={styles.contactMethods}>
                         {[
-                          { icon: <Mail size={17} />, label: "Email", value: "info@scapedatasolutions.com\nhello@scapedatasolutions.com" },
-                          { icon: <MapPin size={17} />, label: "Office", value: "Global Trade Centre, 14th Floor\nWestlands Road, Nairobi, Kenya" },
-                          { icon: <Phone size={17} />, label: "Phone", value: "+1 (757) 598-0582\n+44 7454 744014" },
+                          {
+                            icon: <Mail size={17} />,
+                            label: "Email",
+                            value: "info@scapedatasolutions.com\nhello@scapedatasolutions.com",
+                          },
+                          {
+                            icon: <MapPin size={17} />,
+                            label: "Nairobi Office",
+                            // Matches footer: Global Trade Centre, 14th Floor, Westlands Road
+                            value: "Global Trade Centre, 14th Floor\nWestlands Road, Nairobi, Kenya",
+                          },
+                          {
+                            icon: <Phone size={17} />,
+                            label: "Phone",
+                            value: "+1 (757) 598-0582\n+44 7454 744014",
+                          },
                         ].map((m, i) => (
                           <motion.div
                             key={i}
@@ -306,7 +368,12 @@ export default function ContactPage() {
                           >
                             <motion.div
                               className={styles.methodIcon}
-                              whileHover={{ scale: 1.12, backgroundColor: "#fdb840", color: "#fff", borderColor: "#fdb840" }}
+                              whileHover={{
+                                scale: 1.12,
+                                backgroundColor: "#fdb840",
+                                color: "#fff",
+                                borderColor: "#fdb840",
+                              }}
                               transition={{ duration: 0.2 }}
                             >
                               {m.icon}
@@ -358,7 +425,11 @@ export default function ContactPage() {
                       ref={formRef}
                       initial="hidden" whileInView="visible"
                       viewport={REPLAY_VIEWPORT} variants={slideR}
-                      animate={pulse ? { boxShadow: "0 0 0 3px rgba(253,184,64,0.35)" } : { boxShadow: "none" }}
+                      animate={
+                        pulse
+                          ? { boxShadow: "0 0 0 3px rgba(253,184,64,0.35)" }
+                          : { boxShadow: "none" }
+                      }
                       transition={{ duration: 0.4 }}
                     >
                       <form onSubmit={handleSubmit} className={styles.form}>
@@ -376,7 +447,10 @@ export default function ContactPage() {
                           transition={{ delay: 0.6 }}
                         >
                           <motion.span
-                            style={{ width: 7, height: 7, borderRadius: "50%", backgroundColor: "#00e676", display: "inline-block" }}
+                            style={{
+                              width: 7, height: 7, borderRadius: "50%",
+                              backgroundColor: "#00e676", display: "inline-block",
+                            }}
                             animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
                             transition={{ duration: 1.4, repeat: Infinity }}
                           />
@@ -398,8 +472,8 @@ export default function ContactPage() {
 
                         {/* Name + Email */}
                         {[
-                          { label: "Full Name *", name: "name", type: "text", placeholder: "John Doe", required: true },
-                          { label: "Email Address *", name: "email", type: "email", placeholder: "john@company.com", required: true },
+                          { label: "Full Name *",      name: "name",  type: "text",  placeholder: "John Doe",          required: true },
+                          { label: "Email Address *",  name: "email", type: "email", placeholder: "john@company.com",  required: true },
                         ].map((f, i) => (
                           <motion.div
                             key={i}
@@ -432,11 +506,19 @@ export default function ContactPage() {
                         >
                           <div className={styles.formGroup}>
                             <label className={styles.label}>Company</label>
-                            <input type="text" name="company" value={formData.company} onChange={handleChange} className={styles.input} placeholder="Your Company" />
+                            <input
+                              type="text" name="company"
+                              value={formData.company} onChange={handleChange}
+                              className={styles.input} placeholder="Your Company"
+                            />
                           </div>
                           <div className={styles.formGroup}>
                             <label className={styles.label}>Phone</label>
-                            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={styles.input} placeholder="+1 2712 345 678" />
+                            <input
+                              type="tel" name="phone"
+                              value={formData.phone} onChange={handleChange}
+                              className={styles.input} placeholder="+1 2712 345 678"
+                            />
                           </div>
                         </motion.div>
 
@@ -449,12 +531,16 @@ export default function ContactPage() {
                           transition={{ delay: 0.32 }}
                         >
                           <label className={styles.label}>Service Interested In *</label>
-                          <select name="service" value={formData.service} onChange={handleChange} className={styles.select} required>
+                          <select
+                            name="service" value={formData.service}
+                            onChange={handleChange} className={styles.select} required
+                          >
                             <option value="">Select a service...</option>
                             {[
-                              "Advanced Analytics","Machine Learning","Deep Learning","Data Engineering",
-                              "Business Intelligence","Predictive Analytics","Customer Analytics",
-                              "Consulting & Strategy","MLOps","Report Writing","Other / Not Sure"
+                              "Advanced Analytics", "Machine Learning", "Deep Learning",
+                              "Data Engineering", "Business Intelligence", "Predictive Analytics",
+                              "Customer Analytics", "Consulting & Strategy", "MLOps",
+                              "Report Writing", "Other / Not Sure",
                             ].map(o => <option key={o} value={o}>{o}</option>)}
                           </select>
                         </motion.div>
@@ -469,23 +555,25 @@ export default function ContactPage() {
                         >
                           <label className={styles.label}>Tell Us About Your Project *</label>
                           <textarea
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            className={styles.textarea}
+                            name="message" value={formData.message}
+                            onChange={handleChange} className={styles.textarea}
                             required rows={4}
                             placeholder="Tell us about your data challenges, goals, and what you're hoping to achieve..."
                           />
                         </motion.div>
 
-                        {/* Submit button with ripple effect like HomePage CTA */}
+                        {/* Submit */}
                         <motion.button
                           type="submit"
                           className={styles.submitButton}
                           disabled={loading}
                           onClick={!loading ? addRipple : undefined}
                           style={{ position: "relative", overflow: "hidden" }}
-                          whileHover={!loading ? { scale: 1.02, backgroundColor: "#1a1a2e", color: "#fdb840", borderColor: "#1a1a2e" } : {}}
+                          whileHover={
+                            !loading
+                              ? { scale: 1.02, backgroundColor: "#1a1a2e", color: "#fdb840", borderColor: "#1a1a2e" }
+                              : {}
+                          }
                           whileTap={!loading ? { scale: 0.97 } : {}}
                         >
                           {ripples.map(r => (
@@ -508,7 +596,11 @@ export default function ContactPage() {
                               <motion.span
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                                style={{ display: "inline-block", width: 16, height: 16, border: "2px solid #1a1a2e", borderTopColor: "transparent", borderRadius: "50%" }}
+                                style={{
+                                  display: "inline-block", width: 16, height: 16,
+                                  border: "2px solid #1a1a2e",
+                                  borderTopColor: "transparent", borderRadius: "50%",
+                                }}
                               />
                               Processing...
                             </>
@@ -518,7 +610,8 @@ export default function ContactPage() {
                         </motion.button>
 
                         <p className={styles.privacy}>
-                          By submitting this form, you agree to our privacy policy. We'll never share your information.
+                          By submitting this form, you agree to our privacy policy.
+                          We'll never share your information.
                         </p>
                       </form>
                     </motion.div>
@@ -534,7 +627,7 @@ export default function ContactPage() {
 
       <Footer />
 
-      {/* ─── Scroll to Top ────────────────────────────────────────── */}
+      {/* ─── Scroll to Top ───────────────────────────────────────── */}
       <AnimatePresence>
         {showTop && (
           <motion.button
