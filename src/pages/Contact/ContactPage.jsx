@@ -37,6 +37,7 @@ const TYPED_WORDS = [
 
 export default function ContactPage() {
   const formRef = useRef(null);
+  const successRef = useRef(null);
 
   // ── State ──────────────────────────────────────────────────────
   const [showTop,    setShowTop]    = useState(false);
@@ -96,6 +97,17 @@ export default function ContactPage() {
     return () => clearInterval(iv);
   }, []);
 
+  // Scroll the success message into view once it appears
+  useEffect(() => {
+    if (submitted && successRef.current) {
+      // Small delay lets the section mount/animate in before we scroll
+      const t = setTimeout(() => {
+        successRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 80);
+      return () => clearTimeout(t);
+    }
+  }, [submitted]);
+
   // ── Handlers ──────────────────────────────────────────────────
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -138,6 +150,7 @@ export default function ContactPage() {
           {submitted ? (
             // ─── SUCCESS STATE ──────────────────────────────────
             <motion.section
+              ref={successRef}
               className={styles.successSection}
               initial="hidden" animate="visible" variants={fadeUp}
               style={{ paddingTop: "40px", paddingBottom: "60px" }}
@@ -280,7 +293,7 @@ export default function ContactPage() {
                       <div className={styles.contactMethods}>
                         {[
                           { icon: <Mail size={17} />, label: "Email", value: "info@scapedatasolutions.com\nhello@scapedatasolutions.com" },
-                          { icon: <MapPin size={17} />, label: "Office", value: "Delta Corner Tower (Chiromo Road) Westlands, Nairobi" },
+                          { icon: <MapPin size={17} />, label: "Office", value: "Global Trade Centre, 14th Floor\nWestlands Road, Nairobi, Kenya" },
                           { icon: <Phone size={17} />, label: "Phone", value: "+1 (757) 598-0582\n+44 7454 744014" },
                         ].map((m, i) => (
                           <motion.div
