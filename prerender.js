@@ -102,8 +102,9 @@ async function run() {
 
   const server = await startServer();
   const browser = await puppeteer.launch({
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
     headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--no-zygote', '--single-process'],
   });
 
   try {
