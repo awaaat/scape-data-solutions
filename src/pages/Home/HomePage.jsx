@@ -27,6 +27,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import styles from "../Home/HomePage.module.css";
 import { submitLead } from "../../services/api";
+import SEO from "../../components/SEO/SEO";
 
 /* ═══════════════════════════════════════════════════════════════════
    DATA
@@ -515,6 +516,20 @@ export default function HomePage() {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="Scape Data Solutions | AI-Powered Data Analytics & Business Intelligence"
+        description="Transform your business with expert data analytics, AI, machine learning, and business intelligence solutions. 1200+ clients, 98% satisfaction."
+        path="/"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }}
+      />
 
       {/* scroll progress */}
       <div className={styles.progressTrack}><motion.div className={styles.progressBar} style={{width:`${scrollPct}%`}}/></div>

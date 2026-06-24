@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import styles from '../PortfolioCategory/PortfolioCategoryPage.module.css';
 import homeStyles from '../Home/HomePage.module.css';
+import SEO from "../../components/SEO/SEO";
 
 const projects = [
   {
@@ -109,6 +110,11 @@ const PortfolioPipelinesPage = () => {
 
   return (
     <div className={homeStyles.page}>
+      <SEO
+        title="Data Pipeline Portfolio | Real-Time & Batch Engineering — Scape Data Solutions"
+        description="Data pipeline projects across finance, manufacturing, retail, healthcare, marketing and technology. Real-time fraud detection, IoT sensor ingestion, customer 360 data lakes, clinical trial ETL, social media streaming and log aggregation built on Kafka, Flink, Spark, Airflow, dbt, Redshift and BigQuery."
+        path="/portfolio/pipelines"
+      />
       <div className={homeStyles.progressTrack}>
         <motion.div
           className={homeStyles.progressBar}

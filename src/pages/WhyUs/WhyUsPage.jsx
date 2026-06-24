@@ -24,6 +24,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import styles from "../Home/HomePage.module.css";
 import pageStyles from "./WhyUsPage.module.css";
+import SEO from "../../components/SEO/SEO";
 
 // ─── Animation Variants ──────────────────────────────────────────
 const fadeUp = {
@@ -195,6 +196,11 @@ export default function WhyUsPage() {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="Why Choose Scape Data Solutions | Proven Data & AI Partner"
+        description="3500+ projects delivered. 99.5% client satisfaction. Clients in 60+ countries. GDPR, HIPAA, SOC 2 and ISO 27001 compliant. Experienced team, weekly sprint delivery, 4-7x average ROI, and 3+ year average client partnerships. Trusted by banks, hospitals, manufacturers and tech firms worldwide."
+        path="/why-us"
+      />
 
       {/* Scroll Progress Bar */}
       <div className={pageStyles.scrollProgressTrack}>

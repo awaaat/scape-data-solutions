@@ -51,6 +51,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import styles from "./ServicesPage.module.css";
 import homeStyles from "../Home/HomePage.module.css";
+import SEO from "../../components/SEO/SEO";
 
 // ─── 46 Industry‑Focused Services ────────────────────────────────
 const SERVICE_CARDS = [
@@ -1116,6 +1117,11 @@ const ServicesPage = () => {
 
   return (
     <div className={homeStyles.page}>
+      <SEO
+        title="Data Analytics & AI Services | 46 Industry Solutions — Scape Data Solutions"
+        description="Explore 46 expert data analytics and AI services across business, finance, healthcare, retail, manufacturing, logistics, energy, real estate, government, media, telecom, agriculture, insurance, legal and education. 1200+ clients, 98% satisfaction rate, proven ROI across every industry."
+        path="/services"
+      />
       {/* scroll progress */}
       <div className={homeStyles.progressTrack}>
         <motion.div

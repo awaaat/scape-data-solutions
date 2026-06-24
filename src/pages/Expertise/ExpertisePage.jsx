@@ -10,6 +10,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import styles from "../Home/HomePage.module.css";
 import pageStyles from "./ExpertisePage.module.css";
+import SEO from "../../components/SEO/SEO";
 
 // ─── Animation Variants ──────────────────────────────────────────
 const fadeUp = {
@@ -177,6 +178,11 @@ export default function ExpertisePage() {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="Data & AI Expertise | Financial Modelling, Credit Risk, ML & More — Scape Data Solutions"
+        description="12 deep expertise areas: financial modelling and forecasting, credit risk analytics and IFRS 9, fraud detection and AML, customer analytics, business intelligence, predictive machine learning, data engineering, cloud analytics on AWS Azure GCP, data governance, regulatory compliance, custom development and strategy consulting."
+        path="/expertise"
+      />
 
       {/* ─── Navbar ────────────────────────────────────────────── */}
       <Navbar activeNav="expertise" />

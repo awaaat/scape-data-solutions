@@ -14,6 +14,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import styles from "../Home/HomePage.module.css";
 import companyStyles from "./CompanyPage.module.css";
+import SEO from "../../components/SEO/SEO";
 
 // ─── Animation Variants ────────────────────────────────────────
 const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
@@ -131,6 +132,11 @@ export default function CompanyPage() {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="About Scape Data Solutions | Premier Data Analytics Company"
+        description="Scape Data Solutions is a premier data analytics firm with 50+ years of combined experience. Offices in the US, Canada, Pakistan and Kenya. Quick response, expert team, 100% client satisfaction goal. Trusted by 1200+ organizations across 60+ countries."
+        path="/company"
+      />
 
       {/* Scroll Progress Bar */}
       <div className={companyStyles.scrollProgressTrack}>
