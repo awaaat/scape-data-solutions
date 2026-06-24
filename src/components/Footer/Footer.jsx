@@ -37,7 +37,7 @@ const OFFICES = [
     title: "General Inquiry:",
     lines: [
       { text: "info@scapedatasolutions.com",  href: "mailto:info@scapedatasolutions.com"  },
-      { text: "hello@scapedatasolutions.com", href: "mailto:hello@scapedatasolutions.com" },
+      { text: "allan@scapedatasolutions.com", href: "mailto:allan@scapedatasolutions.com" },
     ],
   },
   {

@@ -327,7 +327,7 @@ export default function ContactPage() {
                           {
                             icon: <Mail size={17} />,
                             label: "Email",
-                            value: "info@scapedatasolutions.com\nhello@scapedatasolutions.com",
+                            value: "info@scapedatasolutions.com\nallan@scapedatasolutions.com",
                           },
                           {
                             icon: <MapPin size={17} />,
