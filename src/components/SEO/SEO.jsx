@@ -18,7 +18,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE_NAME = 'Scape Data Solutions';
-const SITE_URL = 'https://scapedatasolutions.com';
+const SITE_URL = 'https://www.scapedatasolutions.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/Images/site-images/og-default.jpg`;
 
 // ─── Real offices (used in Schema.org structured data) ───────────
