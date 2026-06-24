@@ -3,6 +3,7 @@
    Black & white, one accent (#fdb840) only for titles
    NO HOVER EFFECTS on buttons. Cards smaller, striped.
    Background image for cards section – NO OVERLAY.
+   Added sticky sidebar with distinct styling.
    ============================================================ */
 
 /* ---------- Particles ---------- */
@@ -257,55 +258,80 @@
   text-align: center;
   margin-bottom: 20px;
 }
-.categoryFilter {
+
+/* ---------- Filter Layout: Sidebar (distinct) + Cards ---------- */
+.filterLayout {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
 }
-.categoryBtn {
-  display: inline-flex;
+
+/* Sidebar – clearly different background, with border/shadow */
+.filterSidebar {
+  flex: 0 0 220px;
+  min-width: 180px;
+  position: sticky;
+  top: 100px;
+  align-self: flex-start;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  background: #eef1f5;
+  border: 1px solid #d0d7de;
+  border-radius: 0px;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.sidebarList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebarList li {
+  margin-bottom: 0.25rem;
+}
+
+.sidebarBtn {
+  display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 8px 20px;
-  background: #ffffff;
-  border: 1px solid #ddd;
-  color: #444;
-  font-weight: 600;
-  font-size: 12px;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: transparent;
+  color: #2c3e50;
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
-  position: relative;
+  transition: background 0.15s, color 0.15s;
+  border-radius: 0;
   font-family: inherit;
+  text-align: left;
 }
-.categoryBtn:hover {
-  border-color: #fdb840;
+.sidebarBtn:hover {
+  background: rgba(253, 184, 64, 0.12);
 }
-.categoryBtn.active {
-  background: #1a1a2e;
-  border-color: #1a1a2e;
-  color: #ffffff;
-}
-.activeIndicator {
-  position: absolute;
-  bottom: -2px;
-  left: 20%;
-  width: 60%;
-  height: 2px;
+.sidebarBtn.active {
   background: #fdb840;
+  color: #1a1a2e;
+  font-weight: 600;
+  border-left: 4px solid #1a1a2e;
+}
+
+.filterCards {
+  flex: 1;
 }
 
 /* ---------- Services Grid ---------- */
 .servicesSection {
   padding: 50px 0;
   position: relative;
-  background: #ffffff; /* fallback */
+  background: #ffffff;
   background-image: url('/Images/site-images/ai-i.avif');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* optional parallax effect */
+  background-attachment: fixed;
 }
-
-/* NO OVERLAY – image appears as is */
 
 .cardsGrid {
   display: grid;
@@ -341,7 +367,6 @@
   background: #ffffff;
 }
 
-/* --- NO CARD IMAGE --- */
 .cardIconWrap {
   display: none;
 }
@@ -698,7 +723,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
   .servicesSection {
-    background-attachment: scroll; /* disable fixed on mobile */
+    background-attachment: scroll;
   }
 }
 @media (max-width: 768px) {
@@ -719,9 +744,41 @@
   .filterTitle {
     font-size: 22px;
   }
-  .categoryBtn {
-    font-size: 11px;
-    padding: 6px 14px;
+  .filterLayout {
+    flex-direction: column;
+  }
+  .filterSidebar {
+    flex: none;
+    width: 100%;
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+  }
+  .sidebarList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  .sidebarList li {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+  .sidebarBtn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    background: #eef1f5;
+    width: auto;
+    border: 1px solid #d0d7de;
+  }
+  .sidebarBtn.active {
+    background: #fdb840;
+    border-left: none;
   }
   .navyPayInner {
     gap: 12px;
@@ -760,6 +817,7 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
 /* ---------- Detail Page ---------- */
 .detailSection {
   padding: 80px 0 60px;

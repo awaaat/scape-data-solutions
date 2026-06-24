@@ -26,19 +26,24 @@ export const NAV_COMPANY = [
   { label: "Contact Us", href: "/contact"    },
 ];
 
+// ─── Updated Services – industry categories ──────────────────────
 export const NAV_SERVICES = [
-  { label: "AI & Machine Learning", href: "/services?category=ai-ml"      },
-  { label: "Big Data Engineering",  href: "/services?category=big-data"   },
-  { label: "Business Intelligence", href: "/services?category=bi"         },
-  { label: "Data Governance",       href: "/services?category=governance" },
-  { label: "Predictive Analytics",  href: "/services?category=predictive" },
-  { label: "Real-Time Analytics",   href: "/services?category=realtime"   },
-  { label: "Cloud Analytics",       href: "/services?category=cloud"      },
-  { label: "Customer Analytics",    href: "/services?category=customer"   },
-  { label: "Custom Development",    href: "/services?category=custom-dev" },
-  { label: "Data Privacy",          href: "/services?category=privacy"    },
-  { label: "Strategy Consulting",   href: "/services?category=strategy"   },
-  { label: "Training & Upskilling", href: "/services?category=training"   },
+  { label: "All Services",        href: "/services"                      },
+  { label: "Business",            href: "/services?category=business"    },
+  { label: "Finance",             href: "/services?category=finance"     },
+  { label: "Healthcare",          href: "/services?category=healthcare"  },
+  { label: "Retail",              href: "/services?category=retail"      },
+  { label: "Manufacturing",       href: "/services?category=manufacturing" },
+  { label: "Logistics",           href: "/services?category=logistics"   },
+  { label: "Energy & Utilities",  href: "/services?category=energy"      },
+  { label: "Real Estate",         href: "/services?category=realestate"  },
+  { label: "Government",          href: "/services?category=government"  },
+  { label: "Media & Entertainment", href: "/services?category=media"     },
+  { label: "Telecommunications",  href: "/services?category=telecom"     },
+  { label: "Agriculture",         href: "/services?category=agriculture" },
+  { label: "Insurance",           href: "/services?category=insurance"   },
+  { label: "Legal",               href: "/services?category=legal"       },
+  { label: "Education",           href: "/services?category=education"   },
 ];
 
 export const NAV_PORTFOLIO = [
