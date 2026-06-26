@@ -34,6 +34,30 @@ const TYPED_WORDS = [
   "Your Competitive Advantage",
 ];
 
+// ─── Offices ──────────────────────────────────────────────────────
+const OFFICES = [
+  {
+    label: "US Office",
+    value: "1024 Iron Point Road, Suite 200\nFolsom, California 95630\nUS: +1 (757) 598-0582",
+  },
+  {
+    label: "UK Office",
+    value: "60 Cannon Street\nLondon EC4N 6NP, United Kingdom\nUK: +44 7454 744014",
+  },
+  {
+    label: "Canada Office",
+    value: "400 Centre Street South\nWhitby, ON L1N 0G4, Canada",
+  },
+  {
+    label: "Pakistan Office",
+    value: "9th Floor, Tricon Corporate Centre\n73 Jail Road, Gulberg\nLahore 54000, Pakistan",
+  },
+  {
+    label: "Nairobi Office",
+    value: "Global Trade Centre, 14th Floor\nWestlands Road, Nairobi, Kenya\nKE: +254 718 889 559",
+  },
+];
+
 export default function ContactPage() {
   const formRef     = useRef(null);
   const successRef  = useRef(null);
@@ -145,7 +169,7 @@ export default function ContactPage() {
         <title>Contact Us | Get Free Data Consultation - Scape Data Solutions</title>
         <meta
           name="description"
-          content="Contact Scape Data Solutions for a free consultation. Located in Westlands, Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
+          content="Contact Scape Data Solutions for a free consultation. Offices in the US, Canada, Pakistan, and Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
         />
         <link rel="canonical" href="https://scapedatasolutions.com/contact" />
       </Helmet>
@@ -330,14 +354,9 @@ export default function ContactPage() {
                             value: "info@scapedatasolutions.com\nallan@scapedatasolutions.com",
                           },
                           {
-                            icon: <MapPin size={17} />,
-                            label: "Nairobi Office",
-                            value: "Global Trade Centre, 14th Floor\nWestlands Road, Nairobi, Kenya",
-                          },
-                          {
                             icon: <Phone size={17} />,
                             label: "Phone",
-                            value: "+1 (757) 598-0582\n+44 7454 744014",
+                            value: "US: +1 (757) 598-0582\nUK: +44 7454 744014",
                           },
                         ].map((m, i) => (
                           <motion.div
@@ -372,6 +391,7 @@ export default function ContactPage() {
                         ))}
                       </div>
 
+                      {/* ── What to Expect ── */}
                       <motion.div
                         className={styles.benefits}
                         initial={{ opacity: 0, y: 24 }}
@@ -606,6 +626,66 @@ export default function ContactPage() {
                   </div>
                 </div>
               </section>
+
+              {/* ─── OFFICES SECTION (full-width, below contact grid) ── */}
+              <section className={styles.contactSection} style={{ paddingTop: 0 }}>
+                <div className={styles.sectionContent}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={REPLAY_VIEWPORT}
+                    transition={{ delay: 0.1 }}
+                  >
+                    <h2
+                      className={styles.infoTitle}
+                      style={{ marginBottom: 24, textAlign: "center" }}
+                    >
+                      Our Offices
+                    </h2>
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                        gap: "16px",
+                      }}
+                    >
+                      {OFFICES.map((o, i) => (
+                        <motion.div
+                          key={o.label}
+                          className={styles.contactMethod}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={REPLAY_VIEWPORT}
+                          transition={{ delay: 0.1 + i * 0.08, type: "spring", stiffness: 260 }}
+                          style={{ alignItems: "flex-start" }}
+                        >
+                          <motion.div
+                            className={styles.methodIcon}
+                            whileHover={{
+                              scale: 1.12,
+                              backgroundColor: "#fdb840",
+                              color: "#fff",
+                              borderColor: "#fdb840",
+                            }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <MapPin size={17} />
+                          </motion.div>
+                          <div>
+                            <div className={styles.methodLabel}>{o.label}</div>
+                            <div className={styles.methodValue}>
+                              {o.value.split("\n").map((l, j) => (
+                                <span key={j} style={{ display: "block" }}>{l}</span>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              </section>
+
             </>
           )}
 

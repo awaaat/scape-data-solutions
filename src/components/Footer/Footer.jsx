@@ -24,22 +24,7 @@ const PinterestSvg = () => (
 
 // ── Contact / office items (6 cells → 3 columns × 2 rows) ──────────
 const OFFICES = [
-  {
-    icon: "/Images/site-images/phone_icon.webp",
-    title: "Phone:",
-    lines: [
-      { text: "US: +1 (757) 598-0582",   href: "tel:+17575980582"   },
-      { text: "UK: +44 7454 744014",      href: "tel:+447454744014"  },
-    ],
-  },
-  {
-    icon: "/Images/site-images/email_icon.webp",
-    title: "General Inquiry:",
-    lines: [
-      { text: "info@scapedatasolutions.com",  href: "mailto:info@scapedatasolutions.com"  },
-      { text: "allan@scapedatasolutions.com", href: "mailto:allan@scapedatasolutions.com" },
-    ],
-  },
+  // ── Row 1 ──────────────────────────────────────────────────────────
   {
     icon: "/Images/site-images/us_flag.webp",
     title: "US Office:",
@@ -50,10 +35,28 @@ const OFFICES = [
     ],
   },
   {
+    icon: "/Images/site-images/uk-icon.jpeg",
+    title: "UK Office:",
+    lines: [
+      { text: "60 Cannon Street"                },
+      { text: "London EC4N 6NP, United Kingdom" },
+      { text: "UK: +44 7454 744014", href: "tel:+447454744014" },
+    ],
+  },
+  {
+    icon: "/Images/site-images/email_icon.webp",
+    title: "General Inquiry:",
+    lines: [
+      { text: "info@scapedatasolutions.com",  href: "mailto:info@scapedatasolutions.com"  },
+      { text: "allan@scapedatasolutions.com", href: "mailto:allan@scapedatasolutions.com" },
+    ],
+  },
+  // ── Row 2 ──────────────────────────────────────────────────────────
+  {
     icon: "/Images/site-images/canada-flag.webp.webp",
     title: "Canada Office:",
     lines: [
-      { text: "400 Centre Street South" },
+      { text: "400 Centre Street South"    },
       { text: "Whitby, ON L1N 0G4, Canada" },
     ],
   },
@@ -70,8 +73,8 @@ const OFFICES = [
     icon: "/Images/site-images/nairobi-k.jpg",
     title: "Nairobi Office:",
     lines: [
-      { text: "Global Trade Centre, 14th Floor"  },
-      { text: "Westlands Road, Nairobi, Kenya"   },
+      { text: "Global Trade Centre, 14th Floor" },
+      { text: "Westlands Road, Nairobi, Kenya"  },
       { text: "KE: +254 718 889 559", href: "tel:+254718889559" },
     ],
   },
