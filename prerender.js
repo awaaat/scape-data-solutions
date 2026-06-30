@@ -12,14 +12,15 @@
 // React hydrates over this static HTML once the JS loads.
 //
 // USAGE: node prerender.js
-// (wired into package.json as part of the "build" script — see
-//  PACKAGE_JSON_CHANGES note below)
+// (wired into package.json as part of the "build" script)
+//
+// On Vercel: uses @sparticuz/chromium (a Chromium build compatible
+// with Vercel's build container) via puppeteer-core.
+// Locally: falls back to full `puppeteer`'s bundled Chrome.
 
-import { exec } from 'child_process';
-import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import puppeteer from 'puppeteer';
 import handler from 'serve-handler';
 import http from 'http';
 
@@ -27,6 +28,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, 'dist');
 const PORT = 4173;
 const BASE_URL = `http://localhost:${PORT}`;
+
+// Vercel sets this env var automatically during build
+const IS_VERCEL = !!process.env.VERCEL;
 
 // ─── Every real route from App.jsx (kept in sync manually) ────────
 // If you add a new <Route> in App.jsx, add its path here too.
@@ -67,6 +71,29 @@ function startServer() {
   });
 }
 
+async function launchBrowser() {
+  if (IS_VERCEL) {
+    // Vercel build container: use serverless-compatible Chromium
+    const puppeteer = (await import('puppeteer-core')).default;
+    const chromium = (await import('@sparticuz/chromium')).default;
+
+    return puppeteer.launch({
+      args: [...chromium.args, '--disable-dev-shm-usage', '--no-zygote', '--single-process'],
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    });
+  } else {
+    // Local dev: use full puppeteer with its bundled Chrome
+    const puppeteer = (await import('puppeteer')).default;
+
+    return puppeteer.launch({
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--no-zygote', '--single-process'],
+    });
+  }
+}
+
 async function prerenderRoute(browser, route) {
   const page = await browser.newPage();
   const url = `${BASE_URL}${route}`;
@@ -101,11 +128,7 @@ async function run() {
   console.log(`Prerendering ${ROUTES.length} routes...\n`);
 
   const server = await startServer();
-  const browser = await puppeteer.launch({
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--no-zygote', '--single-process'],
-  });
+  const browser = await launchBrowser();
 
   try {
     // Run sequentially (not parallel) to keep memory usage low —
