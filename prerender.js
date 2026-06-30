@@ -98,7 +98,19 @@ async function prerenderRoute(browser, route) {
   const page = await browser.newPage();
   const url = `${BASE_URL}${route}`;
 
-  await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
+  // Block analytics/tracking calls during prerendering — they either
+  // don't exist in this environment or aren't needed for static HTML,
+  // and a hanging/retrying request can block networkidle from ever firing.
+  await page.setRequestInterception(true);
+  page.on('request', (req) => {
+    if (req.url().includes('/api/track-visit')) {
+      req.abort();
+    } else {
+      req.continue();
+    }
+  });
+
+  await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
 
   // Give React + react-helmet-async a moment to finish writing
   // <title>/<meta>/<script> tags into <head> after route render.
