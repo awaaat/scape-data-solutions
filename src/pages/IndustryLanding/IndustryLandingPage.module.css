@@ -1,0 +1,53 @@
+.page { font-family: "Helvetica Neue", Arial, sans-serif; background: #fff; color: #1a1a2e; }
+
+.hero {
+  padding: 140px 40px 100px;
+  text-align: center;
+  background: linear-gradient(135deg, #0a0e27, #1a1e3f);
+  color: #fff;
+}
+.badge { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #a5b4fc; margin-bottom: 20px; }
+.heroTitle { font-size: clamp(30px, 5vw, 52px); font-weight: 800; line-height: 1.2; max-width: 780px; margin: 0 auto 24px; }
+.heroSub { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 640px; margin: 0 auto 36px; line-height: 1.8; }
+.heroBtn { display: inline-flex; align-items: center; gap: 8px; background: #667eea; color: #fff; padding: 16px 36px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; }
+.heroBtn:hover { background: #5568d3; }
+
+.sectionTitle { font-size: clamp(24px, 3.5vw, 34px); font-weight: 800; text-align: center; margin: 0 0 12px; color: #1a1a2e; }
+.sectionSub { font-size: 16px; color: #64748b; text-align: center; margin: 0 0 48px; }
+
+.painSection { max-width: 1100px; margin: 0 auto; padding: 90px 40px; }
+.painGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 40px; }
+.painCard { background: #f8f9fc; border-left: 4px solid #764ba2; border-radius: 8px; padding: 24px; }
+.painCard p { font-size: 15px; color: #334155; line-height: 1.7; margin: 0; }
+
+.kpiSection { background: #f8f9fc; padding: 90px 40px; }
+.kpiGrid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.kpiCard { display: flex; gap: 14px; background: #fff; border: 1px solid #e8eaed; border-radius: 12px; padding: 24px; }
+.kpiIcon { color: #667eea; flex-shrink: 0; margin-top: 2px; }
+.kpiCard h4 { font-size: 16px; font-weight: 700; margin: 0 0 6px; color: #1a1a2e; }
+.kpiCard p { font-size: 14px; color: #64748b; margin: 0; line-height: 1.6; }
+
+.howSection { max-width: 1100px; margin: 0 auto; padding: 90px 40px; }
+.howGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+.howCard { text-align: center; }
+.howNumber { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; font-weight: 800; font-size: 16px; margin-bottom: 16px; }
+.howCard h4 { font-size: 17px; font-weight: 700; margin: 0 0 8px; color: #1a1a2e; }
+.howCard p { font-size: 14px; color: #64748b; line-height: 1.7; margin: 0; }
+
+.articlesSection { background: #f8f9fc; padding: 90px 40px; }
+.articlesGrid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.articleCard { display: flex; flex-direction: column; gap: 8px; background: #fff; border: 1px solid #e8eaed; border-radius: 12px; padding: 24px; text-decoration: none; transition: all 0.2s; }
+.articleCard:hover { border-color: #667eea; transform: translateY(-2px); }
+.articleCard span { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #764ba2; }
+.articleCard h4 { font-size: 15px; font-weight: 700; margin: 0; color: #1a1a2e; line-height: 1.4; }
+
+.cta { background: #0f172a; text-align: center; padding: 90px 40px; }
+.cta h2 { font-size: clamp(24px, 3.5vw, 38px); font-weight: 800; color: #fff; margin: 0 0 12px; }
+.cta p { font-size: 17px; color: rgba(255,255,255,0.65); margin: 0 0 32px; }
+.ctaBtn { display: inline-flex; align-items: center; gap: 8px; background: #667eea; color: #fff; padding: 14px 36px; font-size: 15px; font-weight: 700; text-decoration: none; border: 2px solid #667eea; border-radius: 50px; transition: all 0.3s; }
+.ctaBtn:hover { background: transparent; color: #667eea; }
+
+@media (max-width: 768px) {
+  .hero { padding: 110px 20px 70px; }
+  .painSection, .kpiSection, .howSection, .articlesSection { padding: 60px 20px; }
+}

@@ -34,6 +34,8 @@ const IS_VERCEL = !!process.env.VERCEL;
 
 // ─── Every real route from App.jsx (kept in sync manually) ────────
 // If you add a new <Route> in App.jsx, add its path here too.
+// IMPORTANT: when adding a new article to resourceArticles.js, add its
+// /resources/:slug path below too — dynamic routes aren't auto-discovered.
 const ROUTES = [
   '/',
   '/services',
@@ -48,6 +50,17 @@ const ROUTES = [
   '/career',
   '/blog',
   '/faq',
+  '/resources',
+  '/resources/dental-kpi-dashboard',
+  '/resources/reduce-dental-no-shows',
+  '/resources/patient-retention-dental-clinic',
+  '/resources/veterinary-kpi-dashboard',
+  '/resources/veterinary-client-retention',
+  '/resources/medical-practice-revenue-cycle-analytics',
+  '/resources/reduce-patient-no-shows-predictive-analytics',
+  '/dental-analytics',
+  '/veterinary-analytics',
+  '/medical-practice-analytics',
   '/portfolio',
   '/portfolio/bi',
   '/portfolio/ai',
@@ -144,7 +157,7 @@ async function run() {
 
   try {
     // Run sequentially (not parallel) to keep memory usage low —
-    // fine for ~22 pages, well within typical CI build limits.
+    // fine for ~30 pages, well within typical CI build limits.
     for (const route of ROUTES) {
       await prerenderRoute(browser, route);
     }

@@ -193,8 +193,8 @@ const BlogPage = () => {
   return (
     <div className={styles.page}>
       <Helmet>
-        <title>Blog | Scape Data Solutions</title>
-        <meta name="description" content="Curated reading on AI, statistical modelling, quantitative finance, data engineering, MLOps, and business intelligence." />
+        <title>Recommended Reading | Scape Data Solutions</title>
+        <meta name="description" content="External blogs, journals, and publications our team actually reads on AI, statistical modelling, quantitative finance, data engineering, MLOps, and business intelligence." />
       </Helmet>
 
       <Navbar activeNav="blog" />
@@ -202,8 +202,11 @@ const BlogPage = () => {
       <section className={styles.hero}>
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <p className={styles.heroBadge}>CURATED READING</p>
-          <h1 className={styles.heroTitle}>Resources Worth <span className={styles.heroAccent}>Your Time</span></h1>
+          <h1 className={styles.heroTitle}>Recommended <span className={styles.heroAccent}>Reading</span></h1>
           <p className={styles.heroSub}>We do not publish for the sake of publishing. Instead, here are the external blogs, journals, and publications our team actually reads, annotated with why they matter for serious data and AI work.</p>
+          <Link to="/resources" className={styles.heroResourcesLink}>
+            Looking for our own guides instead? Visit Resources <ArrowRight size={14} />
+          </Link>
         </motion.div>
       </section>
 

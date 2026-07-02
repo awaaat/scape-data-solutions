@@ -22,7 +22,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 30px;
 }
 
 /* -------- Scroll Progress -------- */
@@ -179,7 +179,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 30px;
 }
 .mobileLogo img { height: 32px; }
 .burger {
@@ -393,7 +393,7 @@
   background: #fafafa;
   display: flex;
   align-items: flex-start;    /* ← change from "center" to "flex-start" */
-  padding: 15px 0 0 60px;          /* ← change "80px 0 60px" to "0 0 60px" */
+  padding: 15px 60px 0 60px;          /* ← change "80px 0 60px" to "0 0 60px" */
   margin: 0;                  /* ← add this to be safe */
   overflow: hidden;
 }

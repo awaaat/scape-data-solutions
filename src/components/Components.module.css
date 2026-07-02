@@ -6,7 +6,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 30px;
 }
 
 /* -------- Scroll Progress -------- */
@@ -157,7 +157,7 @@
 .navTopBar {
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
-  padding: 7px 0;
+  padding: 18px 0;
 }
 .navTopInner {
   display: flex;
@@ -165,12 +165,12 @@
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 .navTopLeft {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 .navTopContact {
   display: flex;
@@ -195,8 +195,8 @@
 }
 /* Branded square social icons – each platform gets its own color */
 .navSocBtn {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
@@ -246,9 +246,9 @@
 .navLink {
   color: #222;
   text-decoration: none;
-  font-size: 14.5px;
-  font-weight: 500;
-  padding: 28px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 28px 7px;
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -263,8 +263,8 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: 16px;
-  right: 16px;
+  left: 5px;
+  right: 5px;
   height: 3px;
   background: #1a3a8f;
   transform: scaleX(0);
@@ -296,7 +296,7 @@
   visibility: visible;
   transform: translateY(0);
 }
-.dropWide { min-width: 400px; }
+.dropWide { min-width: 480px; }
 .dropGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 16px; }
 .dropGrid1 { display: flex; flex-direction: column; gap: 2px; }
 .dropLink {
@@ -310,25 +310,19 @@
 }
 .dropLink:hover { color: #1a3a8f; padding-left: 6px; }
 
-/* Right side of navbar – hidden on desktop, only socials visible */
-.navbarRight {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* Resources dropdown: divider + section label between industry / student links */
+.dropDivider {
+  border-top: 1px solid #eee;
+  margin: 10px 0;
 }
-/* We keep navbarRight only for a "Get a Quote" CTA button */
-.navCta {
-  background: #1a3a8f;
-  color: #fff;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 8px 18px;
-  letter-spacing: 0.03em;
-  transition: background 0.2s;
-  white-space: nowrap;
+.dropSectionLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin: 4px 0 6px;
 }
-.navCta:hover { background: #0f2460; color: #fff; }
 
 /* -------- Mobile Header -------- */
 .mobileHeader {
@@ -345,7 +339,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 30px;
 }
 .mobileLogo img { height: 48px; }
 .burger {
@@ -432,6 +426,14 @@
   color: #666;
   font-size: 14px;
   border-bottom: 1px solid #f0f0f0;
+}
+.drawerSubLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+  padding: 10px 0 4px;
 }
 
 /* ================================================================
@@ -549,6 +551,19 @@
 .navyFootLinks a:hover { color: #fff; padding-left: 4px; }
 .navyFootHMt { margin-top: 28px; }
 
+/* Follow Us – standalone row beneath the 4-column links grid */
+.navyFootSocialsRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.navyFootSocialsRow .navyFootH {
+  margin: 0;
+}
+
 /* Social icons – square bordered, colored on hover */
 .navyFootSocials {
   display: flex;
@@ -601,6 +616,9 @@
   letter-spacing: 0.02em;
 }
 .navyPayInner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   overflow: hidden;
 }
 .navyPayScroll { overflow: hidden; }
@@ -836,4 +854,5 @@
   .navyOffItem:nth-child(odd),
   .navyOffItem:not(:nth-child(3n)) { border-right: none; }
   .navyFootGrid { grid-template-columns: 1fr; gap: 20px; }
+  .navyFootSocialsRow { flex-direction: column; align-items: flex-start; gap: 12px; }
 }

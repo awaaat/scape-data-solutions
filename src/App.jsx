@@ -22,6 +22,13 @@ import CareerPage from './pages/Career/CareerPage';
 import BlogPage from './pages/Blog/BlogPage';
 import FAQPage from './pages/FAQ/FAQPage';
 
+// ─── Resources (SEO articles) ────────────────────────────────────
+import ResourcesPage from './pages/Resources/ResourcesPage';
+import ArticlePage from './pages/Resources/ArticlePage';
+
+// ─── Industry Landing Pages (SEO) ────────────────────────────────
+import IndustryLandingPage from './pages/IndustryLanding/IndustryLandingPage';
+
 // ─── Portfolio Pages (now separate components) ──────────────────
 import PortfolioPage from './pages/Portfolio/PortfolioPage';
 import PortfolioBIPage from './pages/PortfolioBI/PortfolioBIPage';
@@ -74,6 +81,15 @@ const AppContent = () => {
                     <Route path="/career" element={<CareerPage />} />
                     <Route path="/blog" element={<BlogPage />} />
                     <Route path="/faq" element={<FAQPage />} />
+
+                    {/* Resources — original SEO articles, one per search term */}
+                    <Route path="/resources" element={<ResourcesPage />} />
+                    <Route path="/resources/:slug" element={<ArticlePage />} />
+
+                    {/* Industry landing pages — one per high-intent search term */}
+                    <Route path="/dental-analytics" element={<IndustryLandingPage dataKey="dental-analytics" />} />
+                    <Route path="/veterinary-analytics" element={<IndustryLandingPage dataKey="veterinary-analytics" />} />
+                    <Route path="/medical-practice-analytics" element={<IndustryLandingPage dataKey="medical-practice-analytics" />} />
 
                     {/* Portfolio main page */}
                     <Route path="/portfolio" element={<PortfolioPage />} />

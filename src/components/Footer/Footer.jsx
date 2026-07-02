@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 import styles from "../Components.module.css";
-import { NAV_COMPANY, NAV_SERVICES, NAV_PORTFOLIO } from "../Navbar/Navbar";
+import { NAV_COMPANY, NAV_SERVICES, NAV_PORTFOLIO, NAV_RESOURCES } from "../Navbar/Navbar";
 
 const YoutubeSvg = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -243,9 +243,35 @@ export default function Footer() {
               </ul>
             </motion.div>
 
-            {/* Portfolio + Other Links */}
+            {/* Resources */}
             <motion.div
               custom={2}
+              initial="hidden"
+              whileInView="visible"
+              viewport={REPLAY_VIEWPORT}
+              variants={linkColVariants}
+            >
+              <h3 className={styles.navyFootH}>Resources</h3>
+              <ul className={styles.navyFootLinks}>
+                {NAV_RESOURCES.map((x, i) => (
+                  <motion.li
+                    key={i}
+                    custom={i}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={REPLAY_VIEWPORT}
+                    variants={linkItemVariants}
+                    whileHover={{ x: 5 }}
+                  >
+                    <Link to={x.href}>{x.label}</Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Portfolio + Other Links */}
+            <motion.div
+              custom={3}
               initial="hidden"
               whileInView="visible"
               viewport={REPLAY_VIEWPORT}
@@ -272,7 +298,7 @@ export default function Footer() {
                 {[
                   { to: "/clients", label: "Our Clients" },
                   { to: "/testimonials", label: "Testimonials" },
-                  { to: "/blog", label: "Blog" },
+                  { to: "/blog", label: "Recommended Reading" },
                   { to: "/faq", label: "FAQ" },
                   { to: "/sitemap", label: "Sitemap" },
                 ].map((x, i) => (
@@ -290,38 +316,39 @@ export default function Footer() {
                 ))}
               </ul>
             </motion.div>
-
-            {/* Follow Us */}
-            <motion.div
-              custom={3}
-              initial="hidden"
-              whileInView="visible"
-              viewport={REPLAY_VIEWPORT}
-              variants={linkColVariants}
-            >
-              <h3 className={styles.navyFootH}>Follow Us</h3>
-              <div className={styles.navyFootSocials}>
-              {SOCIALS.map(({ href, label, Icon, cls }, i) => (
-                  <motion.a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${styles.navySocIcon} ${cls}`}
-                    aria-label={label}
-                    initial={{ opacity: 0, scale: 0.5, y: 10 }}
-                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                    viewport={REPLAY_VIEWPORT}
-                    transition={{ delay: i * 0.06, duration: 0.35, type: "spring", stiffness: 300, damping: 18 }}
-                    whileHover={{ scale: 1.15, y: -3 }}
-                    whileTap={{ scale: 0.92 }}
-                  >
-                    <Icon size={15} />
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
           </div>
+
+          {/* Follow Us */}
+          <motion.div
+            className={styles.navyFootSocialsRow}
+            custom={4}
+            initial="hidden"
+            whileInView="visible"
+            viewport={REPLAY_VIEWPORT}
+            variants={linkColVariants}
+          >
+            <h3 className={styles.navyFootH}>Follow Us</h3>
+            <div className={styles.navyFootSocials}>
+            {SOCIALS.map(({ href, label, Icon, cls }, i) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${styles.navySocIcon} ${cls}`}
+                  aria-label={label}
+                  initial={{ opacity: 0, scale: 0.5, y: 10 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  viewport={REPLAY_VIEWPORT}
+                  transition={{ delay: i * 0.06, duration: 0.35, type: "spring", stiffness: 300, damping: 18 }}
+                  whileHover={{ scale: 1.15, y: -3 }}
+                  whileTap={{ scale: 0.92 }}
+                >
+                  <Icon size={15} />
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 // src/components/Navbar/Navbar.jsx
 // LEADconcept-style:
 //   - Top bar: email + phone left | colored square social icons right
-//   - Main nav: logo left | links center | GET A QUOTE CTA right
+//   - Main nav: logo left | links center
 //   - NO bottom border on nav bar (clean, like LEADconcept)
 //   - Active link = blue underline from bottom
 
@@ -53,6 +53,39 @@ export const NAV_PORTFOLIO = [
   { label: "Mobile Analytics", href: "/portfolio/mobile"    },
 ];
 
+// ─── Resources – SEO content hub, grouped by audience ─────────────
+export const NAV_RESOURCES_INDUSTRY = [
+  { label: "All Resources",              href: "/resources"                        },
+  { label: "Business Analytics",         href: "/resources?category=business"      },
+  { label: "Finance Analytics",          href: "/resources?category=finance"       },
+  { label: "Healthcare Analytics",       href: "/resources?category=healthcare"    },
+  { label: "Dental Analytics",           href: "/dental-analytics"                 },
+  { label: "Veterinary Analytics",       href: "/veterinary-analytics"             },
+  { label: "Medical Practice Analytics", href: "/medical-practice-analytics"       },
+  { label: "Retail Analytics",           href: "/resources?category=retail"        },
+  { label: "Manufacturing Analytics",    href: "/resources?category=manufacturing" },
+  { label: "Logistics Analytics",        href: "/resources?category=logistics"     },
+  { label: "Energy & Utilities",         href: "/resources?category=energy"        },
+  { label: "Real Estate Analytics",      href: "/resources?category=realestate"    },
+  { label: "Government & Public Sector", href: "/resources?category=government"    },
+  { label: "Media & Entertainment",      href: "/resources?category=media"         },
+  { label: "Telecommunications",         href: "/resources?category=telecom"       },
+  { label: "Agriculture Analytics",      href: "/resources?category=agriculture"   },
+  { label: "Insurance Analytics",        href: "/resources?category=insurance"     },
+  { label: "Legal Analytics",            href: "/resources?category=legal"         },
+  { label: "Education Analytics",        href: "/resources?category=education"     },
+];
+
+export const NAV_RESOURCES_STUDENTS = [
+  { label: "Research & Thesis Support",     href: "/resources?category=research"      },
+  { label: "Data Analysis (SPSS/R/Stata)",  href: "/resources?category=data-analysis" },
+  { label: "Chapter 4 & Results Writing",   href: "/resources?category=chapter4"      },
+  { label: "Statistical Methods Explained", href: "/resources?category=statistics"    },
+];
+
+// kept for backward compatibility with any other file importing NAV_RESOURCES
+export const NAV_RESOURCES = NAV_RESOURCES_INDUSTRY;
+
 // ── Social icons using Lucide (no FA dependency) ────────────────────
 const YoutubeSvg = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -80,6 +113,7 @@ export default function Navbar({ activeNav = "" }) {
   const [compOpen, setCompOpen] = useState(false);
   const [servOpen, setServOpen] = useState(false);
   const [portOpen, setPortOpen] = useState(false);
+  const [resOpen,  setResOpen]  = useState(false);
 
   useEffect(() => { setNavOpen(false); }, [location.pathname]);
 
@@ -193,6 +227,18 @@ export default function Navbar({ activeNav = "" }) {
                     </ul>
                   )}
                 </li>
+                <li>
+                  <button className={styles.drawerAcc} onClick={() => setResOpen(!resOpen)}>
+                    Resources <span>{resOpen ? "▲" : "▼"}</span>
+                  </button>
+                  {resOpen && (
+                    <ul className={styles.drawerSub}>
+                      {NAV_RESOURCES_INDUSTRY.map((x, i) => (
+                        <li key={i}><Link to={x.href} onClick={() => setNavOpen(false)}>{x.label}</Link></li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
                 <li><Link to="/testimonials" onClick={() => setNavOpen(false)}>Testimonials</Link></li>
                 <li><Link to="/contact" onClick={() => setNavOpen(false)}>Contact</Link></li>
               </ul>
@@ -202,7 +248,7 @@ export default function Navbar({ activeNav = "" }) {
       </AnimatePresence>
 
       {/* ══════════════════════════════════════
-          DESKTOP NAV – logo · links · CTA
+          DESKTOP NAV – logo · links
           No bottom border, clean like LEADconcept
           ══════════════════════════════════════ */}
       <motion.header
@@ -264,6 +310,18 @@ export default function Navbar({ activeNav = "" }) {
                 </div>
               </div>
             </li>
+            <li className={styles.hasDrop}>
+              <Link to="/resources" className={`${styles.navLink}${activeNav === "resources" ? " " + styles.navActive : ""}`}>
+                Resources <ChevronDown size={12} />
+              </Link>
+              <div className={`${styles.drop} ${styles.dropWide}`}>
+                <div className={styles.dropGrid}>
+                  {NAV_RESOURCES_INDUSTRY.map((x, i) => (
+                    <Link key={i} to={x.href} className={styles.dropLink}>{x.label}</Link>
+                  ))}
+                </div>
+              </div>
+            </li>
             <li>
               <Link to="/testimonials" className={styles.navLink}>Testimonials</Link>
             </li>
@@ -273,13 +331,9 @@ export default function Navbar({ activeNav = "" }) {
               </Link>
             </li>
           </ul>
-
-          {/* GET A QUOTE CTA */}
-          <div className={styles.navbarRight}>
-            <Link to="/contact" className={styles.navCta}>GET A QUOTE</Link>
-          </div>
         </div>
       </motion.header>
     </>
   );
+
 }

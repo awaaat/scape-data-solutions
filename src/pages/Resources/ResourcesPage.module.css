@@ -1,0 +1,54 @@
+.page { background: #fff; color: #1a1a2e; }
+
+.hero { position: relative; color: #fff; padding: 120px 40px 80px; text-align: left; background: linear-gradient(135deg, #0a0e27, #1a1e3f); isolation: isolate; }
+.heroBadge { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #667eea; margin-bottom: 16px; display: block; }
+.heroTitle { font-size: clamp(32px, 5vw, 56px); font-weight: 800; margin: 0 0 20px; line-height: 1.15; max-width: 780px; }
+.heroAccent { background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.heroSub { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 640px; margin: 0; line-height: 1.8; }
+
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px;
+  border: 1px solid #e8eaed;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.card:hover {
+  border-color: #667eea;
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.12);
+  transform: translateY(-4px);
+}
+
+.cardCategory { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #764ba2; }
+.cardTitle { font-size: 20px; font-weight: 700; margin: 0; line-height: 1.35; color: #1a1a2e; }
+.cardExcerpt { font-size: 15px; color: #475569; line-height: 1.7; margin: 0; flex-grow: 1; }
+.cardMeta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #667eea; margin-top: 8px; }
+
+.recommendedLink { max-width: 1200px; margin: 0 auto; padding: 0 40px 60px; text-align: center; }
+.recommendedLink p { font-size: 15px; color: #64748b; }
+.recommendedLink a { color: #667eea; font-weight: 600; text-decoration: none; }
+.recommendedLink a:hover { text-decoration: underline; }
+
+.cta { background: #0f172a; text-align: center; padding: 80px 40px; }
+.cta h2 { font-size: clamp(24px, 3.5vw, 38px); font-weight: 800; color: #fff; margin: 0 0 12px; }
+.cta p { font-size: 17px; color: rgba(255,255,255,0.65); margin: 0 0 32px; }
+.ctaBtn { display: inline-flex; align-items: center; gap: 8px; background: #667eea; color: #fff; padding: 14px 36px; font-size: 15px; font-weight: 700; text-decoration: none; border: 2px solid #667eea; transition: all 0.3s; }
+.ctaBtn:hover { background: transparent; color: #667eea; }
+
+@media (max-width: 768px) {
+  .hero { padding: 100px 20px 60px; }
+  .grid { padding: 48px 20px 20px; grid-template-columns: 1fr; }
+}
