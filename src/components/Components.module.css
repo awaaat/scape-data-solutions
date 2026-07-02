@@ -297,13 +297,25 @@
   transform: translateY(0);
 }
 .dropWide { min-width: 480px; }
+
+/* Right-aligned variant: anchors the panel's RIGHT edge to the trigger's
+   right edge instead of its left edge. Use this on nav items that sit
+   near the right side of the bar (Portfolio, Resources, etc.) so wide
+   dropdowns grow leftward into the page instead of overflowing off
+   the right side of the viewport. */
+.dropRight {
+  left: auto;
+  right: 0;
+}
+
 .dropGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 16px; }
 .dropGrid1 { display: flex; flex-direction: column; gap: 2px; }
 .dropLink {
   color: #444;
   text-decoration: none;
-  font-size: 13px;
-  padding: 5px 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 6px 0;
   transition: color 0.2s, padding-left 0.2s;
   border-bottom: 1px solid #f0f0f0;
   display: block;

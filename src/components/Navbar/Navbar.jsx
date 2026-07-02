@@ -302,7 +302,8 @@ export default function Navbar({ activeNav = "" }) {
               <Link to="/portfolio" className={styles.navLink}>
                 Portfolio <ChevronDown size={12} />
               </Link>
-              <div className={styles.drop}>
+              {/* dropRight: anchors panel to the right edge so it doesn't overflow off-screen */}
+              <div className={`${styles.drop} ${styles.dropRight}`}>
                 <div className={styles.dropGrid1}>
                   {NAV_PORTFOLIO.map((x, i) => (
                     <Link key={i} to={x.href} className={styles.dropLink}>{x.label}</Link>
@@ -314,7 +315,8 @@ export default function Navbar({ activeNav = "" }) {
               <Link to="/resources" className={`${styles.navLink}${activeNav === "resources" ? " " + styles.navActive : ""}`}>
                 Resources <ChevronDown size={12} />
               </Link>
-              <div className={`${styles.drop} ${styles.dropWide}`}>
+              {/* dropRight: anchors panel to the right edge so it doesn't overflow off-screen */}
+              <div className={`${styles.drop} ${styles.dropWide} ${styles.dropRight}`}>
                 <div className={styles.dropGrid}>
                   {NAV_RESOURCES_INDUSTRY.map((x, i) => (
                     <Link key={i} to={x.href} className={styles.dropLink}>{x.label}</Link>
