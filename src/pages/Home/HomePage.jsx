@@ -337,7 +337,7 @@ const HeroStatsParagraph = () => (
     transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
   >
     You didn't build your business by guessing, and you shouldn't run it that way.{" "}
-    With 98% model accuracy, 99.9% uptime, and 3,500+ successful projects across 60+ countries,
+    With over 90 % model accuracy, 99.9% uptime, and 500+ successful projects across 60+ countries,
     you get more than just reports. You get certainty and clear insights that reveal
     your next revenue opportunity before your competitors see it.{" "}
     The fastest way to grow isn't working harder but knowing exactly
@@ -417,7 +417,7 @@ export default function HomePage() {
   const isCounterInView = useInView(counterRef,{once:false,amount:0.4});
   useEffect(()=>{
     if(!isCounterInView) return;
-    const targets={clients:1200,projects:3500,satisfaction:99.5,countries:60,years:6};
+    const targets={clients:200,projects:500,satisfaction:99.5,countries:60,years:6};
     let step=0; const steps=90;
     const iv=setInterval(()=>{
       step++; const ease=1-Math.pow(1-step/steps,3);
