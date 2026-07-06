@@ -1,6 +1,6 @@
 // src/components/Navbar/Navbar.jsx
 // LEADconcept-style:
-//   - Top bar: email + phone left | colored square social icons right
+//   - Top bar: email + phone left
 //   - Main nav: logo left | links center
 //   - NO bottom border on nav bar (clean, like LEADconcept)
 //   - Active link = blue underline from bottom
@@ -8,10 +8,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  ChevronDown, Mail, Phone,
-  Facebook, Instagram, Twitter, Linkedin,
-} from "lucide-react";
+import { ChevronDown, Mail, Phone } from "lucide-react";
 import styles from "../Components.module.css";
 
 // ─── Navigation data ──────────────────────────────────────────────
@@ -86,27 +83,6 @@ export const NAV_RESOURCES_STUDENTS = [
 // kept for backward compatibility with any other file importing NAV_RESOURCES
 export const NAV_RESOURCES = NAV_RESOURCES_INDUSTRY;
 
-// ── Social icons using Lucide (no FA dependency) ────────────────────
-const YoutubeSvg = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/>
-  </svg>
-);
-const PinterestSvg = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 0C5.4 0 0 5.4 0 12c0 5.1 3.1 9.4 7.6 11.2-.1-1-.2-2.5.1-3.6.2-.9 1.5-6.3 1.5-6.3s-.4-.8-.4-1.9c0-1.8 1-3.1 2.3-3.1 1.1 0 1.6.8 1.6 1.8 0 1.1-.7 2.7-1 4.2-.3 1.2.6 2.2 1.8 2.2 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.3 0-5.3 2.5-5.3 5.1 0 1 .4 2.1.9 2.7.1.1.1.3.1.4l-.3 1.4c-.1.3-.3.4-.6.2-1.5-.7-2.5-2.9-2.5-4.7 0-3.8 2.8-7.4 8-7.4 4.2 0 7.5 3 7.5 7 0 4.2-2.6 7.5-6.3 7.5-1.2 0-2.4-.6-2.8-1.4l-.8 2.9c-.3 1.1-1 2.5-1.5 3.3.5.2 1 .2 1.5.2 6.6 0 12-5.4 12-12S18.6 0 12 0z"/>
-  </svg>
-);
-
-const SOCIALS = [
-  { cls: styles.navSocFb, href: "https://facebook.com",  label: "Facebook",  Icon: Facebook  },
-  { cls: styles.navSocIg, href: "https://instagram.com", label: "Instagram", Icon: Instagram },
-  { cls: styles.navSocX,  href: "https://twitter.com",   label: "X",         Icon: Twitter   },
-  { cls: styles.navSocLi, href: "https://linkedin.com",  label: "LinkedIn",  Icon: Linkedin  },
-  { cls: styles.navSocPi, href: "https://pinterest.com", label: "Pinterest", Icon: PinterestSvg },
-  { cls: styles.navSocYt, href: "https://youtube.com",   label: "YouTube",   Icon: YoutubeSvg  },
-];
-
 export default function Navbar({ activeNav = "" }) {
   const location = useLocation();
   const [navOpen,  setNavOpen]  = useState(false);
@@ -120,7 +96,7 @@ export default function Navbar({ activeNav = "" }) {
   return (
     <>
       {/* ══════════════════════════════════════
-          TOP BAR  – contacts left · socials right
+          TOP BAR  – contacts left
           ══════════════════════════════════════ */}
       <div className={styles.navTopBar}>
         <div className={styles.navTopInner}>
@@ -137,21 +113,6 @@ export default function Navbar({ activeNav = "" }) {
             </a>
           </div>
 
-          <div className={styles.navTopRight}>
-            {SOCIALS.map(({ cls, href, label, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.navSocBtn} ${cls}`}
-                aria-label={label}
-                title={label}
-              >
-                <Icon size={13} />
-              </a>
-            ))}
-          </div>
         </div>
       </div>
 

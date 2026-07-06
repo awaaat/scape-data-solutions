@@ -7,20 +7,8 @@
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 import styles from "../Components.module.css";
 import { NAV_COMPANY, NAV_SERVICES, NAV_PORTFOLIO, NAV_RESOURCES } from "../Navbar/Navbar";
-
-const YoutubeSvg = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/>
-  </svg>
-);
-const PinterestSvg = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 0C5.4 0 0 5.4 0 12c0 5.1 3.1 9.4 7.6 11.2-.1-1-.2-2.5.1-3.6.2-.9 1.5-6.3 1.5-6.3s-.4-.8-.4-1.9c0-1.8 1-3.1 2.3-3.1 1.1 0 1.6.8 1.6 1.8 0 1.1-.7 2.7-1 4.2-.3 1.2.6 2.2 1.8 2.2 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.3 0-5.3 2.5-5.3 5.1 0 1 .4 2.1.9 2.7.1.1.1.3.1.4l-.3 1.4c-.1.3-.3.4-.6.2-1.5-.7-2.5-2.9-2.5-4.7 0-3.8 2.8-7.4 8-7.4 4.2 0 7.5 3 7.5 7 0 4.2-2.6 7.5-6.3 7.5-1.2 0-2.4-.6-2.8-1.4l-.8 2.9c-.3 1.1-1 2.5-1.5 3.3.5.2 1 .2 1.5.2 6.6 0 12-5.4 12-12S18.6 0 12 0z"/>
-  </svg>
-);
 
 // ── Contact / office items (6 cells → 3 columns × 2 rows) ──────────
 const OFFICES = [
@@ -78,16 +66,6 @@ const OFFICES = [
       { text: "KE: +254 718 889 559", href: "tel:+254718889559" },
     ],
   },
-];
-
-// ── Social icons ────────────────────────────────────────────────────
-const SOCIALS = [
-  { href: "https://facebook.com",  label: "Facebook",  Icon: Facebook,     cls: styles.navySocIconFb },
-  { href: "https://instagram.com", label: "Instagram", Icon: Instagram,    cls: styles.navySocIconIg },
-  { href: "https://twitter.com",   label: "X",         Icon: Twitter,      cls: styles.navySocIconX  },
-  { href: "https://linkedin.com",  label: "LinkedIn",  Icon: Linkedin,     cls: styles.navySocIconLi },
-  { href: "https://pinterest.com", label: "Pinterest", Icon: PinterestSvg, cls: styles.navySocIconPi },
-  { href: "https://youtube.com",   label: "YouTube",   Icon: YoutubeSvg,   cls: styles.navySocIconYt },
 ];
 
 // ── Payment methods (doubled for infinite scroll) ───────────────────
@@ -317,38 +295,6 @@ export default function Footer() {
               </ul>
             </motion.div>
           </div>
-
-          {/* Follow Us */}
-          <motion.div
-            className={styles.navyFootSocialsRow}
-            custom={4}
-            initial="hidden"
-            whileInView="visible"
-            viewport={REPLAY_VIEWPORT}
-            variants={linkColVariants}
-          >
-            <h3 className={styles.navyFootH}>Follow Us</h3>
-            <div className={styles.navyFootSocials}>
-            {SOCIALS.map(({ href, label, Icon, cls }, i) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${styles.navySocIcon} ${cls}`}
-                  aria-label={label}
-                  initial={{ opacity: 0, scale: 0.5, y: 10 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={REPLAY_VIEWPORT}
-                  transition={{ delay: i * 0.06, duration: 0.35, type: "spring", stiffness: 300, damping: 18 }}
-                  whileHover={{ scale: 1.15, y: -3 }}
-                  whileTap={{ scale: 0.92 }}
-                >
-                  <Icon size={15} />
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
 
