@@ -497,7 +497,7 @@ export default function HomePage() {
     if(!chatMsg.trim()) return;
     setChatLog(l=>[...l,{from:"user",text:chatMsg}]);
     setChatMsg("");
-    setTimeout(()=>setChatLog(l=>[...l,{from:"bot",text:"Thanks for reaching out! Our team will respond within 1 hour. For urgent queries, call +1 (312) 212-3396 or WhatsApp us."}]),900);
+    setTimeout(()=>setChatLog(l=>[...l,{from:"bot",text:"Thanks for reaching out! Our team will respond within 1 hour. For urgent queries, call +1 (757) 598-0582 or WhatsApp us."}]),900);
   };
 
   const maxLive = Math.max(...liveData);
