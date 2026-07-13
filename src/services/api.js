@@ -1,19 +1,8 @@
 // src/services/api.js
 //
-// Talks to the real Django backend (see leads/views.py — ContactView).
-// Single live endpoint right now: POST /api/contact/
-//
-// Required fields the backend validates: name, email, service, message
-// Optional: company, phone, page_url
-//
-// `withCredentials: true` is mandatory — the backend's VisitorTrackingMiddleware
-// links every lead to a session cookie (Visitor model), and CORS_ALLOW_CREDENTIALS
-// is True specifically to allow that cookie across origins in dev/staging.
+// Talks to the real Django backend (see leads/views.py — ContactView,
+// visitors/views.py — TrackPageView, jobs/views.py — job endpoints).
 
-// In dev, falls back to the local Django runserver default (port 8000).
-// In production, set VITE_API_URL=https://api.scapedatasolutions.com/api
-// in your .env (or hosting platform's env vars) — that's the domain implied
-// by ALLOWED_HOSTS in the backend's .env.example.
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
 
 class ApiError extends Error {
@@ -24,11 +13,6 @@ class ApiError extends Error {
   }
 }
 
-/**
- * Submits a contact/lead form to POST /api/contact/
- * Accepts whatever shape the various forms collect and maps it onto the
- * exact fields the backend's LeadSerializer expects.
- */
 async function submitLead(formData = {}) {
   const payload = {
     name: formData.name?.trim() || "",
@@ -45,7 +29,7 @@ async function submitLead(formData = {}) {
     response = await fetch(`${API_BASE_URL}/contact/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include", // sends the session cookie the visitor middleware relies on
+      credentials: "include",
       body: JSON.stringify(payload),
     });
   } catch (networkErr) {
@@ -63,11 +47,10 @@ async function submitLead(formData = {}) {
   try {
     data = await response.json();
   } catch {
-    // empty/non-JSON body — fall through to status handling below
+    // empty/non-JSON body
   }
 
   if (!response.ok) {
-    // DRF validation errors come back as { field: ["msg", ...], ... }
     if (response.status === 400 && data && typeof data === "object") {
       const firstField = Object.keys(data)[0];
       const firstMsg = Array.isArray(data[firstField]) ? data[firstField][0] : data[firstField];
@@ -79,22 +62,9 @@ async function submitLead(formData = {}) {
     );
   }
 
-  return data; // { message: "Thanks — we've received your message..." }
+  return data;
 }
 
-/**
- * Logs a page view to POST /api/track-visit/ (see visitors/views.py — TrackPageView).
- * Fire-and-forget by design: a failed tracking call should never break navigation
- * or surface an error to the visitor, so this never throws — it just logs.
- *
- * Matches the actual call site in App.jsx:
- *   const pageName = location.pathname.replace('/', '') || 'home';
- *   apiService.trackPageView(pageName);
- * — i.e. a bare path segment with NO leading slash (e.g. "portfolio/ai", "home").
- *
- * Also accepts an object for flexibility if other call sites need more control:
- *   trackPageView({ url, title, referrer })
- */
 async function trackPageView(arg) {
   const loc = typeof window !== "undefined" ? window.location : null;
 
@@ -115,27 +85,68 @@ async function trackPageView(arg) {
     const response = await fetch(`${API_BASE_URL}/track-visit/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include", // same session cookie the visitor middleware reads
+      credentials: "include",
       body: JSON.stringify({ url, title, referrer }),
     });
 
     if (!response.ok) {
-      // Non-fatal — log only. A 400 "No active session" can happen on the very
-      // first request before the session cookie round-trips; nothing to do about it.
       console.warn("trackPageView: backend returned", response.status);
     }
   } catch (err) {
-    // Network issue, ad blocker, etc. — never let this break the app.
     console.warn("trackPageView failed:", err.message);
   }
 }
 
-// Object-style export — used by pages that do `apiService.submitLead(...)` /
-// `apiService.trackPageView(...)`
-export const apiService = { submitLead, trackPageView };
+// ─── Jobs: GET /api/jobs/, GET /api/jobs/<slug>/, POST /api/jobs/<slug>/apply/ ───
 
-// Named exports — used by pages that do
-// `import { submitLead } from "../../services/api"` or `import { trackPageView } ...`
-export { submitLead, trackPageView };
+async function fetchJobs(filters = {}) {
+  const params = new URLSearchParams(filters);
+  const qs = params.toString();
+  const res = await fetch(`${API_BASE_URL}/jobs/${qs ? `?${qs}` : ""}`, {
+    credentials: "include",
+  });
+  if (!res.ok) throw new ApiError("Could not load job listings.", res.status);
+  return res.json();
+}
 
+async function fetchJobDetail(slug) {
+  const res = await fetch(`${API_BASE_URL}/jobs/${slug}/`, { credentials: "include" });
+  if (!res.ok) throw new ApiError("Job not found.", res.status);
+  return res.json();
+}
+
+async function submitJobApplication(slug, formData) {
+  // formData must be a FormData instance — must include a `resume` file field
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}/jobs/${slug}/apply/`, {
+      method: "POST",
+      credentials: "include",
+      body: formData, // do NOT set Content-Type — browser sets the multipart boundary
+    });
+  } catch {
+    throw new ApiError("Couldn't reach the server. Check your connection and try again.", 0);
+  }
+
+  let data = null;
+  try {
+    data = await response.json();
+  } catch {
+    // no body
+  }
+
+  if (!response.ok) {
+    if (data && typeof data === "object") {
+      const firstField = Object.keys(data)[0];
+      const firstMsg = Array.isArray(data[firstField]) ? data[firstField][0] : data[firstField];
+      throw new ApiError(firstMsg || "Application failed. Please try again.", response.status, data);
+    }
+    throw new ApiError("Application failed. Please try again.", response.status);
+  }
+
+  return data; // { message: "Application received — thank you! ..." }
+}
+
+export const apiService = { submitLead, trackPageView, fetchJobs, fetchJobDetail, submitJobApplication };
+export { submitLead, trackPageView, fetchJobs, fetchJobDetail, submitJobApplication };
 export default apiService;
