@@ -1,0 +1,591 @@
+/* src/pages/Services/FinancialStatementAnalysis/FinancialStatementAnalysisPage.module.css */
+
+/* ─── Fonts (matching Boldin's ES Klarheit Grotesk/Plakat) ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Fallback: we'll use Inter as a substitute for ES Klarheit */
+:root {
+  --font-primary: 'Manrope', sans-serif;
+  --font-heading: 'Manrope', sans-serif;
+  --color-teal: #0d3f4a;
+  --color-dark-teal: #0a2f38;
+  --color-orange: #fb5004;
+  --color-green: #04b477;
+  --color-cream: #fbf7f0;
+  --color-grey: #6e6e63;
+  --color-dark-grey: #3a3a36;
+  --color-white: #ffffff;
+  --color-black: #191711;
+  --container-max: 1140px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────── */
+.heroBtn,
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-orange);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.heroBtn:hover,
+.ctaBtn:hover {
+  background: #c94003;
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(251, 80, 4, 0.25);
+}
+
+.heroBtnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--color-black);
+  border: 1px solid rgba(25, 23, 17, 0.15);
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.heroBtnSecondary:hover {
+  background: var(--color-cream);
+  color: var(--color-black);
+  transform: translateY(-2px);
+}
+
+/* ─── Section Titles ────────────────────────────────────────────── */
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 3rem;
+  color: var(--color-dark-teal);
+  margin: 0 0 64px 0;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+.sectionTitle strong {
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2.25rem;
+    margin-bottom: 40px;
+  }
+}
+
+/* ─── Hero ───────────────────────────────────────────────────────── */
+.heroSection {
+  position: relative;
+  padding: 80px 0 60px;
+  background: var(--color-cream);
+  overflow: hidden;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(13, 63, 74, 0.04), transparent 60%);
+  pointer-events: none;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(13, 63, 74, 0.08);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-teal);
+  width: fit-content;
+  letter-spacing: 0.3px;
+}
+
+.heroBadge svg {
+  color: var(--color-teal);
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: var(--color-dark-teal);
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.heroTitle .highlight {
+  font-weight: 800;
+  color: var(--color-orange);
+}
+
+.heroSub {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--color-dark-grey);
+  max-width: 580px;
+  margin: 0;
+}
+
+.heroCta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.heroStats {
+  display: flex;
+  gap: 40px;
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(25, 23, 17, 0.08);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-dark-teal);
+  line-height: 1.2;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: var(--color-grey);
+}
+
+.heroImageWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(10, 47, 56, 0.12);
+}
+
+/* ─── Logos / Trust Bar ────────────────────────────────────────── */
+.logosSection {
+  background: var(--color-white);
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(25, 23, 17, 0.05);
+}
+
+.logosLabel {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-grey);
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* ─── Overview ──────────────────────────────────────────────────── */
+.overviewSection {
+  padding: 80px 0;
+  background: var(--color-white);
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.overviewText h2 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: var(--color-dark-teal);
+  margin: 0 0 24px 0;
+  letter-spacing: -0.5px;
+}
+
+.overviewText h2 strong {
+  font-weight: 800;
+}
+
+.overviewText p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-dark-grey);
+  margin: 0 0 16px 0;
+}
+
+.overviewText p:last-child {
+  margin-bottom: 0;
+}
+
+.overviewVisual {
+  display: flex;
+  justify-content: center;
+}
+
+.overviewImg {
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(10, 47, 56, 0.08);
+}
+
+/* ─── How It Works ────────────────────────────────────────────── */
+.howSection {
+  padding: 80px 0;
+  background: var(--color-cream);
+}
+
+.howGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.howCard {
+  background: var(--color-white);
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(10, 47, 56, 0.04);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.howIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(13, 63, 74, 0.06);
+  border-radius: 16px;
+  color: var(--color-teal);
+  margin-bottom: 20px;
+}
+
+.howCard h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-dark-teal);
+  margin: 0 0 12px 0;
+}
+
+.howCard p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-grey);
+  margin: 0;
+}
+
+/* ─── Screenshots ────────────────────────────────────────────────── */
+.screensSection {
+  padding: 80px 0;
+  background: var(--color-white);
+}
+
+.screensGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.screenCard {
+  background: var(--color-cream);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(10, 47, 56, 0.04);
+}
+
+.screenCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(10, 47, 56, 0.08);
+}
+
+.screenImgWrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.screenImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.screenCard h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-dark-teal);
+  margin: 20px 24px 8px 24px;
+}
+
+.screenCard p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-grey);
+  margin: 0 24px 24px 24px;
+}
+
+/* ─── Features ──────────────────────────────────────────────────── */
+.featuresSection {
+  padding: 80px 0;
+  background: var(--color-cream);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.featureCard {
+  background: var(--color-white);
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(10, 47, 56, 0.04);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(251, 80, 4, 0.08);
+  border-radius: 16px;
+  color: var(--color-orange);
+  margin-bottom: 20px;
+}
+
+.featureCard h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-dark-teal);
+  margin: 0 0 12px 0;
+}
+
+.featureCard p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-grey);
+  margin: 0;
+}
+
+/* ─── Benefits ──────────────────────────────────────────────────── */
+.benefitsSection {
+  padding: 80px 0;
+  background: var(--color-white);
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.benefitCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--color-cream);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.benefitIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(4, 180, 119, 0.08);
+  border-radius: 50%;
+  color: var(--color-green);
+}
+
+.benefitCard h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--color-dark-teal);
+  margin: 0 0 4px 0;
+}
+
+.benefitCard p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-grey);
+  margin: 0;
+}
+
+/* ─── CTA ────────────────────────────────────────────────────────── */
+.ctaSection {
+  padding: 80px 0;
+  background: var(--color-teal);
+  color: var(--color-white);
+}
+
+.ctaContent {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaContent h2 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: var(--color-white);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.ctaContent p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0 0 32px 0;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-orange);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.16px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.ctaBtn:hover {
+  background: #c94003;
+  color: var(--color-white);
+  transform: scale(1.04);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 992px) {
+  .heroGrid,
+  .overviewGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .heroTitle {
+    font-size: 2.8rem;
+  }
+
+  .howGrid,
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .screensGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+
+  .heroStats {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .howGrid,
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .overviewText h2 {
+    font-size: 2rem;
+  }
+
+  .ctaContent h2 {
+    font-size: 2rem;
+  }
+}
