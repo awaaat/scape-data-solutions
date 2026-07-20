@@ -1,0 +1,178 @@
+/* PortfolioBIPage.module.css — x.ai / Colossus inspired: large display type,
+   hairline dividers instead of boxed cards, generous whitespace, monochrome + accent. */
+
+:root {
+  --bg-background: #ffffff;
+  --bg-card: #fafafa;
+  --text-primary: #0a0a0a;
+  --text-secondary: rgba(10,10,10,0.55);
+  --text-muted: rgba(10,10,10,0.35);
+  --border-color: rgba(10,10,10,0.08);
+  --border-hover: rgba(10,10,10,0.16);
+  --accent: #3b82f6;
+  --font-display: "UniversalSans Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "UniversalSans Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.page {
+  background: var(--bg-background);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Loading */
+.loadingOverlay { position: fixed; inset: 0; z-index: 9999; background: var(--bg-background); display: flex; align-items: center; justify-content: center; }
+.loadingContainer { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.loadingSpinner { width: 40px; height: 40px; border: 3px solid var(--border-color); border-top-color: var(--text-primary); border-radius: 50%; }
+.loadingText { font-size: 0.95rem; color: var(--text-secondary); font-weight: 500; }
+
+/* Hero — big display headline like Colossus */
+.hero { padding: 160px 24px 80px; background: var(--bg-background); }
+.heroContent { max-width: 780px; margin: 0 auto 56px; }
+.heroBadge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; font-weight: 500; color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 500; line-height: 1.05; letter-spacing: -0.03em;
+  margin-bottom: 24px; color: var(--text-primary);
+}
+.highlight { color: var(--text-secondary); }
+.heroSub {
+  font-size: 1.15rem; line-height: 1.7; color: var(--text-secondary);
+  max-width: 620px;
+}
+
+/* Global KPI bar — like x.ai "by the numbers" grid */
+.globalKpiBar {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  max-width: 1100px; margin: 0 auto 32px;
+  border: 1px solid var(--border-color); border-radius: 24px; overflow: hidden;
+  background: var(--border-color);
+}
+@media (max-width: 768px) { .globalKpiBar { grid-template-columns: repeat(2, 1fr); } }
+.globalKpiItem { background: var(--bg-background); padding: 32px 28px; }
+.globalKpiValue {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 500; display: block; letter-spacing: -0.02em;
+}
+.globalKpiLabel { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; display: block; }
+
+/* Filter bar — minimal pill row */
+.filterBar {
+  display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;
+  max-width: 780px; margin: 0 auto; padding: 0;
+}
+.filterGroup { display: flex; align-items: center; gap: 8px; }
+.filterLabel { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.filterValue { font-size: 0.85rem; font-weight: 500; color: var(--text-primary); }
+
+/* Grid of tiles — each tile is a full-width editorial section, not a boxed card */
+.dashboardGrid { max-width: 1000px; margin: 0 auto; padding: 40px 24px 80px; }
+
+.dashboardTile {
+  padding: 72px 0;
+  border-top: 1px solid var(--border-color);
+}
+.dashboardGrid > div:first-child .dashboardTile,
+.dashboardTile:first-of-type { border-top: none; }
+
+/* Header */
+.tileHeader { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 32px; }
+.tileTitleGroup { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.tileIndex { font-family: var(--font-display); font-size: 0.85rem; color: var(--text-muted); }
+.tileIndustry { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+.tileYear, .tileDuration { font-size: 0.8rem; color: var(--text-muted); }
+.tileTitle {
+  font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 500; letter-spacing: -0.02em; margin: 4px 0 0; width: 100%;
+}
+.tileClient { font-size: 0.9rem; color: var(--text-muted); }
+
+/* Sections */
+.tileSection { margin-bottom: 32px; max-width: 720px; }
+.sectionHeading {
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+}
+.sectionText { font-size: 1rem; line-height: 1.8; color: var(--text-secondary); margin: 0; }
+
+/* Lists */
+.listResults, .listInsights { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; max-width: 720px; }
+.listResults li, .listInsights li { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); padding-left: 20px; position: relative; }
+.listResults li::before, .listInsights li::before { content: '—'; position: absolute; left: 0; color: var(--text-muted); }
+
+/* KPI row — like x.ai stat grid, hairline dividers */
+.tileKpiRow {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  margin: 32px 0; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden;
+  background: var(--border-color);
+}
+@media (max-width: 768px) { .tileKpiRow { grid-template-columns: 1fr 1fr; } }
+.tileKpiMain, .tileKpiSecondary { background: var(--bg-background); padding: 24px 22px; }
+.kpiLabel { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); display: block; }
+.kpiValueRow { display: flex; align-items: baseline; gap: 10px; margin-top: 6px; }
+.kpiValue { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 500; }
+.kpiChange { font-size: 0.8rem; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; }
+.trendUp { color: #16a34a; }
+.trendDown { color: #dc2626; }
+.kpiSecondaryValue { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; display: block; margin-top: 6px; }
+
+/* Charts */
+.tileCharts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 32px 0; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; background: var(--border-color); }
+@media (max-width: 1024px) { .tileCharts { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .tileCharts { grid-template-columns: 1fr; } }
+.chartCard { background: var(--bg-background); padding: 20px; }
+.chartTitle { font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); display: block; margin-bottom: 10px; }
+.chartContainer { min-height: 100px; display: flex; align-items: center; justify-content: center; width: 100%; }
+
+/* Table */
+.tableContainer { border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; margin-top: 12px; max-width: 720px; }
+.tableRow { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; padding: 12px 20px; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; }
+.tableRow:last-child { border-bottom: none; }
+.tableHeader { font-weight: 600; background: var(--bg-card); }
+.tableHeader .tableCell { color: var(--text-primary); }
+.tableCell { padding: 2px 4px; color: var(--text-secondary); }
+@media (max-width: 768px) { .tableRow { grid-template-columns: 1fr 1fr; font-size: 0.8rem; padding: 8px 14px; } .tableHeader { display: none; } }
+
+/* Full description */
+.tileFullDescription { margin: 20px 0; }
+.expandBtn { background: none; border: none; color: var(--accent); font-size: 0.9rem; font-weight: 500; cursor: pointer; padding: 0; font-family: var(--font-body); }
+.expandBtn:hover { opacity: 0.7; }
+.fullDescriptionText { font-size: 1rem; line-height: 1.8; color: var(--text-secondary); margin-top: 12px; max-width: 720px; padding-left: 20px; border-left: 2px solid var(--border-color); }
+
+/* Tech stack */
+.techStack { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 28px 0; }
+.techStackLabel { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.techTag { font-size: 0.78rem; font-weight: 500; color: var(--text-secondary); padding: 5px 14px; border-radius: 100px; border: 1px solid var(--border-color); }
+
+/* Footer */
+.tileFooter { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; padding-top: 24px; }
+.tileMetrics { display: flex; flex-wrap: wrap; gap: 28px; font-size: 0.9rem; color: var(--text-secondary); }
+.tileMetrics span { display: inline-flex; align-items: center; gap: 6px; }
+.tileMetrics svg { color: var(--accent); opacity: 0.8; }
+
+/* CTA */
+.ctaSection { max-width: 680px; margin: 0 auto; padding: 80px 24px 100px; text-align: center; border-top: 1px solid var(--border-color); }
+.ctaSection h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; margin-bottom: 16px; }
+.ctaSection p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 12px; }
+.ctaSubText { max-width: 540px; margin: 0 auto 32px !important; }
+.ctaBtn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 13px 32px;
+  border-radius: 100px; background: var(--text-primary); color: var(--bg-background);
+  font-weight: 500; text-decoration: none; font-size: 0.95rem; transition: opacity 0.2s;
+}
+.ctaBtn:hover { opacity: 0.75; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero { padding: 110px 16px 48px; }
+  .dashboardGrid { padding: 24px 16px 60px; }
+  .dashboardTile { padding: 48px 0; }
+  .tileHeader { flex-direction: column; align-items: flex-start; }
+}

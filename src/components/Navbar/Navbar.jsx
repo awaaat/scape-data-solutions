@@ -1,46 +1,27 @@
 // src/components/Navbar/Navbar.jsx
-// LEADconcept-style:
-//   - Top bar: email + phone left
-//   - Main nav: logo left | links center
-//   - NO bottom border on nav bar (clean, like LEADconcept)
-//   - Active link = blue underline from bottom
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Mail, Phone } from "lucide-react";
-import styles from "../Components.module.css";
+import styles from "./Navbar.module.css";
 
 // ─── Navigation data ──────────────────────────────────────────────
 export const NAV_COMPANY = [
   { label: "Company",    href: "/company"    },
-  { label: "History",    href: "/history"    },
   { label: "Why Us?",    href: "/why-us"     },
-  { label: "Expertise",  href: "/expertise"  },
-  { label: "Career",     href: "/career"     },
-  { label: "Blog",       href: "/blog"       },
+  { label: "Career",     href: "/careers"    },
   { label: "FAQ",        href: "/faq"        },
-  { label: "Contact Us", href: "/contact"    },
 ];
 
-// ─── Updated Services – industry categories ──────────────────────
+// ─── Services dropdown – only categories that exist in your data ──
 export const NAV_SERVICES = [
-  { label: "All Services",        href: "/services"                      },
-  { label: "Business",            href: "/services?category=business"    },
-  { label: "Finance",             href: "/services?category=finance"     },
-  { label: "Healthcare",          href: "/services?category=healthcare"  },
-  { label: "Retail",              href: "/services?category=retail"      },
-  { label: "Manufacturing",       href: "/services?category=manufacturing" },
-  { label: "Logistics",           href: "/services?category=logistics"   },
-  { label: "Energy & Utilities",  href: "/services?category=energy"      },
-  { label: "Real Estate",         href: "/services?category=realestate"  },
-  { label: "Government",          href: "/services?category=government"  },
-  { label: "Media & Entertainment", href: "/services?category=media"     },
-  { label: "Telecommunications",  href: "/services?category=telecom"     },
-  { label: "Agriculture",         href: "/services?category=agriculture" },
-  { label: "Insurance",           href: "/services?category=insurance"   },
-  { label: "Legal",               href: "/services?category=legal"       },
-  { label: "Education",           href: "/services?category=education"   },
+  { label: "All Services",                href: "/services"                      },
+  { label: "Finance",                     href: "/services?category=finance"     },
+  { label: "Healthcare",                  href: "/services?category=healthcare"  },
+  { label: "Retail",                      href: "/services?category=retail"      },
+  { label: "Manufacturing",               href: "/services?category=manufacturing" },
+  { label: "Academic Research & Education", href: "/services?category=academic"   },
+  { label: "Analytics",                   href: "/services?category=analytics"   },
 ];
 
 export const NAV_PORTFOLIO = [
@@ -50,7 +31,6 @@ export const NAV_PORTFOLIO = [
   { label: "Mobile Analytics", href: "/portfolio/mobile"    },
 ];
 
-// ─── Resources – SEO content hub, grouped by audience ─────────────
 export const NAV_RESOURCES_INDUSTRY = [
   { label: "All Resources",              href: "/resources"                        },
   { label: "Business Analytics",         href: "/resources?category=business"      },
@@ -70,7 +50,7 @@ export const NAV_RESOURCES_INDUSTRY = [
   { label: "Agriculture Analytics",      href: "/resources?category=agriculture"   },
   { label: "Insurance Analytics",        href: "/resources?category=insurance"     },
   { label: "Legal Analytics",            href: "/resources?category=legal"         },
-  { label: "Education Analytics",        href: "/resources?category=education"     },
+  { label: "Education Analytics",        href: "/resources?category=academic"      },
 ];
 
 export const NAV_RESOURCES_STUDENTS = [
@@ -80,7 +60,6 @@ export const NAV_RESOURCES_STUDENTS = [
   { label: "Statistical Methods Explained", href: "/resources?category=statistics"    },
 ];
 
-// kept for backward compatibility with any other file importing NAV_RESOURCES
 export const NAV_RESOURCES = NAV_RESOURCES_INDUSTRY;
 
 export default function Navbar({ activeNav = "" }) {
@@ -90,6 +69,17 @@ export default function Navbar({ activeNav = "" }) {
   const [servOpen, setServOpen] = useState(false);
   const [portOpen, setPortOpen] = useState(false);
   const [resOpen,  setResOpen]  = useState(false);
+  
+  // ─── Scroll state for the border line ────────────────────────────
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => { setNavOpen(false); }, [location.pathname]);
 
@@ -100,7 +90,6 @@ export default function Navbar({ activeNav = "" }) {
           ══════════════════════════════════════ */}
       <div className={styles.navTopBar}>
         <div className={styles.navTopInner}>
-
           <div className={styles.navTopLeft}>
             <a href="mailto:info@scapedatasolutions.com" className={styles.navTopContact}>
               <Mail size={13} />
@@ -112,7 +101,6 @@ export default function Navbar({ activeNav = "" }) {
               +1 (757) 598-0582
             </a>
           </div>
-
         </div>
       </div>
 
@@ -209,23 +197,22 @@ export default function Navbar({ activeNav = "" }) {
       </AnimatePresence>
 
       {/* ══════════════════════════════════════
-          DESKTOP NAV – logo · links
-          No bottom border, clean like LEADconcept
+          DESKTOP NAV – Static (no collapse on scroll)
           ══════════════════════════════════════ */}
-      <motion.header
-        className={styles.navbarFixed}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
+      <header className={styles.navbarFixed}>
+        {/* ─── Scroll-activated border line ──────────────────────── */}
+        <div
+          className={styles.navbarBorder}
+          style={{
+            opacity: isScrolled ? 1 : 0,
+            transition: 'opacity 0.2s ease'
+          }}
+        />
         <div className={styles.navbarInner}>
-
-          {/* Logo */}
           <Link to="/" className={styles.navbarBrand}>
             <img src="/Images/site-images/logo.svg" alt="Scape Data Solutions" />
           </Link>
 
-          {/* Nav links */}
           <ul className={styles.navList}>
             <li>
               <Link to="/" className={`${styles.navLink}${activeNav === "home" ? " " + styles.navActive : ""}`}>
@@ -263,7 +250,6 @@ export default function Navbar({ activeNav = "" }) {
               <Link to="/portfolio" className={styles.navLink}>
                 Portfolio <ChevronDown size={12} />
               </Link>
-              {/* dropRight: anchors panel to the right edge so it doesn't overflow off-screen */}
               <div className={`${styles.drop} ${styles.dropRight}`}>
                 <div className={styles.dropGrid1}>
                   {NAV_PORTFOLIO.map((x, i) => (
@@ -276,7 +262,6 @@ export default function Navbar({ activeNav = "" }) {
               <Link to="/resources" className={`${styles.navLink}${activeNav === "resources" ? " " + styles.navActive : ""}`}>
                 Resources <ChevronDown size={12} />
               </Link>
-              {/* dropRight: anchors panel to the right edge so it doesn't overflow off-screen */}
               <div className={`${styles.drop} ${styles.dropWide} ${styles.dropRight}`}>
                 <div className={styles.dropGrid}>
                   {NAV_RESOURCES_INDUSTRY.map((x, i) => (
@@ -295,8 +280,7 @@ export default function Navbar({ activeNav = "" }) {
             </li>
           </ul>
         </div>
-      </motion.header>
+      </header>
     </>
   );
-
 }

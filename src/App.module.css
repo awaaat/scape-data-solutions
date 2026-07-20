@@ -1,7 +1,8 @@
 /* frontend/src/App.module.css */
 
 .app {
-    min-height: 100vh;
+    height: 100vh;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     background: #ffffff;

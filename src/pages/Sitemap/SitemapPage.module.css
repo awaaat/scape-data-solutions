@@ -1,10 +1,10 @@
 
-.page { font-family: "Helvetica Neue", Arial, sans-serif; background: #fff; color: #1a1a2e; }
+.page { font-family: "Manrope", sans-serif; background: #fff; color: #1a1a2e; }
 
 .hero { position: relative; color: #fff; padding: 120px 40px 80px; text-align: left; background-image: url(/Images/site-images/sitemap--200.jpg); background-size: cover; background-position: center; background-attachment: fixed; isolation: isolate; } .hero::before { content: ""; position: absolute; inset: 0; background: rgba(10,18,40,0.72); z-index: 0; } .hero > * { position: relative; z-index: 1; }
-.heroBadge { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fdb840; margin-bottom: 14px; display: block; }
+.heroBadge { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent); margin-bottom: 14px; display: block; }
 .heroTitle { font-size: clamp(36px, 5vw, 60px); font-weight: 800; margin: 0 0 16px; line-height: 1.1; }
-.heroSub { font-size: 17px; color: rgba(255,255,255,0.65); margin: 0; }
+.heroSub { font-size: 17px; color: rgba(10, 10, 10,0.65); margin: 0; }
 
 .body { max-width: 900px; margin: 0 auto; padding: 80px 40px 100px; display: flex; flex-direction: column; }
 
@@ -20,7 +20,7 @@
 .linkItem:first-child { border-top: 1px solid #f1f3f6; }
 
 .link { display: inline-flex; align-items: center; gap: 8px; padding: 14px 0; font-size: 15.5px; color: #334155; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-.link:hover { color: #fdb840; }
+.link:hover { color: var(--color-accent); }
 .linkIcon { opacity: 0.4; flex-shrink: 0; transition: opacity 0.2s; }
 .link:hover .linkIcon { opacity: 1; }
 

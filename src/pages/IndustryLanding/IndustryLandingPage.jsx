@@ -33,7 +33,7 @@ const IndustryLandingPage = ({ dataKey }) => {
   }, [dataKey, data]);
 
   if (!data) {
-    return <Navigate to="/solutions" replace />;
+    return <Navigate to="/services" replace />;
   }
 
   const serviceSchema = {

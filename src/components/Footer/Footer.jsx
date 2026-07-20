@@ -7,7 +7,7 @@
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import styles from "../Components.module.css";
+import styles from "./Footer.module.css";
 import { NAV_COMPANY, NAV_SERVICES, NAV_PORTFOLIO, NAV_RESOURCES } from "../Navbar/Navbar";
 
 // ── Contact / office items (6 cells → 3 columns × 2 rows) ──────────
@@ -276,7 +276,7 @@ export default function Footer() {
                 {[
                   { to: "/clients", label: "Our Clients" },
                   { to: "/testimonials", label: "Testimonials" },
-                  { to: "/blog", label: "Recommended Reading" },
+                  { to: "/resources", label: "Recommended Reading" },
                   { to: "/faq", label: "FAQ" },
                   { to: "/sitemap", label: "Sitemap" },
                 ].map((x, i) => (

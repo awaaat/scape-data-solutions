@@ -1,20 +1,21 @@
 // src/pages/CaseStudies/CaseStudiesPage.jsx
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import SEO from "../../components/SEO/SEO";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import styles from "../Home/HomePage.module.css";
 import pageStyles from "./CaseStudiesPage.module.css";
 
 const CaseStudiesPage = () => {
-  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, []);
 
   return (
     <div className={styles.page}>
-      <Helmet>
-        <title>Case Studies | Scape Data Solutions</title>
-        <meta name="description" content="Real results from real client partnerships." />
-      </Helmet>
+      <SEO
+        title="Case Studies | Scape Data Solutions"
+        description="Real results from real client partnerships."
+        path="/case-studies"
+      />
 
       <Navbar activeNav="" />
 

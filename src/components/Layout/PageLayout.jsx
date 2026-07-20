@@ -40,16 +40,7 @@ export const spring = {
 export const REPLAY_VIEWPORT = { once: false, amount: 0.15 };
 export const REPLAY_VIEWPORT_LOW = { once: false, amount: 0.08 };
 
-// ─── Data for live metrics and news ──────────────────────────────
-const LIVE_METRICS = [
-  { label:"Events Processed",    val:"8.4M",  unit:"/min",  icon:<Activity size={14}/>,   color:"#fdb840", delta:"+2.3%" },
-  { label:"Active Pipelines",    val:"1,247", unit:"",      icon:<GitBranch size={14}/>,  color:"#00d4ff", delta:"+18"   },
-  { label:"Avg Query Time",      val:"87",    unit:"ms",    icon:<Zap size={14}/>,        color:"#a259ff", delta:"-4ms"  },
-  { label:"Models in Prod",      val:"342",   unit:"",      icon:<Brain size={14}/>,      color:"#00e676", delta:"+7"    },
-  { label:"Data Ingested Today", val:"14.2",  unit:"TB",    icon:<Database size={14}/>,   color:"#ff6b6b", delta:"+1.8TB"},
-  { label:"Uptime",              val:"99.99", unit:"%",     icon:<Server size={14}/>,     color:"#fdb840", delta:"stable"},
-];
-
+// ─── Data for news ──────────────────────────────
 const NEWS_ITEMS = [
   "🚀 New AI model achieves 99.1% accuracy in fraud detection",
   "📊 Client retention hits all-time high of 96%",
@@ -60,7 +51,6 @@ const NEWS_ITEMS = [
 export default function PageLayout({ children, activeNav = "" }) {
   const [showTop, setShowTop] = useState(false);
   const [scrollPct, setScrollPct] = useState(0);
-  const [metricTick, setMetricTick] = useState(0);
   const [newsIndex, setNewsIndex] = useState(0);
   const [liveData, setLiveData] = useState([55,68,42,81,73,90,77,63,88,71]);
   const [chatOpen, setChatOpen] = useState(false);
@@ -88,7 +78,6 @@ export default function PageLayout({ children, activeNav = "" }) {
   useEffect(() => {
     const t = setInterval(() => {
       setLiveData(p => [...p.slice(1), Math.floor(Math.random() * 40 + 52)]);
-      setMetricTick(p => p + 1);
     }, 1600);
     return () => clearInterval(t);
   }, []);
@@ -166,33 +155,6 @@ export default function PageLayout({ children, activeNav = "" }) {
           <span className={styles.fwLbl}>events/sec</span>
         </div>
       </motion.div>
-
-      {/* ── Metrics ticker ── */}
-      <div className={styles.metricsTicker}>
-        <div className={styles.metricsTrack}>
-          {[...LIVE_METRICS, ...LIVE_METRICS].map((m, i) => (
-            <span key={i} className={styles.metricsItem}>
-              <span style={{ color: m.color }}>{m.icon}</span>
-              <span className={styles.metricsLabel}>{m.label}:</span>
-              <motion.span
-                className={styles.metricsVal}
-                key={metricTick}
-                initial={{ opacity: 0.5 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4 }}
-              >
-                {m.val}{m.unit}
-              </motion.span>
-              <span
-                className={styles.metricsDelta}
-                style={{ color: m.delta.startsWith("-") ? "#ff6b6b" : "#00e676" }}
-              >
-                {m.delta}
-              </span>
-            </span>
-          ))}
-        </div>
-      </div>
 
       {/* ── Navbar ── */}
       <Navbar activeNav={activeNav} />

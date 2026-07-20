@@ -1,0 +1,990 @@
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import {
+  ArrowRight, CheckCircle, Clock, Users, Award, Shield, Star,
+  ChevronDown, Loader2, Send, Sparkles, TrendingUp,
+  Truck, PackageCheck, AlertTriangle, ShieldCheck, Radar, MapPin,
+  Eye, Zap, BarChart3, GitBranch, Activity, Globe, RefreshCw,
+  MessageCircle, Phone, Mail, Calendar, FileText, DollarSign,
+  Target, PieChart, Layers, Move, Navigation, Search, Bell,
+  AlertOctagon, Battery, Cpu, Cloud, Database, Server
+} from "lucide-react";
+
+import Navbar from "../../../components/Navbar/Navbar";
+import Footer from "../../../components/Footer/Footer";
+import SEO from "../../../components/SEO/SEO";
+import { apiService } from "../../../services/api";
+import styles from "./CarrierPerformanceAnalyticsPage.module.css";
+
+// ---- Typewriter words ----
+const ROTATING_WORDS = [
+  "Carrier Scorecards",
+  "Service‑Level Compliance",
+  "Freight Spend Recovery",
+  "Real‑Time SLA Tracking",
+  "Contract Enforcement",
+  "Lane Performance Analytics"
+];
+
+// ---- Custom hooks ----
+function useTypewriter(words, speed = 100, pause = 2400) {
+  const [text, setText] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const [holding, setHolding] = useState(false);
+
+  useEffect(() => {
+    const current = words[wordIndex % words.length];
+    let t;
+    if (!deleting && text.length < current.length) {
+      t = setTimeout(() => setText(current.slice(0, text.length + 1)), speed);
+    } else if (!deleting && text.length === current.length) {
+      setHolding(true);
+      t = setTimeout(() => { setHolding(false); setDeleting(true); }, pause);
+    } else if (deleting && text.length > 0) {
+      t = setTimeout(() => setText(current.slice(0, text.length - 1)), speed / 2);
+    } else {
+      setDeleting(false);
+      setWordIndex(i => i + 1);
+    }
+    return () => clearTimeout(t);
+  }, [text, deleting, wordIndex, words, speed, pause]);
+
+  return { text, holding };
+}
+
+// ---- Animated stat counter ----
+function AnimatedStat({ value }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const [display, setDisplay] = useState("0");
+
+  const match = value.match(/^([\d.,]+)(.*)$/);
+  const numericPart = match ? match[1] : value;
+  const suffix = match ? match[2] : "";
+  const target = parseFloat(numericPart.replace(/,/g, ""));
+  const hasDecimal = numericPart.includes(".");
+
+  useEffect(() => {
+    if (!inView || isNaN(target)) {
+      setDisplay(value);
+      return;
+    }
+    let frame;
+    const duration = 1400;
+    const start = performance.now();
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+      const formatted = hasDecimal
+        ? current.toFixed(1)
+        : Math.round(current).toLocaleString();
+      setDisplay(formatted + suffix);
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
+
+  return <span ref={ref}>{display}</span>;
+}
+
+// ---- Animation variants ----
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.85 },
+  visible: { opacity: 1, scale: 1 }
+};
+
+const slideLeft = {
+  hidden: { opacity: 0, x: -30 },
+  visible: { opacity: 1, x: 0 }
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 }
+  }
+};
+
+const springTransition = { type: "spring", stiffness: 120, damping: 14 };
+
+// ---- Main Component ----
+export default function CarrierPerformanceAnalyticsPage() {
+  const [openFaq, setOpenFaq] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const formRef = useRef(null);
+  const successRef = useRef(null);
+
+  const [formData, setFormData] = useState({
+    name: "", email: "", company: "", primaryMode: "", volume: "", details: ""
+  });
+
+  const { text: typedHeadline, holding } = useTypewriter(ROTATING_WORDS);
+
+  const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      await apiService.submitLead({
+        name: formData.name,
+        email: formData.email,
+        service: `Carrier Performance Analytics - ${formData.primaryMode || 'General'}`,
+        message: `Company: ${formData.company}\nPrimary Mode: ${formData.primaryMode}\nMonthly Shipment Volume: ${formData.volume}\nDetails: ${formData.details}`,
+        company: formData.company || "Prospective Client",
+        phone: ""
+      });
+      setSubmitted(true);
+      setTimeout(() => {
+        if (successRef.current) {
+          successRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+    } catch (err) {
+      setError(err.message || "Failed to send. Please email info@scapedatasolutions.com");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className={`${styles.page}`}>
+      <SEO
+        title="Carrier Performance Analytics | Independent Scorecards & SLA Tracking"
+        description="Scape Data Solutions' carrier performance analytics service turns tracking scans and contract terms into independent scorecards, SLA breach alerts, and service credit recovery for transportation, finance, and customer care teams."
+        path="/services/carrier-performance-analytics"
+      />
+
+      <Navbar activeNav="services" />
+
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        {/* ====== HERO ====== */}
+        <section className={`${styles['home--hero']}`}>
+          <div className={`${styles['padding-global']}`}>
+            <div className={`${styles['container-large']} ${styles['z-index-2']}`}>
+              <div className={`${styles['home--hero_layout']}`}>
+                <div className={`${styles['home--hero_text-wr']}`}>
+                  <motion.div
+                    className={`${styles['home--hero_badge']}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    style={{ display: "inline-flex", background: "#e0f2fe", padding: "0.4rem 1rem", borderRadius: "50px", fontSize: "0.8rem", fontWeight: 600, color: "#0369a1", marginBottom: "1rem" }}
+                  >
+                    <motion.span
+                      animate={{ rotate: [0, 15, -15, 0] }}
+                      transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 1.2 }}
+                      style={{ display: "inline-flex", marginRight: "0.5rem" }}
+                    >
+                      <Sparkles size={14} />
+                    </motion.span>
+                    Trusted by Transportation & Finance Teams
+                  </motion.div>
+
+                  <motion.h1
+                    className={`${styles['heading-style-h1']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7 }}
+                  >
+                    The industry’s first<br />
+                    <span style={{ color: "#FFBC1D" }}>Carrier Performance Scorecard</span>
+                  </motion.h1>
+
+                  <motion.div
+                    className={`${styles['typewriter-container']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                  >
+                    <p className={`${styles['ts-p2']} ${styles['tc-inverted-secondary']}`}>
+                      for {typedHeadline}<span className={`${styles.caret}`} style={{ color: "#FFBC1D" }}>|</span>
+                    </p>
+                  </motion.div>
+
+                  <motion.p
+                    className={`${styles['ts-p2']} ${styles['tc-inverted-secondary']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.15 }}
+                  >
+                    Turn tracking scans, EDI events, and negotiated contracts into one independent
+                    scorecard. Transportation, finance, and customer care teams act on what actually
+                    happened — not what a carrier chose to report.
+                  </motion.p>
+
+                  <motion.div
+                    className={`${styles['button-group']} ${styles['is-full-width']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.25 }}
+                  >
+                    <Link to="/contact" className={`${styles.button} w-inline-block`}>
+                      <div className={`${styles['button-text']}`}>Request a Demo</div>
+                      <div className={`${styles['button-border']}`} />
+                      <div className={`${styles['button-hover-bg']}`} />
+                    </Link>
+                    <a href="#process" className={`${styles.button} ${styles['is-secondary']} w-inline-block`}>
+                      <div className={`${styles['button-text']}`}>How It Works</div>
+                      <div className={`${styles['button-hover-bg']} ${styles['is-secondary']}`} />
+                      <div className={`${styles['button-border']} ${styles['is-secondary']}`} />
+                    </a>
+                  </motion.div>
+
+                  <motion.div
+                    className={`${styles['home--hero_stats']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.35 }}
+                    style={{ display: "flex", gap: "2rem", marginTop: "2rem" }}
+                  >
+                    {[
+                      { value: "500+", label: "Carriers Scored" },
+                      { value: "18%", label: "Fewer Late Deliveries" },
+                      { value: "3.4x", label: "More Credits Recovered" }
+                    ].map((stat, i) => (
+                      <div key={i}>
+                        <span className={`${styles['heading-style-h3']} ${styles['tc-inverted']}`}>
+                          <AnimatedStat value={stat.value} />
+                        </span>
+                        <p className={`${styles['ts-p2']} ${styles['tc-inverted-secondary']}`}>{stat.label}</p>
+                      </div>
+                    ))}
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={`${styles['home--hero_bg-wr']}`}>
+            <div className={`${styles['home--hero_img-wr']}`}>
+              <motion.img
+                src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/695de800bf9b64a2d202024f_b5c5e8aa3b37ad4f9de5dcbe3267b6a9_home--hero_img.webp"
+                loading="lazy"
+                width="960"
+                alt="Carrier Analytics Dashboard"
+                className={`${styles['home--hero-img']}`}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.9, delay: 0.2 }}
+              />
+            </div>
+          </div>
+          <img
+            src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/695de4c5f61292ae5de8720c_b4537af7181172da8b23240c324b356a_home_pattern.png"
+            loading="lazy"
+            width="971"
+            alt=""
+            className={`${styles['home--hero_pattern']}`}
+          />
+          <div className={`${styles['home--pattern-top']} ${styles['is-hero']}`} />
+        </section>
+
+        {/* ====== LOGO RIBBON ====== */}
+        <section className={`${styles['logo-ribbon']}`}>
+          <div className={`${styles['logo-marquee']}`}>
+            <div className={`${styles['logo-marquee_grad']}`}></div>
+            <div className={`${styles['logo-marquee_grad']} ${styles['is-right']}`}></div>
+            <div className={`${styles['logo-marquee_content']}`}>
+              <div className={`${styles['logo-marquee_list']}`}>
+                {["Logo1", "Logo2", "Logo3", "Logo4", "Logo5", "Logo6"].map((name, i) => (
+                  <div key={i} className="w-dyn-item">
+                    <img src={`https://via.placeholder.com/120x40?text=${name}`} alt={name} className={`${styles['logo-marquee_logo']}`} />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={`${styles['logo-marquee_content']}`}>
+              <div className={`${styles['logo-marquee_list']}`}>
+                {["Logo1", "Logo2", "Logo3", "Logo4", "Logo5", "Logo6"].map((name, i) => (
+                  <div key={i} className="w-dyn-item">
+                    <img src={`https://via.placeholder.com/120x40?text=${name}`} alt={name} className={`${styles['logo-marquee_logo']}`} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ====== PROBLEM SECTION ====== */}
+        <section className={`${styles['section-white']}`}>
+          <div className={`${styles['padding-global']}`}>
+            <div className={`${styles['container-large']} ${styles['z-index-2']}`}>
+              <div className={`${styles.side_layout} ${styles['no-bottom-margin']}`}>
+                <motion.div
+                  className={`${styles['side_img-wr']}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <img
+                    src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/695df30e60b6b0e1ce89d5c9_ec01f1da6a20141cf1671c19022b19df_home_metrics_img.avif"
+                    loading="lazy"
+                    width="560"
+                    alt="Carrier performance data"
+                    className={`${styles['side_gray-bg']}`}
+                  />
+                </motion.div>
+                <div className={`${styles['side_text-wr']}`}>
+                  <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    Your Carrier Performance Data is <span className={`${styles.highlight}`}>Incomplete</span>
+                  </motion.h2>
+                  <div className={`${styles['padding-top']} ${styles['padding-kiwi']}`} />
+                  <motion.p
+                    className={`${styles['ts-p2']} ${styles['tc-secondary']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                  >
+                    Without an independent view of carrier performance, transportation, finance, and
+                    customer support teams make decisions based on carrier‑reported summaries —
+                    which often hide service failures, overcharges, and contract violations.
+                  </motion.p>
+                  <motion.div
+                    className={`${styles.stats_list}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    <div className={`${styles['stats_list-item']} is-first`}>
+                      <p className={`${styles['heading-style-h3']} ${styles['tc-primary']}`}>40%</p>
+                      <p className={`${styles['ts-p2']}`}>of organizations lack visibility into carrier performance</p>
+                    </div>
+                    <div className={`${styles['stats_list-item']}`}>
+                      <p className={`${styles['heading-style-h3']} ${styles['tc-primary']}`}>30%</p>
+                      <p className={`${styles['ts-p2']}`}>of freight costs are driven by accessorial fees</p>
+                    </div>
+                    <div className={`${styles['stats_list-item']} is-last`}>
+                      <p className={`${styles['heading-style-h3']} ${styles['tc-primary']}`}>$100B+</p>
+                      <p className={`${styles['ts-p2']}`}>estimated annual waste in global freight costs</p>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ====== PLATFORM OVERVIEW ====== */}
+        <div className={`${styles['frame-wr']}`}>
+          <section className={`${styles.section_dark}`}>
+            <div className={`${styles['padding-global']}`}>
+              <div className={`${styles['container-large']} ${styles['z-index-2']}`}>
+                <div className={`${styles['center-layout']}`}>
+                  <div className={`${styles['max-width-paprika']}`}>
+                    <motion.h2
+                      className={`${styles['heading-style-h2']} ${styles['tc-inverted']}`}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      Turn fragmented carrier data into<br /> a single source of truth
+                    </motion.h2>
+                    <div className={`${styles['padding-top']} ${styles['padding-kiwi']}`} />
+                    <motion.p
+                      className={`${styles['ts-p2']} ${styles['tc-inverted-secondary']}`}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
+                    >
+                      We normalize tracking scans, EDI events, and contract terms into one unified
+                      scorecard. Every team sees the same performance record, so disputes and
+                      negotiations are backed by evidence everyone trusts.
+                    </motion.p>
+                  </div>
+                </div>
+                <motion.div
+                  className={`${styles['home_img-wr']}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: 0.15 }}
+                >
+                  <img
+                    src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/6a39af34010fbda31112029b_LDP_Main.avif"
+                    loading="lazy"
+                    width="1200"
+                    alt="Unified carrier data platform"
+                    className={`${styles['img-desktop']}`}
+                  />
+                  <img
+                    src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/695fa66175dfd9120e1ba245_cfe920c18db339adf8d8872ce4afce9c_mobile.avif"
+                    loading="lazy"
+                    width="493"
+                    alt="Mobile unified data platform"
+                    className={`${styles['img-mobile']}`}
+                  />
+                </motion.div>
+              </div>
+            </div>
+            <div className={`${styles['home--pattern-top']}`} />
+          </section>
+        </div>
+
+        {/* ====== THREE PILLARS ====== */}
+        <section className={`${styles['section-white']}`}>
+          <div className={`${styles['padding-global']}`}>
+            <div className={`${styles['container-large']} ${styles['z-index-2']}`}>
+              {/* Pillar 1 */}
+              <div className={`${styles.side_layout}`}>
+                <div className={`${styles['side_text-wr']}`}>
+                  <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    Optimize carrier selection
+                  </motion.h2>
+                  <div className={`${styles['padding-top']} ${styles['padding-kiwi']}`} />
+                  <motion.p
+                    className={`${styles['ts-p2']} ${styles['tc-secondary']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                  >
+                    Use independent scorecards to see which carriers actually deliver on time,
+                    at the right price, and with the fewest exceptions. Stop guessing — start
+                    choosing based on evidence.
+                  </motion.p>
+                  <motion.ul
+                    className={`${styles['side_list-wr']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.15 }}
+                  >
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Live lane‑level performance scores</div>
+                    </li>
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Transit time consistency tracking</div>
+                    </li>
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Exception root‑cause analysis</div>
+                    </li>
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Carrier accountability dashboards</div>
+                    </li>
+                  </motion.ul>
+                  <div className={`${styles['button-wr']}`}>
+                    <a href="#" className={`${styles['btn-link']} w-inline-block`}>
+                      <div>Learn More</div>
+                      <div className={`${styles['btn-icon_arrow']} w-embed`}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M2.5 8H13.5M13.5 8L9 3.5M13.5 8L9 12.5" stroke="currentcolor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <motion.div
+                  className={`${styles['side_img-wr']}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: 0.05 }}
+                >
+                  <img
+                    src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/695e6cf591a4786c6d064602_BG.avif"
+                    loading="lazy"
+                    width="560"
+                    alt=""
+                    className={`${styles['side_gray-bg']}`}
+                  />
+                  <img
+                    src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/695dfe2b232e643c845925fb_f9a9069858d64d54a148bec51c02085b_home_side_img-1.png"
+                    loading="lazy"
+                    width="601"
+                    alt="Carrier scorecard dashboard"
+                    className={`${styles['side_overflow-img']}`}
+                  />
+                </motion.div>
+              </div>
+
+              {/* Pillar 2 */}
+              <div className={`${styles.side_layout}`}>
+                <motion.div
+                  className={`${styles['side_img-wr']}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: 0.05 }}
+                >
+                  <img
+                    src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/695e6cf591a4786c6d064602_BG.avif"
+                    loading="lazy"
+                    width="560"
+                    alt=""
+                    className={`${styles['side_gray-bg']}`}
+                  />
+                  <img
+                    src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/695dfe2b09009d9564ac3113_eb4d53e67e3adb19710e48cf3da44504_home_side_img-2.png"
+                    loading="lazy"
+                    width="601"
+                    alt="Freight spend analysis"
+                    className={`${styles['side_overflow-img']}`}
+                  />
+                </motion.div>
+                <div className={`${styles['side_text-wr']}`}>
+                  <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <strong>Control freight spend</strong>
+                  </motion.h2>
+                  <div className={`${styles['padding-top']} ${styles['padding-kiwi']}`} />
+                  <motion.p
+                    className={`${styles['ts-p2']} ${styles['tc-secondary']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                  >
+                    Stop overpaying for service failures and accessorial fees. Our scorecards
+                    automatically flag SLA breaches and generate claims packets, so finance teams
+                    recover what’s owed and renegotiate from a position of strength.
+                  </motion.p>
+                  <motion.ul
+                    className={`${styles['side_list-wr']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.15 }}
+                  >
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Automated service credit recovery</div>
+                    </li>
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Accessorial fee validation</div>
+                    </li>
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Contract negotiation analytics</div>
+                    </li>
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Real‑time spend visibility</div>
+                    </li>
+                  </motion.ul>
+                  <div className={`${styles['button-wr']}`}>
+                    <a href="#" className={`${styles['btn-link']} w-inline-block`}>
+                      <div>Learn More</div>
+                      <div className={`${styles['btn-icon_arrow']} w-embed`}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M2.5 8H13.5M13.5 8L9 3.5M13.5 8L9 12.5" stroke="currentcolor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pillar 3 */}
+              <div className={`${styles.side_layout}`}>
+                <div className={`${styles['side_text-wr']}`}>
+                  <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    Build carrier accountability
+                  </motion.h2>
+                  <div className={`${styles['padding-top']} ${styles['padding-kiwi']}`} />
+                  <motion.p
+                    className={`${styles['ts-p2']} ${styles['tc-secondary']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                  >
+                    Hold every carrier to their promises. With an independent record of performance,
+                    your team can have evidence‑backed conversations and drive continuous
+                    improvement across your network.
+                  </motion.p>
+                  <motion.ul
+                    className={`${styles['side_list-wr']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.15 }}
+                  >
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Carrier scorecards with trend analysis</div>
+                    </li>
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Service failure alerts in real time</div>
+                    </li>
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Performance‑based lane recommendations</div>
+                    </li>
+                    <li className={`${styles['side_list-item']}`}>
+                      <div className={`${styles['icon-md']}`}><CheckCircle size={24} /></div>
+                      <div>Data‑driven carrier QBRs</div>
+                    </li>
+                  </motion.ul>
+                  <div className={`${styles['button-wr']}`}>
+                    <a href="#" className={`${styles['btn-link']} w-inline-block`}>
+                      <div>Learn More</div>
+                      <div className={`${styles['btn-icon_arrow']} w-embed`}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M2.5 8H13.5M13.5 8L9 3.5M13.5 8L9 12.5" stroke="currentcolor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <motion.div
+                  className={`${styles['side_img-wr']}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: 0.05 }}
+                >
+                  <img
+                    src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/695e6cf591a4786c6d064602_BG.avif"
+                    loading="lazy"
+                    width="560"
+                    alt=""
+                    className={`${styles['side_gray-bg']}`}
+                  />
+                  <img
+                    src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/695dfe2b0aa87591e1c8ce1d_2e605da44dfaa7e772b3d904fb032e06_home_side_img-3.png"
+                    loading="lazy"
+                    width="601"
+                    alt="Carrier accountability dashboard"
+                    className={`${styles['side_overflow-img']}`}
+                  />
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ====== RECOGNITION ====== */}
+        <div className={`${styles['frame-wr']}`}>
+          <section className={`${styles.section_dark}`}>
+            <div className={`${styles['padding-global']}`}>
+              <div className={`${styles['container-large']} ${styles['z-index-2']}`}>
+                <div className={`${styles['center-layout']}`}>
+                  <div className={`${styles['max-width-paprika']}`}>
+                    <motion.h2
+                      className={`${styles['heading-style-h2']} ${styles['tc-inverted']}`}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      Recognized by Leading Analysts
+                    </motion.h2>
+                    <div className={`${styles['padding-top']} ${styles['padding-kiwi']}`} />
+                    <motion.p
+                      className={`${styles['ts-p2']} ${styles['tc-inverted-secondary']}`}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
+                    >
+                      Our carrier performance analytics platform is featured in the latest
+                      Gartner® Market Guide for Freight Audit and Payment Providers, recognized
+                      for our independent scoring and contract‑aware approach.
+                    </motion.p>
+                    <motion.div
+                      className={`${styles['button-group']} ${styles['is-full-width']}`}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                      <a href="#" className={`${styles.button} ${styles['is-secondary']} w-inline-block`}>
+                        <div className={`${styles['button-text']}`}>Read the Report</div>
+                        <div className={`${styles['button-hover-bg']} ${styles['is-secondary']}`} />
+                        <div className={`${styles['button-border']} ${styles['is-secondary']}`} />
+                      </a>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={`${styles['home--pattern-top']}`} />
+          </section>
+        </div>
+
+        {/* ====== METRICS ====== */}
+        <section className={`${styles['section-white']}`}>
+          <div className={`${styles['padding-global']}`}>
+            <div className={`${styles['container-large']}`}>
+              <div className={`${styles['center-layout']}`}>
+                <div className="max-width-olive">
+                  <motion.h2
+                    className={`${styles['heading-style-h2']} ${styles['tc-primary']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    Unlock profit trapped in your carrier network
+                  </motion.h2>
+                </div>
+              </div>
+              <div className={`${styles['padding-bottom']} ${styles['padding-kiwi']}`} />
+              <motion.div
+                className={`${styles.metrics_layout}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                <div className={`${styles.metrics_card}`}>
+                  <div className={`${styles['count-wrp']}`}>
+                    <div className={`${styles['heading-style-h2']} ${styles['tc-inverted']}`}>5-7</div>
+                    <div className={`${styles['metrics_value-text']}`}>%</div>
+                  </div>
+                  <div className={`${styles['ts-p2']}`}>reduction in freight spend</div>
+                </div>
+                <div className={`${styles.metrics_line}`} />
+                <div className={`${styles.metrics_card}`}>
+                  <div className={`${styles['count-wrp']}`}>
+                    <div className={`${styles['heading-style-h2']} ${styles['tc-inverted']}`}>15-20</div>
+                    <div className={`${styles['metrics_value-text']}`}>%</div>
+                  </div>
+                  <div className={`${styles['ts-p2']}`}>contract cost savings</div>
+                </div>
+                <div className={`${styles.metrics_line}`} />
+                <div className={`${styles.metrics_card}`}>
+                  <div className={`${styles['count-wrp']}`}>
+                    <div className={`${styles['heading-style-h2']} ${styles['tc-inverted']}`}>Weeks</div>
+                    <div className={`${styles['metrics_value-text']}`} />
+                  </div>
+                  <div className={`${styles['ts-p2']}`}>to implement, not months</div>
+                </div>
+                <div className={`${styles.metrics_line}`} />
+                <div className={`${styles.metrics_card}`}>
+                  <div className={`${styles['count-wrp']}`}>
+                    <div className={`${styles['heading-style-h2']} ${styles['tc-inverted']}`}>7-20</div>
+                    <div className={`${styles['metrics_value-text']}`}>x</div>
+                  </div>
+                  <div className={`${styles['ts-p2']}`}>ROI in first year</div>
+                </div>
+                <div className={`${styles.metrics_blur}`} />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ====== TEAMS ====== */}
+        <div className={`${styles['frame-wr']}`}>
+          <section className={`${styles['section-desert']}`}>
+            <div className={`${styles['padding-global']}`}>
+              <div className={`${styles['container-large']} ${styles['z-index-2']}`}>
+                <div className={`${styles['center-layout']}`}>
+                  <div className={`${styles['max-width-paprika']}`}>
+                    <motion.h2
+                      className={`${styles['heading-style-h2']} ${styles['tc-inverted']}`}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      Built for every team that touches carrier data
+                    </motion.h2>
+                  </div>
+                </div>
+                <motion.div
+                  className={`${styles['teams_cards-grid']}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                >
+                  <div className={`${styles['teams_card-wr']}`}>
+                    <div className={`${styles.teams_card}`}>
+                      <img src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/6960b42e372ae2f8cfe7cbd0_Transportation.avif" loading="lazy" width="260" alt="Transportation" />
+                    </div>
+                    <div className={`${styles['teams_card_text-wr']}`}>
+                      <h3 className={`${styles['heading-style-h5']}`}>Transportation</h3>
+                      <p className={`${styles['ts-p2']}`}>Use independent scorecards to negotiate better rates and hold carriers accountable.</p>
+                    </div>
+                  </div>
+                  <div className={`${styles['teams_card-wr']}`}>
+                    <div className={`${styles.teams_card}`}>
+                      <img src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/6960b469d4e5a1102f170c82_Finance.avif" loading="lazy" width="260" alt="Finance" />
+                    </div>
+                    <div className={`${styles['teams_card_text-wr']}`}>
+                      <h3 className={`${styles['heading-style-h5']}`}>Finance</h3>
+                      <p className={`${styles['ts-p2']}`}>Automatically recover service credits and validate accessorial fees.</p>
+                    </div>
+                  </div>
+                  <div className={`${styles['teams_card-wr']}`}>
+                    <div className={`${styles.teams_card}`}>
+                      <img src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/6960b47e22f33064f1d090bf_Customer%20Care.avif" loading="lazy" width="260" alt="Customer Care" />
+                    </div>
+                    <div className={`${styles['teams_card_text-wr']}`}>
+                      <h3 className={`${styles['heading-style-h5']}`}>Customer Care</h3>
+                      <p className={`${styles['ts-p2']}`}>Get ahead of delivery problems with real‑time SLA breach alerts.</p>
+                    </div>
+                  </div>
+                  <div className={`${styles['teams_card-wr']}`}>
+                    <div className={`${styles.teams_card}`}>
+                      <img src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/6960b498008f50b31da7b517_Transformation.avif" loading="lazy" width="260" alt="Transformation" />
+                    </div>
+                    <div className={`${styles['teams_card_text-wr']}`}>
+                      <h3 className={`${styles['heading-style-h5']}`}>Transformation</h3>
+                      <p className={`${styles['ts-p2']}`}>Clean, standardized carrier data for downstream systems and analytics.</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+            <div className={`${styles['home--pattern-top']} ${styles['is-grey']}`} />
+          </section>
+        </div>
+
+        {/* ====== TESTIMONIALS ====== */}
+        <section className={`${styles['section-slider']}`}>
+          <div className={`${styles['padding-global']}`}>
+            <div className={`${styles['container-large']} ${styles['z-index-2']}`}>
+              <div className={`${styles['quote_slider-wr']}`}>
+                <div className={`${styles['heading-row']}`}>
+                  <motion.h2
+                    className={`${styles['heading-style-h2']} ${styles['tc-primary']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    What people say about us
+                  </motion.h2>
+                  <div className={`${styles['quote_arrows-wr']}`}>
+                    <div className={`${styles['quote_slider-arrow']} swiper-prev ${styles['is-disabled']}`}>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/668c0d14326adb1267ba4104_Arrow%20-%20Left%201.svg" alt="" />
+                    </div>
+                    <div className={`${styles['quote_slider-arrow']} swiper-next`}>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/668c0d14326adb1267ba4123_Arrow%20-%20Left%201%20(1).svg" alt="" />
+                    </div>
+                  </div>
+                </div>
+                <div className={`${styles.swiper} ${styles['is-quote']}`}>
+                  <div className={`${styles['swiper-wrapper']} ${styles['is-quote']}`}>
+                    <div className={`${styles['swiper-slide']} ${styles['is-quote']} is-active`}>
+                      <div className={`${styles['quote-wr']}`}>
+                        <img src="https://cdn.prod.website-files.com/668c00971d3dfeff704769f4/66b4e0f98ee24777e65ae500_Great%20Dane-2.avif" loading="lazy" alt="Great Dane" className={`${styles.quote_image}`} />
+                        <div className={`${styles['quote_text-wr']}`}>
+                          <p className={`${styles['text-tagline']}`}>Great Dane</p>
+                          <div className={`${styles['quote_bottom-wr']}`}>
+                            <p className={`${styles['ts-quote-sm']}`}>“Loop's carrier scorecards gave us the evidence we needed to renegotiate our LTL contracts. We recovered 6% of our freight spend in the first quarter.”</p>
+                            <div className={`${styles.quote_author}`}>
+                              <img width="54.5" loading="lazy" alt="" src="https://cdn.prod.website-files.com/668bb14a7a97da320e5022ed/668c103f8f6210de8f6c694b_Rectangle%2039692.webp" className={`${styles['quote_author-img']}`} />
+                              <div className="quote_author-text">
+                                <p className={`${styles['quote_author-name']}`}>Mary Lookebill</p>
+                                <p className={`${styles['quote_author-title']}`}>Business Systems Analyst II</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* more slides as needed */}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ====== CTA ====== */}
+        <section className={`${styles['section-cta']}`}>
+          <div className={`${styles['padding-global']}`}>
+            <div className={`${styles['container-large']}`}>
+              <div className={`${styles.container_2columns}`}>
+                <div id="w-node-_8383dcb0-07e1-56ef-18d6-80b6ae1a6298-ae1a6294" className={`${styles['text-wrapper']}`}>
+                  <motion.h2
+                    className={`${styles['heading-style-h2']} ${styles['tc-inverted']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    Ready to Optimize Your Carrier Network?
+                  </motion.h2>
+                  <div className={`${styles['padding-bottom']} ${styles['padding-indigo']}`} />
+                  <motion.p
+                    className={`${styles['ts-p1']} ${styles['tc-inverted-secondary']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                  >
+                    Get a free scorecard preview built from a sample of your own tracking data.
+                    Our team will walk you through the results and show you how independent
+                    scoring can transform your carrier relationships and freight spend.
+                  </motion.p>
+                  <motion.div
+                    className={`${styles['button-wr']} ${styles['is-hero']}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    <Link to="/contact" className={`${styles.button} w-inline-block`}>
+                      <div className={`${styles['button-text']}`}>Get Free Scorecard Preview</div>
+                      <div className={`${styles['button-border']}`} />
+                      <div className={`${styles['button-hover-bg']}`} />
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={`${styles.cta_gradient}`} />
+        </section>
+      </motion.main>
+
+      <Footer />
+    </div>
+  );
+}

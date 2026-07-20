@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from "../../components/SEO/SEO";
 import { Link } from 'react-router-dom';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import {
@@ -197,7 +197,7 @@ const PROCESS_STEPS = [
 ];
 
 const PortfolioPage = () => {
-  useEffect(() => window.scrollTo({ top: 0, behavior: 'instant' }), []);
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, []);
 
   const [showTop, setShowTop] = useState(false);
   const [activeFilter, setActiveFilter] = useState("all");
@@ -301,10 +301,11 @@ const PortfolioPage = () => {
 
   return (
     <div className={`${homeStyles.page} ${styles.page}`}>
-      <Helmet>
-        <title>Portfolio | Scape Data Solutions</title>
-        <meta name="description" content="A record of completed engagements across business intelligence, AI applications, data pipelines, and mobile analytics." />
-      </Helmet>
+      <SEO
+        title="Portfolio | Scape Data Solutions"
+        description="A record of completed engagements across business intelligence, AI applications, data pipelines, and mobile analytics."
+        path="/portfolio"
+      />
 
       <Navbar activeNav="portfolio" />
 

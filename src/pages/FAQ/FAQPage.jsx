@@ -1,6 +1,6 @@
 // src/pages/FAQ/FAQPage.jsx
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import SEO from "../../components/SEO/SEO";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, HelpCircle, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import styles from "./FAQPage.module.css";
 
+// ─── FAQ data ──────────────────────────────────────────────────────
 const FAQS = [
   { cat:"AI & Machine Learning", q:"What types of machine learning models do you build?", a:"We build supervised, unsupervised, and reinforcement learning models depending on the business problem. This includes regression and classification models for prediction, clustering for customer segmentation, time-series models for forecasting, NLP models for text and document intelligence, and deep learning models for computer vision and unstructured data. Every model is trained on your specific data, not generic public datasets." },
   { cat:"AI & Machine Learning", q:"How accurate are your AI models?", a:"Our models consistently achieve 95–99% accuracy on well-defined problems with sufficient historical data. We are transparent about model performance — we report precision, recall, F1 scores, AUC-ROC curves, and business-level KPIs so you understand exactly what the model can and cannot do. We never oversell." },
@@ -32,8 +33,31 @@ const FAQS = [
 
 const CATS = ["All", ...Array.from(new Set(FAQS.map(f => f.cat)))];
 
-const FAQPage = () => {
-  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+// ─── SVG illustration: abstract question mark ──────────────────────
+const QuestionMarkSVG = () => (
+  <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxWidth: "180px" }}>
+    <circle cx="100" cy="100" r="80" stroke="#3b82f6" strokeWidth="2" opacity="0.08" />
+    <circle cx="100" cy="100" r="60" stroke="#3b82f6" strokeWidth="2" opacity="0.12" />
+    <path d="M100 30 C70 30 50 50 50 80 C50 100 60 110 75 118 C85 124 90 132 90 142 L90 150" stroke="#3b82f6" strokeWidth="4" strokeLinecap="round" opacity="0.5" />
+    <circle cx="90" cy="168" r="10" fill="#3b82f6" opacity="0.3" />
+    <path d="M100 50 C120 50 135 65 135 85 C135 105 120 115 105 125 C95 132 90 142 90 150" stroke="#3b82f6" strokeWidth="4" strokeLinecap="round" opacity="0.9" />
+    <circle cx="90" cy="168" r="8" fill="#3b82f6" opacity="0.6" />
+    <circle cx="100" cy="100" r="30" fill="#3b82f6" opacity="0.04" />
+  </svg>
+);
+
+export default function FAQPage() {
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, []);
   const [open, setOpen] = useState(null);
   const [cat, setCat] = useState("All");
 
@@ -41,65 +65,121 @@ const FAQPage = () => {
 
   return (
     <div className={styles.page}>
-      <Helmet>
-        <title>FAQ | Scape Data Solutions</title>
-        <meta name="description" content="Frequently asked questions about AI, machine learning, financial modelling, statistics, data engineering, and BI." />
-      </Helmet>
+      <SEO
+        title="FAQ | Scape Data Solutions"
+        description="Frequently asked questions about AI, machine learning, financial modelling, statistics, data engineering, and BI."
+        path="/faq"
+        schema={faqSchema}
+      />
 
       <Navbar activeNav="faq" />
 
-      <section className={styles.hero}>
-        <motion.div initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:0.6}}>
-          <div className={styles.heroBadge}><HelpCircle size={14}/> FAQ</div>
-          <h1 className={styles.heroTitle}>Frequently Asked <span className={styles.heroAccent}>Questions</span></h1>
-          <p className={styles.heroSub}>Deep answers on AI, statistical modelling, financial analytics, data engineering, and how we work. Cannot find what you need? <Link to="/contact" className={styles.heroLink}>Ask us directly.</Link></p>
-        </motion.div>
-      </section>
+      <main>
+        {/* ─── HERO ────────────────────────────────────────────────── */}
+        <section className={styles.hero}>
+          <div className={styles.heroGrid} />
+          <div className={styles.container}>
+            <div className={styles.heroInner}>
+              <div className={styles.heroContent}>
+                <h1 className={styles.heroTitle}>
+                  Frequently Asked <span className={styles.heroAccent}>Questions</span>
+                </h1>
+                <p className={styles.heroSub}>
+                  Deep answers on AI, statistical modelling, financial analytics,
+                  data engineering, and how we work. Can’t find what you need?{" "}
+                  <Link to="/contact" className={styles.heroLink}>Ask us directly.</Link>
+                </p>
+              </div>
+              <div className={styles.heroVisual}>
+                <QuestionMarkSVG />
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <section className={styles.body}>
-        <div className={styles.catRow}>
-          {CATS.map((c,i) => (
-            <button key={i} className={cat===c ? styles.catBtnOn : styles.catBtn} onClick={() => { setCat(c); setOpen(null); }}>{c}</button>
-          ))}
-        </div>
+        {/* ─── FAQ LIST ────────────────────────────────────────────── */}
+        <section className={styles.faqSection}>
+          <div className={styles.container}>
+            {/* Category filter */}
+            <div className={styles.catRow}>
+              {CATS.map((c, i) => (
+                <button
+                  key={i}
+                  className={cat === c ? styles.catBtnOn : styles.catBtn}
+                  onClick={() => { setCat(c); setOpen(null); }}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
 
-        <div className={styles.list}>
-          <AnimatePresence mode="wait">
-            {filtered.map((f, i) => (
-              <motion.div key={f.q} className={styles.item}
-                initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-8}} transition={{duration:0.35,delay:i*0.03}}>
-                <div className={styles.question} onClick={() => setOpen(open === i ? null : i)}>
-                  <div className={styles.qLeft}>
-                    <span className={styles.qCat}>{f.cat}</span>
-                    <span className={styles.qText}>{f.q}</span>
-                  </div>
-                  <motion.span animate={{rotate: open===i ? 180 : 0}} transition={{duration:0.3}} style={{flexShrink:0}}>
-                    <ChevronDown size={20} color="#fdb840"/>
-                  </motion.span>
-                </div>
-                <AnimatePresence>
-                  {open === i && (
-                    <motion.div className={styles.answer}
-                      initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} exit={{opacity:0,height:0}} transition={{duration:0.3}}>
-                      <p>{f.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
+            {/* FAQ items */}
+            <div className={styles.list}>
+              <AnimatePresence mode="wait">
+                {filtered.map((f, i) => (
+                  <motion.div
+                    key={f.q}
+                    className={styles.item}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.35, delay: i * 0.03 }}
+                  >
+                    <div
+                      className={styles.question}
+                      onClick={() => setOpen(open === i ? null : i)}
+                    >
+                      <div className={styles.qLeft}>
+                        <span className={styles.qCat}>{f.cat}</span>
+                        <span className={styles.qText}>{f.q}</span>
+                      </div>
+                      <motion.span
+                        animate={{ rotate: open === i ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                        className={styles.chevron}
+                      >
+                        <ChevronDown size={20} />
+                      </motion.span>
+                    </div>
+                    <AnimatePresence>
+                      {open === i && (
+                        <motion.div
+                          className={styles.answer}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <p>{f.a}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
 
-        <motion.div className={styles.cta} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
-          <h3>Still have questions?</h3>
-          <p>Our data scientists and engineers are happy to discuss your specific problem — no sales pitch, just honest advice.</p>
-          <Link to="/contact" className={styles.ctaBtn}>Talk To Our Team <ArrowRight size={16}/></Link>
-        </motion.div>
-      </section>
+            {/* CTA */}
+            <motion.div
+              className={styles.ctaBox}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3>Still have questions?</h3>
+              <p>
+                Our data scientists and engineers are happy to discuss your specific problem —
+                no sales pitch, just honest advice.
+              </p>
+              <Link to="/contact" className={styles.ctaBtn}>
+                Talk To Our Team <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>
   );
-};
-
-export default FAQPage;
+}

@@ -14,7 +14,6 @@
   position: relative;
   padding: 120px 0 100px;
   background: #fafafa;
-  border-bottom: 1px solid #eaeaea;
 }
 
 .heroGradient {
@@ -324,7 +323,6 @@
 /* ─── INTEGRATIONS ────────────────────────────────────────────────── */
 .integrationsSection {
   padding: 80px 0;
-  border-top: 1px solid #eaeaea;
   background: #fff;
 }
 
@@ -425,7 +423,6 @@
 /* ─── CTA SECTION ────────────────────────────────────────────────── */
 .ctaSection {
   padding: 80px 0;
-  border-top: 1px solid #eaeaea;
   background: #fff;
 }
 

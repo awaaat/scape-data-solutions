@@ -1,4 +1,4 @@
-// src/pages/ContactPage.jsx
+// src/pages/Contact/ContactPage.jsx
 import {
   CheckCircle, Mail, MapPin, Phone, Send, ChevronUp, Sparkles,
 } from "lucide-react";
@@ -171,7 +171,7 @@ export default function ContactPage() {
           name="description"
           content="Contact Scape Data Solutions for a free consultation. Offices in the US, Canada, Pakistan, and Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
         />
-        <link rel="canonical" href="https://scapedatasolutions.com/contact" />
+        <link rel="canonical" href="https://www.scapedatasolutions.com/contact" />
       </Helmet>
 
       <Navbar activeNav="contact" />
@@ -627,7 +627,7 @@ export default function ContactPage() {
                 </div>
               </section>
 
-              {/* ─── OFFICES SECTION (full-width, below contact grid) ── */}
+              {/* ─── OFFICES SECTION ── */}
               <section className={styles.contactSection} style={{ paddingTop: 0 }}>
                 <div className={styles.sectionContent}>
                   <motion.div

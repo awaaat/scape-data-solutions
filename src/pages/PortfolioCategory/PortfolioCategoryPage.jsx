@@ -23,7 +23,7 @@ const projects = [
 ];
 
 const PortfolioCategoryPage = () => {
-  useEffect(() => window.scrollTo({ top: 0, behavior: 'instant' }), []);
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, []);
 
   const gridRef = useRef(null);
   const isGridInView = useInView(gridRef, { once: true, amount: 0.1 });

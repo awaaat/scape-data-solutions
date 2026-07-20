@@ -1,0 +1,1 @@
+const t="https://www.scapedatasolutions.com";function c({name:e,description:a,path:r,serviceType:o="Data Analytics"}){return{"@context":"https://schema.org","@type":"Service",name:e,description:a,serviceType:o,url:`${t}${r}`,provider:{"@id":`${t}/#organization`},areaServed:["US","CA","PK","KE"]}}export{c as b};

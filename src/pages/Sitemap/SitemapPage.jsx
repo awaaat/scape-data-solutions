@@ -1,6 +1,6 @@
 // src/pages/Sitemap/SitemapPage.jsx
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import SEO from "../../components/SEO/SEO";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -18,8 +18,8 @@ const SECTIONS = [
       { label: "Why Choose Us", path: "/why-us" },
       { label: "Team", path: "/team" },
       { label: "Expertise", path: "/expertise" },
-      { label: "Careers", path: "/career" },
-      { label: "Recommended Reading", path: "/blog" },
+      { label: "Careers", path: "/careers" },
+      { label: "Recommended Reading", path: "/resources" },
       { label: "FAQ", path: "/faq" },
       { label: "Contact", path: "/contact" },
     ],
@@ -84,14 +84,15 @@ const SECTIONS = [
 ];
 
 const SitemapPage = () => {
-  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, []);
 
   return (
     <div className={styles.page}>
-      <Helmet>
-        <title>Sitemap | Scape Data Solutions</title>
-        <meta name="description" content="Every page on the Scape Data Solutions website." />
-      </Helmet>
+      <SEO
+        title="Sitemap | Scape Data Solutions"
+        description="Every page on the Scape Data Solutions website."
+        path="/sitemap"
+      />
 
       <Navbar />
 

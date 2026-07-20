@@ -97,6 +97,21 @@ const websiteSchema = {
   publisher: { '@id': `${SITE_URL}/#organization` },
 };
 
+
+const buildBreadcrumbSchema = (path) => {
+  const segments = path.split('/').filter(Boolean);
+  const itemListElement = [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+    ...segments.map((seg, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: seg.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+      item: `${SITE_URL}/${segments.slice(0, i + 1).join('/')}`,
+    })),
+  ];
+  return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement };
+};
+
 /**
  * SEO component
  *
@@ -112,6 +127,7 @@ const websiteSchema = {
 const SEO = ({ title, description, path = '/', image, schema, noindex = false }) => {
   const canonicalUrl = `${SITE_URL}${path}`;
   const ogImage = image || DEFAULT_OG_IMAGE;
+  const breadcrumbSchema = buildBreadcrumbSchema(path);
 
   return (
     <Helmet>
@@ -142,6 +158,12 @@ const SEO = ({ title, description, path = '/', image, schema, noindex = false })
       <script type="application/ld+json">
         {JSON.stringify(websiteSchema)}
       </script>
+
+      {path !== '/' && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      )}
 
       {/* ── Schema.org JSON-LD: page-specific (optional) ── */}
       {schema && (

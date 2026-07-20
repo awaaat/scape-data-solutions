@@ -1,0 +1,201 @@
+ .navyFooter {
+  background-color: #fafafa;
+  color: #1a1a1a;
+  width: 100%;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Section 1: Office grid ── */
+.navyOffStrip {
+  padding: 48px 0 32px;
+}
+
+.navyOffGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 24px;
+}
+
+@media (max-width: 900px) {
+  .navyOffGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .navyOffGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.navyOffItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.navyOffIcon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navyOffIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.navyOffText h4 {
+  color: #1a1a1a;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+}
+
+.navyOffText p {
+  color: #737373;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 2px 0;
+}
+
+.navyOffText a {
+  color: #737373;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navyOffText a:hover {
+  color: #1a1a1a;
+}
+
+/* ── Section 2: Links grid ── */
+.navyFootMain {
+  padding: 32px 0;
+}
+
+.navyFootGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .navyFootGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .navyFootGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.navyFootH {
+  color: #1a1a1a;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 16px 0;
+  display: block;
+}
+
+.navyFootHMt {
+  margin-top: 28px;
+}
+
+.navyFootLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navyFootLinks li {
+  margin-bottom: 10px;
+}
+
+.navyFootLinks a {
+  color: #737373;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.navyFootLinks a:hover {
+  color: #1a1a1a;
+}
+
+/* ── Section 3: Payment strip ── */
+.navyPayStrip {
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navyPayLabel {
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.navyPayInner {
+  flex: 1;
+  overflow: hidden;
+}
+
+.navyPayScroll {
+  overflow: hidden;
+  width: 100%;
+}
+
+.navyPayTrack {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.navyPayItem {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.navyPayItem:hover {
+  opacity: 1;
+}
+
+.navyPayItem img {
+  height: 24px;
+  width: auto;
+}
+
+/* ── Section 4: Copyright ── */
+.navyCopyright {
+  border-top: 1px solid #e5e5e5;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.navyCopyright p {
+  color: #a3a3a3;
+  font-size: 13px;
+  margin: 0;
+}

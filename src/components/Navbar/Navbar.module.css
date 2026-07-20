@@ -1,0 +1,322 @@
+/* src/components/Navbar/Navbar.module.css */
+
+/* ─── Reset / base ───────────────────────────────────────────────── */
+.navbarFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Scroll-activated border ────────────────────────────────────── */
+.navbarBorder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.navbarInner {
+  max-width: 100%; /* Full width – no max limit */
+  margin: 0 auto;
+  padding: 0 3rem; /* Generous side padding for breathing room */
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+@media (min-width: 1024px) {
+  .navbarInner {
+    padding: 0 4rem; /* Even more space on large screens */
+  }
+}
+
+/* ─── Logo ────────────────────────────────────────────────────────── */
+.navbarBrand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.navbarBrand img {
+  height: 56px; /* Bigger logo – more visible */
+  width: auto;
+}
+
+/* ─── Nav list ───────────────────────────────────────────────────── */
+.navList {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  gap: 0.75rem; /* Increased spacing between nav items */
+}
+@media (min-width: 1024px) {
+  .navList {
+    display: flex;
+  }
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 1rem; /* More horizontal padding */
+  font-size: 0.95rem; /* Slightly larger text */
+  font-weight: 500;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.navLink:hover {
+  color: #111;
+}
+.navActive {
+  color: #111;
+}
+.navActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background: #3b82f6;
+  border-radius: 2px;
+}
+
+/* ─── Dropdowns ──────────────────────────────────────────────────── */
+.hasDrop {
+  position: relative;
+}
+.hasDrop:hover .drop {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.drop {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  padding-top: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.dropWide {
+  min-width: 280px;
+}
+.dropRight {
+  left: auto;
+  right: 0;
+}
+
+.drop > div {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 0;
+  border: 1px solid #eee;
+}
+
+.dropGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.1rem;
+  padding: 0.25rem;
+}
+.dropGrid1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropLink {
+  display: block;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  color: #444;
+  text-decoration: none;
+  border-radius: 0.4rem;
+  transition: background 0.15s, color 0.15s;
+}
+.dropLink:hover {
+  background: #f5f5f5;
+  color: #111;
+}
+
+/* ─── Top bar ────────────────────────────────────────────────────── */
+.navTopBar {
+  background: #f8fafc;
+  border-bottom: 1px solid #eee;
+  padding: 0.25rem 0;
+  display: none;
+}
+@media (min-width: 1024px) {
+  .navTopBar {
+    display: block;
+  }
+}
+.navTopInner {
+  max-width: 100%; /* Full width */
+  margin: 0 auto;
+  padding: 0 4rem; /* Match navbar padding */
+  display: flex;
+  justify-content: flex-start;
+}
+.navTopLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+.navTopContact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.navTopContact:hover {
+  color: #111;
+}
+.navTopSep {
+  width: 1px;
+  height: 16px;
+  background: #ddd;
+}
+
+/* ─── Mobile header ──────────────────────────────────────────────── */
+.mobileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+@media (min-width: 1024px) {
+  .mobileHeader {
+    display: none;
+  }
+}
+.mContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.mobileLogo img {
+  height: 40px;
+  width: auto;
+}
+
+/* Burger button */
+.burger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #111;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.burgerOpen span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+.burgerOpen span:nth-child(2) {
+  opacity: 0;
+}
+.burgerOpen span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* ─── Mobile drawer ──────────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 80%;
+  background: #fff;
+  z-index: 1002;
+  padding: 1.5rem 1rem;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+.drawerClose {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.drawerList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.drawerList li {
+  margin-bottom: 0.5rem;
+}
+.drawerList a {
+  display: block;
+  padding: 0.5rem 0;
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+}
+.drawerAcc {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+}
+.drawerSub {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0.25rem 0 0.5rem;
+}
+.drawerSub li a {
+  border-bottom: none;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #555;
+  padding: 0.3rem 0;
+}

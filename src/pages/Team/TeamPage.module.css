@@ -28,13 +28,13 @@
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #fdb840;
+  border: 3px solid var(--color-accent);
 }
 .card h3 { margin: 0.5rem 0 0.2rem; }
 .card p { color: #64748b; }
 
 .cta {
-  background: #fdb840;
+  background: var(--color-accent);
   text-align: center;
   padding: 4rem 1.5rem;
 }
