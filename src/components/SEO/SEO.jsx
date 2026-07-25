@@ -6,7 +6,7 @@
 //   - canonical tag (tells Google the one true URL for this page)
 //   - Open Graph tags (Facebook/LinkedIn link previews)
 //   - Twitter Card tags
-//   - Organization + LocalBusiness Schema.org JSON-LD (all 4 real offices)
+//   - Organization + LocalBusiness Schema.org JSON-LD (all 5 real offices)
 //
 // USAGE in any page:
 //   <SEO
@@ -54,6 +54,14 @@ const OFFICES = [
     addressCountry: 'KE',
     telephone: '+254-718-889-559',
   },
+  {
+    name: 'Scape Data Solutions — UK Office',
+    streetAddress: '60 Cannon Street',
+    addressLocality: 'London',
+    postalCode: 'EC4N 6NP',
+    addressCountry: 'GB',
+    telephone: '+44-7454-744014',
+  },
 ];
 
 // ─── Organization-level Schema.org JSON-LD ────────────────────────
@@ -61,7 +69,7 @@ const OFFICES = [
 // business itself, not the individual page.
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Organization',
   '@id': `${SITE_URL}/#organization`,
   name: SITE_NAME,
   url: SITE_URL,
@@ -70,22 +78,37 @@ const organizationSchema = {
   description:
     'Scape Data Solutions helps businesses make smarter decisions, grow faster, and reduce costs by turning data into actionable insights through AI, machine learning, big data engineering, and business intelligence.',
   email: 'info@scapedatasolutions.com',
-  telephone: '+1-757-598-0582',
-  address: OFFICES.map((office) => ({
-    '@type': 'PostalAddress',
-    streetAddress: office.streetAddress,
-    addressLocality: office.addressLocality,
-    ...(office.addressRegion ? { addressRegion: office.addressRegion } : {}),
-    ...(office.postalCode ? { postalCode: office.postalCode } : {}),
-    addressCountry: office.addressCountry,
-  })),
-  areaServed: ['US', 'CA', 'PK', 'KE'],
+  areaServed: ['US', 'CA', 'PK', 'KE', 'GB'],
   sameAs: [
     // Add real social profile URLs here once confirmed, e.g.:
     // 'https://www.linkedin.com/company/scape-data-solutions',
     // 'https://twitter.com/scapedatasol',
   ],
 };
+
+// ─── One LocalBusiness entity PER real office ─────────────────────
+// A single multi-address Organization is not eligible for local
+// pack / "near me" results in any one market. Each real office needs
+// its own LocalBusiness entity, linked back to the parent Organization
+// via parentOrganization, to be independently discoverable in its region.
+const localBusinessSchemas = OFFICES.map((office, i) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${SITE_URL}/#location-${i}`,
+  name: office.name,
+  url: SITE_URL,
+  image: DEFAULT_OG_IMAGE,
+  parentOrganization: { '@id': `${SITE_URL}/#organization` },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: office.streetAddress,
+    addressLocality: office.addressLocality,
+    ...(office.addressRegion ? { addressRegion: office.addressRegion } : {}),
+    ...(office.postalCode ? { postalCode: office.postalCode } : {}),
+    addressCountry: office.addressCountry,
+  },
+  ...(office.telephone ? { telephone: office.telephone } : {}),
+}));
 
 // ─── Website-level Schema.org JSON-LD (enables sitelinks search box) ──
 const websiteSchema = {
@@ -98,6 +121,19 @@ const websiteSchema = {
 };
 
 
+// Slugs containing these stay fully uppercase in breadcrumb labels
+// instead of naive "first letter capitalized" (bi -> Bi, seo -> Seo, etc.)
+const BREADCRUMB_ACRONYMS = new Set([
+  'seo', 'bi', 'ai', 'ml', 'nlp', 'sql', 'etl', 'crm', 'api',
+  'llm', 'mlops', 'saas', 'roi', 'kpi', 'it',
+]);
+
+const capitalizeSegmentWord = (w) => {
+  const lower = w.toLowerCase();
+  if (BREADCRUMB_ACRONYMS.has(lower)) return lower.toUpperCase();
+  return w.charAt(0).toUpperCase() + w.slice(1);
+};
+
 const buildBreadcrumbSchema = (path) => {
   const segments = path.split('/').filter(Boolean);
   const itemListElement = [
@@ -105,7 +141,7 @@ const buildBreadcrumbSchema = (path) => {
     ...segments.map((seg, i) => ({
       '@type': 'ListItem',
       position: i + 2,
-      name: seg.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+      name: seg.split('-').map(capitalizeSegmentWord).join(' '),
       item: `${SITE_URL}/${segments.slice(0, i + 1).join('/')}`,
     })),
   ];
@@ -151,10 +187,15 @@ const SEO = ({ title, description, path = '/', image, schema, noindex = false })
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
 
-      {/* ── Schema.org JSON-LD: Organization + Website (every page) ── */}
+      {/* ── Schema.org JSON-LD: Organization + per-office LocalBusiness + Website (every page) ── */}
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}
       </script>
+      {localBusinessSchemas.map((loc, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(loc)}
+        </script>
+      ))}
       <script type="application/ld+json">
         {JSON.stringify(websiteSchema)}
       </script>

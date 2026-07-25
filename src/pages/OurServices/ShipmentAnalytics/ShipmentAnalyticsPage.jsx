@@ -1,12 +1,6 @@
-import styles from "./ShipmentAnalyticsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { shipmentAnalytics } from "../../../data/serviceContent/logisticsSupplyChain";
 
 export default function ShipmentAnalyticsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>ShipmentAnalytics</h1>
-            <p>
-                Professional ShipmentAnalytics services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...shipmentAnalytics} />;
 }

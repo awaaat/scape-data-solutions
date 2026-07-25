@@ -1,12 +1,6 @@
-import styles from "./TransportAnalyticsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { transportAnalytics } from "../../../data/serviceContent/logisticsSupplyChain";
 
 export default function TransportAnalyticsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>TransportAnalytics</h1>
-            <p>
-                Professional TransportAnalytics services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...transportAnalytics} />;
 }

@@ -1,12 +1,6 @@
-import styles from "./PredictiveAnalyticsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { predictiveAnalytics } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function PredictiveAnalyticsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>PredictiveAnalytics</h1>
-            <p>
-                Professional PredictiveAnalytics services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...predictiveAnalytics} />;
 }

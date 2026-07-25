@@ -1,12 +1,6 @@
-import styles from "./DataQualityAssessmentPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { dataQualityAssessment } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function DataQualityAssessmentPage() {
-    return (
-        <div className={styles.container}>
-            <h1>DataQualityAssessment</h1>
-            <p>
-                Professional DataQualityAssessment services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...dataQualityAssessment} />;
 }

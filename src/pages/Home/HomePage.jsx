@@ -16,7 +16,7 @@ import SEO from "../../components/SEO/SEO";
 
 const ACCENT = "#3b82f6";
 
-// Rotating hero words — tied to real services, not filler buzzwords
+// Rotating hero words - tied to real services, not filler buzzwords
 const ROTATING_WORDS = ["Revenue Growth", "Predictive Analytics", "Real-Time Dashboards", "Lower Costs", "Faster Decisions"];
 
 function useTypewriter(words, speed = 140, pause = 15000) {
@@ -131,7 +131,7 @@ function PredictiveViz() {
     <div className={styles.vizChatWrap}>
       <div className={styles.vizBubbleLeft}>Forecast churn for next quarter?</div>
       <div className={styles.vizTyping}><span/><span/><span/></div>
-      <div className={styles.vizBubbleRight}>Predicted 4.2% churn, down from 6.1% — model confidence 91%.</div>
+      <div className={styles.vizBubbleRight}>Predicted 4.2% churn, down from 6.1%, model confidence 91%.</div>
     </div>
   );
 }
@@ -151,7 +151,7 @@ const SERVICES = [
   { icon: <TrendingUp size={20} />, title: "Predictive Analytics & Forecasting", desc: "We use your past data to predict sales, churn, and market shifts so you can plan ahead.", tools: ["Prophet", "XGBoost", "ARIMA"] },
   { icon: <Shield size={20} />, title: "Data Governance & Security", desc: "We set up clear rules and strong protections to keep your data safe and fully compliant.", tools: ["GDPR", "HIPAA", "SOC 2"] },
   { icon: <Cloud size={20} />, title: "Cloud Data Migration", desc: "We move your data infrastructure to the cloud with zero downtime, cutting costs while improving scalability.", tools: ["AWS", "Azure", "GCP"] },
-  { icon: <Cpu size={20} />, title: "Custom AI & Machine Learning", desc: "We build and deploy custom models tailored to your business — from recommendation engines to fraud detection.", tools: ["PyTorch", "TensorFlow", "MLflow"] },
+  { icon: <Cpu size={20} />, title: "Custom AI & Machine Learning", desc: "We build and deploy custom models tailored to your business, from recommendation engines to fraud detection.", tools: ["PyTorch", "TensorFlow", "MLflow"] },
 ];
 
 const TECH_ROW1 = [
@@ -161,7 +161,7 @@ const TECH_ROW1 = [
   { name: "Apache Airflow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
 ];
 const TECH_ROW2 = [
-  { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
+  { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
   { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
   { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
   { name: "Kafka", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" },
@@ -176,14 +176,14 @@ const TESTIMONIALS = [
 ];
 
 const WHY_CHOOSE = [
-  { icon: <Users size={18} />, title: "Domain Expertise", desc: "Deep experience in SQL, data modeling, and analytics — not just generic tech consulting." },
+  { icon: <Users size={18} />, title: "Domain Expertise", desc: "Deep experience in SQL, data modeling, and analytics, not just generic tech consulting." },
   { icon: <Award size={18} />, title: "Proven Methodologies", desc: "Industry best practices for governance, ETL, and dashboard development." },
   { icon: <Shield size={18} />, title: "Security & Compliance", desc: "GDPR, HIPAA, and SOC 2 aligned from day one." },
   { icon: <Zap size={18} />, title: "Agile Delivery", desc: "Short sprints, incremental value, feedback built into every step." },
   { icon: <Globe size={18} />, title: "Global Reach", desc: "Teams across the US, Pakistan, and Canada for round-the-clock support." },
-  { icon: <Heart size={18} />, title: "Long-Term Partnership", desc: "Average engagement exceeds 3 years — we become part of your team." },
+  { icon: <Heart size={18} />, title: "Long-Term Partnership", desc: "Average engagement exceeds 3 years, we become part of your team." },
   { icon: <Database size={18} />, title: "Full-Stack Data Expertise", desc: "From raw ingestion to executive dashboards, we own the entire pipeline end-to-end." },
-  { icon: <BarChart3 size={18} />, title: "Measurable Impact", desc: "Every engagement is tied to a clear metric — revenue, cost, or time saved — not vanity reporting." },
+  { icon: <BarChart3 size={18} />, title: "Measurable Impact", desc: "Every engagement is tied to a clear metric (revenue, cost, or time saved), not vanity reporting." },
 ];
 
 const CASE_STUDIES = [
@@ -319,17 +319,17 @@ sales %>%
         <section className={styles.hero}>
           <div className={styles.container}>
             <div className={styles.heroInner}>
-              <div className={styles.heroTitleRow}>
-                <h1 className={styles.heroTitle}>Turn Data Into</h1>
+              <h1 className={styles.heroTitleRow}>
+                <span className={styles.heroTitle}>Turn Data Into</span>
                 <div className={styles.typeBox}>
-                  <h1 className={styles.heroTitle}>
+                  <span className={styles.heroTitle}>
                     <span className={styles.typeText}>
                       {typedHeadline}
                       {!holding && <span className={styles.typeCaret}>|</span>}
                     </span>
-                  </h1>
+                  </span>
                 </div>
-              </div>
+              </h1>
               <p className={styles.heroSub}>
                 Stop guessing. Start knowing. We help you make smarter business decisions, reduce costs, and unlock new revenue streams with data you already have.
               </p>
@@ -442,7 +442,7 @@ sales %>%
             <div className={`${styles.secHead}`} style={{ textAlign: "center" }}>
               <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Our Services</h2>
               <p className={`${styles.secSubtitle} ${styles.secSubtitleCenter}`}>
-                We specialize in every layer of the data stack — from raw ingestion to executive dashboards.
+                We specialize in every layer of the data stack, from raw ingestion to executive dashboards.
               </p>
             </div>
             <motion.ul className={styles.serviceList} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={stagger}>
@@ -545,8 +545,8 @@ sales %>%
                 <div key={i} className={styles.caseItem} onClick={() => setExpandedCase(expandedCase === i ? null : i)}>
                   <div className={styles.caseHeader}>
                     <div>
-                      <span className={styles.caseTitle}>{s.title}</span>{" "}
-                      <span className={styles.caseClient}>— {s.client}</span>
+                      <span className={styles.caseTitle}>{s.title}</span>
+                      <span className={styles.caseClient}>, {s.client}</span>
                     </div>
                     <span className={styles.caseResult}>{s.result}</span>
                     <ChevronDown size={16} style={{ transform: expandedCase === i ? "rotate(180deg)" : "none", transition: "transform .2s" }} />
@@ -578,7 +578,7 @@ sales %>%
                     <img src={TESTIMONIALS[testi].img} alt={TESTIMONIALS[testi].name} className={styles.testiAv} />
                     <div>
                       <strong className={styles.testiName}>{TESTIMONIALS[testi].name}</strong>
-                      <p className={styles.testiRole}>{TESTIMONIALS[testi].role} — {TESTIMONIALS[testi].company}</p>
+                      <p className={styles.testiRole}>{TESTIMONIALS[testi].role}, {TESTIMONIALS[testi].company}</p>
                       <div className={styles.stars}>{stars(TESTIMONIALS[testi].rating)}</div>
                     </div>
                   </div>
@@ -646,7 +646,7 @@ sales %>%
               </p>
             </div>
             {submitted ? (
-              <div className={styles.formOk}><CheckCircle size={20} /> Thank you — our data team will be in touch shortly.</div>
+              <div className={styles.formOk}><CheckCircle size={20} /> Thank you, our data team will be in touch shortly.</div>
             ) : (
               <form className={styles.cForm} onSubmit={handleSubmit} noValidate>
                 {submitError && <div style={{ color: "#e74c3c", fontSize: 14 }}>{submitError}</div>}
@@ -676,10 +676,6 @@ sales %>%
       </main>
 
       <Footer />
-
-      <div className={styles.sideFixed}>
-        <a href="https://wa.me/+923218465214" className={styles.sideBtnWA}>WhatsApp</a>
-      </div>
 
       <AnimatePresence>
         {showTop && (

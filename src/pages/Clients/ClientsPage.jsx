@@ -1,4 +1,3 @@
-// src/pages/Clients/ClientsPage.jsx
 import { useEffect, useState, useRef } from 'react';
 import SEO from "../../components/SEO/SEO";
 import { Link } from 'react-router-dom';
@@ -94,41 +93,46 @@ const testimonials = [
 
 // ─── Generated SVG Visuals ───────────────────────────────────────────
 
-// 1. Hero Chart – animated line chart with bars
 const HeroChart = () => (
-  <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxWidth: "400px", height: "auto" }}>
-    <rect x="20" y="20" width="360" height="160" rx="12" stroke="#3b82f6" strokeWidth="1.5" opacity="0.15" />
-    <line x1="40" y1="40" x2="360" y2="40" stroke="#3b82f6" strokeWidth="0.5" opacity="0.08" />
-    <line x1="40" y1="70" x2="360" y2="70" stroke="#3b82f6" strokeWidth="0.5" opacity="0.08" />
-    <line x1="40" y1="100" x2="360" y2="100" stroke="#3b82f6" strokeWidth="0.5" opacity="0.08" />
-    <line x1="40" y1="130" x2="360" y2="130" stroke="#3b82f6" strokeWidth="0.5" opacity="0.08" />
-    <line x1="40" y1="160" x2="360" y2="160" stroke="#3b82f6" strokeWidth="0.5" opacity="0.08" />
-    <path d="M50 155 L80 120 L110 130 L140 80 L170 95 L200 55 L230 70 L260 40 L290 60 L320 35 L350 50 L350 180 L50 180 Z" fill="#3b82f6" opacity="0.08" />
-    <path d="M50 155 C65 145 70 125 80 120 C95 110 100 135 110 130 C125 120 130 85 140 80 C155 70 160 100 170 95 C185 85 190 60 200 55 C215 45 220 75 230 70 C245 60 250 45 260 40 C275 30 280 65 290 60 C305 50 310 40 320 35 C335 25 340 55 350 50" stroke="#3b82f6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-    <circle cx="50" cy="155" r="5" fill="#3b82f6" opacity="0.6" />
-    <circle cx="80" cy="120" r="5" fill="#3b82f6" opacity="0.6" />
-    <circle cx="110" cy="130" r="5" fill="#3b82f6" opacity="0.6" />
-    <circle cx="140" cy="80" r="5" fill="#3b82f6" opacity="0.6" />
-    <circle cx="170" cy="95" r="5" fill="#3b82f6" opacity="0.6" />
-    <circle cx="200" cy="55" r="5" fill="#3b82f6" opacity="0.6" />
-    <circle cx="230" cy="70" r="5" fill="#3b82f6" opacity="0.6" />
-    <circle cx="260" cy="40" r="5" fill="#3b82f6" opacity="0.6" />
-    <circle cx="290" cy="60" r="5" fill="#3b82f6" opacity="0.6" />
-    <circle cx="320" cy="35" r="5" fill="#3b82f6" opacity="0.6" />
-    <circle cx="350" cy="50" r="5" fill="#3b82f6" opacity="0.6" />
-    <rect x="55" y="145" width="8" height="20" rx="2" fill="#3b82f6" opacity="0.2" />
-    <rect x="85" y="110" width="8" height="55" rx="2" fill="#3b82f6" opacity="0.2" />
-    <rect x="115" y="120" width="8" height="45" rx="2" fill="#3b82f6" opacity="0.2" />
-    <rect x="145" y="70" width="8" height="95" rx="2" fill="#3b82f6" opacity="0.2" />
-    <rect x="205" y="45" width="8" height="120" rx="2" fill="#3b82f6" opacity="0.2" />
-    <rect x="265" y="30" width="8" height="135" rx="2" fill="#3b82f6" opacity="0.2" />
-    <rect x="325" y="25" width="8" height="140" rx="2" fill="#3b82f6" opacity="0.2" />
-    <rect x="35" y="178" width="6" height="6" rx="1" fill="#3b82f6" opacity="0.4" />
-    <text x="46" y="200" fontSize="9" fill="#888" fontFamily="system-ui">Client growth over time</text>
+  <svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxWidth: "400px", height: "auto" }}>
+    <defs>
+      <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.25" />
+        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+
+    <circle cx="200" cy="160" r="120" fill="url(#hubGlow)" />
+    <circle cx="200" cy="160" r="95" stroke="#3b82f6" strokeWidth="1" strokeDasharray="2 6" opacity="0.25" />
+    <circle cx="200" cy="160" r="60" stroke="#3b82f6" strokeWidth="1" strokeDasharray="2 6" opacity="0.3" />
+
+    {[
+      [200, 55], [305, 100], [335, 195], [270, 275],
+      [130, 275], [65, 195], [95, 100], [200, 265],
+    ].map(([x, y], i) => (
+      <line key={`l${i}`} x1="200" y1="160" x2={x} y2={y} stroke="#3b82f6" strokeWidth="1.2" opacity="0.35" />
+    ))}
+
+    <circle cx="200" cy="160" r="26" fill="#3b82f6" />
+    <circle cx="200" cy="160" r="26" fill="none" stroke="#3b82f6" strokeWidth="1.5" opacity="0.4">
+      <animate attributeName="r" values="26;36;26" dur="2.8s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.4;0;0.4" dur="2.8s" repeatCount="indefinite" />
+    </circle>
+    <text x="200" y="165" fontSize="11" fontWeight="600" fill="#fff" fontFamily="system-ui" textAnchor="middle">SCAPE</text>
+
+    {[
+      [200, 55, 5], [305, 100, 4], [335, 195, 5], [270, 275, 4],
+      [130, 275, 5], [65, 195, 4], [95, 100, 5], [200, 265, 4],
+    ].map(([x, y, r], i) => (
+      <circle key={`n${i}`} cx={x} cy={y} r={r} fill="#3b82f6" opacity="0.85">
+        <animate attributeName="opacity" values="0.85;0.35;0.85" dur={`${2 + i * 0.3}s`} repeatCount="indefinite" />
+      </circle>
+    ))}
+
+    <text x="200" y="308" fontSize="9" fill="#888" fontFamily="system-ui" textAnchor="middle">Trusted across 60+ countries worldwide</text>
   </svg>
 );
 
-// 2. Global Map – abstract world map with client dots
 const GlobalMap = () => (
   <svg viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxWidth: "400px", height: "auto" }}>
     <rect x="20" y="15" width="360" height="210" rx="12" stroke="#3b82f6" strokeWidth="1.5" opacity="0.1" />
@@ -181,7 +185,6 @@ const GlobalMap = () => (
   </svg>
 );
 
-// 3. Abstract Data Pattern – visual background element
 const DataPattern = () => (
   <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.03 }}>
     <rect x="10" y="10" width="20" height="20" rx="4" fill="#3b82f6" />
@@ -224,10 +227,12 @@ const ClientsPage = () => {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [showTop, setShowTop] = useState(false);
 
+  const heroRef = useRef(null);
   const gridRef = useRef(null);
   const testimonialRef = useRef(null);
   const breakdownRef = useRef(null);
 
+  const isHeroInView = useInView(heroRef, { once: false, amount: 0.1 });
   const isGridInView = useInView(gridRef, { once: false, amount: 0.05 });
   const isTestimonialInView = useInView(testimonialRef, { once: false, amount: 0.2 });
   const isBreakdownInView = useInView(breakdownRef, { once: false, amount: 0.3 });
@@ -259,17 +264,32 @@ const ClientsPage = () => {
       <main className={styles.main}>
 
         {/* ─── HERO ──────────────────────────────────────────────────── */}
-        <motion.section className={styles.hero} initial="hidden" animate="visible" variants={fadeUp}>
+        <motion.section className={styles.hero} ref={heroRef} initial="hidden" animate={isHeroInView ? 'visible' : 'hidden'} variants={staggerContainer}>
           <div className={styles.container}>
             <div className={styles.heroInner}>
-              <motion.h1 className={styles.heroTitle} variants={fadeUp}>
-                Our <span className={styles.accent}>Clients</span>
-              </motion.h1>
-              <motion.p className={styles.heroSub} variants={fadeUp}>
-                From growing regional businesses to independent industry leaders across banking, healthcare, retail,
-                energy, and technology.
-                We've helped organizations around the world grow with data.
-              </motion.p>
+              <motion.div className={styles.heroLeft} variants={fadeUp}>
+                <motion.h1 className={styles.heroTitle} variants={fadeUp}>
+                  Our Clients
+                </motion.h1>
+                <motion.p className={styles.heroSub} variants={fadeUp}>
+                  From growing regional businesses to independent industry leaders across banking, healthcare, retail,
+                  energy, and technology. We've helped organizations around the world grow with data.
+                </motion.p>
+                <motion.div className={styles.heroStats} variants={fadeUp}>
+                  <div className={styles.heroStat}>
+                    <span className={styles.heroStatNumber}>120+</span>
+                    <span className={styles.heroStatLabel}>USA Clients</span>
+                  </div>
+                  <div className={styles.heroStat}>
+                    <span className={styles.heroStatNumber}>30+</span>
+                    <span className={styles.heroStatLabel}>UK Clients</span>
+                  </div>
+                  <div className={styles.heroStat}>
+                    <span className={styles.heroStatNumber}>20+</span>
+                    <span className={styles.heroStatLabel}>Australia Clients</span>
+                  </div>
+                </motion.div>
+              </motion.div>
               <motion.div className={styles.heroVisual} variants={fadeUp}>
                 <HeroChart />
               </motion.div>
@@ -293,7 +313,7 @@ const ClientsPage = () => {
                     {client.icon}
                   </div>
                   <div className={styles.clientInfo}>
-                    <h4 className={styles.clientName}>{client.name}</h4>
+                    <h3 className={styles.clientName}>{client.name}</h3>
                     <p className={styles.clientIndustry}>{client.industry}</p>
                     <div className={styles.clientMeta}>
                       <span className={styles.clientLocation}><MapPin size={12} /> {client.location}</span>

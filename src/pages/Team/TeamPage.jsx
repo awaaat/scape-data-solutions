@@ -31,6 +31,10 @@ const TeamPage = () => {
       </section>
 
       <section className={styles.grid}>
+        <h2 style={{
+          position: 'absolute', width: 1, height: 1, padding: 0, margin: -1,
+          overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0,
+        }}>Our Team Members</h2>
         {members.map((m, i) => (
           <div key={i} className={styles.card}>
             <img src={m.img} alt={m.name} />

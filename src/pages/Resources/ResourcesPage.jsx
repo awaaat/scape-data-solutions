@@ -543,8 +543,8 @@ const ResourcesPage = () => {
                 transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
               >
                 No general "AI trends" content here. These are practical guides on the specific
-                problems that show up in your practice management reports — no-shows, retention,
-                KPIs — written to be useful on their own, whether or not you ever talk to us.
+                problems that show up in your practice management reports like no-shows, retention,
+                KPIs, which are written to be useful on their own, whether or not you ever talk to us.
               </motion.p>
 
               <motion.div

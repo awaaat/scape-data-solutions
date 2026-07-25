@@ -408,7 +408,6 @@ export default function AboutPage() {
       <Footer />
 
       <div className={styles.sideFixed}>
-        <a href="https://wa.me/+923218465214" className={styles.sideBtnWA}>WhatsApp</a>
       </div>
 
       <AnimatePresence>

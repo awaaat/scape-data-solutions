@@ -1,41 +1,41 @@
 // src/App.jsx
-import { useEffect, lazy, Suspense } from 'react';
+import { useEffect, useLayoutEffect, lazy, Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import styles from './App.module.css';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import { apiService } from './services/api';
 
 // ─── Core Pages ──────────────────────────────────────────────
 import HomePage from './pages/Home/HomePage';
-import AboutPage from './pages/About/AboutPage';
-import ContactPage from './pages/Contact/ContactPage';
+const AboutPage = lazy(() => import('./pages/About/AboutPage'));
+const ContactPage = lazy(() => import('./pages/Contact/ContactPage'));
 const ServicesPage = lazy(() => import('./pages/OurServices/ServicesPage'));
 
 // ─── Company & Static ───────────────────────────────────────
-import CompanyPage from './pages/Company/CompanyPage';
-import WhyUsPage from './pages/WhyUs/WhyUsPage';
-import TeamPage from './pages/Team/TeamPage';
+const CompanyPage = lazy(() => import('./pages/Company/CompanyPage'));
+const WhyUsPage = lazy(() => import('./pages/WhyUs/WhyUsPage'));
+const TeamPage = lazy(() => import('./pages/Team/TeamPage'));
 const CareersPage = lazy(() => import('./pages/Careers/CareersPage'));
-import FAQPage from './pages/FAQ/FAQPage';
+const FAQPage = lazy(() => import('./pages/FAQ/FAQPage'));
 
 // ─── Resources ───────────────────────────────────────────────
-import ResourcesPage from './pages/Resources/ResourcesPage';
-import ArticlePage from './pages/Resources/ArticlePage';
+const ResourcesPage = lazy(() => import('./pages/Resources/ResourcesPage'));
+const ArticlePage = lazy(() => import('./pages/Resources/ArticlePage'));
 
 // ─── Industry & Portfolio ────────────────────────────────────
-import IndustryLandingPage from './pages/IndustryLanding/IndustryLandingPage';
-import PortfolioPage from './pages/Portfolio/PortfolioPage';
-import PortfolioBIPage from './pages/PortfolioBI/PortfolioBIPage';
-import PortfolioAIPage from './pages/PortfolioAI/PortfolioAIPage';
-import PortfolioPipelinesPage from './pages/PortfolioPipelines/PortfolioPipelinesPage';
-import PortfolioMobilePage from './pages/PortfolioMobile/PortfolioMobilePage';
+const IndustryLandingPage = lazy(() => import('./pages/IndustryLanding/IndustryLandingPage'));
+const PortfolioPage = lazy(() => import('./pages/Portfolio/PortfolioPage'));
+const PortfolioBIPage = lazy(() => import('./pages/PortfolioBI/PortfolioBIPage'));
+const PortfolioAIPage = lazy(() => import('./pages/PortfolioAI/PortfolioAIPage'));
+const PortfolioPipelinesPage = lazy(() => import('./pages/PortfolioPipelines/PortfolioPipelinesPage'));
+const PortfolioMobilePage = lazy(() => import('./pages/PortfolioMobile/PortfolioMobilePage'));
 
 // ─── Others ──────────────────────────────────────────────────
-import ClientsPage from './pages/Clients/ClientsPage';
-import TestimonialsPage from './pages/Testimonials/TestimonialsPage';
-import SitemapPage from './pages/Sitemap/SitemapPage';
-import CaseStudiesPage from './pages/CaseStudies/CaseStudiesPage';
+const ClientsPage = lazy(() => import('./pages/Clients/ClientsPage'));
+const TestimonialsPage = lazy(() => import('./pages/Testimonials/TestimonialsPage'));
+const SitemapPage = lazy(() => import('./pages/Sitemap/SitemapPage'));
+const CaseStudiesPage = lazy(() => import('./pages/CaseStudies/CaseStudiesPage'));
 
 // ─── Lazy-Loaded Service Pages (only existing ones) ───────────
 const DataCleaningPage = lazy(() => import('./pages/OurServices/DataCleaning/DataCleaningPage'));
@@ -106,7 +106,7 @@ const StudentPerformanceAnalyticsPage = lazy(() => import('./pages/OurServices/S
 const SupplyChainVisibilityTrackingPage = lazy(() => import('./pages/OurServices/SupplyChainVisibility/SupplyChainVisibilityPage'));
 const WarehouseOptimizationInventoryManagementPage = lazy(() => import('./pages/OurServices/WarehouseOptimization/WarehouseOptimizationPage'));
 const WorkforceHRAnalyticsPage = lazy(() => import('./pages/OurServices/WorkforceAnalytics/WorkforceAnalyticsPage'));
-const MarketBasketAnalysisPage = lazy(() => import('./pages/OurServices/MarketBasketAnalysis/MarketBasketAnalysis'));
+const MarketBasketAnalysisPage = lazy(() => import('./pages/OurServices/MarketBasketAnalysis/MarketBasketAnalysisPage'));
 
 // ─── Newly wired service pages (previously had no route) ─────
 const AIAutomationPage = lazy(() => import('./pages/OurServices/AIAutomation/AIAutomationPage'));
@@ -125,7 +125,6 @@ const ComputerVisionSolutionsPage = lazy(() => import('./pages/OurServices/Compu
 const ConferencePaperWritingPage = lazy(() => import('./pages/OurServices/ConferencePaperWriting/ConferencePaperWritingPage'));
 const ContentAnalysisServicesPage = lazy(() => import('./pages/OurServices/ContentAnalysisServices/ContentAnalysisServicesPage'));
 const CronbachAlphaAnalysisPage = lazy(() => import('./pages/OurServices/CronbachAlphaAnalysis/CronbachAlphaAnalysisPage'));
-const CustomerLifetimeValueAnalyticsPage = lazy(() => import('./pages/OurServices/CustomerLifetimeValueAnalytics/CustomerLifetimeValueAnalyticsPage'));
 const DataEngineeringPage = lazy(() => import('./pages/OurServices/DataEngineering/DataEngineeringPage'));
 const DataMigrationPage = lazy(() => import('./pages/OurServices/DataMigration/DataMigrationPage'));
 const DataMiningAssignmentHelpPage = lazy(() => import('./pages/OurServices/DataMiningAssignmentHelp/DataMiningAssignmentHelpPage'));
@@ -228,7 +227,6 @@ const SystematicLiteratureReviewPage = lazy(() => import('./pages/OurServices/Sy
 const SystematicReviewDataAnalysisPage = lazy(() => import('./pages/OurServices/SystematicReviewDataAnalysis/SystematicReviewDataAnalysisPage'));
 const TableauAssignmentHelpPage = lazy(() => import('./pages/OurServices/TableauAssignmentHelp/TableauAssignmentHelpPage'));
 const TableauConsultingPage = lazy(() => import('./pages/OurServices/TableauConsulting/TableauConsultingPage'));
-const TechnicalReportWritingPage = lazy(() => import('./pages/OurServices/TechnicalReportWriting/TechnicalReportWritingPage'));
 const TensorFlowAssignmentHelpPage = lazy(() => import('./pages/OurServices/TensorFlowAssignmentHelp/TensorFlowAssignmentHelpPage'));
 const ThematicAnalysisServicesPage = lazy(() => import('./pages/OurServices/ThematicAnalysisServices/ThematicAnalysisServicesPage'));
 const ThesisDataAnalysisPage = lazy(() => import('./pages/OurServices/ThesisDataAnalysis/ThesisDataAnalysisPage'));
@@ -239,10 +237,13 @@ const WarehouseAnalyticsPage = lazy(() => import('./pages/OurServices/WarehouseA
 const AppContent = () => {
     const location = useLocation();
 
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.pathname]);
+
     useEffect(() => {
         const pageName = location.pathname.replace('/', '') || 'home';
         apiService.trackPageView(pageName);
-        window.scrollTo(0, 0);
     }, [location.pathname]);
 
     return (
@@ -291,11 +292,13 @@ const AppContent = () => {
                             <Route path="/services/survey-data-analysis" element={<SurveyDataAnalysisPage />} />
                             <Route path="/services/spss-data-analysis" element={<SPSSDataAnalysisPage />} />
                             <Route path="/services/report-writing-support" element={<ReportWritingSupportPage />} />
+                            <Route path="/services/technical-report-writing" element={<Navigate to="/services/report-writing-support" replace />} />
 
                             <Route path="/services/fraud-detection-prevention" element={<FraudDetectionPreventionPage />} />
                             <Route path="/services/credit-risk-scoring" element={<CreditRiskScoringPage />} />
                             <Route path="/services/sales-forecasting-demand-planning" element={<SalesForecastingDemandPlanningPage />} />
                             <Route path="/services/customer-churn-lifetime-value" element={<CustomerChurnLifetimeValuePage />} />
+                            <Route path="/services/customer-lifetime-value-analytics" element={<Navigate to="/services/customer-churn-lifetime-value" replace />} />
                             <Route path="/services/regulatory-compliance-analytics" element={<RegulatoryComplianceAnalyticsPage />} />
                             <Route path="/services/algorithmic-trading-analytics" element={<AlgorithmicTradingAnalyticsPage />} />
                             <Route path="/services/portfolio-optimization-risk-management" element={<PortfolioOptimizationRiskManagementPage />} />
@@ -363,7 +366,6 @@ const AppContent = () => {
                             <Route path="/services/conference-paper-writing" element={<ConferencePaperWritingPage />} />
                             <Route path="/services/content-analysis-services" element={<ContentAnalysisServicesPage />} />
                             <Route path="/services/cronbach-alpha-analysis" element={<CronbachAlphaAnalysisPage />} />
-                            <Route path="/services/customer-lifetime-value-analytics" element={<CustomerLifetimeValueAnalyticsPage />} />
                             <Route path="/services/data-engineering" element={<DataEngineeringPage />} />
                             <Route path="/services/data-migration" element={<DataMigrationPage />} />
                             <Route path="/services/data-mining-assignment-help" element={<DataMiningAssignmentHelpPage />} />
@@ -466,7 +468,6 @@ const AppContent = () => {
                             <Route path="/services/systematic-review-data-analysis" element={<SystematicReviewDataAnalysisPage />} />
                             <Route path="/services/tableau-assignment-help" element={<TableauAssignmentHelpPage />} />
                             <Route path="/services/tableau-consulting" element={<TableauConsultingPage />} />
-                            <Route path="/services/technical-report-writing" element={<TechnicalReportWritingPage />} />
                             <Route path="/services/tensorflow-assignment-help" element={<TensorFlowAssignmentHelpPage />} />
                             <Route path="/services/thematic-analysis-services" element={<ThematicAnalysisServicesPage />} />
                             <Route path="/services/thesis-data-analysis" element={<ThesisDataAnalysisPage />} />
@@ -484,6 +485,10 @@ const AppContent = () => {
         </div>
     );
 };
+
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+}
 
 function App() {
     return (

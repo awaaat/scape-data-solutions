@@ -1,12 +1,6 @@
-import styles from "./ManufacturingForecastingPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { manufacturingForecasting } from "../../../data/serviceContent/manufacturingRetail";
 
 export default function ManufacturingForecastingPage() {
-    return (
-        <div className={styles.container}>
-            <h1>ManufacturingForecasting</h1>
-            <p>
-                Professional ManufacturingForecasting services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...manufacturingForecasting} />;
 }

@@ -1,8 +1,8 @@
 // src/pages/Career/CareerPage.jsx
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import SEO from "../../components/SEO/SEO";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ChevronUp, ArrowLeft, ArrowRight, Upload, CheckCircle, Globe } from "lucide-react";
 
 import Navbar from "../../components/Navbar/Navbar";
@@ -29,12 +29,11 @@ import {
   LOCATION_TYPE_CHOICES,
 } from "../../data/jobConstants";
 
-// ─── Animation variants ──────────────────────────────────────────
+// ─── Animation variants (used inside sections, not for scroll triggers) ─
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
-
 const stagger = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.06 } },
@@ -50,7 +49,6 @@ const BENEFITS = [
   { icon: "", title: "401(k) plan", desc: "Retirement savings plan to secure your financial future." },
 ];
 
-// ─── Process steps ──────────────────────────────────────────────
 const PROCESS_STEPS = [
   { number: 1, title: "Submit your application", desc: "Our team will review your CV and statement of exceptional work." },
   { number: 2, title: "Screening interview", desc: "A short interview to learn more about you and assess if the role fits." },
@@ -60,10 +58,49 @@ const PROCESS_STEPS = [
 
 const initialFilters = { department: "", job_type: "", location_type: "" };
 
+// ─── LazySection ─────────────────────────────────────────────────
+// Renders children ONLY when the section first enters the viewport.
+// After that, children stay in the DOM (so they can be re‑animated later).
+function LazySection({ children, className, ...props }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  return (
+    <div ref={ref} className={className} {...props}>
+      {isInView ? children : null}
+    </div>
+  );
+}
+
+// ─── IntersectionObserver hook for re‑animation on every scroll ─
+// Exactly the same pattern as ServicesPage's `animateOnScroll`
+function useRevealOnScroll(className = styles.visible) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            el.classList.add(className);
+          } else {
+            el.classList.remove(className); // removes so animation replays on next entry
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [className]);
+  return ref;
+}
+
 // ─── Hero ──────────────────────────────────────────────────────
 function Hero() {
+  const ref = useRevealOnScroll(); // re-animate on every scroll
   return (
-    <section className={styles.hero}>
+    <section ref={ref} className={`${styles.hero} ${styles.animateOnScroll}`}>
       <div className={styles.heroGrid} />
       <div className={styles.container}>
         <div className={styles.heroInner}>
@@ -87,8 +124,9 @@ function Hero() {
 
 // ─── Benefits ──────────────────────────────────────────────────
 function Benefits() {
+  const ref = useRevealOnScroll();
   return (
-    <section className={styles.benefitsSection}>
+    <section ref={ref} className={`${styles.benefitsSection} ${styles.animateOnScroll}`}>
       <div className={styles.container}>
         <div className={styles.benefitsHead}>
           <p className={styles.sectionLabel}>Why Scape Data Solutions</p>
@@ -102,7 +140,7 @@ function Benefits() {
           className={styles.benefitsGrid}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.15 }}
           variants={stagger}
         >
           {BENEFITS.map((b, i) => (
@@ -120,8 +158,9 @@ function Benefits() {
 
 // ─── Offices ──────────────────────────────────────────────────
 function Offices() {
+  const ref = useRevealOnScroll();
   return (
-    <section className={styles.officesSection}>
+    <section ref={ref} className={`${styles.officesSection} ${styles.animateOnScroll}`}>
       <div className={styles.container}>
         <div className={styles.officesGrid}>
           <div className={styles.officesLeft}>
@@ -165,6 +204,8 @@ function JobList({ onSelect }) {
   const [error, setError] = useState("");
   const [filters, setFilters] = useState(initialFilters);
 
+  const ref = useRevealOnScroll();
+
   useEffect(() => {
     setLoading(true);
     const activeFilters = Object.fromEntries(
@@ -181,7 +222,11 @@ function JobList({ onSelect }) {
   const hasActiveFilters = Object.values(filters).some((v) => v !== "");
 
   return (
-    <section className={styles.featuredSection} id="open-roles">
+    <section
+      ref={ref}
+      className={`${styles.featuredSection} ${styles.animateOnScroll}`}
+      id="open-roles"
+    >
       <div className={styles.container}>
         <div className={styles.featuredGrid}>
           <div className={styles.featuredLeft}>
@@ -241,12 +286,12 @@ function JobList({ onSelect }) {
               </div>
             )}
 
-            {/* Job Rows */}
+            {/* Job Rows – re‑animate on every scroll */}
             <motion.div
               className={styles.jobList}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
+              viewport={{ once: false, amount: 0.1 }}
               variants={stagger}
             >
               {jobs.map((job, i) => (
@@ -710,8 +755,9 @@ function Field({ label, error, children }) {
 
 // ─── Process ──────────────────────────────────────────────────
 function Process() {
+  const ref = useRevealOnScroll();
   return (
-    <section className={styles.processSection}>
+    <section ref={ref} className={`${styles.processSection} ${styles.animateOnScroll}`}>
       <div className={styles.container}>
         <div className={styles.processGrid}>
           <div className={styles.processLeft}>
@@ -767,11 +813,26 @@ const CareerPage = () => {
           <JobDetail slug={selectedSlug} onBack={() => setSelectedSlug(null)} />
         ) : (
           <>
-            <Hero />
-            <Benefits />
-            <JobList onSelect={setSelectedSlug} />
-            <Process />
-            <Offices />
+            {/* EVERY section, including Hero, is lazy‑loaded and re‑animated */}
+            <LazySection>
+              <Hero />
+            </LazySection>
+
+            <LazySection>
+              <Benefits />
+            </LazySection>
+
+            <LazySection>
+              <JobList onSelect={setSelectedSlug} />
+            </LazySection>
+
+            <LazySection>
+              <Process />
+            </LazySection>
+
+            <LazySection>
+              <Offices />
+            </LazySection>
           </>
         )}
       </main>

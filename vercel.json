@@ -1,4 +1,12 @@
 {
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "has": [{ "type": "host", "value": "scapedatasolutions.com" }],
+            "destination": "https://www.scapedatasolutions.com/$1",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
             "source": "/((?!sitemap\\.xml|robots\\.txt|Images/|assets/|resources/|favicon\\.ico).*)",

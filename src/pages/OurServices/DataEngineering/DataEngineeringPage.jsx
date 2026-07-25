@@ -1,12 +1,6 @@
-import styles from "./DataEngineeringPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { dataEngineering } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function DataEngineeringPage() {
-    return (
-        <div className={styles.container}>
-            <h1>DataEngineering</h1>
-            <p>
-                Professional DataEngineering services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...dataEngineering} />;
 }

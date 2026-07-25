@@ -1,12 +1,6 @@
-import styles from "./HealthcareBIPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { healthcareBI } from "../../../data/serviceContent/healthcareAnalytics";
 
 export default function HealthcareBIPage() {
-    return (
-        <div className={styles.container}>
-            <h1>HealthcareBI</h1>
-            <p>
-                Professional HealthcareBI services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...healthcareBI} />;
 }

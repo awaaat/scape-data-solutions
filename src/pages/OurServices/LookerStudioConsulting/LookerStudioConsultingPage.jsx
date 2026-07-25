@@ -1,12 +1,6 @@
-import styles from "./LookerStudioConsultingPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { lookerStudioConsulting } from "../../../data/serviceContent/businessIntelligence";
 
 export default function LookerStudioConsultingPage() {
-    return (
-        <div className={styles.container}>
-            <h1>LookerStudioConsulting</h1>
-            <p>
-                Professional LookerStudioConsulting services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...lookerStudioConsulting} />;
 }

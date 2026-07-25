@@ -1,12 +1,6 @@
-import styles from "./DataMigrationPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { dataMigration } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function DataMigrationPage() {
-    return (
-        <div className={styles.container}>
-            <h1>DataMigration</h1>
-            <p>
-                Professional DataMigration services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...dataMigration} />;
 }

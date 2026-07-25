@@ -1,12 +1,6 @@
-import styles from "./MedicalClaimsAnalyticsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { medicalClaimsAnalytics } from "../../../data/serviceContent/healthcareAnalytics";
 
 export default function MedicalClaimsAnalyticsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>MedicalClaimsAnalytics</h1>
-            <p>
-                Professional MedicalClaimsAnalytics services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...medicalClaimsAnalytics} />;
 }

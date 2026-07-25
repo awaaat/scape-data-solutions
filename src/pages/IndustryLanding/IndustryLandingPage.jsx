@@ -95,7 +95,7 @@ const IndustryLandingPage = ({ dataKey }) => {
             <div key={i} className={styles.kpiCard}>
               <CheckCircle2 size={20} className={styles.kpiIcon} />
               <div>
-                <h4>{kpi.name}</h4>
+                <h3>{kpi.name}</h3>
                 <p>{kpi.description}</p>
               </div>
             </div>
@@ -109,7 +109,7 @@ const IndustryLandingPage = ({ dataKey }) => {
           {data.howItWorks.map((item, i) => (
             <div key={i} className={styles.howCard}>
               <span className={styles.howNumber}>{i + 1}</span>
-              <h4>{item.step}</h4>
+              <h3>{item.step}</h3>
               <p>{item.description}</p>
             </div>
           ))}
@@ -123,7 +123,7 @@ const IndustryLandingPage = ({ dataKey }) => {
             {relatedArticles.map((a) => (
               <Link key={a.slug.current} to={`/resources/${a.slug.current}`} className={styles.articleCard}>
                 <span>{a.category}</span>
-                <h4>{a.title}</h4>
+                <h3>{a.title}</h3>
               </Link>
             ))}
           </div>

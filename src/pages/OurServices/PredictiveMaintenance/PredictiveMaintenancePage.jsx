@@ -1,12 +1,6 @@
-import styles from "./PredictiveMaintenancePage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { predictiveMaintenance } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function PredictiveMaintenancePage() {
-    return (
-        <div className={styles.container}>
-            <h1>PredictiveMaintenance</h1>
-            <p>
-                Professional PredictiveMaintenance services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...predictiveMaintenance} />;
 }

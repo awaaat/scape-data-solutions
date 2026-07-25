@@ -3,7 +3,7 @@ import {
   CheckCircle, Mail, MapPin, Phone, Send, ChevronUp, Sparkles,
 } from "lucide-react";
 import { useEffect, useRef, useState, useCallback } from "react";
-import { Helmet } from "react-helmet-async";
+import SEO from "../../components/SEO/SEO";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./ContactPage.module.css";
 import hStyles from "../Home/HomePage.module.css";
@@ -165,14 +165,11 @@ export default function ContactPage() {
   // ─── Render ───────────────────────────────────────────────────
   return (
     <div className={hStyles.page}>
-      <Helmet>
-        <title>Contact Us | Get Free Data Consultation - Scape Data Solutions</title>
-        <meta
-          name="description"
-          content="Contact Scape Data Solutions for a free consultation. Offices in the US, Canada, Pakistan, and Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
-        />
-        <link rel="canonical" href="https://www.scapedatasolutions.com/contact" />
-      </Helmet>
+      <SEO
+        title="Contact Us | Get Free Data Consultation - Scape Data Solutions"
+        description="Contact Scape Data Solutions for a free consultation. Offices in the US, Canada, Pakistan, and Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
+        path="/contact"
+      />
 
       <Navbar activeNav="contact" />
 

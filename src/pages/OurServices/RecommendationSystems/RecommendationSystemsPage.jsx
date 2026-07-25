@@ -1,12 +1,6 @@
-import styles from "./RecommendationSystemsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { recommendationSystems } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function RecommendationSystemsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>RecommendationSystems</h1>
-            <p>
-                Professional RecommendationSystems services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...recommendationSystems} />;
 }

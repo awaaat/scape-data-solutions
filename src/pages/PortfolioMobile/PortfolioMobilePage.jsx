@@ -394,7 +394,7 @@ const ProjectRow = ({ project, index }) => (
       <span className={styles.projectIndustry}>{project.industry}</span>
       <span className={styles.projectClient}>{project.client}</span>
     </div>
-    <h4 className={styles.projectTitle}>{project.title}</h4>
+    <h3 className={styles.projectTitle}>{project.title}</h3>
     <p className={styles.projectDesc}>{project.desc}</p>
     <div className={styles.projectTech}>{project.tech}</div>
     <div className={styles.projectMetrics}>

@@ -1,12 +1,6 @@
-import styles from "./HospitalOperationsAnalyticsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { hospitalOperationsAnalytics } from "../../../data/serviceContent/healthcareAnalytics";
 
 export default function HospitalOperationsAnalyticsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>HospitalOperationsAnalytics</h1>
-            <p>
-                Professional HospitalOperationsAnalytics services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...hospitalOperationsAnalytics} />;
 }

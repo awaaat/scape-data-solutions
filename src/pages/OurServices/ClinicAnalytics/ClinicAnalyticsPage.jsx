@@ -1,12 +1,6 @@
-import styles from "./ClinicAnalyticsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { clinicAnalytics } from "../../../data/serviceContent/healthcareAnalytics";
 
 export default function ClinicAnalyticsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>ClinicAnalytics</h1>
-            <p>
-                Professional ClinicAnalytics services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...clinicAnalytics} />;
 }

@@ -1,0 +1,320 @@
+/* src/components/ServiceTemplate/ServiceContentPage.module.css */
+/*
+  NOTE: the "Hero" block below (.page, .heroSection, .heroGradient,
+  .heroContent, .heroBadge, .heroTitle, .highlight, .heroSub, .heroQuote,
+  .heroStats, .statBlock, .statValue) was reconstructed to match the same
+  visual language as DataCleaningPage.module.css (same CSS variables,
+  spacing scale, and typography approach) because that section of the
+  source file wasn't captured in the earlier file scan. Everything from
+  .statLabel down (offerings, workflow, why-us, FAQ, final CTA) is copied
+  verbatim from the confirmed source. Compare this file against
+  DataCleaningPage.module.css side by side and adjust the hero section
+  if it doesn't match pixel-for-pixel — the rest is already correct.
+*/
+
+.page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ---------- Hero ---------- */
+.heroSection {
+  position: relative;
+  background: var(--color-bg);
+  padding: 120px 30px 90px;
+  overflow: hidden;
+}
+.heroGradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(253, 184, 64, 0.15), transparent 60%);
+  pointer-events: none;
+}
+.heroContent {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(253, 184, 64, 0.15);
+  color: var(--color-accent);
+  border: 1px solid rgba(253, 184, 64, 0.35);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+.heroTitle {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.highlight {
+  color: var(--color-accent);
+}
+.heroSub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.heroQuote {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.95rem;
+  margin-bottom: 34px;
+}
+.heroStats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 34px;
+  flex-wrap: wrap;
+}
+.statBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.statValue {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-accent);
+}
+.statLabel {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: 700;
+  padding: 13px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+/* ---------- Section shell ---------- */
+.sectionTitle {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--color-bg);
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.audienceSection,
+.problemSection,
+.offeringsSection,
+.workflowSection,
+.whySection,
+.faqSection,
+.articlesSection {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 70px 30px;
+}
+
+/* ---------- Audience ---------- */
+.audienceGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+.audienceChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid var(--color-bg);
+  color: var(--color-bg);
+  padding: 9px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ---------- Problem ---------- */
+.problemSection {
+  max-width: 760px;
+}
+.problemText {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 18px;
+}
+
+/* ---------- Offerings ---------- */
+.offeringsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.offeringCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #f7f7f9;
+  border-left: 4px solid var(--color-accent);
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  color: var(--color-bg);
+}
+.offeringIcon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.toolsRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.toolsLabel {
+  font-weight: 700;
+  color: var(--color-bg);
+  margin-right: 4px;
+}
+.toolTag {
+  border: 1px solid var(--color-bg);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.8rem;
+  color: var(--color-bg);
+}
+
+/* ---------- Workflow ---------- */
+.workflowSection {
+  background: #f7f7f9;
+  max-width: 100%;
+}
+.workflowGrid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.workflowStep {
+  background: var(--color-text);
+  padding: 24px 20px;
+  border-radius: 8px;
+}
+.workflowNumber {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+.workflowStep h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-bg);
+  margin-bottom: 8px;
+}
+.workflowStep p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ---------- Why choose us ---------- */
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.whyItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--color-bg);
+}
+
+/* ---------- FAQ ---------- */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faqItem {
+  border: 1px solid #e2e2e6;
+  border-radius: 6px;
+  padding: 14px 18px;
+}
+.faqItem summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+.faqChevron {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+.faqItem p {
+  margin-top: 10px;
+  color: #555;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ---------- Final CTA ---------- */
+.finalCta {
+  background: var(--color-bg);
+  padding: 80px 30px;
+  text-align: center;
+}
+.finalCtaInner {
+  max-width: 620px;
+  margin: 0 auto;
+}
+.finalCtaInner h2 {
+  color: var(--color-text);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.finalCtaInner p {
+  color: rgba(10, 10, 10, 0.8);
+  margin-bottom: 26px;
+}
+
+@media (max-width: 640px) {
+  .heroStats {
+    gap: 24px;
+  }
+  .audienceSection,
+  .problemSection,
+  .offeringsSection,
+  .workflowSection,
+  .whySection,
+  .faqSection,
+  .articlesSection {
+    padding: 50px 20px;
+  }
+}

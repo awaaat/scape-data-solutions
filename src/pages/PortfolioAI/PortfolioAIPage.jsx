@@ -449,6 +449,7 @@ const PortfolioAIPage = () => {
           </motion.div>
 
           {/* ===== PROJECT GRID ===== */}
+          <h2 className={styles.srOnly}>AI Portfolio Projects</h2>
           <motion.div
             className={styles.grid}
             initial="hidden"

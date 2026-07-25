@@ -451,7 +451,7 @@ const PortfolioPipelinesPage = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="Data Pipeline Portfolio | Real-Time & Batch Engineering — Scape Data Solutions"
+        title="Data Pipeline Portfolio | Scape Data Solutions"
         description="Data pipeline projects across finance, manufacturing, retail, healthcare, marketing and technology. Real-time fraud detection, IoT sensor ingestion, customer 360 data lakes, clinical trial ETL, social media streaming and log aggregation built on Kafka, Flink, Spark, Airflow, dbt, Redshift and BigQuery."
         path="/portfolio/pipelines"
       />

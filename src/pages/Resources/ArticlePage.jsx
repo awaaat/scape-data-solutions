@@ -14,7 +14,7 @@ const SITE_URL = "https://www.scapedatasolutions.com";
 const portableTextComponents = {
   block: {
     h2: ({ children }) => <h2 className={styles.sectionHeading}>{children}</h2>,
-    h3: ({ children }) => <h2 className={styles.sectionHeading}>{children}</h2>,
+    h3: ({ children }) => <h3 className={styles.sectionHeading}>{children}</h3>,
     normal: ({ children }) => <p className={styles.paragraph}>{children}</p>,
   },
   list: {

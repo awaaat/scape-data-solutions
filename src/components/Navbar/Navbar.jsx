@@ -9,19 +9,24 @@ import styles from "./Navbar.module.css";
 export const NAV_COMPANY = [
   { label: "Company",    href: "/company"    },
   { label: "Why Us?",    href: "/why-us"     },
-  { label: "Career",     href: "/careers"    },
+  { label: "Careers",     href: "/careers"    },
   { label: "FAQ",        href: "/faq"        },
 ];
 
-// ─── Services dropdown – only categories that exist in your data ──
+// ─── Services dropdown – matches the real categories in src/data/servicesData.js ──
 export const NAV_SERVICES = [
-  { label: "All Services",                href: "/services"                      },
-  { label: "Finance",                     href: "/services?category=finance"     },
-  { label: "Healthcare",                  href: "/services?category=healthcare"  },
-  { label: "Retail",                      href: "/services?category=retail"      },
-  { label: "Manufacturing",               href: "/services?category=manufacturing" },
-  { label: "Academic Research & Education", href: "/services?category=academic"   },
-  { label: "Analytics",                   href: "/services?category=analytics"   },
+  { label: "All Services",                  href: "/services" },
+  { label: "Academic & Research",            href: "/services?category=academic" },
+  { label: "Advanced Analytics",             href: "/services?category=analytics" },
+  { label: "Finance & Risk",                 href: "/services?category=finance" },
+  { label: "Healthcare & Life Sciences",     href: "/services?category=healthcare" },
+  { label: "Manufacturing & Supply Chain",   href: "/services?category=manufacturing" },
+  { label: "Retail & E-Commerce",            href: "/services?category=retail" },
+  { label: "AI & Machine Learning",          href: "/services?category=ai-ml" },
+  { label: "Data Engineering & BI Tools",    href: "/services?category=data-engineering" },
+  { label: "Statistical & Research Methods", href: "/services?category=research-methods" },
+  { label: "Academic Writing & Publishing",  href: "/services?category=academic-writing" },
+  { label: "Assignment & Software Help",     href: "/services?category=assignment-help" },
 ];
 
 export const NAV_PORTFOLIO = [
@@ -69,7 +74,7 @@ export default function Navbar({ activeNav = "" }) {
   const [servOpen, setServOpen] = useState(false);
   const [portOpen, setPortOpen] = useState(false);
   const [resOpen,  setResOpen]  = useState(false);
-  
+
   // ─── Scroll state for the border line ────────────────────────────
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -244,10 +249,10 @@ export default function Navbar({ activeNav = "" }) {
               </div>
             </li>
             <li>
-              <Link to="/clients" className={styles.navLink}>Our Clients</Link>
+              <Link to="/clients" className={`${styles.navLink}${activeNav === "clients" ? " " + styles.navActive : ""}`}>Our Clients</Link>
             </li>
             <li className={styles.hasDrop}>
-              <Link to="/portfolio" className={styles.navLink}>
+              <Link to="/portfolio" className={`${styles.navLink}${activeNav === "portfolio" ? " " + styles.navActive : ""}`}>
                 Portfolio <ChevronDown size={12} />
               </Link>
               <div className={`${styles.drop} ${styles.dropRight}`}>
@@ -271,7 +276,7 @@ export default function Navbar({ activeNav = "" }) {
               </div>
             </li>
             <li>
-              <Link to="/testimonials" className={styles.navLink}>Testimonials</Link>
+              <Link to="/testimonials" className={`${styles.navLink}${activeNav === "testimonials" ? " " + styles.navActive : ""}`}>Testimonials</Link>
             </li>
             <li>
               <Link to="/contact" className={`${styles.navLink}${activeNav === "contact" ? " " + styles.navActive : ""}`}>

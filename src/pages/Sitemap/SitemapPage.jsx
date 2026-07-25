@@ -14,10 +14,8 @@ const SECTIONS = [
     color: "#fdb840",
     links: [
       { label: "About Us", path: "/company" },
-      { label: "Our History", path: "/history" },
       { label: "Why Choose Us", path: "/why-us" },
       { label: "Team", path: "/team" },
-      { label: "Expertise", path: "/expertise" },
       { label: "Careers", path: "/careers" },
       { label: "Recommended Reading", path: "/resources" },
       { label: "FAQ", path: "/faq" },

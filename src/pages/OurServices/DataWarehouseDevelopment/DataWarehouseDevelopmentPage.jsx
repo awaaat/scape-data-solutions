@@ -1,12 +1,6 @@
-import styles from "./DataWarehouseDevelopmentPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { dataWarehouseDevelopment } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function DataWarehouseDevelopmentPage() {
-    return (
-        <div className={styles.container}>
-            <h1>DataWarehouseDevelopment</h1>
-            <p>
-                Professional DataWarehouseDevelopment services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...dataWarehouseDevelopment} />;
 }

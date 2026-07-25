@@ -15,6 +15,7 @@ const CaseStudiesPage = () => {
         title="Case Studies | Scape Data Solutions"
         description="Real results from real client partnerships."
         path="/case-studies"
+        noindex={true}
       />
 
       <Navbar activeNav="" />

@@ -1,12 +1,6 @@
-import styles from "./SupplyPlanningPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { supplyPlanning } from "../../../data/serviceContent/logisticsSupplyChain";
 
 export default function SupplyPlanningPage() {
-    return (
-        <div className={styles.container}>
-            <h1>SupplyPlanning</h1>
-            <p>
-                Professional SupplyPlanning services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...supplyPlanning} />;
 }

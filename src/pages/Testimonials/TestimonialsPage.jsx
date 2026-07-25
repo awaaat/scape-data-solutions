@@ -268,7 +268,7 @@ const TestimonialsPage = () => {
     { icon: <Users size={24} />, value: '200+', label: 'Clients Worldwide' },
     { icon: <Smile size={24} />, value: '98%', label: 'Satisfaction Rate' },
     { icon: <Award size={24} />, value: '4.9/5', label: 'Average Rating' },
-    { icon: <Briefcase size={24} />, value: '150+', label: 'Projects Delivered' },
+    { icon: <Briefcase size={24} />, value: '200+', label: 'Projects Delivered' },
   ];
 
   // Star color – typical yellow/gold
@@ -479,7 +479,7 @@ const TestimonialsPage = () => {
                       }}
                     />
                     <div>
-                      <h4 className={styles.gridName}>{t.name}</h4>
+                      <h3 className={styles.gridName}>{t.name}</h3>
                       <p className={styles.gridRole}>{t.role} — {t.company}</p>
                       <div className={styles.gridStars}>
                         {[...Array(t.rating)].map((_, i) => (

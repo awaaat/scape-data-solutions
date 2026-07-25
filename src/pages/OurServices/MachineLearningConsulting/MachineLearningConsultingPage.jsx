@@ -1,12 +1,6 @@
-import styles from "./MachineLearningConsultingPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { machineLearningConsulting } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function MachineLearningConsultingPage() {
-    return (
-        <div className={styles.container}>
-            <h1>MachineLearningConsulting</h1>
-            <p>
-                Professional MachineLearningConsulting services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...machineLearningConsulting} />;
 }

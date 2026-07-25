@@ -22,7 +22,6 @@
   color: var(--primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 .mainContent {

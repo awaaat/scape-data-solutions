@@ -107,7 +107,7 @@ const PORTFOLIO_ITEMS = [
     category: "Data Engineering",
     filter: "pipelines",
     desc: "Sensor-to-dashboard pipeline across three manufacturing floors, surfacing anomalies before they became downtime.",
-    fullDesc: "Ridgeline's machines were instrumented but the data went nowhere useful — just local logs nobody checked until something broke. We piped sensor data into a central time-series store with anomaly detection tuned per machine type, with alerts going straight to the floor supervisor's phone.",
+    fullDesc: "Ridgeline's machines were instrumented, but the data went nowhere useful. It sat in local logs nobody checked until something broke. We piped sensor data into a central time-series store with anomaly detection tuned per machine type, with alerts going straight to the floor supervisor's phone.",
     icon: <Server size={18} />,
     year: "2023",
     duration: "12 weeks",
@@ -332,7 +332,7 @@ const PortfolioPage = () => {
               </motion.h1>
               <motion.p className={styles.heroSub} variants={fadeUp}>
                 A record of the dashboards, models, and pipelines we've shipped for
-                regional banks, independent hospitals, and growing manufacturers —
+                regional banks, independent hospitals, and growing manufacturers,
                 each one built to be used long after launch day.
               </motion.p>
               <motion.div className={styles.heroMetaRow} variants={staggerFast}>
@@ -389,6 +389,7 @@ const PortfolioPage = () => {
 
         {/* PORTFOLIO LEDGER GRID */}
         <motion.section className={styles.gridSection} ref={gridRef} initial="hidden" animate={isGridInView ? "visible" : "hidden"} variants={fadeIn}>
+          <h2 className={styles.srOnly}>Portfolio Projects</h2>
           <motion.div className={styles.ledgerGrid} variants={staggerContainer} layout>
             <AnimatePresence mode="popLayout">
               {filteredItems.map((item, index) => (
@@ -498,13 +499,13 @@ const PortfolioPage = () => {
           <div className={styles.processInner}>
             <motion.div className={styles.processHeader} variants={fadeUp}>
               <h2 className={styles.display}>How Each Entry Gets Made</h2>
-              <p>The same four stages, every time — because consistency is what makes a record trustworthy.</p>
+              <p>The same four stages, every time because consistency is what makes a record trustworthy.</p>
             </motion.div>
             <motion.div className={styles.processRow} variants={staggerContainer}>
               {PROCESS_STEPS.map((step) => (
                 <motion.div key={step.n} className={styles.processStep} variants={fadeUp} whileHover={{ y: -3 }}>
                   <span className={styles.processNumber}>{step.n}</span>
-                  <h4>{step.title}</h4>
+                  <h3>{step.title}</h3>
                   <p>{step.body}</p>
                 </motion.div>
               ))}

@@ -13,7 +13,6 @@ import styles from "./CompanyPage.module.css";
 
 const ACCENT = "#3b82f6";
 
-// ─── Animation variants ──────────────────────────────────────────
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
@@ -29,7 +28,6 @@ const staggerContainer = {
 
 const VIEWPORT = { once: false, amount: 0.15 };
 
-// ─── Counter ──────────────────────────────────────────────────────
 function Counter({ to, suffix = "", duration = 1.8 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
@@ -54,10 +52,9 @@ function Counter({ to, suffix = "", duration = 1.8 }) {
   return <span ref={ref}>{value}{suffix}</span>;
 }
 
-// ─── Data ──────────────────────────────────────────────────────────
 const COMPANY_STATS = [
-  { to: 50, suffix: "+", label: "Years Combined Experience" },
-  { to: 2, suffix: "", label: "Countries — US & Canada" },
+  { to: 7, suffix: "+", label: "Years in Business" },
+  { to: 60, suffix: "+", label: "Countries Served Worldwide" },
   { to: 100, suffix: "%", label: "Client Satisfaction Goal" },
   { to: 24, suffix: "/7", label: "Quick Response Commitment" },
 ];
@@ -68,7 +65,7 @@ const REASONS = [
   { icon: <Star size={18} />, title: "Professional Staff", desc: "Our dedicated professionals uphold the highest standards of professionalism in all interactions and project executions." },
   { icon: <Target size={18} />, title: "Business Savvy", desc: "We understand both the technical and business dynamics, making us a valuable partner in achieving your goals." },
   { icon: <Layers size={18} />, title: "One-Stop Shop", desc: "From development to support, we cover it all, simplifying your operations and reducing hassle." },
-  { icon: <CheckCircle size={18} />, title: "100% Satisfaction", desc: "Your contentment is our priority — we're committed to delivering solutions that exceed your expectations." },
+  { icon: <CheckCircle size={18} />, title: "100% Satisfaction", desc: "Your contentment is our priority; we're committed to delivering solutions that exceed your expectations." },
 ];
 
 const QUICK_LINKS = [
@@ -77,17 +74,51 @@ const QUICK_LINKS = [
   { title: "Careers", desc: "Join the team.", href: "/careers" },
 ];
 
-const OFFICES = ["Palo Alto", "Seattle", "Memphis", "London"];
+const OFFICES = [
+  { city: "Folsom, CA", country: "USA" },
+  { city: "Whitby, ON", country: "Canada" },
+  { city: "Lahore", country: "Pakistan" },
+  { city: "Nairobi", country: "Kenya" },
+  { city: "London", country: "UK" },
+];
 
+// Milestones – sentence case labels, proper descriptions, no all caps
 const MILESTONES = [
-  { date: "1994", label: "PC‑Component Inc. Founded" },
-  { date: "2017", label: "Scape Data Solutions Launched" },
-  { date: "2020", label: "Expanded to US & Canada" },
-  { date: "2026", label: "50+ Years Combined Experience" },
+  { 
+    date: "2017", 
+    label: "Founded with a mission", 
+    desc: "Scape Data Solutions launched to help businesses unlock the value hidden in their data, starting with a small team of 4." 
+  },
+  { 
+    date: "2018", 
+    label: "First enterprise trust", 
+    desc: "A Fortune 500 retailer chose us to build their first unified analytics platform, delivering 6x ROI in year one." 
+  },
+  { 
+    date: "2020", 
+    label: "Cross-border expansion", 
+    desc: "Opened our US office in Folsom, CA and Canada office in Whitby, ON, serving clients across multiple time zones with 24/7 support." 
+  },
+  { 
+    date: "2022", 
+    label: "AI innovation breakthrough", 
+    desc: "Launched our predictive analytics practice, helping healthcare clients reduce patient wait times by 45% using machine learning." 
+  },
+  { 
+    date: "2024", 
+    label: "Global footprint", 
+    desc: "Opened delivery centers in Lahore, Nairobi, and London, and now serve clients in 60+ countries with over 200 projects delivered." 
+  },
+  { 
+    date: "2026", 
+    label: "Industry leader", 
+    desc: "Recognized as a top-10 data analytics firm by TechReview, a testament to our team's expertise and client-first approach." 
+  },
 ];
 
 export default function CompanyPage() {
   const [showTop, setShowTop] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   useEffect(() => {
     const h = () => setShowTop(window.scrollY > 500);
@@ -95,11 +126,13 @@ export default function CompanyPage() {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
+  const latestMilestone = MILESTONES[MILESTONES.length - 1];
+
   return (
     <div className={styles.page}>
       <SEO
         title="About Scape Data Solutions | Premier Data Analytics Company"
-        description="Scape Data Solutions is a premier data analytics firm with 50+ years of combined experience. Quick response, expert team, 100% client satisfaction goal."
+        description="Scape Data Solutions is a premier data analytics firm founded in 2017. Quick response, expert team, 100% client satisfaction goal."
         path="/company"
       />
       <Navbar activeNav="company" />
@@ -109,7 +142,8 @@ export default function CompanyPage() {
         <motion.section
           className={styles.hero}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={VIEWPORT}
           variants={staggerContainer}
         >
           <div className={styles.heroGrid} />
@@ -121,9 +155,8 @@ export default function CompanyPage() {
                   Who We Are
                 </motion.h1>
                 <motion.p className={styles.heroDesc} variants={fadeUp}>
-                  A premier data analytics firm with over 7 years of combined
-                  experience, driving measurable results for businesses across
-                  the US &amp; Canada.
+                  A premier data analytics firm founded in 2017, driving measurable results for businesses across
+                  the Globe.  
                 </motion.p>
                 <motion.div className={styles.heroButtons} variants={fadeUp}>
                   <Link to="/contact" className={styles.btnPrimary}>
@@ -134,7 +167,7 @@ export default function CompanyPage() {
                   </Link>
                 </motion.div>
                 <motion.div className={styles.trustRow} variants={fadeUp}>
-                  {["50+ Yrs Experience", "US & Canada", "100% Satisfaction Goal", "24/7 Response"].map((b) => (
+                  {["Founded 2017", "US & Canada", "100% Satisfaction Goal", "24/7 Response"].map((b) => (
                     <span key={b} className={styles.trustBadge}>{b}</span>
                   ))}
                 </motion.div>
@@ -151,7 +184,7 @@ export default function CompanyPage() {
                     >
                       <Link to={item.href} className={styles.quickLinkItem}>
                         <div>
-                          <h4>{item.title}</h4>
+                          <h3>{item.title}</h3>
                           <p>{item.desc}</p>
                         </div>
                         <ArrowRight size={16} className={styles.quickLinkArrow} />
@@ -198,7 +231,7 @@ export default function CompanyPage() {
             <div className={styles.missionBlock}>
               <motion.p className={styles.sectionLabel} variants={fadeUp}>Our story</motion.p>
               <motion.h2 className={styles.sectionTitle} variants={fadeUp}>
-                Scape Data Solutions was founded with over 7 years of combined experience
+                Scape Data Solutions was founded with a vision to make data work for you
               </motion.h2>
               <motion.p className={styles.missionDesc} variants={fadeUp}>
                 With a driving vision to provide excellent solutions to enhance efficiency
@@ -212,8 +245,7 @@ export default function CompanyPage() {
               </motion.p>
               <motion.p className={styles.missionDesc} variants={fadeUp}>
                 Scape Data Solutions pivots on client satisfaction with an area of expertise
-                that covers today's latest data technologies. When our clients are happy —
-                we are successful.
+                that covers today's latest data technologies. When our clients are happy, we are successful.
               </motion.p>
             </div>
           </div>
@@ -257,8 +289,8 @@ export default function CompanyPage() {
                 <p className={styles.officesLabel}>Offices</p>
                 <h2 className={styles.officesTitle}>Collaboration across borders</h2>
                 <p className={styles.officesDesc}>
-                  We are hiring across all our offices. We prioritize in‑person work
-                  to support our fast‑paced, collaborative projects.
+                  We are hiring across all our offices. We prioritize in-person work
+                  to support our fast-paced, collaborative projects.
                 </p>
               </motion.div>
               <motion.div className={styles.officesActions} variants={fadeUp}>
@@ -267,16 +299,16 @@ export default function CompanyPage() {
               </motion.div>
             </div>
             <div className={styles.officesGrid}>
-              {OFFICES.map((city) => (
-                <motion.div key={city} className={styles.officeCard} variants={fadeUp}>
-                  {city}
+              {OFFICES.map((office) => (
+                <motion.div key={office.city} className={styles.officeCard} variants={fadeUp}>
+                  {office.city}
                 </motion.div>
               ))}
             </div>
           </div>
         </motion.section>
 
-        {/* ─── TIMELINE ────────────────────────────────────────────── */}
+        {/* ─── TIMELINE WITH TOOLTIPS ────────────────────────────── */}
         <motion.section
           className={styles.timelineSection}
           initial="hidden"
@@ -288,11 +320,11 @@ export default function CompanyPage() {
             <div className={styles.timelineHead}>
               <motion.h2 className={styles.timelineTitle} variants={fadeUp}>Our path of progress</motion.h2>
               <motion.p className={styles.timelineSub} variants={fadeUp}>
-                From founding to industry leader — every milestone on the way.
+                From founding to industry leader, every milestone on the way.
               </motion.p>
             </div>
 
-            <motion.div className={styles.timelineTrack} variants={fadeUp}>
+            <div className={styles.timelineTrack}>
               <div className={styles.timelineRail} />
               <div className={styles.timelineProgress} style={{ width: "100%" }} />
               <div className={styles.timelineDots}>
@@ -301,26 +333,38 @@ export default function CompanyPage() {
                     key={i}
                     className={styles.timelineDotWrapper}
                     style={{ left: `${(i / (MILESTONES.length - 1)) * 100}%` }}
+                    onMouseEnter={() => setHoveredIndex(i)}
+                    onMouseLeave={() => setHoveredIndex(null)}
                   >
                     <div className={`${styles.timelineDot} ${i === MILESTONES.length - 1 ? styles.timelineDotActive : ""}`} />
+                    {hoveredIndex === i && (
+                      <div className={styles.timelineTooltip}>
+                        <strong>{m.label}</strong>
+                        <span>{m.desc}</span>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div className={styles.timelineLabels} variants={fadeUp}>
+            <div className={styles.timelineLabels}>
               {MILESTONES.map((m, i) => (
-                <span key={i}>{m.date}</span>
+                <span
+                  key={i}
+                  className={styles.timelineLabelItem}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  {m.date}
+                </span>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div className={styles.timelineActive} variants={fadeUp}>
-              <div className={styles.timelineActiveDate}>July 2026</div>
-              <h3 className={styles.timelineActiveTitle}>50+ Years Combined Experience</h3>
-              <p className={styles.timelineActiveDesc}>
-                A milestone that reflects our depth of expertise and commitment to excellence.
-              </p>
-            </motion.div>
+            <div className={styles.timelineActive}>
+              <h3 className={styles.timelineActiveTitle}>{latestMilestone.label}</h3>
+              <p className={styles.timelineActiveDesc}>{latestMilestone.desc}</p>
+            </div>
           </div>
         </motion.section>
 
@@ -344,10 +388,6 @@ export default function CompanyPage() {
       </main>
 
       <Footer />
-
-      <div className={styles.sideFixed}>
-        <a href="https://wa.me/+923218465214" className={styles.sideBtnWA}>WhatsApp</a>
-      </div>
 
       <AnimatePresence>
         {showTop && (

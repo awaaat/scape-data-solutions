@@ -82,7 +82,7 @@ export default function FAQPage() {
             <div className={styles.heroInner}>
               <div className={styles.heroContent}>
                 <h1 className={styles.heroTitle}>
-                  Frequently Asked <span className={styles.heroAccent}>Questions</span>
+                  Frequently Asked Questions
                 </h1>
                 <p className={styles.heroSub}>
                   Deep answers on AI, statistical modelling, financial analytics,
@@ -166,7 +166,7 @@ export default function FAQPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h3>Still have questions?</h3>
+              <h2>Still have questions?</h2>
               <p>
                 Our data scientists and engineers are happy to discuss your specific problem —
                 no sales pitch, just honest advice.

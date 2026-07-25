@@ -1,12 +1,6 @@
-import styles from "./FactoryPerformanceAnalyticsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { factoryPerformanceAnalytics } from "../../../data/serviceContent/manufacturingRetail";
 
 export default function FactoryPerformanceAnalyticsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>FactoryPerformanceAnalytics</h1>
-            <p>
-                Professional FactoryPerformanceAnalytics services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...factoryPerformanceAnalytics} />;
 }

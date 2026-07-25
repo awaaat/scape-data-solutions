@@ -89,7 +89,7 @@ export default function PageLayout({ children, activeNav = "" }) {
     setTimeout(() => {
       setChatLog(l => [...l, {
         from: "bot",
-        text: "Thanks for reaching out! Our team will respond within 1 hour. For urgent queries, call +1 (312) 212-3396 or WhatsApp us."
+        text: "Thanks for reaching out! Our team will respond within 1 hour. For urgent queries, call +1 (312) 212-3396"
       }]);
     }, 900);
   }, [chatMsg]);
@@ -166,17 +166,6 @@ export default function PageLayout({ children, activeNav = "" }) {
 
       {/* ── Footer ── */}
       <Footer />
-
-      {/* ── Side fixed buttons ── */}
-      <div className={styles.sideFixed}>
-        <motion.a
-          href="https://wa.me/+923218465214"
-          className={`${styles.sideBtn} ${styles.sideBtnWA}`}
-          whileHover={{ x: 6 }}
-        >
-          <i className="fab fa-whatsapp" /> WhatsApp
-        </motion.a>
-      </div>
 
       {/* ── Chat widget ── */}
       <div className={styles.chatWidget}>

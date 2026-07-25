@@ -1,12 +1,6 @@
-import styles from "./ComputerVisionSolutionsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { computerVisionSolutions } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function ComputerVisionSolutionsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>ComputerVisionSolutions</h1>
-            <p>
-                Professional ComputerVisionSolutions services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...computerVisionSolutions} />;
 }

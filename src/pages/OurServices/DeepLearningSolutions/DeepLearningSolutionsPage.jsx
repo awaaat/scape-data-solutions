@@ -1,12 +1,6 @@
-import styles from "./DeepLearningSolutionsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { deepLearningSolutions } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function DeepLearningSolutionsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>DeepLearningSolutions</h1>
-            <p>
-                Professional DeepLearningSolutions services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...deepLearningSolutions} />;
 }

@@ -43,53 +43,21 @@
         content="Transform your business with expert data analytics, AI, and machine learning solutions." />
     <meta name="twitter:image" content="https://scapedatasolutions.com/logo-1.jpeg" />
 
-    <!-- Geo Tags -->
-    <meta name="geo.region" content="KE-30" />
-    <meta name="geo.placename" content="Nairobi" />
-    <meta name="geo.position" content="-1.286389;36.817223" />
-    <meta name="ICBM" content="-1.286389, 36.817223" />
-
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="Mj7beL9UYCiiQCq5yGCHT3FVRLOzGSjkofbUULvej6U" />
 
     <!-- Robots Meta Tag -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
-    <!-- Structured Data - Organization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Scape Data Solutions",
-      "url": "https://scapedatasolutions.com",
-      "logo": "https://scapedatasolutions.com/logo-1.jpeg",
-      "description": "Expert data analytics, AI, and machine learning solutions for businesses worldwide",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Delta Corner Tower, Chiromo Road",
-        "addressLocality": "Westlands",
-        "addressRegion": "Nairobi",
-        "addressCountry": "KE"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "info@scapedatasolutions.com",
-        "contactType": "Customer Service"
-      }
-    }
-    </script>
-
-    <!-- Structured Data - Website -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://scapedatasolutions.com/#website",
-      "url": "https://scapedatasolutions.com",
-      "name": "Scape Data Solutions",
-      "description": "AI-Powered Data Analytics & Business Intelligence"
-    }
-    </script>
+    <!-- Organization + Website + per-office LocalBusiness JSON-LD is
+         injected per-route by src/components/SEO/SEO.jsx via
+         react-helmet-async. Do NOT add a static schema block here —
+         Helmet cannot de-duplicate <script type="application/ld+json">
+         (no matching attribute to key off), so a static block here
+         ships ALONGSIDE the real one on every prerendered page instead
+         of being replaced by it. This caused a real duplicate/stale
+         Organization schema across the whole site (Nairobi-only address,
+         out of sync with the real 4-office data) until removed. -->
 </head>
 
 <body>

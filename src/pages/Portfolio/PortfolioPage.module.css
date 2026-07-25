@@ -3,7 +3,7 @@
 */
 
 /* ─── Variables ─────────────────────────────────────────────────── */
-:root {
+.page {
   --bg-background: #ffffff;
   --bg-card: #f8f9fa;
   --bg-card-hover: rgba(0, 0, 0, 0.02);
@@ -29,7 +29,6 @@
   color: var(--text-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 /* ─── Shared utilities ─────────────────────────────────────────── */
@@ -41,7 +40,6 @@
 .hero {
   padding: 80px 0 40px;
   background: var(--bg-background);
-  border-bottom: 1px solid var(--border-color);
 }
 
 .heroGrid {
@@ -217,7 +215,6 @@
 .filterSection {
   padding: 32px 24px;
   background: var(--bg-background);
-  border-bottom: 1px solid var(--border-color);
 }
 
 .filterRow {
@@ -563,7 +560,6 @@
 .processSection {
   padding: 80px 24px;
   background: var(--bg-background);
-  border-top: 1px solid var(--border-color);
 }
 
 .processInner {
@@ -624,7 +620,7 @@
   display: block;
   margin-bottom: 8px;
 }
-.processStep h4 {
+.processStep h3 {
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 500;
@@ -640,7 +636,6 @@
 .ctaSection {
   padding: 80px 24px;
   background: var(--bg-background);
-  border-top: 1px solid var(--border-color);
 }
 
 .ctaInner {
@@ -677,6 +672,19 @@
 .ctaButton:hover {
   background: var(--accent-hover);
   transform: none;
+}
+
+/* ─── Accessibility ─────────────────────────────────────────────── */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ─── Responsive tweaks ─────────────────────────────────────────── */

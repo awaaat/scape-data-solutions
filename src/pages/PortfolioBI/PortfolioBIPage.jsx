@@ -900,7 +900,7 @@ const PortfolioBIPage = () => {
         <motion.section
           className={styles.hero}
           initial="hidden"
-          animate={loading ? "hidden" : "visible"}
+          animate="visible"
           variants={fadeUp}
         >
           <motion.div className={styles.heroContent} variants={fadeUp}>
@@ -926,7 +926,7 @@ const PortfolioBIPage = () => {
             className={styles.globalKpiBar}
             variants={globalKpiStagger}
             initial="hidden"
-            animate={loading ? "hidden" : "visible"}
+            animate="visible"
           >
             {[
               { value: '$48.2M', label: 'Total Dashboard Value' },
@@ -951,7 +951,7 @@ const PortfolioBIPage = () => {
             className={styles.filterBar}
             variants={fadeUp}
             initial="hidden"
-            animate={loading ? "hidden" : "visible"}
+            animate="visible"
             transition={{ delay: 0.3 }}
           >
             <div className={styles.filterGroup}>
@@ -970,6 +970,7 @@ const PortfolioBIPage = () => {
         </motion.section>
 
         {/* ─── DASHBOARD GRID ────────────────────────────────────── */}
+        <h2 className={styles.srOnly}>BI Dashboard Case Studies</h2>
         <div className={styles.dashboardGrid}>
           {dashboardData.map((project) => (
             <DashboardTile key={project.id} project={project} />

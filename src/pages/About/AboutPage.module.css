@@ -364,7 +364,6 @@
   max-width: 36rem;
   margin: 0 auto;
   padding-top: 1.5rem;
-  border-top: 1px solid #eee;
 }
 .timelineActiveDate {
   font-size: 0.8rem;
@@ -480,30 +479,6 @@
 }
 
 /* ─── FLOATING BUTTONS ────────────────────────────────────────────── */
-.sideFixed {
-  position: fixed;
-  bottom: 2rem;
-  left: 1.5rem;
-  z-index: 40;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.sideBtnWA {
-  background: #25d366;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 9999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(37,211,102,0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.sideBtnWA:hover {
-  transform: scale(1.04);
-  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
-}
 .scrollTop {
   position: fixed;
   bottom: 2rem;

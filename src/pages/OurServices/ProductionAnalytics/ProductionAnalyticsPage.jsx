@@ -1,12 +1,6 @@
-import styles from "./ProductionAnalyticsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { productionAnalytics } from "../../../data/serviceContent/manufacturingRetail";
 
 export default function ProductionAnalyticsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>ProductionAnalytics</h1>
-            <p>
-                Professional ProductionAnalytics services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...productionAnalytics} />;
 }

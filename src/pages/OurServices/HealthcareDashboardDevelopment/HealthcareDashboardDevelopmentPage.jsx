@@ -1,12 +1,6 @@
-import styles from "./HealthcareDashboardDevelopmentPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { healthcareDashboardDevelopment } from "../../../data/serviceContent/healthcareAnalytics";
 
 export default function HealthcareDashboardDevelopmentPage() {
-    return (
-        <div className={styles.container}>
-            <h1>HealthcareDashboardDevelopment</h1>
-            <p>
-                Professional HealthcareDashboardDevelopment services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...healthcareDashboardDevelopment} />;
 }

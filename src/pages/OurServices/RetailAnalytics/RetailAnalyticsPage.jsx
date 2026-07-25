@@ -1,12 +1,6 @@
-import styles from "./RetailAnalyticsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { retailAnalytics } from "../../../data/serviceContent/manufacturingRetail";
 
 export default function RetailAnalyticsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>RetailAnalytics</h1>
-            <p>
-                Professional RetailAnalytics services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...retailAnalytics} />;
 }

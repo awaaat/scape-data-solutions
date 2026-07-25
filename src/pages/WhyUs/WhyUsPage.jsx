@@ -56,7 +56,7 @@ function Counter({ to, suffix = "", duration = 1.8 }) {
 
 // ─── Data ──────────────────────────────────────────────────────────────
 const STATS = [
-  { to: 3500, suffix: "+", label: "Projects Delivered" },
+  { to: 200, suffix: "+", label: "Projects Delivered" },
   { to: 99, suffix: "%", label: "Client Satisfaction" },
   { to: 60, suffix: "+", label: "Countries Served" },
   { to: 3, suffix: "+", label: "Avg. Partnership Years" },
@@ -77,10 +77,10 @@ const REASONS = [
   {
     icon: <Award size={24} />,
     title: "Proven Track Record",
-    summary: "3,500+ projects delivered with a 99.5% satisfaction rate.",
+    summary: "200+ projects delivered with a 99% satisfaction rate.",
     details: [
-      "3,500+ successful projects across 60+ countries",
-      "99.5% client satisfaction – among the highest",
+      "200+ successful projects across 60+ countries",
+      "99% client satisfaction – among the highest",
       "Measurable ROI within months, not years",
       "4–7× average ROI in the first year",
     ],
@@ -88,9 +88,9 @@ const REASONS = [
   {
     icon: <Shield size={24} />,
     title: "Security & Trust",
-    summary: "Enterprise‑grade security with GDPR, HIPAA, SOC 2 compliance.",
+    summary: "Enterprise‑grade security with GDPR, HIPAA, SOC 2, ISO 27001 compliance.",
     details: [
-      "GDPR, HIPAA, SOC 2, CCPA compliant",
+      "GDPR, HIPAA, SOC 2, ISO 27001 compliant",
       "Enterprise‑grade encryption for data at rest and in transit",
       "24/7 threat monitoring and third‑party audits",
       "Your data is protected with the highest standards",
@@ -110,9 +110,9 @@ const REASONS = [
   {
     icon: <Globe size={24} />,
     title: "Global Reach",
-    summary: "Offices in the US, Canada, and Pakistan, serving 60+ countries.",
+    summary: "Offices in the US, Canada, Pakistan, Kenya, and the UK, serving 60+ countries.",
     details: [
-      "Offices in the US, Canada, and Pakistan",
+      "Offices in the US, Canada, Pakistan, Kenya, and the UK",
       "Serving 60+ countries worldwide",
       "Round‑the‑clock, multilingual support",
       "Global perspective with local expertise",
@@ -155,7 +155,7 @@ export default function WhyUsPage() {
     <div className={styles.page}>
       <SEO
         title="Why Scape Data Solutions | Proven Data & AI Partner"
-        description="3500+ projects delivered. 99.5% client satisfaction. 60+ countries. GDPR, HIPAA, SOC 2, ISO 27001. 3+ year average partnerships."
+        description="200+ projects delivered. 99% client satisfaction. 60+ countries. GDPR, HIPAA, SOC 2, ISO 27001. 3+ year average partnerships."
         path="/why-us"
       />
       <Navbar activeNav="why-us" />
@@ -171,7 +171,7 @@ export default function WhyUsPage() {
                   <Sparkles size={12} /> Why Scape Data Solutions
                 </div>
                 <h1 className={styles.heroTitle}>
-                  Why Choose <span style={{ color: ACCENT }}>Us?</span>
+                  Why Choose Us?
                 </h1>
                 <p className={styles.heroDesc}>
                   We deliver more than data – we deliver <strong>business transformation</strong>.
@@ -305,9 +305,7 @@ export default function WhyUsPage() {
 
       <Footer />
 
-      {/* Floating WhatsApp & scroll-to-top */}
       <div className={styles.sideFixed}>
-        <a href="https://wa.me/+923218465214" className={styles.sideBtnWA}>WhatsApp</a>
       </div>
 
       <AnimatePresence>

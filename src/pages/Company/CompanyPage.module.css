@@ -1,7 +1,7 @@
 /* src/pages/Company/CompanyPage.module.css */
 
 .page {
-  background: #fff;
+  background: var(--color-bg);
   color: #111;
   font-family: system-ui, -apple-system, 'Universal Sans', 'Geist Mono', sans-serif;
   min-height: 100vh;
@@ -17,28 +17,19 @@
   .container { padding: 0 2rem; }
 }
 
-/* ─── HERO ────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
   padding: 8rem 0 4rem;
-  background: #fff;
+  background: var(--color-bg);
 }
-.heroGrid {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(59,130,246,0.04) 0%, transparent 60%);
-  pointer-events: none;
-}
+.heroGrid { display: none; }
 .heroInner {
   display: grid;
   gap: 3rem;
   position: relative;
 }
 @media (min-width: 1024px) {
-  .heroInner {
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-  }
+  .heroInner { grid-template-columns: 1fr 1fr; gap: 4rem; }
 }
 .heroLeft { display: flex; flex-direction: column; }
 .heroLabel {
@@ -56,12 +47,8 @@
   letter-spacing: -0.03em;
   margin: 0 0 1rem;
 }
-@media (min-width: 640px) {
-  .heroTitle { font-size: 4rem; }
-}
-@media (min-width: 1024px) {
-  .heroTitle { font-size: 4.8rem; }
-}
+@media (min-width: 640px) { .heroTitle { font-size: 4rem; } }
+@media (min-width: 1024px) { .heroTitle { font-size: 4.8rem; } }
 .heroDesc {
   font-size: 1.1rem;
   line-height: 1.6;
@@ -89,7 +76,6 @@
   border: 1px solid #eee;
 }
 
-/* Buttons */
 .btnPrimary, .btnSecondary {
   display: inline-flex;
   align-items: center;
@@ -115,13 +101,10 @@
 }
 .btnSecondary:hover { background: #f5f5f5; }
 
-/* Hero right column – quick links */
 .heroRight { display: flex; flex-direction: column; }
 .heroQuickLinks {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #eee;
-  padding-top: 1.5rem;
 }
 @media (min-width: 1024px) {
   .heroQuickLinks { border-top: none; padding-top: 0; }
@@ -131,7 +114,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 0.25rem;
-  border-bottom: 1px solid #f0f0f0;
   text-decoration: none;
   color: inherit;
   transition: color 0.2s;
@@ -158,12 +140,9 @@
   transform: translateX(4px);
 }
 
-/* ─── STATS BAND ──────────────────────────────────────────────────── */
 .statsBand {
   padding: 3rem 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  background: #fafafa;
+  background: var(--color-bg-card);
 }
 .statsGrid {
   display: grid;
@@ -187,7 +166,6 @@
   margin: 0.25rem 0 0;
 }
 
-/* ─── MISSION ────────────────────────────────────────────────────── */
 .missionSection { padding: 4rem 0; }
 .missionBlock { max-width: 48rem; margin: 0 auto; }
 .sectionLabel {
@@ -211,7 +189,6 @@
   margin-bottom: 1.2rem;
 }
 
-/* ─── REASONS ────────────────────────────────────────────────────── */
 .coreSection { padding: 4rem 0; }
 .coreHead { text-align: center; margin-bottom: 3rem; }
 .coreTitle {
@@ -234,7 +211,7 @@
   .coreGrid { grid-template-columns: repeat(3, 1fr); }
 }
 .coreCard {
-  background: #fafafa;
+  background: var(--color-bg-card);
   padding: 2rem 1.8rem;
   transition: background 0.2s;
 }
@@ -256,7 +233,6 @@
   margin: 0;
 }
 
-/* ─── OFFICES ─────────────────────────────────────────────────────── */
 .officesSection { padding: 4rem 0; }
 .officesHead {
   display: flex;
@@ -305,7 +281,7 @@
   .officesGrid { grid-template-columns: repeat(4, 1fr); }
 }
 .officeCard {
-  background: #fafafa;
+  background: var(--color-bg-card);
   border-radius: 1rem;
   padding: 1.2rem 1rem;
   text-align: center;
@@ -316,7 +292,6 @@
 }
 .officeCard:hover { border-color: #3b82f6; }
 
-/* ─── TIMELINE ────────────────────────────────────────────────────── */
 .timelineSection { padding: 4rem 0 3rem; }
 .timelineHead {
   text-align: center;
@@ -333,11 +308,18 @@
   color: #666;
   font-size: 1.05rem;
 }
+
 .timelineTrack {
   position: relative;
   max-width: 48rem;
   margin: 0 auto 1.5rem;
   height: 2px;
+  background: #eaeaea;
+  border-radius: 9999px;
+}
+.timelineRail {
+  position: absolute;
+  inset: 0;
   background: #eaeaea;
   border-radius: 9999px;
 }
@@ -365,6 +347,7 @@
   transform: translateX(-50%);
   top: 50%;
   margin-top: -1rem;
+  cursor: pointer;
 }
 .timelineDot {
   width: 0.4rem;
@@ -379,45 +362,31 @@
   height: 0.7rem !important;
   background: #3b82f6 !important;
 }
+
 .timelineLabels {
   display: flex;
   justify-content: space-between;
   max-width: 48rem;
-  margin: 0 auto 3rem;
+  margin: 0 auto 0;
   font-size: 0.7rem;
   color: #999;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   padding: 0 0.5rem;
+  position: relative;
 }
-.timelineActive {
-  text-align: center;
-  max-width: 36rem;
-  margin: 0 auto;
-  padding-top: 1.5rem;
-  border-top: 1px solid #eee;
-}
-.timelineActiveDate {
-  font-size: 0.8rem;
-  color: #888;
-  margin-bottom: 0.4rem;
-}
-.timelineActiveTitle {
-  font-size: 1.6rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.5rem;
-}
-.timelineActiveDesc {
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1.6;
+.timelineLabelItem {
+  position: relative;
+  cursor: pointer;
+  padding: 4px 0;
 }
 
-/* ─── CTA ────────────────────────────────────────────────────────── */
+/* ─── TOOLTIPS ────────────────────────────────────────────────── */
+
+
 .ctaSection { padding: 2rem 0 5rem; }
 .ctaBox {
-  background: #fafafa;
+  background: var(--color-bg-card);
   border-radius: 1.5rem;
   padding: 2.5rem 2rem;
   text-align: center;
@@ -429,31 +398,6 @@
 .ctaBox a { color: #3b82f6; text-decoration: none; font-weight: 500; }
 .ctaBox a:hover { text-decoration: underline; }
 
-/* ─── FLOATING BUTTONS ────────────────────────────────────────────── */
-.sideFixed {
-  position: fixed;
-  bottom: 2rem;
-  left: 1.5rem;
-  z-index: 40;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.sideBtnWA {
-  background: #25d366;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 9999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(37,211,102,0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.sideBtnWA:hover {
-  transform: scale(1.04);
-  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
-}
 .scrollTop {
   position: fixed;
   bottom: 2rem;
@@ -474,7 +418,6 @@
 }
 .scrollTop:hover { background: rgba(0,0,0,0.08); }
 
-/* ─── RESPONSIVE ──────────────────────────────────────────────────── */
 @media (max-width: 639px) {
   .hero { padding: 6rem 0 2rem; }
   .heroTitle { font-size: 2.2rem; }
@@ -482,4 +425,49 @@
   .coreCard { padding: 1.5rem; }
   .officesGrid { grid-template-columns: repeat(2, 1fr); }
   .timelineLabels { font-size: 0.6rem; flex-wrap: wrap; gap: 0.25rem; }
+}
+
+.timelineTooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  min-width: 200px;
+  max-width: 260px;
+  text-align: left;
+  text-transform: none;
+  white-space: normal;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.timelineTooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #111;
+}
+.timelineTooltip strong {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 6px;
+  color: #60a5fa;
+}
+.timelineTooltip span {
+  display: block;
+  font-weight: 400;
+  text-transform: none;
+  color: #d4d4d4;
 }

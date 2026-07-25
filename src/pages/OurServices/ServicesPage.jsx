@@ -156,7 +156,7 @@ const ServicesPage = () => {
   return (
     <div className={homeStyles.page}>
       <SEO
-        title="Data Analytics & AI Services | 80+ Industry Solutions — Scape Data Solutions"
+        title="Data Analytics & AI Services | Scape Data Solutions"
         description="Expert data analytics and AI services across academic, analytics, finance, healthcare, manufacturing, and retail."
         path="/services"
       />
@@ -244,14 +244,14 @@ const ServicesPage = () => {
                               {card.demand || 'Standard'} Priority
                             </span>
                           </div>
-                          <h5 className={styles.cardTitle}>
+                          <h3 className={styles.cardTitle}>
                             <Link
                               to={card.href}
                               onClick={(e) => e.stopPropagation()}
                             >
                               {card.title.replace(/&amp;/g, '&')}
                             </Link>
-                          </h5>
+                          </h3>
                           <p className={styles.cardDescription}>{card.description}</p>
 
                           <ul className={styles.cardList}>

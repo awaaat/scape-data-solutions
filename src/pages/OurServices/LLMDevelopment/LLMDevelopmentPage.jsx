@@ -1,12 +1,6 @@
-import styles from "./LLMDevelopmentPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { llmDevelopment } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function LLMDevelopmentPage() {
-    return (
-        <div className={styles.container}>
-            <h1>LLMDevelopment</h1>
-            <p>
-                Professional LLMDevelopment services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...llmDevelopment} />;
 }

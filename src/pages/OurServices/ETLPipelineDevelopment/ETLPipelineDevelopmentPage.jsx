@@ -1,12 +1,6 @@
-import styles from "./ETLPipelineDevelopmentPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { etlPipelineDevelopment } from "../../../data/serviceContent/dataEngineeringAI";
 
 export default function ETLPipelineDevelopmentPage() {
-    return (
-        <div className={styles.container}>
-            <h1>ETLPipelineDevelopment</h1>
-            <p>
-                Professional ETLPipelineDevelopment services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...etlPipelineDevelopment} />;
 }

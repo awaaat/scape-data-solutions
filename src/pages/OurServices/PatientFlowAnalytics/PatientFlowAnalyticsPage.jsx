@@ -1,12 +1,6 @@
-import styles from "./PatientFlowAnalyticsPage.module.css";
+import ServiceContentPage from "../../../components/ServiceTemplate/ServiceContentPage";
+import { patientFlowAnalytics } from "../../../data/serviceContent/healthcareAnalytics";
 
 export default function PatientFlowAnalyticsPage() {
-    return (
-        <div className={styles.container}>
-            <h1>PatientFlowAnalytics</h1>
-            <p>
-                Professional PatientFlowAnalytics services by Scape Data Solutions.
-            </p>
-        </div>
-    );
+  return <ServiceContentPage {...patientFlowAnalytics} />;
 }
