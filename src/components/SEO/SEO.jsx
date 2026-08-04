@@ -67,6 +67,7 @@ const OFFICES = [
 // ─── Organization-level Schema.org JSON-LD ────────────────────────
 // This block stays IDENTICAL on every page — it describes the
 // business itself, not the individual page.
+// UPDATED: Aggressive SEO - added foundingDate, numberOfEmployees, and full sameAs
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -79,10 +80,17 @@ const organizationSchema = {
     'Scape Data Solutions helps businesses make smarter decisions, grow faster, and reduce costs by turning data into actionable insights through AI, machine learning, big data engineering, and business intelligence.',
   email: 'info@scapedatasolutions.com',
   areaServed: ['US', 'CA', 'PK', 'KE', 'GB'],
+  foundingDate: '2017', // Aggressive: adds age/trust signal
+  numberOfEmployees: '11-50', // Aggressive: signals scale to Google
   sameAs: [
-    // Add real social profile URLs here once confirmed, e.g.:
-    // 'https://www.linkedin.com/company/scape-data-solutions',
+    // All verified official pages
+    'https://www.linkedin.com/company/scape-data-solutions/',
+    'https://www.facebook.com/profile.php?id=61591435187674',
+    // Add the following only if accounts exist and are actively maintained:
     // 'https://twitter.com/scapedatasol',
+    // 'https://www.youtube.com/@ScapeDataSolutions',
+    // 'https://www.instagram.com/scapedatasolutions/',
+    // 'https://github.com/scapedata',
   ],
 };
 

@@ -1,8 +1,7 @@
 /* ============================================================
    BrandHealthReputationMonitoringPage.module.css
    Theme: x.ai – light, monochrome, minimal.
-   All colors are black/white/gray with opacity.
-   No accent, no gradient, no "beauty".
+   Solid uniform background – no gradients, no section dividers.
    ============================================================ */
 
 :root {
@@ -60,13 +59,6 @@
   align-items: center;
   padding: 80px 0 60px;
   overflow: hidden;
-}
-
-.heroOverlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(0, 0, 0, 0.02) 0%, transparent 70%);
-  z-index: 0;
 }
 
 .heroContent {
@@ -186,13 +178,47 @@
   letter-spacing: 0.4px;
 }
 
-/* ---------- problem ---------- */
-.problemSection {
-  padding: 60px 0 70px;
+.trustRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.trustBadge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink-50);
   background: var(--card);
-  border-bottom: 1px solid var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 0.3rem 1rem;
 }
 
+/* ---------- all sections – uniform background & no dividers ---------- */
+section {
+  background: var(--bg);
+  border: none !important;
+  padding: 60px 0;
+}
+
+.sectionTitle {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.sectionSub {
+  text-align: center;
+  color: var(--ink-50);
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  font-size: 1rem;
+}
+
+/* ---------- problem ---------- */
 .problemContent {
   text-align: center;
 }
@@ -254,13 +280,20 @@
   margin: 0;
 }
 
-/* ---------- overview ---------- */
-.overviewSection {
-  padding: 80px 0;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
+.problemBar {
+  margin-top: 12px;
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.problemBarFill {
+  height: 100%;
+  border-radius: 4px;
 }
 
+/* ---------- overview ---------- */
 .overviewGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -288,147 +321,102 @@
   margin-bottom: 0;
 }
 
+.overviewImage {
+  margin-top: 1.5rem;
+}
+.overviewImage img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+.imageCaption {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-40);
+  margin-top: 0.3rem;
+  text-align: center;
+}
+
 .overviewVisual {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.visualPlaceholder {
-  width: 100%;
-  max-width: 400px;
-  aspect-ratio: 16 / 10;
+.dashboardMockup {
   background: var(--card);
   border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  max-width: 450px;
+  margin: 0 auto;
+}
+.dashHeader {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--ink-40);
-  font-weight: 500;
-  font-size: 15px;
-  border-radius: var(--radius-lg);
-}
-.visualPlaceholder svg {
-  color: var(--ink-40);
-}
-
-/* ---------- section titles ---------- */
-.sectionTitle {
-  font-size: 34px;
-  font-weight: 700;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
   color: var(--ink);
-  text-align: center;
-  margin: 0 0 8px;
 }
-
-/* ---------- how it works ---------- */
-.howSection {
-  padding: 60px 0 70px;
-  background: var(--card);
+.dashLive {
+  font-size: 0.7rem;
+  color: var(--ink-40);
+  background: var(--border);
+  padding: 0.2rem 0.8rem;
+  border-radius: var(--radius-full);
 }
-
-.howGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 30px;
-}
-
-.howCard {
-  background: var(--bg);
-  padding: 28px 24px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  transition: all 0.3s ease;
-}
-.howCard:hover {
-  border-color: var(--border-hover);
-  background: var(--card-hover);
-}
-
-.howIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: rgba(0, 0, 0, 0.04);
-  border-radius: var(--radius-lg);
-  color: var(--ink-70);
-  margin-bottom: 14px;
-}
-
-.howCard h3 {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0 0 8px;
-}
-
-.howCard p {
-  font-size: 14px;
-  color: var(--ink-50);
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* ---------- deliverables ---------- */
-.deliverablesSection {
-  padding: 60px 0;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-}
-
-.deliverablesGrid {
+.dashGauges {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px 24px;
-  margin-top: 30px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
 }
-
-.deliverableItem {
+.dashSov {
+  margin-bottom: 1rem;
+}
+.sovLabel {
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-}
-.deliverableItem:last-child {
-  border-bottom: none;
-}
-
-.deliverableIcon {
-  color: var(--ink-70);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.deliverableItem h4 {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0 0 2px;
-}
-
-.deliverableItem p {
-  font-size: 13px;
+  justify-content: space-between;
+  font-size: 0.85rem;
   color: var(--ink-50);
-  line-height: 1.4;
-  margin: 0;
+}
+.sovBar {
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.3rem 0;
+}
+.sovBar > div {
+  height: 100%;
+  background: var(--ink);
+  border-radius: 4px;
+}
+.sovCompetitors {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--ink-40);
+}
+.dashAlerts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.dashAlerts span {
+  font-size: 0.7rem;
+  background: var(--border);
+  padding: 0.2rem 0.8rem;
+  border-radius: var(--radius-full);
+  color: var(--ink-50);
 }
 
 /* ---------- features ---------- */
-.featuresSection {
-  padding: 60px 0;
-  background: var(--card);
-  border-bottom: 1px solid var(--border);
-}
-
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -475,11 +463,6 @@
 }
 
 /* ---------- benefits ---------- */
-.benefitsSection {
-  padding: 60px 0;
-  background: var(--bg);
-}
-
 .benefitsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -525,49 +508,499 @@
   margin: 0;
 }
 
-/* ---------- CTA ---------- */
-.ctaSection {
-  padding: 80px 0;
-  background: var(--card);
-  border-top: 1px solid var(--border);
+/* ---------- detailed benefits ---------- */
+.benefitsDetailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.benefitDetailCard {
+  background: var(--bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.benefitDetailCard h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+.benefitDetailCard p {
+  font-size: 0.95rem;
+  color: var(--ink-50);
+  line-height: 1.6;
+  margin: 0;
 }
 
-.ctaContent {
-  max-width: 640px;
+/* ---------- how works (Brand Affinity model) ---------- */
+.howWorksGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+  align-items: start;
+}
+.howWorksText h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 1.2rem 0 0.5rem;
+}
+.howWorksText h3:first-of-type {
+  margin-top: 0;
+}
+.howWorksText p {
+  color: var(--ink-50);
+  line-height: 1.7;
+}
+.howWorksText ul {
+  color: var(--ink-50);
+  line-height: 1.7;
+  padding-left: 1.2rem;
+}
+.howWorksText ul li {
+  margin-bottom: 0.4rem;
+}
+.howWorksCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+.howWorksStep {
+  display: flex;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.howWorksStep:last-child {
+  border-bottom: none;
+}
+.howWorksNumber {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ink-40);
+  width: 2.2rem;
+  flex-shrink: 0;
+}
+.howWorksStep h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.2rem;
+}
+.howWorksStep p {
+  font-size: 0.9rem;
+  color: var(--ink-50);
+  margin: 0;
+}
+
+/* ---------- framework ---------- */
+.frameworkGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.frameworkItem {
+  background: var(--bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+}
+.frameworkNumber {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--ink-40);
+  margin-bottom: 0.3rem;
+}
+.frameworkItem h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.4rem;
+}
+.frameworkItem p {
+  font-size: 0.95rem;
+  color: var(--ink-50);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---------- emotion ---------- */
+.emotionContent {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.emotionContent p {
+  color: var(--ink-50);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+.emotionCTA {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.emotionLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.emotionLink:hover {
+  color: var(--ink-70);
+}
+
+/* ---------- final CTA ---------- */
+.finalCtaContent {
+  max-width: 600px;
   margin: 0 auto;
   text-align: center;
 }
-
-.ctaContent h2 {
-  font-size: 36px;
+.finalCtaContent h2 {
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--ink);
-  margin: 0 0 14px;
+  margin: 0 0 0.5rem;
 }
-
-.ctaContent p {
-  font-size: 17px;
+.finalCtaContent p {
+  font-size: 1rem;
   color: var(--ink-50);
   line-height: 1.7;
-  margin: 0 0 28px;
+  margin: 0 0 1.5rem;
 }
-
-.ctaBtn {
+.finalCtaBtn {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 12px 22px;
+  gap: 0.5rem;
+  padding: 0.8rem 2.2rem;
   border-radius: var(--radius-full);
   font-weight: 500;
-  font-size: 0.92rem;
   background: var(--btn-bg);
   color: var(--btn-text);
   border: none;
   text-decoration: none;
-  transition: background 0.2s ease;
+  transition: background 0.2s;
 }
-.ctaBtn:hover {
+.finalCtaBtn:hover {
   background: var(--btn-hover);
+}
+
+/* ---------- segmentation (brand affinity) ---------- */
+.segmentationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.segItem {
+  text-align: center;
+  padding: 1rem 0.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.segIcon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.segItem h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.2rem;
+}
+.segItem p {
+  font-size: 0.85rem;
+  color: var(--ink-50);
+  line-height: 1.4;
+  margin: 0;
+}
+.segNote {
+  text-align: center;
+  max-width: 600px;
+  margin: 1rem auto 0;
+  color: var(--ink-50);
+  font-size: 0.95rem;
+}
+
+/* ---------- metrics table ---------- */
+.metricsTableWrapper {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+.metricsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.metricsTable th,
+.metricsTable td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.metricsTable th {
+  background: var(--bg);
+  font-weight: 600;
+  border-bottom: 2px solid var(--ink);
+}
+.metricsTable td:first-child {
+  font-weight: 500;
+}
+
+/* ---------- sources ---------- */
+.sourceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  margin-top: 1.5rem;
+}
+.sourceItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.sourceIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-70);
+}
+.sourceName {
+  font-size: 0.7rem;
+  color: var(--ink-40);
+  text-align: center;
+}
+
+/* ---------- comparison table ---------- */
+.comparisonTableWrapper {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.comparisonTable th,
+.comparisonTable td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.comparisonTable th {
+  background: var(--bg);
+  font-weight: 600;
+  border-bottom: 2px solid var(--ink);
+}
+.comparisonTable td:last-child {
+  font-weight: 500;
+}
+
+/* ---------- engagement ---------- */
+.engagementGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.engagementCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+}
+.engagementCard h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.3rem;
+}
+.engagementCard p {
+  font-size: 0.9rem;
+  color: var(--ink-50);
+  margin: 0;
+}
+
+/* ---------- case study ---------- */
+.caseStudyGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.caseStudyText p,
+.caseStudyText ul {
+  color: var(--ink-50);
+  line-height: 1.7;
+}
+.caseStudyText ul {
+  padding-left: 1.2rem;
+}
+.caseStudyText ul li {
+  margin-bottom: 0.4rem;
+}
+.caseStudyLink {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.caseStudyStats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.caseStudyStats > div {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem;
+  text-align: center;
+}
+.caseStudyStats > div span:first-child {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.caseStudyStats > div span:last-child {
+  font-size: 0.8rem;
+  color: var(--ink-40);
+}
+
+/* ---------- testimonials ---------- */
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.testimonialCard {
+  padding: 0.5rem 0;
+}
+
+/* Real semantic quoting via CSS generated content instead of hardcoded
+   curly-quote characters baked into the JSX. `quotes` defines the glyph
+   pairs; ::before/::after render them around the blockquote text. */
+.testimonialQuote {
+  quotes: "\201C" "\201D";
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-50);
+  font-style: italic;
+  margin: 0 0 0.8rem;
+}
+.testimonialQuote::before {
+  content: open-quote;
+}
+.testimonialQuote::after {
+  content: close-quote;
+}
+
+.testimonialAuthor {
+  display: flex;
+  flex-direction: column;
+}
+.testimonialAuthor strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.testimonialAuthor span {
+  font-size: 0.8rem;
+  color: var(--ink-40);
+}
+
+/* ---------- related services ---------- */
+.relatedGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  justify-content: center;
+}
+.relatedLink {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  color: var(--ink-50);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.relatedLink:hover {
+  border-color: var(--border-hover);
+  color: var(--ink);
+  background: var(--card-hover);
+}
+
+/* ---------- FAQ ---------- */
+.faqList {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.faqItem {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.faqItem:last-child {
+  border-bottom: none;
+}
+.faqQuestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 0;
+}
+.faqIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  color: var(--ink-50);
+  margin-left: 1rem;
+}
+.faqAnswer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faqAnswer p {
+  font-size: 0.95rem;
+  color: var(--ink-50);
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 0.6rem;
+}
+.faqAnswerOpen {
+  max-height: 500px;
+  padding-bottom: 1.2rem;
 }
 
 /* ---------- responsive ---------- */
@@ -576,15 +1009,19 @@
     grid-template-columns: 1fr;
     gap: 30px;
   }
-  .visualPlaceholder {
-    max-width: 100%;
-  }
   .problemGrid {
     grid-template-columns: 1fr 1fr;
   }
-  .howGrid,
   .featuresGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .howWorksGrid,
+  .caseStudyGrid {
+    grid-template-columns: 1fr;
+  }
+  .benefitsDetailGrid,
+  .frameworkGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -606,20 +1043,12 @@
   .problemGrid {
     grid-template-columns: 1fr;
   }
-  .deliverablesGrid {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .howGrid,
   .featuresGrid {
     grid-template-columns: 1fr;
   }
   .benefitsGrid {
     grid-template-columns: 1fr;
     gap: 8px;
-  }
-  .ctaContent h2 {
-    font-size: 28px;
   }
   .heroCta {
     flex-direction: column;
@@ -632,6 +1061,21 @@
   }
   .sectionTitle {
     font-size: 28px;
+  }
+  .benefitsDetailGrid,
+  .frameworkGrid {
+    grid-template-columns: 1fr;
+  }
+  .segmentationGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .caseStudyStats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .caseStudyStats > div {
+    flex: 1 1 120px;
   }
 }
 
@@ -650,11 +1094,13 @@
     align-items: center;
     gap: 12px;
   }
-  .howCard,
   .featureCard {
     padding: 20px 16px;
   }
-  .visualPlaceholder {
-    aspect-ratio: 16 / 11;
+  .segmentationGrid {
+    grid-template-columns: 1fr;
+  }
+  .sourceGrid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

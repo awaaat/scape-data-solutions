@@ -48,6 +48,7 @@
   z-index: 0;
   opacity: 0.5;
   pointer-events: none;
+  background-image: none !important; /* kill any line from image */
 }
 .heroBgImg {
   width: 100%;
@@ -161,21 +162,25 @@
   line-height: 0;
 }
 
+/* ---- KILL LINES FROM HERO BACKGROUND ---- */
 .heroBgBottom {
   display: flex;
   margin-top: 3rem;
+  background-image: none !important;
+  border: none !important;
 }
-.heroBgCol1 { flex: 1; }
+.heroBgCol1 { flex: 1; border: none !important; }
 .heroBgCol2 {
   flex: 1;
   opacity: 0.4;
+  border: none !important;
 }
 .heroBgImg2 { width: 100%; display: block; }
 
 /* ===== PLATFORMS ===== */
 .platformsSection {
   padding: 4rem 0 3rem;
-  border-top: 1px solid var(--border);
+  border-top: none !important; /* kill any leftover */
 }
 .platformsTitle {
   font-family: var(--font-display);
@@ -235,7 +240,7 @@
 .howSection {
   position: relative;
   padding: 4rem 0;
-  border-top: 1px solid var(--border);
+  border-top: none !important; /* kill any leftover */
   overflow: hidden;
 }
 .howBg {
@@ -244,6 +249,7 @@
   opacity: 0.15;
   z-index: 0;
   pointer-events: none;
+  background-image: none !important; /* kill line from image */
 }
 .howBg img { width: 100%; height: 100%; object-fit: cover; }
 .howTitle {
@@ -300,7 +306,7 @@
 /* ===== FEATURES CAROUSEL ===== */
 .featuresSection {
   padding: 3.5rem 0 2rem;
-  border-top: 1px solid var(--border);
+  border-top: none !important; /* kill any leftover */
 }
 .featuresHeader { text-align: center; margin-bottom: 2rem; }
 .featuresTitle {
@@ -344,8 +350,8 @@
 /* ===== METRICS ===== */
 .metricsSection {
   padding: 3.5rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border-top: none !important;
+  border-bottom: none !important;
 }
 .metricsGrid {
   display: grid;
@@ -365,7 +371,7 @@
 .metricLabel { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
 
 /* ===== TESTIMONIALS ===== */
-.testimonialsSection { padding: 4rem 0; }
+.testimonialsSection { padding: 4rem 0; border: none !important; }
 .testimonialsHeader { text-align: center; margin-bottom: 2rem; }
 .testimonialsTitle {
   font-family: var(--font-display);
@@ -380,9 +386,15 @@
 .faqSection {
   position: relative;
   padding: 4rem 0 0;
-  border-top: 1px solid var(--border);
+  border-top: none !important;
 }
-.faqBg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.faqBg { 
+  position: absolute; 
+  inset: 0; 
+  z-index: 0; 
+  pointer-events: none;
+  background-image: none !important; 
+}
 .faqGrid {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -490,9 +502,15 @@
   position: relative;
   margin-top: 3.5rem;
   padding: 3.5rem 0;
-  border-top: 1px solid var(--border);
+  border-top: none !important;
 }
-.faqContactBg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.faqContactBg { 
+  position: absolute; 
+  inset: 0; 
+  z-index: 0; 
+  pointer-events: none;
+  background-image: none !important;
+}
 .contactSection {
   border: 1px solid var(--border);
   border-radius: 24px;
@@ -560,4 +578,350 @@
   justify-content: center;
   cursor: pointer;
   z-index: 50;
+}
+
+/* ================================================================
+   ═══ NEW STYLES FOR ADDED SECTIONS ═══
+   Everything below is NEW – nothing above has been removed.
+   ================================================================ */
+
+/* Shared section title styles */
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  text-align: center;
+  color: var(--text-primary);
+  margin: 0 0 0.6rem;
+}
+.sectionSub {
+  text-align: center;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  font-size: 1rem;
+}
+
+.textSection {
+  padding: 4rem 0;
+  border: none !important;
+}
+.textBlock {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.textBlock p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+.textBlock ul, .textBlock ol {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding-left: 1.5rem;
+}
+.textBlock li {
+  margin-bottom: 0.5rem;
+}
+.checkList {
+  list-style: none;
+  padding: 0;
+}
+.checkList li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+}
+.checkList li svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  color: var(--text-primary);
+}
+.numberedList {
+  padding-left: 1.5rem;
+}
+.numberedList li {
+  margin-bottom: 0.7rem;
+}
+
+/* Two-column layout */
+.twoColumn {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .twoColumn { grid-template-columns: 1fr; }
+}
+.statBox {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+.statNumber {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Table */
+.tableSection {
+  padding: 4rem 0;
+  border: none !important;
+}
+.tableWrapper {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+.comparisonTable th,
+.comparisonTable td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.comparisonTable th {
+  font-weight: 600;
+  background: var(--card);
+  border-bottom: 2px solid var(--text-primary);
+}
+.comparisonTable tr:last-child td {
+  border-bottom: none;
+}
+.comparisonTable td:first-child {
+  font-weight: 500;
+}
+.comparisonTable tr:hover td {
+  background: rgba(128,128,128,0.05);
+}
+
+/* Icon grid */
+.iconGridSection {
+  padding: 4rem 0;
+  border: none !important;
+}
+.iconGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  margin-bottom: 2rem;
+}
+.iconGridItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.iconGridIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+.iconGridLabel {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.iconGridNote {
+  text-align: center;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+}
+
+/* Bar chart */
+.barSection {
+  padding: 4rem 0;
+  border: none !important;
+}
+.barWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.barItem {
+  margin-bottom: 1.5rem;
+}
+.barLabel {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: var(--text-primary);
+}
+.barTrack {
+  background: var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 28px;
+}
+.barFill {
+  background: var(--text-primary);
+  color: var(--background);
+  font-size: 0.8rem;
+  font-weight: 500;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.8rem;
+  border-radius: 8px;
+  transition: width 0.6s ease;
+}
+
+/* Checklist grid */
+.checklistGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.checklistItem {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.checklistIcon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+.checklistItem h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin: 0 0 0.2rem;
+  color: var(--text-primary);
+}
+.checklistItem p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Case study */
+.caseStudy {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+@media (max-width: 768px) {
+  .caseStudy { grid-template-columns: 1fr; }
+}
+.caseStudyText p, .caseStudyText ul {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.caseStudyText ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.caseStudyText ul li {
+  margin-bottom: 0.5rem;
+}
+.caseStudyStats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.caseStudyStats > div {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+}
+.caseStudyStats > div span:first-child {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.caseStudyStats > div span:last-child {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Static testimonials grid (replaces iframe) */
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.testimonialCard {
+  padding: 0.5rem 0;
+}
+.testimonialQuote {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0 0 0.8rem;
+}
+.testimonialAuthor {
+  display: flex;
+  flex-direction: column;
+}
+.testimonialAuthor strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.testimonialAuthor span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Kill horizontal divider lines – overrides any leftover borders */
+.heroBgBottom,
+.heroBgCol1,
+.heroBgCol2,
+.howBg,
+.faqBg,
+.faqContactBg {
+  display: none !important;
+}
+.platformsSection,
+.howSection,
+.featuresSection,
+.metricsSection,
+.faqSection,
+.faqContactWrapper,
+.textSection,
+.tableSection,
+.iconGridSection,
+.barSection {
+  border-top: none !important;
+  border-bottom: none !important;
 }

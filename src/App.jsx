@@ -4,6 +4,9 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import styles from './App.module.css';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import AuthFloatingCTA from './components/AuthFloatingCTA/AuthFloatingCTA';
+import FloatingPrompt from './components/FloatingPrompt/FloatingPrompt';
 import { apiService } from './services/api';
 
 // ─── Core Pages ──────────────────────────────────────────────
@@ -11,6 +14,12 @@ import HomePage from './pages/Home/HomePage';
 const AboutPage = lazy(() => import('./pages/About/AboutPage'));
 const ContactPage = lazy(() => import('./pages/Contact/ContactPage'));
 const ServicesPage = lazy(() => import('./pages/OurServices/ServicesPage'));
+const SignupPage = lazy(() => import('./pages/Auth/SignupPage'));
+const LoginPage = lazy(() => import('./pages/Auth/LoginPage'));
+const VerifyEmailPage = lazy(() => import('./pages/Auth/VerifyEmailPage'));
+const ForgotPasswordPage = lazy(() => import('./pages/Auth/ForgotPasswordPage'));
+const ResetPasswordPage = lazy(() => import('./pages/Auth/ResetPasswordPage'));
+const DashboardPage = lazy(() => import('./pages/Dashboard/DashboardPage'));
 
 // ─── Company & Static ───────────────────────────────────────
 const CompanyPage = lazy(() => import('./pages/Company/CompanyPage'));
@@ -257,6 +266,13 @@ const AppContent = () => {
                             <Route path="/about" element={<AboutPage />} />
                             <Route path="/contact" element={<ContactPage />} />
 
+                            <Route path="/signup" element={<SignupPage />} />
+                            <Route path="/login" element={<LoginPage />} />
+                            <Route path="/verify-email" element={<VerifyEmailPage />} />
+                            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                            <Route path="/reset-password" element={<ResetPasswordPage />} />
+                            <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+
                             <Route path="/company" element={<CompanyPage />} />
                             <Route path="/why-us" element={<WhyUsPage />} />
                             <Route path="/team" element={<TeamPage />} />
@@ -482,6 +498,8 @@ const AppContent = () => {
                     </Suspense>
                 </ErrorBoundary>
             </main>
+            <AuthFloatingCTA />
+            <FloatingPrompt />
         </div>
     );
 };

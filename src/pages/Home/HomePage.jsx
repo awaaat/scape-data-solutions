@@ -201,6 +201,43 @@ const INDUSTRIES = [
   { icon: <Globe size={18} />, name: "Logistics" },
 ];
 
+
+const SITE_URL = "https://www.scapedatasolutions.com";
+
+const homepageServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: SERVICES.map((svc, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: svc.title,
+      description: svc.desc,
+      provider: { "@id": `${SITE_URL}/#organization` },
+      areaServed: ["US", "CA", "PK", "KE", "GB"],
+    },
+  })),
+};
+
+const HOME_FAQS = [
+  { q: "How much does a data analytics engagement cost?", a: "Pricing depends on scope, but most engagements start with a fixed-price discovery phase before any ongoing retainer or project cost is agreed." },
+  { q: "How long does it take to build a BI dashboard?", a: "A first working dashboard typically ships in 2 to 4 weeks, with iteration continuing based on stakeholder feedback." },
+  { q: "Do you work with small businesses or only enterprises?", a: "We work with both. Engagement scope and delivery timeline scale to the size of the data problem, not the size of the company." },
+  { q: "What tools and platforms do you use?", a: "We work across Tableau, Power BI, Looker, Snowflake, Redshift, PostgreSQL, Apache Airflow, dbt, and cloud platforms including AWS, Azure, and GCP." },
+  { q: "Can you migrate our existing data infrastructure to the cloud?", a: "Yes, we handle cloud data migrations with a focus on zero downtime and improved scalability, typically completed alongside your existing operations." },
+];
+
+const homepageFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
 const stagger = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.06 } } };
 const VIEWPORT = { once: false, amount: 0.15 };
@@ -308,9 +345,11 @@ sales %>%
   return (
     <div className={styles.page}>
       <SEO
-        title="Scape Data Solutions | Data Analytics, SQL, BI & AI Services"
-        description="We provide expert data analytics, SQL development, BI dashboards, ETL pipelines, and predictive modeling for businesses of all sizes."
+        title="Data Analytics & BI Consulting | Scape Data Solutions"
+        description="Expert data analytics, SQL development, BI dashboards, ETL pipelines, and predictive modeling. We turn your data into revenue, faster decisions, and lower costs."
         path="/"
+        image="/Images/site-images/homepage-dashboard-preview.webp"
+        schema={{ "@context": "https://schema.org", "@graph": [homepageServiceSchema, homepageFaqSchema] }}
       />
       <Navbar activeNav="home" />
 
@@ -333,6 +372,9 @@ sales %>%
               <p className={styles.heroSub}>
                 Stop guessing. Start knowing. We help you make smarter business decisions, reduce costs, and unlock new revenue streams with data you already have.
               </p>
+              <span className={styles.visuallyHidden}>
+                Turn Data Into Revenue Growth, Predictive Analytics, Real-Time Dashboards, Lower Costs, Faster Decisions.
+              </span>
               <div className={styles.heroBtnRow}>
                 <Link to="/contact" className={styles.btnPrimary}>
                   Start Growing Your Business <ArrowRight size={16} />
@@ -633,6 +675,23 @@ sales %>%
                 <Link to="/contact" className={styles.btnSecondary} style={{ justifyContent: "center" }}>Contact Sales</Link>
               </div>
             </div>
+          </div>
+        </motion.section>
+
+        {/* ═══ FAQ ═══ */}
+        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Frequently Asked Questions</h2>
+            </div>
+            <dl className={styles.whyDefList}>
+              {HOME_FAQS.map((f, i) => (
+                <div key={i} className={styles.whyDefRow}>
+                  <dt className={styles.whyDefTerm}>{f.q}</dt>
+                  <dd className={styles.whyDefDesc}>{f.a}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </motion.section>
 

@@ -1,0 +1,130 @@
+/* src/components/AuthFloatingCTA/AuthFloatingCTA.module.css */
+
+.wrap {
+  position: fixed;
+  z-index: 999;
+  bottom: calc(24px + var(--chat-widget-offset, 76px));
+  right: 24px;
+  display: flex;
+  align-items: center;
+  animation: cta-rise 0.5s ease-out;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 8px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.pillGhost {
+  color: #e2e8f0;
+  background: transparent;
+}
+
+.pillGhost:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pillPrimary {
+  color: #0f172a;
+  background: #fdb840;
+  position: relative;
+  box-shadow: 0 0 0 0 rgba(253, 184, 64, 0.55);
+  animation: cta-pulse 2.4s ease-in-out infinite;
+}
+
+.pillPrimary:hover {
+  transform: translateY(-1px) scale(1.03);
+  background: #ffc65c;
+}
+
+/* ── Logged-in account pill (standalone, no ghost group wrapper) ── */
+
+.pillAccount {
+  color: #fff;
+  background: var(--color-accent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pillAccount:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #fff;
+  background: #dc2626;
+  border-radius: var(--radius-full);
+  border: 1.5px solid #0f172a;
+}
+
+@keyframes cta-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(253, 184, 64, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(253, 184, 64, 0); }
+}
+
+/* ── Mobile: full-width sticky bar instead of a corner bubble, for
+   maximum visibility on small screens where a corner pill is easy to
+   miss or thumb-block content. ── */
+@media (max-width: 640px) {
+  .wrap {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .group {
+    width: 100%;
+    justify-content: stretch;
+    border-radius: var(--radius-lg);
+  }
+
+  .pill {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .pillAccount {
+    width: 100%;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wrap, .pillPrimary { animation: none; }
+}
