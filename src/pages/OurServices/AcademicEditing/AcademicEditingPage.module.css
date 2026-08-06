@@ -54,7 +54,7 @@
 
 .section {
   padding: 3rem 0;
-  border-top: 1px solid rgba(var(--border), 0.08);
+  border-top: 1px solid transparent;
 }
 
 @media (min-width: 640px) {
@@ -334,7 +334,7 @@ a.btnPrimary:active {
 .codeEditorDemo {
   width: 100%;
   background: rgb(var(--card));
-  border: 1px solid rgba(var(--border), 0.08);
+  border: 1px solid transparent;
   border-radius: 1.5rem;
   overflow: hidden;
 }
@@ -344,7 +344,7 @@ a.btnPrimary:active {
   align-items: center;
   gap: 0.75rem;
   padding: 0.875rem 1.25rem;
-  border-bottom: 1px solid rgba(var(--border), 0.08);
+  border-bottom: 1px solid transparent;
   background: rgba(var(--primary), 0.02);
   font-size: 0.75rem;
   color: rgba(var(--primary), 0.4);
@@ -432,7 +432,7 @@ a.btnPrimary:active {
   align-items: flex-start;
   gap: 0.875rem;
   padding: 1.25rem;
-  border: 1px solid rgba(var(--border), 0.08);
+  border: 1px solid transparent;
   border-radius: 1.25rem;
   background: rgb(var(--card));
 }
@@ -482,7 +482,7 @@ a.btnPrimary:active {
   gap: 0.75rem;
   padding: 2rem;
   background: rgb(var(--card));
-  border: 1px solid rgba(var(--border), 0.08);
+  border: 1px solid transparent;
   border-radius: 1.5rem;
 }
 
@@ -611,7 +611,7 @@ a.btnPrimary:active {
   gap: 1rem;
   padding: 1.5rem;
   border-radius: 1.25rem;
-  border: 1px solid rgba(var(--border), 0.08);
+  border: 1px solid transparent;
   background: rgb(var(--card));
 }
 
@@ -649,7 +649,7 @@ a.btnPrimary:active {
 }
 
 .faqItem {
-  border: 1px solid rgba(var(--border), 0.08);
+  border: 1px solid transparent;
   border-radius: 1.25rem;
   background: rgb(var(--card));
   overflow: hidden;
@@ -704,7 +704,7 @@ a.btnPrimary:active {
   margin: 0 auto;
   padding: 2.5rem;
   border-radius: 1.75rem;
-  border: 1px solid rgba(var(--border), 0.08);
+  border: 1px solid transparent;
   background: rgb(var(--card));
   text-align: center;
 }
@@ -851,4 +851,38 @@ a.btnPrimary:active {
   background: rgba(248, 113, 113, 0.1);
   border-color: rgba(248, 113, 113, 0.25);
   color: #fca5a5;
+}
+
+/* ==========================================================================
+   Add-Ons section – centered with proper list styling
+   ========================================================================== */
+
+.addOnsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.addOnsContainer .sectionHeader {
+  max-width: 100%;
+}
+
+.addOnsContainer ol {
+  max-width: 48rem;
+  text-align: left;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  line-height: 1.9;
+  color: rgba(var(--primary), 0.7);
+  list-style-position: outside;
+}
+
+.addOnsContainer ol li {
+  margin-bottom: 0.5rem;
+}
+
+.addOnsContainer .sectionFooter {
+  text-align: center;
+  max-width: 100%;
 }

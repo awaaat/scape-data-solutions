@@ -5,6 +5,7 @@
   --card: 250, 250, 249;
   --border: 10, 10, 10;
   --accent: 20, 20, 20;
+  --accent-gold: 217, 119, 6;   /* new: gold for formatting page */
   --radius: 1.5rem;
   --radius-sm: 0.875rem;
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
@@ -19,6 +20,7 @@
   --card: 250, 250, 249;
   --border: 10, 10, 10;
   --accent: 20, 20, 20;
+  --accent-gold: 217, 119, 6;
 
   background: rgb(var(--background));
   color: rgb(var(--primary));
@@ -99,6 +101,19 @@
   line-height: 1.6;
 }
 
+.sectionFooter {
+  margin-top: 2.5rem;
+  max-width: 42rem;
+  color: rgba(var(--primary), 0.55);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.sectionFooter strong {
+  color: rgb(var(--primary));
+  font-weight: 550;
+}
+
 /* ===== BUTTONS ===== */
 .btnPrimary {
   display: inline-flex;
@@ -158,11 +173,26 @@
   to { transform: rotate(360deg); }
 }
 
+/* ===== GOLD ACCENT OVERRIDES (for formatting page) ===== */
+.btnPrimaryGold {
+  background: rgb(var(--accent-gold)) !important;
+}
+.btnPrimaryGold:hover {
+  filter: brightness(0.9);
+}
+
+.heroBadgeGold {
+  background: rgba(var(--accent-gold), 0.08) !important;
+  border-color: rgba(var(--accent-gold), 0.2) !important;
+  color: rgb(var(--accent-gold)) !important;
+}
+
 /* ===== HERO ===== */
 .hero {
   padding: 7rem 0 4rem;
   position: relative;
   overflow: hidden;
+  background: rgba(var(--primary), 0.01);
 }
 
 @media (min-width: 640px) {
@@ -180,7 +210,7 @@
 @media (min-width: 1024px) {
   .heroInner {
     grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+    gap: 3rem;
   }
 }
 
@@ -207,7 +237,7 @@
 .heroLeft h1 {
   font-size: 2.6rem;
   line-height: 1.08;
-  max-width: 34rem;
+  max-width: 38rem;
 }
 
 @media (min-width: 640px) {
@@ -229,7 +259,7 @@
 .heroTypewriter h2 {
   font-size: 1.4rem;
   font-weight: 500;
-  color: rgba(var(--primary), 0.55);
+  color: rgba(var(--primary), 0.6);
   letter-spacing: -0.01em;
 }
 
@@ -300,7 +330,7 @@
   width: 100%;
   max-width: 420px;
   background: rgb(var(--card));
-  border: 1px solid rgba(var(--border), 0.08);
+  border: 1px solid rgba(var(--accent-gold), 0.15);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -311,19 +341,19 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.25rem;
-  border-bottom: 1px solid rgba(var(--border), 0.06);
+  border-bottom: 1px solid rgba(var(--accent-gold), 0.1);
 }
 
 .styleSelectorLabel {
   font-size: 0.8125rem;
   font-weight: 550;
-  color: rgba(var(--primary), 0.6);
+  color: rgb(var(--accent-gold));
 }
 
 .styleSelectorStatus {
   font-size: 0.75rem;
   font-weight: 550;
-  color: #22c55e;
+  color: rgb(var(--accent-gold));
 }
 
 .styleSelectorBody {
@@ -339,7 +369,7 @@
   gap: 0.75rem;
   padding: 0.5rem 0.75rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(var(--border), 0.06);
+  border: 1px solid rgba(var(--accent-gold), 0.05);
   background: rgba(var(--background), 0.5);
   transition: all var(--transition);
   cursor: default;
@@ -368,7 +398,7 @@
 }
 
 .styleSelectorCheck {
-  color: #22c55e;
+  color: rgb(var(--accent-gold));
   flex-shrink: 0;
 }
 
@@ -376,7 +406,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1.25rem 0.75rem;
-  border-top: 1px solid rgba(var(--border), 0.06);
+  border-top: 1px solid rgba(var(--accent-gold), 0.1);
   font-size: 0.75rem;
   color: rgba(var(--primary), 0.35);
 }
@@ -389,7 +419,7 @@
 /* ===== STYLE GALLERY ===== */
 .styleGallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.25rem;
 }
 
@@ -401,6 +431,11 @@
   transition: all var(--transition);
   position: relative;
   padding-top: 2.5rem;
+}
+
+.styleGalleryItem:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
 
 .styleGalleryDot {
@@ -458,9 +493,13 @@
   background: rgb(var(--card));
 }
 
+.comparisonBefore {
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
 .comparisonAfter {
-  border-color: rgba(34, 197, 94, 0.2);
-  background: rgba(34, 197, 94, 0.04);
+  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(34, 197, 94, 0.05);
 }
 
 .comparisonLabel {
@@ -527,6 +566,11 @@
   transition: all var(--transition);
 }
 
+.featureCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
 .featureIcon {
   display: inline-flex;
   align-items: center;
@@ -568,6 +612,11 @@
   border-radius: var(--radius-sm);
   transition: all var(--transition);
   text-align: center;
+}
+
+.templateCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
 
 .templateIcon {
@@ -665,6 +714,11 @@
   border: 1px solid rgba(var(--border), 0.06);
   background: rgb(var(--card));
   transition: all var(--transition);
+}
+
+.whyCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
 
 .whyIcon {
@@ -922,6 +976,7 @@
   --card: 20, 20, 20;
   --border: 255, 255, 255;
   --accent: 245, 245, 245;
+  --accent-gold: 251, 191, 36; /* brighter gold in dark mode */
 }
 
 :global(.dark) .btnPrimary {
@@ -958,6 +1013,12 @@
 :global(.dark) .styleGalleryBadge {
   background: rgba(34, 197, 94, 0.15);
   color: #4ade80;
+}
+
+:global(.dark) .heroBadgeGold {
+  background: rgba(251, 191, 36, 0.12) !important;
+  border-color: rgba(251, 191, 36, 0.25) !important;
+  color: #fbbf24 !important;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -999,4 +1060,74 @@
   .comparison {
     grid-template-columns: 1fr;
   }
+}
+
+/* ==========================================================================
+   Add-Ons section – centered with proper list styling
+   ========================================================================== */
+
+.addOnsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.addOnsContainer .sectionHeader {
+  max-width: 100%;
+}
+
+.addOnsContainer ol {
+  max-width: 48rem;
+  text-align: left;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  line-height: 1.9;
+  color: rgba(var(--primary), 0.7);
+  list-style-position: outside;
+}
+
+.addOnsContainer ol li {
+  margin-bottom: 0.5rem;
+}
+
+.addOnsContainer .sectionFooter {
+  text-align: center;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   Extra: service grid (reuses featuresGrid) – kept for compatibility
+   ========================================================================== */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.serviceItem {
+  padding: 1.75rem;
+  background: rgb(var(--card));
+  border: 1px solid rgba(var(--border), 0.06);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+.serviceIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  background: rgba(var(--primary), 0.04);
+  color: rgb(var(--primary));
+  margin-bottom: 0.75rem;
+}
+.serviceItem h3 {
+  font-size: 1.0625rem;
+  font-weight: 550;
+}
+.serviceItem p {
+  color: rgba(var(--primary), 0.5);
+  font-size: 0.9375rem;
+  line-height: 1.65;
 }

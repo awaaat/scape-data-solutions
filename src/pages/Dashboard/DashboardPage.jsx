@@ -24,6 +24,17 @@ const STATUS_LABELS = {
   cancelled: "Cancelled",
 };
 
+const CATEGORY_OPTIONS = [
+  { value: "data_cleaning", label: "Data cleaning" },
+  { value: "data_entry", label: "Data entry" },
+  { value: "web_scraping", label: "Web scraping" },
+  { value: "data_analysis", label: "Data analysis" },
+  { value: "dashboard_bi", label: "Dashboard / BI" },
+  { value: "database_design", label: "Database design" },
+  { value: "etl_automation", label: "ETL / automation" },
+  { value: "other", label: "Other" },
+];
+
 function StatusBadge({ status }) {
   return <span className={`${styles.badge} ${styles["badge_" + status]}`}>{STATUS_LABELS[status] || status}</span>;
 }
@@ -51,12 +62,16 @@ function NewProjectForm({ onCreated, onCancel }) {
   };
 
   return (
-    <form className={styles.newProjectForm} onSubmit={handleSubmit} noValidate>
+    <form className={styles.newProjectForm} onSubmit={handleSubmit} noValidate autoComplete="off">
       {error && <div className={styles.formError}>{error}</div>}
 
       <div className={styles.field}>
         <label className={styles.label} htmlFor="title">Title</label>
-        <input id="title" name="title" className={styles.input} value={form.title} onChange={handleChange} required />
+        <input
+          id="title" name="title" className={styles.input} value={form.title}
+          onChange={handleChange} required autoComplete="off"
+          placeholder="e.g. Clean and dedupe customer CSV"
+        />
       </div>
 
       <div className={styles.field}>
@@ -64,6 +79,7 @@ function NewProjectForm({ onCreated, onCancel }) {
         <textarea
           id="description" name="description" className={styles.textarea}
           value={form.description} onChange={handleChange} required minLength={20}
+          autoComplete="off"
           placeholder="What do you need done? The more detail, the faster we can scope it."
         />
       </div>
@@ -71,18 +87,32 @@ function NewProjectForm({ onCreated, onCancel }) {
       <div className={styles.fieldRow}>
         <div className={styles.field}>
           <label className={styles.label} htmlFor="category">Category</label>
-          <input id="category" name="category" className={styles.input} value={form.category} onChange={handleChange} placeholder="e.g. Data cleaning" />
+          <select
+            id="category" name="category" className={styles.select}
+            value={form.category} onChange={handleChange} required
+          >
+            <option value="" disabled>Select a category</option>
+            {CATEGORY_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
         </div>
         <div className={styles.field}>
           <label className={styles.label} htmlFor="deadline">Deadline</label>
-          <input id="deadline" name="deadline" type="date" className={styles.input} value={form.deadline} onChange={handleChange} />
+          <input
+            id="deadline" name="deadline" type="date" className={styles.input}
+            value={form.deadline} onChange={handleChange} autoComplete="off"
+          />
         </div>
       </div>
 
       <div className={styles.fieldRow}>
         <div className={styles.field}>
           <label className={styles.label} htmlFor="budget">Budget</label>
-          <input id="budget" name="budget" type="number" min="0" step="1" className={styles.input} value={form.budget} onChange={handleChange} placeholder="Optional" />
+          <input
+            id="budget" name="budget" type="number" min="0" step="1" className={styles.input}
+            value={form.budget} onChange={handleChange} placeholder="Optional" autoComplete="off"
+          />
         </div>
         <div className={styles.field}>
           <label className={styles.label} htmlFor="currency">Currency</label>
@@ -193,9 +223,9 @@ function MessageThread({ project }) {
         <div ref={bottomRef} />
       </div>
 
-      <form className={styles.threadInput} onSubmit={handleSend}>
+      <form className={styles.threadInput} onSubmit={handleSend} autoComplete="off">
         <input
-          type="text" placeholder="Type a message…" value={body}
+          type="text" placeholder="Type a message…" value={body} autoComplete="off"
           onChange={(e) => setBody(e.target.value)} disabled={sending}
         />
         <button type="submit" disabled={sending || !body.trim()} aria-label="Send message">

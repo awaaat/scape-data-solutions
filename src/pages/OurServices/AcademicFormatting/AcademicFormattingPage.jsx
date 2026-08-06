@@ -1,29 +1,29 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { AnimatePresence, motion, useInView, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import {
   ArrowRight, CheckCircle, Clock, Users, Award, Shield, Zap, Star,
-  ChevronDown, Loader2, FileText, BookOpen, PenTool, Sparkles,
-  Send, Play, Pause, FileCheck, FileSpreadsheet, FileImage, FileCode,
-  Download, Upload, RefreshCw, Table, List, AlignLeft,
-  Type, Hash, Eye, EyeOff, Save, Printer, Layout,
-  Columns, Rows, Grid, PanelTop, PanelBottom, Sidebar, FileUp,
-  Folder, CheckSquare, Square, ThumbsUp, MessageSquare, UserCheck,
-  FolderOpen, ExternalLink, Globe, GitBranch, Lightbulb, BarChart3
+  ChevronDown, Loader2, Edit3, FileText, GraduationCap, BookOpen,
+  PenTool, TrendingUp, Sparkles, Phone, Mail, Send, Globe, MapPin,
+  BarChart, Briefcase, Book, Layers, List, Table, HelpCircle, User,
+  BookMarked, Library, Target, RefreshCw, ThumbsUp, MessageSquare,
+  File, FileType, Layout, AlignLeft, Type, BookCopy, Eye, Check,
+  Circle, Copy, Pen, Palette
 } from "lucide-react";
+
 import Navbar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import styles from "./AcademicFormattingPage.module.css";
 import SEO from "../../../components/SEO/SEO";
 import { apiService } from "../../../services/api";
 
-// ========== TYPEWRITER HOOK ==========
+// --- Typewriter hook ---
 const ROTATING_WORDS = [
-  "APA, MLA, Chicago",
-  "Harvard, IEEE, AMA",
-  "Thesis & Dissertation Templates",
-  "Journal Submission Ready",
-  "Citation Perfection"
+  "APA 7th Edition",
+  "MLA 9th Edition",
+  "Chicago 17th",
+  "Harvard Style",
+  "IEEE Format"
 ];
 
 function useTypewriter(words, speed = 100, pause = 2400) {
@@ -52,13 +52,17 @@ function useTypewriter(words, speed = 100, pause = 2400) {
   return { text, holding };
 }
 
-// ========== ANIMATED STAT COUNTER ==========
-function AnimatedStat({ value, suffix = "" }) {
+// --- Animated Stat ---
+function AnimatedStat({ value }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const [display, setDisplay] = useState("0");
-  const target = parseFloat(value.replace(/,/g, ""));
-  const hasDecimal = value.includes(".");
+
+  const match = value.match(/^([\d.,]+)(.*)$/);
+  const numericPart = match ? match[1] : value;
+  const suffix = match ? match[2] : "";
+  const target = parseFloat(numericPart.replace(/,/g, ""));
+  const hasDecimal = numericPart.includes(".");
 
   useEffect(() => {
     if (!inView || isNaN(target)) {
@@ -80,47 +84,32 @@ function AnimatedStat({ value, suffix = "" }) {
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [inView, target, value, suffix, hasDecimal]);
+  }, [inView]);
 
   return <span ref={ref}>{display}</span>;
 }
 
-// ========== ANIMATION VARIANTS ==========
+// --- Animation variants ---
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 }
 };
-
 const scaleIn = {
   hidden: { opacity: 0, scale: 0.85 },
   visible: { opacity: 1, scale: 1 }
 };
-
 const slideLeft = {
-  hidden: { opacity: 0, x: -40 },
+  hidden: { opacity: 0, x: -30 },
   visible: { opacity: 1, x: 0 }
 };
-
-const slideRight = {
-  hidden: { opacity: 0, x: 40 },
-  visible: { opacity: 1, x: 0 }
-};
-
-const zoomIn = {
-  hidden: { opacity: 0, scale: 0.7 },
-  visible: { opacity: 1, scale: 1 }
-};
-
 const staggerContainer = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 }
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 }
   }
 };
-
 const springTransition = { type: "spring", stiffness: 120, damping: 14 };
 
-// ========== MAIN COMPONENT ==========
 export default function AcademicFormattingPage() {
   const [openFaq, setOpenFaq] = useState(null);
   const [submitted, setSubmitted] = useState(false);
@@ -130,12 +119,10 @@ export default function AcademicFormattingPage() {
   const successRef = useRef(null);
 
   const [formData, setFormData] = useState({
-    name: "", email: "", documentType: "", styleGuide: "", details: ""
+    name: "", email: "", documentType: "", deadline: "", details: ""
   });
 
-  const { text: typedHeadline } = useTypewriter(ROTATING_WORDS);
-  const { scrollY } = useScroll();
-  const heroParallax = useTransform(scrollY, [0, 500], [0, -50]);
+  const { text: typedHeadline, holding } = useTypewriter(ROTATING_WORDS);
 
   const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
 
@@ -152,7 +139,7 @@ export default function AcademicFormattingPage() {
         name: formData.name,
         email: formData.email,
         service: `Academic Formatting - ${formData.documentType || 'General'}`,
-        message: `Document Type: ${formData.documentType}\nStyle Guide: ${formData.styleGuide}\nDetails: ${formData.details}`,
+        message: `Document Type: ${formData.documentType}\nDeadline: ${formData.deadline}\nDetails: ${formData.details}`,
         company: "Academic Client",
         phone: ""
       });
@@ -169,68 +156,90 @@ export default function AcademicFormattingPage() {
     }
   };
 
-  // ===== UNIQUE DATA =====
+  // --- Data (all formatting‑specific) ---
   const styleGuides = [
-    { name: "APA 7th", usage: "Psychology, Education, Social Sciences", color: "#3b82f6" },
-    { name: "MLA 9th", usage: "Literature, Arts, Humanities", color: "#8b5cf6" },
-    { name: "Chicago 17th", usage: "History, Business, Fine Arts", color: "#ec4899" },
-    { name: "Harvard", usage: "Physical Sciences, Social Sciences", color: "#22c55e" },
-    { name: "IEEE", usage: "Engineering, Computer Science", color: "#f59e0b" },
-    { name: "AMA 11th", usage: "Medical, Health Sciences", color: "#ef4444" }
+    { name: "APA 7th", usage: "Psychology, Education, Social Sciences", color: "#3b82f6", example: "(Author, Year)" },
+    { name: "MLA 9th", usage: "Literature, Languages, Humanities", color: "#8b5cf6", example: "(Author Page)" },
+    { name: "Chicago 17th", usage: "History, Arts, Publishing", color: "#f59e0b", example: "Footnotes / Author-Date" },
+    { name: "Harvard", usage: "Business, Economics, Sciences", color: "#10b981", example: "(Author, Year, p. X)" },
+    { name: "IEEE", usage: "Engineering, Computer Science", color: "#ef4444", example: "[1]" },
+    { name: "AMA 11th", usage: "Medicine, Health Sciences", color: "#06b6d4", example: "Superscript numbers" },
   ];
 
-  const templates = [
-    { name: "Thesis Template", format: "Word", downloads: "2.3k" },
-    { name: "Dissertation Template", format: "LaTeX", downloads: "1.8k" },
-    { name: "Journal Manuscript", format: "Word", downloads: "3.1k" },
-    { name: "Research Paper", format: "Google Docs", downloads: "4.2k" },
-    { name: "Grant Proposal", format: "PDF", downloads: "1.5k" },
-    { name: "Book Chapter", format: "Word", downloads: "0.9k" }
+  const styleSamples = [
+    { name: "APA 7th", desc: "Author-date citation with a detailed reference list. Used in 65% of social science journals.", icon: <BookCopy size={24} />, color: "#3b82f6" },
+    { name: "MLA 9th", desc: "Author-page in-text citations. Standard for literary analysis and language studies.", icon: <Pen size={24} />, color: "#8b5cf6" },
+    { name: "Chicago 17th", desc: "Two systems: notes-bibliography and author-date. Preferred in history and publishing.", icon: <BookOpen size={24} />, color: "#f59e0b" },
+    { name: "IEEE", desc: "Numerical citations in brackets. Used in 80% of engineering and computer science papers.", icon: <Layout size={24} />, color: "#ef4444" },
   ];
 
-  const formattingFeatures = [
-    { icon: <Type size={20} />, title: "Typography", desc: "Correct font families, sizes, and styles for all text elements." },
-    { icon: <AlignLeft size={20} />, title: "Margins & Layout", desc: "Perfect margins, indentation, and text alignment." },
-    { icon: <Hash size={20} />, title: "Page Numbering", desc: "Consistent headers, footers, and page numbers." },
-    { icon: <List size={20} />, title: "Table of Contents", desc: "Auto‑generated TOC with correct hierarchy." },
-    { icon: <FileCheck size={20} />, title: "Citations & References", desc: "Properly formatted citations and bibliography." },
-    { icon: <Table size={20} />, title: "Figures & Tables", desc: "Numbering, captions, and placement of visuals." },
-    { icon: <Columns size={20} />, title: "Multi‑Column Layout", desc: "Formatting for two‑column or multi‑column documents." },
-    { icon: <PanelTop size={20} />, title: "Front Matter", desc: "Title pages, abstracts, acknowledgements, and more." }
+  const comparisonData = [
+    { before: "The data was analysed using a t-test.", after: "The data were analyzed using a t-test." },
+    { before: "Smith et al. (2020) states that...", after: "Smith et al. (2020) state that..." },
+    { before: "The results are consistent with prior research (Johnson, 2018, p.45).", after: "The results are consistent with prior research (Johnson, 2018, p. 45)." },
   ];
 
-  const whyChoose = [
-    { icon: <Award size={22} />, title: "100% Error‑Free", desc: "Every document is triple‑checked against the official style guide." },
-    { icon: <Clock size={22} />, title: "24‑48 Hour Delivery", desc: "Most formatting jobs are completed within 24‑48 hours." },
-    { icon: <Users size={22} />, title: "One Expert Per Project", desc: "Your document is handled by a single specialist from start to finish." },
-    { icon: <Zap size={22} />, title: "Human + AI Review", desc: "Smart tools catch the basics; humans ensure perfection." },
-    { icon: <Shield size={22} />, title: "100% Confidential", desc: "Your research data is never shared or stored after delivery." },
-    { icon: <Star size={22} />, title: "Free Re‑formatting", desc: "If changes are requested, we re‑format at no extra cost." }
+  const features = [
+    { icon: <Check size={20} />, title: "Consistent Citations", desc: "Every in‑text citation formatted perfectly to your chosen style guide." },
+    { icon: <AlignLeft size={20} />, title: "Flawless Layout", desc: "Margins, spacing, headings – all aligned to journal or university requirements." },
+    { icon: <FileType size={20} />, title: "Reference Management", desc: "We work with EndNote, Zotero, Mendeley, and plain text references." },
+    { icon: <Clock size={20} />, title: "Fast Turnaround", desc: "Most formatting jobs are returned within 24‑48 hours, even for long documents." },
   ];
 
-  const faqs = [
-    { q: "Which style guides do you support?", a: "We support all major academic styles: APA, MLA, Chicago, Harvard, IEEE, AMA, ACS, and many more." },
-    { q: "How long does formatting take?", a: "Most documents are completed within 24–48 hours. Rush options are available." },
-    { q: "What file formats do you accept?", a: "We accept Word (.docx), LaTeX (.tex), Google Docs, PDF, and plain text." },
-    { q: "Can you convert between styles?", a: "Yes. We can reformat your entire document from one style to another." },
-    { q: "Do you format tables and figures?", a: "Yes. All tables, figures, and captions are correctly numbered and positioned." },
-    { q: "Is there a free sample?", a: "Yes! We offer a free formatting check of your first 3 pages." }
+  // REPLACED: Templates section removed, now a real Style Guide Comparison Table
+  const styleComparison = [
+    { style: "APA 7th", citation: "(Author, Year)", bibliography: "Alphabetical by author, hanging indent", commonUse: "Social sciences, education, psychology" },
+    { style: "MLA 9th", citation: "(Author Page#)", bibliography: "Alphabetical by author, hanging indent", commonUse: "Literature, languages, humanities" },
+    { style: "Chicago 17th", citation: "Footnotes or (Author, Year)", bibliography: "Notes-bibliography or author-date", commonUse: "History, arts, publishing" },
+    { style: "Harvard", citation: "(Author, Year, p. X)", bibliography: "Alphabetical by author, hanging indent", commonUse: "Business, economics, sciences" },
+    { style: "IEEE", citation: "[1] (numbered)", bibliography: "Numbered in order of appearance", commonUse: "Engineering, computer science" },
+    { style: "AMA 11th", citation: "Superscript numbers", bibliography: "Numbered in order of appearance", commonUse: "Medicine, health sciences" },
   ];
 
   const fileFormats = [
-    { name: "Microsoft Word", icon: <FileText size={16} /> },
-    { name: "LaTeX", icon: <FileCode size={16} /> },
-    { name: "Google Docs", icon: <FileSpreadsheet size={16} /> },
-    { name: "PDF", icon: <FileImage size={16} /> },
-    { name: "Plain Text", icon: <FileText size={16} /> },
-    { name: "Rich Text", icon: <FileText size={16} /> }
+    { name: "DOCX", icon: <FileText size={16} /> },
+    { name: "PDF", icon: <File size={16} /> },
+    { name: "LaTeX", icon: <Type size={16} /> },
+    { name: "TXT", icon: <File size={16} /> },
+    { name: "ODT", icon: <FileText size={16} /> },
+    { name: "RTF", icon: <FileText size={16} /> },
+  ];
+
+  const whyPoints = [
+    { icon: <Award size={22} />, title: "PhD‑Level Experts", desc: "Our formatters hold advanced degrees and know every style guide inside out." },
+    { icon: <Shield size={22} />, title: "100% Accuracy", desc: "We guarantee your formatting is flawless and ready for submission." },
+    { icon: <Users size={22} />, title: "Dedicated Support", desc: "You work with one formatting specialist from start to finish." },
+    { icon: <RefreshCw size={22} />, title: "Unlimited Revisions", desc: "If you find any errors, we fix them free of charge." },
+  ];
+
+  const processSteps = [
+    { num: "01", title: "Upload Your Document", desc: "Send us your file along with your target style guide or journal requirements." },
+    { num: "02", title: "Expert Formatting", desc: "Our specialist applies the correct style to every detail – citations, headings, spacing." },
+    { num: "03", title: "Quality Check", desc: "We run a double-review to ensure every rule has been followed correctly." },
+    { num: "04", title: "Final Delivery", desc: "You receive a perfectly formatted document, ready for submission." },
+  ];
+
+  const faqs = [
+    { q: "Which style guides do you support?", a: "APA 7th, MLA 9th, Chicago 17th, Harvard, IEEE, AMA, Vancouver, and many more. Just tell us what you need." },
+    { q: "How long does formatting take?", a: "Most documents are formatted within 24-48 hours. Rush options are available." },
+    { q: "Do you also check reference lists?", a: "Yes. We verify every citation and ensure the reference list is complete and correctly formatted." },
+    { q: "Can you format a document from scratch?", a: "Absolutely. We can create a template from scratch or apply formatting to an existing draft." },
+    { q: "What about tables and figures?", a: "We can format tables, figures, captions, and ensure they are positioned correctly according to the style guide." },
+  ];
+
+  const addOns = [
+    "Pre-submission journal formatting – match the journal's exact layout.",
+    "Citation check – verify every in-text citation matches the reference list.",
+    "Figure and table formatting – ensure all visuals meet publication standards.",
+    "Running heads and page numbers – proper placement according to style.",
+    "Reference list rebuild – create a complete, correctly styled reference list from your raw citations.",
   ];
 
   return (
     <div className={styles.page}>
       <SEO
-        title="Academic Formatting Services | APA, MLA, Chicago, IEEE & More"
-        description="Professional academic formatting for theses, dissertations, and journal manuscripts. 100% compliance with APA, MLA, Chicago, IEEE, Harvard, and AMA."
+        title="Academic Formatting Services | APA, MLA, Chicago & More"
+        description="Professional academic formatting for theses, dissertations, and journal manuscripts. We handle APA, MLA, Chicago, and all major style guides with perfect accuracy."
         path="/services/academic-formatting"
       />
 
@@ -239,463 +248,374 @@ export default function AcademicFormattingPage() {
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 0.8 }}
       >
-        {/* ========== SECTION 1: HERO ========== */}
-        <motion.section
-          className={styles.hero}
-          style={{ y: heroParallax }}
-        >
+        {/* ===== HERO ===== */}
+        <section className={styles.hero} style={{ background: 'rgba(var(--primary), 0.01)' }}>
           <div className={styles.container}>
-            <div className={styles.heroInner}>
-              <motion.div
-                className={styles.heroLeft}
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
-              >
+            <div className={styles.heroInner} style={{ gap: '3rem' }}>
+              <div className={styles.heroLeft}>
                 <motion.div
                   className={styles.heroBadge}
-                  variants={fadeUp}
-                  transition={{ duration: 0.6 }}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  style={{ background: 'rgba(251, 191, 36, 0.08)', borderColor: 'rgba(251, 191, 36, 0.2)', color: '#d97706' }}
                 >
-                  <Sparkles size={14} />
-                  <span>Perfect Formatting, Every Time</span>
+                  <Sparkles size={14} /> Trusted by 12,000+ academics
                 </motion.div>
-
-                <motion.h1 variants={fadeUp} transition={{ duration: 0.7 }}>
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7 }}
+                  style={{ maxWidth: '38rem' }}
+                >
                   Academic Formatting & Style Guide Compliance
                 </motion.h1>
-
                 <motion.div
                   className={styles.heroTypewriter}
-                  variants={fadeUp}
-                  transition={{ duration: 0.7 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
                 >
-                  <h2>{typedHeadline}<span className={styles.caret}>|</span></h2>
+                  <h2 style={{ color: 'rgba(var(--primary), 0.6)' }}>Perfect your citations in <span style={{ color: '#d97706' }}>{typedHeadline}</span><span className={styles.caret}>|</span></h2>
                 </motion.div>
-
                 <motion.p
                   className={styles.heroDesc}
-                  variants={fadeUp}
-                  transition={{ duration: 0.7 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
                 >
-                  Get your document perfectly formatted to meet any style guide.
-                  We handle APA, MLA, Chicago, IEEE, Harvard, and more — so you can focus on your research.
+                  Stop losing marks over formatting. We make your document perfectly comply with APA, MLA, Chicago, IEEE, or any other style guide – so you can focus on your research.
                 </motion.p>
-
                 <motion.div
                   className={styles.heroStats}
-                  variants={staggerContainer}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
                 >
-                  {[
-                    { value: "5,000+", label: "Documents Formatted" },
-                    { value: "99.7%", label: "Compliance Rate" },
-                    { value: "24h", label: "Average Turnaround" }
-                  ].map((stat, i) => (
-                    <motion.div
-                      key={i}
-                      className={styles.heroStat}
-                      variants={scaleIn}
-                      transition={{ ...springTransition, delay: i * 0.1 }}
-                    >
-                      <span className={styles.heroStatValue}>
-                        <AnimatedStat value={stat.value.replace(/[^0-9.]/g, "")} suffix={stat.value.replace(/[0-9.]/g, "")} />
-                      </span>
-                      <span className={styles.heroStatLabel}>{stat.label}</span>
-                    </motion.div>
-                  ))}
+                  <div className={styles.heroStat}>
+                    <span className={styles.heroStatValue}><AnimatedStat value="98%" /></span>
+                    <span className={styles.heroStatLabel}>Correct citations</span>
+                  </div>
+                  <div className={styles.heroStat}>
+                    <span className={styles.heroStatValue}><AnimatedStat value="24h" /></span>
+                    <span className={styles.heroStatLabel}>Average turnaround</span>
+                  </div>
+                  <div className={styles.heroStat}>
+                    <span className={styles.heroStatValue}><AnimatedStat value="6,700+" /></span>
+                    <span className={styles.heroStatLabel}>Institutions served</span>
+                  </div>
                 </motion.div>
-
                 <motion.div
                   className={styles.heroButtons}
-                  variants={fadeUp}
-                  transition={{ duration: 0.7 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
                 >
-                  <motion.a
-                    href="#contact"
-                    className={styles.btnPrimary}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    Free Sample Formatting
-                    <ArrowRight size={18} />
-                  </motion.a>
-                  <motion.a
-                    href="#templates"
-                    className={styles.btnSecondary}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    Browse Templates
-                  </motion.a>
+                  <a href="#contact" className={styles.btnPrimary} style={{ background: '#d97706 !important' }}>
+                    Get a Free Formatting Sample <ArrowRight size={18} />
+                  </a>
+                  <a href="#process" className={styles.btnSecondary}>How It Works</a>
                 </motion.div>
-              </motion.div>
+              </div>
 
               <motion.div
                 className={styles.heroRight}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.9, delay: 0.2 }}
+                transition={{ delay: 0.3 }}
               >
-                <div className={styles.styleSelector}>
-                  <div className={styles.styleSelectorHeader}>
-                    <span className={styles.styleSelectorLabel}>Select Your Style Guide</span>
-                    <span className={styles.styleSelectorStatus}>✓ Ready</span>
+                <div className={styles.styleSelector} style={{ borderColor: 'rgba(217, 119, 6, 0.15)' }}>
+                  <div className={styles.styleSelectorHeader} style={{ borderBottomColor: 'rgba(217, 119, 6, 0.1)' }}>
+                    <span className={styles.styleSelectorLabel} style={{ color: '#d97706' }}>Style Guide Selector</span>
+                    <span className={styles.styleSelectorStatus} style={{ color: '#d97706' }}>Active</span>
                   </div>
                   <div className={styles.styleSelectorBody}>
-                    {styleGuides.slice(0, 4).map((guide, i) => (
-                      <motion.div
-                        key={i}
-                        className={styles.styleSelectorItem}
-                        whileHover={{ x: 6, scale: 1.02 }}
-                        transition={springTransition}
-                      >
-                        <span
-                          className={styles.styleSelectorDot}
-                          style={{ backgroundColor: guide.color }}
-                        />
+                    {styleGuides.map((guide, i) => (
+                      <div key={i} className={styles.styleSelectorItem} style={{ borderColor: 'rgba(217, 119, 6, 0.05)' }}>
+                        <span className={styles.styleSelectorDot} style={{ background: guide.color }} />
                         <span className={styles.styleSelectorName}>{guide.name}</span>
-                        <span className={styles.styleSelectorUsage}>{guide.usage.split(",")[0]}</span>
-                        <CheckCircle size={14} className={styles.styleSelectorCheck} />
-                      </motion.div>
+                        <span className={styles.styleSelectorUsage}>{guide.usage}</span>
+                        <span className={styles.styleSelectorCheck} style={{ color: '#d97706' }}>✓</span>
+                      </div>
                     ))}
                   </div>
-                  <div className={styles.styleSelectorFooter}>
-                    <span className={styles.styleSelectorCount}>6+ style guides supported</span>
-                    <span className={styles.styleSelectorMore}>+ More available</span>
+                  <div className={styles.styleSelectorFooter} style={{ borderTopColor: 'rgba(217, 119, 6, 0.1)' }}>
+                    <span>Supported guides</span>
+                    <span className={styles.styleSelectorCount}>6+ styles</span>
                   </div>
                 </div>
               </motion.div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
-        {/* ========== SECTION 2: STYLE GUIDES GALLERY ========== */}
-        <motion.section
-          className={`${styles.section} ${styles.sectionAlt}`}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
-        >
-          <div className={styles.container}>
-            <motion.div
-              className={styles.sectionHeader}
-              variants={fadeUp}
-              transition={{ duration: 0.6 }}
-            >
-              <h2>We Format for Every Major Style Guide</h2>
-              <p>Your document — perfectly formatted to match your university or journal's exact requirements.</p>
-            </motion.div>
-
-            <motion.div className={styles.styleGallery} variants={staggerContainer}>
-              {styleGuides.map((guide, i) => (
-                <motion.div
-                  key={i}
-                  className={styles.styleGalleryItem}
-                  variants={scaleIn}
-                  transition={{ ...springTransition, delay: i * 0.05 }}
-                  whileHover={{ y: -8, scale: 1.03 }}
-                >
-                  <div
-                    className={styles.styleGalleryDot}
-                    style={{ backgroundColor: guide.color }}
-                  />
-                  <h3>{guide.name}</h3>
-                  <p>{guide.usage}</p>
-                  <div className={styles.styleGalleryBadge}>100% compliant</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* ========== SECTION 3: BEFORE & AFTER COMPARISON ========== */}
+        {/* ===== STYLE GALLERY ===== */}
         <motion.section
           className={styles.section}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ amount: 0.1 }}
           variants={staggerContainer}
         >
           <div className={styles.container}>
-            <motion.div
-              className={styles.sectionHeader}
-              variants={fadeUp}
-              transition={{ duration: 0.6 }}
-            >
-              <h2>See the Difference</h2>
-              <p>Raw manuscript vs. professionally formatted document — side by side.</p>
+            <motion.div className={styles.sectionHeader} variants={fadeUp}>
+              <h2>Style Guides We Format</h2>
+              <p>Every major academic style – applied with precision and consistency.</p>
             </motion.div>
-
-            <motion.div className={styles.comparison} variants={staggerContainer}>
-              <motion.div className={styles.comparisonBefore} variants={zoomIn}>
-                <div className={styles.comparisonLabel}>
-                  <span className={styles.comparisonBadge}>BEFORE</span>
-                  <span className={styles.comparisonError}>❌</span>
-                </div>
-                <div className={styles.comparisonContent}>
-                  <div className={styles.comparisonLine}>This is a sample paragraph with <span className={styles.comparisonWrong}>wrong</span> formatting.</div>
-                  <div className={styles.comparisonLine}>- Inconsistent margins</div>
-                  <div className={styles.comparisonLine}>- Wrong font size</div>
-                  <div className={styles.comparisonLine}>- Missing page numbers</div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className={`${styles.comparisonAfter}`}
-                variants={zoomIn}
-                transition={{ delay: 0.2 }}
-              >
-                <div className={styles.comparisonLabel}>
-                  <span className={styles.comparisonBadge}>AFTER</span>
-                  <span className={styles.comparisonSuccess}>✅</span>
-                </div>
-                <div className={styles.comparisonContent}>
-                  <div className={styles.comparisonLine}>This is a sample paragraph with <span className={styles.comparisonCorrect}>correct</span> formatting.</div>
-                  <div className={styles.comparisonLine}>- Perfect margins</div>
-                  <div className={styles.comparisonLine}>- Correct font size</div>
-                  <div className={styles.comparisonLine}>- Page numbers added</div>
-                </div>
-              </motion.div>
-            </motion.div>
+            <div className={styles.styleGallery} style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
+              {styleSamples.map((item, i) => (
+                <motion.div key={i} className={styles.styleGalleryItem} variants={scaleIn} style={{ borderColor: `${item.color}33`, paddingTop: '2.5rem' }}>
+                  <span className={styles.styleGalleryDot} style={{ background: item.color }} />
+                  <div style={{ color: item.color, marginBottom: '0.5rem' }}>{item.icon}</div>
+                  <h3>{item.name}</h3>
+                  <p>{item.desc}</p>
+                  <span className={styles.styleGalleryBadge} style={{ background: `${item.color}22`, color: item.color }}>Expert</span>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.section>
 
-        {/* ========== SECTION 4: FORMATTING FEATURES ========== */}
+        {/* ===== BEFORE / AFTER ===== */}
         <motion.section
           className={`${styles.section} ${styles.sectionAlt}`}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ amount: 0.2 }}
+          variants={staggerContainer}
+          style={{ background: 'rgba(217, 119, 6, 0.03)' }}
+        >
+          <div className={styles.container}>
+            <motion.div className={styles.sectionHeader} variants={fadeUp}>
+              <h2>Before & After – See the Difference</h2>
+              <p>We catch the errors that cost you marks.</p>
+            </motion.div>
+            <div className={styles.comparison}>
+              <div className={styles.comparisonBefore} style={{ borderColor: 'rgba(239, 68, 68, 0.2)' }}>
+                <div className={styles.comparisonLabel}>
+                  <span className={styles.comparisonBadge} style={{ color: '#dc2626' }}>Before</span>
+                  <span style={{ fontSize: '1.2rem' }}>❌</span>
+                </div>
+                <div className={styles.comparisonContent}>
+                  {comparisonData.map((line, i) => (
+                    <div key={i} className={styles.comparisonLine}>
+                      <span className={styles.comparisonWrong}>{line.before}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.comparisonAfter} style={{ borderColor: 'rgba(34, 197, 94, 0.3)', background: 'rgba(34, 197, 94, 0.05)' }}>
+                <div className={styles.comparisonLabel}>
+                  <span className={styles.comparisonBadge} style={{ color: '#16a34a' }}>After</span>
+                  <span style={{ fontSize: '1.2rem' }}>✅</span>
+                </div>
+                <div className={styles.comparisonContent}>
+                  {comparisonData.map((line, i) => (
+                    <div key={i} className={styles.comparisonLine}>
+                      <span className={styles.comparisonCorrect}>{line.after}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ===== FEATURES ===== */}
+        <motion.section
+          className={styles.section}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.1 }}
           variants={staggerContainer}
         >
           <div className={styles.container}>
-            <motion.div
-              className={styles.sectionHeader}
-              variants={fadeUp}
-              transition={{ duration: 0.6 }}
-            >
-              <h2>Everything We Format</h2>
-              <p>From fonts to citations — we handle every detail of your document.</p>
+            <motion.div className={styles.sectionHeader} variants={fadeUp}>
+              <h2>Why Formatting Matters</h2>
+              <p>Good formatting improves readability, credibility, and your grade.</p>
             </motion.div>
-
-            <motion.div className={styles.featuresGrid} variants={staggerContainer}>
-              {formattingFeatures.map((feature, i) => (
-                <motion.div
-                  key={i}
-                  className={styles.featureCard}
-                  variants={fadeUp}
-                  transition={{ duration: 0.55, delay: i * 0.04 }}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                >
-                  <div className={styles.featureIcon}>{feature.icon}</div>
+            <div className={styles.featuresGrid}>
+              {features.map((feature, i) => (
+                <motion.div key={i} className={styles.featureCard} variants={scaleIn}>
+                  <span className={styles.featureIcon}>{feature.icon}</span>
                   <h3>{feature.title}</h3>
                   <p>{feature.desc}</p>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </motion.section>
 
-        {/* ========== SECTION 5: TEMPLATES ========== */}
-        <motion.section
-          id="templates"
-          className={styles.section}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={staggerContainer}
-        >
-          <div className={styles.container}>
-            <motion.div
-              className={styles.sectionHeader}
-              variants={fadeUp}
-              transition={{ duration: 0.6 }}
-            >
-              <h2>Download Pre‑Formatted Templates</h2>
-              <p>Start your writing with a perfectly formatted template — already set up for your style guide.</p>
-            </motion.div>
-
-            <motion.div className={styles.templatesGrid} variants={staggerContainer}>
-              {templates.map((template, i) => (
-                <motion.div
-                  key={i}
-                  className={styles.templateCard}
-                  variants={scaleIn}
-                  transition={{ ...springTransition, delay: i * 0.04 }}
-                  whileHover={{ y: -8, scale: 1.03 }}
-                >
-                  <div className={styles.templateIcon}>
-                    <FileText size={24} />
-                  </div>
-                  <div className={styles.templateInfo}>
-                    <h4>{template.name}</h4>
-                    <span>{template.format}</span>
-                    <span className={styles.templateDownloads}>📥 {template.downloads} downloads</span>
-                  </div>
-                  <button className={styles.templateBtn}>
-                    <Download size={16} />
-                    <span>Download</span>
-                  </button>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* ========== SECTION 6: FILE FORMATS ========== */}
+        {/* ===== STYLE GUIDE COMPARISON TABLE (replaces fake templates) ===== */}
         <motion.section
           className={`${styles.section} ${styles.sectionAlt}`}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ amount: 0.1 }}
           variants={staggerContainer}
+          style={{ background: 'rgba(217, 119, 6, 0.03)' }}
         >
           <div className={styles.container}>
-            <motion.div
-              className={styles.sectionHeader}
-              variants={fadeUp}
-              transition={{ duration: 0.6 }}
-            >
-              <h2>We Work With Any File Format</h2>
-              <p>Send us your document as is — we handle the rest.</p>
+            <motion.div className={styles.sectionHeader} variants={fadeUp}>
+              <h2>Style Guide Comparison</h2>
+              <p>See at a glance how the major style guides differ.</p>
             </motion.div>
-
-            <motion.div className={styles.formatsGrid} variants={staggerContainer}>
-              {fileFormats.map((format, i) => (
-                <motion.div
-                  key={i}
-                  className={styles.formatItem}
-                  variants={scaleIn}
-                  transition={{ ...springTransition, delay: i * 0.04 }}
-                  whileHover={{ scale: 1.08, y: -4 }}
-                >
-                  {format.icon}
-                  <span>{format.name}</span>
-                </motion.div>
-              ))}
+            <motion.div variants={staggerContainer} style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', background: 'rgb(var(--card))', borderRadius: '0.875rem', overflow: 'hidden' }}>
+                <thead style={{ background: 'rgba(217, 119, 6, 0.08)', borderBottom: '1px solid rgba(var(--border), 0.06)' }}>
+                  <tr>
+                    <th style={{ padding: '0.75rem 1rem', textAlign: 'left', fontWeight: 600 }}>Style</th>
+                    <th style={{ padding: '0.75rem 1rem', textAlign: 'left', fontWeight: 600 }}>Citation Format</th>
+                    <th style={{ padding: '0.75rem 1rem', textAlign: 'left', fontWeight: 600 }}>Bibliography</th>
+                    <th style={{ padding: '0.75rem 1rem', textAlign: 'left', fontWeight: 600 }}>Common Use</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {styleComparison.map((item, i) => (
+                    <motion.tr
+                      key={i}
+                      variants={fadeUp}
+                      transition={{ duration: 0.3, delay: i * 0.06 }}
+                      style={{ borderBottom: i < styleComparison.length - 1 ? '1px solid rgba(var(--border), 0.04)' : 'none' }}
+                      whileHover={{ background: 'rgba(var(--primary), 0.02)' }}
+                    >
+                      <td style={{ padding: '0.75rem 1rem', fontWeight: 500 }}>{item.style}</td>
+                      <td style={{ padding: '0.75rem 1rem', color: 'rgba(var(--primary), 0.7)' }}>{item.citation}</td>
+                      <td style={{ padding: '0.75rem 1rem', color: 'rgba(var(--primary), 0.7)' }}>{item.bibliography}</td>
+                      <td style={{ padding: '0.75rem 1rem', color: 'rgba(var(--primary), 0.7)' }}>{item.commonUse}</td>
+                    </motion.tr>
+                  ))}
+                </tbody>
+              </table>
             </motion.div>
+            <motion.p className={styles.sectionFooter} variants={fadeUp} style={{ textAlign: 'center', maxWidth: '100%' }}>
+              <strong>Not sure which style to choose?</strong> We'll help you pick the right one for your discipline.
+            </motion.p>
           </div>
         </motion.section>
 
-        {/* ========== SECTION 7: WHY CHOOSE ========== */}
+        {/* ===== FILE FORMATS ===== */}
         <motion.section
           className={styles.section}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ amount: 0.2 }}
           variants={staggerContainer}
         >
           <div className={styles.container}>
-            <motion.div
-              className={styles.sectionHeader}
-              variants={fadeUp}
-              transition={{ duration: 0.6 }}
-            >
-              <h2>Why Researchers Choose Us</h2>
-              <p>We deliver perfection, every time.</p>
+            <motion.div className={styles.sectionHeader} variants={fadeUp}>
+              <h2>Supported File Formats</h2>
+              <p>We work with any file type you have.</p>
             </motion.div>
+            <div className={styles.formatsGrid}>
+              {fileFormats.map((fmt, i) => (
+                <motion.div key={i} className={styles.formatItem} variants={scaleIn}>
+                  {fmt.icon} {fmt.name}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
 
-            <motion.div className={styles.whyGrid} variants={staggerContainer}>
-              {whyChoose.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className={styles.whyCard}
-                  variants={fadeUp}
-                  transition={{ duration: 0.5, delay: i * 0.05 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                >
-                  <div className={styles.whyIcon}>{item.icon}</div>
+        {/* ===== WHY CHOOSE ===== */}
+        <motion.section
+          className={`${styles.section} ${styles.sectionAlt}`}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.1 }}
+          variants={staggerContainer}
+          style={{ background: 'rgba(217, 119, 6, 0.03)' }}
+        >
+          <div className={styles.container}>
+            <motion.div className={styles.sectionHeader} variants={fadeUp}>
+              <h2>Why Choose Scape Data Solutions</h2>
+              <p>We combine formatting expertise with a deep understanding of academic publishing.</p>
+            </motion.div>
+            <div className={styles.whyGrid}>
+              {whyPoints.map((item, i) => (
+                <motion.div key={i} className={styles.whyCard} variants={scaleIn}>
+                  <span className={styles.whyIcon}>{item.icon}</span>
                   <h3>{item.title}</h3>
                   <p>{item.desc}</p>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </motion.section>
 
-        {/* ========== SECTION 8: PROCESS ========== */}
+        {/* ===== PROCESS ===== */}
         <motion.section
           id="process"
-          className={`${styles.section} ${styles.sectionAlt}`}
+          className={styles.section}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ amount: 0.1 }}
           variants={staggerContainer}
         >
           <div className={styles.container}>
-            <motion.div
-              className={styles.sectionHeader}
-              variants={fadeUp}
-              transition={{ duration: 0.6 }}
-            >
-              <h2>How It Works</h2>
-              <p>Four simple steps to a perfectly formatted document.</p>
+            <motion.div className={styles.sectionHeader} variants={fadeUp}>
+              <h2>Our Formatting Process</h2>
+              <p>Simple, transparent, and fast.</p>
             </motion.div>
-
-            <motion.div className={styles.process} variants={staggerContainer}>
-              {[
-                { num: "01", title: "Upload Your Document", desc: "Send us your file and tell us which style guide you need." },
-                { num: "02", title: "We Scan & Analyze", desc: "Our system detects formatting issues and creates a correction plan." },
-                { num: "03", title: "Expert Formatting", desc: "A specialist applies all changes with meticulous attention." },
-                { num: "04", title: "Final Review & Delivery", desc: "We double‑check everything and deliver your perfect document." }
-              ].map((step, i) => (
-                <motion.div
-                  key={i}
-                  className={styles.processStep}
-                  variants={i % 2 === 0 ? slideLeft : slideRight}
-                  transition={{ duration: 0.5, delay: i * 0.12 }}
-                  whileHover={{ y: -6 }}
-                >
-                  <motion.div
-                    className={styles.processNum}
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ ...springTransition, delay: i * 0.12 + 0.15 }}
-                  >
-                    {step.num}
-                  </motion.div>
+            <div className={styles.process}>
+              {processSteps.map((step, i) => (
+                <motion.div key={i} className={styles.processStep} variants={slideLeft}>
+                  <span className={styles.processNum}>{step.num}</span>
                   <h3>{step.title}</h3>
                   <p>{step.desc}</p>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </motion.section>
 
-        {/* ========== SECTION 9: FAQ ========== */}
+        {/* ===== ADD‑ONS (centered) ===== */}
+        <motion.section
+          className={`${styles.section} ${styles.sectionAlt}`}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.1 }}
+          variants={staggerContainer}
+        >
+          <div className={styles.container}>
+            <div className={styles.addOnsContainer}>
+              <motion.div className={styles.sectionHeader} variants={fadeUp}>
+                <h2>Formatting Add‑Ons</h2>
+                <p>Enhance your formatting service with these additional options.</p>
+              </motion.div>
+              <motion.ol variants={staggerContainer} style={{ paddingLeft: '1.5rem' }}>
+                {addOns.map((item, i) => (
+                  <motion.li key={i} variants={slideLeft} transition={{ delay: i * 0.05 }}>
+                    {item}
+                  </motion.li>
+                ))}
+              </motion.ol>
+              <motion.p className={styles.sectionFooter} variants={fadeUp}>
+                Our experts will advise you on which add‑ons best suit your project.
+              </motion.p>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ===== FAQ ===== */}
         <motion.section
           className={styles.section}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ amount: 0.1 }}
           variants={staggerContainer}
         >
           <div className={styles.container}>
-            <motion.div
-              className={styles.sectionHeader}
-              variants={fadeUp}
-              transition={{ duration: 0.6 }}
-            >
+            <motion.div className={styles.sectionHeader} variants={fadeUp}>
               <h2>Frequently Asked Questions</h2>
-              <p>Quick answers about our formatting services.</p>
+              <p>All you need to know about our formatting services.</p>
             </motion.div>
-
-            <motion.div className={styles.faqGrid} variants={staggerContainer}>
+            <div className={styles.faqGrid}>
               {faqs.map((faq, i) => (
-                <motion.div
-                  key={i}
-                  className={styles.faqItem}
-                  variants={fadeUp}
-                  transition={{ duration: 0.45, delay: i * 0.04 }}
-                >
-                  <button
-                    className={styles.faqQuestion}
-                    onClick={() => toggleFaq(i)}
-                  >
+                <motion.div key={i} className={styles.faqItem} variants={fadeUp}>
+                  <button className={styles.faqQuestion} onClick={() => toggleFaq(i)}>
                     <span>{faq.q}</span>
                     <motion.span
                       animate={{ rotate: openFaq === i ? 180 : 0 }}
@@ -710,6 +630,7 @@ export default function AcademicFormattingPage() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
                         className={styles.faqAnswer}
                       >
                         {faq.a}
@@ -718,27 +639,22 @@ export default function AcademicFormattingPage() {
                   </AnimatePresence>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </motion.section>
 
-        {/* ========== SECTION 10: CONTACT ========== */}
+        {/* ===== CONTACT ===== */}
         <motion.section
           id="contact"
           className={styles.ctaSection}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ amount: 0.1 }}
           variants={fadeUp}
-          transition={{ duration: 0.6 }}
           ref={formRef}
         >
           <div className={styles.container}>
-            <motion.div
-              className={styles.ctaBox}
-              variants={scaleIn}
-              transition={{ ...springTransition, delay: 0.1 }}
-            >
+            <div className={styles.ctaBox}>
               <AnimatePresence mode="wait">
                 {submitted ? (
                   <motion.div
@@ -751,133 +667,51 @@ export default function AcademicFormattingPage() {
                   >
                     <CheckCircle size={48} color="#22c55e" />
                     <h3>Thank You!</h3>
-                    <p>We've received your formatting request. A specialist will contact you within 24 hours.</p>
+                    <p>Your request has been received. We'll send a free formatting sample within 2 hours.</p>
                   </motion.div>
                 ) : (
-                  <motion.div
-                    key="form"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    <motion.h2 variants={fadeUp} initial="hidden" animate="visible">
-                      Get Your Document Formatted Perfectly
-                    </motion.h2>
-                    <motion.p variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.05 }}>
-                      Request a free formatting sample and quote — no obligation.
-                    </motion.p>
-
-                    {error && (
-                      <motion.div
-                        className={styles.errorMessage}
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                      >
-                        <p>{error}</p>
-                      </motion.div>
-                    )}
-
-                    <motion.form
-                      onSubmit={handleSubmit}
-                      className={styles.contactForm}
-                      variants={staggerContainer}
-                      initial="hidden"
-                      animate="visible"
-                    >
-                      <motion.div className={styles.formRow} variants={fadeUp}>
+                  <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                    <h2>Ready for Perfect Formatting?</h2>
+                    <p>Get a free formatting sample and quote – no obligation.</p>
+                    {error && <div className={styles.errorMessage}>{error}</div>}
+                    <form onSubmit={handleSubmit} className={styles.contactForm}>
+                      <div className={styles.formRow}>
                         <div className={styles.formGroup}>
-                          <input
-                            type="text"
-                            name="name"
-                            placeholder="Full Name *"
-                            required
-                            value={formData.name}
-                            onChange={handleChange}
-                          />
+                          <input type="text" name="name" placeholder="Full Name *" required value={formData.name} onChange={handleChange} />
                         </div>
                         <div className={styles.formGroup}>
-                          <input
-                            type="email"
-                            name="email"
-                            placeholder="Email Address *"
-                            required
-                            value={formData.email}
-                            onChange={handleChange}
-                          />
+                          <input type="email" name="email" placeholder="Email Address *" required value={formData.email} onChange={handleChange} />
                         </div>
-                      </motion.div>
-
-                      <motion.div className={styles.formRow} variants={fadeUp}>
+                      </div>
+                      <div className={styles.formRow}>
                         <div className={styles.formGroup}>
-                          <select
-                            name="documentType"
-                            required
-                            value={formData.documentType}
-                            onChange={handleChange}
-                          >
+                          <select name="documentType" required value={formData.documentType} onChange={handleChange}>
                             <option value="">Document Type *</option>
                             <option value="thesis">Thesis</option>
                             <option value="dissertation">Dissertation</option>
                             <option value="journal">Journal Manuscript</option>
                             <option value="research">Research Paper</option>
                             <option value="grant">Grant Proposal</option>
-                            <option value="book">Book Chapter</option>
-                          </select>
-                        </div>
-                        <div className={styles.formGroup}>
-                          <select
-                            name="styleGuide"
-                            required
-                            value={formData.styleGuide}
-                            onChange={handleChange}
-                          >
-                            <option value="">Style Guide *</option>
-                            <option value="apa">APA 7th</option>
-                            <option value="mla">MLA 9th</option>
-                            <option value="chicago">Chicago 17th</option>
-                            <option value="harvard">Harvard</option>
-                            <option value="ieee">IEEE</option>
-                            <option value="ama">AMA 11th</option>
+                            <option value="book">Academic Book/Chapter</option>
                             <option value="other">Other</option>
                           </select>
                         </div>
-                      </motion.div>
-
-                      <motion.div className={styles.formGroup} variants={fadeUp}>
-                        <textarea
-                          name="details"
-                          placeholder="Tell us about your document – field of study, word count, any specific requirements..."
-                          rows={5}
-                          required
-                          value={formData.details}
-                          onChange={handleChange}
-                        />
-                      </motion.div>
-
-                      <motion.button
-                        type="submit"
-                        className={styles.btnPrimary}
-                        disabled={loading}
-                        variants={fadeUp}
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                      >
-                        {loading ? (
-                          <><Loader2 className={styles.spinner} size={18} /> Processing...</>
-                        ) : (
-                          <>Get Free Formatting Sample <Send size={16} /></>
-                        )}
-                      </motion.button>
-
-                      <motion.p className={styles.privacyNote} variants={fadeUp}>
-                        Your document stays confidential. We never share your data.
-                      </motion.p>
-                    </motion.form>
+                        <div className={styles.formGroup}>
+                          <input type="date" name="deadline" required value={formData.deadline} onChange={handleChange} />
+                        </div>
+                      </div>
+                      <div className={styles.formGroup}>
+                        <textarea name="details" placeholder="Tell us about your document – style guide, word count, and any special requirements..." rows={5} required value={formData.details} onChange={handleChange} />
+                      </div>
+                      <button type="submit" className={styles.btnPrimary} disabled={loading} style={{ background: '#d97706 !important' }}>
+                        {loading ? <><Loader2 className={styles.spinner} size={18} /> Processing...</> : <>Get Free Sample & Quote <Send size={16} /></>}
+                      </button>
+                      <p className={styles.privacyNote}>By submitting, you agree to our privacy policy. Your document stays confidential.</p>
+                    </form>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           </div>
         </motion.section>
       </motion.main>
