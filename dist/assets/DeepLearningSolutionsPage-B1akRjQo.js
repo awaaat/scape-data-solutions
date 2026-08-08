@@ -1,0 +1,1 @@
+import{j as o}from"./index-ChD9sGoe.js";import{S as r}from"./ServiceContentPage-BxdNXA00.js";import{g as t}from"./dataEngineeringAI-B2fzNzVs.js";import"./animations-xrL6dxNc.js";import"./serviceSchema-B8nJVhZ1.js";import"./sparkles-C-a6F-ae.js";function s(){return o.jsx(r,{...t})}export{s as default};

@@ -20,6 +20,7 @@ const VerifyEmailPage = lazy(() => import('./pages/Auth/VerifyEmailPage'));
 const ForgotPasswordPage = lazy(() => import('./pages/Auth/ForgotPasswordPage'));
 const ResetPasswordPage = lazy(() => import('./pages/Auth/ResetPasswordPage'));
 const DashboardPage = lazy(() => import('./pages/Dashboard/DashboardPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFound/NotFoundPage'));
 
 // ─── Company & Static ───────────────────────────────────────
 const CompanyPage = lazy(() => import('./pages/Company/CompanyPage'));
@@ -494,6 +495,7 @@ const AppContent = () => {
                             {/* Legacy href aliases for existing cards pointing at renamed pages */}
                             <Route path="/services/research-methodology-consulting" element={<ResearchMethodologySupportPage />} />
                             <Route path="/services/statistical-consulting" element={<StatisticalAnalysisConsultingPage />} />
+                            <Route path="*" element={<NotFoundPage />} />
                         </Routes>
                     </Suspense>
                 </ErrorBoundary>
