@@ -4,7 +4,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  ArrowRight, Bell, ChevronUp, X, Activity,
+  ArrowRight, Bell, ChevronUp, X,
   GitBranch, Zap, Brain, Database, Server, MessageSquare
 } from "lucide-react";
 import styles from "../Components.module.css";
@@ -52,7 +52,6 @@ export default function PageLayout({ children, activeNav = "" }) {
   const [showTop, setShowTop] = useState(false);
   const [scrollPct, setScrollPct] = useState(0);
   const [newsIndex, setNewsIndex] = useState(0);
-  const [liveData, setLiveData] = useState([55,68,42,81,73,90,77,63,88,71]);
   const [chatOpen, setChatOpen] = useState(false);
   const [chatMsg, setChatMsg] = useState("");
   const [chatLog, setChatLog] = useState([{from:"bot", text:"Hi! 👋 How can Scape Data Solutions help your business grow today?"}]);
@@ -74,14 +73,6 @@ export default function PageLayout({ children, activeNav = "" }) {
     return () => clearInterval(t);
   }, []);
 
-  // Live data simulation
-  useEffect(() => {
-    const t = setInterval(() => {
-      setLiveData(p => [...p.slice(1), Math.floor(Math.random() * 40 + 52)]);
-    }, 1600);
-    return () => clearInterval(t);
-  }, []);
-
   const sendChat = useCallback(() => {
     if (!chatMsg.trim()) return;
     setChatLog(l => [...l, { from: "user", text: chatMsg }]);
@@ -93,8 +84,6 @@ export default function PageLayout({ children, activeNav = "" }) {
       }]);
     }, 900);
   }, [chatMsg]);
-
-  const maxLive = Math.max(...liveData);
 
   return (
     <div className={styles.page}>
@@ -124,37 +113,6 @@ export default function PageLayout({ children, activeNav = "" }) {
           </div>
         </div>
       </div>
-
-      {/* ── Floating live widget ── */}
-      <motion.div
-        className={styles.floatingWidget}
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 2.5, duration: 0.6 }}
-      >
-        <div className={styles.fwHeader}>
-          <Activity size={12} /> <span>Live Metrics</span>
-          <motion.span
-            className={styles.livePulse}
-            animate={{ opacity: [1, 0.2, 1] }}
-            transition={{ duration: 1, repeat: Infinity }}
-          />
-        </div>
-        <div className={styles.fwBars}>
-          {liveData.map((v, i) => (
-            <motion.div
-              key={i}
-              className={styles.fwBar}
-              animate={{ height: `${(v / maxLive) * 100}%` }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            />
-          ))}
-        </div>
-        <div className={styles.fwFoot}>
-          <span className={styles.fwVal}>{liveData[liveData.length - 1]}K</span>
-          <span className={styles.fwLbl}>events/sec</span>
-        </div>
-      </motion.div>
 
       {/* ── Navbar ── */}
       <Navbar activeNav={activeNav} />
