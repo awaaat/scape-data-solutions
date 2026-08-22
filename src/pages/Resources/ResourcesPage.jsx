@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
 import { getAllArticles } from "../../services/articles";
+import { quartoArticlesList } from "../../data/quartoArticlesIndex";
 import styles from "./ResourcesPage.module.css";
 
 // ─── Animation variants ────────────────────────────────────────────
@@ -49,9 +50,13 @@ const ResourcesPage = () => {
     setLoading(true);
     setLoadError(false);
     getAllArticles()
-      .then((data) => setArticles(Array.isArray(data) ? data : []))
+      .then((data) => {
+        const sanityArticles = Array.isArray(data) ? data : [];
+        setArticles([...quartoArticlesList, ...sanityArticles]);
+      })
       .catch((err) => {
         console.error("Failed to load articles:", err);
+        setArticles(quartoArticlesList);
         setLoadError(true);
       })
       .finally(() => setLoading(false));
@@ -630,7 +635,7 @@ const ResourcesPage = () => {
 
             {loading && <p className={styles.loadingText}>Loading articles…</p>}
 
-            {!loading && loadError && (
+            {!loading && loadError && articles.length === 0 && (
               <p className={styles.emptyText}>
                 Couldn't load articles right now. Please refresh the page.
               </p>
@@ -641,7 +646,7 @@ const ResourcesPage = () => {
             )}
 
             {/* Article Grid – stagger on scroll */}
-            {!loading && !loadError && filteredArticles.length > 0 && (
+            {!loading && filteredArticles.length > 0 && (
               <motion.div
                 className={styles.grid}
                 initial="hidden"

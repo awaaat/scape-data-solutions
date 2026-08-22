@@ -18,7 +18,7 @@
 // with Vercel's build container) via puppeteer-core.
 // Locally: falls back to full `puppeteer`'s bundled Chrome.
 
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync, readdirSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import handler from 'serve-handler';
@@ -130,6 +130,21 @@ const ROUTES = [
   '/services/warehouse-optimization-inventory-management',
   '/services/workforce-hr-analytics',
 ];
+
+// ─── Auto-discover Quarto articles ─────────────────────────────────
+const QUARTO_ARTICLES_DIR = join(__dirname, 'src', 'data', 'quartoArticles');
+if (existsSync(QUARTO_ARTICLES_DIR)) {
+  const quartoSlugs = readdirSync(QUARTO_ARTICLES_DIR)
+    .filter((f) => f.endsWith('.html'))
+    .map((f) => f.replace(/\.html$/, ''));
+
+  for (const slug of quartoSlugs) {
+    const route = `/resources/${slug}`;
+    if (!ROUTES.includes(route)) {
+      ROUTES.push(route);
+    }
+  }
+}
 
 function startServer() {
   return new Promise((resolve) => {

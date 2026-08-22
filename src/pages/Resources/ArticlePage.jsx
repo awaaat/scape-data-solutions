@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PortableText } from "@portabletext/react";
@@ -7,6 +7,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
 import { getArticleBySlug } from "../../services/articles";
+import quartoArticlesIndex from "../../data/quartoArticlesIndex";
 import styles from "./ArticlePage.module.css";
 
 const SITE_URL = "https://www.scapedatasolutions.com";
@@ -37,11 +38,22 @@ const portableTextComponents = {
 const ArticlePage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const [article, setArticle] = useState(null);
-  const [loading, setLoading] = useState(true);
+
+  const quartoArticle = quartoArticlesIndex[slug];
+
+  const [article, setArticle] = useState(quartoArticle || null);
+  const [loading, setLoading] = useState(!quartoArticle);
+  const quartoBodyRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
+
+    if (quartoArticle) {
+      setArticle(quartoArticle);
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     getArticleBySlug(slug)
       .then((data) => {
@@ -56,7 +68,46 @@ const ArticlePage = () => {
         navigate("/resources", { replace: true });
       })
       .finally(() => setLoading(false));
-  }, [slug, navigate]);
+  }, [slug, navigate, quartoArticle]);
+
+  // Quarto ships raw LaTeX inside <span class="math display/inline">
+  // (standalone:false skips Quarto's own runtime that would normally
+  // render it). We load KaTeX's JS once and render those spans here.
+  useEffect(() => {
+    if (!article?.isQuarto) return;
+
+    function renderMath() {
+      const container = quartoBodyRef.current;
+      if (!container || !window.katex) return;
+      const nodes = container.querySelectorAll(".math.inline, .math.display");
+      nodes.forEach((node) => {
+        const tex = node.textContent;
+        const displayMode = node.classList.contains("display");
+        try {
+          window.katex.render(tex, node, { displayMode, throwOnError: false });
+        } catch (e) {
+          console.error("KaTeX render error:", e);
+        }
+      });
+    }
+
+    if (window.katex) {
+      renderMath();
+      return;
+    }
+
+    const existing = document.getElementById("katex-js");
+    if (existing) {
+      existing.addEventListener("load", renderMath);
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.id = "katex-js";
+    script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js";
+    script.onload = renderMath;
+    document.head.appendChild(script);
+  }, [article]);
 
   if (loading) return null;
   if (!article) return null;
@@ -94,7 +145,15 @@ const ArticlePage = () => {
         </div>
 
         <div className={styles.body}>
-          <PortableText value={article.body} components={portableTextComponents} />
+          {article.isQuarto ? (
+            <div
+              ref={quartoBodyRef}
+              className={styles.quartoBody}
+              dangerouslySetInnerHTML={{ __html: article.html }}
+            />
+          ) : (
+            <PortableText value={article.body} components={portableTextComponents} />
+          )}
         </div>
 
         {article.sources && article.sources.length > 0 && (
