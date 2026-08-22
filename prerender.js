@@ -54,6 +54,7 @@ const ROUTES = [
   '/resources/veterinary-client-retention',
   '/resources/medical-practice-revenue-cycle-analytics',
   '/resources/reduce-patient-no-shows-predictive-analytics',
+  '/resources/how-to-measure-veterinary-clinic-performance',
   '/dental-analytics',
   '/veterinary-analytics',
   '/medical-practice-analytics',
