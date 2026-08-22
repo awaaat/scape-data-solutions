@@ -74,16 +74,16 @@
   font-family: var(--font-display);
 }
 .quartoBody h2 {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 500;
   letter-spacing: -0.01em;
-  margin: 40px 0 16px;
+  margin: 36px 0 14px;
   color: var(--primary);
 }
 .quartoBody h3 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  margin: 32px 0 14px;
+  margin: 28px 0 12px;
   color: var(--primary);
 }
 .quartoBody p {
