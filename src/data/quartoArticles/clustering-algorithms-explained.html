@@ -173,7 +173,7 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>euclidean <span class="op">=</span> distance.euclidean(customer_a, customer_b)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(manhattan)   <span class="co"># 137.0</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(euclidean)   <span class="co"># 121.20...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(euclidean)   <span class="co"># 121.20...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="hierarchical-clustering-explained-agglomerative-clustering-dendrograms-and-linkage-rules" class="level2">
@@ -212,7 +212,7 @@ window.Quarto = {
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>clusters <span class="op">=</span> fcluster(Z, t<span class="op">=</span><span class="dv">2</span>, criterion<span class="op">=</span><span class="st">"maxclust"</span>)</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Z)          <span class="co"># merge history, including the 202.3-ish average linkage distance</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clusters)   <span class="co"># [1 1 2 2] once both segments are cut into 2 clusters</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clusters)   <span class="co"># [1 1 2 2] once both segments are cut into 2 clusters</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="k-means-clustering-algorithm-and-k-medoids-clustering-explained" class="level2">
@@ -290,7 +290,7 @@ window.Quarto = {
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  [ 57.67 500.  ]]   -- matches the hand-computed centroids above</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.labels_)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.inertia_)   <span class="co"># total squared distance to centroid, used later for the elbow method</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.inertia_)   <span class="co"># total squared distance to centroid, used later for the elbow method</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
 </section>
 <section id="k-medoids-the-version-that-resists-outliers" class="level3">
 <h3 class="anchored" data-anchor-id="k-medoids-the-version-that-resists-outliers">K-Medoids: The Version That Resists Outliers</h3>
@@ -311,7 +311,7 @@ window.Quarto = {
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(kmedoids.cluster_centers_)   <span class="co"># real observed customers, not blended averages</span></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(kmedoids.labels_)</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># the outlier gets absorbed into whichever cluster it's nearest to,</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># without dragging that cluster's center off the real customers in it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># without dragging that cluster's center off the real customers in it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="dbscan-and-density-based-clustering-anomaly-detection-and-fraud-clustering" class="level2">
@@ -377,7 +377,7 @@ window.Quarto = {
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>core_mask <span class="op">=</span> np.zeros_like(db.labels_, dtype<span class="op">=</span><span class="bu">bool</span>)</span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>core_mask[db.core_sample_indices_] <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(core_mask)   <span class="co"># exactly which points DBSCAN classified as core points</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(core_mask)   <span class="co"># exactly which points DBSCAN classified as core points</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="grid-based-clustering-sting-clique-and-model-based-clustering-gaussian-mixture-models" class="level2">
@@ -411,7 +411,7 @@ window.Quarto = {
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gmm.means_.ravel())        <span class="co"># recovers roughly [10, 30]</span></span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gmm.weights_)              <span class="co"># recovers roughly [0.6, 0.4]</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(probs)                     <span class="co"># near-certain probability of belonging to Segment A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(probs)                     <span class="co"># near-certain probability of belonging to Segment A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="how-to-choose-the-number-of-clusters-k-elbow-method-and-rule-of-thumb" class="level2">
@@ -444,7 +444,7 @@ window.Quarto = {
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">5000</span></span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>rule_of_thumb_k <span class="op">=</span> math.sqrt(n <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(rule_of_thumb_k))   <span class="co"># 50, the same starting estimate as in the worked example</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(rule_of_thumb_k))   <span class="co"># 50, the same starting estimate as in the worked example</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="clustering-algorithms-comparison-table-which-method-fits-your-data" class="level2">
@@ -548,11 +548,16 @@ window.Quarto = {
 <section id="try-it-yourself" class="level2">
 <h2 class="anchored" data-anchor-id="try-it-yourself">Try It Yourself</h2>
 <p>Every formula above is implemented, live, in the <strong>Clustering Playground</strong> below. Drag two customers to duel Manhattan against Euclidean distance. Build your own loyalty tiers with k-means, one iteration at a time. Play fraud detective with DBSCAN’s Eps and MinPts sliders. Then take the Elbow Challenge and see if you can spot the true number of groups before the math reveals it.</p>
+<iframe title="Clustering Playground" srcdoc="<!DOCTYPE html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+<title>Clustering Playground</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap');
 
-
-  #cp-root{
+  :root{
     --bg:#12151a;
     --panel:#1b1f27;
     --panel-2:#20252e;
@@ -564,8 +569,8 @@ window.Quarto = {
     --amber:#f2a65a;
     --red:#e05a52;
   }
-  #cp-root *{box-sizing:border-box;}
-  #cp-root{
+  *{box-sizing:border-box;}
+  body{
     margin:0;
     background:
       radial-gradient(circle at 1px 1px, #232833 1px, transparent 1px) 0 0/24px 24px,
@@ -574,9 +579,9 @@ window.Quarto = {
     font-family:'Inter',sans-serif;
     padding:32px 16px 60px;
   }
-  #cp-root .wrap{max-width:880px;margin:0 auto;}
-  #cp-root header{margin-bottom:28px;}
-  #cp-root .eyebrow{
+  .wrap{max-width:880px;margin:0 auto;}
+  header{margin-bottom:28px;}
+  .eyebrow{
     font-family:'IBM Plex Mono',monospace;
     font-size:12px;
     letter-spacing:.12em;
@@ -584,17 +589,17 @@ window.Quarto = {
     color:var(--teal);
     display:flex;align-items:center;gap:8px;
   }
-  #cp-root .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block;}
-  #cp-root h1{
+  .eyebrow::before{content:&quot;&quot;;width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block;}
+  h1{
     font-family:'Space Grotesk',sans-serif;
     font-size:clamp(26px,4vw,36px);
     margin:10px 0 6px;
     letter-spacing:-0.01em;
   }
-  #cp-root .sub{color:var(--muted);font-size:15px;max-width:640px;line-height:1.5;}
+  .sub{color:var(--muted);font-size:15px;max-width:640px;line-height:1.5;}
 
-  #cp-root .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 20px;}
-  #cp-root .tab{
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 20px;}
+  .tab{
     font-family:'IBM Plex Mono',monospace;
     font-size:13px;
     padding:9px 14px;
@@ -606,29 +611,29 @@ window.Quarto = {
     user-select:none;
     transition:.15s;
   }
-  #cp-root .tab:hover{border-color:var(--teal-dim);color:var(--text);}
-  #cp-root .tab.active{background:var(--teal);color:#0c1210;border-color:var(--teal);font-weight:600;}
+  .tab:hover{border-color:var(--teal-dim);color:var(--text);}
+  .tab.active{background:var(--teal);color:#0c1210;border-color:var(--teal);font-weight:600;}
 
-  #cp-root .panel{display:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 22px 26px;}
-  #cp-root .panel.active{display:block;}
-  #cp-root .panel h2{
+  .panel{display:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 22px 26px;}
+  .panel.active{display:block;}
+  .panel h2{
     font-family:'Space Grotesk',sans-serif;
     font-size:19px;margin:0 0 4px;
   }
-  #cp-root .panel .desc{color:var(--muted);font-size:14px;margin:0 0 20px;line-height:1.55;max-width:600px;}
+  .panel .desc{color:var(--muted);font-size:14px;margin:0 0 20px;line-height:1.55;max-width:600px;}
 
-  #cp-root .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-  @media (max-width:680px){#cp-root .grid2{grid-template-columns:1fr;}}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media (max-width:680px){.grid2{grid-template-columns:1fr;}}
 
-  #cp-root .card{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
-  #cp-root .card + .card{margin-top:14px;}
+  .card{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+  .card + .card{margin-top:14px;}
 
-  #cp-root label{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;}
-  #cp-root label b{color:var(--text);}
-  #cp-root input[type=range]{width:100%;accent-color:var(--teal);margin-bottom:14px;}
+  label{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;}
+  label b{color:var(--text);}
+  input[type=range]{width:100%;accent-color:var(--teal);margin-bottom:14px;}
 
-  #cp-root .btnrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
-  #cp-root button.btn{
+  .btnrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  button.btn{
     font-family:'IBM Plex Mono',monospace;
     background:transparent;
     border:1px solid var(--teal-dim);
@@ -639,163 +644,163 @@ window.Quarto = {
     font-size:13px;
     transition:.15s;
   }
-  #cp-root button.btn:hover{background:var(--teal);color:#0c1210;}
-  #cp-root button.btn.primary{background:var(--teal);color:#0c1210;font-weight:600;}
-  #cp-root button.btn.ghost{border-color:var(--line);color:var(--muted);}
-  #cp-root button.btn.ghost:hover{color:var(--text);border-color:var(--muted);background:none;}
+  button.btn:hover{background:var(--teal);color:#0c1210;}
+  button.btn.primary{background:var(--teal);color:#0c1210;font-weight:600;}
+  button.btn.ghost{border-color:var(--line);color:var(--muted);}
+  button.btn.ghost:hover{color:var(--text);border-color:var(--muted);background:none;}
 
-  #cp-root .readout{font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;color:var(--text);}
-  #cp-root .readout .step{color:var(--muted);}
-  #cp-root .readout .val{color:var(--teal);}
-  #cp-root .readout .amt{color:var(--amber);}
+  .readout{font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;color:var(--text);}
+  .readout .step{color:var(--muted);}
+  .readout .val{color:var(--teal);}
+  .readout .amt{color:var(--amber);}
 
-  #cp-root .badge{
+  .badge{
     display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;
     padding:4px 10px;border-radius:999px;margin-top:10px;
   }
-  #cp-root .badge.ok{background:rgba(79,209,197,.15);color:var(--teal);border:1px solid var(--teal-dim);}
-  #cp-root .badge.warn{background:rgba(224,90,82,.14);color:var(--red);border:1px solid #6b2b28;}
+  .badge.ok{background:rgba(79,209,197,.15);color:var(--teal);border:1px solid var(--teal-dim);}
+  .badge.warn{background:rgba(224,90,82,.14);color:var(--red);border:1px solid #6b2b28;}
 
-  #cp-root svg{width:100%;height:auto;background:#14181f;border-radius:8px;border:1px solid var(--line);}
-  #cp-root .grid-line{stroke:#232a35;stroke-width:1;}
-  #cp-root .axis-label{fill:var(--muted);font-size:9px;font-family:'IBM Plex Mono',monospace;}
+  svg{width:100%;height:auto;background:#14181f;border-radius:8px;border:1px solid var(--line);}
+  .grid-line{stroke:#232a35;stroke-width:1;}
+  .axis-label{fill:var(--muted);font-size:9px;font-family:'IBM Plex Mono',monospace;}
 
-  #cp-root .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);}
-  #cp-root .legend span{display:inline-flex;align-items:center;gap:6px;}
-  #cp-root .swatch{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .swatch{width:9px;height:9px;border-radius:50%;display:inline-block;}
 
-  #cp-root footer{margin-top:26px;color:var(--muted);font-size:12px;font-family:'IBM Plex Mono',monospace;}
+  footer{margin-top:26px;color:var(--muted);font-size:12px;font-family:'IBM Plex Mono',monospace;}
 
 </style>
-<div id="cp-root">
-<div class="wrap">
+</head>
+<body>
+<div class=&quot;wrap&quot;>
   <header>
-    <div class="eyebrow">Interactive · No install needed</div>
+    <div class=&quot;eyebrow&quot;>Interactive · No install needed</div>
     <h1>The Clustering Playground</h1>
-    <p class="sub">Four small, honest simulations. Move the sliders, click the buttons, and watch the exact
+    <p class=&quot;sub&quot;>Four small, honest simulations. Move the sliders, click the buttons, and watch the exact
       formulas from the article run on real numbers in front of you.</p>
   </header>
 
-  <div class="tabs">
-    <div class="tab active" data-tab="dist">1. Distance Duel</div>
-    <div class="tab" data-tab="kmeans">2. K-Means Trainer</div>
-    <div class="tab" data-tab="dbscan">3. Fraud Detective (DBSCAN)</div>
-    <div class="tab" data-tab="elbow">4. Elbow Challenge</div>
+  <div class=&quot;tabs&quot;>
+    <div class=&quot;tab active&quot; data-tab=&quot;dist&quot;>1. Distance Duel</div>
+    <div class=&quot;tab&quot; data-tab=&quot;kmeans&quot;>2. K-Means Trainer</div>
+    <div class=&quot;tab&quot; data-tab=&quot;dbscan&quot;>3. Fraud Detective (DBSCAN)</div>
+    <div class=&quot;tab&quot; data-tab=&quot;elbow&quot;>4. Elbow Challenge</div>
   </div>
 
   <!-- PANEL 1: DISTANCE DUEL -->
-  <div class="panel active" id="panel-dist">
-    <h2 class="anchored">Distance Duel: Manhattan vs. Euclidean</h2>
-    <p class="desc">Two customers. One question: how "far apart" are they? Drag either customer and watch
+  <div class=&quot;panel active&quot; id=&quot;panel-dist&quot;>
+    <h2>Distance Duel: Manhattan vs. Euclidean</h2>
+    <p class=&quot;desc&quot;>Two customers. One question: how &quot;far apart&quot; are they? Drag either customer and watch
       both distance formulas recalculate live, step by step.</p>
-    <div class="grid2">
+    <div class=&quot;grid2&quot;>
       <div>
-        <div class="card">
-          <label>Customer A — Age <b id="a-age-l">34</b></label>
-          <input type="range" id="a-age" min="18" max="70" value="34">
-          <label>Customer A — Monthly spend ($) <b id="a-spend-l">220</b></label>
-          <input type="range" id="a-spend" min="0" max="600" value="220">
+        <div class=&quot;card&quot;>
+          <label>Customer A — Age <b id=&quot;a-age-l&quot;>34</b></label>
+          <input type=&quot;range&quot; id=&quot;a-age&quot; min=&quot;18&quot; max=&quot;70&quot; value=&quot;34&quot;>
+          <label>Customer A — Monthly spend ($) <b id=&quot;a-spend-l&quot;>220</b></label>
+          <input type=&quot;range&quot; id=&quot;a-spend&quot; min=&quot;0&quot; max=&quot;600&quot; value=&quot;220&quot;>
         </div>
-        <div class="card">
-          <label>Customer B — Age <b id="b-age-l">51</b></label>
-          <input type="range" id="b-age" min="18" max="70" value="51">
-          <label>Customer B — Monthly spend ($) <b id="b-spend-l">340</b></label>
-          <input type="range" id="b-spend" min="0" max="600" value="340">
+        <div class=&quot;card&quot;>
+          <label>Customer B — Age <b id=&quot;b-age-l&quot;>51</b></label>
+          <input type=&quot;range&quot; id=&quot;b-age&quot; min=&quot;18&quot; max=&quot;70&quot; value=&quot;51&quot;>
+          <label>Customer B — Monthly spend ($) <b id=&quot;b-spend-l&quot;>340</b></label>
+          <input type=&quot;range&quot; id=&quot;b-spend&quot; min=&quot;0&quot; max=&quot;600&quot; value=&quot;340&quot;>
         </div>
       </div>
       <div>
-        <svg viewbox="0 0 300 240" id="dist-svg"></svg>
-        <div class="card readout" id="dist-readout" style="margin-top:12px;"></div>
+        <svg viewBox=&quot;0 0 300 240&quot; id=&quot;dist-svg&quot;></svg>
+        <div class=&quot;card readout&quot; id=&quot;dist-readout&quot; style=&quot;margin-top:12px;&quot;></div>
       </div>
     </div>
   </div>
 
   <!-- PANEL 2: K-MEANS TRAINER -->
-  <div class="panel" id="panel-kmeans">
-    <h2 class="anchored">K-Means Trainer: Build Your Own Loyalty Tiers</h2>
-    <p class="desc">Eight real customers, plotted by age and monthly spend. Choose how many tiers (k) you want,
+  <div class=&quot;panel&quot; id=&quot;panel-kmeans&quot;>
+    <h2>K-Means Trainer: Build Your Own Loyalty Tiers</h2>
+    <p class=&quot;desc&quot;>Eight real customers, plotted by age and monthly spend. Choose how many tiers (k) you want,
       drop the starting centroids, then click <b>Step</b> to run one real iteration of assign-and-average at a time.</p>
-    <div class="grid2">
+    <div class=&quot;grid2&quot;>
       <div>
-        <svg viewbox="0 0 300 240" id="km-svg"></svg>
-        <div class="legend">
-          <span><span class="swatch" style="background:#4fd1c5"></span>Tier 1</span>
-          <span><span class="swatch" style="background:#f2a65a"></span>Tier 2</span>
-          <span><span class="swatch" style="background:#c084fc"></span>Tier 3</span>
-          <span><span class="swatch" style="background:#8b93a1"></span>Unassigned</span>
+        <svg viewBox=&quot;0 0 300 240&quot; id=&quot;km-svg&quot;></svg>
+        <div class=&quot;legend&quot;>
+          <span><span class=&quot;swatch&quot; style=&quot;background:#4fd1c5&quot;></span>Tier 1</span>
+          <span><span class=&quot;swatch&quot; style=&quot;background:#f2a65a&quot;></span>Tier 2</span>
+          <span><span class=&quot;swatch&quot; style=&quot;background:#c084fc&quot;></span>Tier 3</span>
+          <span><span class=&quot;swatch&quot; style=&quot;background:#8b93a1&quot;></span>Unassigned</span>
         </div>
       </div>
       <div>
-        <div class="card">
-          <label style="margin-bottom:10px;">Number of tiers (k)</label>
-          <div class="btnrow">
-            <button class="btn" data-k="2">k = 2</button>
-            <button class="btn" data-k="3">k = 3</button>
+        <div class=&quot;card&quot;>
+          <label style=&quot;margin-bottom:10px;&quot;>Number of tiers (k)</label>
+          <div class=&quot;btnrow&quot;>
+            <button class=&quot;btn&quot; data-k=&quot;2&quot;>k = 2</button>
+            <button class=&quot;btn&quot; data-k=&quot;3&quot;>k = 3</button>
           </div>
-          <div class="btnrow" style="margin-top:14px;">
-            <button class="btn primary" id="km-step">Step ▶ Run one iteration</button>
-            <button class="btn ghost" id="km-reset">Reset</button>
+          <div class=&quot;btnrow&quot; style=&quot;margin-top:14px;&quot;>
+            <button class=&quot;btn primary&quot; id=&quot;km-step&quot;>Step ▶ Run one iteration</button>
+            <button class=&quot;btn ghost&quot; id=&quot;km-reset&quot;>Reset</button>
           </div>
         </div>
-        <div class="card readout" id="km-readout" style="margin-top:14px;"></div>
+        <div class=&quot;card readout&quot; id=&quot;km-readout&quot; style=&quot;margin-top:14px;&quot;></div>
       </div>
     </div>
   </div>
 
   <!-- PANEL 3: DBSCAN -->
-  <div class="panel" id="panel-dbscan">
-    <h2 class="anchored">Fraud Detective: Density-Based Clustering</h2>
-    <p class="desc">Ten transactions, plotted by amount and time-of-day pattern. Adjust <b>Eps</b> (how close counts
-      as "nearby") and <b>MinPts</b> (how many neighbors make a point "normal"), and watch DBSCAN classify each
+  <div class=&quot;panel&quot; id=&quot;panel-dbscan&quot;>
+    <h2>Fraud Detective: Density-Based Clustering</h2>
+    <p class=&quot;desc&quot;>Ten transactions, plotted by amount and time-of-day pattern. Adjust <b>Eps</b> (how close counts
+      as &quot;nearby&quot;) and <b>MinPts</b> (how many neighbors make a point &quot;normal&quot;), and watch DBSCAN classify each
       transaction as core, border, or noise in real time.</p>
-    <div class="grid2">
+    <div class=&quot;grid2&quot;>
       <div>
-        <svg viewbox="0 0 300 240" id="db-svg"></svg>
-        <div class="legend">
-          <span><span class="swatch" style="background:#4fd1c5"></span>Core</span>
-          <span><span class="swatch" style="background:#2b6f68;border:1px solid #4fd1c5"></span>Border</span>
-          <span><span class="swatch" style="background:#e05a52"></span>Noise / flagged</span>
+        <svg viewBox=&quot;0 0 300 240&quot; id=&quot;db-svg&quot;></svg>
+        <div class=&quot;legend&quot;>
+          <span><span class=&quot;swatch&quot; style=&quot;background:#4fd1c5&quot;></span>Core</span>
+          <span><span class=&quot;swatch&quot; style=&quot;background:#2b6f68;border:1px solid #4fd1c5&quot;></span>Border</span>
+          <span><span class=&quot;swatch&quot; style=&quot;background:#e05a52&quot;></span>Noise / flagged</span>
         </div>
       </div>
       <div>
-        <div class="card">
-          <label>Eps (neighborhood radius) <b id="db-eps-l">18</b></label>
-          <input type="range" id="db-eps" min="5" max="45" value="18">
-          <label>MinPts (points needed to be "core") <b id="db-minpts-l">3</b></label>
-          <input type="range" id="db-minpts" min="2" max="5" value="3">
+        <div class=&quot;card&quot;>
+          <label>Eps (neighborhood radius) <b id=&quot;db-eps-l&quot;>18</b></label>
+          <input type=&quot;range&quot; id=&quot;db-eps&quot; min=&quot;5&quot; max=&quot;45&quot; value=&quot;18&quot;>
+          <label>MinPts (points needed to be &quot;core&quot;) <b id=&quot;db-minpts-l&quot;>3</b></label>
+          <input type=&quot;range&quot; id=&quot;db-minpts&quot; min=&quot;2&quot; max=&quot;5&quot; value=&quot;3&quot;>
         </div>
-        <div class="card readout" id="db-readout" style="margin-top:14px;"></div>
+        <div class=&quot;card readout&quot; id=&quot;db-readout&quot; style=&quot;margin-top:14px;&quot;></div>
       </div>
     </div>
   </div>
 
   <!-- PANEL 4: ELBOW -->
-  <div class="panel" id="panel-elbow">
-    <h2 class="anchored">The Elbow Challenge</h2>
-    <p class="desc">This dataset actually has 3 real groups baked into it, but you don't get told that in
+  <div class=&quot;panel&quot; id=&quot;panel-elbow&quot;>
+    <h2>The Elbow Challenge</h2>
+    <p class=&quot;desc&quot;>This dataset actually has 3 real groups baked into it, but you don't get told that in
       real life. Slide k, watch the total error (inertia) drop, and try to spot the elbow before we reveal it.</p>
-    <div class="grid2">
+    <div class=&quot;grid2&quot;>
       <div>
-        <svg viewbox="0 0 300 240" id="elbow-cluster-svg"></svg>
+        <svg viewBox=&quot;0 0 300 240&quot; id=&quot;elbow-cluster-svg&quot;></svg>
       </div>
       <div>
-        <svg viewbox="0 0 300 240" id="elbow-chart-svg"></svg>
+        <svg viewBox=&quot;0 0 300 240&quot; id=&quot;elbow-chart-svg&quot;></svg>
       </div>
     </div>
-    <div class="card" style="margin-top:14px;">
-      <label>Your guess: k = <b id="elbow-k-l">3</b></label>
-      <input type="range" id="elbow-k" min="1" max="7" value="3">
-      <div class="btnrow">
-        <button class="btn primary" id="elbow-lock">Lock in my guess</button>
+    <div class=&quot;card&quot; style=&quot;margin-top:14px;&quot;>
+      <label>Your guess: k = <b id=&quot;elbow-k-l&quot;>3</b></label>
+      <input type=&quot;range&quot; id=&quot;elbow-k&quot; min=&quot;1&quot; max=&quot;7&quot; value=&quot;3&quot;>
+      <div class=&quot;btnrow&quot;>
+        <button class=&quot;btn primary&quot; id=&quot;elbow-lock&quot;>Lock in my guess</button>
       </div>
-      <div class="readout" id="elbow-readout" style="margin-top:12px;"></div>
+      <div class=&quot;readout&quot; id=&quot;elbow-readout&quot; style=&quot;margin-top:12px;&quot;></div>
     </div>
   </div>
 
   <footer>Every number above is computed live in your browser using the same formulas from the article — nothing here is prerecorded.</footer>
 </div>
 
-</div>
 <script>
 // ---------- helpers ----------
 function euclid(p,q){return Math.sqrt((p[0]-q[0])**2+(p[1]-q[1])**2);}
@@ -855,11 +860,11 @@ function renderDist(){
   distSvg.appendChild(svgEl('text',{x:bx+8,y:by-8,class:'axis-label',fill:'#eceae4'})).textContent='B';
 
   document.getElementById('dist-readout').innerHTML=
-    `<div class="step">Age gap: |${aAge} − ${bAge}| = <span class="val">${dAge}</span></div>`+
-    `<div class="step">Spend gap: |${aSpend} − ${bSpend}| = <span class="val">${dSpend}</span></div>`+
-    `<hr style="border-color:#2c3340;margin:8px 0;">`+
-    `<div><b style="color:#f2a65a">Manhattan</b> = ${dAge} + ${dSpend} = <span class="amt">${man.toFixed(1)}</span></div>`+
-    `<div><b style="color:#4fd1c5">Euclidean</b> = √(${dAge}² + ${dSpend}²) = √(${(dAge*dAge)} + ${(dSpend*dSpend)}) = <span class="amt">${euc.toFixed(1)}</span></div>`;
+    `<div class=&quot;step&quot;>Age gap: |${aAge} − ${bAge}| = <span class=&quot;val&quot;>${dAge}</span></div>`+
+    `<div class=&quot;step&quot;>Spend gap: |${aSpend} − ${bSpend}| = <span class=&quot;val&quot;>${dSpend}</span></div>`+
+    `<hr style=&quot;border-color:#2c3340;margin:8px 0;&quot;>`+
+    `<div><b style=&quot;color:#f2a65a&quot;>Manhattan</b> = ${dAge} + ${dSpend} = <span class=&quot;amt&quot;>${man.toFixed(1)}</span></div>`+
+    `<div><b style=&quot;color:#4fd1c5&quot;>Euclidean</b> = √(${dAge}² + ${dSpend}²) = √(${(dAge*dAge)} + ${(dSpend*dSpend)}) = <span class=&quot;amt&quot;>${euc.toFixed(1)}</span></div>`;
 }
 ['a-age','a-spend','b-age','b-spend'].forEach(id=>document.getElementById(id).addEventListener('input',renderDist));
 renderDist();
@@ -920,12 +925,12 @@ function renderKm(){
     svg.appendChild(svgEl('rect',{x:kmToX(c[0])-6,y:kmToY(c[1])-6,width:12,height:12,fill:'none',stroke:kmColors[i],'stroke-width':2}));
   });
   const readout=document.getElementById('km-readout');
-  let html = `<div class="step">Iteration: <span class="val">${kmIter}</span></div>`;
-  if(kmIter>0) html += `<div class="step">Total error (inertia): <span class="amt">${kmInertia().toFixed(0)}</span></div>`;
+  let html = `<div class=&quot;step&quot;>Iteration: <span class=&quot;val&quot;>${kmIter}</span></div>`;
+  if(kmIter>0) html += `<div class=&quot;step&quot;>Total error (inertia): <span class=&quot;amt&quot;>${kmInertia().toFixed(0)}</span></div>`;
   kmCentroids.forEach((c,i)=>{
-    html += `<div class="step">Centroid ${i+1}: age <span class="val">${c[0].toFixed(1)}</span>, spend <span class="val">$${c[1].toFixed(0)}</span></div>`;
+    html += `<div class=&quot;step&quot;>Centroid ${i+1}: age <span class=&quot;val&quot;>${c[0].toFixed(1)}</span>, spend <span class=&quot;val&quot;>$${c[1].toFixed(0)}</span></div>`;
   });
-  if(kmConverged) html += `<div class="badge ok">✓ Converged — the tiers stopped moving</div>`;
+  if(kmConverged) html += `<div class=&quot;badge ok&quot;>✓ Converged — the tiers stopped moving</div>`;
   readout.innerHTML=html;
 }
 document.querySelectorAll('#panel-kmeans [data-k]').forEach(b=>{
@@ -948,13 +953,13 @@ function dbToY(v){return H-PAD-(v/240)*(H-2*PAD);}
 
 function dbClassify(eps,minPts){
   const n=dbData.length;
-  const neighbors = dbData.map((p,i)=>dbData.map((q,j)=>i!==j && euclid(p,q)<=eps).reduce((s,v,j)=>s+(v?1:0),0));
+  const neighbors = dbData.map((p,i)=>dbData.map((q,j)=>i!==j &amp;&amp; euclid(p,q)<=eps).reduce((s,v,j)=>s+(v?1:0),0));
   const isCore = neighbors.map(c=>c+1>=minPts); // include self
   const labels = dbData.map((p,i)=>{
     if(isCore[i]) return 'core';
     // border if within eps of a core point
     for(let j=0;j<n;j++){
-      if(isCore[j] && euclid(p,dbData[j])<=eps) return 'border';
+      if(isCore[j] &amp;&amp; euclid(p,dbData[j])<=eps) return 'border';
     }
     return 'noise';
   });
@@ -981,11 +986,11 @@ function renderDb(){
   const flagged = labels.filter(l=>l==='noise').length;
   const readout=document.getElementById('db-readout');
   readout.innerHTML =
-    `<div class="step">Core transactions: <span class="val">${labels.filter(l=>l==='core').length}</span></div>`+
-    `<div class="step">Border transactions: <span class="val">${labels.filter(l=>l==='border').length}</span></div>`+
-    `<div class="step">Flagged as noise: <span class="amt">${flagged}</span></div>`+
-    (flagged>0 ? `<div class="badge warn">🚩 ${flagged} transaction${flagged>1?'s':''} don't belong to any normal group</div>`
-                : `<div class="badge ok">No outliers at this setting</div>`);
+    `<div class=&quot;step&quot;>Core transactions: <span class=&quot;val&quot;>${labels.filter(l=>l==='core').length}</span></div>`+
+    `<div class=&quot;step&quot;>Border transactions: <span class=&quot;val&quot;>${labels.filter(l=>l==='border').length}</span></div>`+
+    `<div class=&quot;step&quot;>Flagged as noise: <span class=&quot;amt&quot;>${flagged}</span></div>`+
+    (flagged>0 ? `<div class=&quot;badge warn&quot;>🚩 ${flagged} transaction${flagged>1?'s':''} don't belong to any normal group</div>`
+                : `<div class=&quot;badge ok&quot;>No outliers at this setting</div>`);
 }
 ['db-eps','db-minpts'].forEach(id=>document.getElementById(id).addEventListener('input',renderDb));
 renderDb();
@@ -1058,23 +1063,25 @@ function renderElbow(){
   renderElbowCluster(k);
   const inertias=renderElbowChart(k);
   document.getElementById('elbow-readout').innerHTML =
-    `<div class="step">Total error at k=${k}: <span class="amt">${inertias[k-1].toFixed(0)}</span></div>`;
+    `<div class=&quot;step&quot;>Total error at k=${k}: <span class=&quot;amt&quot;>${inertias[k-1].toFixed(0)}</span></div>`;
 }
 document.getElementById('elbow-k').addEventListener('input',renderElbow);
 document.getElementById('elbow-lock').addEventListener('click',()=>{
   const k=+document.getElementById('elbow-k').value;
   const box=document.getElementById('elbow-readout');
   if(k===3){
-    box.innerHTML += `<div class="badge ok">✓ That's the elbow. This data really does have 3 groups.</div>`;
+    box.innerHTML += `<div class=&quot;badge ok&quot;>✓ That's the elbow. This data really does have 3 groups.</div>`;
   } else if(k<3){
-    box.innerHTML += `<div class="badge warn">Too early — error is still dropping fast. Try a bit higher.</div>`;
+    box.innerHTML += `<div class=&quot;badge warn&quot;>Too early — error is still dropping fast. Try a bit higher.</div>`;
   } else {
-    box.innerHTML += `<div class="badge warn">Past the elbow — you're paying for splits that add little value.</div>`;
+    box.innerHTML += `<div class=&quot;badge warn&quot;>Past the elbow — you're paying for splits that add little value.</div>`;
   }
 });
 renderElbow();
 
 </script>
+</body>
+</html>" style="width:100%; height:1100px; border:none; border-radius:12px; display:block;" loading="lazy" scrolling="auto"></iframe>
 </section>
 <section id="what-comes-next-in-this-series" class="level2">
 <h2 class="anchored" data-anchor-id="what-comes-next-in-this-series">What Comes Next in This Series</h2>
