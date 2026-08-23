@@ -137,3 +137,78 @@
   padding: 8px 12px;
   text-align: left;
 }
+
+.quartoBody :global(div.sourceCode) {
+  color: #cfcfc2;
+  background-color: #232629;
+  border-radius: 10px;
+  margin: 28px 0;
+  position: relative;
+  border: 1px solid #34383c;
+}
+
+.quartoBody :global(pre.sourceCode) {
+  margin: 0;
+  padding: 20px 20px 16px;
+  overflow-x: auto;
+  background: transparent;
+  border: none;
+}
+
+.quartoBody :global(div.sourceCode)::before {
+  content: "Python";
+  position: absolute;
+  top: -11px;
+  left: 14px;
+  background: #f2a65a;
+  color: #1a1a1a;
+  font-family: 'IBM Plex Mono', 'Menlo', 'Consolas', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.quartoBody :global(code.sourceCode) {
+  font-family: 'JetBrains Mono', 'Menlo', 'Consolas', 'Lucida Console', monospace;
+  font-size: 13.5px;
+  line-height: 1.65;
+  background: transparent;
+  color: #cfcfc2;
+  white-space: pre;
+}
+
+/* Real pandoc/skylighting token colors (breezedark base, tuned toward
+   a One-Dark/Jupyter palette for keywords, functions, and variables) */
+.quartoBody :global(code span)      { color: #cfcfc2; }
+.quartoBody :global(code span.al)   { color: #95da4c; background-color: #4d1f24; font-weight: bold; }
+.quartoBody :global(code span.an)   { color: #3f8058; }
+.quartoBody :global(code span.at)   { color: #2980b9; }
+.quartoBody :global(code span.bn)   { color: #f67400; }
+.quartoBody :global(code span.bu)   { color: #7f8c8d; }
+.quartoBody :global(code span.cf)   { color: #fdbc4b; font-weight: bold; }
+.quartoBody :global(code span.ch)   { color: #3daee9; }
+.quartoBody :global(code span.cn)   { color: #27aeae; font-weight: bold; }
+.quartoBody :global(code span.co)   { color: #7a7c7d; font-style: italic; }
+.quartoBody :global(code span.cv)   { color: #7f8c8d; }
+.quartoBody :global(code span.do)   { color: #a43340; }
+.quartoBody :global(code span.dt)   { color: #2980b9; }
+.quartoBody :global(code span.dv)   { color: #f67400; }
+.quartoBody :global(code span.er)   { color: #da4453; text-decoration: underline; }
+.quartoBody :global(code span.ex)   { color: #0099ff; font-weight: bold; }
+.quartoBody :global(code span.fl)   { color: #f67400; }
+.quartoBody :global(code span.fu)   { color: #c586c0; }
+.quartoBody :global(code span.im)   { color: #27ae60; }
+.quartoBody :global(code span.in)   { color: #c45b00; }
+.quartoBody :global(code span.kw)   { color: #569cd6; font-weight: bold; }
+.quartoBody :global(code span.op)   { color: #cfcfc2; }
+.quartoBody :global(code span.ot)   { color: #27ae60; }
+.quartoBody :global(code span.pp)   { color: #27ae60; }
+.quartoBody :global(code span.sc)   { color: #3daee9; }
+.quartoBody :global(code span.ss)   { color: #da4453; }
+.quartoBody :global(code span.st)   { color: #f44f4f; }
+.quartoBody :global(code span.va)   { color: #4ec9b0; }
+.quartoBody :global(code span.vs)   { color: #da4453; }
+.quartoBody :global(code span.wa)   { color: #da4453; }
