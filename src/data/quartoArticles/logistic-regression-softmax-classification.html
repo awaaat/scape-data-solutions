@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-08-27">
+<meta name="description" content="A complete, hands-on guide to logistic regression and softmax classification. Covers the sigmoid function, the log-loss cost function, softmax for multi-class problems, and classifier evaluation metrics, with every formula worked by hand on a stock market and credit default example, correct scikit-learn code, external peer-reviewed studies, and a free interactive simulator you can run in your browser.">
+
+<title>Logistic Regression &amp; Softmax Classification Explained: Predicting Market Direction and Loan Default With Real Formulas and an Interactive Simulator</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="logistic-regression-softmax-classification_files/libs/clipboard/clipboard.min.js"></script>
+<script src="logistic-regression-softmax-classification_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="logistic-regression-softmax-classification_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="logistic-regression-softmax-classification_files/libs/quarto-html/popper.min.js"></script>
+<script src="logistic-regression-softmax-classification_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="logistic-regression-softmax-classification_files/libs/quarto-html/anchor.min.js"></script>
+<link href="logistic-regression-softmax-classification_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="logistic-regression-softmax-classification_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="logistic-regression-softmax-classification_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="logistic-regression-softmax-classification_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="logistic-regression-softmax-classification_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<section id="what-classification-is-and-why-regression-cannot-do-it-alone" class="level2">
+<h2 class="anchored" data-anchor-id="what-classification-is-and-why-regression-cannot-do-it-alone">What Classification Is, and Why Regression Cannot Do It Alone</h2>
+<p>In our <a href="https://www.scapedatasolutions.com/blog/ridge-lasso-elastic-net-regression">Ridge, Lasso and Elastic Net article</a>, the model predicted a continuous number, a forward return. Many real business questions are not that shape at all. A bank does not usually ask for a customer’s exact future balance. It asks a simpler question. Will this customer default, yes or no. A trading desk does not always need the exact next return. It often just needs to know whether the market will go up or down.</p>
+<p>This is a classification problem. The target is a category, not a number on a scale. The simplest case has only two categories, called binary classification. Will the market go up, y equals 1, or down, y equals 0. Will the loan default, y equals 1, or not, y equals 0. Linear regression can technically be forced to output a 0 or 1 label, but it does a poor job of it. Its output can run below 0 or above 1, which makes no sense as a probability. Logistic regression exists to fix exactly that.</p>
+</section>
+<section id="logistic-regression-turning-a-score-into-a-probability" class="level2">
+<h2 class="anchored" data-anchor-id="logistic-regression-turning-a-score-into-a-probability">Logistic Regression: Turning a Score Into a Probability</h2>
+<p>Logistic regression is the standard first tool for binary classification. It does not predict the label directly. It predicts the probability that an instance belongs to the positive class, then applies a threshold, usually 50 percent, to turn that probability into a decision.</p>
+<p>The model first computes a score, the same weighted sum of features used in linear regression. It then passes that score through the sigmoid function.</p>
+<p><span class="math display">\hat{p}^{(i)} = \sigma\left(x^{(i)}\theta\right) = \frac{1}{1 + \exp\left(-x^{(i)}\theta\right)}</span></p>
+<p><strong>Breaking this down.</strong> <span class="math inline">x^{(i)}</span> is the feature vector for one instance, one row of input data. <span class="math inline">\theta</span> is the same coefficient vector from linear regression, one weight per feature, plus a bias term. <span class="math inline">x^{(i)}\theta</span> is the raw score, a weighted sum, exactly as in ordinary regression. This score can be any real number, negative or positive, large or small. The sigmoid function, written <span class="math inline">\sigma</span>, squashes that unbounded score into a value strictly between 0 and 1. That squashed value, <span class="math inline">\hat{p}</span>, is the model’s estimated probability that this instance belongs to the positive class.</p>
+<p><strong>Why sigmoid specifically.</strong> The sigmoid curve is shaped like a flattened S. Very negative scores map close to 0. Very positive scores map close to 1. A score of exactly 0 maps to exactly 0.5. This shape means the model becomes more confident as the raw score moves further from zero in either direction, which matches how a probability should behave.</p>
+<section id="worked-example-scoring-a-single-trading-day-by-hand" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-scoring-a-single-trading-day-by-hand">Worked Example: Scoring a Single Trading Day by Hand</h3>
+<p>Suppose a simple one-feature model uses only 10-day momentum, <span class="math inline">x</span>, to predict whether the market rises over the next 25 days. Training has produced a bias of <span class="math inline">\theta_0 = -0.2</span> and a slope of <span class="math inline">\theta_1 = 0.9</span> on standardized momentum.</p>
+<p>Take a day where standardized momentum is <span class="math inline">x = 1.4</span>, meaning momentum is 1.4 standard deviations above its average.</p>
+<p><span class="math display">x\theta = \theta_0 + \theta_1 x = -0.2 + (0.9)(1.4) = -0.2 + 1.26 = \mathbf{1.06}</span></p>
+<p><span class="math display">\hat{p} = \frac{1}{1 + \exp(-1.06)} = \frac{1}{1 + 0.3465} = \frac{1}{1.3465} \approx \mathbf{0.743}</span></p>
+<p><strong>What this means in practice.</strong> The model estimates a 74.3 percent chance the market rises over the next 25 days, given this level of momentum. Since 0.743 is above the 0.5 threshold, the model predicts <span class="math inline">\hat{y} = 1</span>, market up. A trading desk could use this probability directly to size a position, rather than only using the binary decision. A 74.3 percent estimate justifies a larger long position than a 51 percent estimate would, even though both cross the same threshold.</p>
+<p>Now compare a weaker momentum day, <span class="math inline">x = -0.5</span>.</p>
+<p><span class="math display">x\theta = -0.2 + (0.9)(-0.5) = -0.2 - 0.45 = \mathbf{-0.65}</span></p>
+<p><span class="math display">\hat{p} = \frac{1}{1 + \exp(0.65)} = \frac{1}{1 + 1.9155} \approx \mathbf{0.343}</span></p>
+<p>This falls below 0.5, so the model predicts <span class="math inline">\hat{y} = 0</span>, market down. Notice the score and the probability moved in the same direction. A negative score always gives a probability below 0.5, and a positive score always gives a probability above 0.5.</p>
+</section>
+</section>
+<section id="training-the-model-the-log-loss-cost-function" class="level2">
+<h2 class="anchored" data-anchor-id="training-the-model-the-log-loss-cost-function">Training the Model: The Log-Loss Cost Function</h2>
+<p>Linear regression is trained by minimizing squared error. Logistic regression needs a different cost function, because squared error does not punish confident, wrong probability estimates harshly enough. The standard choice is log loss, also called binary cross-entropy.</p>
+<p><span class="math display">J(\theta) = -\frac{1}{m}\sum_{i=1}^{m}\left[y^{(i)}\log\left(\hat{p}^{(i)}\right) + \left(1 - y^{(i)}\right)\log\left(1 - \hat{p}^{(i)}\right)\right]</span></p>
+<p><strong>Breaking this down.</strong> <span class="math inline">m</span> is the number of training examples. <span class="math inline">y^{(i)}</span> is the true label for example <span class="math inline">i</span>, either 0 or 1. <span class="math inline">\hat{p}^{(i)}</span> is the model’s predicted probability for that example. Only one of the two terms inside the brackets is ever active for a given example. If <span class="math inline">y^{(i)} = 1</span>, the second term becomes zero, and the formula only scores <span class="math inline">\log(\hat{p}^{(i)})</span>. If <span class="math inline">y^{(i)} = 0</span>, the first term becomes zero, and the formula only scores <span class="math inline">\log(1 - \hat{p}^{(i)})</span>. The minus sign and the <span class="math inline">\frac{1}{m}</span> at the front turn this into a positive average cost that training tries to minimize.</p>
+<p><strong>Why logs, and why this punishes confidence.</strong> Log of a number close to 1 is close to 0, almost no penalty. Log of a number close to 0 is a large negative number, which becomes a large penalty once the minus sign is applied. So a confident, correct prediction, such as <span class="math inline">\hat{p} = 0.95</span> for a true positive, gets almost no penalty. A confident, wrong prediction, such as <span class="math inline">\hat{p} = 0.05</span> for a true positive, gets a very large penalty. This is exactly the behavior you want from a probability-based classifier.</p>
+<section id="worked-example-comparing-two-predictions-by-hand" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-comparing-two-predictions-by-hand">Worked Example: Comparing Two Predictions by Hand</h3>
+<p>Take two training examples, both with true label <span class="math inline">y = 1</span>, market actually went up.</p>
+<p>Example A predicted <span class="math inline">\hat{p} = 0.9</span>, a confident and correct estimate.</p>
+<p><span class="math display">\text{Cost}_A = -\log(0.9) \approx \mathbf{0.105}</span></p>
+<p>Example B predicted <span class="math inline">\hat{p} = 0.2</span>, a confident but wrong estimate.</p>
+<p><span class="math display">\text{Cost}_B = -\log(0.2) \approx \mathbf{1.609}</span></p>
+<p><strong>What this means in practice.</strong> Example B costs roughly fifteen times more than Example A, even though both are single, similarly sized mistakes in a loose sense. This is the mechanism that makes log loss a much better training signal than squared error for classification. It aggressively punishes a model that is both wrong and overconfident, which is the exact failure mode a bank or a trading desk cannot afford in a risk model.</p>
+<p>There is no closed-form solution for the <span class="math inline">\theta</span> that minimizes this cost function. Gradient descent finds it instead, using the following gradient.</p>
+<p><span class="math display">\frac{\partial}{\partial\theta_j}J(\theta) = \frac{1}{m}\sum_{i=1}^{m}\left[\sigma\left(x^{(i)}\theta\right) - y^{(i)}\right]x_j^{(i)}</span></p>
+<p><strong>Breaking this down.</strong> This formula looks almost identical to the gradient used for linear regression in our Ridge and Lasso article. The difference is that the prediction here is <span class="math inline">\sigma(x^{(i)}\theta)</span>, the sigmoid output, rather than a raw linear score. The bracketed term is simply the prediction error for example <span class="math inline">i</span>, predicted probability minus actual label. Multiplying by <span class="math inline">x_j^{(i)}</span> and averaging over all examples gives the direction that most reduces log loss for coefficient <span class="math inline">j</span>. This gradient can be regularized with the same Ridge or Lasso penalties covered in the previous article, since the underlying update mechanics are identical.</p>
+</section>
+<section id="deriving-the-gradient-step-by-step" class="level3">
+<h3 class="anchored" data-anchor-id="deriving-the-gradient-step-by-step">Deriving the Gradient, Step by Step</h3>
+<p>The gradient above is not handed down by assumption. It falls out of the chain rule, and it is worth deriving once so the formula stops looking arbitrary.</p>
+<p>Start with the sigmoid function’s own derivative, since every later step depends on it.</p>
+<p><span class="math display">\sigma(z) = \frac{1}{1+\exp(-z)} \quad \Rightarrow \quad \frac{d\sigma}{dz} = \sigma(z)\big(1-\sigma(z)\big)</span></p>
+<p>This is a standard result from the quotient rule, but the useful part is what it means. The sigmoid’s own slope is largest near <span class="math inline">z = 0</span>, where <span class="math inline">\sigma(z) = 0.5</span>, and flattens out toward the extremes, matching the S-shape described earlier.</p>
+<p>Now consider the cost contributed by a single training example <span class="math inline">i</span>, writing <span class="math inline">p = \sigma(z)</span> and <span class="math inline">z = x^{(i)}\theta</span> to keep the notation compact.</p>
+<p><span class="math display">\ell^{(i)} = y^{(i)}\log(p) + \left(1-y^{(i)}\right)\log(1-p)</span></p>
+<p>Differentiate this with respect to <span class="math inline">p</span> first, using the ordinary derivative of a logarithm.</p>
+<p><span class="math display">\frac{\partial \ell^{(i)}}{\partial p} = \frac{y^{(i)}}{p} - \frac{1-y^{(i)}}{1-p}</span></p>
+<p>Now apply the chain rule twice, once from <span class="math inline">\ell^{(i)}</span> to <span class="math inline">p</span>, and once from <span class="math inline">p</span> to <span class="math inline">\theta_j</span>, using <span class="math inline">\frac{\partial p}{\partial z} = p(1-p)</span> and <span class="math inline">\frac{\partial z}{\partial \theta_j} = x_j^{(i)}</span>.</p>
+<p><span class="math display">\frac{\partial \ell^{(i)}}{\partial \theta_j} = \left[\frac{y^{(i)}}{p} - \frac{1-y^{(i)}}{1-p}\right] \cdot p(1-p) \cdot x_j^{(i)}</span></p>
+<p>Multiply the bracketed term through by <span class="math inline">p(1-p)</span> directly. This is the step where the algebra collapses to something much simpler.</p>
+<p><span class="math display">\left[\frac{y^{(i)}}{p} - \frac{1-y^{(i)}}{1-p}\right] p(1-p) = y^{(i)}(1-p) - \left(1-y^{(i)}\right)p</span></p>
+<p>Expand the right-hand side and collect terms.</p>
+<p><span class="math display">y^{(i)}(1-p) - \left(1-y^{(i)}\right)p = y^{(i)} - y^{(i)}p - p + y^{(i)}p = y^{(i)} - p</span></p>
+<p>Every <span class="math inline">p</span> term with a <span class="math inline">y^{(i)}</span> coefficient cancels exactly. What survives is simply <span class="math inline">y^{(i)} - p</span>, so:</p>
+<p><span class="math display">\frac{\partial \ell^{(i)}}{\partial \theta_j} = \left(y^{(i)} - p\right)x_j^{(i)} = -\left[\sigma\left(x^{(i)}\theta\right) - y^{(i)}\right]x_j^{(i)}</span></p>
+<p>Sum this over all <span class="math inline">m</span> examples, divide by <span class="math inline">m</span>, and apply the overall minus sign from <span class="math inline">J(\theta) = -\frac{1}{m}\sum_i \ell^{(i)}</span>, and the two negative signs cancel, leaving exactly the gradient stated above. The reason logistic regression is tractable at all is this cancellation. The messy sigmoid derivative, <span class="math inline">p(1-p)</span>, disappears completely, leaving a clean prediction-error term identical in shape to the linear regression gradient. This is not a coincidence. It is a direct consequence of pairing the sigmoid function with the log-loss cost function specifically, rather than any other combination of activation and cost.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>X_train_scaled <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>X_test_scaled <span class="op">=</span> scaler.transform(X_test)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># penalty="l2" applies Ridge-style regularization by default,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># matching the log-loss gradient described above</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LogisticRegression(penalty<span class="op">=</span><span class="st">"l2"</span>, C<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>model.fit(X_train_scaled, y_train)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>predicted_probabilities <span class="op">=</span> model.predict_proba(X_test_scaled)[:, <span class="dv">1</span>]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>predicted_labels <span class="op">=</span> model.predict(X_test_scaled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="a-real-business-case-credit-default-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="a-real-business-case-credit-default-prediction">A Real Business Case: Credit Default Prediction</h2>
+<p>Logistic regression is a foundational tool for credit risk, not just an academic example. A study published in Royal Society Open Science applied logistic regression alongside support vector machines and deep neural networks to peer-to-peer lending data, using it to replicate lender acceptance decisions and predict the likelihood of loan default. A separate peer-reviewed study applied a logistic regression model directly to consumer loan data from a Portuguese bank. It found that default risk rose with loan spread, loan term, and borrower age, while owning more credit cards was linked to lower default risk. That same study reported the model correctly predicted default outcomes in close to 90 percent of cases.</p>
+<p>Picture a small lender building its own version of this model. It has loan spread, loan term, borrower age, and number of open credit cards as features, and a binary label, defaulted or not. The workflow is identical to the momentum example above. Standardize the features, fit logistic regression, then read the sigmoid output as a probability of default for each new applicant. The lender can then set its own approval threshold based on how much default risk it can absorb, rather than relying only on a fixed 50 percent cutoff.</p>
+<section id="a-school-assignment-angle" class="level3">
+<h3 class="anchored" data-anchor-id="a-school-assignment-angle">A School Assignment Angle</h3>
+<p>A common class assignment mirrors this exactly. Given a small labeled dataset, such as hours studied and a pass or fail outcome, students are asked to fit a logistic regression model and report the estimated coefficient. That coefficient answers a direct question. How much does one extra hour of study shift the log-odds of passing. Reporting the sigmoid-transformed probability for a specific student, alongside the raw coefficient, is usually what separates a strong writeup from a weak one, since it shows the model’s output in a form a non-technical reader can actually understand.</p>
+</section>
+</section>
+<section id="feature-scaling-a-step-that-comes-before-any-of-this" class="level2">
+<h2 class="anchored" data-anchor-id="feature-scaling-a-step-that-comes-before-any-of-this">Feature Scaling: A Step That Comes Before Any of This</h2>
+<p>Before fitting a logistic regression model, features generally need to be put on a comparable scale. Machine learning algorithms perform badly when input features have very different scales, since this slows down and worsens optimization methods such as gradient descent. Two common approaches handle this.</p>
+<p>Min-max scaling, or normalization, shifts and rescales every value so it falls between 0 and 1.</p>
+<p><span class="math display">x^{(i)}_{\text{scaled}} = \frac{x^{(i)}_j - \min_j}{\max_j - \min_j}</span></p>
+<p><strong>Breaking this down.</strong> <span class="math inline">\min_j</span> and <span class="math inline">\max_j</span> are the smallest and largest values feature <span class="math inline">j</span> takes across the training set. Subtracting the minimum shifts the smallest value to 0. Dividing by the range compresses everything into the 0 to 1 band.</p>
+<p>Standardization instead subtracts the mean and divides by the standard deviation, giving the feature a distribution centered at 0 with unit variance. It does not force values into a fixed range, which can be a problem for some algorithms, but it is the more common default for logistic regression.</p>
+<p>One detail matters more than which method you pick. Only the training set’s minimum, maximum, mean, or variance should be measured. Those same numbers are then applied to the validation and test sets. Measuring scaling statistics on the full dataset, tests included, leaks information from data the model is not supposed to have seen yet.</p>
+</section>
+<section id="softmax-regression-classification-with-more-than-two-categories" class="level2">
+<h2 class="anchored" data-anchor-id="softmax-regression-classification-with-more-than-two-categories">Softmax Regression: Classification With More Than Two Categories</h2>
+<p>Logistic regression handles two classes. Many real problems have more. A credit rating is not just default or no default. It can be AAA, BBB, or junk. Softmax regression, also called multinomial logistic regression, generalizes the binary classifier to this multi-class setting.</p>
+<p>Instead of one coefficient vector <span class="math inline">\theta</span>, softmax regression learns a separate vector <span class="math inline">\theta^{(c)}</span> for every category <span class="math inline">c</span>. Each category gets its own score, and the softmax function turns all the scores into probabilities that sum to exactly 1.</p>
+<p><span class="math display">\hat{p}_c^{(i)} = \text{Softmax}_c\left(x^{(i)}, \Theta\right) = \frac{\exp\left(x^{(i)}\theta^{(c)}\right)}{\sum_{j=1}^{C}\exp\left(x^{(i)}\theta^{(j)}\right)}</span></p>
+<p><strong>Breaking this down.</strong> <span class="math inline">C</span> is the total number of categories, three in the credit rating example. <span class="math inline">\Theta</span>, capital theta, collects every category’s coefficient vector into one object. The numerator exponentiates the score for category <span class="math inline">c</span> specifically. The denominator adds up the exponentiated scores across every category. Dividing the two turns category <span class="math inline">c</span>’s raw score into a proper probability, guaranteed to land between 0 and 1, with all <span class="math inline">C</span> probabilities summing to 1. The predicted category is simply whichever <span class="math inline">c</span> has the highest score, and therefore the highest probability.</p>
+<section id="worked-example-rating-a-company-by-hand" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-rating-a-company-by-hand">Worked Example: Rating a Company by Hand</h3>
+<p>Suppose a simplified credit model produces three raw scores for one company, one score per rating tier.</p>
+<p><span class="math display">x^{(i)}\theta^{(\text{AAA})} = 2.0, \qquad x^{(i)}\theta^{(\text{BBB})} = 1.0, \qquad x^{(i)}\theta^{(\text{junk})} = 0.1</span></p>
+<p>First exponentiate each score.</p>
+<p><span class="math display">\exp(2.0) \approx 7.389, \qquad \exp(1.0) \approx 2.718, \qquad \exp(0.1) \approx 1.105</span></p>
+<p><span class="math display">\text{Sum} = 7.389 + 2.718 + 1.105 = \mathbf{11.212}</span></p>
+<p><span class="math display">\hat{p}_{AAA} = \frac{7.389}{11.212} \approx \mathbf{0.659}, \qquad \hat{p}_{BBB} = \frac{2.718}{11.212} \approx \mathbf{0.242}, \qquad \hat{p}_{junk} = \frac{1.105}{11.212} \approx \mathbf{0.099}</span></p>
+<p><strong>What this means in practice.</strong> The model assigns this company a 65.9 percent chance of an AAA rating, 24.2 percent BBB, and 9.9 percent junk. Since AAA has the highest probability, that is the predicted rating. Notice the three probabilities sum to exactly 1.0, a property plain logistic regression does not guarantee across multiple independent binary models. This is precisely the multi-class extension a peer-reviewed study in the International Journal of Fuzzy Systems used for sovereign credit ratings. That study applied a multinomial logistic model to a dataset of sovereign credit ratings across 61 countries, spanning 1995 to 2022. It is also the mechanism behind more advanced credit scoring research, where one recent study built a partially interpretable adaptive softmax regression model, combining softmax regression with a neural network to score borrower credit risk.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># multi_class="multinomial" fits true softmax regression rather than</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># a series of separate one-vs-rest binary classifiers</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>softmax_model <span class="op">=</span> LogisticRegression(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    multi_class<span class="op">=</span><span class="st">"multinomial"</span>, solver<span class="op">=</span><span class="st">"lbfgs"</span>, max_iter<span class="op">=</span><span class="dv">1000</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>softmax_model.fit(X_train_scaled, y_train_ratings)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>rating_probabilities <span class="op">=</span> softmax_model.predict_proba(X_test_scaled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="training-softmax-regression-the-cross-entropy-cost-function" class="level3">
+<h3 class="anchored" data-anchor-id="training-softmax-regression-the-cross-entropy-cost-function">Training Softmax Regression: The Cross-Entropy Cost Function</h3>
+<p>Binary logistic regression is trained with log loss. Softmax regression is trained with its direct generalization, categorical cross-entropy. The target label is first written as a one-hot vector, <span class="math inline">y_c^{(i)} = 1</span> if example <span class="math inline">i</span> truly belongs to class <span class="math inline">c</span>, and <span class="math inline">y_c^{(i)} = 0</span> for every other class.</p>
+<p><span class="math display">J(\Theta) = -\frac{1}{m}\sum_{i=1}^{m}\sum_{c=1}^{C} y_c^{(i)} \log\left(\hat{p}_c^{(i)}\right)</span></p>
+<p><strong>Breaking this down.</strong> For each example <span class="math inline">i</span>, exactly one term in the inner sum survives, the one where <span class="math inline">c</span> matches the true class, because every other <span class="math inline">y_c^{(i)}</span> is 0 and kills its term. So this collapses, per example, to <span class="math inline">-\log(\hat{p}_{\text{true class}}^{(i)})</span>, the negative log of the probability the model assigned to the correct answer. Averaging that over all <span class="math inline">m</span> examples gives <span class="math inline">J(\Theta)</span>. This is exactly the same intuition as binary log loss, just written to handle more than two classes at once: a model that puts high probability on the correct class is cheap, a model that puts low probability on the correct class is expensive, and the penalty grows without bound as that probability approaches zero.</p>
+<p><strong>Worked example.</strong> Take the AAA/BBB/junk company from above, where the model assigned <span class="math inline">\hat{p}_{AAA} \approx 0.659</span>, <span class="math inline">\hat{p}_{BBB} \approx 0.242</span>, <span class="math inline">\hat{p}_{junk} \approx 0.099</span>. Suppose the company’s true rating was AAA, so <span class="math inline">y_{AAA}^{(i)}=1</span> and the other two one-hot entries are 0.</p>
+<p><span class="math display">\ell^{(i)} = -\Big[1 \cdot \log(0.659) + 0 \cdot \log(0.242) + 0 \cdot \log(0.099)\Big] = -\log(0.659) \approx \mathbf{0.417}</span></p>
+<p>Now suppose instead the company’s true rating was junk, the tail probability the model was least confident about.</p>
+<p><span class="math display">\ell^{(i)} = -\log(0.099) \approx \mathbf{2.313}</span></p>
+<p>The second case costs roughly <span class="math inline">5.5\times</span> more, because the model assigned high confidence to the wrong outcome. This is the same confident-and-wrong penalty seen earlier with binary log loss, now operating across three classes instead of two.</p>
+<p><strong>Deriving the gradient.</strong> Write <span class="math inline">z_c = x^{(i)}\theta^{(c)}</span> for the raw score of class <span class="math inline">c</span>, and <span class="math inline">p_c = \text{Softmax}_c(x^{(i)}, \Theta)</span> for its softmax probability. The softmax function has a derivative that splits into two cases depending on whether the class being differentiated matches the class in the denominator sum:</p>
+<p><span class="math display">\frac{\partial p_c}{\partial z_k} = \begin{cases} p_c(1-p_c) &amp; \text{if } k = c \\ -p_c p_k &amp; \text{if } k \neq c \end{cases}</span></p>
+<p>This is compactly written as <span class="math inline">\frac{\partial p_c}{\partial z_k} = p_c(\mathbb{1}[k=c] - p_k)</span>, where <span class="math inline">\mathbb{1}[k=c]</span> is 1 when <span class="math inline">k</span> equals <span class="math inline">c</span> and 0 otherwise. Now differentiate the per-example loss <span class="math inline">\ell^{(i)} = -\sum_c y_c \log(p_c)</span> with respect to a single raw score <span class="math inline">z_k</span>, applying the chain rule through every <span class="math inline">p_c</span> that depends on <span class="math inline">z_k</span>:</p>
+<p><span class="math display">\frac{\partial \ell^{(i)}}{\partial z_k} = -\sum_{c=1}^{C} \frac{y_c}{p_c}\cdot \frac{\partial p_c}{\partial z_k} = -\sum_{c=1}^{C} \frac{y_c}{p_c}\cdot p_c\big(\mathbb{1}[k=c]-p_k\big) = -\sum_{c=1}^{C} y_c\big(\mathbb{1}[k=c]-p_k\big)</span></p>
+<p>Distribute the sum and use the fact that the one-hot vector sums to exactly 1, <span class="math inline">\sum_c y_c = 1</span>:</p>
+<p><span class="math display">\frac{\partial \ell^{(i)}}{\partial z_k} = -\left(\sum_{c=1}^{C} y_c\,\mathbb{1}[k=c]\right) + p_k\sum_{c=1}^{C} y_c = -y_k + p_k = p_k - y_k</span></p>
+<p>The sum <span class="math inline">\sum_c y_c\,\mathbb{1}[k=c]</span> just picks out <span class="math inline">y_k</span>, since the indicator is only nonzero when <span class="math inline">c=k</span>. Every other class-probability term cancels out completely, the same clean collapse seen in the binary derivation. What survives is again a plain prediction-error term, <span class="math inline">p_k - y_k</span>, this time one per class instead of one overall. Applying <span class="math inline">\frac{\partial z_k}{\partial \theta_j^{(k)}} = x_j^{(i)}</span> and averaging over all <span class="math inline">m</span> examples gives the full gradient for class <span class="math inline">k</span>’s coefficient vector:</p>
+<p><span class="math display">\frac{\partial}{\partial \theta_j^{(k)}} J(\Theta) = \frac{1}{m}\sum_{i=1}^{m}\Big[\hat{p}_k^{(i)} - y_k^{(i)}\Big]x_j^{(i)}</span></p>
+<p>This is structurally identical to the binary gradient derived earlier, predicted probability minus actual label, times the input feature, averaged over examples. Softmax regression is really <span class="math inline">C</span> copies of that same update rule running in parallel, one per class, coupled only through the shared normalization in the denominator of the softmax function itself.</p>
+</section>
+</section>
+<section id="evaluating-a-classifier-why-accuracy-alone-can-lie" class="level2">
+<h2 class="anchored" data-anchor-id="evaluating-a-classifier-why-accuracy-alone-can-lie">Evaluating a Classifier: Why Accuracy Alone Can Lie</h2>
+<p>Evaluating a classifier is trickier than evaluating a regression model. The simplest metric, accuracy, is the share of predictions the model gets right. It is also frequently misleading.</p>
+<p>Suppose only 5 percent of loans in a dataset actually default. A model that always predicts no default, ignoring every input feature entirely, will still be right 95 percent of the time. That 95 percent accuracy number describes a useless model. This exact trap shows up in market direction models too. A logistic regression that predicts market direction with 72 percent accuracy sounds impressive, until you notice the market simply rises about 72 percent of the time in the sample, and the model may just be predicting “up” nearly every time.</p>
+<section id="the-confusion-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="the-confusion-matrix">The Confusion Matrix</h3>
+<p>A confusion matrix breaks predictions down by actual and predicted class, rather than collapsing everything into one accuracy number.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Predicted Negative</th>
+<th>Predicted Positive</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Actual Negative</strong></td>
+<td>True Negative</td>
+<td>False Positive</td>
+</tr>
+<tr class="even">
+<td><strong>Actual Positive</strong></td>
+<td>False Negative</td>
+<td>True Positive</td>
+</tr>
+</tbody>
+</table>
+<p>A perfect classifier has nonzero values only on the diagonal, every true negative correctly called negative, every true positive correctly called positive.</p>
+</section>
+<section id="precision-and-recall" class="level3">
+<h3 class="anchored" data-anchor-id="precision-and-recall">Precision and Recall</h3>
+<p><span class="math display">\text{Precision} = \frac{TP}{TP + FP}, \qquad \text{Recall} = \frac{TP}{TP + FN}</span></p>
+<p><strong>Breaking this down.</strong> Precision asks, of everything the model flagged as positive, how much was actually positive. Recall asks, of everything that was actually positive, how much did the model catch. TP, FP, and FN are true positives, false positives, and false negatives, the raw counts from the confusion matrix above.</p>
+<p><span class="math display">F_1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}</span></p>
+<p>The F1 score blends precision and recall into one number, and rewards a classifier that keeps both reasonably high, rather than one that maximizes only one of them.</p>
+</section>
+<section id="worked-example-building-the-confusion-matrix-from-raw-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-building-the-confusion-matrix-from-raw-predictions">Worked Example: Building the Confusion Matrix From Raw Predictions</h3>
+<p>Vague summary tables hide the actual work. Here are fifteen real prediction and label pairs from a default model, predicted probability first, true label second, <span class="math inline">y=1</span> meaning the loan defaulted.</p>
+<p><span class="math display">
+\begin{array}{l}
+(0.95,1),\ (0.85,1),\ (0.70,1),\ (0.60,0),\ (0.55,1),\ (0.51,0),\ (0.49,1),\ (0.40,0),\\
+(0.30,0),\ (0.20,0),\ (0.15,0),\ (0.60,1),\ (0.80,0),\ (0.90,1),\ (0.10,0)
+\end{array}
+</span></p>
+<p>Fix the threshold at 0.5. Every pair with predicted probability at or above 0.5 becomes a predicted positive, <span class="math inline">\hat{y}=1</span>. Everything below becomes a predicted negative. Walk through all fifteen and sort each one into a cell of the confusion matrix.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>#</th>
+<th><span class="math inline">\hat{p}</span></th>
+<th><span class="math inline">y</span></th>
+<th><span class="math inline">\hat{y}</span> at threshold 0.5</th>
+<th>Cell</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0.95</td>
+<td>1</td>
+<td>1</td>
+<td>TP</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>0.85</td>
+<td>1</td>
+<td>1</td>
+<td>TP</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0.70</td>
+<td>1</td>
+<td>1</td>
+<td>TP</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>0.60</td>
+<td>0</td>
+<td>1</td>
+<td>FP</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>0.55</td>
+<td>1</td>
+<td>1</td>
+<td>TP</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>0.51</td>
+<td>0</td>
+<td>1</td>
+<td>FP</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>0.49</td>
+<td>1</td>
+<td>0</td>
+<td>FN</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>0.40</td>
+<td>0</td>
+<td>0</td>
+<td>TN</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>0.30</td>
+<td>0</td>
+<td>0</td>
+<td>TN</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>0.20</td>
+<td>0</td>
+<td>0</td>
+<td>TN</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>0.15</td>
+<td>0</td>
+<td>0</td>
+<td>TN</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>0.60</td>
+<td>1</td>
+<td>1</td>
+<td>TP</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>0.80</td>
+<td>0</td>
+<td>1</td>
+<td>FP</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>0.90</td>
+<td>1</td>
+<td>1</td>
+<td>TP</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>0.10</td>
+<td>0</td>
+<td>0</td>
+<td>TN</td>
+</tr>
+</tbody>
+</table>
+<p>Tallying the Cell column directly gives <span class="math inline">TP = 6</span>, <span class="math inline">FP = 3</span>, <span class="math inline">TN = 5</span>, <span class="math inline">FN = 1</span>. Note also that the data itself contains 7 true positives, rows 1, 2, 3, 5, 7, 12, 14, and 8 true negatives, the rest, which checks out against <span class="math inline">TP + FN = 6 + 1 = 7</span> and <span class="math inline">FP + TN = 3 + 5 = 8</span>.</p>
+<p>Now plug these four counts directly into the formulas rather than quoting a rounded result.</p>
+<p><span class="math display">\text{Precision} = \frac{TP}{TP+FP} = \frac{6}{6+3} = \frac{6}{9} = \mathbf{0.667}</span></p>
+<p><span class="math display">\text{Recall} = \frac{TP}{TP+FN} = \frac{6}{6+1} = \frac{6}{7} \approx \mathbf{0.857}</span></p>
+<p><span class="math display">F_1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision}+\text{Recall}} = 2 \times \frac{(0.667)(0.857)}{0.667+0.857} = 2 \times \frac{0.5717}{1.524} \approx \mathbf{0.750}</span></p>
+<p>Now raise the threshold to 0.9 and repeat the same sort on the identical fifteen rows. Only rows 1 and 14, both at <span class="math inline">\hat{p} = 0.95</span> and <span class="math inline">0.90</span>, clear the new bar and become predicted positives.</p>
+<p><span class="math display">TP = 2, \quad FP = 0, \quad TN = 8, \quad FN = 5</span></p>
+<p><span class="math display">\text{Precision} = \frac{2}{2+0} = \mathbf{1.000}, \qquad \text{Recall} = \frac{2}{2+5} = \frac{2}{7} \approx \mathbf{0.286}</span></p>
+<p><span class="math display">F_1 = 2 \times \frac{(1.000)(0.286)}{1.000+0.286} = 2 \times \frac{0.286}{1.286} \approx \mathbf{0.444}</span></p>
+<p><strong>What this means in practice.</strong> At threshold 0.5, the model catches 85.7 percent of actual defaults, recall, but three out of nine flagged loans, roughly a third, are false alarms. At threshold 0.9, the model is never wrong when it does flag a loan, perfect precision, but it now misses five of the seven real defaults, a recall collapse to 28.6 percent. Neither threshold is universally correct. A lender worried about missing defaults would tolerate more false alarms and choose the lower threshold. A lender with very limited capacity to investigate flagged loans would prefer the higher threshold, accepting that some real defaults slip through. The F1 score confirms this trade-off numerically, dropping from 0.750 to 0.444 as precision is bought at recall’s expense.</p>
+<p>Precision and recall move in opposite directions as the threshold changes, which is exactly why a single accuracy number cannot describe this trade-off. The Receiver Operating Characteristic curve, ROC, plots the true positive rate against the false positive rate across every possible threshold.</p>
+<p><span class="math display">\text{TPR} = \text{Recall} = \frac{TP}{TP+FN}, \qquad \text{FPR} = \frac{FP}{FP+TN}</span></p>
+</section>
+<section id="worked-example-building-the-roc-curve-and-computing-auc-by-hand" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-building-the-roc-curve-and-computing-auc-by-hand">Worked Example: Building the ROC Curve and Computing AUC by Hand</h3>
+<p>Reuse the same fifteen predictions. There are 7 true positives and 8 true negatives in total, so every TPR is measured against 7 and every FPR against 8. Sweep the threshold down through every distinct probability value that appears in the data, recomputing the confusion matrix and both rates at each stop.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Threshold</th>
+<th>TP</th>
+<th>FN</th>
+<th>FP</th>
+<th>TN</th>
+<th>FPR</th>
+<th>TPR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1.00</td>
+<td>0</td>
+<td>7</td>
+<td>0</td>
+<td>8</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td>0.95</td>
+<td>1</td>
+<td>6</td>
+<td>0</td>
+<td>8</td>
+<td>0.000</td>
+<td>0.143</td>
+</tr>
+<tr class="odd">
+<td>0.90</td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+<td>8</td>
+<td>0.000</td>
+<td>0.286</td>
+</tr>
+<tr class="even">
+<td>0.85</td>
+<td>3</td>
+<td>4</td>
+<td>0</td>
+<td>8</td>
+<td>0.000</td>
+<td>0.429</td>
+</tr>
+<tr class="odd">
+<td>0.80</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>7</td>
+<td>0.125</td>
+<td>0.429</td>
+</tr>
+<tr class="even">
+<td>0.70</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td>7</td>
+<td>0.125</td>
+<td>0.571</td>
+</tr>
+<tr class="odd">
+<td>0.60</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>6</td>
+<td>0.250</td>
+<td>0.714</td>
+</tr>
+<tr class="even">
+<td>0.55</td>
+<td>6</td>
+<td>1</td>
+<td>2</td>
+<td>6</td>
+<td>0.250</td>
+<td>0.857</td>
+</tr>
+<tr class="odd">
+<td>0.51</td>
+<td>6</td>
+<td>1</td>
+<td>3</td>
+<td>5</td>
+<td>0.375</td>
+<td>0.857</td>
+</tr>
+<tr class="even">
+<td>0.49</td>
+<td>7</td>
+<td>0</td>
+<td>3</td>
+<td>5</td>
+<td>0.375</td>
+<td>1.000</td>
+</tr>
+<tr class="odd">
+<td>0.10</td>
+<td>7</td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
+<td>1.000</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+<p>Each row is an ordinary confusion matrix, exactly like the two computed above, just recomputed at a new threshold. For example, at threshold 0.60, five predictions clear the bar and are true positives, two more clear it but are actually negative, giving <span class="math inline">\text{FPR} = \frac{2}{2+6} = 0.25</span> and <span class="math inline">\text{TPR} = \frac{5}{5+2} \approx 0.714</span>.</p>
+<p>Plotting FPR on the x-axis and TPR on the y-axis and connecting these eleven points traces the ROC curve. AUC is the area under that curve, and with a finite set of points it is computed exactly with the trapezoidal rule, summing the area of each trapezoid between consecutive points sorted by FPR.</p>
+<p><span class="math display">\text{AUC} = \sum_{k=1}^{n-1} \left(\text{FPR}_{k+1} - \text{FPR}_k\right) \cdot \frac{\text{TPR}_k + \text{TPR}_{k+1}}{2}</span></p>
+<p>Sorting the eleven points by FPR gives <span class="math inline">(0,0),\ (0,0.143),\ (0,0.286),\ (0,0.429),\ (0.125,0.429),\ (0.125,0.571),\ (0.25,0.714),\ (0.25,0.857),\ (0.375,0.857),\ (0.375,1.000),\ (1.000,1.000)</span>. Only the transitions where FPR actually changes contribute area; every vertical (zero-width) jump contributes nothing.</p>
+<p><span class="math display">(0,0.429)\rightarrow(0.125,0.429):\quad (0.125-0)\times\frac{0.429+0.429}{2} = (0.125)(0.429) \approx \mathbf{0.0536}</span></p>
+<p><span class="math display">(0.125,0.571)\rightarrow(0.25,0.714):\quad (0.25-0.125)\times\frac{0.571+0.714}{2} = (0.125)(0.6425) \approx \mathbf{0.0803}</span></p>
+<p><span class="math display">(0.25,0.857)\rightarrow(0.375,0.857):\quad (0.375-0.25)\times\frac{0.857+0.857}{2} = (0.125)(0.857) \approx \mathbf{0.1071}</span></p>
+<p><span class="math display">(0.375,1.000)\rightarrow(1.000,1.000):\quad (1.000-0.375)\times\frac{1.000+1.000}{2} = (0.625)(1.000) = \mathbf{0.6250}</span></p>
+<p>Summing every contribution gives:</p>
+<p><span class="math display">\text{AUC} \approx 0.0536 + 0.0803 + 0.1071 + 0.6250 = \mathbf{0.866}</span></p>
+<p><strong>What this means in practice.</strong> An AUC of 0.866 sits well above the 0.5 baseline of a coin flip, and reasonably close to the 1.0 ceiling of a perfect classifier. It also captures something the single threshold-0.5 metrics could not. This classifier retains a strong TPR-to-FPR trade-off across a wide range of thresholds, not just at the default 0.5 cutoff, which is exactly why AUC is reported so often in credit and market-direction models where the final threshold is a business decision made after the model is built. A peer-reviewed comparison of nine machine learning models for stock direction prediction found that logistic regression achieved the highest accuracy among the traditional methods tested, at 85.51 percent, under the standard evaluation methodology. That is a reminder that a well-tuned classical model still competes with more complex methods on many finance tasks.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, precision_score, recall_score, f1_score, roc_auc_score</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> (predicted_probabilities <span class="op">&gt;=</span> <span class="fl">0.5</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(y_test, y_pred))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Precision:"</span>, precision_score(y_test, y_pred))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Recall:"</span>, recall_score(y_test, y_pred))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"F1:"</span>, f1_score(y_test, y_pred))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AUC:"</span>, roc_auc_score(y_test, predicted_probabilities))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="conclusion-from-probabilities-to-decisions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-from-probabilities-to-decisions">Conclusion: From Probabilities to Decisions</h2>
+<p>Logistic regression turns a raw, unbounded score into a probability, using the sigmoid function, and trains that probability using log loss rather than squared error. Softmax regression extends the same idea to any number of categories, guaranteeing the resulting probabilities sum to one. Neither model should be judged on accuracy alone. A confusion matrix, precision, recall, and the ROC curve tell you what kind of mistakes a classifier is actually making, which matters more than a single headline number whenever the two classes are not equally common.</p>
+<p>The same regularization ideas from the previous article carry over directly here. A logistic regression with too many correlated features overfits in exactly the same way a linear regression does, and Ridge or Lasso penalties fix it the same way.</p>
+<p>So far, every model in this series has assumed a straight-line, or straight-boundary, relationship between features and the outcome. Real financial relationships are frequently not linear at all. The next article in this series moves to models built specifically to handle that: <strong>Naive Bayes and Decision Trees for Financial Classification</strong>.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Turiel, J. D., and Aste, T. “Peer-to-peer loan acceptance and default prediction with artificial intelligence.” <em>Royal Society Open Science</em>, 2020. <a href="https://royalsocietypublishing.org/doi/10.1098/rsos.191649">https://royalsocietypublishing.org/doi/10.1098/rsos.191649</a></li>
+<li>“A logistic regression model for consumer default risk.” Peer-reviewed study on Portuguese consumer loan data. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9041570/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9041570/</a></li>
+<li>“A performance comparison of machine learning models for stock market prediction with novel investment strategy.” <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10513304/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10513304/</a></li>
+<li>“Fuzzy Multinomial Logistic Regression Analysis and Its Applications to Sovereign Credit Ratings.” <em>International Journal of Fuzzy Systems</em>, Springer. <a href="https://link.springer.com/article/10.1007/s40815-025-02013-0">https://link.springer.com/article/10.1007/s40815-025-02013-0</a></li>
+<li>“A Partially Interpretable Adaptive Softmax Regression for Credit Scoring.” <em>Applied Sciences</em>, MDPI. <a href="https://www.mdpi.com/2076-3417/11/7/3227">https://www.mdpi.com/2076-3417/11/7/3227</a></li>
+<li>Géron, Aurélien. <em>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow.</em> 2nd ed., O’Reilly Media, 2019.</li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

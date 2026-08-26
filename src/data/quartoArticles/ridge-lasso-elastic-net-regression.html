@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-08-26">
+<meta name="description" content="A complete, hands-on guide to regularized linear regression. Covers Ridge (L2), Lasso (L1), and Elastic Net, with every formula worked by hand on a real momentum-trading example, correct scikit-learn implementations, and a free interactive simulator you can run in your browser.">
+
+<title>Ridge, Lasso &amp; Elastic Net Regression Explained: Taming Overfitting in Financial Models With Real Formulas and an Interactive Regularization Simulator</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="ridge-lasso-elastic-net-regression_files/libs/clipboard/clipboard.min.js"></script>
+<script src="ridge-lasso-elastic-net-regression_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="ridge-lasso-elastic-net-regression_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="ridge-lasso-elastic-net-regression_files/libs/quarto-html/popper.min.js"></script>
+<script src="ridge-lasso-elastic-net-regression_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="ridge-lasso-elastic-net-regression_files/libs/quarto-html/anchor.min.js"></script>
+<link href="ridge-lasso-elastic-net-regression_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ridge-lasso-elastic-net-regression_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="ridge-lasso-elastic-net-regression_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="ridge-lasso-elastic-net-regression_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="ridge-lasso-elastic-net-regression_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<section id="background-what-linear-regression-actually-is" class="level2">
+<h2 class="anchored" data-anchor-id="background-what-linear-regression-actually-is">Background: What Linear Regression Actually Is</h2>
+<p>Before touching Ridge or Lasso, it helps to be clear on the base model they modify. Linear regression is one of the oldest tools in statistics and machine learning. Its job is simple to state. You have some input features, and you want to predict one continuous number.</p>
+<p>A continuous number just means a value that can fall anywhere on a scale, not a fixed category. A stock’s forward return, a house’s price, and a company’s expected revenue are all continuous numbers. This is different from classification, where the goal is to predict a category, such as default or no default. That distinction matters, because Ridge, Lasso, and Elastic Net only apply to this regression setting.</p>
+<p>Linear regression assumes a straight-line relationship between the inputs and the output. With one feature, this is literally a line on a graph.</p>
+<p><span class="math display">y = \theta_0 + \theta_1 x</span></p>
+<p><strong>Breaking this down.</strong> y is the value you are trying to predict, the forward return in this article. x is your input feature, one day’s momentum reading. θ₀, theta-zero, is the intercept, the baseline value of y when x is zero. θ₁ is the slope, how much y changes for every one unit increase in x. With more than one feature, the same idea just adds more slope terms, one θ per feature, all added together.</p>
+<p><strong>Where it is used.</strong> Linear regression is the default starting point almost anywhere a business needs to predict a number from historical data. A bank uses it to estimate how a customer’s income and credit history relate to their expected loan balance. A retailer uses it to link advertising spend to sales. An asset manager uses it, as in this article, to link past price momentum to future returns. It is popular because it is fast to fit, easy to interpret, and the coefficients directly answer a business question. A coefficient of 0.6 on momentum tells you, in plain terms, how much forward return to expect per unit of momentum.</p>
+<p><strong>Why it usually is not enough on its own.</strong> Plain linear regression, fit with ordinary least squares, has one weak spot. It has no built-in way to handle features that overlap or duplicate each other, which is extremely common once you engineer more than a couple of features from real data. That weak spot is exactly what this article addresses next.</p>
+<p>A linear regression model with five correlated momentum signals often fits a backtest beautifully. Then it falls apart on new data. This is not bad luck. It is a direct result of how ordinary least squares behaves when features overlap. This article covers the standard fix: penalizing a model for leaning too hard on any single feature. That family of techniques is called <strong>regularization</strong>.</p>
+<p>We covered <a href="https://www.scapedatasolutions.com/blog/clustering-algorithms-explained">unsupervised pattern discovery in our clustering deep-dive</a>. That article grouped data with no target variable at all. Regularized regression sits on the opposite side of machine learning. Here you have a specific number to predict, such as next month’s return or a default probability. The danger is not a lack of structure. The danger is a model that finds structure that is not really there.</p>
+</section>
+<section id="the-problem-when-more-features-make-a-model-worse" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-when-more-features-make-a-model-worse">The Problem: When More Features Make a Model Worse</h2>
+<p>Picture a quant desk building a momentum strategy on the SPY ETF. The idea is well documented in finance. Assets that performed well recently tend to keep performing well for a while. To capture this, the desk engineers five momentum features from one price series. Each feature measures annualized return over a different trailing window.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Window</th>
+<th>What it captures</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ret10</td>
+<td>10 trading days</td>
+<td>Very short-term momentum</td>
+</tr>
+<tr class="even">
+<td>Ret25</td>
+<td>25 trading days</td>
+<td>Short-term momentum</td>
+</tr>
+<tr class="odd">
+<td>Ret60</td>
+<td>60 trading days</td>
+<td>Medium-term momentum</td>
+</tr>
+<tr class="even">
+<td>Ret120</td>
+<td>120 trading days</td>
+<td>Medium-to-long momentum</td>
+</tr>
+<tr class="odd">
+<td>Ret240</td>
+<td>240 trading days</td>
+<td>Roughly one-year momentum</td>
+</tr>
+</tbody>
+</table>
+<p>The target is the forward 25-day return, what actually happens next. This looks like a reasonable supervised regression setup. The catch is that all five features come from the same price series. They are just measured over overlapping windows. Strong 10-day momentum is very likely to also show up as strong 25-day and 60-day momentum. Ordinary least squares cannot tell which feature deserves the credit. It starts assigning wild, unstable coefficients. One lag gets a large positive weight. A neighboring lag gets a large negative weight that cancels it out on the training data. The in-sample fit looks excellent. The out-of-sample performance is closer to a coin flip.</p>
+<p>This is the textbook case for regularization. A penalty keeps every coefficient honest. It discourages the model from leaning too hard on any single, possibly redundant, feature.</p>
+<section id="a-second-case-the-overfit-assignment-everyone-has-submitted" class="level3">
+<h3 class="anchored" data-anchor-id="a-second-case-the-overfit-assignment-everyone-has-submitted">A Second Case: The Overfit Assignment Everyone Has Submitted</h3>
+<p>This exact trap shows up outside trading desks too. Say a student is asked to predict house prices for a class assignment. The dataset includes square footage, number of rooms, and lot size. It also includes total interior floor area, a near-duplicate of square footage. A plain linear regression fits the training set almost perfectly. On the held-out test set, the error jumps sharply. The grader’s comment is predictable. The model has memorized noise, not learned the real pricing pattern. Regularization is the standard, defensible fix to cite in that kind of report.</p>
+</section>
+</section>
+<section id="what-regularization-actually-does-to-the-cost-function" class="level2">
+<h2 class="anchored" data-anchor-id="what-regularization-actually-does-to-the-cost-function">What Regularization Actually Does to the Cost Function</h2>
+<p>Ordinary least squares chooses coefficients θ to minimize prediction error. Formally, it minimizes mean squared error between predictions and actual outcomes. Regularization adds a second term to that objective. This new term penalizes the size of the coefficients themselves.</p>
+<p><span class="math display">J(\theta) = \text{MSE}(\theta) + \text{Penalty}(\theta)</span></p>
+<p><strong>Breaking this down.</strong> J(θ) is the total cost the model tries to minimize. Think of it as a score where lower is better. θ, the Greek letter theta, stands for the coefficients the model is learning, one number per feature. MSE(θ) is the usual error term, how far off the predictions are from the real answers. Penalty(θ) is the new piece. It is a second score that grows whenever the coefficients get large. The model now has to balance two goals in one number.</p>
+<p>The model now solves two problems at once. It fits the data well, and it keeps the coefficients small. This penalty is only active during training. Once the model is fit, you evaluate it using the plain, unregularized prediction error. The penalty’s only job is to shape the fitting process.</p>
+<p>Three techniques define what “Penalty(θ)” actually looks like. They are <strong>Ridge</strong>, <strong>Lasso</strong>, and <strong>Elastic Net</strong>. Each makes a different trade-off. These differences are not cosmetic. They change which coefficients survive.</p>
+</section>
+<section id="ridge-regression-l2-shrinking-everything-toward-zero" class="level2">
+<h2 class="anchored" data-anchor-id="ridge-regression-l2-shrinking-everything-toward-zero">Ridge Regression (L2): Shrinking Everything Toward Zero</h2>
+<p>Ridge is also called Tikhonov regularization. It adds a penalty proportional to the square of each coefficient. According to scikit-learn’s documentation, this model solves a regression problem where the loss function is ordinary least squares, with regularization given by the L2 norm.</p>
+<p><span class="math display">J(\theta) = \text{RSS}(\theta) + \alpha\sum_{i=1}^{n} \theta_i^2</span></p>
+<p><strong>Breaking this down.</strong> RSS(θ) is the residual sum of squares, the normal regression error before any penalty. The symbol α, alpha, is a single number you choose. It is the dial that sets how strict the penalty is. The Σ symbol means “add up.” It runs from i = 1 to n, where n is the number of features. So Σθᵢ² means “square every coefficient, then add all those squares together.” Multiplying that sum by α gives the penalty its final size. A bigger α means a bigger penalty, and smaller final coefficients.</p>
+<p>Here RSS is the residual sum of squares. Alpha is a hyperparameter controlling how aggressively coefficients get pulled toward zero. This matches scikit-learn’s convention directly. The WQU course notes present an equivalent MSE-based version scaled by one half. That scaling only rescales alpha, not the underlying behavior. Regularization improves the conditioning of the problem and reduces the variance of the estimates. Larger alpha values mean stronger regularization. Push alpha to zero and you recover ordinary least squares exactly. Push it very high and every coefficient collapses toward zero.</p>
+<section id="worked-example-shrinking-a-single-momentum-coefficient-by-hand" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-shrinking-a-single-momentum-coefficient-by-hand">Worked Example: Shrinking a Single Momentum Coefficient by Hand</h3>
+<p>Take a tiny, mean-centered toy version of the problem. Below are four days of 10-day momentum, x, and the forward 25-day return that followed, y. Both are in percent.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Day</th>
+<th>x (10-day momentum)</th>
+<th>y (forward 25-day return)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>2.0</td>
+<td>1.5</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>−1.0</td>
+<td>−0.5</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>3.0</td>
+<td>2.0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>−2.0</td>
+<td>−1.0</td>
+</tr>
+</tbody>
+</table>
+<p>For a single-feature regression through the origin, the ordinary least squares solution is θ = Σxᵢyᵢ / Σxᵢ². Computing both sums:</p>
+<p>Σx² = 2² + (−1)² + 3² + (−2)² = 4 + 1 + 9 + 4 = <strong>18</strong></p>
+<p>Σxy = (2)(1.5) + (−1)(−0.5) + (3)(2.0) + (−2)(−1.0) = 3 + 0.5 + 6 + 2 = <strong>11.5</strong></p>
+<p><strong>OLS coefficient</strong>: θ = 11.5 / 18 ≈ <strong>0.639</strong></p>
+<p>The closed-form ridge solution for a single feature is θ_ridge = Σxy / (Σx² + α). Applying two different penalty strengths:</p>
+<p><strong>α = 5</strong>: θ_ridge = 11.5 / (18 + 5) = 11.5 / 23 ≈ <strong>0.500</strong></p>
+<p><strong>α = 50</strong>: θ_ridge = 11.5 / (18 + 50) = 11.5 / 68 ≈ <strong>0.169</strong></p>
+<p>The coefficient shrinks steadily. It never actually reaches zero, no matter how large alpha gets. It just gets vanishingly small. That is the defining behavior of Ridge. It dampens every coefficient, but it never removes one entirely.</p>
+<p><strong>What this means in practice.</strong> An OLS coefficient of 0.639 says every one percent of extra 10-day momentum predicts a 0.639 percent forward return. That number is inflated by the overlap with the other four momentum features. At α = 5, the honest, deflated estimate is closer to 0.500. At α = 50, the model is telling you it barely trusts this single feature at all, and is spreading the credit elsewhere. For a trading desk, this changes position sizing directly. A smaller, more honest coefficient means smaller, more honest bets. For a student writing up results, this number is the evidence that the model is no longer overreacting to one noisy signal. Drag the alpha slider yourself in the <strong>Shrinkage Duel</strong> tab of the simulator below. Watch this exact calculation update live.</p>
+<p>For a full multi-feature dataset, gradient descent updates the parameter vector using:</p>
+<p><span class="math display">\theta^{[\text{next}]} = \theta^{[\text{prev}]} - \eta \, \nabla_\theta \text{MSE}(\theta^{[\text{prev}]}) - \alpha \odot \theta^{[\text{prev}]}</span></p>
+<p><strong>Breaking this down.</strong> This formula describes one small update step during training. θ[prev] is the current set of coefficients, before this step. θ[next] is the updated set, right after this step. η, eta, is the learning rate, how big a step the model takes each time. The symbol ∇θMSE means the gradient, the direction that would most increase the error. Subtracting it moves the coefficients toward less error instead. The final term, α times θ[prev], is the Ridge penalty pulling every coefficient a little closer to zero on each step. The ⊙ symbol just means this happens to each coefficient individually.</p>
+<p>The penalty term excludes the bias, or intercept. Only the slope coefficients get regularized.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardizing is essential before Ridge. Without it, features on</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># different scales get penalized unfairly. A coefficient on a feature</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># measured in thousands looks "bigger" than one measured in decimals,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># purely due to units, not real importance.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>X_train_scaled <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>X_test_scaled <span class="op">=</span> scaler.transform(X_test)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ridge <span class="op">=</span> Ridge(alpha<span class="op">=</span><span class="fl">5.0</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ridge.fit(X_train_scaled, y_train)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>test_mse <span class="op">=</span> ((ridge.predict(X_test_scaled) <span class="op">-</span> y_test) <span class="op">**</span> <span class="dv">2</span>).mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="lasso-regression-l1-deleting-features-entirely" class="level2">
+<h2 class="anchored" data-anchor-id="lasso-regression-l1-deleting-features-entirely">Lasso Regression (L1): Deleting Features Entirely</h2>
+<p>Lasso stands for Least Absolute Shrinkage and Selection Operator. It swaps the squared penalty for an absolute-value penalty.</p>
+<p><span class="math display">J(\theta) = \text{RSS}(\theta) + \alpha\sum_{i=1}^{n} |\theta_i|</span></p>
+<p><strong>Breaking this down.</strong> This looks almost identical to the Ridge formula above. The only change is |θᵢ| instead of θᵢ². The vertical bars mean absolute value, the size of the number with the sign stripped off. So instead of squaring each coefficient, Lasso just adds up their plain sizes. That single swap is what allows coefficients to hit exactly zero, which the next section explains.</p>
+<p>That small change in exponent has a large practical consequence. For a well-chosen alpha, Lasso can recover the exact set of relevant variables using only a few observations, under certain conditions. In other words, Lasso does not just shrink coefficients. It can drive them to exactly zero. This effectively deletes a feature from the model. Lasso is a built-in feature-selection tool, not just a stabilizer.</p>
+<p>The term |θᵢ| is not differentiable at θᵢ = 0. Fitting Lasso requires a subgradient step:</p>
+<p><span class="math display">\theta^{[\text{next}]} = \theta^{[\text{prev}]} - \eta \, \nabla_\theta \text{MSE}(\theta^{[\text{prev}]}) - \alpha \odot \text{sign}(\theta^{[\text{prev}]})</span></p>
+<p><strong>Breaking this down.</strong> This is the same update pattern as Ridge, with one change. Instead of subtracting α times the coefficient itself, it subtracts α times sign(θ[prev]). The sign function just returns whether a coefficient is positive, negative, or zero, as +1, −1, or 0. So every coefficient gets pushed toward zero by the same fixed amount each step, regardless of how large it is. That fixed push, rather than a proportional one, is why Lasso can reach exactly zero.</p>
+<p>Most implementations solve this with <strong>coordinate descent</strong> instead. This updates one coefficient at a time using a closed-form <strong>soft-thresholding</strong> rule:</p>
+<p><span class="math display">\theta_j = \frac{S(\rho_j, \alpha)}{\sum_i x_{ij}^2}, \qquad S(z, \gamma) = \text{sign}(z) \cdot \max(|z| - \gamma, 0)</span></p>
+<p><strong>Breaking this down.</strong> θⱼ is one single coefficient, updated on its own. ρⱼ, rho, is a running correlation between feature j and the current prediction errors. Think of it as the raw, unpenalized signal for that one feature, similar to Σxy in the worked example below. The denominator, Σxᵢⱼ², is just that feature’s own sum of squares. The function S is soft-thresholding. It takes a value z and a threshold γ, gamma. If |z| is smaller than γ, S returns exactly zero. Otherwise it shrinks z toward zero by γ and keeps its original sign. This is the mechanical reason Lasso deletes small, weak features entirely.</p>
+<section id="worked-example-watching-a-coefficient-hit-exactly-zero" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-watching-a-coefficient-hit-exactly-zero">Worked Example: Watching a Coefficient Hit Exactly Zero</h3>
+<p>Reuse the same four-day toy dataset, where Σx² = 18 and Σxy = 11.5. The single-feature Lasso solution is θ_lasso = S(Σxy, α) / Σx².</p>
+<p><strong>α = 5</strong>: S(11.5, 5) = 11.5 − 5 = 6.5 → θ_lasso = 6.5 / 18 ≈ <strong>0.361</strong></p>
+<p><strong>α = 11.5</strong> (the exact breaking point): S(11.5, 11.5) = 0 → θ_lasso = <strong>0.000</strong></p>
+<p>At α = 11.5, the penalty exactly cancels the signal. The coefficient snaps to zero. This feature has just been deleted from the model. Push alpha any higher and it stays at zero. This is a moment Ridge can never produce. No matter how large Ridge’s alpha gets, its coefficient only approaches zero. Lasso reaches zero outright. The exact threshold is |Σxy|, in this simplified single-feature case.</p>
+<p><strong>What this means in practice.</strong> For the momentum desk, a coefficient of exactly zero at α = 11.5 is a concrete, actionable signal. It says the 10-day lag adds nothing once the other four windows are in the model. The desk can drop that data feed entirely and simplify the pipeline. For a school project on, say, predicting loan default from twenty applicant features, this is the number you report as evidence of feature selection. You can write, in your methodology section, that Lasso zeroed out a named list of coefficients at the chosen alpha, and that this matches domain intuition about which variables should matter. Try this in the <strong>Shrinkage Duel</strong> tab below. Push the alpha slider past the marked threshold. Watch the Lasso bar disappear while the Ridge bar keeps shrinking.</p>
+<p>If alpha is chosen too small, irrelevant variables stay in the model. If alpha is chosen too large, Lasso behaves like simple stepwise regression, discarding too much. The real skill in using Lasso is landing in the middle range. You want enough penalty to drop redundant features. You do not want so much that it discards real signal.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Lasso</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>lasso <span class="op">=</span> Lasso(alpha<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>lasso.fit(X_train_scaled, y_train)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect which momentum lags survived</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>surviving_features <span class="op">=</span> [</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    name <span class="cf">for</span> name, coef <span class="kw">in</span> <span class="bu">zip</span>(feature_names, lasso.coef_) <span class="cf">if</span> coef <span class="op">!=</span> <span class="dv">0</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(surviving_features)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="elastic-net-getting-the-best-of-both" class="level2">
+<h2 class="anchored" data-anchor-id="elastic-net-getting-the-best-of-both">Elastic Net: Getting the Best of Both</h2>
+<p>Elastic Net runs both penalties in the same optimization. A mixing parameter r controls the balance.</p>
+<p><span class="math display">J(\theta) = \text{RSS}(\theta) + r\alpha\sum_{i=1}^{n} |\theta_i| + \frac{1-r}{2}\alpha\sum_{i=1}^{n} \theta_i^2</span></p>
+<p><strong>Breaking this down.</strong> This formula just glues the Lasso penalty and the Ridge penalty together. r is a number between 0 and 1 that decides how much weight each penalty gets. The middle term, rα times the sum of |θᵢ|, is the Lasso half, scaled down by r. The last term, using (1−r)/2 times α, is the Ridge half, scaled by whatever is left over. When r is close to 1, the Lasso term dominates. When r is close to 0, the Ridge term dominates.</p>
+<p>When r equals 1, this collapses to pure Lasso. When r equals 0, it collapses to pure Ridge. Anywhere in between, it blends two strengths. It inherits Lasso’s ability to zero out features. It inherits Ridge’s stability when features are highly correlated. That stability matters, because plain Lasso has a real weakness. It tends to arbitrarily pick one feature from a correlated group and drop the rest.</p>
+<section id="worked-example-combining-both-penalties" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-combining-both-penalties">Worked Example: Combining Both Penalties</h3>
+<p>Using the coordinate-descent form of Elastic Net, the single-feature update is:</p>
+<p><span class="math display">\theta_{EN} = \frac{S(\Sigma xy,\ r\alpha)}{\Sigma x^2 + (1-r)\alpha}</span></p>
+<p><strong>Breaking this down.</strong> The top of the fraction runs the same soft-thresholding function S from the Lasso section. It uses rα as the threshold, the Lasso share of the penalty. The bottom of the fraction is the usual Σx² term, but with (1−r)α added to it, the Ridge share of the penalty. So the numerator handles feature deletion, and the denominator handles shrinkage, both in one formula.</p>
+<p>Set r = 0.5 and α = 10 on the same toy dataset. Then rα = 5 and (1−r)α = 5.</p>
+<p><span class="math display">\theta_{EN} = \frac{S(11.5,\ 5)}{18 + 5} = \frac{6.5}{23} \approx 0.283</span></p>
+<p>Notice both effects at once. The L1 term trimmed the numerator, exactly as Lasso would. The L2 term inflated the denominator, exactly as Ridge would. This is a genuine blend, not an average of the two standalone results.</p>
+<p><strong>What this means in practice.</strong> Suppose the momentum desk later adds two more overlapping features, a 15-day and a 20-day window, sitting right between the existing lags. Plain Lasso would likely keep one of these near-duplicates and zero out the rest at random. That is unstable behavior a risk committee will not like, since a tiny data revision could flip which lag survives. Elastic Net tends to keep or drop correlated groups together instead, which is far easier to explain and defend in a model review. This is also the safer default for a school assignment with many engineered features, since it avoids the appearance of an arbitrary, unstable selection.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> ElasticNet</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>elastic_net <span class="op">=</span> ElasticNet(alpha<span class="op">=</span><span class="fl">0.05</span>, l1_ratio<span class="op">=</span><span class="fl">0.5</span>)  <span class="co"># l1_ratio is r</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>elastic_net.fit(X_train_scaled, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="ridge-vs.-lasso-vs.-elastic-net-at-a-glance" class="level2">
+<h2 class="anchored" data-anchor-id="ridge-vs.-lasso-vs.-elastic-net-at-a-glance">Ridge vs.&nbsp;Lasso vs.&nbsp;Elastic Net at a Glance</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Ridge (L2)</th>
+<th>Lasso (L1)</th>
+<th>Elastic Net</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Penalty</td>
+<td>Σθᵢ²</td>
+<td>Σ|θᵢ|</td>
+<td>Mix of both</td>
+</tr>
+<tr class="even">
+<td>Can zero out a coefficient?</td>
+<td>No, only shrinks</td>
+<td>Yes, true feature selection</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Behavior with correlated features</td>
+<td>Spreads weight evenly across them</td>
+<td>Arbitrarily keeps one, drops the rest</td>
+<td>Tends to keep or drop correlated groups together</td>
+</tr>
+<tr class="even">
+<td>Best default when</td>
+<td>You believe most features matter somewhat</td>
+<td>You believe only a few features really matter</td>
+<td>You are not sure, or features are correlated</td>
+</tr>
+<tr class="odd">
+<td>Solvable in closed form?</td>
+<td>Yes</td>
+<td>No, needs coordinate descent or subgradient methods</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hyperparameter-tuning-finding-the-right-α-and-r-with-cross-validation" class="level2">
+<h2 class="anchored" data-anchor-id="hyperparameter-tuning-finding-the-right-α-and-r-with-cross-validation">Hyperparameter Tuning: Finding the Right α (and r) With Cross-Validation</h2>
+<p>Every regularized model adds at least one new dial to turn. Ridge and Lasso need alpha. Elastic Net needs alpha and r as well. Picking these from a single train and test split is unreliable. A single split’s performance is noisy. The standard fix is <strong>k-fold cross-validation</strong>. You split the training data into k roughly equal folds. Train on k minus one of them, and validate on the one held out. Rotate which fold is held out until each has served once. The final cross-validation score is the average error across all rotations.</p>
+<p><span class="math display">\text{CV}(\alpha) = \frac{1}{k}\sum_{f=1}^{k} \text{MSE}_f(\alpha)</span></p>
+<p><strong>Breaking this down.</strong> k is the number of folds you split the data into, five in the example below. MSEf(α) is the error you get on fold f, using a given alpha value. The Σ symbol adds up that error across all k folds. Dividing by k at the front turns that total into a plain average. CV(α) is simply the average validation error for one candidate alpha value, which you then compare against other candidates.</p>
+<section id="worked-example-choosing-between-two-α-values" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-choosing-between-two-α-values">Worked Example: Choosing Between Two α Values</h3>
+<p>Suppose the momentum dataset above is split into k = 5 folds. We compare α = 1 against α = 10, recording validation MSE on each fold.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Fold</th>
+<th>MSE at α = 1</th>
+<th>MSE at α = 10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0.185</td>
+<td>0.171</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>0.201</td>
+<td>0.179</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0.179</td>
+<td>0.183</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>0.211</td>
+<td>0.174</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>0.193</td>
+<td>0.168</td>
+</tr>
+</tbody>
+</table>
+<p><strong>CV(α=1)</strong> = (0.185+0.201+0.179+0.211+0.193) / 5 = 0.969 / 5 = <strong>0.194</strong></p>
+<p><strong>CV(α=10)</strong> = (0.171+0.179+0.183+0.174+0.168) / 5 = 0.875 / 5 = <strong>0.175</strong></p>
+<p>Alpha equal to 10 wins on average. Its fold-by-fold scores are also tighter together. That tighter spread signals a model that is more stable across different slices of the data.</p>
+<p><strong>What this means in practice.</strong> A 0.019 drop in average MSE looks small on paper, but scale matters here. On a forward 25-day return series, that gap can be the difference between a strategy that survives transaction costs and one that does not. The tighter spread across folds at α = 10 also matters on its own. A model whose error swings wildly between folds is a model that got lucky on some slices of history and unlucky on others. For a class report, this is the exact number and reasoning to cite when justifying a chosen alpha instead of just picking a default value.</p>
+<p>A single k-fold split is itself somewhat random. It is common to repeat the whole process with different random splits. You then average across all of them. This is called <strong>repeated k-fold cross-validation</strong>. Scikit-learn’s <code>RepeatedKFold</code> automates exactly this.</p>
+</section>
+<section id="gridsearchcv-vs.-randomizedsearchcv" class="level3">
+<h3 class="anchored" data-anchor-id="gridsearchcv-vs.-randomizedsearchcv">GridSearchCV vs.&nbsp;RandomizedSearchCV</h3>
+<p><code>GridSearchCV</code> tests every combination of hyperparameter values you specify. Each combination gets evaluated with cross-validation. This is thorough, but combinations explode as you add hyperparameters. <code>RandomizedSearchCV</code> instead samples a fixed number of random combinations. It scales far better once you tune more than one or two hyperparameters at once. The trade-off is that it no longer tests every combination.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> ElasticNet</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV, RepeatedKFold</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>cv_strategy <span class="op">=</span> RepeatedKFold(n_splits<span class="op">=</span><span class="dv">10</span>, n_repeats<span class="op">=</span><span class="dv">3</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"alpha"</span>: [<span class="fl">1e-4</span>, <span class="fl">1e-3</span>, <span class="fl">1e-2</span>, <span class="fl">1e-1</span>, <span class="fl">1.0</span>, <span class="fl">10.0</span>],</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"l1_ratio"</span>: [<span class="fl">0.0</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">1.0</span>],</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>search <span class="op">=</span> GridSearchCV(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    ElasticNet(),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    param_grid,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span><span class="st">"neg_mean_squared_error"</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span>cv_strategy,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>search.fit(X_train_scaled, y_train)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(search.best_params_)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="conclusion-choosing-the-right-penalty-for-your-own-data" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-choosing-the-right-penalty-for-your-own-data">Conclusion: Choosing the Right Penalty for Your Own Data</h2>
+<p>Ridge, Lasso, and Elastic Net all solve the same underlying problem. They stop a linear model from overreacting to noisy or overlapping features. Ridge is the safe default when most features carry some real signal. Lasso is the right tool when you suspect only a handful of features actually matter. Elastic Net is the balanced choice when features are correlated and you are not certain which case applies.</p>
+<p>None of these choices should be made by guessing. Use cross-validation to compare candidate alpha values on your own data, the same way the worked example above compared α = 1 against α = 10. Report the winning value and the fold-by-fold spread, not just a single test-set score.</p>
+<p>The momentum example here used five overlapping trading windows. The same logic applies directly to a credit scoring model with correlated financial ratios, or a class assignment with many engineered features from one raw dataset. Wherever features overlap, regularization is the first tool worth reaching for, before adding complexity elsewhere.</p>
+<p>Regression assumes a straight-line relationship between features and a continuous target. Many finance problems instead ask for a category, such as whether a loan defaults or not. The next article in this series covers that shift directly: <strong>Logistic Regression and Softmax Classification</strong>, where the same regularization ideas return in a classification setting.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
