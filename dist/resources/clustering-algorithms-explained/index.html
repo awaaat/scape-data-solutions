@@ -1,0 +1,1603 @@
+<!DOCTYPE html><html lang="en"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QZMP8M7TW6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QZMP8M7TW6');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/Images/site-images/logo-image.png">
+    <link rel="apple-touch-icon" href="/Images/site-images/logo-image.png">
+
+    <!-- SEO Meta Tags -->
+    <title>Clustering Algorithms Explained: K-Means, DBSCAN, Hierarchical &amp; Gaussian Mixture Clustering With Real Formulas and an Interactive Simulator | Scape Data Solutions</title><title>Data Analytics &amp; BI Consulting | Scape Data Solutions</title><title>Scape Data Solutions | AI-Powered Data Analytics &amp; Business Intelligence</title>
+    <meta name="keywords" content="data analytics, business intelligence, machine learning, AI solutions, data science, big data, predictive analytics, data engineering, Kenya">
+    <meta name="author" content="Scape Data Solutions">
+
+    <!-- Canonical URL -->
+
+    <!-- Open Graph Meta Tags (for social sharing) -->
+    <meta property="og:title" content="Scape Data Solutions | AI-Powered Data Analytics">
+    <meta property="og:description" content="Transform your business with expert data analytics, AI, and machine learning solutions. 1200+ clients worldwide.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scapedatasolutions.com/">
+    <meta property="og:image" content="https://scapedatasolutions.com/Images/site-images/logo-image.png">
+    <meta property="og:site_name" content="Scape Data Solutions">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Scape Data Solutions | AI-Powered Data Analytics">
+    <meta name="twitter:description" content="Transform your business with expert data analytics, AI, and machine learning solutions.">
+    <meta name="twitter:image" content="https://scapedatasolutions.com/Images/site-images/logo-image.png">
+
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="Mj7beL9UYCiiQCq5yGCHT3FVRLOzGSjkofbUULvej6U">
+
+    <!-- Robots Meta Tag -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- Organization + Website + per-office LocalBusiness JSON-LD is
+         injected per-route by src/components/SEO/SEO.jsx via
+         react-helmet-async. Do NOT add a static schema block here —
+         Helmet cannot de-duplicate <script type="application/ld+json">
+         (no matching attribute to key off), so a static block here
+         ships ALONGSIDE the real one on every prerendered page instead
+         of being replaced by it. This caused a real duplicate/stale
+         Organization schema across the whole site (Nairobi-only address,
+         out of sync with the real 4-office data) until removed. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script type="module" crossorigin="" src="/assets/index-RgHw_B4f.js"></script>
+  <link rel="stylesheet" crossorigin="" href="/assets/index-DWIzPb6R.css">
+<meta name="description" content="Expert data analytics, SQL development, BI dashboards, ETL pipelines, and predictive modeling. We turn your data into revenue, faster decisions, and lower costs."><meta property="og:type" content="website"><meta property="og:site_name" content="Scape Data Solutions"><meta property="og:title" content="Data Analytics &amp; BI Consulting | Scape Data Solutions"><meta property="og:description" content="Expert data analytics, SQL development, BI dashboards, ETL pipelines, and predictive modeling. We turn your data into revenue, faster decisions, and lower costs."><meta property="og:url" content="https://www.scapedatasolutions.com/"><meta property="og:image" content="/Images/site-images/homepage-dashboard-preview.webp"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Data Analytics &amp; BI Consulting | Scape Data Solutions"><meta name="twitter:description" content="Expert data analytics, SQL development, BI dashboards, ETL pipelines, and predictive modeling. We turn your data into revenue, faster decisions, and lower costs."><meta name="twitter:image" content="/Images/site-images/homepage-dashboard-preview.webp"><link rel="canonical" href="https://www.scapedatasolutions.com/"><link rel="modulepreload" as="script" crossorigin="" href="/assets/ArticlePage-oZFiZSGX.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/articles-Dm3g29YZ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/quartoArticlesIndex-BMJ1WGPi.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/arrow-left-tsVb6pvo.js"><link rel="stylesheet" crossorigin="" href="/assets/ArticlePage-rHmt1_cJ.css"><meta name="description" content="Every major clustering method, worked by hand with real numbers, real sklearn code, and a free interactive simulator you can run yourself."><meta property="og:type" content="website"><meta property="og:site_name" content="Scape Data Solutions"><meta property="og:title" content="Clustering Algorithms Explained: K-Means, DBSCAN, Hierarchical &amp; Gaussian Mixture Clustering With Real Formulas and an Interactive Simulator | Scape Data Solutions"><meta property="og:description" content="Every major clustering method, worked by hand with real numbers, real sklearn code, and a free interactive simulator you can run yourself."><meta property="og:url" content="https://www.scapedatasolutions.com/resources/clustering-algorithms-explained"><meta property="og:image" content="https://www.scapedatasolutions.com/Images/site-images/og-default.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Clustering Algorithms Explained: K-Means, DBSCAN, Hierarchical &amp; Gaussian Mixture Clustering With Real Formulas and an Interactive Simulator | Scape Data Solutions"><meta name="twitter:description" content="Every major clustering method, worked by hand with real numbers, real sklearn code, and a free interactive simulator you can run yourself."><meta name="twitter:image" content="https://www.scapedatasolutions.com/Images/site-images/og-default.jpg"><link rel="canonical" href="https://www.scapedatasolutions.com/resources/clustering-algorithms-explained"><script id="katex-js" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script></head>
+
+<body>
+    <!-- Fallback content for crawlers with JS disabled -->
+    <noscript>
+        <div style="padding: 40px; text-align: center; font-family: Arial, sans-serif;">
+            <h1>Scape Data Solutions</h1>
+            <p>AI-Powered Data Analytics & Business Intelligence</p>
+            <p>For the best experience, please enable JavaScript in your browser.</p>
+            <nav style="margin-top: 20px;">
+                <a href="/" style="margin: 0 10px;">Home</a> |
+                <a href="/services" style="margin: 0 10px;">Services</a> |
+                <a href="/solutions" style="margin: 0 10px;">Solutions</a> |
+                <a href="/pricing" style="margin: 0 10px;">Pricing</a> |
+                <a href="/about" style="margin: 0 10px;">About</a> |
+                <a href="/contact" style="margin: 0 10px;">Contact</a>
+            </nav>
+        </div>
+    </noscript>
+
+    <div id="root"><div class="_app_1698h_3"><main class="_main_1698h_11"><div class="_page_f1pxc_1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.scapedatasolutions.com/#organization","name":"Scape Data Solutions","url":"https://www.scapedatasolutions.com","logo":"https://www.scapedatasolutions.com/Images/site-images/logo.svg","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","description":"Scape Data Solutions helps businesses make smarter decisions, grow faster, and reduce costs by turning data into actionable insights through AI, machine learning, big data engineering, and business intelligence.","email":"info@scapedatasolutions.com","areaServed":["US","CA","PK","KE","GB"],"foundingDate":"2017","numberOfEmployees":"11-50","sameAs":["https://www.linkedin.com/company/scape-data-solutions/","https://www.facebook.com/profile.php?id=61591435187674"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.scapedatasolutions.com/#location-0","name":"Scape Data Solutions — US Office","url":"https://www.scapedatasolutions.com","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","parentOrganization":{"@id":"https://www.scapedatasolutions.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"1024 Iron Point Road, Suite 200","addressLocality":"Folsom","addressRegion":"CA","postalCode":"95630","addressCountry":"US"},"telephone":"+1-757-598-0582"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.scapedatasolutions.com/#location-1","name":"Scape Data Solutions — Canada Office","url":"https://www.scapedatasolutions.com","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","parentOrganization":{"@id":"https://www.scapedatasolutions.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"400 Centre Street South","addressLocality":"Whitby","addressRegion":"ON","postalCode":"L1N 0G4","addressCountry":"CA"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.scapedatasolutions.com/#location-2","name":"Scape Data Solutions — Pakistan Office","url":"https://www.scapedatasolutions.com","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","parentOrganization":{"@id":"https://www.scapedatasolutions.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"9th Floor, Tricon Corporate Centre, 73 Jail Road, Gulberg","addressLocality":"Lahore","postalCode":"54000","addressCountry":"PK"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.scapedatasolutions.com/#location-3","name":"Scape Data Solutions — Nairobi Office","url":"https://www.scapedatasolutions.com","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","parentOrganization":{"@id":"https://www.scapedatasolutions.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"Global Trade Centre, 14th Floor, Westlands Road","addressLocality":"Nairobi","addressCountry":"KE"},"telephone":"+254-718-889-559"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.scapedatasolutions.com/#location-4","name":"Scape Data Solutions — UK Office","url":"https://www.scapedatasolutions.com","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","parentOrganization":{"@id":"https://www.scapedatasolutions.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"60 Cannon Street","addressLocality":"London","postalCode":"EC4N 6NP","addressCountry":"GB"},"telephone":"+44-7454-744014"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.scapedatasolutions.com/#website","url":"https://www.scapedatasolutions.com","name":"Scape Data Solutions","publisher":{"@id":"https://www.scapedatasolutions.com/#organization"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.scapedatasolutions.com"},{"@type":"ListItem","position":2,"name":"Resources","item":"https://www.scapedatasolutions.com/resources"},{"@type":"ListItem","position":3,"name":"Clustering Algorithms Explained","item":"https://www.scapedatasolutions.com/resources/clustering-algorithms-explained"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Clustering Algorithms Explained: K-Means, DBSCAN, Hierarchical & Gaussian Mixture Clustering With Real Formulas and an Interactive Simulator","description":"Every major clustering method, worked by hand with real numbers, real sklearn code, and a free interactive simulator you can run yourself.","datePublished":"2026-08-23","dateModified":"2026-08-23","author":{"@type":"Organization","name":"Scape Data Solutions"},"publisher":{"@id":"https://www.scapedatasolutions.com/#organization"},"mainEntityOfPage":"https://www.scapedatasolutions.com/resources/clustering-algorithms-explained"}</script><div class="_navTopBar_ui2im_162"><div class="_navTopInner_ui2im_173"><div class="_navTopLeft_ui2im_180"><a href="mailto:info@scapedatasolutions.com" class="_navTopContact_ui2im_187"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>info@scapedatasolutions.com</a><span class="_navTopSep_ui2im_198"></span><a href="tel:+17575980582" class="_navTopContact_ui2im_187"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>+1 (757) 598-0582</a></div></div></div><div class="_mobileHeader_ui2im_205"><div class="_mContainer_ui2im_218"><a class="_mobileLogo_ui2im_224" href="/" data-discover="true"><img alt="Scape Data Solutions" src="/Images/site-images/logo.svg"></a><button class="_burger_ui2im_230" aria-label="Toggle menu"><span></span><span></span><span></span></button></div></div><header class="_navbarFixed_ui2im_4"><div class="_navbarBorder_ui2im_16" style="opacity: 0; transition: opacity 0.2s;"></div><div class="_navbarInner_ui2im_28"><a class="_navbarBrand_ui2im_45" href="/" data-discover="true"><img alt="Scape Data Solutions" src="/Images/site-images/logo.svg"></a><ul class="_navList_ui2im_56"><li><a class="_navLink_ui2im_70" href="/" data-discover="true">Home</a></li><li><a class="_navLink_ui2im_70" href="/business-intel" data-discover="true">Business Intel</a></li><li class="_hasDrop_ui2im_100"><a class="_navLink_ui2im_70" href="/company" data-discover="true">Company <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a><div class="_drop_ui2im_103 _dropWide_ui2im_120"><div class="_dropGrid_ui2im_136"><a class="_dropLink_ui2im_147" href="/company" data-discover="true">Company</a><a class="_dropLink_ui2im_147" href="/why-us" data-discover="true">Why Us?</a><a class="_dropLink_ui2im_147" href="/careers" data-discover="true">Careers</a><a class="_dropLink_ui2im_147" href="/faq" data-discover="true">FAQ</a></div></div></li><li class="_hasDrop_ui2im_100"><a class="_navLink_ui2im_70" href="/services" data-discover="true">Services <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a><div class="_drop_ui2im_103 _dropWide_ui2im_120"><div class="_dropGrid_ui2im_136"><a class="_dropLink_ui2im_147" href="/services" data-discover="true">All Services</a><a class="_dropLink_ui2im_147" href="/services?category=academic" data-discover="true">Academic &amp; Research</a><a class="_dropLink_ui2im_147" href="/services?category=analytics" data-discover="true">Advanced Analytics</a><a class="_dropLink_ui2im_147" href="/services?category=finance" data-discover="true">Finance &amp; Risk</a><a class="_dropLink_ui2im_147" href="/services?category=healthcare" data-discover="true">Healthcare &amp; Life Sciences</a><a class="_dropLink_ui2im_147" href="/services?category=manufacturing" data-discover="true">Manufacturing &amp; Supply Chain</a><a class="_dropLink_ui2im_147" href="/services?category=retail" data-discover="true">Retail &amp; E-Commerce</a><a class="_dropLink_ui2im_147" href="/services?category=ai-ml" data-discover="true">AI &amp; Machine Learning</a><a class="_dropLink_ui2im_147" href="/services?category=data-engineering" data-discover="true">Data Engineering &amp; BI Tools</a><a class="_dropLink_ui2im_147" href="/services?category=research-methods" data-discover="true">Statistical &amp; Research Methods</a><a class="_dropLink_ui2im_147" href="/services?category=academic-writing" data-discover="true">Academic Writing &amp; Publishing</a><a class="_dropLink_ui2im_147" href="/services?category=assignment-help" data-discover="true">Assignment &amp; Software Help</a></div></div></li><li><a class="_navLink_ui2im_70" href="/clients" data-discover="true">Our Clients</a></li><li class="_hasDrop_ui2im_100"><a class="_navLink_ui2im_70" href="/portfolio" data-discover="true">Portfolio <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a><div class="_drop_ui2im_103 _dropRight_ui2im_123"><div class="_dropGrid1_ui2im_142"><a class="_dropLink_ui2im_147" href="/portfolio/bi" data-discover="true">Dashboards &amp; BI</a><a class="_dropLink_ui2im_147" href="/portfolio/ai" data-discover="true">AI Applications</a><a class="_dropLink_ui2im_147" href="/portfolio/pipelines" data-discover="true">Data Pipelines</a><a class="_dropLink_ui2im_147" href="/portfolio/mobile" data-discover="true">Mobile Analytics</a></div></div></li><li class="_hasDrop_ui2im_100"><a class="_navLink_ui2im_70 _navActive_ui2im_85" href="/resources" data-discover="true">Resources <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a><div class="_drop_ui2im_103 _dropWide_ui2im_120 _dropRight_ui2im_123"><div class="_dropGrid_ui2im_136"><a class="_dropLink_ui2im_147" href="/resources" data-discover="true">All Resources</a><a class="_dropLink_ui2im_147" href="/resources?category=business" data-discover="true">Business Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=finance" data-discover="true">Finance Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=healthcare" data-discover="true">Healthcare Analytics</a><a class="_dropLink_ui2im_147" href="/dental-analytics" data-discover="true">Dental Analytics</a><a class="_dropLink_ui2im_147" href="/veterinary-analytics" data-discover="true">Veterinary Analytics</a><a class="_dropLink_ui2im_147" href="/medical-practice-analytics" data-discover="true">Medical Practice Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=retail" data-discover="true">Retail Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=manufacturing" data-discover="true">Manufacturing Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=logistics" data-discover="true">Logistics Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=energy" data-discover="true">Energy &amp; Utilities</a><a class="_dropLink_ui2im_147" href="/resources?category=realestate" data-discover="true">Real Estate Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=government" data-discover="true">Government &amp; Public Sector</a><a class="_dropLink_ui2im_147" href="/resources?category=media" data-discover="true">Media &amp; Entertainment</a><a class="_dropLink_ui2im_147" href="/resources?category=telecom" data-discover="true">Telecommunications</a><a class="_dropLink_ui2im_147" href="/resources?category=agriculture" data-discover="true">Agriculture Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=insurance" data-discover="true">Insurance Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=legal" data-discover="true">Legal Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=academic" data-discover="true">Education Analytics</a></div></div></li><li><a class="_navLink_ui2im_70" href="/testimonials" data-discover="true">Testimonials</a></li><li><a class="_navLink_ui2im_70" href="/contact" data-discover="true">Contact</a></li></ul></div></header><article class="_article_f1pxc_7"><div class="_hero_f1pxc_9"><a class="_backLink_f1pxc_10" href="/resources" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg> All Resources</a><span class="_category_f1pxc_12">AI &amp; Machine Learning</span><h1 class="_title_f1pxc_13">Clustering Algorithms Explained: K-Means, DBSCAN, Hierarchical &amp; Gaussian Mixture Clustering With Real Formulas and an Interactive Simulator</h1></div><div class="_body_f1pxc_22"><div class="_quartoBody_f1pxc_72">
+
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Scape Data Solutions">
+<meta name="dcterms.date" content="2026-08-23">
+<meta name="description" content="A complete, hands-on guide to clustering algorithms in machine learning — k-means, k-medoids, hierarchical clustering, DBSCAN, grid-based and model-based clustering — with every formula worked by hand and a free interactive clustering simulator you can run in your browser.">
+
+<title>Clustering Algorithms Explained: K-Means, DBSCAN, Hierarchical &amp; Gaussian Mixture Clustering With Real Formulas and an Interactive Simulator</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="clustering-algorithms-explained_files/libs/clipboard/clipboard.min.js"></script>
+<script src="clustering-algorithms-explained_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="clustering-algorithms-explained_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="clustering-algorithms-explained_files/libs/quarto-html/popper.min.js"></script>
+<script src="clustering-algorithms-explained_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="clustering-algorithms-explained_files/libs/quarto-html/anchor.min.js"></script>
+<link href="clustering-algorithms-explained_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="clustering-algorithms-explained_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="clustering-algorithms-explained_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="clustering-algorithms-explained_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="clustering-algorithms-explained_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+
+
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<p>Most business data arrives with no labels attached to it. Nobody tags each customer as “high value” before a sale happens. Nobody marks a transaction as fraud before an investigator looks at it. Nobody sorts a warehouse of medical scans by tissue type before a radiologist opens the file. Clustering is the branch of machine learning built for exactly this situation. It searches raw, unlabeled data and finds the groups hiding inside it, with no answer key and no human supervision guiding the process.</p>
+<p>This article works through every major clustering method used in production systems today, using the same real numbers a data team would actually compute by hand before trusting a machine to do it. Every formula below is followed by an actual worked calculation, not just the equation on its own. At the end, you can open the companion Clustering Playground and run these exact formulas yourself, on your own numbers, in real time.</p>
+<section id="what-is-clustering-in-machine-learning-what-clustering-actually-solves" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-clustering-in-machine-learning-what-clustering-actually-solves">What Is Clustering in Machine Learning? What Clustering Actually Solves</h2>
+<p>Clustering takes a pile of unlabeled data points and sorts them into groups automatically. Points inside the same group should look similar to each other. Points in different groups should look clearly different. <a href="https://www.ibm.com/think/topics/unsupervised-learning">IBM’s overview of unsupervised learning</a> describes this entire category of methods as learning structure from data that carries no predefined labels or categories at all.</p>
+<p>Consider a subscription box company with 40,000 customers and no existing tiers — exactly the kind of problem <a href="https://www.scapedatasolutions.com/services?category=analytics">customer segmentation and analytics</a> projects are built to solve. A retailer with a loyalty program nobody designed on purpose. A bank whose fraud team currently reviews every single transaction by hand. Each of these businesses is sitting on a features matrix with no labels column, and clustering is the tool that reads that matrix and hands back a sensible grouping.</p>
+</section>
+<section id="hierarchical-vs.-partitional-clustering-the-two-big-families" class="level2">
+<h2 class="anchored" data-anchor-id="hierarchical-vs.-partitional-clustering-the-two-big-families">Hierarchical vs.&nbsp;Partitional Clustering: The Two Big Families</h2>
+<p>Nearly every clustering algorithm in use today falls into one of two families. Hierarchical methods build clusters step by step, using groups formed earlier as the raw material for the next step. Partitional methods decide on every cluster at once, in a single coordinated pass over the whole dataset.</p>
+<p>Hierarchical methods split further into two directions. Agglomerative clustering starts by treating every single data point as its own miniature cluster, then repeatedly merges the two closest clusters together until one large cluster remains. Divisive clustering runs the opposite way: it starts with everything in one giant cluster and splits it apart, level by level, until every point stands alone.</p>
+<p>Partitional methods work on a different principle entirely. A business first chooses a number of groups, then the algorithm assigns every data point to one of those groups and keeps refining the assignment until it stabilizes. K-means and k-medoids are the two most common partitional algorithms, and both are covered in full below.</p>
+</section>
+<section id="manhattan-distance-vs.-euclidean-distance-measuring-distance-in-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="manhattan-distance-vs.-euclidean-distance-measuring-distance-in-clustering">Manhattan Distance vs.&nbsp;Euclidean Distance: Measuring Distance in Clustering</h2>
+<p>Before any algorithm can group two customers, two transactions, or two products together, it needs an exact way to measure how far apart they are. Two distance formulas dominate almost every clustering method used in practice, and switching between them can genuinely change which points end up in the same group.</p>
+<p><strong>Manhattan distance</strong> adds up the distance traveled along each variable separately, the way a taxi moves through city blocks rather than cutting diagonally across them:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi mathvariant="normal">∣</mi><msub><mi>X</mi><mi>i</mi></msub><mo>−</mo><msub><mi>Y</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">d = \sum_{i=1}^{n} |X_i - Y_i|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6944em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 2.9291em; vertical-align: -1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.6514em;"><span class="" style="top: -1.8723em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span class="" style="top: -3.05em;"><span class="pstrut" style="height: 3.05em;"></span><span class=""><span class="mop op-symbol large-op">∑</span></span></span><span class="" style="top: -4.3em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 1.2777em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0785em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3117em;"><span class="" style="top: -2.55em; margin-left: -0.0785em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.2222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3117em;"><span class="" style="top: -2.55em; margin-left: -0.2222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mord">∣</span></span></span></span></span></span></p>
+<p><strong>Euclidean distance</strong> measures the straight line between two points, “as the crow flies”:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mo>=</mo><msqrt><mrow><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo stretchy="false">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo>−</mo><msub><mi>y</mi><mi>j</mi></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">d = \sqrt{\sum_{j=1}^{n} (x_j - y_j)^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6944em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 3.2929em; vertical-align: -1.4138em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.8791em;"><span class="svg-align" style="top: -5.2529em;"><span class="pstrut" style="height: 5.2529em;"></span><span class="mord" style="padding-left: 1.056em;"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.6514em;"><span class="" style="top: -1.8723em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right: 0.0572em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span class="" style="top: -3.05em;"><span class="pstrut" style="height: 3.05em;"></span><span class=""><span class="mop op-symbol large-op">∑</span></span></span><span class="" style="top: -4.3em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 1.4138em;"><span class=""></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3117em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.2861em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3117em;"><span class="" style="top: -2.55em; margin-left: -0.0359em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.2861em;"><span class=""></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.7401em;"><span class="" style="top: -2.989em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span class="" style="top: -3.8391em;"><span class="pstrut" style="height: 5.2529em;"></span><span class="hide-tail" style="min-width: 0.742em; height: 3.3329em;"><svg width="400em" height="3.3329em" viewBox="0 0 400000 3332" preserveAspectRatio="xMinYMin slice"><path d="M702 80H40000040
+H742v3198l-4 4-4 4c-.667.7 -2 1.5-4 2.5s-4.167 1.833-6.5 2.5-5.5 1-9.5 1
+h-12l-28-84c-16.667-52-96.667 -294.333-240-727l-212 -643 -85 170
+c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
+219 661 l218 661zM702 80H400000v40H742z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 1.4138em;"><span class=""></span></span></span></span></span></span></span></span></span></span></p>
+<section id="worked-example-comparing-two-customers" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-comparing-two-customers">Worked Example: Comparing Two Customers</h3>
+<p>Take two real customers, measured on two variables: age and monthly spend.</p>
+<ul>
+<li>Customer A: age 34, monthly spend $220</li>
+<li>Customer B: age 51, monthly spend $340</li>
+</ul>
+<p>The age gap is |34 − 51| = 17. The spend gap is |220 − 340| = 120.</p>
+<p><strong>Manhattan distance</strong> = 17 + 120 = <strong>137</strong></p>
+<p><strong>Euclidean distance</strong> = √(17² + 120²) = √(289 + 14,400) = √14,689 ≈ <strong>121.2</strong></p>
+<p>Notice that Manhattan distance always comes out larger, since it never lets the two gaps offset each other diagonally. In practice, Manhattan distance is preferred whenever your variables represent genuinely separate, non-interchangeable steps, such as warehouse grid movement or ordinal rating scales. Euclidean distance is preferred whenever the underlying space is continuous and a diagonal shortcut is meaningful, which is why it is the default choice across most published clustering research.</p>
+<p>You can drag both customers yourself in the <strong>Distance Duel</strong> tab of the Clustering Playground below and watch both formulas recompute live.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial <span class="im">import</span> distance</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>customer_a <span class="op">=</span> (<span class="dv">34</span>, <span class="dv">220</span>)   <span class="co"># age, monthly spend</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>customer_b <span class="op">=</span> (<span class="dv">51</span>, <span class="dv">340</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>manhattan <span class="op">=</span> distance.cityblock(customer_a, customer_b)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>euclidean <span class="op">=</span> distance.euclidean(customer_a, customer_b)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(manhattan)   <span class="co"># 137.0</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(euclidean)   <span class="co"># 121.20...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="hierarchical-clustering-explained-agglomerative-clustering-dendrograms-and-linkage-rules" class="level2">
+<h2 class="anchored" data-anchor-id="hierarchical-clustering-explained-agglomerative-clustering-dendrograms-and-linkage-rules">Hierarchical Clustering Explained: Agglomerative Clustering, Dendrograms, and Linkage Rules</h2>
+<p>Agglomerative clustering builds a tree structure, called a dendrogram, one merge at a time. At every step, the algorithm needs a rule for comparing two entire clusters, not just two individual points, since after the first merge you are comparing groups that already contain several members.</p>
+<p>The <strong>average linkage</strong> rule takes the mean distance across every possible pair of points between two clusters:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mn>1</mn><mrow><mtext>card</mtext><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo> <mtext>card</mtext><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mfrac><munder><mo>∑</mo><mrow><mi>x</mi><mo>∈</mo><mi>A</mi></mrow></munder><munder><mo>∑</mo><mrow><mi>y</mi><mo>∈</mo><mi>B</mi></mrow></munder><mi>d</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{1}{\text{card}(A)\,\text{card}(B)} \sum_{x \in A} \sum_{y \in B} d(x, y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 2.7519em; vertical-align: -1.4304em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.3214em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord text"><span class="mord">card</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord text"><span class="mord">card</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.0502em;">B</span><span class="mclose">)</span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.936em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.05em;"><span class="" style="top: -1.8557em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mrel mtight">∈</span><span class="mord mathnormal mtight">A</span></span></span></span><span class="" style="top: -3.05em;"><span class="pstrut" style="height: 3.05em;"></span><span class=""><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 1.3217em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.05em;"><span class="" style="top: -1.8557em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right: 0.0359em;">y</span><span class="mrel mtight">∈</span><span class="mord mathnormal mtight" style="margin-right: 0.0502em;">B</span></span></span></span><span class="" style="top: -3.05em;"><span class="pstrut" style="height: 3.05em;"></span><span class=""><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 1.4304em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span><span class="mclose">)</span></span></span></span></span></span></p>
+<p>Here, card(A) and card(B) are simply the number of points in each cluster.</p>
+<section id="worked-example-merging-two-regional-sales-teams" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-merging-two-regional-sales-teams">Worked Example: Merging Two Regional Sales Teams</h3>
+<p>Suppose a company is deciding whether to merge two regional customer segments, based on age and spend.</p>
+<ul>
+<li>Segment A contains two customers: (34, 220) and (30, 200)</li>
+<li>Segment B contains two customers: (60, 400) and (65, 420)</li>
+</ul>
+<p>There are four cross-pairs to measure, using Euclidean distance for each:</p>
+<ul>
+<li>(34,220) to (60,400): √(26² + 180²) = √(676 + 32,400) = √33,076 ≈ 181.9</li>
+<li>(34,220) to (65,420): √(31² + 200²) = √(961 + 40,000) = √40,961 ≈ 202.4</li>
+<li>(30,200) to (60,400): √(30² + 200²) = √(900 + 40,000) = √40,900 ≈ 202.2</li>
+<li>(30,200) to (65,420): √(35² + 220²) = √(1,225 + 48,400) = √49,625 ≈ 222.8</li>
+</ul>
+<p><strong>Average linkage distance</strong> = (181.9 + 202.4 + 202.2 + 222.8) ÷ 4 = 809.3 ÷ 4 ≈ <strong>202.3</strong></p>
+<p>A company would compare this number against every other pair of candidate segments and merge whichever pair has the smallest average linkage distance first. The other two common rules are <strong>complete linkage</strong>, which uses only the largest of the four pair distances above (222.8), and <strong>single linkage</strong>, which uses only the smallest (181.9). Each rule can produce a genuinely different final tree from the exact same starting data.</p>
+<p>The real limitation of hierarchical clustering is permanence. Once two clusters merge, the algorithm can never undo it later. A single bad early merge, caused by two segments that looked similar on limited data, stays locked into every result downstream.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.cluster.hierarchy <span class="im">import</span> linkage, fcluster</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> np.array([</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">34</span>, <span class="dv">220</span>], [<span class="dv">30</span>, <span class="dv">200</span>],   <span class="co"># Segment A</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">60</span>, <span class="dv">400</span>], [<span class="dv">65</span>, <span class="dv">420</span>],   <span class="co"># Segment B</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># method="average" reproduces the average-linkage distance calculated above</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> linkage(points, method<span class="op">=</span><span class="st">"average"</span>, metric<span class="op">=</span><span class="st">"euclidean"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>clusters <span class="op">=</span> fcluster(Z, t<span class="op">=</span><span class="dv">2</span>, criterion<span class="op">=</span><span class="st">"maxclust"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Z)          <span class="co"># merge history, including the 202.3-ish average linkage distance</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clusters)   <span class="co"># [1 1 2 2] once both segments are cut into 2 clusters</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="k-means-clustering-algorithm-and-k-medoids-clustering-explained" class="level2">
+<h2 class="anchored" data-anchor-id="k-means-clustering-algorithm-and-k-medoids-clustering-explained">K-Means Clustering Algorithm and K-Medoids Clustering Explained</h2>
+<p>Partitional algorithms fix a number of groups upfront, then iteratively reassign every point until the assignment stops changing.</p>
+<section id="k-means-building-loyalty-tiers-from-scratch" class="level3">
+<h3 class="anchored" data-anchor-id="k-means-building-loyalty-tiers-from-scratch">K-Means: Building Loyalty Tiers From Scratch</h3>
+<p><a href="https://www.ibm.com/think/topics/k-means-clustering">IBM’s explainer on k-means clustering</a> describes why this is the most widely used clustering algorithm in commercial machine learning: it is simple, computationally fast, and scales easily to very large datasets. Each point is assigned to whichever centroid, or cluster average, sits nearest to it.</p>
+<p>The process runs in a loop: choose k, place k starting centroids, assign every point to its nearest centroid, then move each centroid to the average position of the points now assigned to it. Repeat until nothing moves.</p>
+</section>
+<section id="worked-example-one-full-iteration-by-hand" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-one-full-iteration-by-hand">Worked Example: One Full Iteration, By Hand</h3>
+<p>Take six customers, measured by age and monthly spend, and an initial guess of k = 2:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Customer</th>
+<th>Age</th>
+<th>Spend</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P1</td>
+<td>25</td>
+<td>150</td>
+</tr>
+<tr class="even">
+<td>P2</td>
+<td>28</td>
+<td>180</td>
+</tr>
+<tr class="odd">
+<td>P3</td>
+<td>30</td>
+<td>160</td>
+</tr>
+<tr class="even">
+<td>P4</td>
+<td>55</td>
+<td>500</td>
+</tr>
+<tr class="odd">
+<td>P5</td>
+<td>60</td>
+<td>520</td>
+</tr>
+<tr class="even">
+<td>P6</td>
+<td>58</td>
+<td>480</td>
+</tr>
+</tbody>
+</table>
+<p>Start with two centroids at P1 (25, 150) and P5 (60, 520).</p>
+<p>Computing Euclidean distance from every point to both centroids shows P1, P2, and P3 sit closer to (25, 150), while P4, P5, and P6 sit closer to (60, 520). For example, P4 is 351.3 units from the first centroid and only 20.6 units from the second, so it joins the second group.</p>
+<p>With the assignment settled, each new centroid becomes the average of its own members:</p>
+<p><strong>New Centroid 1</strong> = average of P1, P2, P3 = ((25+28+30)/3, (150+180+160)/3) = <strong>(27.7, 163.3)</strong></p>
+<p><strong>New Centroid 2</strong> = average of P4, P5, P6 = ((55+60+58)/3, (500+520+480)/3) = <strong>(57.7, 500.0)</strong></p>
+<p>That single pass is one full iteration of k-means. The algorithm repeats this exact assign-then-average cycle until the centroids stop moving between rounds, at which point the tiers are considered final. You can build this exact scenario yourself in the <strong>K-Means Trainer</strong> tab below, choosing k, stepping through each iteration one click at a time, and watching the total error fall as the tiers settle.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>customers <span class="op">=</span> np.array([</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">25</span>, <span class="dv">150</span>], [<span class="dv">28</span>, <span class="dv">180</span>], [<span class="dv">30</span>, <span class="dv">160</span>],   <span class="co"># P1, P2, P3</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">55</span>, <span class="dv">500</span>], [<span class="dv">60</span>, <span class="dv">520</span>], [<span class="dv">58</span>, <span class="dv">480</span>],   <span class="co"># P4, P5, P6</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># n_init=1 and this init mirrors the by-hand pass: start at P1 and P5</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">2</span>, init<span class="op">=</span>np.array([[<span class="dv">25</span>, <span class="dv">150</span>], [<span class="dv">60</span>, <span class="dv">520</span>]]), n_init<span class="op">=</span><span class="dv">1</span>, max_iter<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>model.fit(customers)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.cluster_centers_)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># [[ 27.67 163.33]</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  [ 57.67 500.  ]]   -- matches the hand-computed centroids above</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.labels_)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.inertia_)   <span class="co"># total squared distance to centroid, used later for the elbow method</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
+</section>
+<section id="k-medoids-the-version-that-resists-outliers" class="level3">
+<h3 class="anchored" data-anchor-id="k-medoids-the-version-that-resists-outliers">K-Medoids: The Version That Resists Outliers</h3>
+<p>K-means has one well documented weakness: because a centroid is a computed average, a single extreme outlier can drag it far off course. K-medoids solves this by anchoring each cluster to one of its own real data points, called a medoid, instead of a mathematical average. Because a medoid is an actual observed customer rather than a blended average, it barely moves even when a single unusual data point joins the group. PAM, short for Partitioning Around Medoids, was one of the first algorithms built this way, and it remains the standard choice whenever a dataset contains meaningful noise, such as a handful of unusually large one-time purchases sitting inside otherwise ordinary spending data. Teams evaluating which clustering approach fits messy, real-world data often start with a <a href="https://www.scapedatasolutions.com/services?category=data-engineering">data engineering and ETL audit</a> before choosing between k-means and k-medoids.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pip install scikit-learn-extra</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn_extra.cluster <span class="im">import</span> KMedoids</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>customers <span class="op">=</span> np.array([</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">25</span>, <span class="dv">150</span>], [<span class="dv">28</span>, <span class="dv">180</span>], [<span class="dv">30</span>, <span class="dv">160</span>],</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">55</span>, <span class="dv">500</span>], [<span class="dv">60</span>, <span class="dv">520</span>], [<span class="dv">58</span>, <span class="dv">480</span>],</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">500</span>, <span class="dv">9000</span>],   <span class="co"># one extreme outlier: a single huge one-time purchase</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>kmedoids <span class="op">=</span> KMedoids(n_clusters<span class="op">=</span><span class="dv">2</span>, method<span class="op">=</span><span class="st">"pam"</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>kmedoids.fit(customers)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(kmedoids.cluster_centers_)   <span class="co"># real observed customers, not blended averages</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(kmedoids.labels_)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># the outlier gets absorbed into whichever cluster it's nearest to,</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># without dragging that cluster's center off the real customers in it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="dbscan-and-density-based-clustering-anomaly-detection-and-fraud-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="dbscan-and-density-based-clustering-anomaly-detection-and-fraud-clustering">DBSCAN and Density-Based Clustering: Anomaly Detection and Fraud Clustering</h2>
+<p>K-means and k-medoids both assume clusters look roughly like round blobs. Real fraud patterns, geographic clusters, and behavioral segments frequently do not. Density-based clustering was built specifically to find clusters of any shape, while also identifying the points that do not belong to any group at all.</p>
+<p><a href="https://link.springer.com/article/10.1023/A:1009745219419">Ester, Kriegel, Sander, and Xu introduced DBSCAN</a> in 1996, and it remains one of the most cited clustering algorithms in computer science, having won the Test of Time Award at the SIGKDD data mining conference in 2014. DBSCAN needs two settings: <strong>Eps</strong>, the radius that defines a point’s neighborhood, and <strong>MinPts</strong>, the minimum number of neighbors a point needs inside that radius to count as dense.</p>
+<p>Every point gets classified as one of three types. A <strong>core point</strong> has at least MinPts neighbors within Eps, including itself. A <strong>border point</strong> falls within Eps of a core point but does not have enough neighbors of its own to qualify as core. A <strong>noise point</strong> belongs to neither category, and gets flagged as an outlier.</p>
+<section id="worked-example-spotting-a-fraudulent-transaction" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-spotting-a-fraudulent-transaction">Worked Example: Spotting a Fraudulent Transaction</h3>
+<p>Take five transactions, plotted on two simplified variables, with Eps set to 3:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Transaction</th>
+<th>Feature X</th>
+<th>Feature Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td>10</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>T5</td>
+<td>80</td>
+<td>80</td>
+</tr>
+</tbody>
+</table>
+<p>Checking distances from T1 to the others: T1 to T2 is √(1+1) ≈ 1.4, T1 to T3 is √(1+0) = 1.0, and T1 to T4 is √(0+1) = 1.0. All three sit inside the Eps radius of 3. With MinPts set to 3, T1 qualifies as a core point, since it has three neighbors within range. T2, T3, and T4 join the same cluster as border or core points, depending on their own neighbor counts.</p>
+<p>T5, at (80, 80), sits far outside the Eps radius of every other transaction. It has zero neighbors within range, so DBSCAN labels it as noise, the exact signal a fraud analyst would want flagged for manual review. Try this yourself in the <strong>Fraud Detective</strong> tab, where dragging the Eps and MinPts sliders reclassifies every transaction live and counts how many get flagged.</p>
+<p>A close relative, the <strong>SNN algorithm</strong>, uses the same core-border-noise framework but measures similarity by counting how many nearest neighbors two points share, rather than raw distance, which makes it more forgiving of small changes in scale across variables.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>transactions <span class="op">=</span> np.array([</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">10</span>, <span class="dv">10</span>], [<span class="dv">11</span>, <span class="dv">11</span>], [<span class="dv">9</span>, <span class="dv">10</span>], [<span class="dv">10</span>, <span class="dv">9</span>],   <span class="co"># T1-T4, tight cluster</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">80</span>, <span class="dv">80</span>],                                <span class="co"># T5, the fraud outlier</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="dv">3</span>, min_samples<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>db.fit(transactions)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(db.labels_)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># [0 0 0 0 -1]  -- T1 through T4 join cluster 0, T5 is labeled -1: noise</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>core_mask <span class="op">=</span> np.zeros_like(db.labels_, dtype<span class="op">=</span><span class="bu">bool</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>core_mask[db.core_sample_indices_] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(core_mask)   <span class="co"># exactly which points DBSCAN classified as core points</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="grid-based-clustering-sting-clique-and-model-based-clustering-gaussian-mixture-models" class="level2">
+<h2 class="anchored" data-anchor-id="grid-based-clustering-sting-clique-and-model-based-clustering-gaussian-mixture-models">Grid-Based Clustering (STING, CLIQUE) and Model-Based Clustering (Gaussian Mixture Models)</h2>
+<p><strong>Grid-based clustering</strong> takes a different approach entirely. It divides the entire data space into a fixed grid of cells, computes the density of each cell, discards cells below a chosen threshold, and merges the remaining dense, neighboring cells into final clusters. STING and CLIQUE are the best known algorithms built this way. The advantage is speed: because the algorithm only compares cells, not every individual point against every other point, it scales efficiently even on very large datasets. The tradeoff is that every cluster boundary comes out strictly horizontal or vertical, since a rectangular grid can never draw a diagonal edge.</p>
+<p><strong>Model-based clustering</strong> assumes your data was actually generated by a mixture of underlying probability distributions layered on top of one another, typically several bell-curve, or Gaussian, distributions. Instead of hard-assigning a point to exactly one group, it calculates the probability that a point belongs to each cluster. The overall mixture density is:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>G</mi></munderover><msub><mi>T</mi><mi>k</mi></msub><msub><mi>f</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x) = \sum_{k=1}^{G} T_k f_k(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.1076em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 3.1304em; vertical-align: -1.3021em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.8283em;"><span class="" style="top: -1.8479em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right: 0.0315em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span class="" style="top: -3.05em;"><span class="pstrut" style="height: 3.05em;"></span><span class=""><span class="mop op-symbol large-op">∑</span></span></span><span class="" style="top: -4.3em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">G</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 1.3021em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361em;"><span class="" style="top: -2.55em; margin-left: -0.1389em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.1076em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361em;"><span class="" style="top: -2.55em; margin-left: -0.1076em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></span></p>
+<p>where fk is the probability density function of group k, and Tk is the probability that any observation comes from that specific component.</p>
+<section id="worked-example-sorting-two-customer-segments-by-session-length" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-sorting-two-customer-segments-by-session-length">Worked Example: Sorting Two Customer Segments by Session Length</h3>
+<p>Suppose a website has two visitor segments based on average session length in minutes. Segment A (quick browsers) has a mean of 10 minutes and a variance of 4, making up 60% of traffic. Segment B (deep researchers) has a mean of 30 minutes and a variance of 9, making up the remaining 40%.</p>
+<p>For a univariate Gaussian, the density formula simplifies to:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>f</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mrow><mn>2</mn><mi>π</mi><msup><mi>σ</mi><mn>2</mn></msup></mrow></msqrt></mfrac><mi>exp</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mo>−</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>μ</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mrow><mn>2</mn><msup><mi>σ</mi><mn>2</mn></msup></mrow></mfrac><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">f_k(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.1076em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361em;"><span class="" style="top: -2.55em; margin-left: -0.1076em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 2.4411em; vertical-align: -0.95em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.3214em;"><span class="" style="top: -2.1549em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.9551em;"><span class="svg-align" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord" style="padding-left: 0.833em;"><span class="mord">2</span><span class="mord mathnormal" style="margin-right: 0.0359em;">π</span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0359em;">σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.7401em;"><span class="" style="top: -2.989em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span class="" style="top: -2.9151em;"><span class="pstrut" style="height: 3em;"></span><span class="hide-tail" style="min-width: 0.853em; height: 1.08em;"><svg width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.0849em;"><span class=""></span></span></span></span></span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.93em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mop">exp</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top: 0em;"><span class="delimsizing size3">(</span></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.4911em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0359em;">σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.7401em;"><span class="" style="top: -2.989em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mord mathnormal">μ</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8141em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top: 0em;"><span class="delimsizing size3">)</span></span></span></span></span></span></span></span></p>
+<p>For a visitor with a 12-minute session, checking against Segment A: the exponent is −(12−10)²/(2×4) = −0.5, giving exp(−0.5) ≈ 0.607, multiplied by the coefficient 1/√(2π×4) ≈ 0.199, for a density of about <strong>0.121</strong>.</p>
+<p>Checking the same visitor against Segment B: the exponent is −(12−30)²/(2×9) = −18, and exp(−18) is effectively zero.</p>
+<p>Weighting each by its share of traffic: 0.6 × 0.121 + 0.4 × 0 ≈ <strong>0.073</strong>, driven almost entirely by Segment A. That visitor is placed in the quick-browser segment with very high confidence, purely from the math, with no manual rule ever written by a human.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.mixture <span class="im">import</span> GaussianMixture</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate session-length data matching the two segments described above</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>segment_a <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">2</span>, size<span class="op">=</span><span class="dv">600</span>).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)   <span class="co"># mean 10, var 4, 60%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>segment_b <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="dv">30</span>, scale<span class="op">=</span><span class="dv">3</span>, size<span class="op">=</span><span class="dv">400</span>).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)   <span class="co"># mean 30, var 9, 40%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>sessions <span class="op">=</span> np.vstack([segment_a, segment_b])</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>gmm <span class="op">=</span> GaussianMixture(n_components<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>gmm.fit(sessions)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>new_visitor <span class="op">=</span> np.array([[<span class="dv">12</span>]])   <span class="co"># the 12-minute session from the worked example</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> gmm.predict_proba(new_visitor)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gmm.means_.ravel())        <span class="co"># recovers roughly [10, 30]</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gmm.weights_)              <span class="co"># recovers roughly [0.6, 0.4]</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(probs)                     <span class="co"># near-certain probability of belonging to Segment A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="how-to-choose-the-number-of-clusters-k-elbow-method-and-rule-of-thumb" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-choose-the-number-of-clusters-k-elbow-method-and-rule-of-thumb">How to Choose the Number of Clusters (k): Elbow Method and Rule of Thumb</h2>
+<p>Most clustering algorithms need a number, k, specified before they can run at all. Choosing it wrong either merges genuinely different groups together or splits one real group into meaningless fragments.</p>
+<p>A fast starting estimate comes from a simple rule of thumb:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>k</mi><mo>≈</mo><msqrt><mfrac><mi>n</mi><mn>2</mn></mfrac></msqrt></mrow><annotation encoding="application/x-tex">k \approx \sqrt{\frac{n}{2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 2.44em; vertical-align: -0.8953em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.5447em;"><span class="svg-align" style="top: -4.4em;"><span class="pstrut" style="height: 4.4em;"></span><span class="mord" style="padding-left: 1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.1076em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">2</span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathnormal">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span class="" style="top: -3.5047em;"><span class="pstrut" style="height: 4.4em;"></span><span class="hide-tail" style="min-width: 1.02em; height: 2.48em;"><svg width="400em" height="2.48em" viewBox="0 0 400000 2592" preserveAspectRatio="xMinYMin slice"><path d="M424,2478
+c-1.3,-0.7,-38.5,-172,-111.5,-514c-73,-342,-109.8,-513.3,-110.5,-514
+c0,-2,-10.7,14.3,-32,49c-4.7,7.3,-9.8,15.7,-15.5,25c-5.7,9.3,-9.8,16,-12.5,20
+s-5,7,-5,7c-4,-3.3,-8.3,-7.7,-13,-13s-13,-13,-13,-13s76,-122,76,-122s77,-121,77,-121
+s209,968,209,968c0,-2,84.7,-361.7,254,-1079c169.3,-717.3,254.7,-1077.7,256,-1081
+l0 -0c4,-6.7,10,-10,18,-10 H400000
+v40H1014.6
+s-87.3,378.7,-272.6,1166c-185.3,787.3,-279.3,1182.3,-282,1185
+c-2,6,-10,9,-24,9
+c-8,0,-12,-0.7,-12,-2z M1001 80
+h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.8953em;"><span class=""></span></span></span></span></span></span></span></span></span></span></p>
+<section id="worked-example-sizing-a-segmentation-project" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-sizing-a-segmentation-project">Worked Example: Sizing a Segmentation Project</h3>
+<p>A retailer with 5,000 customers wants a rough starting point for how many segments to test. Using the rule of thumb: k ≈ √(5,000 ÷ 2) = √2,500 = <strong>50</strong>. That is not a final answer, but it gives an analyst a sensible upper bound before running anything more rigorous.</p>
+<p>The more common approach in practice is the <strong>elbow method</strong>. A team runs the clustering algorithm once for every candidate value of k, and tracks the total squared distance from every point to its own centroid, called inertia. Early increases in k usually cut inertia sharply. At some point, the improvement flattens into a visible bend, or elbow, and that bend marks the point where adding another cluster stops paying for itself.</p>
+<p>Take the six-customer example from earlier. With k = 1, every point is compared against a single overall centroid at roughly (42.7, 331.7), producing a large total error. With k = 2, using the two centroids computed above, (27.7, 163.3) and (57.7, 500.0), the total error drops dramatically, since every point is now measured against a much closer centroid. That drop from k = 1 to k = 2 is the elbow effect in miniature. Testing this across many values of k by hand gets tedious fast, which is exactly what the <strong>Elbow Challenge</strong> tab below does for you instantly, letting you slide k and watch the real inertia curve form.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>customers <span class="op">=</span> np.array([</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">25</span>, <span class="dv">150</span>], [<span class="dv">28</span>, <span class="dv">180</span>], [<span class="dv">30</span>, <span class="dv">160</span>],</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">55</span>, <span class="dv">500</span>], [<span class="dv">60</span>, <span class="dv">520</span>], [<span class="dv">58</span>, <span class="dv">480</span>],</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>inertias <span class="op">=</span> []</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, n_init<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    model.fit(customers)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    inertias.append(model.inertia_)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inertias)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># a big drop from k=1 to k=2, then diminishing returns after -- the elbow itself</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">5000</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>rule_of_thumb_k <span class="op">=</span> math.sqrt(n <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(rule_of_thumb_k))   <span class="co"># 50, the same starting estimate as in the worked example</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" onclick="var code=this.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code);this.classList.add('code-copy-button-checked');var b=this;setTimeout(function(){b.classList.remove('code-copy-button-checked')},1500);"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="clustering-algorithms-comparison-table-which-method-fits-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-algorithms-comparison-table-which-method-fits-your-data">Clustering Algorithms Comparison Table: Which Method Fits Your Data</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Family</th>
+<th>Handles arbitrary shapes</th>
+<th>Sensitive to outliers</th>
+<th>Needs k in advance</th>
+<th>Typical use case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hierarchical</td>
+<td>Somewhat</td>
+<td>Moderately</td>
+<td>No</td>
+<td>Building a full tree of nested segments</td>
+</tr>
+<tr class="even">
+<td>Partitional (k-means, k-medoids)</td>
+<td>No, assumes round clusters</td>
+<td>K-means: yes. K-medoids: no</td>
+<td>Yes</td>
+<td>Fast, large-scale customer segmentation</td>
+</tr>
+<tr class="odd">
+<td>Density-based (DBSCAN, SNN)</td>
+<td>Yes</td>
+<td>No, flags them as noise</td>
+<td>No</td>
+<td>Fraud and anomaly detection</td>
+</tr>
+<tr class="even">
+<td>Grid-based (STING, CLIQUE)</td>
+<td>No, only rectangular</td>
+<td>No</td>
+<td>No</td>
+<td>Very large spatial datasets</td>
+</tr>
+<tr class="odd">
+<td>Model-based (Gaussian mixtures)</td>
+<td>Yes, via overlapping distributions</td>
+<td>Moderately</td>
+<td>Yes (number of components)</td>
+<td>Soft, probability-based segments</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="real-world-clustering-applications-in-marketing-finance-insurance-and-fraud-detection" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-clustering-applications-in-marketing-finance-insurance-and-fraud-detection">Real-World Clustering Applications in Marketing, Finance, Insurance, and Fraud Detection</h2>
+<p>Marketing teams split entire customer databases into groups sharing buying behavior, then design a distinct campaign for each group. Financial teams use clustering to study currency movement, manage portfolio risk, and support credit rating decisions. Insurance companies use it to spot policyholders with unusually high claim costs, often surfacing fraud rings a rules-based system would miss. Biology researchers classify organisms by shared physical traits. City planners group neighborhoods by housing type and value. Seismologists cluster earthquake epicenters to map genuinely dangerous zones. Search platforms cluster web activity logs to detect shared browsing patterns across millions of sessions.</p>
+</section>
+<section id="the-caveat-every-team-eventually-learns" class="level2">
+<h2 class="anchored" data-anchor-id="the-caveat-every-team-eventually-learns">The Caveat Every Team Eventually Learns</h2>
+<p>Clustering will always produce an answer, whether or not real structure exists in your data. Feed it pure noise, and it will still hand back tidy, confident-looking groups. Running a cluster analysis at all means implicitly hypothesizing that meaningful groups exist in the first place, and that assumption can be false or weak. Clusters are only meaningful with respect to the specific variables used to build them, never as some universal truth about the underlying customers or transactions.</p>
+<p>This connects to the same lesson our previous article covered from the angle of regression and financial backtesting. A model, clustering or otherwise, is only as trustworthy as the data pipeline feeding it. Reliable <a href="https://www.scapedatasolutions.com/services?category=data-engineering">data engineering and ETL pipelines</a> that keep your feature set accurate matter just as much here as they do for any predictive model.</p>
+</section>
+<section id="clustering-algorithms-faq" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-algorithms-faq">Clustering Algorithms FAQ</h2>
+<section id="what-is-the-difference-between-k-means-and-hierarchical-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-the-difference-between-k-means-and-hierarchical-clustering">What is the difference between k-means and hierarchical clustering?</h3>
+<p>K-means requires you to pick the number of clusters, k, in advance, and produces one flat set of groups. Hierarchical clustering builds a full tree of nested groups, called a dendrogram, and you decide how many clusters to keep afterward by cutting the tree at a chosen height. K-means scales to much larger datasets; hierarchical clustering gives you a complete picture of how groups nest inside each other.</p>
+</section>
+<section id="what-is-the-difference-between-k-means-and-dbscan" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-the-difference-between-k-means-and-dbscan">What is the difference between k-means and DBSCAN?</h3>
+<p>K-means assumes clusters are roughly round and forces every point into a group, even outliers. DBSCAN makes no assumption about cluster shape and explicitly labels points that do not fit any group as noise. DBSCAN also does not require you to specify the number of clusters ahead of time, only a neighborhood radius (Eps) and a minimum point count (MinPts).</p>
+</section>
+<section id="how-does-dbscan-clustering-work" class="level3">
+<h3 class="anchored" data-anchor-id="how-does-dbscan-clustering-work">How does DBSCAN clustering work?</h3>
+<p>DBSCAN classifies every point as core, border, or noise based on how many neighbors fall within a set radius, Eps. A point with at least MinPts neighbors within Eps becomes a core point, and clusters grow outward from core points. Points that fall within range of a core point but lack enough neighbors of their own become border points, and everything else is flagged as noise. You can watch this classification happen live in the Fraud Detective tab of the playground above.</p>
+</section>
+<section id="how-do-you-choose-the-right-number-of-clusters" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-you-choose-the-right-number-of-clusters">How do you choose the right number of clusters?</h3>
+<p>Two common approaches: a fast rule-of-thumb estimate, k ≈ √(n/2), where n is the number of data points, and the elbow method, which runs the algorithm across a range of k values and looks for the point where adding another cluster stops meaningfully reducing total error. The elbow method is more rigorous and is the standard approach in production data science work.</p>
+</section>
+<section id="is-clustering-supervised-or-unsupervised-learning" class="level3">
+<h3 class="anchored" data-anchor-id="is-clustering-supervised-or-unsupervised-learning">Is clustering supervised or unsupervised learning?</h3>
+<p>Clustering is unsupervised learning. It works on data with no labels attached and finds structure purely from the patterns already present in the variables, with no answer key guiding the process.</p>
+</section>
+<section id="which-clustering-algorithm-is-best-for-fraud-detection" class="level3">
+<h3 class="anchored" data-anchor-id="which-clustering-algorithm-is-best-for-fraud-detection">Which clustering algorithm is best for fraud detection?</h3>
+<p>Density-based methods like DBSCAN are generally preferred for fraud detection, since fraud typically shows up as a small number of points sitting far outside the normal, dense regions of the data. DBSCAN labels those points as noise automatically, without needing to know how many fraud cases exist ahead of time.</p>
+</section>
+<section id="can-clustering-algorithms-handle-outliers" class="level3">
+<h3 class="anchored" data-anchor-id="can-clustering-algorithms-handle-outliers">Can clustering algorithms handle outliers?</h3>
+<p>It depends on the algorithm. K-means is sensitive to outliers because a single extreme point can pull a centroid off course. K-medoids and DBSCAN both handle outliers far better: k-medoids anchors clusters to real data points instead of averages, and DBSCAN explicitly separates outliers into a noise category rather than forcing them into a cluster.</p>
+</section>
+</section>
+<section id="try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-yourself">Try It Yourself</h2>
+<p>Every formula above is implemented, live, in the <strong>Clustering Playground</strong> below. Drag two customers to duel Manhattan against Euclidean distance. Build your own loyalty tiers with k-means, one iteration at a time. Play fraud detective with DBSCAN’s Eps and MinPts sliders. Then take the Elbow Challenge and see if you can spot the true number of groups before the math reveals it.</p>
+<iframe title="Clustering Playground" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Clustering Playground&lt;/title&gt;
+&lt;style&gt;
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap');
+
+  :root{
+    --bg:#12151a;
+    --panel:#1b1f27;
+    --panel-2:#20252e;
+    --line:#2c3340;
+    --text:#eceae4;
+    --muted:#8b93a1;
+    --teal:#4fd1c5;
+    --teal-dim:#2b6f68;
+    --amber:#f2a65a;
+    --red:#e05a52;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 1px 1px, #232833 1px, transparent 1px) 0 0/24px 24px,
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    padding:32px 16px 60px;
+  }
+  .wrap{max-width:880px;margin:0 auto;}
+  header{margin-bottom:28px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:flex;align-items:center;gap:8px;
+  }
+  .eyebrow::before{content:&quot;&quot;;width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block;}
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(26px,4vw,36px);
+    margin:10px 0 6px;
+    letter-spacing:-0.01em;
+  }
+  .sub{color:var(--muted);font-size:15px;max-width:640px;line-height:1.5;}
+
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 20px;}
+  .tab{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    padding:9px 14px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    color:var(--muted);
+    cursor:pointer;
+    user-select:none;
+    transition:.15s;
+  }
+  .tab:hover{border-color:var(--teal-dim);color:var(--text);}
+  .tab.active{background:var(--teal);color:#0c1210;border-color:var(--teal);font-weight:600;}
+
+  .panel{display:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 22px 26px;}
+  .panel.active{display:block;}
+  .panel h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:19px;margin:0 0 4px;
+  }
+  .panel .desc{color:var(--muted);font-size:14px;margin:0 0 20px;line-height:1.55;max-width:600px;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media (max-width:680px){.grid2{grid-template-columns:1fr;}}
+
+  .card{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+  .card + .card{margin-top:14px;}
+
+  label{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;}
+  label b{color:var(--text);}
+  input[type=range]{width:100%;accent-color:var(--teal);margin-bottom:14px;}
+
+  .btnrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  button.btn{
+    font-family:'IBM Plex Mono',monospace;
+    background:transparent;
+    border:1px solid var(--teal-dim);
+    color:var(--teal);
+    padding:9px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+    transition:.15s;
+  }
+  button.btn:hover{background:var(--teal);color:#0c1210;}
+  button.btn.primary{background:var(--teal);color:#0c1210;font-weight:600;}
+  button.btn.ghost{border-color:var(--line);color:var(--muted);}
+  button.btn.ghost:hover{color:var(--text);border-color:var(--muted);background:none;}
+
+  .readout{font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;color:var(--text);}
+  .readout .step{color:var(--muted);}
+  .readout .val{color:var(--teal);}
+  .readout .amt{color:var(--amber);}
+
+  .badge{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;
+    padding:4px 10px;border-radius:999px;margin-top:10px;
+  }
+  .badge.ok{background:rgba(79,209,197,.15);color:var(--teal);border:1px solid var(--teal-dim);}
+  .badge.warn{background:rgba(224,90,82,.14);color:var(--red);border:1px solid #6b2b28;}
+
+  svg{width:100%;height:auto;background:#14181f;border-radius:8px;border:1px solid var(--line);}
+  .grid-line{stroke:#232a35;stroke-width:1;}
+  .axis-label{fill:var(--muted);font-size:9px;font-family:'IBM Plex Mono',monospace;}
+
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .swatch{width:9px;height:9px;border-radius:50%;display:inline-block;}
+
+  footer{margin-top:26px;color:var(--muted);font-size:12px;font-family:'IBM Plex Mono',monospace;}
+
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+  &lt;header&gt;
+    &lt;div class=&quot;eyebrow&quot;&gt;Interactive · No install needed&lt;/div&gt;
+    &lt;h1&gt;The Clustering Playground&lt;/h1&gt;
+    &lt;p class=&quot;sub&quot;&gt;Four small, honest simulations. Move the sliders, click the buttons, and watch the exact
+      formulas from the article run on real numbers in front of you.&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;div class=&quot;tabs&quot;&gt;
+    &lt;div class=&quot;tab active&quot; data-tab=&quot;dist&quot;&gt;1. Distance Duel&lt;/div&gt;
+    &lt;div class=&quot;tab&quot; data-tab=&quot;kmeans&quot;&gt;2. K-Means Trainer&lt;/div&gt;
+    &lt;div class=&quot;tab&quot; data-tab=&quot;dbscan&quot;&gt;3. Fraud Detective (DBSCAN)&lt;/div&gt;
+    &lt;div class=&quot;tab&quot; data-tab=&quot;elbow&quot;&gt;4. Elbow Challenge&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- PANEL 1: DISTANCE DUEL --&gt;
+  &lt;div class=&quot;panel active&quot; id=&quot;panel-dist&quot;&gt;
+    &lt;h2&gt;Distance Duel: Manhattan vs. Euclidean&lt;/h2&gt;
+    &lt;p class=&quot;desc&quot;&gt;Two customers. One question: how &quot;far apart&quot; are they? Drag either customer and watch
+      both distance formulas recalculate live, step by step.&lt;/p&gt;
+    &lt;div class=&quot;grid2&quot;&gt;
+      &lt;div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+          &lt;label&gt;Customer A — Age &lt;b id=&quot;a-age-l&quot;&gt;34&lt;/b&gt;&lt;/label&gt;
+          &lt;input type=&quot;range&quot; id=&quot;a-age&quot; min=&quot;18&quot; max=&quot;70&quot; value=&quot;34&quot;&gt;
+          &lt;label&gt;Customer A — Monthly spend ($) &lt;b id=&quot;a-spend-l&quot;&gt;220&lt;/b&gt;&lt;/label&gt;
+          &lt;input type=&quot;range&quot; id=&quot;a-spend&quot; min=&quot;0&quot; max=&quot;600&quot; value=&quot;220&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+          &lt;label&gt;Customer B — Age &lt;b id=&quot;b-age-l&quot;&gt;51&lt;/b&gt;&lt;/label&gt;
+          &lt;input type=&quot;range&quot; id=&quot;b-age&quot; min=&quot;18&quot; max=&quot;70&quot; value=&quot;51&quot;&gt;
+          &lt;label&gt;Customer B — Monthly spend ($) &lt;b id=&quot;b-spend-l&quot;&gt;340&lt;/b&gt;&lt;/label&gt;
+          &lt;input type=&quot;range&quot; id=&quot;b-spend&quot; min=&quot;0&quot; max=&quot;600&quot; value=&quot;340&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;svg viewBox=&quot;0 0 300 240&quot; id=&quot;dist-svg&quot;&gt;&lt;/svg&gt;
+        &lt;div class=&quot;card readout&quot; id=&quot;dist-readout&quot; style=&quot;margin-top:12px;&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- PANEL 2: K-MEANS TRAINER --&gt;
+  &lt;div class=&quot;panel&quot; id=&quot;panel-kmeans&quot;&gt;
+    &lt;h2&gt;K-Means Trainer: Build Your Own Loyalty Tiers&lt;/h2&gt;
+    &lt;p class=&quot;desc&quot;&gt;Eight real customers, plotted by age and monthly spend. Choose how many tiers (k) you want,
+      drop the starting centroids, then click &lt;b&gt;Step&lt;/b&gt; to run one real iteration of assign-and-average at a time.&lt;/p&gt;
+    &lt;div class=&quot;grid2&quot;&gt;
+      &lt;div&gt;
+        &lt;svg viewBox=&quot;0 0 300 240&quot; id=&quot;km-svg&quot;&gt;&lt;/svg&gt;
+        &lt;div class=&quot;legend&quot;&gt;
+          &lt;span&gt;&lt;span class=&quot;swatch&quot; style=&quot;background:#4fd1c5&quot;&gt;&lt;/span&gt;Tier 1&lt;/span&gt;
+          &lt;span&gt;&lt;span class=&quot;swatch&quot; style=&quot;background:#f2a65a&quot;&gt;&lt;/span&gt;Tier 2&lt;/span&gt;
+          &lt;span&gt;&lt;span class=&quot;swatch&quot; style=&quot;background:#c084fc&quot;&gt;&lt;/span&gt;Tier 3&lt;/span&gt;
+          &lt;span&gt;&lt;span class=&quot;swatch&quot; style=&quot;background:#8b93a1&quot;&gt;&lt;/span&gt;Unassigned&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+          &lt;label style=&quot;margin-bottom:10px;&quot;&gt;Number of tiers (k)&lt;/label&gt;
+          &lt;div class=&quot;btnrow&quot;&gt;
+            &lt;button class=&quot;btn&quot; data-k=&quot;2&quot;&gt;k = 2&lt;/button&gt;
+            &lt;button class=&quot;btn&quot; data-k=&quot;3&quot;&gt;k = 3&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;btnrow&quot; style=&quot;margin-top:14px;&quot;&gt;
+            &lt;button class=&quot;btn primary&quot; id=&quot;km-step&quot;&gt;Step ▶ Run one iteration&lt;/button&gt;
+            &lt;button class=&quot;btn ghost&quot; id=&quot;km-reset&quot;&gt;Reset&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card readout&quot; id=&quot;km-readout&quot; style=&quot;margin-top:14px;&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- PANEL 3: DBSCAN --&gt;
+  &lt;div class=&quot;panel&quot; id=&quot;panel-dbscan&quot;&gt;
+    &lt;h2&gt;Fraud Detective: Density-Based Clustering&lt;/h2&gt;
+    &lt;p class=&quot;desc&quot;&gt;Ten transactions, plotted by amount and time-of-day pattern. Adjust &lt;b&gt;Eps&lt;/b&gt; (how close counts
+      as &quot;nearby&quot;) and &lt;b&gt;MinPts&lt;/b&gt; (how many neighbors make a point &quot;normal&quot;), and watch DBSCAN classify each
+      transaction as core, border, or noise in real time.&lt;/p&gt;
+    &lt;div class=&quot;grid2&quot;&gt;
+      &lt;div&gt;
+        &lt;svg viewBox=&quot;0 0 300 240&quot; id=&quot;db-svg&quot;&gt;&lt;/svg&gt;
+        &lt;div class=&quot;legend&quot;&gt;
+          &lt;span&gt;&lt;span class=&quot;swatch&quot; style=&quot;background:#4fd1c5&quot;&gt;&lt;/span&gt;Core&lt;/span&gt;
+          &lt;span&gt;&lt;span class=&quot;swatch&quot; style=&quot;background:#2b6f68;border:1px solid #4fd1c5&quot;&gt;&lt;/span&gt;Border&lt;/span&gt;
+          &lt;span&gt;&lt;span class=&quot;swatch&quot; style=&quot;background:#e05a52&quot;&gt;&lt;/span&gt;Noise / flagged&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+          &lt;label&gt;Eps (neighborhood radius) &lt;b id=&quot;db-eps-l&quot;&gt;18&lt;/b&gt;&lt;/label&gt;
+          &lt;input type=&quot;range&quot; id=&quot;db-eps&quot; min=&quot;5&quot; max=&quot;45&quot; value=&quot;18&quot;&gt;
+          &lt;label&gt;MinPts (points needed to be &quot;core&quot;) &lt;b id=&quot;db-minpts-l&quot;&gt;3&lt;/b&gt;&lt;/label&gt;
+          &lt;input type=&quot;range&quot; id=&quot;db-minpts&quot; min=&quot;2&quot; max=&quot;5&quot; value=&quot;3&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card readout&quot; id=&quot;db-readout&quot; style=&quot;margin-top:14px;&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- PANEL 4: ELBOW --&gt;
+  &lt;div class=&quot;panel&quot; id=&quot;panel-elbow&quot;&gt;
+    &lt;h2&gt;The Elbow Challenge&lt;/h2&gt;
+    &lt;p class=&quot;desc&quot;&gt;This dataset actually has 3 real groups baked into it, but you don't get told that in
+      real life. Slide k, watch the total error (inertia) drop, and try to spot the elbow before we reveal it.&lt;/p&gt;
+    &lt;div class=&quot;grid2&quot;&gt;
+      &lt;div&gt;
+        &lt;svg viewBox=&quot;0 0 300 240&quot; id=&quot;elbow-cluster-svg&quot;&gt;&lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;svg viewBox=&quot;0 0 300 240&quot; id=&quot;elbow-chart-svg&quot;&gt;&lt;/svg&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card&quot; style=&quot;margin-top:14px;&quot;&gt;
+      &lt;label&gt;Your guess: k = &lt;b id=&quot;elbow-k-l&quot;&gt;3&lt;/b&gt;&lt;/label&gt;
+      &lt;input type=&quot;range&quot; id=&quot;elbow-k&quot; min=&quot;1&quot; max=&quot;7&quot; value=&quot;3&quot;&gt;
+      &lt;div class=&quot;btnrow&quot;&gt;
+        &lt;button class=&quot;btn primary&quot; id=&quot;elbow-lock&quot;&gt;Lock in my guess&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;readout&quot; id=&quot;elbow-readout&quot; style=&quot;margin-top:12px;&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer&gt;Every number above is computed live in your browser using the same formulas from the article — nothing here is prerecorded.&lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// ---------- helpers ----------
+function euclid(p,q){return Math.sqrt((p[0]-q[0])**2+(p[1]-q[1])**2);}
+function manhattan(p,q){return Math.abs(p[0]-q[0])+Math.abs(p[1]-q[1]);}
+function svgEl(tag,attrs){
+  const el=document.createElementNS('http://www.w3.org/2000/svg',tag);
+  for(const k in attrs) el.setAttribute(k,attrs[k]);
+  return el;
+}
+function clearSvg(svg){while(svg.firstChild)svg.removeChild(svg.firstChild);}
+function drawGrid(svg,w,h){
+  for(let x=0;x&lt;=w;x+=30) svg.appendChild(svgEl('line',{x1:x,y1:0,x2:x,y2:h,class:'grid-line'}));
+  for(let y=0;y&lt;=h;y+=30) svg.appendChild(svgEl('line',{x1:0,y1:y,x2:w,y2:y,class:'grid-line'}));
+}
+
+// ---------- tabs ----------
+document.querySelectorAll('.tab').forEach(t=&gt;{
+  t.addEventListener('click',()=&gt;{
+    document.querySelectorAll('.tab').forEach(x=&gt;x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=&gt;x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+  });
+});
+
+// ================= PANEL 1: DISTANCE DUEL =================
+const distSvg=document.getElementById('dist-svg');
+const W=300,H=240,PAD=30;
+function toX(age){return PAD+((age-18)/(70-18))*(W-2*PAD);}
+function toY(spend){return H-PAD-((spend-0)/600)*(H-2*PAD);}
+
+function renderDist(){
+  const aAge=+document.getElementById('a-age').value;
+  const aSpend=+document.getElementById('a-spend').value;
+  const bAge=+document.getElementById('b-age').value;
+  const bSpend=+document.getElementById('b-spend').value;
+  document.getElementById('a-age-l').textContent=aAge;
+  document.getElementById('a-spend-l').textContent=aSpend;
+  document.getElementById('b-age-l').textContent=bAge;
+  document.getElementById('b-spend-l').textContent=bSpend;
+
+  const A=[aAge,aSpend], B=[bAge,bSpend];
+  const man=manhattan(A,B);
+  const euc=euclid(A,B);
+  const dAge=Math.abs(aAge-bAge), dSpend=Math.abs(aSpend-bSpend);
+
+  clearSvg(distSvg);
+  drawGrid(distSvg,W,H);
+  const ax=toX(aAge),ay=toY(aSpend),bx=toX(bAge),by=toY(bSpend);
+  // manhattan path (dashed L)
+  distSvg.appendChild(svgEl('path',{d:`M${ax},${ay} L${ax},${by} L${bx},${by}`,fill:'none',stroke:'#f2a65a','stroke-width':1.5,'stroke-dasharray':'4 3'}));
+  // euclidean line
+  distSvg.appendChild(svgEl('line',{x1:ax,y1:ay,x2:bx,y2:by,stroke:'#4fd1c5','stroke-width':2}));
+  distSvg.appendChild(svgEl('circle',{cx:ax,cy:ay,r:6,fill:'#4fd1c5'}));
+  distSvg.appendChild(svgEl('circle',{cx:bx,cy:by,r:6,fill:'#c084fc'}));
+  distSvg.appendChild(svgEl('text',{x:ax+8,y:ay-8,class:'axis-label',fill:'#eceae4'})).textContent='A';
+  distSvg.appendChild(svgEl('text',{x:bx+8,y:by-8,class:'axis-label',fill:'#eceae4'})).textContent='B';
+
+  document.getElementById('dist-readout').innerHTML=
+    `&lt;div class=&quot;step&quot;&gt;Age gap: |${aAge} − ${bAge}| = &lt;span class=&quot;val&quot;&gt;${dAge}&lt;/span&gt;&lt;/div&gt;`+
+    `&lt;div class=&quot;step&quot;&gt;Spend gap: |${aSpend} − ${bSpend}| = &lt;span class=&quot;val&quot;&gt;${dSpend}&lt;/span&gt;&lt;/div&gt;`+
+    `&lt;hr style=&quot;border-color:#2c3340;margin:8px 0;&quot;&gt;`+
+    `&lt;div&gt;&lt;b style=&quot;color:#f2a65a&quot;&gt;Manhattan&lt;/b&gt; = ${dAge} + ${dSpend} = &lt;span class=&quot;amt&quot;&gt;${man.toFixed(1)}&lt;/span&gt;&lt;/div&gt;`+
+    `&lt;div&gt;&lt;b style=&quot;color:#4fd1c5&quot;&gt;Euclidean&lt;/b&gt; = √(${dAge}² + ${dSpend}²) = √(${(dAge*dAge)} + ${(dSpend*dSpend)}) = &lt;span class=&quot;amt&quot;&gt;${euc.toFixed(1)}&lt;/span&gt;&lt;/div&gt;`;
+}
+['a-age','a-spend','b-age','b-spend'].forEach(id=&gt;document.getElementById(id).addEventListener('input',renderDist));
+renderDist();
+
+// ================= PANEL 2: K-MEANS TRAINER =================
+const kmData=[[25,150],[28,180],[30,160],[26,140],[55,500],[60,520],[58,480],[62,510]];
+const kmColors=['#4fd1c5','#f2a65a','#c084fc'];
+let kmK=2, kmCentroids=[], kmAssign=[], kmIter=0, kmConverged=false;
+
+function kmToX(age){return PAD+((age-18)/(70-18))*(W-2*PAD);}
+function kmToY(spend){return H-PAD-((spend-0)/560)*(H-2*PAD);}
+
+function kmInit(k){
+  kmK=k; kmIter=0; kmConverged=false;
+  // deterministic spread init: pick evenly spaced points from the dataset
+  const idx = k===2 ? [0,4] : [0,4,7];
+  kmCentroids = idx.map(i=&gt;[...kmData[i]]);
+  kmAssign = kmData.map(()=&gt;-1);
+  renderKm();
+}
+function kmStep(){
+  if(kmConverged) return;
+  // assign
+  const newAssign = kmData.map(p=&gt;{
+    let best=0, bestD=Infinity;
+    kmCentroids.forEach((c,i)=&gt;{const d=euclid(p,c); if(d&lt;bestD){bestD=d;best=i;}});
+    return best;
+  });
+  // recompute
+  const newCentroids = kmCentroids.map((c,i)=&gt;{
+    const members = kmData.filter((p,j)=&gt;newAssign[j]===i);
+    if(members.length===0) return c;
+    const mx=members.reduce((s,p)=&gt;s+p[0],0)/members.length;
+    const my=members.reduce((s,p)=&gt;s+p[1],0)/members.length;
+    return [mx,my];
+  });
+  const movement = newCentroids.reduce((s,c,i)=&gt;s+euclid(c,kmCentroids[i]),0);
+  kmAssign=newAssign;
+  kmCentroids=newCentroids;
+  kmIter++;
+  if(movement&lt;0.5) kmConverged=true;
+  renderKm();
+}
+function kmInertia(){
+  return kmData.reduce((s,p,j)=&gt;{
+    if(kmAssign[j]&lt;0) return s;
+    return s + euclid(p,kmCentroids[kmAssign[j]])**2;
+  },0);
+}
+function renderKm(){
+  const svg=document.getElementById('km-svg');
+  clearSvg(svg); drawGrid(svg,W,H);
+  kmData.forEach((p,j)=&gt;{
+    const col = kmAssign[j]&gt;=0 ? kmColors[kmAssign[j]] : '#8b93a1';
+    svg.appendChild(svgEl('circle',{cx:kmToX(p[0]),cy:kmToY(p[1]),r:6,fill:col}));
+  });
+  kmCentroids.forEach((c,i)=&gt;{
+    svg.appendChild(svgEl('rect',{x:kmToX(c[0])-6,y:kmToY(c[1])-6,width:12,height:12,fill:'none',stroke:kmColors[i],'stroke-width':2}));
+  });
+  const readout=document.getElementById('km-readout');
+  let html = `&lt;div class=&quot;step&quot;&gt;Iteration: &lt;span class=&quot;val&quot;&gt;${kmIter}&lt;/span&gt;&lt;/div&gt;`;
+  if(kmIter&gt;0) html += `&lt;div class=&quot;step&quot;&gt;Total error (inertia): &lt;span class=&quot;amt&quot;&gt;${kmInertia().toFixed(0)}&lt;/span&gt;&lt;/div&gt;`;
+  kmCentroids.forEach((c,i)=&gt;{
+    html += `&lt;div class=&quot;step&quot;&gt;Centroid ${i+1}: age &lt;span class=&quot;val&quot;&gt;${c[0].toFixed(1)}&lt;/span&gt;, spend &lt;span class=&quot;val&quot;&gt;$${c[1].toFixed(0)}&lt;/span&gt;&lt;/div&gt;`;
+  });
+  if(kmConverged) html += `&lt;div class=&quot;badge ok&quot;&gt;✓ Converged — the tiers stopped moving&lt;/div&gt;`;
+  readout.innerHTML=html;
+}
+document.querySelectorAll('#panel-kmeans [data-k]').forEach(b=&gt;{
+  b.addEventListener('click',()=&gt;kmInit(+b.dataset.k));
+});
+document.getElementById('km-step').addEventListener('click',kmStep);
+document.getElementById('km-reset').addEventListener('click',()=&gt;kmInit(kmK));
+kmInit(2);
+
+// ================= PANEL 3: DBSCAN =================
+const dbData=[
+  [40,180],[45,190],[42,170],[48,185],  // normal cluster A (everyday purchases)
+  [200,60],[205,70],[195,65],           // normal cluster B (payday splurges)
+  [260,220],                            // lone spender, borderline
+  [10,10],                              // outlier - unusually tiny txn
+  [280,20]                              // outlier - unusually large, odd hour
+];
+function dbToX(v){return PAD+(v/300)*(W-2*PAD);}
+function dbToY(v){return H-PAD-(v/240)*(H-2*PAD);}
+
+function dbClassify(eps,minPts){
+  const n=dbData.length;
+  const neighbors = dbData.map((p,i)=&gt;dbData.map((q,j)=&gt;i!==j &amp;&amp; euclid(p,q)&lt;=eps).reduce((s,v,j)=&gt;s+(v?1:0),0));
+  const isCore = neighbors.map(c=&gt;c+1&gt;=minPts); // include self
+  const labels = dbData.map((p,i)=&gt;{
+    if(isCore[i]) return 'core';
+    // border if within eps of a core point
+    for(let j=0;j&lt;n;j++){
+      if(isCore[j] &amp;&amp; euclid(p,dbData[j])&lt;=eps) return 'border';
+    }
+    return 'noise';
+  });
+  return labels;
+}
+function renderDb(){
+  const eps=+document.getElementById('db-eps').value;
+  const minPts=+document.getElementById('db-minpts').value;
+  document.getElementById('db-eps-l').textContent=eps;
+  document.getElementById('db-minpts-l').textContent=minPts;
+  const labels=dbClassify(eps,minPts);
+  const svg=document.getElementById('db-svg');
+  clearSvg(svg); drawGrid(svg,W,H);
+  dbData.forEach((p,i)=&gt;{
+    const x=dbToX(p[0]),y=dbToY(p[1]);
+    let fill='#e05a52', stroke='none', sw=0;
+    if(labels[i]==='core'){fill='#4fd1c5';}
+    else if(labels[i]==='border'){fill='#2b6f68'; stroke='#4fd1c5'; sw=2;}
+    svg.appendChild(svgEl('circle',{cx:x,cy:y,r:7,fill,stroke,'stroke-width':sw}));
+    if(labels[i]==='noise'){
+      svg.appendChild(svgEl('text',{x:x-4,y:y+4,fill:'#fff','font-size':'10','font-weight':'700'})).textContent='×';
+    }
+  });
+  const flagged = labels.filter(l=&gt;l==='noise').length;
+  const readout=document.getElementById('db-readout');
+  readout.innerHTML =
+    `&lt;div class=&quot;step&quot;&gt;Core transactions: &lt;span class=&quot;val&quot;&gt;${labels.filter(l=&gt;l==='core').length}&lt;/span&gt;&lt;/div&gt;`+
+    `&lt;div class=&quot;step&quot;&gt;Border transactions: &lt;span class=&quot;val&quot;&gt;${labels.filter(l=&gt;l==='border').length}&lt;/span&gt;&lt;/div&gt;`+
+    `&lt;div class=&quot;step&quot;&gt;Flagged as noise: &lt;span class=&quot;amt&quot;&gt;${flagged}&lt;/span&gt;&lt;/div&gt;`+
+    (flagged&gt;0 ? `&lt;div class=&quot;badge warn&quot;&gt;🚩 ${flagged} transaction${flagged&gt;1?'s':''} don't belong to any normal group&lt;/div&gt;`
+                : `&lt;div class=&quot;badge ok&quot;&gt;No outliers at this setting&lt;/div&gt;`);
+}
+['db-eps','db-minpts'].forEach(id=&gt;document.getElementById(id).addEventListener('input',renderDb));
+renderDb();
+
+// ================= PANEL 4: ELBOW CHALLENGE =================
+// 3 well separated groups, 4 points each
+const elbowData=[
+  [30,30],[35,32],[28,36],[33,28],
+  [150,150],[155,145],[148,158],[152,152],
+  [260,40],[255,45],[265,35],[258,50]
+];
+function elToX(v){return PAD+(v/300)*(W-2*PAD);}
+function elToY(v){return H-PAD-(v/200)*(H-2*PAD);}
+
+function kmeansRun(points,k,iterations){
+  const idxStep=Math.floor(points.length/k);
+  let centroids=[];
+  for(let i=0;i&lt;k;i++) centroids.push([...points[Math.min(i*idxStep,points.length-1)]]);
+  let assign=points.map(()=&gt;0);
+  for(let it=0;it&lt;iterations;it++){
+    assign=points.map(p=&gt;{
+      let best=0,bestD=Infinity;
+      centroids.forEach((c,i)=&gt;{const d=euclid(p,c); if(d&lt;bestD){bestD=d;best=i;}});
+      return best;
+    });
+    centroids=centroids.map((c,i)=&gt;{
+      const members=points.filter((p,j)=&gt;assign[j]===i);
+      if(members.length===0) return c;
+      return [members.reduce((s,p)=&gt;s+p[0],0)/members.length, members.reduce((s,p)=&gt;s+p[1],0)/members.length];
+    });
+  }
+  const inertia = points.reduce((s,p,j)=&gt;s+euclid(p,centroids[assign[j]])**2,0);
+  return {centroids,assign,inertia};
+}
+
+function renderElbowCluster(k){
+  const {centroids,assign} = kmeansRun(elbowData,k,20);
+  const svg=document.getElementById('elbow-cluster-svg');
+  clearSvg(svg); drawGrid(svg,W,H);
+  const cols=['#4fd1c5','#f2a65a','#c084fc','#60a5fa','#f472b6','#facc15','#34d399'];
+  elbowData.forEach((p,j)=&gt;{
+    svg.appendChild(svgEl('circle',{cx:elToX(p[0]),cy:elToY(p[1]),r:6,fill:cols[assign[j]%cols.length]}));
+  });
+  centroids.forEach((c,i)=&gt;{
+    svg.appendChild(svgEl('rect',{x:elToX(c[0])-6,y:elToY(c[1])-6,width:12,height:12,fill:'none',stroke:cols[i%cols.length],'stroke-width':2}));
+  });
+}
+function renderElbowChart(currentK){
+  const inertias=[];
+  for(let k=1;k&lt;=7;k++) inertias.push(kmeansRun(elbowData,k,20).inertia);
+  const maxI=Math.max(...inertias);
+  const svg=document.getElementById('elbow-chart-svg');
+  clearSvg(svg); drawGrid(svg,W,H);
+  const pts = inertias.map((val,i)=&gt;{
+    const k=i+1;
+    const x=PAD+((k-1)/6)*(W-2*PAD);
+    const y=H-PAD-(val/maxI)*(H-2*PAD);
+    return [x,y,k,val];
+  });
+  svg.appendChild(svgEl('polyline',{points:pts.map(p=&gt;p[0]+','+p[1]).join(' '),fill:'none',stroke:'#4fd1c5','stroke-width':2}));
+  pts.forEach(([x,y,k,val])=&gt;{
+    svg.appendChild(svgEl('circle',{cx:x,cy:y,r:k===currentK?6:4,fill:k===currentK?'#f2a65a':'#4fd1c5'}));
+    svg.appendChild(svgEl('text',{x:x-3,y:H-PAD+14,class:'axis-label'})).textContent='k='+k;
+  });
+  return inertias;
+}
+function renderElbow(){
+  const k=+document.getElementById('elbow-k').value;
+  document.getElementById('elbow-k-l').textContent=k;
+  renderElbowCluster(k);
+  const inertias=renderElbowChart(k);
+  document.getElementById('elbow-readout').innerHTML =
+    `&lt;div class=&quot;step&quot;&gt;Total error at k=${k}: &lt;span class=&quot;amt&quot;&gt;${inertias[k-1].toFixed(0)}&lt;/span&gt;&lt;/div&gt;`;
+}
+document.getElementById('elbow-k').addEventListener('input',renderElbow);
+document.getElementById('elbow-lock').addEventListener('click',()=&gt;{
+  const k=+document.getElementById('elbow-k').value;
+  const box=document.getElementById('elbow-readout');
+  if(k===3){
+    box.innerHTML += `&lt;div class=&quot;badge ok&quot;&gt;✓ That's the elbow. This data really does have 3 groups.&lt;/div&gt;`;
+  } else if(k&lt;3){
+    box.innerHTML += `&lt;div class=&quot;badge warn&quot;&gt;Too early — error is still dropping fast. Try a bit higher.&lt;/div&gt;`;
+  } else {
+    box.innerHTML += `&lt;div class=&quot;badge warn&quot;&gt;Past the elbow — you're paying for splits that add little value.&lt;/div&gt;`;
+  }
+});
+renderElbow();
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;" style="width:100%; height:1100px; border:none; border-radius:12px; display:block;" loading="lazy" scrolling="auto"></iframe>
+</section>
+<section id="what-comes-next-in-this-series" class="level2">
+<h2 class="anchored" data-anchor-id="what-comes-next-in-this-series">What Comes Next in This Series</h2>
+<p>Clustering is only one half of unsupervised learning. The other half, dimensionality reduction, compresses hundreds of messy input variables down into the small handful that actually drive the real patterns in your data. Our next article covers principal component analysis in full technical depth, and shows exactly how it works alongside clustering in a real production pipeline.</p>
+<p>If your business is sitting on years of unlabeled customer, transaction, or operational data, <a href="https://www.scapedatasolutions.com/services?category=analytics">predictive analytics and forecasting</a> built on top of clustering can turn that raw history into segments, alerts, and decisions your team can act on immediately.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</div></div><div class="_inlineCta_f1pxc_42"><h3>Want This Tracked Automatically?</h3><p>We build the dashboard so you never have to pull this data by hand.</p><a class="_inlineCtaBtn_f1pxc_45" href="/contact" data-discover="true">See the Solution <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></article><section class="_cta_f1pxc_56"><div style="opacity: 0; transform: translateY(20px);"><h2>Want This Tracked Automatically?</h2><p>We build the dashboard so you never have to pull this data by hand.</p><a class="_ctaBtn_f1pxc_65" href="/contact" data-discover="true">Book a Free Demo <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></section><footer class="_navyFooter_10eko_1"><div class="_navyOffStrip_10eko_15"><div class="_container_10eko_8"><div class="_navyOffGrid_10eko_19"><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="US Office:" src="/Images/site-images/us_flag.webp"></div><div class="_navyOffText_10eko_58"><h4>US Office:</h4><p>1024 Iron Point Road, Suite 200</p><p>Folsom, California 95630</p><p><a href="tel:+17575980582">US: +1 (757) 598-0582</a></p></div></div><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="UK Office:" src="/Images/site-images/uk-icon.jpeg"></div><div class="_navyOffText_10eko_58"><h4>UK Office:</h4><p>60 Cannon Street</p><p>London EC4N 6NP, United Kingdom</p><p><a href="tel:+447454744014">UK: +44 7454 744014</a></p></div></div><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="General Inquiry:" src="/Images/site-images/email_icon.webp"></div><div class="_navyOffText_10eko_58"><h4>General Inquiry:</h4><p><a href="mailto:info@scapedatasolutions.com">info@scapedatasolutions.com</a></p><p><a href="mailto:allan@scapedatasolutions.com">allan@scapedatasolutions.com</a></p></div></div><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="Canada Office:" src="/Images/site-images/canada-flag.webp.webp"></div><div class="_navyOffText_10eko_58"><h4>Canada Office:</h4><p>400 Centre Street South</p><p>Whitby, ON L1N 0G4, Canada</p></div></div><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="Pakistan Office:" src="/Images/site-images/pak_flag.webp"></div><div class="_navyOffText_10eko_58"><h4>Pakistan Office:</h4><p>9th Floor, Tricon Corporate Centre</p><p>73 Jail Road, Gulberg</p><p>Lahore 54000, Pakistan</p></div></div><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="Nairobi Office:" src="/Images/site-images/nairobi-k.jpg"></div><div class="_navyOffText_10eko_58"><h4>Nairobi Office:</h4><p>Global Trade Centre, 14th Floor</p><p>Westlands Road, Nairobi, Kenya</p><p><a href="tel:+254718889559">KE: +254 718 889 559</a></p></div></div></div></div></div><div class="_navyFootMain_10eko_83"><div class="_container_10eko_8"><div class="_navyFootGrid_10eko_87"><div style="opacity: 0; transform: translateY(24px);"><h3 class="_navyFootH_10eko_105">Company</h3><ul class="_navyFootLinks_10eko_119"><li style="opacity: 0; transform: translateX(-10px);"><a href="/company" data-discover="true">Company</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/why-us" data-discover="true">Why Us?</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/careers" data-discover="true">Careers</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/faq" data-discover="true">FAQ</a></li></ul></div><div style="opacity: 0; transform: translateY(24px);"><h3 class="_navyFootH_10eko_105">Services</h3><ul class="_navyFootLinks_10eko_119"><li style="opacity: 0; transform: translateX(-10px);"><a href="/services" data-discover="true">All Services</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/services?category=analytics" data-discover="true">Advanced Analytics</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/services?category=ai-ml" data-discover="true">AI &amp; Machine Learning</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/services?category=finance" data-discover="true">Finance &amp; Risk</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/services?category=healthcare" data-discover="true">Healthcare &amp; Life Sciences</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/services?category=data-engineering" data-discover="true">Data Engineering &amp; BI Tools</a></li></ul></div><div style="opacity: 0; transform: translateY(24px);"><h3 class="_navyFootH_10eko_105">Resources</h3><ul class="_navyFootLinks_10eko_119"><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources" data-discover="true">All Resources</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources?category=business" data-discover="true">Business Analytics</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources?category=finance" data-discover="true">Finance Analytics</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources?category=healthcare" data-discover="true">Healthcare Analytics</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources?category=retail" data-discover="true">Retail Analytics</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources?category=manufacturing" data-discover="true">Manufacturing Analytics</a></li></ul></div><div style="opacity: 0; transform: translateY(24px);"><h3 class="_navyFootH_10eko_105">Portfolio</h3><ul class="_navyFootLinks_10eko_119"><li style="opacity: 0; transform: translateX(-10px);"><a href="/portfolio/bi" data-discover="true">Dashboards &amp; BI</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/portfolio/ai" data-discover="true">AI Applications</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/portfolio/pipelines" data-discover="true">Data Pipelines</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/portfolio/mobile" data-discover="true">Mobile Analytics</a></li></ul><h3 class="_navyFootH_10eko_105 _navyFootHMt_10eko_115">Others</h3><ul class="_navyFootLinks_10eko_119"><li style="opacity: 0; transform: translateX(-10px);"><a href="/clients" data-discover="true">Our Clients</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/testimonials" data-discover="true">Testimonials</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources" data-discover="true">Recommended Reading</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/faq" data-discover="true">FAQ</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/sitemap" data-discover="true">Sitemap</a></li></ul></div></div></div></div><div class="_navyCopyright_10eko_191"><div class="_container_10eko_8"><p style="opacity: 0; transform: translateY(26px);">© 2026 Scape Data Solutions. All rights reserved.</p></div></div></footer></div></main><div class="_wrap_vsjsg_3"><div class="_group_vsjsg_13"><a class="_pill_vsjsg_25 _pillGhost_vsjsg_38" href="/client-portal/login" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in" aria-hidden="true"><path d="m10 17 5-5-5-5"></path><path d="M15 12H3"></path><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path></svg><span>Log In</span></a><a class="_pill_vsjsg_25 _pillPrimary_vsjsg_47" href="/client-portal/signup" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" x2="19" y1="8" y2="14"></line><line x1="22" x2="16" y1="11" y2="11"></line></svg><span>Sign Up Free</span></a></div></div><div class="_bubble_1opyh_3 _pulse_1opyh_68" role="button" tabindex="0" style="left: 259px; top: 216px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle _icon_1opyh_31" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg><span class="_text_1opyh_36">Want to understand your customer segments better?</span><button type="button" class="_dismiss_1opyh_40" aria-label="Dismiss"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></div></div></div>
+
+
+</body></html>

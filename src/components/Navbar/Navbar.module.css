@@ -24,10 +24,11 @@
   transition: opacity 0.2s ease;
 }
 
+/* ─── Navbar inner – reduced horizontal padding ─────────────────── */
 .navbarInner {
-  max-width: 100%; /* Full width – no max limit */
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 3rem; /* Generous side padding for breathing room */
+  padding: 0 2.5rem;
   height: 80px;
   display: flex;
   align-items: center;
@@ -36,7 +37,7 @@
 }
 @media (min-width: 1024px) {
   .navbarInner {
-    padding: 0 4rem; /* Even more space on large screens */
+    padding: 0 3.5rem;
   }
 }
 
@@ -47,18 +48,18 @@
   text-decoration: none;
 }
 .navbarBrand img {
-  height: 56px; /* Bigger logo – more visible */
+  height: 56px;
   width: auto;
 }
 
-/* ─── Nav list ───────────────────────────────────────────────────── */
+/* ─── Nav list – reduced gap ────────────────────────────────────── */
 .navList {
   display: none;
   list-style: none;
   margin: 0;
   padding: 0;
   align-items: center;
-  gap: 0.75rem; /* Increased spacing between nav items */
+  gap: 0.5rem;
 }
 @media (min-width: 1024px) {
   .navList {
@@ -70,8 +71,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  padding: 0.4rem 1rem; /* More horizontal padding */
-  font-size: 0.95rem; /* Slightly larger text */
+  padding: 0.4rem 0.8rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: #888;
   text-decoration: none;
@@ -88,8 +89,8 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: 1rem;
-  right: 1rem;
+  left: 0.8rem;
+  right: 0.8rem;
   height: 2px;
   background: #3b82f6;
   border-radius: 2px;
@@ -170,9 +171,9 @@
   }
 }
 .navTopInner {
-  max-width: 100%; /* Full width */
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 4rem; /* Match navbar padding */
+  padding: 0 4rem;
   display: flex;
   justify-content: flex-start;
 }

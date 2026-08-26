@@ -1,1 +1,0 @@
-import{j as e}from"./index-ChD9sGoe.js";import{S as t}from"./ServiceContentPage-BxdNXA00.js";import{d as r}from"./healthcareAnalytics-MT1dmimh.js";import"./animations-xrL6dxNc.js";import"./serviceSchema-B8nJVhZ1.js";import"./sparkles-C-a6F-ae.js";function p(){return e.jsx(t,{...r})}export{p as default};

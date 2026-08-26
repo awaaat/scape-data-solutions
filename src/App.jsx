@@ -22,6 +22,12 @@ const ResetPasswordPage = lazy(() => import('./pages/Auth/ResetPasswordPage'));
 const DashboardPage = lazy(() => import('./pages/Dashboard/DashboardPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFound/NotFoundPage'));
 
+// ─── Business Intel Dashboard ────────────────────────────────
+const BusinessIntelLandingPage = lazy(() => import('./pages/BusinessIntelLandingPage/BusinessIntelLandingPage'));
+const BusinessIntelDashboardPage = lazy(() => import('./pages/BusinessIntelDashboardPage/BusinessIntelDashboardPage'));
+const BusinessIntelLoginPage = lazy(() => import('./pages/Auth/BusinessIntelLoginPage'));
+const BusinessIntelSignupPage = lazy(() => import('./pages/Auth/BusinessIntelSignupPage'));
+const BusinessIntelForgotPasswordPage = lazy(() => import('./pages/Auth/BusinessIntelForgotPasswordPage'));
 // ─── Company & Static ───────────────────────────────────────
 const CompanyPage = lazy(() => import('./pages/Company/CompanyPage'));
 const WhyUsPage = lazy(() => import('./pages/WhyUs/WhyUsPage'));
@@ -267,12 +273,17 @@ const AppContent = () => {
                             <Route path="/about" element={<AboutPage />} />
                             <Route path="/contact" element={<ContactPage />} />
 
-                            <Route path="/signup" element={<SignupPage />} />
-                            <Route path="/login" element={<LoginPage />} />
-                            <Route path="/verify-email" element={<VerifyEmailPage />} />
-                            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                            <Route path="/reset-password" element={<ResetPasswordPage />} />
-                            <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+                            <Route path="/client-portal/signup" element={<SignupPage />} />
+                            <Route path="/client-portal/login" element={<LoginPage />} />
+                            <Route path="/client-portal/verify-email" element={<VerifyEmailPage />} />
+                            <Route path="/client-portal/forgot-password" element={<ForgotPasswordPage />} />
+                            <Route path="/client-portal/reset-password" element={<ResetPasswordPage />} />
+                            <Route path="/client-portal/dashboard" element={<ProtectedRoute loginPath="/client-portal/login"><DashboardPage /></ProtectedRoute>} />
+                            <Route path="/business-intel/login" element={<BusinessIntelLoginPage />} />
+                            <Route path="/business-intel/signup" element={<BusinessIntelSignupPage />} />
+                            <Route path="/business-intel/forgot-password" element={<BusinessIntelForgotPasswordPage />} />
+                            <Route path="/business-intel" element={<BusinessIntelLandingPage />} />
+                            <Route path="/business-intel/dashboard" element={<ProtectedRoute loginPath="/business-intel/login"><BusinessIntelDashboardPage /></ProtectedRoute>} />
 
                             <Route path="/company" element={<CompanyPage />} />
                             <Route path="/why-us" element={<WhyUsPage />} />

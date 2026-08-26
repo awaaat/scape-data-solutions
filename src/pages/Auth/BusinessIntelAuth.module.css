@@ -1,0 +1,235 @@
+/* src/pages/Auth/BusinessIntelAuth.module.css
+   Standalone styling for the business-intel signup/login/forgot/reset
+   pages -- deliberately NOT sharing Auth.module.css (that's the client
+   assignment-posting flow's look). Same accent blue as the rest of the
+   site (#3b82f6 == --color-accent) and same visual language as
+   BusinessIntelDashboardPage.module.css (system font stack, rem-based
+   radius, flat #111/#555/#ddd palette) so the login door feels like
+   part of the same product as the dashboard it leads into.
+
+   NOTE: .topBar/.homeLink (a hand-rolled "back home" strip) were
+   removed once these pages started rendering the real site <Navbar />
+   — that already provides the way home plus full site nav, so the
+   makeshift bar was redundant. */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* .page is now a column flex container, so this flex: 1 actually does
+   something -- mainContent fills all remaining height below the
+   Navbar, so the card centers in the true available space instead of
+   just centering within its own min-height box near the top. */
+.mainContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 1.5rem;
+  padding: 2.75rem 2.25rem;
+  box-shadow: 0 12px 40px rgba(17, 17, 17, 0.08), 0 2px 8px rgba(17, 17, 17, 0.04);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3b82f6;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem;
+  color: #111;
+}
+
+.subtitle {
+  font-size: 0.92rem;
+  color: #666;
+  margin: 0 0 1.75rem;
+  line-height: 1.6;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.hint {
+  font-size: 0.74rem;
+  color: #888;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #111;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.14);
+}
+
+.input.hasError {
+  border-color: #dc2626;
+}
+
+/* Chrome/Edge tint autofilled fields pale blue/yellow by default,
+   which clashes with the card's white background (visible on the
+   login page once a saved password is autofilled). Force it back to
+   match .input's own white background + dark text via the long
+   transition-delay trick (box-shadow can't be !important'd around
+   otherwise since autofill uses its own internal UA styles). */
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #111;
+  caret-color: #111;
+  box-shadow: 0 0 0 1000px #fff inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.fieldError {
+  font-size: 0.76rem;
+  color: #dc2626;
+}
+
+.formError {
+  font-size: 0.85rem;
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 0.75rem;
+  padding: 10px 12px;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.checkboxRow input {
+  margin-top: 3px;
+}
+
+.checkboxRow a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: #111;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #333;
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spin {
+  animation: bi-auth-spin 0.8s linear infinite;
+}
+
+@keyframes bi-auth-spin {
+  to { transform: rotate(360deg); }
+}
+
+.footerLinks {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footerLinks a {
+  color: #3b82f6;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footerLinks a:hover {
+  text-decoration: underline;
+}
+
+.statusIcon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.statusIconSuccess { color: #16a34a; }
+.statusIconError { color: #dc2626; }
+
+.centerText {
+  text-align: center;
+}

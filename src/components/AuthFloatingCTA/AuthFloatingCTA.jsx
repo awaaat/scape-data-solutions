@@ -18,7 +18,11 @@ import styles from "./AuthFloatingCTA.module.css";
 import { useAuth } from "../../context/AuthContext";
 import { getUnreadCount } from "../../services/projectsApi";
 
-const HIDDEN_ON = ["/signup", "/login", "/verify-email", "/forgot-password", "/reset-password", "/dashboard"];
+const HIDDEN_ON = [
+  "/client-portal/signup", "/client-portal/login", "/client-portal/verify-email",
+  "/client-portal/forgot-password", "/client-portal/reset-password", "/client-portal/dashboard",
+  "/business-intel/login", "/business-intel/signup", "/business-intel/forgot-password", "/business-intel/dashboard",
+];
 
 export default function AuthFloatingCTA() {
   const { isAuthenticated, user } = useAuth();
@@ -44,7 +48,7 @@ export default function AuthFloatingCTA() {
   if (isAuthenticated) {
     return (
       <div className={styles.wrap}>
-        <Link to="/dashboard" className={`${styles.pill} ${styles.pillAccount}`}>
+        <Link to="/client-portal/dashboard" className={`${styles.pill} ${styles.pillAccount}`}>
           <LayoutDashboard size={16} />
           <span>{user?.full_name ? user.full_name.split(" ")[0] : "Dashboard"}</span>
           {unread > 0 && <span className={styles.badge}>{unread > 9 ? "9+" : unread}</span>}
@@ -56,11 +60,11 @@ export default function AuthFloatingCTA() {
   return (
     <div className={styles.wrap}>
       <div className={styles.group}>
-        <Link to="/login" className={`${styles.pill} ${styles.pillGhost}`}>
+        <Link to="/client-portal/login" className={`${styles.pill} ${styles.pillGhost}`}>
           <LogIn size={16} />
           <span>Log In</span>
         </Link>
-        <Link to="/signup" className={`${styles.pill} ${styles.pillPrimary}`}>
+        <Link to="/client-portal/signup" className={`${styles.pill} ${styles.pillPrimary}`}>
           <UserPlus size={16} />
           <span>Sign Up Free</span>
         </Link>

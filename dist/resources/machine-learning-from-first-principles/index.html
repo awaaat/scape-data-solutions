@@ -1,0 +1,685 @@
+<!DOCTYPE html><html lang="en"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QZMP8M7TW6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QZMP8M7TW6');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/Images/site-images/logo-image.png">
+    <link rel="apple-touch-icon" href="/Images/site-images/logo-image.png">
+
+    <!-- SEO Meta Tags -->
+    <title>Machine Learning From First Principles: What It Is, How It Predicts, and Why It Quietly Fails | Scape Data Solutions</title><title>Data Analytics &amp; BI Consulting | Scape Data Solutions</title><title>Scape Data Solutions | AI-Powered Data Analytics &amp; Business Intelligence</title>
+    <meta name="keywords" content="data analytics, business intelligence, machine learning, AI solutions, data science, big data, predictive analytics, data engineering, Kenya">
+    <meta name="author" content="Scape Data Solutions">
+
+    <!-- Canonical URL -->
+
+    <!-- Open Graph Meta Tags (for social sharing) -->
+    <meta property="og:title" content="Scape Data Solutions | AI-Powered Data Analytics">
+    <meta property="og:description" content="Transform your business with expert data analytics, AI, and machine learning solutions. 1200+ clients worldwide.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scapedatasolutions.com/">
+    <meta property="og:image" content="https://scapedatasolutions.com/Images/site-images/logo-image.png">
+    <meta property="og:site_name" content="Scape Data Solutions">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Scape Data Solutions | AI-Powered Data Analytics">
+    <meta name="twitter:description" content="Transform your business with expert data analytics, AI, and machine learning solutions.">
+    <meta name="twitter:image" content="https://scapedatasolutions.com/Images/site-images/logo-image.png">
+
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="Mj7beL9UYCiiQCq5yGCHT3FVRLOzGSjkofbUULvej6U">
+
+    <!-- Robots Meta Tag -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- Organization + Website + per-office LocalBusiness JSON-LD is
+         injected per-route by src/components/SEO/SEO.jsx via
+         react-helmet-async. Do NOT add a static schema block here —
+         Helmet cannot de-duplicate <script type="application/ld+json">
+         (no matching attribute to key off), so a static block here
+         ships ALONGSIDE the real one on every prerendered page instead
+         of being replaced by it. This caused a real duplicate/stale
+         Organization schema across the whole site (Nairobi-only address,
+         out of sync with the real 4-office data) until removed. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script type="module" crossorigin="" src="/assets/index-RgHw_B4f.js"></script>
+  <link rel="stylesheet" crossorigin="" href="/assets/index-DWIzPb6R.css">
+<meta name="description" content="Expert data analytics, SQL development, BI dashboards, ETL pipelines, and predictive modeling. We turn your data into revenue, faster decisions, and lower costs."><meta property="og:type" content="website"><meta property="og:site_name" content="Scape Data Solutions"><meta property="og:title" content="Data Analytics &amp; BI Consulting | Scape Data Solutions"><meta property="og:description" content="Expert data analytics, SQL development, BI dashboards, ETL pipelines, and predictive modeling. We turn your data into revenue, faster decisions, and lower costs."><meta property="og:url" content="https://www.scapedatasolutions.com/"><meta property="og:image" content="/Images/site-images/homepage-dashboard-preview.webp"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Data Analytics &amp; BI Consulting | Scape Data Solutions"><meta name="twitter:description" content="Expert data analytics, SQL development, BI dashboards, ETL pipelines, and predictive modeling. We turn your data into revenue, faster decisions, and lower costs."><meta name="twitter:image" content="/Images/site-images/homepage-dashboard-preview.webp"><link rel="canonical" href="https://www.scapedatasolutions.com/"><link rel="modulepreload" as="script" crossorigin="" href="/assets/ArticlePage-oZFiZSGX.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/articles-Dm3g29YZ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/quartoArticlesIndex-BMJ1WGPi.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/arrow-left-tsVb6pvo.js"><link rel="stylesheet" crossorigin="" href="/assets/ArticlePage-rHmt1_cJ.css"><meta name="description" content="A first-principles guide to machine learning: how models actually learn, the formulas behind linear regression, and why backtests quietly overfit."><meta property="og:type" content="website"><meta property="og:site_name" content="Scape Data Solutions"><meta property="og:title" content="Machine Learning From First Principles: What It Is, How It Predicts, and Why It Quietly Fails | Scape Data Solutions"><meta property="og:description" content="A first-principles guide to machine learning: how models actually learn, the formulas behind linear regression, and why backtests quietly overfit."><meta property="og:url" content="https://www.scapedatasolutions.com/resources/machine-learning-from-first-principles"><meta property="og:image" content="https://www.scapedatasolutions.com/Images/site-images/og-default.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Machine Learning From First Principles: What It Is, How It Predicts, and Why It Quietly Fails | Scape Data Solutions"><meta name="twitter:description" content="A first-principles guide to machine learning: how models actually learn, the formulas behind linear regression, and why backtests quietly overfit."><meta name="twitter:image" content="https://www.scapedatasolutions.com/Images/site-images/og-default.jpg"><link rel="canonical" href="https://www.scapedatasolutions.com/resources/machine-learning-from-first-principles"><script id="katex-js" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script></head>
+
+<body>
+    <!-- Fallback content for crawlers with JS disabled -->
+    <noscript>
+        <div style="padding: 40px; text-align: center; font-family: Arial, sans-serif;">
+            <h1>Scape Data Solutions</h1>
+            <p>AI-Powered Data Analytics & Business Intelligence</p>
+            <p>For the best experience, please enable JavaScript in your browser.</p>
+            <nav style="margin-top: 20px;">
+                <a href="/" style="margin: 0 10px;">Home</a> |
+                <a href="/services" style="margin: 0 10px;">Services</a> |
+                <a href="/solutions" style="margin: 0 10px;">Solutions</a> |
+                <a href="/pricing" style="margin: 0 10px;">Pricing</a> |
+                <a href="/about" style="margin: 0 10px;">About</a> |
+                <a href="/contact" style="margin: 0 10px;">Contact</a>
+            </nav>
+        </div>
+    </noscript>
+
+    <div id="root"><div class="_app_1698h_3"><main class="_main_1698h_11"><div class="_page_f1pxc_1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.scapedatasolutions.com/#organization","name":"Scape Data Solutions","url":"https://www.scapedatasolutions.com","logo":"https://www.scapedatasolutions.com/Images/site-images/logo.svg","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","description":"Scape Data Solutions helps businesses make smarter decisions, grow faster, and reduce costs by turning data into actionable insights through AI, machine learning, big data engineering, and business intelligence.","email":"info@scapedatasolutions.com","areaServed":["US","CA","PK","KE","GB"],"foundingDate":"2017","numberOfEmployees":"11-50","sameAs":["https://www.linkedin.com/company/scape-data-solutions/","https://www.facebook.com/profile.php?id=61591435187674"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.scapedatasolutions.com/#location-0","name":"Scape Data Solutions — US Office","url":"https://www.scapedatasolutions.com","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","parentOrganization":{"@id":"https://www.scapedatasolutions.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"1024 Iron Point Road, Suite 200","addressLocality":"Folsom","addressRegion":"CA","postalCode":"95630","addressCountry":"US"},"telephone":"+1-757-598-0582"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.scapedatasolutions.com/#location-1","name":"Scape Data Solutions — Canada Office","url":"https://www.scapedatasolutions.com","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","parentOrganization":{"@id":"https://www.scapedatasolutions.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"400 Centre Street South","addressLocality":"Whitby","addressRegion":"ON","postalCode":"L1N 0G4","addressCountry":"CA"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.scapedatasolutions.com/#location-2","name":"Scape Data Solutions — Pakistan Office","url":"https://www.scapedatasolutions.com","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","parentOrganization":{"@id":"https://www.scapedatasolutions.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"9th Floor, Tricon Corporate Centre, 73 Jail Road, Gulberg","addressLocality":"Lahore","postalCode":"54000","addressCountry":"PK"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.scapedatasolutions.com/#location-3","name":"Scape Data Solutions — Nairobi Office","url":"https://www.scapedatasolutions.com","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","parentOrganization":{"@id":"https://www.scapedatasolutions.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"Global Trade Centre, 14th Floor, Westlands Road","addressLocality":"Nairobi","addressCountry":"KE"},"telephone":"+254-718-889-559"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.scapedatasolutions.com/#location-4","name":"Scape Data Solutions — UK Office","url":"https://www.scapedatasolutions.com","image":"https://www.scapedatasolutions.com/Images/site-images/og-default.jpg","parentOrganization":{"@id":"https://www.scapedatasolutions.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"60 Cannon Street","addressLocality":"London","postalCode":"EC4N 6NP","addressCountry":"GB"},"telephone":"+44-7454-744014"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.scapedatasolutions.com/#website","url":"https://www.scapedatasolutions.com","name":"Scape Data Solutions","publisher":{"@id":"https://www.scapedatasolutions.com/#organization"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.scapedatasolutions.com"},{"@type":"ListItem","position":2,"name":"Resources","item":"https://www.scapedatasolutions.com/resources"},{"@type":"ListItem","position":3,"name":"Machine Learning From First Principles","item":"https://www.scapedatasolutions.com/resources/machine-learning-from-first-principles"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Machine Learning From First Principles: What It Is, How It Predicts, and Why It Quietly Fails","description":"A first-principles guide to machine learning: how models actually learn, the formulas behind linear regression, and why backtests quietly overfit.","datePublished":"2026-08-19","dateModified":"2026-08-19","author":{"@type":"Organization","name":"Scape Data Solutions"},"publisher":{"@id":"https://www.scapedatasolutions.com/#organization"},"mainEntityOfPage":"https://www.scapedatasolutions.com/resources/machine-learning-from-first-principles"}</script><div class="_navTopBar_ui2im_162"><div class="_navTopInner_ui2im_173"><div class="_navTopLeft_ui2im_180"><a href="mailto:info@scapedatasolutions.com" class="_navTopContact_ui2im_187"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>info@scapedatasolutions.com</a><span class="_navTopSep_ui2im_198"></span><a href="tel:+17575980582" class="_navTopContact_ui2im_187"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>+1 (757) 598-0582</a></div></div></div><div class="_mobileHeader_ui2im_205"><div class="_mContainer_ui2im_218"><a class="_mobileLogo_ui2im_224" href="/" data-discover="true"><img alt="Scape Data Solutions" src="/Images/site-images/logo.svg"></a><button class="_burger_ui2im_230" aria-label="Toggle menu"><span></span><span></span><span></span></button></div></div><header class="_navbarFixed_ui2im_4"><div class="_navbarBorder_ui2im_16" style="opacity: 0; transition: opacity 0.2s;"></div><div class="_navbarInner_ui2im_28"><a class="_navbarBrand_ui2im_45" href="/" data-discover="true"><img alt="Scape Data Solutions" src="/Images/site-images/logo.svg"></a><ul class="_navList_ui2im_56"><li><a class="_navLink_ui2im_70" href="/" data-discover="true">Home</a></li><li><a class="_navLink_ui2im_70" href="/business-intel" data-discover="true">Business Intel</a></li><li class="_hasDrop_ui2im_100"><a class="_navLink_ui2im_70" href="/company" data-discover="true">Company <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a><div class="_drop_ui2im_103 _dropWide_ui2im_120"><div class="_dropGrid_ui2im_136"><a class="_dropLink_ui2im_147" href="/company" data-discover="true">Company</a><a class="_dropLink_ui2im_147" href="/why-us" data-discover="true">Why Us?</a><a class="_dropLink_ui2im_147" href="/careers" data-discover="true">Careers</a><a class="_dropLink_ui2im_147" href="/faq" data-discover="true">FAQ</a></div></div></li><li class="_hasDrop_ui2im_100"><a class="_navLink_ui2im_70" href="/services" data-discover="true">Services <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a><div class="_drop_ui2im_103 _dropWide_ui2im_120"><div class="_dropGrid_ui2im_136"><a class="_dropLink_ui2im_147" href="/services" data-discover="true">All Services</a><a class="_dropLink_ui2im_147" href="/services?category=academic" data-discover="true">Academic &amp; Research</a><a class="_dropLink_ui2im_147" href="/services?category=analytics" data-discover="true">Advanced Analytics</a><a class="_dropLink_ui2im_147" href="/services?category=finance" data-discover="true">Finance &amp; Risk</a><a class="_dropLink_ui2im_147" href="/services?category=healthcare" data-discover="true">Healthcare &amp; Life Sciences</a><a class="_dropLink_ui2im_147" href="/services?category=manufacturing" data-discover="true">Manufacturing &amp; Supply Chain</a><a class="_dropLink_ui2im_147" href="/services?category=retail" data-discover="true">Retail &amp; E-Commerce</a><a class="_dropLink_ui2im_147" href="/services?category=ai-ml" data-discover="true">AI &amp; Machine Learning</a><a class="_dropLink_ui2im_147" href="/services?category=data-engineering" data-discover="true">Data Engineering &amp; BI Tools</a><a class="_dropLink_ui2im_147" href="/services?category=research-methods" data-discover="true">Statistical &amp; Research Methods</a><a class="_dropLink_ui2im_147" href="/services?category=academic-writing" data-discover="true">Academic Writing &amp; Publishing</a><a class="_dropLink_ui2im_147" href="/services?category=assignment-help" data-discover="true">Assignment &amp; Software Help</a></div></div></li><li><a class="_navLink_ui2im_70" href="/clients" data-discover="true">Our Clients</a></li><li class="_hasDrop_ui2im_100"><a class="_navLink_ui2im_70" href="/portfolio" data-discover="true">Portfolio <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a><div class="_drop_ui2im_103 _dropRight_ui2im_123"><div class="_dropGrid1_ui2im_142"><a class="_dropLink_ui2im_147" href="/portfolio/bi" data-discover="true">Dashboards &amp; BI</a><a class="_dropLink_ui2im_147" href="/portfolio/ai" data-discover="true">AI Applications</a><a class="_dropLink_ui2im_147" href="/portfolio/pipelines" data-discover="true">Data Pipelines</a><a class="_dropLink_ui2im_147" href="/portfolio/mobile" data-discover="true">Mobile Analytics</a></div></div></li><li class="_hasDrop_ui2im_100"><a class="_navLink_ui2im_70 _navActive_ui2im_85" href="/resources" data-discover="true">Resources <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a><div class="_drop_ui2im_103 _dropWide_ui2im_120 _dropRight_ui2im_123"><div class="_dropGrid_ui2im_136"><a class="_dropLink_ui2im_147" href="/resources" data-discover="true">All Resources</a><a class="_dropLink_ui2im_147" href="/resources?category=business" data-discover="true">Business Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=finance" data-discover="true">Finance Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=healthcare" data-discover="true">Healthcare Analytics</a><a class="_dropLink_ui2im_147" href="/dental-analytics" data-discover="true">Dental Analytics</a><a class="_dropLink_ui2im_147" href="/veterinary-analytics" data-discover="true">Veterinary Analytics</a><a class="_dropLink_ui2im_147" href="/medical-practice-analytics" data-discover="true">Medical Practice Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=retail" data-discover="true">Retail Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=manufacturing" data-discover="true">Manufacturing Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=logistics" data-discover="true">Logistics Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=energy" data-discover="true">Energy &amp; Utilities</a><a class="_dropLink_ui2im_147" href="/resources?category=realestate" data-discover="true">Real Estate Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=government" data-discover="true">Government &amp; Public Sector</a><a class="_dropLink_ui2im_147" href="/resources?category=media" data-discover="true">Media &amp; Entertainment</a><a class="_dropLink_ui2im_147" href="/resources?category=telecom" data-discover="true">Telecommunications</a><a class="_dropLink_ui2im_147" href="/resources?category=agriculture" data-discover="true">Agriculture Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=insurance" data-discover="true">Insurance Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=legal" data-discover="true">Legal Analytics</a><a class="_dropLink_ui2im_147" href="/resources?category=academic" data-discover="true">Education Analytics</a></div></div></li><li><a class="_navLink_ui2im_70" href="/testimonials" data-discover="true">Testimonials</a></li><li><a class="_navLink_ui2im_70" href="/contact" data-discover="true">Contact</a></li></ul></div></header><article class="_article_f1pxc_7"><div class="_hero_f1pxc_9"><a class="_backLink_f1pxc_10" href="/resources" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg> All Resources</a><span class="_category_f1pxc_12">AI &amp; Machine Learning</span><h1 class="_title_f1pxc_13">Machine Learning From First Principles: What It Is, How It Predicts, and Why It Quietly Fails</h1></div><div class="_body_f1pxc_22"><div class="_quartoBody_f1pxc_72">
+
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Scape Data Solutions">
+<meta name="dcterms.date" content="2026-08-19">
+
+<title>Machine Learning From First Principles: What It Is, How It Predicts, and Why It Quietly Fails</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="machine-learning-from-first-principles_files/libs/clipboard/clipboard.min.js"></script>
+<script src="machine-learning-from-first-principles_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="machine-learning-from-first-principles_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="machine-learning-from-first-principles_files/libs/quarto-html/popper.min.js"></script>
+<script src="machine-learning-from-first-principles_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="machine-learning-from-first-principles_files/libs/quarto-html/anchor.min.js"></script>
+<link href="machine-learning-from-first-principles_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="machine-learning-from-first-principles_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="machine-learning-from-first-principles_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="machine-learning-from-first-principles_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="machine-learning-from-first-principles_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+
+
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<p>A business owner does not need to write code to make good decisions about machine learning. What a business owner needs is an honest, complete picture of how these models actually work, where their power comes from, and where that power runs out. This article builds that picture from the ground up. We start with plain definitions. We end with the actual formulas a model uses to learn, the closed form equation that trains it, and a body of published research showing exactly how these models fool their own creators.</p>
+<p>By the end, you will understand machine learning at a technical level most business content never reaches, without needing a statistics degree to follow along.</p>
+<section id="start-simple-three-words-people-use-interchangeably-and-should-not" class="level2">
+<h2 class="anchored" data-anchor-id="start-simple-three-words-people-use-interchangeably-and-should-not">Start simple: three words people use interchangeably, and should not</h2>
+<p>Artificial intelligence, machine learning, and deep learning get used as synonyms in casual conversation. They are not synonyms. They describe three nested ideas, each one narrower than the last.</p>
+<p>Artificial intelligence is the broadest goal. It covers any attempt to automate a task that normally requires human judgment. A chess program built from thousands of hand written “if this position, then that move” rules technically counts as artificial intelligence, even though the program never learns anything. It just follows instructions a person wrote in advance.</p>
+<p>Machine learning is a specific method for reaching that goal. Instead of a person writing the rules, the system studies examples and works out the rules itself. <a href="https://research.ibm.com/topics/machine-learning">IBM traces the origin of the term</a> to 1959, when IBM engineer Arthur Samuel used it to describe a checkers program that improved its own play the more games it studied. That single shift, letting a system improve through experience rather than through a programmer’s instructions, is the entire idea behind machine learning.</p>
+<p>Deep learning is one specific technique inside machine learning. It stacks many layers of pattern detection on top of each other, letting a neural network build increasingly abstract representations of raw data. Most everyday business problems, pricing, forecasting, and customer scoring, do not require deep learning at all. A much older and far simpler technique usually gets the job done, and we will spend most of this article on exactly that technique.</p>
+</section>
+<section id="the-formal-definition-and-why-it-matters-for-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-formal-definition-and-why-it-matters-for-your-data">The formal definition, and why it matters for your data</h2>
+<p>Computer scientist Tom Mitchell offered a widely cited definition of machine learning, referenced across <a href="https://arxiv.org/pdf/2305.02482">modern academic machine learning research</a>. The idea, paraphrased, is that a program learns from experience if its performance on some task improves as that experience grows, measured against a specific performance metric.</p>
+<p>This definition sounds abstract until you notice what it implies. If the experience is bad, the improvement never happens. A model trained on incomplete, outdated, or mislabeled data has effectively been given bad experience. No algorithm can fix that afterward. This single idea explains why the data pipeline behind a model usually matters more than the model itself, a theme we will return to throughout this series.</p>
+</section>
+<section id="supervised-learning-teaching-a-model-with-an-answer-key" class="level2">
+<h2 class="anchored" data-anchor-id="supervised-learning-teaching-a-model-with-an-answer-key">Supervised learning: teaching a model with an answer key</h2>
+<p><a href="https://www.ibm.com/think/topics/machine-learning-algorithms">IBM’s overview of machine learning algorithms</a> describes supervised learning as training toward some ground truth using a loss function, a formula that measures how wrong the model’s predictions are. Every training example comes with the correct answer attached. The model studies thousands of these paired examples and gradually adjusts itself to reduce its error.</p>
+<p>Supervised learning splits into two jobs. Regression predicts a continuous number, such as tomorrow’s revenue or next month’s stock return. Classification predicts a category, such as whether a customer churns or a transaction is fraudulent. This article focuses on regression. A companion piece in this series covers classification in full technical depth.</p>
+</section>
+<section id="unsupervised-learning-finding-structure-with-no-answer-key-at-all" class="level2">
+<h2 class="anchored" data-anchor-id="unsupervised-learning-finding-structure-with-no-answer-key-at-all">Unsupervised learning: finding structure with no answer key at all</h2>
+<p>Unsupervised learning removes the answer key entirely. The model receives raw data and is asked to find structure inside it without any guidance on what a correct answer looks like. This approach powers clustering, which groups similar customers or products automatically, and dimensionality reduction, which compresses complicated datasets down to their most important underlying signals.</p>
+<p>This matters enormously for businesses sitting on years of unstructured records with no labels attached, which describes most companies before they invest in proper data infrastructure.</p>
+</section>
+<section id="the-features-matrix-the-actual-object-a-model-learns-from" class="level2">
+<h2 class="anchored" data-anchor-id="the-features-matrix-the-actual-object-a-model-learns-from">The features matrix: the actual object a model learns from</h2>
+<p>Every supervised model starts with two pieces of data. The features matrix, written as X, holds your inputs. Each row is one example, such as one customer, one transaction, or one trading day. Each column is one measured feature, such as price, past return, or account age.</p>
+<p>The labels vector, written as y, holds the correct answer for every row in X. The model itself is simply a function, written as g, that takes X as input and tries to output values as close as possible to y:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\hat{y} = g(X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.6944em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.1944em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.0785em;">X</span><span class="mclose">)</span></span></span></span></span></span></p>
+<p>Training means searching for the specific version of g that makes this prediction as accurate as possible across your entire dataset. Once trained, that function gets applied to brand new rows of X where the true answer is not yet known. That is the entire commercial value of the exercise. A trained model converts yesterday’s labeled history into tomorrow’s prediction.</p>
+</section>
+<section id="a-concrete-example-predicting-whether-a-market-trend-continues" class="level2">
+<h2 class="anchored" data-anchor-id="a-concrete-example-predicting-whether-a-market-trend-continues">A concrete example: predicting whether a market trend continues</h2>
+<p>To make this less abstract, consider a real strategy used across financial markets called time series momentum. The rule is simple to state. Buy an asset that has recently gone up. Sell an asset that has recently gone down. The underlying bet is that recent price trends carry some predictive information about near term future returns.</p>
+<p>This is not a hypothetical toy example. <a href="https://www.sciencedirect.com/science/article/pii/S0304405X11002613">Moskowitz, Ooi, and Pedersen published a landmark study</a> in the Journal of Financial Economics testing this exact idea across 58 different futures markets, spanning equities, currencies, commodities, and bonds, over more than twenty five years of data. Their finding was striking. A security’s own past twelve month return positively predicted its future return, and this pattern held consistently across every single asset class tested, not just a few cherry picked markets.</p>
+<p>Here is the genuinely surprising part. When the researchers combined this signal across all 58 markets into one diversified portfolio, <a href="https://foxholm.com/q/research/moskowitz-ooi-pedersen-time-series-momentum/">the resulting Sharpe ratio came out around 1.0</a>, a measure of return earned per unit of risk taken. For comparison, the long run Sharpe ratio of the entire United States stock market sits around 0.4. A mechanical rule this simple, buy winners and sell losers, roughly matched or beat one of the most studied investment strategies in modern finance, purely through diversification across markets that were not perfectly correlated with each other.</p>
+</section>
+<section id="turning-that-idea-into-a-trainable-formula" class="level2">
+<h2 class="anchored" data-anchor-id="turning-that-idea-into-a-trainable-formula">Turning that idea into a trainable formula</h2>
+<p>Linear regression is the simplest way to turn an idea like time series momentum into a trainable model. It assumes your predicted output is a weighted sum of your input features, plus one constant term:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover><mo>=</mo><msub><mi>θ</mi><mn>0</mn></msub><mo>+</mo><msub><mi>θ</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>θ</mi><mn>2</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mo>⋯</mo><mo>+</mo><msub><mi>θ</mi><mi>n</mi></msub><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\hat{y} = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \dots + \theta_n x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.6944em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.1944em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 0.8444em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0278em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3011em;"><span class="" style="top: -2.55em; margin-left: -0.0278em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="base"><span class="strut" style="height: 0.8444em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0278em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3011em;"><span class="" style="top: -2.55em; margin-left: -0.0278em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3011em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="base"><span class="strut" style="height: 0.8444em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0278em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3011em;"><span class="" style="top: -2.55em; margin-left: -0.0278em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3011em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="base"><span class="strut" style="height: 0.6667em; vertical-align: -0.0833em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="base"><span class="strut" style="height: 0.8444em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0278em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.1514em;"><span class="" style="top: -2.55em; margin-left: -0.0278em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.1514em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>Here, each x represents one input feature, such as the asset’s return over the past ten days, twenty five days, or sixty days. Each theta, written as θ, is a weight the model must learn. θ₀ is called the bias term, and it shifts every prediction up or down by a constant amount.</p>
+</section>
+<section id="how-the-model-finds-its-weights-minimizing-squared-error" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-model-finds-its-weights-minimizing-squared-error">How the model finds its weights: minimizing squared error</h2>
+<p>Training searches for the specific values of theta that make predictions as close as possible to the real outcomes, across every row in the training data. This is done by minimizing the mean squared error:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munder><mrow><mi>min</mi><mo>⁡</mo></mrow><mi>θ</mi></munder><mfrac><mn>1</mn><mi>m</mi></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><msup><mrow><mo fence="true">(</mo><msup><mi>y</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>−</mo><msup><mi>x</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mi>θ</mi><mo fence="true">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\min_{\theta} \frac{1}{m} \sum_{i=1}^{m} \left(y^{(i)} - x^{(i)}\theta\right)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 2.9291em; vertical-align: -1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.6679em;"><span class="" style="top: -2.3479em; margin-left: 0em;"><span class="pstrut" style="height: 3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right: 0.0278em;">θ</span></span></span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class=""><span class="mop">min</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.7521em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.3214em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathnormal">m</span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.6514em;"><span class="" style="top: -1.8723em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span class="" style="top: -3.05em;"><span class="pstrut" style="height: 3.05em;"></span><span class=""><span class="mop op-symbol large-op">∑</span></span></span><span class="" style="top: -4.3em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 1.2777em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top: 0em;"><span class="delimsizing size2">(</span></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.938em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.938em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right: 0.0278em;">θ</span><span class="mclose delimcenter" style="top: 0em;"><span class="delimsizing size2">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 1.354em;"><span class="" style="top: -3.6029em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>This formula takes the gap between each real outcome and each predicted outcome, squares that gap, and averages the squared gaps across all m training examples. Squaring the error does two things at once. It removes the effect of negative signs, and it punishes large mistakes far more severely than small ones, which pushes the model away from occasional wild predictions.</p>
+</section>
+<section id="two-ways-to-actually-solve-this-equation" class="level2">
+<h2 class="anchored" data-anchor-id="two-ways-to-actually-solve-this-equation">Two ways to actually solve this equation</h2>
+<p>There are two standard ways to find the weights that minimize this error. The first is a closed form solution called the Normal Equation, which solves for theta directly using matrix algebra:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>θ</mi><mo>^</mo></mover><mo>=</mo><mo stretchy="false">(</mo><msup><mi>X</mi><mi>T</mi></msup><mi>X</mi><msup><mo stretchy="false">)</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>X</mi><mi>T</mi></msup><mi>y</mi></mrow><annotation encoding="application/x-tex">\hat{\theta} = (X^T X)^{-1} X^T y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9579em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.9579em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal" style="margin-right: 0.0278em;">θ</span></span><span class="" style="top: -3.2634em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.1667em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 1.1413em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0785em;">X</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8913em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.1389em;">T</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right: 0.0785em;">X</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8641em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0785em;">X</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8913em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.1389em;">T</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span></span></span></span></span></span></p>
+<p>This equation gives you the exact answer in one calculation. The catch is the matrix inversion step, written as the exponent negative one, which becomes extremely expensive to compute once your dataset has many features or many rows. For small, well behaved datasets it works fine. For anything resembling real commercial scale, it does not.</p>
+<p>The second approach, used in nearly every production machine learning system, is an iterative method called gradient descent. Instead of solving directly, the model starts with a rough guess for theta and repeatedly nudges it in the direction that reduces error the fastest:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>θ</mi><mrow><mo stretchy="false">[</mo><mtext>next&nbsp;step</mtext><mo stretchy="false">]</mo></mrow></msup><mo>=</mo><msup><mi>θ</mi><mrow><mo stretchy="false">[</mo><mtext>previous&nbsp;step</mtext><mo stretchy="false">]</mo></mrow></msup><mo>−</mo><mi>η</mi><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi>M</mi><mi>S</mi><mi>E</mi><mrow><mo fence="true">(</mo><msup><mi>θ</mi><mrow><mo stretchy="false">[</mo><mtext>previous&nbsp;step</mtext><mo stretchy="false">]</mo></mrow></msup><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\theta^{[\text{next step}]} = \theta^{[\text{previous step}]} - \eta \nabla_{\theta} MSE\left(\theta^{[\text{previous step}]}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.938em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0278em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.938em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord text mtight"><span class="mord mtight">next&nbsp;step</span></span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 1.0213em; vertical-align: -0.0833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0278em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.938em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord text mtight"><span class="mord mtight">previous&nbsp;step</span></span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="base"><span class="strut" style="height: 1.8em; vertical-align: -0.65em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">η</span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right: 0.0278em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right: 0.0576em;">MSE</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top: 0em;"><span class="delimsizing size2">(</span></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0278em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.938em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord text mtight"><span class="mord mtight">previous&nbsp;step</span></span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top: 0em;"><span class="delimsizing size2">)</span></span></span></span></span></span></span></span></p>
+<p>The Greek letter eta, η, is called the learning rate. It controls how large each step is. <a href="https://scikit-learn.org/stable/modules/linear_model.html">Scikit-learn’s documentation on ordinary least squares</a> confirms that this general family of approaches, direct matrix solving for smaller problems and iterative gradient methods for larger ones, remains the standard toolkit for linear regression in production systems today.</p>
+</section>
+<section id="measuring-whether-the-model-is-actually-any-good" class="level2">
+<h2 class="anchored" data-anchor-id="measuring-whether-the-model-is-actually-any-good">Measuring whether the model is actually any good</h2>
+<p>Once trained, you need a number that tells you how well the model fits. The standard measure is the coefficient of determination, written as R squared:</p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn><mo>−</mo><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><msup><mrow><mo fence="true">(</mo><msup><mi>y</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>−</mo><msup><mi>x</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mover accent="true"><mi>θ</mi><mo>^</mo></mover><mo fence="true">)</mo></mrow><mn>2</mn></msup></mrow><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><msup><mrow><mo fence="true">(</mo><msup><mi>y</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>−</mo><mover accent="true"><mi>y</mi><mo>ˉ</mo></mover><mo fence="true">)</mo></mrow><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">R^2 = 1 - \frac{\sum_{i=1}^{m} \left(y^{(i)} - x^{(i)}\hat{\theta}\right)^2}{\sum_{i=1}^{m} \left(y^{(i)} - \bar{y}\right)^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0077em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8641em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 0.7278em; vertical-align: -0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="base"><span class="strut" style="height: 3.688em; vertical-align: -1.294em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 2.394em;"><span class="" style="top: -2.41em;"><span class="pstrut" style="height: 3.354em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position: relative; top: 0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.8043em;"><span class="" style="top: -2.4003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span class="" style="top: -3.2029em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.2997em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top: 0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814em;"><span class="" style="top: -2.989em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.5678em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.1944em;"><span class="mord">ˉ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.1944em;"><span class=""></span></span></span></span></span><span class="mclose delimcenter" style="top: 0em;"><span class="delimsizing size1">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 1.054em;"><span class="" style="top: -3.3029em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span class="" style="top: -3.584em;"><span class="pstrut" style="height: 3.354em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -4.394em;"><span class="pstrut" style="height: 3.354em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position: relative; top: 0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.8043em;"><span class="" style="top: -2.4003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span class="" style="top: -3.2029em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.2997em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top: 0em;"><span class="delimsizing size2">(</span></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.888em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.888em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.9579em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal" style="margin-right: 0.0278em;">θ</span></span><span class="" style="top: -3.2634em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.1667em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mclose delimcenter" style="top: 0em;"><span class="delimsizing size2">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 1.354em;"><span class="" style="top: -3.6029em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 1.294em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></p>
+<p>Here, y-bar is simply the average label value across your training sample. R squared compares your model’s prediction error against the error you would get by guessing the average every single time. An R squared close to 1.0 means the model explains almost all the variation in the data. An R squared close to zero means it barely beats a naive average.</p>
+<p>Here is a detail almost nobody outside a statistics course knows, and it matters enormously in practice. On your training sample, R squared will always be zero or positive as long as your model includes a bias term. On a fresh test sample the model has never seen, R squared can go negative. A negative out of sample R squared means the model performed worse than simply guessing the historical average every time, despite having looked reasonably competent during training.</p>
+</section>
+<section id="the-uncomfortable-finding-hiding-inside-every-backtest" class="level2">
+<h2 class="anchored" data-anchor-id="the-uncomfortable-finding-hiding-inside-every-backtest">The uncomfortable finding hiding inside every backtest</h2>
+<p>This gap between training performance and real world performance is not a minor technical footnote. It is arguably the single most important idea in applied machine learning, and a body of published financial research has quantified exactly how often it goes wrong.</p>
+<p><a href="https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf">Bailey, Borwein, Lopez de Prado, and Zhu published a widely cited paper</a> formally defining what they call the probability of backtest overfitting. Their central finding is unsettling for anyone building predictive trading or forecasting models. A strategy selection process overfits whenever the strategy that looked best during training has an expected ranking below the median once tested on fresh, unseen data. In plain language, the strategy that appeared to win during development often performs worse than an average strategy once real, new data arrives.</p>
+<p>This connects to an even broader problem across empirical research generally. A frequently cited paper argues that a large share of published research findings across many scientific fields do not replicate once independently retested, a pattern closely related to the same statistical trap that produces backtest overfitting. Financial economists Campbell Harvey and colleagues studied this exact issue inside asset pricing research specifically, and their recommendation is genuinely striking. Because hundreds of proposed market predictors have already been tested against the same historical data, <a href="https://arxiv.org/pdf/2603.20319">research surveying this “factor zoo” problem</a> recommends raising the statistical significance bar from a t-statistic of 2.0, the traditional threshold, up to 3.0, precisely because testing so many ideas against the same data makes some of them look significant by chance alone.</p>
+</section>
+<section id="underfitting-and-overfitting-the-two-ways-a-model-can-be-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="underfitting-and-overfitting-the-two-ways-a-model-can-be-wrong">Underfitting and overfitting: the two ways a model can be wrong</h2>
+<p>A model can fail in two opposite directions. Underfitting happens when the model is too simple to capture the real pattern in the data, producing weak predictions even on the training set itself. Overfitting happens when the model is complex enough to memorize noise specific to the training set, producing excellent training performance and poor real world performance.</p>
+<p>Google’s own machine learning materials frame this using <a href="https://developers.google.com/machine-learning/crash-course/overfitting/model-complexity">Occam’s Razor</a>, the longstanding principle that simpler explanations tend to generalize better than complicated ones, even when the complicated explanation fits the observed data slightly better on paper.</p>
+<p>Four practical fixes address overfitting directly. Gathering more training data reduces the influence of random noise on the model. Regularization constrains how large the model’s weights can grow, a technique covered in full technical depth in the next article in this series. Early stopping halts training the moment performance on a held out validation sample starts getting worse, even if training performance keeps improving. Careful hyperparameter tuning finds the specific settings that balance fit against complexity, rather than simply maximizing accuracy on whatever data happens to be in front of you.</p>
+</section>
+<section id="why-the-formulas-are-the-easy-part" class="level2">
+<h2 class="anchored" data-anchor-id="why-the-formulas-are-the-easy-part">Why the formulas are the easy part</h2>
+<p>Everything covered in this article, the features matrix, the weighted sum formula, the normal equation, gradient descent, and R squared, represents maybe a week of study for someone with a basic statistics background. The genuinely hard, expensive, and valuable part of any real machine learning project sits somewhere else entirely: building and maintaining the pipeline that keeps your features matrix accurate, current, and complete.</p>
+<p>A regression model trained on stale competitor pricing, incomplete transaction history, or manually copied spreadsheet data will produce confident, well formatted, completely wrong predictions. This is the exact failure mode the backtest overfitting research above describes mathematically. It is also the most common reason internal data science projects quietly underperform. Reliable <a href="https://www.scapedatasolutions.com/services?category=data-engineering">ETL and data integration pipelines</a> that keep your X matrix fresh matter at least as much as the choice of algorithm sitting on top of it, and usually matter considerably more.</p>
+</section>
+<section id="what-comes-next-in-this-series" class="level2">
+<h2 class="anchored" data-anchor-id="what-comes-next-in-this-series">What comes next in this series</h2>
+<p>Linear regression on its own tends to underfit real, noisy business data, while adding complexity to the same model tends to overfit it almost immediately. The next article in this series covers the specific mathematical fix for this exact tension: regularization, including the full formulas for ridge, lasso, and elastic net regression, along with the cross validation process used to tune them properly. If your business is exploring <a href="https://www.scapedatasolutions.com/services?category=analytics">predictive analytics and forecasting</a> built on this same underlying math, understanding these fundamentals will change how closely you scrutinize every model, dashboard, and vendor claim you encounter going forward.</p>
+<hr>
+<p><strong>Sources cited in this article</strong></p>
+<ol type="1">
+<li>IBM Research, <a href="https://research.ibm.com/topics/machine-learning">Machine Learning</a></li>
+<li>IBM, <a href="https://www.ibm.com/think/topics/machine-learning-algorithms">What Are Machine Learning Algorithms?</a></li>
+<li>Breast Cancer Diagnosis Using Machine Learning Techniques, <a href="https://arxiv.org/pdf/2305.02482">arXiv.org</a></li>
+<li>Moskowitz, Ooi and Pedersen, “Time Series Momentum,” <a href="https://www.sciencedirect.com/science/article/pii/S0304405X11002613">Journal of Financial Economics via ScienceDirect</a></li>
+<li>Foxholm Financial, <a href="https://foxholm.com/q/research/moskowitz-ooi-pedersen-time-series-momentum/">Review of Moskowitz, Ooi and Pedersen (2012)</a></li>
+<li>Scikit-learn, <a href="https://scikit-learn.org/stable/modules/linear_model.html">Linear Models documentation</a></li>
+<li>Bailey, Borwein, Lopez de Prado and Zhu, <a href="https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf">The Probability of Backtest Overfitting</a></li>
+<li>Implementation Risk in Portfolio Backtesting, <a href="https://arxiv.org/pdf/2603.20319">arXiv.org</a></li>
+<li>Google for Developers, <a href="https://developers.google.com/machine-learning/crash-course/overfitting/model-complexity">Overfitting: Model complexity</a></li>
+</ol>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</div></div><div class="_inlineCta_f1pxc_42"><h3>Want This Tracked Automatically?</h3><p>We build the dashboard so you never have to pull this data by hand.</p><a class="_inlineCtaBtn_f1pxc_45" href="/contact" data-discover="true">See the Solution <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></article><section class="_cta_f1pxc_56"><div style="opacity: 0; transform: translateY(20px);"><h2>Want This Tracked Automatically?</h2><p>We build the dashboard so you never have to pull this data by hand.</p><a class="_ctaBtn_f1pxc_65" href="/contact" data-discover="true">Book a Free Demo <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></section><footer class="_navyFooter_10eko_1"><div class="_navyOffStrip_10eko_15"><div class="_container_10eko_8"><div class="_navyOffGrid_10eko_19"><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="US Office:" src="/Images/site-images/us_flag.webp"></div><div class="_navyOffText_10eko_58"><h4>US Office:</h4><p>1024 Iron Point Road, Suite 200</p><p>Folsom, California 95630</p><p><a href="tel:+17575980582">US: +1 (757) 598-0582</a></p></div></div><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="UK Office:" src="/Images/site-images/uk-icon.jpeg"></div><div class="_navyOffText_10eko_58"><h4>UK Office:</h4><p>60 Cannon Street</p><p>London EC4N 6NP, United Kingdom</p><p><a href="tel:+447454744014">UK: +44 7454 744014</a></p></div></div><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="General Inquiry:" src="/Images/site-images/email_icon.webp"></div><div class="_navyOffText_10eko_58"><h4>General Inquiry:</h4><p><a href="mailto:info@scapedatasolutions.com">info@scapedatasolutions.com</a></p><p><a href="mailto:allan@scapedatasolutions.com">allan@scapedatasolutions.com</a></p></div></div><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="Canada Office:" src="/Images/site-images/canada-flag.webp.webp"></div><div class="_navyOffText_10eko_58"><h4>Canada Office:</h4><p>400 Centre Street South</p><p>Whitby, ON L1N 0G4, Canada</p></div></div><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="Pakistan Office:" src="/Images/site-images/pak_flag.webp"></div><div class="_navyOffText_10eko_58"><h4>Pakistan Office:</h4><p>9th Floor, Tricon Corporate Centre</p><p>73 Jail Road, Gulberg</p><p>Lahore 54000, Pakistan</p></div></div><div class="_navyOffItem_10eko_37" style="opacity: 0; transform: translateY(22px);"><div class="_navyOffIcon_10eko_43" style="opacity: 0; transform: scale(0.6) rotate(-8deg);"><img alt="Nairobi Office:" src="/Images/site-images/nairobi-k.jpg"></div><div class="_navyOffText_10eko_58"><h4>Nairobi Office:</h4><p>Global Trade Centre, 14th Floor</p><p>Westlands Road, Nairobi, Kenya</p><p><a href="tel:+254718889559">KE: +254 718 889 559</a></p></div></div></div></div></div><div class="_navyFootMain_10eko_83"><div class="_container_10eko_8"><div class="_navyFootGrid_10eko_87"><div style="opacity: 0; transform: translateY(24px);"><h3 class="_navyFootH_10eko_105">Company</h3><ul class="_navyFootLinks_10eko_119"><li style="opacity: 0; transform: translateX(-10px);"><a href="/company" data-discover="true">Company</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/why-us" data-discover="true">Why Us?</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/careers" data-discover="true">Careers</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/faq" data-discover="true">FAQ</a></li></ul></div><div style="opacity: 0; transform: translateY(24px);"><h3 class="_navyFootH_10eko_105">Services</h3><ul class="_navyFootLinks_10eko_119"><li style="opacity: 0; transform: translateX(-10px);"><a href="/services" data-discover="true">All Services</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/services?category=analytics" data-discover="true">Advanced Analytics</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/services?category=ai-ml" data-discover="true">AI &amp; Machine Learning</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/services?category=finance" data-discover="true">Finance &amp; Risk</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/services?category=healthcare" data-discover="true">Healthcare &amp; Life Sciences</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/services?category=data-engineering" data-discover="true">Data Engineering &amp; BI Tools</a></li></ul></div><div style="opacity: 0; transform: translateY(24px);"><h3 class="_navyFootH_10eko_105">Resources</h3><ul class="_navyFootLinks_10eko_119"><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources" data-discover="true">All Resources</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources?category=business" data-discover="true">Business Analytics</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources?category=finance" data-discover="true">Finance Analytics</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources?category=healthcare" data-discover="true">Healthcare Analytics</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources?category=retail" data-discover="true">Retail Analytics</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources?category=manufacturing" data-discover="true">Manufacturing Analytics</a></li></ul></div><div style="opacity: 0; transform: translateY(24px);"><h3 class="_navyFootH_10eko_105">Portfolio</h3><ul class="_navyFootLinks_10eko_119"><li style="opacity: 0; transform: translateX(-10px);"><a href="/portfolio/bi" data-discover="true">Dashboards &amp; BI</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/portfolio/ai" data-discover="true">AI Applications</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/portfolio/pipelines" data-discover="true">Data Pipelines</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/portfolio/mobile" data-discover="true">Mobile Analytics</a></li></ul><h3 class="_navyFootH_10eko_105 _navyFootHMt_10eko_115">Others</h3><ul class="_navyFootLinks_10eko_119"><li style="opacity: 0; transform: translateX(-10px);"><a href="/clients" data-discover="true">Our Clients</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/testimonials" data-discover="true">Testimonials</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/resources" data-discover="true">Recommended Reading</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/faq" data-discover="true">FAQ</a></li><li style="opacity: 0; transform: translateX(-10px);"><a href="/sitemap" data-discover="true">Sitemap</a></li></ul></div></div></div></div><div class="_navyCopyright_10eko_191"><div class="_container_10eko_8"><p style="opacity: 0; transform: translateY(26px);">© 2026 Scape Data Solutions. All rights reserved.</p></div></div></footer></div></main><div class="_wrap_vsjsg_3"><div class="_group_vsjsg_13"><a class="_pill_vsjsg_25 _pillGhost_vsjsg_38" href="/client-portal/login" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in" aria-hidden="true"><path d="m10 17 5-5-5-5"></path><path d="M15 12H3"></path><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path></svg><span>Log In</span></a><a class="_pill_vsjsg_25 _pillPrimary_vsjsg_47" href="/client-portal/signup" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" x2="19" y1="8" y2="14"></line><line x1="22" x2="16" y1="11" y2="11"></line></svg><span>Sign Up Free</span></a></div></div></div></div>
+
+
+</body></html>

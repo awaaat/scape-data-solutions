@@ -12,7 +12,7 @@ export default function LoginPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const redirectTo = location.state?.from || "/dashboard";
+  const redirectTo = location.state?.from || "/client-portal/dashboard";
 
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
@@ -39,7 +39,7 @@ export default function LoginPage() {
       <SEO
         title="Log In | Scape Data Solutions"
         description="Log in to your Scape Data Solutions account to manage your projects."
-        path="/login"
+        path="/client-portal/login"
       />
       <Navbar activeNav="" />
 
@@ -75,8 +75,8 @@ export default function LoginPage() {
           </form>
 
           <div className={styles.footerLinks}>
-            <Link to="/forgot-password">Forgot your password?</Link>
-            <span>Don't have an account? <Link to="/signup">Sign up</Link></span>
+            <Link to="/client-portal/forgot-password">Forgot your password?</Link>
+            <span>Don't have an account? <Link to="/client-portal/signup">Sign up</Link></span>
           </div>
         </div>
       </main>

@@ -39,7 +39,7 @@ export default function VerifyEmailPage() {
 
   return (
     <div className={styles.page}>
-      <SEO title="Verify Email | Scape Data Solutions" description="Confirm your Scape Data Solutions account." path="/verify-email" />
+      <SEO title="Verify Email | Scape Data Solutions" description="Confirm your Scape Data Solutions account." path="/client-portal/verify-email" />
       <Navbar activeNav="" />
 
       <main className={styles.mainContent}>
@@ -58,7 +58,7 @@ export default function VerifyEmailPage() {
               <h1 className={styles.title}>Email verified!</h1>
               <p className={styles.subtitle}>Your account is active. You can now log in.</p>
               <div className={styles.footerLinks}>
-                <Link to="/login">Go to login</Link>
+                <Link to="/client-portal/login">Go to login</Link>
               </div>
             </>
           )}
@@ -69,8 +69,8 @@ export default function VerifyEmailPage() {
               <h1 className={styles.title}>Verification failed</h1>
               <p className={styles.subtitle}>{error}</p>
               <div className={styles.footerLinks}>
-                <Link to="/signup">Sign up again</Link>
-                <Link to="/login">Back to login</Link>
+                <Link to="/client-portal/signup">Sign up again</Link>
+                <Link to="/client-portal/login">Back to login</Link>
               </div>
             </>
           )}

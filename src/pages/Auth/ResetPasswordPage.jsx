@@ -51,7 +51,7 @@ export default function ResetPasswordPage() {
 
   return (
     <div className={styles.page}>
-      <SEO title="Reset Password | Scape Data Solutions" description="Set a new password for your Scape Data Solutions account." path="/reset-password" />
+      <SEO title="Reset Password | Scape Data Solutions" description="Set a new password for your Scape Data Solutions account." path="/client-portal/reset-password" />
       <Navbar activeNav="" />
 
       <main className={styles.mainContent}>
@@ -62,7 +62,7 @@ export default function ResetPasswordPage() {
               <h1 className={styles.title}>Password updated</h1>
               <p className={styles.subtitle}>You can now log in with your new password.</p>
               <div className={styles.footerLinks}>
-                <Link to="/login">Go to login</Link>
+                <Link to="/client-portal/login">Go to login</Link>
               </div>
             </div>
           ) : (
@@ -100,7 +100,7 @@ export default function ResetPasswordPage() {
               </form>
 
               <div className={styles.footerLinks}>
-                <Link to="/login">Back to login</Link>
+                <Link to="/client-portal/login">Back to login</Link>
               </div>
             </>
           )}

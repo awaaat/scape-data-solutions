@@ -4,28 +4,330 @@
   font-family: "UniversalSans Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-.article { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+/* ─── Reading progress bar ────────────────────────────────────────── */
+.progressBarTrack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  z-index: 1000;
+  pointer-events: none;
+}
+.progressBarFill {
+  height: 100%;
+  width: 0%;
+  background: #4a6cf7;
+  transition: width 0.1s ease-out;
+}
 
-.hero { padding: 140px 0 40px; border-bottom: 1px solid #e8eaed; }
-.backLink { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #4a6cf7; text-decoration: none; margin-bottom: 24px; width: fit-content; }
-.backLink:hover { text-decoration: underline; }
-.category { display: block; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #6c5ce7; margin-bottom: 16px; }
+.article { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+.hero {
+  padding: 84px 0 36px;
+}
+
+.heroTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.heroMain {
+  max-width: 600px;
+}
+
+/* Short accent rule under the meta line — a deliberate brand-blue mark
+   instead of a generic full-width hairline. */
+.accentRule {
+  width: 48px;
+  height: 3px;
+  background: #4a6cf7;
+  margin-top: 28px;
+}
+
+/* Fills the dead space to the right of the title with something
+   functional rather than decorative: reading time + a copy-link
+   action. Bordered label/value rows echo the TOC card's visual
+   language so it reads as part of the same system, not a bolt-on. */
+.heroInfoCard {
+  flex-shrink: 0;
+  width: 210px;
+  border: 1px solid #e8eaed;
+  padding: 18px 20px;
+  margin-top: 46px;
+}
+.heroInfoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.heroInfoLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.heroInfoValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+.heroInfoDivider {
+  height: 1px;
+  background: #e8eaed;
+  margin: 14px 0;
+}
+/* Shared style for every action row in the card: copy link, share &
+   earn, contact us. Kept as one class so the card reads as a single
+   consistent list rather than mismatched button styles. */
+.heroInfoLink {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a6cf7;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.heroInfoLink:hover { color: #3a5ce0; }
+/* The dollar amount gets the purple brand accent so it reads as the
+   one worth-noticing detail in that row, not just bold text. */
+.heroInfoAmount { color: #6c5ce7; }
+
+/* Revealed under "Share & earn" — shows the actual packaged link
+   instead of silently copying something the user never sees. */
+.shareLinkBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  background: #f8f9fc;
+  border: 1px solid #e8eaed;
+}
+.shareLinkText {
+  flex: 1;
+  min-width: 0;
+  font-size: 11.5px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.shareLinkCopyBtn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #e8eaed;
+  background: #fff;
+  color: #4a6cf7;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.shareLinkCopyBtn:hover { border-color: #4a6cf7; }
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  text-decoration: none;
+  margin-bottom: 28px;
+  width: fit-content;
+  transition: color 0.15s ease;
+}
+.backLink svg { transition: transform 0.15s ease; }
+.backLink:hover { color: #4a6cf7; }
+.backLink:hover svg { transform: translateX(-2px); }
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #6c5ce7;
+  margin-bottom: 14px;
+}
+/* Small accent dot before the eyebrow label — a quiet nod to a single
+   plotted data point rather than a generic bullet or icon. */
+.category::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #6c5ce7;
+}
+
 .title {
   font-family: "UniversalSans Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(28px, 4.5vw, 44px);
-  font-weight: 800;
-  line-height: 1.2;
-  margin: 0 0 16px;
+  font-size: clamp(21px, 2.4vw, 27px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.32;
+  margin: 0 0 18px;
+  color: #1a1a2e;
 }
-.meta { font-size: 14px; color: #94a3b8; margin: 0; }
 
-.body { padding: 48px 0; }
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+}
+.meta span:not(:last-child)::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* ─── Two-column layout: TOC rail + article content ─────────────── */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 760px);
+  gap: 56px;
+  padding: 48px 0 0;
+  /* No align-items:start here on purpose. Grid items default to
+     "stretch", which makes .tocRail as tall as the taller column
+     (.main, the article body). That height is what gives the sticky
+     TOC room to stay pinned for the ENTIRE scroll instead of running
+     out of parent space partway down and scrolling away with the
+     page. If align-items:start gets re-added, the TOC will appear
+     to "move" again once you scroll past its own short height. */
+}
+
+/* Stretches to match .main's height (see contentGrid comment above).
+   This is what lets the sticky .toc inside it stay pinned all the
+   way through a long article. */
+.tocRail {
+  position: relative;
+}
+
+/* This is the ONLY positioning rule for the TOC. It sticks to `top`
+   once you scroll to it, and stays pinned there for the rest of the
+   page — it never jumps to position:fixed and there is no JS that
+   touches its inline style. If this stops working, the most likely
+   cause is a parent element with overflow:hidden/auto/scroll between
+   .toc and the page's scrolling container (sticky breaks silently
+   in that case) — check Navbar and any wrapper around <article>. */
+.toc {
+  position: sticky;
+  top: 96px;
+  max-height: calc(100vh - 116px);
+  overflow-y: auto;
+  border-left: 2px solid #e8eaed;
+  padding-left: 16px;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+.toc::-webkit-scrollbar { width: 4px; }
+.toc::-webkit-scrollbar-track { background: transparent; }
+.toc::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+.tocTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 14px;
+}
+.tocList { list-style: none; margin: 0; padding: 0; }
+.tocItem { margin-bottom: 10px; }
+.tocSubItem { margin-bottom: 10px; padding-left: 14px; }
+.tocLink {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #475569;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  margin-left: -18px;
+  padding-left: 16px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.tocLink:hover { color: #4a6cf7; border-color: #4a6cf7; }
+.tocArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  flex-shrink: 0;
+  color: #4a6cf7;
+  opacity: 0;
+  transform: translateX(-3px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.tocLinkActive {
+  color: #4a6cf7;
+  border-color: #4a6cf7;
+  font-weight: 700;
+}
+.tocLinkActive .tocArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.main { min-width: 0; }
+
+/* ─── Key Takeaways box ───────────────────────────────────────────── */
+.takeaways {
+  background: #f8f9fc;
+  border: 1px solid #e8eaed;
+  border-left: 4px solid #4a6cf7;
+  padding: 24px 28px;
+  margin: 0 0 40px;
+}
+.takeawaysTitle {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #4a6cf7;
+  margin: 0 0 14px;
+}
+.takeawaysList { margin: 0; padding-left: 20px; }
+.takeawaysList li { font-size: 15px; line-height: 1.7; color: #334155; margin-bottom: 8px; }
+.takeawaysList li:last-child { margin-bottom: 0; }
+
+.body { padding: 0 0 48px; }
 .sectionHeading {
   font-family: "UniversalSans Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 24px;
   font-weight: 700;
   margin: 40px 0 16px;
   color: #1a1a2e;
+  scroll-margin-top: 100px;
 }
 .sectionHeading:first-child { margin-top: 0; }
 .paragraph { font-size: 17px; line-height: 1.9; color: #334155; margin: 0 0 20px; }
@@ -65,10 +367,20 @@
 .ctaBtn { display: inline-flex; align-items: center; gap: 8px; background: #4a6cf7; color: #fff; padding: 14px 36px; font-size: 15px; font-weight: 700; text-decoration: none; border: 2px solid #4a6cf7; transition: all 0.3s; }
 .ctaBtn:hover { background: transparent; color: #4a6cf7; }
 
+@media (max-width: 900px) {
+  .contentGrid { grid-template-columns: 1fr; gap: 0; }
+  .tocRail { order: -1; margin-bottom: 32px; }
+  .toc { position: static; max-height: none; overflow-y: visible; border-left: none; padding-left: 0; border: 1px solid #e8eaed; padding: 18px 20px; background: #f8f9fc; }
+}
+
 @media (max-width: 768px) {
   .hero { padding: 110px 0 32px; }
+  .heroTop { flex-direction: column; gap: 24px; }
+  .heroInfoCard { width: 100%; }
   .relatedGrid { grid-template-columns: 1fr; }
+  .takeaways { padding: 20px; }
 }
+
 .quartoBody h1,
 .quartoBody h2 {
   font-family: var(--font-display);
@@ -79,12 +391,14 @@
   letter-spacing: -0.01em;
   margin: 36px 0 14px;
   color: var(--primary);
+  scroll-margin-top: 100px;
 }
 .quartoBody h3 {
   font-size: 1.1rem;
   font-weight: 500;
   margin: 28px 0 12px;
   color: var(--primary);
+  scroll-margin-top: 100px;
 }
 .quartoBody p {
   font-size: 1.05rem;
@@ -212,3 +526,65 @@
 .quartoBody :global(code span.va)   { color: #4ec9b0; }
 .quartoBody :global(code span.vs)   { color: #da4453; }
 .quartoBody :global(code span.wa)   { color: #da4453; }
+
+/* The copy button lives OUTSIDE div.sourceCode, as a sibling
+   inside .code-copy-outer-scaffold. */
+.quartoBody :global(.code-copy-outer-scaffold) {
+  position: relative;
+  margin: 28px 0;
+}
+
+.quartoBody :global(.code-copy-outer-scaffold) :global(div.sourceCode) {
+  margin: 0;
+}
+
+.quartoBody :global(.code-copy-button) {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #3d4147;
+  border-radius: 6px;
+  background-color: #2b2f33;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  z-index: 2;
+}
+
+.quartoBody :global(.code-copy-button:hover) {
+  background-color: #383d42;
+  border-color: #4ec9b0;
+}
+
+/* Bootstrap Icons font isn't loaded, so render a real clipboard
+   icon via an inline SVG mask instead of relying on the font. */
+.quartoBody :global(.code-copy-button i.bi) {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  background-color: #cfcfc2;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z'/%3E%3Cpath d='M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z'/%3E%3Cpath d='M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z'/%3E%3C/svg%3E");
+}
+
+/* Swaps to a teal checkmark for 1.5s after a successful copy —
+   .code-copy-button-checked is toggled by the onclick handler
+   injected in the render-cleanup script. */
+.quartoBody :global(.code-copy-button-checked) {
+  border-color: #4ec9b0;
+}
+
+.quartoBody :global(.code-copy-button-checked i.bi) {
+  background-color: #4ec9b0;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+}

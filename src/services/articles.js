@@ -11,11 +11,12 @@ export async function getAllArticles() {
 export async function getArticleBySlug(slug) {
   return sanityClient.fetch(
     `*[_type == "article" && slug.current == $slug][0]{
-      title, slug, category, excerpt, body, sources, publishDate
+      title, slug, category, excerpt, body, sources, publishDate, keyTakeaways
     }`,
     { slug }
   );
 }
+
 export async function getArticlesBySlugs(slugs = []) {
   if (!slugs.length) return [];
   return sanityClient.fetch(

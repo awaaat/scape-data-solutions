@@ -32,7 +32,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className={styles.page}>
-      <SEO title="Forgot Password | Scape Data Solutions" description="Reset your Scape Data Solutions account password." path="/forgot-password" />
+      <SEO title="Forgot Password | Scape Data Solutions" description="Reset your Scape Data Solutions account password." path="/client-portal/forgot-password" />
       <Navbar activeNav="" />
 
       <main className={styles.mainContent}>
@@ -45,7 +45,7 @@ export default function ForgotPasswordPage() {
                 If an account exists for <strong>{email}</strong>, we've sent a link to reset your password.
               </p>
               <div className={styles.footerLinks}>
-                <Link to="/login">Back to login</Link>
+                <Link to="/client-portal/login">Back to login</Link>
               </div>
             </div>
           ) : (
@@ -70,7 +70,7 @@ export default function ForgotPasswordPage() {
               </form>
 
               <div className={styles.footerLinks}>
-                <Link to="/login">Back to login</Link>
+                <Link to="/client-portal/login">Back to login</Link>
               </div>
             </>
           )}

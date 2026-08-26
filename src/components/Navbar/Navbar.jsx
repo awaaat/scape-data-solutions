@@ -144,6 +144,7 @@ export default function Navbar({ activeNav = "" }) {
               <button className={styles.drawerClose} onClick={() => setNavOpen(false)}>✕</button>
               <ul className={styles.drawerList}>
                 <li><Link to="/" onClick={() => setNavOpen(false)}>Home</Link></li>
+                <li><Link to="/business-intel" onClick={() => setNavOpen(false)}>Business Intel</Link></li>
                 <li>
                   <button className={styles.drawerAcc} onClick={() => setCompOpen(!compOpen)}>
                     Company <span>{compOpen ? "▲" : "▼"}</span>
@@ -222,6 +223,11 @@ export default function Navbar({ activeNav = "" }) {
             <li>
               <Link to="/" className={`${styles.navLink}${activeNav === "home" ? " " + styles.navActive : ""}`}>
                 Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/business-intel" className={`${styles.navLink}${activeNav === "business-intel" ? " " + styles.navActive : ""}`}>
+                Business Intel
               </Link>
             </li>
             <li className={styles.hasDrop}>

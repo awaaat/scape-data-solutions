@@ -52,7 +52,7 @@ export default function SignupPage() {
       <SEO
         title="Create an Account | Scape Data Solutions"
         description="Sign up for a Scape Data Solutions account to submit projects and message our team directly."
-        path="/signup"
+        path="/client-portal/signup"
       />
       <Navbar activeNav="" />
 
@@ -69,7 +69,7 @@ export default function SignupPage() {
                 activate your account, then come back and log in.
               </p>
               <div className={styles.footerLinks}>
-                <Link to="/login">Already verified? Log in</Link>
+                <Link to="/client-portal/login">Already verified? Log in</Link>
                 <Link to="/">Back to home</Link>
               </div>
             </div>
@@ -145,7 +145,7 @@ export default function SignupPage() {
               </form>
 
               <div className={styles.footerLinks}>
-                <span>Already have an account? <Link to="/login">Log in</Link></span>
+                <span>Already have an account? <Link to="/client-portal/login">Log in</Link></span>
               </div>
             </>
           )}
