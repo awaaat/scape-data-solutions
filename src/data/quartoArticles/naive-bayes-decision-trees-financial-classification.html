@@ -122,7 +122,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="./styles.css">
 </head>
 
 <body class="fullcontent quarto-light">
@@ -966,7 +966,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">â€
       function throttle(fn, ms) {
       let throttle = false;
       let timer;
-        return (...args) => {
+        return (..args) => {
           if(!throttle) { // first call gets through
               fn.apply(this, args);
               throttle = true;

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2026-08-26">
-<meta name="description" content="A complete, hands-on guide to regularized linear regression. Covers Ridge (L2), Lasso (L1), and Elastic Net, with every formula worked by hand on a real momentum-trading example, correct scikit-learn implementations, and a free interactive simulator you can run in your browser.">
+<meta name="description" content="A complete, hands-on guide to regularized linear regression. Covers Ridge (L2), Lasso (L1), and Elastic Net, with every formula worked by hand on a real momentum-trading example, correct scikit-learn implementations,.">
 
 <title>Ridge, Lasso &amp; Elastic Net Regression Explained: Taming Overfitting in Financial Models With Real Formulas and an Interactive Regularization Simulator</title>
 <style>
@@ -122,7 +122,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="./styles.css">
 </head>
 
 <body class="fullcontent quarto-light">
@@ -784,7 +784,7 @@ window.Quarto = {
       function throttle(fn, ms) {
       let throttle = false;
       let timer;
-        return (...args) => {
+        return (..args) => {
           if(!throttle) { // first call gets through
               fn.apply(this, args);
               throttle = true;
