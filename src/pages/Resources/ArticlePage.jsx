@@ -160,6 +160,19 @@ const ArticlePage = () => {
       });
     }
 
+    // KaTeX needs its own stylesheet for fonts/layout (fractions, sqrt,
+    // sums, etc). The embedded <link> in the raw Quarto HTML never loads
+    // it either — <link> tags CAN execute via dangerouslySetInnerHTML,
+    // but only once the KaTeX JS below has actually rendered the math
+    // spans, so we load it explicitly here to guarantee it's present.
+    if (!document.getElementById("katex-css")) {
+      const link = document.createElement("link");
+      link.id = "katex-css";
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css";
+      document.head.appendChild(link);
+    }
+
     if (window.katex) {
       renderMath();
       return;
