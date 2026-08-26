@@ -1,1 +1,0 @@
-import{g as t}from"./index-RgHw_B4f.js";const e=[["rect",{width:"18",height:"18",x:"3",y:"3",rx:"2",key:"afitv7"}],["path",{d:"M3 9h18",key:"1pudct"}],["path",{d:"M9 21V9",key:"1oto5p"}]],p=t("panels-top-left",e);export{p as P};

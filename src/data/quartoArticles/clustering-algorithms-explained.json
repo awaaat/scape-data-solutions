@@ -1,7 +1,7 @@
 {
   "title": "Clustering Algorithms Explained: K-Means, DBSCAN, Hierarchical & Gaussian Mixture Clustering With Real Formulas and an Interactive Simulator",
-  "excerpt": "Every major clustering method, worked by hand with real numbers, real sklearn code, and a free interactive simulator you can run yourself.",
-  "category": "AI & Machine Learning",
+  "excerpt": "A complete, hands-on guide to clustering algorithms in machine learning — k-means, k-medoids, hierarchical clustering, DBSCAN, and more — with every formula worked by hand.",
+  "category": "Machine Learning",
   "publishDate": "2026-08-23",
   "sources": []
 }

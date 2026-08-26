@@ -1,1 +1,0 @@
-import{j as o}from"./index-RgHw_B4f.js";import{S as t}from"./ServiceContentPage-BiElAHou.js";import{l as r}from"./businessIntelligence-C05Wq2TK.js";import"./animations-xrL6dxNc.js";import"./serviceSchema-B8nJVhZ1.js";import"./sparkles-BPwdx0dA.js";function u(){return o.jsx(t,{...r})}export{u as default};

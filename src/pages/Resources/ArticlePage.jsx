@@ -23,6 +23,49 @@ function slugify(text) {
     .replace(/^-+|-+$/g, "");
 }
 
+// ─── Shared KaTeX loader ───────────────────────────────────────────
+// Both the Quarto (raw HTML) rendering path AND the Sanity/PortableText
+// `equation` block below need window.katex to be present. Previously
+// this script/CSS injection lived INSIDE the isQuarto-gated useEffect,
+// which meant Sanity-authored articles never loaded KaTeX at all — the
+// bug you hit. This is now a single cached loader both paths share, so
+// there's no duplicate <script>/<link> injection and no race between
+// the two call sites.
+let katexLoadPromise = null;
+function ensureKatexLoaded() {
+  if (typeof window === "undefined") return Promise.resolve();
+  if (window.katex) return Promise.resolve();
+  if (katexLoadPromise) return katexLoadPromise;
+
+  katexLoadPromise = new Promise((resolve) => {
+    if (!document.getElementById("katex-css")) {
+      const link = document.createElement("link");
+      link.id = "katex-css";
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css";
+      document.head.appendChild(link);
+    }
+
+    const existing = document.getElementById("katex-js");
+    if (existing) {
+      if (window.katex) {
+        resolve();
+      } else {
+        existing.addEventListener("load", () => resolve());
+      }
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.id = "katex-js";
+    script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js";
+    script.onload = () => resolve();
+    document.head.appendChild(script);
+  });
+
+  return katexLoadPromise;
+}
+
 const portableTextComponents = (headingsRef) => ({
   block: {
     h2: ({ children, value }) => {
@@ -61,6 +104,43 @@ const portableTextComponents = (headingsRef) => ({
         {children}
       </a>
     ),
+  },
+  // ─── Equation block/inline renderer ──────────────────────────────
+  // Expects a Sanity object of shape: { _type: "equation", latex: "...",
+  // displayMode: true|false }. See the accompanying Sanity schema file
+  // for the field definition. If your schema names the field something
+  // other than "latex", update value.latex below to match.
+  types: {
+    equation: ({ value }) => {
+      const ref = useRef(null);
+
+      useEffect(() => {
+        if (!value?.latex || !ref.current) return;
+        let cancelled = false;
+
+        ensureKatexLoaded().then(() => {
+          if (cancelled || !ref.current || !window.katex) return;
+          try {
+            window.katex.render(value.latex, ref.current, {
+              displayMode: !!value.displayMode,
+              throwOnError: false,
+            });
+          } catch (e) {
+            console.error("KaTeX render error (Sanity equation block):", e);
+          }
+        });
+
+        return () => {
+          cancelled = true;
+        };
+      }, [value]);
+
+      return value?.displayMode ? (
+        <div ref={ref} style={{ overflowX: "auto", margin: "24px 0" }} />
+      ) : (
+        <span ref={ref} />
+      );
+    },
   },
 });
 
@@ -141,56 +221,6 @@ const ArticlePage = () => {
     setToc(items);
   }, [article]);
 
-  // Quarto KaTeX rendering
-  useEffect(() => {
-    if (!article?.isQuarto) return;
-
-    function renderMath() {
-      const container = quartoBodyRef.current;
-      if (!container || !window.katex) return;
-      const nodes = container.querySelectorAll(".math.inline, .math.display");
-      nodes.forEach((node) => {
-        const tex = node.textContent;
-        const displayMode = node.classList.contains("display");
-        try {
-          window.katex.render(tex, node, { displayMode, throwOnError: false });
-        } catch (e) {
-          console.error("KaTeX render error:", e);
-        }
-      });
-    }
-
-    // KaTeX needs its own stylesheet for fonts/layout (fractions, sqrt,
-    // sums, etc). The embedded <link> in the raw Quarto HTML never loads
-    // it either — <link> tags CAN execute via dangerouslySetInnerHTML,
-    // but only once the KaTeX JS below has actually rendered the math
-    // spans, so we load it explicitly here to guarantee it's present.
-    if (!document.getElementById("katex-css")) {
-      const link = document.createElement("link");
-      link.id = "katex-css";
-      link.rel = "stylesheet";
-      link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css";
-      document.head.appendChild(link);
-    }
-
-    if (window.katex) {
-      renderMath();
-      return;
-    }
-
-    const existing = document.getElementById("katex-js");
-    if (existing) {
-      existing.addEventListener("load", renderMath);
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.id = "katex-js";
-    script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js";
-    script.onload = renderMath;
-    document.head.appendChild(script);
-  }, [article]);
-
   // ─── Reading time (derived from the actual rendered body text, so
   // it's correct for both PortableText and Quarto HTML without
   // duplicating word-count logic per source type) ──────────────────
@@ -217,11 +247,6 @@ const ArticlePage = () => {
   }, [article]);
 
   // ─── Active TOC section tracking ─────────────────────────────────
-  // Whichever heading's top has most recently crossed the "activation
-  // line" (110px from the viewport top) is the active one. This mirrors
-  // how Investopedia's TOC behaves: the item stays highlighted for the
-  // whole time you're reading that section, and switches the instant
-  // you scroll past the next heading.
   useEffect(() => {
     if (!toc.length) return;
 
@@ -240,7 +265,6 @@ const ArticlePage = () => {
         }
       }
 
-      // Fallback to the first heading if none have been scrolled to yet
       setActiveId(currentId || toc[0].id);
     }
 
@@ -295,10 +319,6 @@ const ArticlePage = () => {
       .catch((err) => console.error("Failed to copy link:", err));
   }, [article]);
 
-  // Assumption: there's no real referral/attribution system in this
-  // codebase, so this is just the article URL tagged with a ?ref
-  // param. Swap in your actual referral link format once you have one
-  // (e.g. a per-user code from your affiliate system).
   const referralLink = article
     ? `${SITE_URL}/resources/${article.slug.current}?ref=share50`
     : "";
@@ -428,7 +448,7 @@ const ArticlePage = () => {
 
         <div className={styles.contentGrid}>
           {hasToc && (
-            <aside className={styles.tocRail}>
+            <aside key="toc-rail" className={styles.tocRail}>
               <div className={styles.toc}>
                 <span className={styles.tocTitle}>
                   <List size={14} /> Table of Contents
@@ -460,7 +480,7 @@ const ArticlePage = () => {
             </aside>
           )}
 
-          <div className={styles.main}>
+          <div key="main-content" className={styles.main}>
             {hasTakeaways && (
               <div className={styles.takeaways}>
                 <h3 className={styles.takeawaysTitle}>Key Takeaways</h3>
