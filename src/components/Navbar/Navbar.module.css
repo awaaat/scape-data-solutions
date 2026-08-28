@@ -1,6 +1,102 @@
 /* src/components/Navbar/Navbar.module.css */
 
-/* ─── Reset / base ───────────────────────────────────────────────── */
+/* ================================================================
+   TOP BAR
+   Fixed to the very top of the viewport. Visible only on desktop
+   (>=1024px). Collapses via max-height/opacity once the page
+   scrolls past 10px (navTopBarHidden class added in JS).
+   ================================================================ */
+.navTopBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1.4rem 0;
+  display: none;
+  max-height: 72px;
+  overflow: hidden;
+  opacity: 1;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.25s ease,
+    padding 0.3s ease,
+    border-color 0.3s ease;
+}
+@media (min-width: 1024px) {
+  .navTopBar {
+    display: block;
+  }
+}
+
+.navTopBarHidden {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom-color: transparent;
+}
+
+.navTopInner {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navTopLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  color: #666;
+}
+.navTopContact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.navTopContact:hover {
+  color: #111;
+}
+.navTopSep {
+  width: 1px;
+  height: 16px;
+  background: #ddd;
+}
+
+.navTopSocial {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.navSocialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #666;
+  background: transparent;
+  transition: color 0.2s, background 0.2s;
+}
+.navSocialIcon:hover {
+  color: #fff;
+  background: #3b82f6;
+}
+
+/* ================================================================
+   DESKTOP HEADER
+   ================================================================ */
 .navbarFixed {
   position: fixed;
   top: 0;
@@ -10,9 +106,18 @@
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  transition: top 0.3s ease;
 }
 
-/* ─── Scroll-activated border ────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .navbarFixed {
+    top: 72px;
+  }
+  .navbarFixed.navbarFixedTop {
+    top: 0;
+  }
+}
+
 .navbarBorder {
   position: absolute;
   bottom: 0;
@@ -24,7 +129,6 @@
   transition: opacity 0.2s ease;
 }
 
-/* ─── Navbar inner – reduced horizontal padding ─────────────────── */
 .navbarInner {
   max-width: 100%;
   margin: 0 auto;
@@ -41,7 +145,6 @@
   }
 }
 
-/* ─── Logo ────────────────────────────────────────────────────────── */
 .navbarBrand {
   display: flex;
   align-items: center;
@@ -52,14 +155,13 @@
   width: auto;
 }
 
-/* ─── Nav list – reduced gap ────────────────────────────────────── */
 .navList {
   display: none;
   list-style: none;
   margin: 0;
   padding: 0;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.1rem;
 }
 @media (min-width: 1024px) {
   .navList {
@@ -71,7 +173,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem 0.55rem;
   font-size: 0.95rem;
   font-weight: 500;
   color: #888;
@@ -86,7 +188,7 @@
   color: #111;
 }
 .navActive::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0.8rem;
@@ -96,7 +198,6 @@
   border-radius: 2px;
 }
 
-/* ─── Dropdowns ──────────────────────────────────────────────────── */
 .hasDrop {
   position: relative;
 }
@@ -158,50 +259,9 @@
   color: #111;
 }
 
-/* ─── Top bar ────────────────────────────────────────────────────── */
-.navTopBar {
-  background: #f8fafc;
-  border-bottom: 1px solid #eee;
-  padding: 0.25rem 0;
-  display: none;
-}
-@media (min-width: 1024px) {
-  .navTopBar {
-    display: block;
-  }
-}
-.navTopInner {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 4rem;
-  display: flex;
-  justify-content: flex-start;
-}
-.navTopLeft {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.8rem;
-  color: #666;
-}
-.navTopContact {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  color: #666;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.navTopContact:hover {
-  color: #111;
-}
-.navTopSep {
-  width: 1px;
-  height: 16px;
-  background: #ddd;
-}
-
-/* ─── Mobile header ──────────────────────────────────────────────── */
+/* ================================================================
+   MOBILE HEADER
+   ================================================================ */
 .mobileHeader {
   display: flex;
   align-items: center;
@@ -226,7 +286,6 @@
   width: auto;
 }
 
-/* Burger button */
 .burger {
   display: flex;
   flex-direction: column;
@@ -254,12 +313,14 @@
   transform: rotate(-45deg) translate(4px, -4px);
 }
 
-/* ─── Mobile drawer ──────────────────────────────────────────────── */
+/* ================================================================
+   MOBILE DRAWER
+   ================================================================ */
 .overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.3);
-  z-index: 1001;
+  z-index: 1002;
 }
 .drawer {
   position: fixed;
@@ -269,7 +330,7 @@
   width: 300px;
   max-width: 80%;
   background: #fff;
-  z-index: 1002;
+  z-index: 1003;
   padding: 1.5rem 1rem;
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
@@ -320,4 +381,28 @@
   font-size: 0.9rem;
   color: #555;
   padding: 0.3rem 0;
+}
+
+/* ================================================================
+   SPACER
+   Height is set dynamically in JS (measured from the real rendered
+   navbar), so it's never hardcoded and never drifts out of sync
+   with future size changes.
+   ================================================================ */
+.navSpacer {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .navSpacer {
+    display: block;
+  }
+}
+
+.navSpacerMobile {
+  display: block;
+}
+@media (min-width: 1024px) {
+  .navSpacerMobile {
+    display: none;
+  }
 }
