@@ -97,6 +97,17 @@ export default function FAQPage() {
           </div>
         </section>
 
+        <section className={styles.container} style={{ padding: "2.5rem 1.5rem" }}>
+          <div className={styles.ctaBox} style={{ marginTop: 0 }}>
+            <h2>Prefer to just get started?</h2>
+            <p>If you already know what you need, skip the questions and submit your project directly through the client portal.</p>
+            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
+              <a href="https://portal.scapedatasolutions.com/portal/signup" className={styles.ctaBtn}>Submit a Project <ArrowRight size={16} /></a>
+              <a href="https://portal.scapedatasolutions.com/portal/login" className={styles.heroLink}>Log In</a>
+            </div>
+          </div>
+        </section>
+
         {/* ─── FAQ LIST ────────────────────────────────────────────── */}
         <section className={styles.faqSection}>
           <div className={styles.container}>

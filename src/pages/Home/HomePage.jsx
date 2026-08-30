@@ -409,6 +409,19 @@ sales %>%
           </div>
         </section>
 
+        <section className={styles.container} style={{ padding: "3rem 1.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1.5rem", borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2.5rem" }}>
+            <div>
+              <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Have a project ready to go?</h2>
+              <p style={{ margin: 0, opacity: 0.75, maxWidth: "480px" }}>Skip the calls. Submit your requirements in the client portal and our team starts scoping within one business day.</p>
+            </div>
+            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+              <a href="https://portal.scapedatasolutions.com/portal/signup" className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></a>
+              <a href="https://portal.scapedatasolutions.com/portal/login" className={styles.btnSecondary}>Log In</a>
+            </div>
+          </div>
+        </section>
+
         {/* ═══ DEV / CODE SECTION ═══ */}
         <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
           <div className={styles.container}>

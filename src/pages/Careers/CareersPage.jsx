@@ -119,6 +119,17 @@ function Hero() {
         </div>
       </div>
     </section>
+
+      <section className={styles.container} style={{ padding: "2.5rem 1.5rem" }}>
+        <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem" }}>
+          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Already on the team?</h2>
+          <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "540px" }}>Contractors and staff can check current assignments, signed agreements, and payment status from the client portal.</p>
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            <a href="https://portal.scapedatasolutions.com/portal/login" className={styles.btnPrimary}>Open the Portal <ArrowRight size={16} /></a>
+            <a href="#open-roles" className={styles.btnSecondary}>View Open Roles</a>
+          </div>
+        </div>
+      </section>
   );
 }
 

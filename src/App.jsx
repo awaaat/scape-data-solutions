@@ -5,8 +5,6 @@ import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'r
 import styles from './App.module.css';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
-import AuthFloatingCTA from './components/AuthFloatingCTA/AuthFloatingCTA';
-import FloatingPrompt from './components/FloatingPrompt/FloatingPrompt';
 import { apiService } from './services/api';
 
 // ─── Core Pages ──────────────────────────────────────────────
@@ -14,12 +12,6 @@ import HomePage from './pages/Home/HomePage';
 const AboutPage = lazy(() => import('./pages/About/AboutPage'));
 const ContactPage = lazy(() => import('./pages/Contact/ContactPage'));
 const ServicesPage = lazy(() => import('./pages/OurServices/ServicesPage'));
-const SignupPage = lazy(() => import('./pages/Auth/SignupPage'));
-const LoginPage = lazy(() => import('./pages/Auth/LoginPage'));
-const VerifyEmailPage = lazy(() => import('./pages/Auth/VerifyEmailPage'));
-const ForgotPasswordPage = lazy(() => import('./pages/Auth/ForgotPasswordPage'));
-const ResetPasswordPage = lazy(() => import('./pages/Auth/ResetPasswordPage'));
-const DashboardPage = lazy(() => import('./pages/Dashboard/DashboardPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFound/NotFoundPage'));
 
 // ─── Business Intel Dashboard ────────────────────────────────
@@ -273,12 +265,6 @@ const AppContent = () => {
                             <Route path="/about" element={<AboutPage />} />
                             <Route path="/contact" element={<ContactPage />} />
 
-                            <Route path="/client-portal/signup" element={<SignupPage />} />
-                            <Route path="/client-portal/login" element={<LoginPage />} />
-                            <Route path="/client-portal/verify-email" element={<VerifyEmailPage />} />
-                            <Route path="/client-portal/forgot-password" element={<ForgotPasswordPage />} />
-                            <Route path="/client-portal/reset-password" element={<ResetPasswordPage />} />
-                            <Route path="/client-portal/dashboard" element={<ProtectedRoute loginPath="/client-portal/login"><DashboardPage /></ProtectedRoute>} />
                             <Route path="/business-intel/login" element={<BusinessIntelLoginPage />} />
                             <Route path="/business-intel/signup" element={<BusinessIntelSignupPage />} />
                             <Route path="/business-intel/forgot-password" element={<BusinessIntelForgotPasswordPage />} />
@@ -511,8 +497,6 @@ const AppContent = () => {
                     </Suspense>
                 </ErrorBoundary>
             </main>
-            <AuthFloatingCTA />
-            <FloatingPrompt />
         </div>
     );
 };

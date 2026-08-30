@@ -16,7 +16,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
-export default function ProtectedRoute({ children, loginPath = "/client-portal/login" }) {
+export default function ProtectedRoute({ children, loginPath = "/business-intel/login" }) {
   const { isAuthenticated, loading } = useAuth();
   const location = useLocation();
 

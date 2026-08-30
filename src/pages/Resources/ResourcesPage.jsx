@@ -584,6 +584,14 @@ const ResourcesPage = () => {
           </div>
         </section>
 
+        <section className={styles.container} style={{ padding: "2.5rem 1.5rem" }}>
+          <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem" }}>
+            <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Ready to stop researching and start doing?</h2>
+            <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "560px" }}>Submit your project through the client portal and our team will follow up with a scoped plan.</p>
+            <a href="https://portal.scapedatasolutions.com/portal/signup" className={styles.ctaBtn}>Submit a Project <ArrowRight size={16} /></a>
+          </div>
+        </section>
+
         {/* ─── GRID SECTION ──────────────────────────────────────────── */}
         <section className={styles.gridSection}>
           <div className={styles.container}>

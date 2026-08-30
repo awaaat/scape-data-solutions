@@ -366,6 +366,14 @@ const PortfolioPage = () => {
           </div>
         </section>
 
+        <section className={homeStyles.container} style={{ padding: "2.5rem 1.5rem" }}>
+          <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem" }}>
+            <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Like what you see in these engagements?</h2>
+            <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "560px" }}>Start one of your own. Submit your project through the client portal and we will scope it the same way.</p>
+            <a href="https://portal.scapedatasolutions.com/portal/signup" className={styles.ctaButton}>Submit a Project <ArrowRight size={16} /></a>
+          </div>
+        </section>
+
         {/* FILTER BAR */}
         <motion.section className={styles.filterSection} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.6 }} variants={fadeUp}>
           <div className={styles.filterRow}>
