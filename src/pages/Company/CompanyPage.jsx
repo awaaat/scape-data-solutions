@@ -9,6 +9,7 @@ import {
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
+import PortalCallout from "../../components/PortalCallout/PortalCallout";
 import styles from "./CompanyPage.module.css";
 
 const ACCENT = "#3b82f6";
@@ -258,6 +259,9 @@ export default function CompanyPage() {
                 Scape Data Solutions pivots on client satisfaction with an area of expertise
                 that covers today's latest data technologies. When our clients are happy, we are successful.
               </motion.p>
+              <motion.div variants={fadeUp}>
+                <PortalCallout variant={0} />
+              </motion.div>
             </div>
           </div>
         </motion.section>

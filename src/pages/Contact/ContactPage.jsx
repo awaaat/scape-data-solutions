@@ -10,6 +10,7 @@ import hStyles from "../Home/HomePage.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { apiService } from "../../services/api";
+import PortalCallout from "../../components/PortalCallout/PortalCallout";
 
 // ─── Motion variants ─────────────────────────────────────────────
 const fadeUp = {
@@ -415,6 +416,7 @@ export default function ContactPage() {
                             </motion.li>
                           ))}
                         </ul>
+                        <PortalCallout variant={2} inline />
                       </motion.div>
                     </motion.div>
 
