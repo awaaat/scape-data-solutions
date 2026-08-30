@@ -100,25 +100,26 @@ function useRevealOnScroll(className = styles.visible) {
 function Hero() {
   const ref = useRevealOnScroll(); // re-animate on every scroll
   return (
-    <section ref={ref} className={`${styles.hero} ${styles.animateOnScroll}`}>
-      <div className={styles.heroGrid} />
-      <div className={styles.container}>
-        <div className={styles.heroInner}>
-          <h1 className={styles.heroTitle}>
-            Join our team of data experts
-          </h1>
-          <p className={styles.heroSub}>
-            We are researchers, engineers, and builders on a mission to understand the world through data.
-            Join us if you want to shape the future of analytics and AI.
-          </p>
-          <div className={styles.heroActions}>
-            <a href="#open-roles" className={styles.btnPrimary}>
-              View Open Roles <ArrowRight size={16} />
-            </a>
+    <>
+      <section ref={ref} className={`${styles.hero} ${styles.animateOnScroll}`}>
+        <div className={styles.heroGrid} />
+        <div className={styles.container}>
+          <div className={styles.heroInner}>
+            <h1 className={styles.heroTitle}>
+              Join our team of data experts
+            </h1>
+            <p className={styles.heroSub}>
+              We are researchers, engineers, and builders on a mission to understand the world through data.
+              Join us if you want to shape the future of analytics and AI.
+            </p>
+            <div className={styles.heroActions}>
+              <a href="#open-roles" className={styles.btnPrimary}>
+                View Open Roles <ArrowRight size={16} />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       <section className={styles.container} style={{ padding: "2.5rem 1.5rem" }}>
         <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem" }}>
@@ -130,6 +131,7 @@ function Hero() {
           </div>
         </div>
       </section>
+    </>
   );
 }
 
