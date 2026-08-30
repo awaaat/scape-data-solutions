@@ -255,6 +255,7 @@ export default function Navbar({ activeNav = "" }) {
                   )}
                 </li>
                 <li><Link to="/testimonials" onClick={() => setNavOpen(false)}>Testimonials</Link></li>
+                <li><a href="https://portal.scapedatasolutions.com/" onClick={() => setNavOpen(false)}>Client Portal</a></li>
                 <li><Link to="/contact" onClick={() => setNavOpen(false)}>Contact</Link></li>
               </ul>
             </motion.nav>
@@ -342,6 +343,11 @@ export default function Navbar({ activeNav = "" }) {
             </li>
             <li>
               <Link to="/testimonials" className={`${styles.navLink}${activeNav === "testimonials" ? " " + styles.navActive : ""}`}>Testimonials</Link>
+            </li>
+            <li>
+              <a href="https://portal.scapedatasolutions.com/" className={styles.navLink}>
+                Client Portal
+              </a>
             </li>
             <li>
               <Link to="/contact" className={`${styles.navLink}${activeNav === "contact" ? " " + styles.navActive : ""}`}>

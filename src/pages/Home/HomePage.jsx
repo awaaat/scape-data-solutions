@@ -420,6 +420,9 @@ sales %>%
               <a href="https://portal.scapedatasolutions.com/portal/login" className={styles.btnSecondary}>Log In</a>
             </div>
           </div>
+          <p style={{ marginTop: "0.75rem", fontSize: "0.82rem", opacity: 0.65 }}>
+            Already working with us? <a href="https://portal.scapedatasolutions.com/" style={{ textDecoration: "underline" }}>Visit the client portal</a> to check project status, contracts, and payments.
+          </p>
         </section>
 
         {/* ═══ DEV / CODE SECTION ═══ */}
