@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2026-08-31">
-<meta name="description" content="In 2004, the Council of Graduate Schools launched a seven year study across 21 major research universities to find out why so many doctoral students who pass every exam and clear every hurdle still never finish. The answer wasn’t intelligence or work ethic. It was three specific, fixable gaps that show up in almost every program that tracks them. Grounded in the CGS PhD Completion Project, and research on advising quality and doctoral attrition.">
+<meta name="description" content="In 2002, programmer and essayist Paul Graham published a short essay describing a spam filter he’d built using a statistical method that most experts assumed was too simplistic to work well: naive Bayes. It worked remarkably well anyway, and the essay quietly changed how the industry approached classification problems. The same core idea, along with its more literal, explainable cousin, the decision tree, is exactly what powers fraud detection and credit decisions across finance today.">
 
-<title>Why 43 Percent of Doctoral Students Never Finish</title>
+<title>Naive Bayes and Decision Trees for Financial Classification, Explained Without the Math</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -31,17 +31,17 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="Why 43 percent of doctoral students never finish_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/popper.min.js"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Why 43 percent of doctoral students never finish_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Why 43 percent of doctoral students never finish_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Why 43 percent of doctoral students never finish_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Why 43 percent of doctoral students never finish_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Why 43 percent of doctoral students never finish_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Naive Bayes and decision trees for financial classification explained without the math_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Naive Bayes and decision trees for financial classification explained without the math_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Naive Bayes and decision trees for financial classification explained without the math_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Naive Bayes and decision trees for financial classification explained without the math_files/libs/quarto-html/popper.min.js"></script>
+<script src="Naive Bayes and decision trees for financial classification explained without the math_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Naive Bayes and decision trees for financial classification explained without the math_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Naive Bayes and decision trees for financial classification explained without the math_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Naive Bayes and decision trees for financial classification explained without the math_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Naive Bayes and decision trees for financial classification explained without the math_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Naive Bayes and decision trees for financial classification explained without the math_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Naive Bayes and decision trees for financial classification explained without the math_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -55,17 +55,18 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Why 43 Percent of Doctoral Students Never Finish</h1>
+<h1 class="title">Naive Bayes and Decision Trees for Financial Classification, Explained Without the Math</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Academic Writing</div>
-    <div class="quarto-category">Dissertation Support</div>
-    <div class="quarto-category">Graduate School</div>
+    <div class="quarto-category">Business Analytics</div>
+    <div class="quarto-category">Financial Classification</div>
+    <div class="quarto-category">Statistics</div>
+    <div class="quarto-category">Non-Technical</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    In 2004, the Council of Graduate Schools launched a seven year study across 21 major research universities to find out why so many doctoral students who pass every exam and clear every hurdle still never finish. The answer wasn’t intelligence or work ethic. It was three specific, fixable gaps that show up in almost every program that tracks them. Grounded in the CGS PhD Completion Project, and research on advising quality and doctoral attrition.
+    In 2002, programmer and essayist Paul Graham published a short essay describing a spam filter he’d built using a statistical method that most experts assumed was too simplistic to work well: naive Bayes. It worked remarkably well anyway, and the essay quietly changed how the industry approached classification problems. The same core idea, along with its more literal, explainable cousin, the decision tree, is exactly what powers fraud detection and credit decisions across finance today.
   </div>
 </div>
 
@@ -88,37 +89,32 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="the-study-that-tracked-students-instead-of-guessing-about-them" class="level2">
-<h2 class="anchored" data-anchor-id="the-study-that-tracked-students-instead-of-guessing-about-them">The Study That Tracked Students Instead of Guessing About Them</h2>
-<p>For decades, the standard explanation for why doctoral students dropped out was some version of “it wasn’t the right fit,” a phrase vague enough to explain nothing. In 2004, the <a href="https://cgsnet.org/">Council of Graduate Schools</a> launched something no one had really done at scale before: a seven year study, funded in part by the Ford Foundation and Pfizer, tracking actual completion and attrition data across 21 major research universities and tens of thousands of doctoral students, broken out by field, funding type, and program structure.</p>
-<p>The finding that got the most attention was the topline number, an average completion rate hovering around 57 percent across ten years, meaning close to half of students who start a doctoral program never finish it. What mattered more was what the study found underneath that number. Completion rates weren’t primarily explained by GRE scores, undergraduate GPA, or any measure of raw ability. Programs with structurally similar, academically similar students still produced very different completion rates depending on a small number of specific, changeable factors: how early students were folded into a real research or writing community, how structured the milestones were between admission and the dissertation defense, and how consistent the funding and advising support stayed across the years it actually took to finish.</p>
-<p>Universities that redesigned around those findings saw real movement. Structured cohort models, regular milestone check ins instead of one distant deadline, and funding tied to progress rather than to a single grant year all showed measurable gains in completion within the study’s own follow up data. The dropout wasn’t a mystery about individual grit. It was a pattern, and patterns can be designed around.</p>
-<p>That study was about institutions. The three things it found are just as true for a single student working alone on a dissertation right now. Isolation is the thing that actually predicts quitting, not difficulty. The advisor relationship functions as the single highest leverage asset a doctoral student has, and it usually goes unmanaged. And treating the dissertation as one enormous, undated task instead of a sequence of real milestones is exactly the structural gap the highest attrition programs shared.</p>
+<section id="the-essay-that-revived-a-method-everyone-thought-was-too-simple" class="level2">
+<h2 class="anchored" data-anchor-id="the-essay-that-revived-a-method-everyone-thought-was-too-simple">The Essay That Revived a Method Everyone Thought Was Too Simple</h2>
+<p>In August 2002, programmer and essayist Paul Graham published a short piece called “A Plan for Spam,” describing a filter he’d built to catch spam email using a statistical method called naive Bayes. At the time, most spam filtering relied on hand built rule lists, block any email containing this word, flag anything from this sender. Graham’s filter worked differently: it learned, from a set of email a person had already labeled as spam or not spam, which specific words showed up disproportionately often in each category, then used that pattern to classify new, unseen email automatically.</p>
+<p>The method wasn’t new. Naive Bayes had existed in statistics and early computing research for decades, and many experts considered it too crude to take seriously for a real problem, because of an assumption baked into how it works that sounds almost too simple to be useful: it treats every individual piece of evidence, every word in an email, as if it were completely independent of every other word, ignoring any relationship between them entirely. Graham’s essay demonstrated something that surprised a lot of people, that this obviously wrong simplifying assumption barely hurt the filter’s real world accuracy at all, and the method he described went on to become one of the standard approaches used across the spam filtering industry for years afterward.</p>
+<p>That same core method, along with a more literal alternative called a decision tree, is exactly what shows up constantly in financial classification today: sorting a transaction into fraud or not fraud, a loan applicant into approve or decline, an insurance claim into standard processing or manual review.</p>
 </section>
-<section id="its-isolation-not-difficulty-that-predicts-quitting" class="level2">
-<h2 class="anchored" data-anchor-id="its-isolation-not-difficulty-that-predicts-quitting">It’s Isolation, Not Difficulty, That Predicts Quitting</h2>
-<p>Ask a student who left a doctoral program why, and the answer is rarely “the material was too hard.” Difficulty is what gets blamed after the fact. The CGS research and the doctoral attrition literature built on it point somewhere else: students who go quiet, who stop showing up to a lab meeting, a writing group, or a regular check in with an advisor, are the ones who leave, regardless of how strong their earlier coursework performance was. Attrition doesn’t usually happen in a dramatic moment. It happens in the gap between one silent semester and the next, when nobody, including the student, is tracking whether real progress is being made.</p>
-<p>The fix that shows up across the highest completing programs in the CGS data is almost boringly simple: a standing, scheduled touchpoint that exists whether or not there’s exciting progress to report. A weekly or biweekly writing group, a monthly advisor meeting with a specific deliverable attached, even a peer accountability check in, all interrupt the exact mechanism that predicts dropping out, which is disappearing long enough that starting again feels harder than not starting at all.</p>
+<section id="why-naive-works-better-than-it-has-any-right-to" class="level2">
+<h2 class="anchored" data-anchor-id="why-naive-works-better-than-it-has-any-right-to">Why “Naive” Works Better Than It Has Any Right To</h2>
+<p>The “naive” part of naive Bayes refers to that independence assumption, treating every piece of evidence as unrelated to every other piece. In a spam filter, that means treating the appearance of the word “free” in an email as completely unrelated to the appearance of the word “prize,” even though in the real world those words obviously tend to show up together far more than chance alone would suggest. The assumption is technically false in almost every real application, and the method works well anyway, for a reason that turns out to matter more than getting every underlying assumption exactly right: the method only needs to get the final ranking correct, which category is most likely, not the precise, mathematically exact probability of each individual word combination. Even with a flawed independence assumption baked in, the method tends to still rank the right category as most likely far more often than not, which is the only thing that actually matters for a working classifier.</p>
+<p>In finance, the same logic applies directly to fraud detection. A transaction happening at 3 a.m., in a country the cardholder has never visited, for an unusually large amount, are three pieces of evidence that obviously aren’t fully independent of each other in the real world. A naive Bayes model treats them as if they were anyway, multiplies together how unusual each one is on its own, and still, in practice, tends to correctly flag genuinely suspicious transactions far more often than not, precisely because the technique only needs the final ranking right, not a perfectly accurate model of how those factors truly interact.</p>
 </section>
-<section id="the-advisor-relationship-is-the-highest-leverage-asset-you-have-and-its-usually-unmanaged" class="level2">
-<h2 class="anchored" data-anchor-id="the-advisor-relationship-is-the-highest-leverage-asset-you-have-and-its-usually-unmanaged">The Advisor Relationship Is the Highest Leverage Asset You Have, and It’s Usually Unmanaged</h2>
-<p>Doctoral students tend to treat the advisor relationship as something that happens to them rather than something they actively manage. Research on doctoral attrition consistently finds advising quality, not program prestige or funding level, as one of the strongest predictors of whether a student finishes, and yet most students have no explicit agreement with their advisor about how often they’ll meet, what a reasonable turnaround time on feedback looks like, or what a completed chapter actually needs to contain before it’s considered done.</p>
-<p>That gap is expensive precisely because it’s invisible until it isn’t. A student can go months assuming silence from an advisor means things are fine, when it more often means the relationship simply isn’t being actively managed by either side. The fix costs nothing but a slightly uncomfortable conversation early on: a clear, explicit understanding of meeting cadence, feedback turnaround, and what “done” looks like for each chapter, treated as an asset worth protecting rather than a relationship left to run on its own.</p>
+<section id="decision-trees-the-more-literal-more-explainable-alternative" class="level2">
+<h2 class="anchored" data-anchor-id="decision-trees-the-more-literal-more-explainable-alternative">Decision Trees: The More Literal, More Explainable Alternative</h2>
+<p>A decision tree takes a different approach to the same kind of problem, and it maps much more directly onto how a human underwriter or fraud analyst actually thinks. Instead of multiplying probabilities together behind the scenes, a decision tree asks a sequence of yes or no questions, one at a time, each one narrowing down the possibilities: is the transaction amount over a certain threshold? If yes, is it happening in a country the cardholder has transacted in before? If no, has this cardholder had a similar pattern flagged before? Each branch leads to another question, until the tree arrives at a final classification.</p>
+<p>The appeal of a decision tree in a financial setting isn’t necessarily that it’s more accurate than naive Bayes, sometimes it is, sometimes it isn’t, depending on the specific problem. It’s that a decision tree can be read directly, question by question, by a person who isn’t a statistician, in a way that maps naturally onto an actual fraud investigation or credit decision process. A regulator or a customer asking why a specific transaction was flagged can be shown the exact sequence of questions the model followed to reach that conclusion, a level of transparency that matters enormously in a regulated industry where a decision has to be explainable, not just accurate.</p>
 </section>
-<section id="turning-one-deadline-into-a-real-sequence-of-milestones" class="level2">
-<h2 class="anchored" data-anchor-id="turning-one-deadline-into-a-real-sequence-of-milestones">Turning One Deadline Into a Real Sequence of Milestones</h2>
-<p>The programs with the worst completion rates in the CGS study tended to share a specific structural gap: a long, undifferentiated stretch of time between coursework and a single, distant dissertation deadline, with no required checkpoints in between. A dissertation framed as one enormous task due at some point in the future behaves exactly like any other project with no intermediate deadlines. Progress becomes optional right up until it’s very late, and by the time that becomes obvious, months or years of silent drift have already happened.</p>
-<p>The programs that improved completion rates replaced that single distant deadline with a real sequence: a proposal defense by a specific date, a completed literature review chapter by another, a data collection or analysis milestone by a third, each with someone other than the student checking in on it. A student working independently can build the same structure without institutional help, by treating each chapter as its own project with its own deadline and its own accountability, rather than treating the entire dissertation as one task that only becomes real in the final year.</p>
-</section>
-<section id="what-the-cgs-study-actually-teaches" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-cgs-study-actually-teaches">What the CGS Study Actually Teaches</h2>
-<p>The Council of Graduate Schools didn’t find that doctoral attrition was a mystery about which students had the right stuff. It found a pattern, isolation predicting dropout more than difficulty, an advisor relationship left unmanaged, and a single distant deadline standing in for a real sequence of milestones, repeating across dozens of universities and thousands of students.</p>
+<section id="choosing-between-them-or-using-both" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-between-them-or-using-both">Choosing Between Them, or Using Both</h2>
+<p>Neither method is strictly better across every financial classification problem, and in practice, many real systems use both together, or use an ensemble of many decision trees combined, a method called a random forest, to capture more of the real world complexity a single tree or a single naive Bayes model might miss on its own. Naive Bayes tends to work well and stays fast even with a large number of input signals, which suits high volume problems like flagging transactions in real time across millions of accounts. Decision trees tend to be preferred when explainability is the priority, when a specific decision needs to be justified clearly to a customer, an auditor, or a regulator, in plain language rather than as a probability calculation happening behind the scenes.</p>
+<p>The lesson underneath Graham’s 2002 essay still holds two decades later: a method built on a simplifying assumption that sounds almost too crude to trust can still outperform far more elaborate approaches, as long as it’s solving the actual problem in front of it, correctly ranking which outcome is most likely, rather than trying to perfectly model every real world relationship between every piece of evidence.</p>
 <ul>
-<li><strong>Build a standing, scheduled touchpoint that exists whether or not you have exciting progress.</strong> A writing group, a monthly advisor meeting, a peer check in. The specific format matters less than the fact that it happens on a schedule you don’t control moment to moment.</li>
-<li><strong>Make the advisor relationship explicit instead of assumed.</strong> Agree on meeting cadence, feedback turnaround time, and what counts as a finished chapter, early, before ambiguity has a chance to become months of silent drift.</li>
-<li><strong>Break the dissertation into real, dated milestones, not one distant deadline.</strong> A proposal defense date, a chapter completion date, a data milestone, each treated as its own small project with its own accountability.</li>
+<li><strong>Reach for naive Bayes when you need speed and volume.</strong> It handles a large number of input signals efficiently and remains fast enough for real time transaction screening across millions of accounts.</li>
+<li><strong>Reach for a decision tree when you need to explain the decision.</strong> Its question by question structure can be shown directly to a regulator, an auditor, or a customer in plain language.</li>
+<li><strong>Consider combining several trees into an ensemble when accuracy matters more than a single model’s simplicity.</strong> A random forest, built from many individual decision trees, often captures patterns a single tree or a single naive Bayes model misses on its own.</li>
 </ul>
-<p>None of this fixes the parts of a dissertation that are genuinely hard: designing a defensible study, running the right analysis, writing something a committee will accept. We work through several of the specific statistical trip points that get dissertations sent back in <a href="https://www.scapedatasolutions.com/blog/seven-statistical-mistakes-that-get-dissertations-sent-back">seven statistical mistakes that get dissertations sent back</a>, and the sample size question that stalls a huge share of proposals in <a href="https://www.scapedatasolutions.com/blog/how-many-participants-regression-chapter">how many participants do you actually need for your regression chapter</a>.</p>
+<p>For the closely related question of when a yes or no probability, rather than a category, is what you actually need, we cover that directly in <a href="https://www.scapedatasolutions.com/blog/logistic-regression-softmax-classification">logistic regression and softmax classification, explained without the math</a>.</p>
 </section>
 
 </main>

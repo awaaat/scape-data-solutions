@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2026-08-31">
-<meta name="description" content="In 2004, the Council of Graduate Schools launched a seven year study across 21 major research universities to find out why so many doctoral students who pass every exam and clear every hurdle still never finish. The answer wasn’t intelligence or work ethic. It was three specific, fixable gaps that show up in almost every program that tracks them. Grounded in the CGS PhD Completion Project, and research on advising quality and doctoral attrition.">
+<meta name="description" content="In 1956, an engineer and a mathematician named Bill Fair and Earl Isaac had an idea that the banking industry thought was close to reckless: replace a loan officer’s gut instinct with a statistical score. That idea became FICO, and the method underneath it, refined over decades into what’s now called logistic regression, is still the backbone of how banks decide who gets approved. This is what it actually does, without a single formula.">
 
-<title>Why 43 Percent of Doctoral Students Never Finish</title>
+<title>Logistic Regression and Softmax Classification, Explained Without the Math</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -31,17 +31,17 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="Why 43 percent of doctoral students never finish_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/popper.min.js"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Why 43 percent of doctoral students never finish_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Why 43 percent of doctoral students never finish_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Why 43 percent of doctoral students never finish_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Why 43 percent of doctoral students never finish_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Why 43 percent of doctoral students never finish_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Logistic regression and softmax classification explained without the math_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Logistic regression and softmax classification explained without the math_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Logistic regression and softmax classification explained without the math_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Logistic regression and softmax classification explained without the math_files/libs/quarto-html/popper.min.js"></script>
+<script src="Logistic regression and softmax classification explained without the math_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Logistic regression and softmax classification explained without the math_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Logistic regression and softmax classification explained without the math_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Logistic regression and softmax classification explained without the math_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Logistic regression and softmax classification explained without the math_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Logistic regression and softmax classification explained without the math_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Logistic regression and softmax classification explained without the math_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -55,17 +55,18 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Why 43 Percent of Doctoral Students Never Finish</h1>
+<h1 class="title">Logistic Regression and Softmax Classification, Explained Without the Math</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Academic Writing</div>
-    <div class="quarto-category">Dissertation Support</div>
-    <div class="quarto-category">Graduate School</div>
+    <div class="quarto-category">Business Analytics</div>
+    <div class="quarto-category">Financial Classification</div>
+    <div class="quarto-category">Statistics</div>
+    <div class="quarto-category">Non-Technical</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    In 2004, the Council of Graduate Schools launched a seven year study across 21 major research universities to find out why so many doctoral students who pass every exam and clear every hurdle still never finish. The answer wasn’t intelligence or work ethic. It was three specific, fixable gaps that show up in almost every program that tracks them. Grounded in the CGS PhD Completion Project, and research on advising quality and doctoral attrition.
+    In 1956, an engineer and a mathematician named Bill Fair and Earl Isaac had an idea that the banking industry thought was close to reckless: replace a loan officer’s gut instinct with a statistical score. That idea became FICO, and the method underneath it, refined over decades into what’s now called logistic regression, is still the backbone of how banks decide who gets approved. This is what it actually does, without a single formula.
   </div>
 </div>
 
@@ -88,37 +89,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="the-study-that-tracked-students-instead-of-guessing-about-them" class="level2">
-<h2 class="anchored" data-anchor-id="the-study-that-tracked-students-instead-of-guessing-about-them">The Study That Tracked Students Instead of Guessing About Them</h2>
-<p>For decades, the standard explanation for why doctoral students dropped out was some version of “it wasn’t the right fit,” a phrase vague enough to explain nothing. In 2004, the <a href="https://cgsnet.org/">Council of Graduate Schools</a> launched something no one had really done at scale before: a seven year study, funded in part by the Ford Foundation and Pfizer, tracking actual completion and attrition data across 21 major research universities and tens of thousands of doctoral students, broken out by field, funding type, and program structure.</p>
-<p>The finding that got the most attention was the topline number, an average completion rate hovering around 57 percent across ten years, meaning close to half of students who start a doctoral program never finish it. What mattered more was what the study found underneath that number. Completion rates weren’t primarily explained by GRE scores, undergraduate GPA, or any measure of raw ability. Programs with structurally similar, academically similar students still produced very different completion rates depending on a small number of specific, changeable factors: how early students were folded into a real research or writing community, how structured the milestones were between admission and the dissertation defense, and how consistent the funding and advising support stayed across the years it actually took to finish.</p>
-<p>Universities that redesigned around those findings saw real movement. Structured cohort models, regular milestone check ins instead of one distant deadline, and funding tied to progress rather than to a single grant year all showed measurable gains in completion within the study’s own follow up data. The dropout wasn’t a mystery about individual grit. It was a pattern, and patterns can be designed around.</p>
-<p>That study was about institutions. The three things it found are just as true for a single student working alone on a dissertation right now. Isolation is the thing that actually predicts quitting, not difficulty. The advisor relationship functions as the single highest leverage asset a doctoral student has, and it usually goes unmanaged. And treating the dissertation as one enormous, undated task instead of a sequence of real milestones is exactly the structural gap the highest attrition programs shared.</p>
+<section id="the-score-that-replaced-a-gut-feeling" class="level2">
+<h2 class="anchored" data-anchor-id="the-score-that-replaced-a-gut-feeling">The Score That Replaced a Gut Feeling</h2>
+<p>In 1956, an engineer named Bill Fair and a mathematician named Earl Isaac started a company on a premise the lending industry found close to offensive at the time: that a statistical formula could predict whether a borrower would repay a loan more reliably than an experienced loan officer’s judgment. For decades, lending decisions had been made by people looking at an application and making a call, informed by experience, sometimes informed by things that had nothing to do with actual creditworthiness. Fair and Isaac’s company, which became known as FICO, built a model that took a set of measurable facts about a borrower, payment history, amounts owed, length of credit history, and combined them into a single number that predicted the probability of default.</p>
+<p>The specific statistical method that underlies a modern FICO-style score, and thousands of other yes or no prediction problems across finance, medicine, and marketing, is called logistic regression. It’s worth understanding what it actually does, because the idea is simpler than the name suggests, and it explains something that trips up a lot of people encountering it for the first time: why banks don’t just use ordinary regression, the kind that predicts a number, to predict something like loan default.</p>
 </section>
-<section id="its-isolation-not-difficulty-that-predicts-quitting" class="level2">
-<h2 class="anchored" data-anchor-id="its-isolation-not-difficulty-that-predicts-quitting">It’s Isolation, Not Difficulty, That Predicts Quitting</h2>
-<p>Ask a student who left a doctoral program why, and the answer is rarely “the material was too hard.” Difficulty is what gets blamed after the fact. The CGS research and the doctoral attrition literature built on it point somewhere else: students who go quiet, who stop showing up to a lab meeting, a writing group, or a regular check in with an advisor, are the ones who leave, regardless of how strong their earlier coursework performance was. Attrition doesn’t usually happen in a dramatic moment. It happens in the gap between one silent semester and the next, when nobody, including the student, is tracking whether real progress is being made.</p>
-<p>The fix that shows up across the highest completing programs in the CGS data is almost boringly simple: a standing, scheduled touchpoint that exists whether or not there’s exciting progress to report. A weekly or biweekly writing group, a monthly advisor meeting with a specific deliverable attached, even a peer accountability check in, all interrupt the exact mechanism that predicts dropping out, which is disappearing long enough that starting again feels harder than not starting at all.</p>
+<section id="why-an-ordinary-regression-line-doesnt-work-for-yes-or-no" class="level2">
+<h2 class="anchored" data-anchor-id="why-an-ordinary-regression-line-doesnt-work-for-yes-or-no">Why an Ordinary Regression Line Doesn’t Work for Yes or No</h2>
+<p>Picture a simple version of the problem: predicting whether a loan defaults, yes or no, based on a borrower’s income. An ordinary regression line, the kind that predicts a continuous number, would draw a straight line through the data and let that line keep going forever in both directions. That’s a problem for a yes or no outcome, because a straight line will eventually predict something nonsensical, a probability of default above 100 percent for a very low income borrower, or below 0 percent for a very high income one. Probabilities can’t go below zero or above one, and a straight line doesn’t know that.</p>
+<p>Logistic regression solves this with a specific kind of curve instead of a straight line, an S shaped curve that starts near zero, rises through the middle, and flattens out near one, no matter how far the input values stretch in either direction. That curve is the whole trick. It lets the model take any input, an income level, a credit history length, a debt to income ratio, and always output something that behaves like a genuine probability, a number between zero and one that never breaks the basic rules a probability has to follow. Where an ordinary regression answers “how much,” logistic regression answers “how likely,” and that distinction is why it became the default tool for exactly the kind of yes or no decision a bank has to make on every application.</p>
+<p>The model doesn’t just spit out a yes or no answer either. It reports a probability, a 73 percent estimated chance of repayment, for example, and it’s the lender who decides where to draw the line, whether 73 percent clears the bar for approval or whether the threshold sits somewhere else entirely depending on the lender’s risk appetite. That’s a meaningful feature, not a limitation. It means the same underlying model can support very different lending strategies simply by moving where the approval line sits, without needing to rebuild the model itself.</p>
 </section>
-<section id="the-advisor-relationship-is-the-highest-leverage-asset-you-have-and-its-usually-unmanaged" class="level2">
-<h2 class="anchored" data-anchor-id="the-advisor-relationship-is-the-highest-leverage-asset-you-have-and-its-usually-unmanaged">The Advisor Relationship Is the Highest Leverage Asset You Have, and It’s Usually Unmanaged</h2>
-<p>Doctoral students tend to treat the advisor relationship as something that happens to them rather than something they actively manage. Research on doctoral attrition consistently finds advising quality, not program prestige or funding level, as one of the strongest predictors of whether a student finishes, and yet most students have no explicit agreement with their advisor about how often they’ll meet, what a reasonable turnaround time on feedback looks like, or what a completed chapter actually needs to contain before it’s considered done.</p>
-<p>That gap is expensive precisely because it’s invisible until it isn’t. A student can go months assuming silence from an advisor means things are fine, when it more often means the relationship simply isn’t being actively managed by either side. The fix costs nothing but a slightly uncomfortable conversation early on: a clear, explicit understanding of meeting cadence, feedback turnaround, and what “done” looks like for each chapter, treated as an asset worth protecting rather than a relationship left to run on its own.</p>
+<section id="softmax-the-same-idea-for-more-than-two-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="softmax-the-same-idea-for-more-than-two-outcomes">Softmax: The Same Idea for More Than Two Outcomes</h2>
+<p>Logistic regression, in its basic form, answers a two option question: default or repay, approve or decline, fraud or not fraud. Plenty of real financial classification problems have more than two possible outcomes. A lender assigning a loan into one of five risk tiers, or a bank routing a transaction into one of several fraud investigation categories, needs a version of the same idea extended across more than two options at once.</p>
+<p>That extension is called softmax, and it works on the same core logic as logistic regression, just generalized. Instead of producing one probability for a single yes or no outcome, it produces a full set of probabilities across every possible category at once, one for each risk tier or each classification option, and those probabilities are built so they always add up to exactly 100 percent across the full set. A transaction might come out as an 80 percent chance of being ordinary activity, a 15 percent chance of being a false alarm worth a second look, and a 5 percent chance of being genuine fraud, all three numbers produced by the same underlying calculation, all three required to add up to the whole. The category with the highest probability becomes the model’s prediction, but, exactly as with a two option logistic regression, the full set of probabilities is often more useful to a real decision maker than the single predicted label, because it shows how confident or uncertain the model actually is, rather than collapsing that nuance into one final answer.</p>
 </section>
-<section id="turning-one-deadline-into-a-real-sequence-of-milestones" class="level2">
-<h2 class="anchored" data-anchor-id="turning-one-deadline-into-a-real-sequence-of-milestones">Turning One Deadline Into a Real Sequence of Milestones</h2>
-<p>The programs with the worst completion rates in the CGS study tended to share a specific structural gap: a long, undifferentiated stretch of time between coursework and a single, distant dissertation deadline, with no required checkpoints in between. A dissertation framed as one enormous task due at some point in the future behaves exactly like any other project with no intermediate deadlines. Progress becomes optional right up until it’s very late, and by the time that becomes obvious, months or years of silent drift have already happened.</p>
-<p>The programs that improved completion rates replaced that single distant deadline with a real sequence: a proposal defense by a specific date, a completed literature review chapter by another, a data collection or analysis milestone by a third, each with someone other than the student checking in on it. A student working independently can build the same structure without institutional help, by treating each chapter as its own project with its own deadline and its own accountability, rather than treating the entire dissertation as one task that only becomes real in the final year.</p>
-</section>
-<section id="what-the-cgs-study-actually-teaches" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-cgs-study-actually-teaches">What the CGS Study Actually Teaches</h2>
-<p>The Council of Graduate Schools didn’t find that doctoral attrition was a mystery about which students had the right stuff. It found a pattern, isolation predicting dropout more than difficulty, an advisor relationship left unmanaged, and a single distant deadline standing in for a real sequence of milestones, repeating across dozens of universities and thousands of students.</p>
+<section id="why-this-still-matters-decades-after-fair-and-isaac" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-still-matters-decades-after-fair-and-isaac">Why This Still Matters Decades After Fair and Isaac</h2>
+<p>FICO’s original insight in 1956, that a consistent statistical score beats an inconsistent gut call, has held up remarkably well, and logistic regression remains one of the most widely used methods in finance for a specific reason beyond its accuracy: it’s interpretable. A bank can look at a logistic regression model and say, in plain terms, that a borrower’s debt to income ratio contributed this much to the predicted probability of default, and a specific length of credit history contributed that much, in a way that’s far harder to do with more complex modeling techniques that trade interpretability for a small gain in raw predictive accuracy. In a regulated industry where a lender has to be able to explain why an application was declined, that transparency isn’t a nice to have, it’s frequently a legal requirement, and it’s a large part of why a method invented to formalize the work of a 1956 loan officer is still doing exactly that job today.</p>
 <ul>
-<li><strong>Build a standing, scheduled touchpoint that exists whether or not you have exciting progress.</strong> A writing group, a monthly advisor meeting, a peer check in. The specific format matters less than the fact that it happens on a schedule you don’t control moment to moment.</li>
-<li><strong>Make the advisor relationship explicit instead of assumed.</strong> Agree on meeting cadence, feedback turnaround time, and what counts as a finished chapter, early, before ambiguity has a chance to become months of silent drift.</li>
-<li><strong>Break the dissertation into real, dated milestones, not one distant deadline.</strong> A proposal defense date, a chapter completion date, a data milestone, each treated as its own small project with its own accountability.</li>
+<li><strong>Use logistic regression when the outcome is yes or no, and you need to explain why.</strong> Its S shaped curve keeps every prediction a genuine probability, and its coefficients can be explained in plain language to a regulator, a client, or a committee.</li>
+<li><strong>Use softmax when there are more than two possible categories.</strong> It extends the same core idea across every option at once, always producing a full set of probabilities that add up to the whole.</li>
+<li><strong>Treat the output as a probability, not just a label.</strong> The specific approval threshold is a business decision layered on top of the model, not something the model decides on its own, which is exactly what makes the same model flexible enough to support different risk strategies.</li>
 </ul>
-<p>None of this fixes the parts of a dissertation that are genuinely hard: designing a defensible study, running the right analysis, writing something a committee will accept. We work through several of the specific statistical trip points that get dissertations sent back in <a href="https://www.scapedatasolutions.com/blog/seven-statistical-mistakes-that-get-dissertations-sent-back">seven statistical mistakes that get dissertations sent back</a>, and the sample size question that stalls a huge share of proposals in <a href="https://www.scapedatasolutions.com/blog/how-many-participants-regression-chapter">how many participants do you actually need for your regression chapter</a>.</p>
+<p>The same overlapping predictor problem that trips up regression chapters in academic research shows up here too, and it’s worth checking for before trusting any individual coefficient in a credit model. We cover that directly in <a href="https://www.scapedatasolutions.com/blog/why-your-committee-keeps-flagging-multicollinearity">why your committee keeps flagging multicollinearity</a>, and the closely related classification methods, naive Bayes and decision trees, in <a href="https://www.scapedatasolutions.com/blog/naive-bayes-decision-trees-financial-classification">naive Bayes and decision trees for financial classification</a>.</p>
 </section>
 
 </main>

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2026-08-31">
-<meta name="description" content="A plain-English breakdown of the recurring statistical errors that show up again and again in dissertation reviews, drawn from decades of published research on dissertation methodology quality.">
+<meta name="description" content="In 2011, a respected psychologist published a peer reviewed paper in a top journal claiming evidence that people could sense the future. The paper wasn’t fraudulent. It was built almost entirely out of small, common statistical mistakes that individually looked defensible and collectively produced a result nobody could replicate. Those same mistakes are the ones that most often get a dissertation chapter sent back for revision.">
 
-<title>The Seven Statistical Mistakes That Get Dissertations Sent Back — According to the Research</title>
+<title>Seven Statistical Mistakes That Get Dissertations Sent Back</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -55,19 +55,17 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Seven Statistical Mistakes That Get Dissertations Sent Back — According to the Research</h1>
+<h1 class="title">Seven Statistical Mistakes That Get Dissertations Sent Back</h1>
   <div class="quarto-categories">
+    <div class="quarto-category">Academic Writing</div>
     <div class="quarto-category">Dissertation Support</div>
-    <div class="quarto-category">Data Analysis</div>
-    <div class="quarto-category">Chapter 4</div>
     <div class="quarto-category">Statistics</div>
-    <div class="quarto-category">Non-Technical</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    A plain-English breakdown of the recurring statistical errors that show up again and again in dissertation reviews, drawn from decades of published research on dissertation methodology quality.
+    In 2011, a respected psychologist published a peer reviewed paper in a top journal claiming evidence that people could sense the future. The paper wasn’t fraudulent. It was built almost entirely out of small, common statistical mistakes that individually looked defensible and collectively produced a result nobody could replicate. Those same mistakes are the ones that most often get a dissertation chapter sent back for revision.
   </div>
 </div>
 
@@ -90,60 +88,45 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="its-not-random-what-gets-a-chapter-4-sent-back" class="level2">
-<h2 class="anchored" data-anchor-id="its-not-random-what-gets-a-chapter-4-sent-back">It’s Not Random What Gets a Chapter 4 Sent Back</h2>
-<p>If you talk to enough dissertation chairs, a pattern emerges fast: the reasons a data analysis chapter gets sent back for revision are not, in most cases, unique or unusual. They repeat, across disciplines, across decades, across universities. This isn’t a guess — it’s been formally studied.</p>
-<p>One of the most cited studies on this exact question, published by researcher Bruce Thompson and revisited in a follow-up paper, reviewed methodological errors specifically within Ph.D.&nbsp;dissertations and organized them into seven recurring analytic principles. More recent work has confirmed the same pattern persists: a 2025 <em>PLOS ONE</em> study reviewed 139 master’s and doctoral theses across seven disciplines and again found recurring, correctable statistical mistakes, and a separate analysis of science education master’s theses found specific, repeatable errors like running ANOVA without first testing whether the data actually met the normality assumption the test requires.</p>
-<p>Here’s what the research says actually goes wrong, most often, translated out of the jargon.</p>
+<section id="the-paper-that-found-evidence-of-the-future" class="level2">
+<h2 class="anchored" data-anchor-id="the-paper-that-found-evidence-of-the-future">The Paper That Found Evidence of the Future</h2>
+<p>In 2011, Cornell psychologist Daryl Bem published a paper titled “Feeling the Future” in the <em>Journal of Personality and Social Psychology</em>, one of the most respected journals in the field. The paper reported nine experiments, run over more than a decade, appearing to show that people could sense future events before they happened, that a stimulus presented after a memory test could still measurably improve performance on the test that came before it. The paper passed peer review at a top journal. Bem was a well established, credible researcher, not a fringe figure.</p>
+<p>What made the paper so useful as a case study wasn’t that it was fraudulent. Nobody accused Bem of fabricating data. It was that the paper was built almost entirely from a set of small, individually defensible looking statistical choices that, in combination, made it far easier than it should have been to find a significant result out of noise. Researchers running replication attempts afterward couldn’t reproduce the effect. The paper became one of the most cited catalysts for the modern replication crisis in psychology, and the specific list of statistical choices critics identified in it became, almost accidentally, one of the clearest teaching examples of exactly the mistakes that quietly undermine an otherwise well intentioned analysis.</p>
+<p>Those same mistakes show up constantly in dissertation chapters, not because students are trying to manufacture a result, but because the same small, tempting choices are available at almost every step of an analysis, and each one looks reasonable in isolation.</p>
 </section>
-<section id="treating-a-p-value-as-the-whole-story" class="level2">
-<h2 class="anchored" data-anchor-id="treating-a-p-value-as-the-whole-story">1. Treating a p-value as the whole story</h2>
-<p>Thompson’s research identifies over-reliance on statistical significance testing as one of the most persistent errors in dissertations — using a p-value as if it single-handedly proves a finding is important, without reporting effect size (how large the difference or relationship actually is) alongside it. A result can be statistically significant and practically trivial at the same time, especially with a large sample. Committees increasingly expect both numbers side by side, not one standing in for the other.</p>
+<section id="running-many-tests-and-reporting-only-the-significant-ones" class="level2">
+<h2 class="anchored" data-anchor-id="running-many-tests-and-reporting-only-the-significant-ones">Running Many Tests and Reporting Only the Significant Ones</h2>
+<p>One of the most common criticisms of the Bem paper was that several of the nine experiments included multiple possible outcome measures, and the paper tended to highlight whichever measure came back significant. Run enough tests on the same data and something will cross the conventional significance threshold by chance alone, even if nothing real is happening. A dissertation chapter that runs a dozen exploratory comparisons and reports the handful that came back significant, without correcting for the number of tests run, is repeating this exact pattern.</p>
 </section>
-<section id="not-checking-whether-your-data-can-actually-support-the-test-youre-running" class="level2">
-<h2 class="anchored" data-anchor-id="not-checking-whether-your-data-can-actually-support-the-test-youre-running">2. Not checking whether your data can actually support the test you’re running</h2>
-<p>The science education thesis-error study found a specific, repeatable pattern: researchers running ANOVA — a test that assumes the data is roughly normally distributed — without ever checking whether that assumption held. This isn’t a technicality. If the assumption is violated badly enough, the test’s results can’t be trusted, and a committee member trained to check for this will ask the question immediately. The fix isn’t complicated — a normality check takes minutes — but skipping it is one of the most common and most avoidable errors in the literature.</p>
+<section id="treating-an-exploratory-finding-as-a-confirmatory-one" class="level2">
+<h2 class="anchored" data-anchor-id="treating-an-exploratory-finding-as-a-confirmatory-one">Treating an Exploratory Finding as a Confirmatory One</h2>
+<p>Several of Bem’s experiments described analyses that appeared to have been chosen or adjusted after seeing preliminary results, then presented with the same confidence as a hypothesis specified in advance. A finding discovered while exploring the data is a legitimate, useful thing to report, but it carries fundamentally less evidential weight than a hypothesis stated before the data was collected, and a committee will reasonably ask which kind of finding they’re looking at.</p>
 </section>
-<section id="using-a-single-variable-when-a-multivariate-approach-is-what-the-question-actually-calls-for" class="level2">
-<h2 class="anchored" data-anchor-id="using-a-single-variable-when-a-multivariate-approach-is-what-the-question-actually-calls-for">3. Using a single variable when a multivariate approach is what the question actually calls for</h2>
-<p>Thompson’s analysis singles out under-use of multivariate methods — analyzing variables one at a time when the underlying research question genuinely involves several variables acting together — as a recurring weakness. Real-world outcomes, whether in education, business, or health, are rarely driven by one factor in isolation. A dissertation that tests five separate simple relationships when the question actually calls for one combined model is doing more work to arrive at a less trustworthy answer.</p>
+<section id="stopping-data-collection-once-the-result-looks-good" class="level2">
+<h2 class="anchored" data-anchor-id="stopping-data-collection-once-the-result-looks-good">Stopping Data Collection Once the Result Looks Good</h2>
+<p>Checking a result partway through data collection and stopping once significance is reached, sometimes called optional stopping, inflates the chance of a false positive in a way that isn’t visible in the final reported statistics. Critics of the Bem paper raised exactly this concern about several of the experiments. A pre-registered, fixed sample size decided before data collection begins closes off this particular route to an inflated result entirely.</p>
 </section>
-<section id="converting-a-properly-measured-variable-down-to-a-cruder-category" class="level2">
-<h2 class="anchored" data-anchor-id="converting-a-properly-measured-variable-down-to-a-cruder-category">4. Converting a properly measured variable down to a cruder category</h2>
-<p>One of the seven principles Thompson describes involves converting variables that were measured on a continuous or interval scale down to broad categories — turning, for instance, a precise test score into “high” and “low” groups. This throws away real information and reduces statistical power. Committees trained in quantitative methods notice this immediately, because it’s usually a sign the researcher didn’t know how to analyze the variable in its original, more informative form.</p>
+<section id="a-small-sample-producing-an-overconfident-claim" class="level2">
+<h2 class="anchored" data-anchor-id="a-small-sample-producing-an-overconfident-claim">A Small Sample Producing an Overconfident Claim</h2>
+<p>Several of the nine experiments in the Bem paper had samples in the range of 50 to 150 participants for effects that, if real, would be expected to be quite small, meaning the studies had limited power to detect what they claimed to find reliably. A small sample can still produce a statistically significant result, but that result carries a much wider margin of real uncertainty than the same p value from a properly powered study, a distinction we cover directly in <a href="https://www.scapedatasolutions.com/blog/how-many-participants-regression-chapter">how many participants do you actually need for your regression chapter</a>.</p>
 </section>
-<section id="choosing-a-statistical-technique-that-doesnt-actually-match-the-research-design" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-a-statistical-technique-that-doesnt-actually-match-the-research-design">5. Choosing a statistical technique that doesn’t actually match the research design</h2>
-<p>The 2025 <em>PLOS ONE</em> review of 139 theses found this as a central recurring issue: using a statistical technique that doesn’t align with how the data was actually collected or what the research question is actually asking. A common example is applying a test built for independent groups to data that’s actually paired or repeated-measures in structure. The fix requires understanding the <em>design</em> of the study before choosing the <em>analysis</em> — a step that’s easy to skip under deadline pressure but expensive to fix afterward.</p>
+<section id="building-the-narrative-after-seeing-the-result" class="level2">
+<h2 class="anchored" data-anchor-id="building-the-narrative-after-seeing-the-result">Building the Narrative After Seeing the Result</h2>
+<p>Critics also pointed to language in the paper that framed the hypotheses as though they had clearly predicted the specific pattern found, when the underlying theory was vague enough to have been consistent with several different possible outcomes. Constructing a clean theoretical narrative after seeing which result came back significant, rather than before, is one of the harder mistakes to self detect, because it feels like ordinary interpretation rather than a statistical choice.</p>
 </section>
-<section id="not-reporting-the-analysis-in-enough-detail-for-a-reader-to-verify-it" class="level2">
-<h2 class="anchored" data-anchor-id="not-reporting-the-analysis-in-enough-detail-for-a-reader-to-verify-it">6. Not reporting the analysis in enough detail for a reader to verify it</h2>
-<p>A widely cited paper on statistical reporting errors found during peer review notes that the statistical methods section is frequently the most poorly reported part of a manuscript — missing details on exactly what test was run, on what comparison, with what correction for multiple comparisons, if any. In a dissertation, this shows up as a results section a committee member can’t actually verify from the text alone, which invites exactly the kind of drawn-out revision cycle every candidate wants to avoid.</p>
+<section id="correlated-predictors-hiding-which-variable-actually-mattered" class="level2">
+<h2 class="anchored" data-anchor-id="correlated-predictors-hiding-which-variable-actually-mattered">Correlated Predictors Hiding Which Variable Actually Mattered</h2>
+<p>This isn’t a criticism specific to the Bem paper, but it’s one of the most common reasons a dissertation regression chapter gets flagged. When predictors overlap heavily with each other, a model can produce a coefficient that looks meaningful while actually reflecting instability rather than a genuine, isolated effect, the exact problem documented in the classic 1967 Longley dataset and covered in <a href="https://www.scapedatasolutions.com/blog/why-your-committee-keeps-flagging-multicollinearity">why your committee keeps flagging multicollinearity</a>.</p>
 </section>
-<section id="overstating-what-a-limited-sample-can-actually-support" class="level2">
-<h2 class="anchored" data-anchor-id="overstating-what-a-limited-sample-can-actually-support">7. Overstating what a limited sample can actually support</h2>
-<p>The science education thesis-error study also documented cases where findings from a small, non-random sample were presented as though they generalized to a much larger population. This is one of the most common overreach errors in applied dissertations, and it’s often unintentional — a candidate genuinely believes their finding is broader than their data can support, because nobody flagged the gap between the sample and the claim before the defense.</p>
-</section>
-<section id="why-these-seven-keep-showing-up" class="level2">
-<h2 class="anchored" data-anchor-id="why-these-seven-keep-showing-up">Why These Seven Keep Showing Up</h2>
-<p>None of these are exotic errors. They’re not about not knowing statistics exists — they’re about the gap between coursework-level statistics and the applied, defend-it-under-questioning reality of a dissertation. A candidate can pass every graduate statistics course and still make several of these mistakes, because coursework rarely simulates the pressure and ambiguity of applying a technique to your own messy, real dataset for the first time, alone, with a defense date already on the calendar.</p>
-</section>
-<section id="what-to-actually-do-about-this" class="level2">
-<h2 class="anchored" data-anchor-id="what-to-actually-do-about-this">What to Actually Do About This</h2>
+<section id="reporting-a-point-estimate-without-acknowledging-its-uncertainty" class="level2">
+<h2 class="anchored" data-anchor-id="reporting-a-point-estimate-without-acknowledging-its-uncertainty">Reporting a Point Estimate Without Acknowledging Its Uncertainty</h2>
+<p>The broader lesson the Bem episode left behind, echoed across the replication crisis literature that followed it, is that a single reported number, a mean difference, a coefficient, a correlation, is an estimate with real uncertainty around it, not a fixed fact. Presenting a result without any acknowledgment of that uncertainty, a confidence interval, an effect size with context, a discussion of the sample’s limitations, is the pattern that most consistently draws committee scrutiny, because it claims more certainty than the underlying data actually supports.</p>
 <ul>
-<li><strong>Before you run any test, write down the assumption it requires and check it explicitly</strong> — normality, independence, equal variances, whatever applies. This single habit would have caught two of the seven errors above.</li>
-<li><strong>Report effect size next to every significance test, not instead of it.</strong> Committees increasingly expect this as standard, not optional.</li>
-<li><strong>Match your statistical technique to your actual research design before you touch your data</strong>, not after you’ve already run something and are looking for a way to justify it.</li>
-<li><strong>Have someone outside your own head check your analysis section for verifiability</strong> — could a stranger reproduce what you did from what you wrote? If not, a committee member reading it will hit the same wall.</li>
+<li><strong>Correct for the number of tests you actually ran, not just the ones that came back significant.</strong> Running a dozen comparisons and reporting three is a version of the same pattern that undermined the Bem paper.</li>
+<li><strong>Decide your sample size and stopping point before you start collecting data.</strong> Checking partway through and stopping once a result looks good inflates false positives in a way that won’t show up in your final statistics.</li>
+<li><strong>Report uncertainty alongside every key estimate.</strong> A confidence interval or effect size with honest context is what separates a defensible finding from an overconfident one.</li>
 </ul>
-<p>We walk through one of these seven errors — multivariate methods and the specific problem of variables that overlap too much to analyze separately — with a full worked example in our piece on <a href="https://www.scapedatasolutions.com/blog/why-your-committee-keeps-flagging-multicollinearity">why your committee keeps flagging multicollinearity in your regression chapter</a>.</p>
-<p><strong>Sources cited in this article:</strong></p>
-<ul>
-<li>Thompson, B. (1994). “Common Methodology Mistakes in Dissertations, Revisited.” Presented at the Annual Meeting of the American Educational Research Association.</li>
-<li>“Evaluation of statistical methods applied in theses and dissertations in an Open, Distance and e-Learning University.” <em>PLOS ONE</em> (2025).</li>
-<li>“Methodological and Statistical Errors Found in Science Education Master’s Theses” (thesis error analysis).</li>
-<li>“Statistical analysis and reporting: common errors found during peer review and how to avoid them.” <em>Swiss Medical Weekly</em>.</li>
-</ul>
+<p>None of these mistakes require bad intentions to happen. They require exactly the kind of small, individually reasonable choices that made “Feeling the Future” one of the most cited cautionary tales in modern research.</p>
 </section>
 
 </main>

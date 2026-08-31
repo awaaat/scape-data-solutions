@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2026-08-31">
-<meta name="description" content="A plain-English explanation of multicollinearity — the single most common regression-chapter comment committees make — why it happens in real dissertation data, and what a defensible fix actually looks like.">
+<meta name="description" content="In 1967, economist James Longley took a small, real set of U.S. economic data and ran it through several different statistical software packages of the time, expecting roughly similar results. Instead, the coefficients swung wildly, even flipped sign, depending on tiny changes in how the numbers were rounded. His discovery became the textbook example of what happens when predictors are too tangled up with each other to trust, and it explains exactly what a committee is reacting to when they flag a model for multicollinearity.">
 
-<title>Why Your Committee Keeps Flagging ‘Multicollinearity’ in Your Regression Chapter (And How to Actually Fix It)</title>
+<title>Why Your Committee Keeps Flagging Multicollinearity</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -31,17 +31,17 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/clipboard/clipboard.min.js"></script>
-<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/popper.min.js"></script>
-<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/anchor.min.js"></script>
-<link href="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="why-your-committee-keeps-flagging-multicollinearity_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="why-your-committee-keeps-flagging-multicollinearity_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Why your committee keeps flagging multicollinearity_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Why your committee keeps flagging multicollinearity_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Why your committee keeps flagging multicollinearity_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Why your committee keeps flagging multicollinearity_files/libs/quarto-html/popper.min.js"></script>
+<script src="Why your committee keeps flagging multicollinearity_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Why your committee keeps flagging multicollinearity_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Why your committee keeps flagging multicollinearity_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Why your committee keeps flagging multicollinearity_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Why your committee keeps flagging multicollinearity_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Why your committee keeps flagging multicollinearity_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Why your committee keeps flagging multicollinearity_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -55,19 +55,18 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Why Your Committee Keeps Flagging ‘Multicollinearity’ in Your Regression Chapter (And How to Actually Fix It)</h1>
+<h1 class="title">Why Your Committee Keeps Flagging Multicollinearity</h1>
   <div class="quarto-categories">
+    <div class="quarto-category">Academic Writing</div>
     <div class="quarto-category">Dissertation Support</div>
-    <div class="quarto-category">Data Analysis</div>
-    <div class="quarto-category">Chapter 4</div>
     <div class="quarto-category">Statistics</div>
-    <div class="quarto-category">Non-Technical</div>
+    <div class="quarto-category">Regression</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    A plain-English explanation of multicollinearity — the single most common regression-chapter comment committees make — why it happens in real dissertation data, and what a defensible fix actually looks like.
+    In 1967, economist James Longley took a small, real set of U.S. economic data and ran it through several different statistical software packages of the time, expecting roughly similar results. Instead, the coefficients swung wildly, even flipped sign, depending on tiny changes in how the numbers were rounded. His discovery became the textbook example of what happens when predictors are too tangled up with each other to trust, and it explains exactly what a committee is reacting to when they flag a model for multicollinearity.
   </div>
 </div>
 
@@ -90,41 +89,30 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="the-comment-that-shows-up-in-almost-every-regression-chapter-review" class="level2">
-<h2 class="anchored" data-anchor-id="the-comment-that-shows-up-in-almost-every-regression-chapter-review">The Comment That Shows Up in Almost Every Regression Chapter Review</h2>
-<p>If you’ve submitted a regression analysis to a dissertation committee and gotten it back with a comment about “multicollinearity” or “variance inflation,” you’re in extremely common company. It’s one of the most frequently raised issues in quantitative dissertation reviews across social science, education, business, and health fields — and it’s also one of the most misunderstood, because the term sounds far more intimidating than the underlying problem actually is.</p>
-<p>Here’s the plain-language version: multicollinearity happens when two or more of the variables you’re using to predict an outcome are themselves closely related to each other. Your regression model can’t tell which of the overlapping variables deserves the credit for the relationship it’s finding, so it starts producing unstable, sometimes contradictory results — a variable that should logically have a positive relationship with your outcome shows up with a negative coefficient, or a variable you’re confident matters shows no statistical significance at all, not because it doesn’t matter, but because a closely related variable in the same model is absorbing its explanatory power.</p>
+<section id="the-dataset-that-broke-everyones-regression" class="level2">
+<h2 class="anchored" data-anchor-id="the-dataset-that-broke-everyones-regression">The Dataset That Broke Everyone’s Regression</h2>
+<p>In 1967, an economist named James Longley published a paper with a deceptively narrow sounding title, an appraisal of least squares programs for the electronic computer from the point of view of the user, in the <em>Journal of the American Statistical Association</em>. His method was simple enough to describe in a sentence: take a small, real set of U.S. economic data, six predictor variables like GNP, population, and the number of people in the armed forces, all measured across sixteen years, and run a standard linear regression through several different statistical software packages available at the time.</p>
+<p>What he found alarmed the field. The exact same data, run through different programs, or even the same program with the numbers rounded to a different number of decimal places, produced regression coefficients that shifted dramatically, in some cases changing sign entirely, implying the opposite relationship from what another run of the identical data had just shown. This wasn’t a bug in any particular piece of software. It was a mathematical consequence of the data itself: Longley’s six economic predictors were so highly correlated with each other, since GNP, population, and employment all move together over time in an economy, that the regression math became numerically unstable, wildly sensitive to tiny changes in input that should have been irrelevant.</p>
+<p>The Longley dataset became the standard textbook example of multicollinearity for exactly this reason. It wasn’t a contrived worst case. It was real, ordinary economic data, the kind any researcher might reasonably collect, that happened to contain predictors too tangled up with each other for a regression to reliably separate their individual effects. The lesson wasn’t that regression was broken. It was that a model can look statistically sound, run without errors, produce coefficients and p values exactly as expected, and still be quietly unreliable, because the predictors going into it aren’t independent enough for the math to tell their individual effects apart.</p>
 </section>
-<section id="why-this-shows-up-so-often-in-dissertation-data-specifically" class="level2">
-<h2 class="anchored" data-anchor-id="why-this-shows-up-so-often-in-dissertation-data-specifically">Why This Shows Up So Often in Dissertation Data Specifically</h2>
-<p>Multicollinearity isn’t a sign of sloppy research. It’s an almost inevitable consequence of how survey and organizational data actually gets collected. Researcher Bruce Thompson’s widely cited analysis of methodological errors across dissertations lists insufficient attention to multivariate relationships as one of seven recurring principles dissertation researchers get wrong — and multicollinearity is the specific, mechanical way that problem shows up when a candidate builds a regression model without checking how their predictor variables relate to each other first.</p>
-<p>Consider a common dissertation scenario: a study examining what predicts employee turnover intention, using job satisfaction, organizational commitment, and work engagement as three separate predictors. These three constructs are measured with different survey instruments and treated as conceptually distinct in the literature review. But in practice, they tend to be strongly correlated with each other in real survey data — an employee who reports high job satisfaction also tends to report high organizational commitment and high engagement, because all three are, to some degree, capturing overlapping aspects of how someone feels about their job. Put all three into one regression model and the model can no longer cleanly separate their individual effects, even though each one, on its own, might show a clear relationship with turnover intention.</p>
+<section id="what-multicollinearity-actually-breaks" class="level2">
+<h2 class="anchored" data-anchor-id="what-multicollinearity-actually-breaks">What Multicollinearity Actually Breaks</h2>
+<p>This is what a committee is reacting to when they flag a model for multicollinearity, even if the phrasing in the feedback sounds abstract. When two or more predictors in a regression are highly correlated with each other, the model can still fit the data well overall, the R squared and overall significance can look perfectly healthy, while the individual coefficients become unstable in exactly the way Longley’s data demonstrated. Standard errors inflate, sometimes dramatically, which can make a predictor that’s genuinely related to the outcome appear statistically non significant simply because the model can’t isolate its effect from an overlapping predictor. Coefficients can flip sign in a way that makes no theoretical sense, implying a predictor has a negative relationship with the outcome when every other piece of evidence, and common sense, suggests it should be positive.</p>
+<p>A student staring at a coefficient that contradicts their own hypothesis, with a significance test that looks fine on paper, is very often looking at exactly the instability Longley documented in 1967, not a genuine, surprising finding about the world.</p>
 </section>
-<section id="how-to-actually-check-for-it-before-your-committee-does" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-actually-check-for-it-before-your-committee-does">How to Actually Check for It (Before Your Committee Does)</h2>
-<p>The standard diagnostic is called the Variance Inflation Factor, or VIF — a single number, calculated for each predictor variable in your model, that tells you how much that variable’s relationship with your outcome is being distorted by its correlation with your other predictors. A VIF close to 1 means little to no problem. Values above 5, and especially above 10, are widely treated as a warning sign that a model has a real multicollinearity issue that needs to be addressed before the results can be trusted.</p>
-<p>Most standard statistical software — SPSS, R, Stata, Python’s statsmodels — can calculate VIF with a single additional command alongside a standard regression. There is no reasonable excuse for a Chapter 4 to reach a committee without this check having been run and reported, because the check itself takes minutes and the absence of it is one of the first things a quantitatively trained committee member will look for.</p>
+<section id="how-to-actually-check-for-it" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-actually-check-for-it">How to Actually Check for It</h2>
+<p>The standard diagnostic, the variance inflation factor, or VIF, doesn’t require understanding the underlying matrix algebra to use correctly. In plain terms, it answers a specific question for each predictor in a model: how much does knowing the other predictors already let you predict this one. A VIF close to 1 means a predictor is telling the model something genuinely independent. A VIF climbing past 5, and especially past 10, a threshold widely used across applied research, means that predictor is substantially redundant with the others already in the model, and its individual coefficient should be treated with real caution regardless of how clean its p value looks. Every major statistical software package calculates VIF with a single command, and running it before interpreting any regression coefficient is one of the cheapest, highest value checks available in applied statistics.</p>
 </section>
-<section id="what-to-actually-do-when-you-find-it" class="level2">
-<h2 class="anchored" data-anchor-id="what-to-actually-do-when-you-find-it">What to Actually Do When You Find It</h2>
-<p>Finding a multicollinearity problem doesn’t mean your model, or your study, is broken. It means you have a specific, well-documented decision to make, and several defensible options for making it:</p>
+<section id="what-to-actually-do-about-it" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-actually-do-about-it">What to Actually Do About It</h2>
+<p>Finding a high VIF isn’t the end of the analysis, it’s the start of a decision. The most direct fix is combining or simplifying: if two predictors are highly correlated because they’re really measuring overlapping aspects of the same underlying construct, a composite score, or dropping the less theoretically central of the two, often solves the problem cleanly and produces a more interpretable model besides. Where dropping a variable isn’t defensible theoretically, centering the predictors, subtracting the mean from each before entering them into the model, can meaningfully reduce a specific kind of collinearity introduced by interaction terms, without changing the substantive conclusions of the model. And where the correlated predictors are each individually important to the theory being tested, the honest path is reporting the collinearity explicitly, alongside the diagnostic, rather than presenting the individual coefficients as more precise and trustworthy than the data actually supports, which is the exact overconfidence Longley’s 1967 paper was written to warn against.</p>
 <ul>
-<li><strong>Combine the overlapping variables into a single composite measure</strong>, if your theoretical framework supports treating them as one underlying construct rather than several distinct ones. This is often the cleanest fix when, as in the turnover example above, the overlapping variables are conceptually close to begin with.</li>
-<li><strong>Drop one or more of the redundant variables</strong>, keeping the one most directly tied to your specific research question, and explicitly justify that choice in your methodology — reviewers respond far better to an acknowledged, reasoned trade-off than to an unaddressed VIF flag.</li>
-<li><strong>Use a regularized regression technique</strong> — Ridge, Lasso, or Elastic Net — which is specifically designed to handle correlated predictors by penalizing the model for leaning too hard on any single overlapping variable, rather than requiring you to remove variables by hand. This is a more advanced fix, but it’s increasingly accepted in quantitative dissertations precisely because it’s a well-documented, defensible solution to exactly this problem rather than an ad hoc workaround.</li>
-<li><strong>Report the multicollinearity check explicitly in your results section, even if your VIF values are fine.</strong> A committee member who doesn’t see the check reported has no way to know whether it wasn’t a problem or simply wasn’t checked — and the second interpretation is the one that generates a revision request.</li>
+<li><strong>Run a VIF check before you trust any individual coefficient.</strong> A model with strong overall fit can still contain individually unstable coefficients, exactly as Longley’s data demonstrated.</li>
+<li><strong>Treat a VIF above 5, and especially above 10, as a signal to investigate, not ignore.</strong> That’s the point where a predictor’s individual coefficient becomes substantially unreliable regardless of its p value.</li>
+<li><strong>Fix it with combination, removal, or centering, in that order of consideration.</strong> And where none of those are defensible, report the collinearity honestly rather than presenting an unstable coefficient as a precise finding.</li>
 </ul>
-</section>
-<section id="why-catching-this-early-matters-more-than-it-seems" class="level2">
-<h2 class="anchored" data-anchor-id="why-catching-this-early-matters-more-than-it-seems">Why Catching This Early Matters More Than It Seems</h2>
-<p>A regression model with an unaddressed multicollinearity problem doesn’t just risk a critical committee comment. It risks something more specific and more damaging: a finding that looks statistically clean in a first draft but falls apart, or reverses direction, when a committee member asks you to rerun the model with one variable removed — which is exactly the kind of question a multicollinearity-aware reviewer asks first. Catching and addressing it before the defense, rather than being asked to address it live in front of your committee, is the difference between a planned revision and an uncomfortable, unplanned one.</p>
-<p>We walk through the full mechanics of Ridge, Lasso, and Elastic Net regression — with real formulas, a worked hand-calculation, and a working example of exactly this overlapping-variable problem — in our companion piece on <a href="https://www.scapedatasolutions.com/blog/ridge-lasso-elastic-net-regression">regularized regression</a>, and we cover how much data you need to run a defensible regression model in the first place in <a href="https://www.scapedatasolutions.com/blog/how-many-participants-regression-chapter">how many participants do you actually need for your regression chapter</a>.</p>
-<p><strong>Sources cited in this article:</strong></p>
-<ul>
-<li>Thompson, B. (1994). “Common Methodology Mistakes in Dissertations, Revisited.”</li>
-<li>scikit-learn documentation on Ridge, Lasso, and Elastic Net regularization</li>
-<li>Standard VIF/multicollinearity diagnostic thresholds as used in applied regression methodology (Kutner, Nachtsheim, &amp; Neter, <em>Applied Linear Statistical Models</em>)</li>
-</ul>
+<p>Multicollinearity is one specific version of a broader problem, correlated measurements hiding how many genuinely distinct things are actually being captured, which shows up just as often in survey design. We cover that side of it in <a href="https://www.scapedatasolutions.com/blog/why-surveys-fail-factor-analysis">why surveys fail: what factor analysis actually reveals</a>.</p>
 </section>
 
 </main>

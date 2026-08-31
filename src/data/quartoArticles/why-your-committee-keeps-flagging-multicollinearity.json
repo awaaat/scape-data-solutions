@@ -1,7 +1,7 @@
 {
-  "title": "Why Your Committee Keeps Flagging 'Multicollinearity' in Your Regression Chapter (And How to Actually Fix It)",
-  "excerpt": "A plain-English explanation of multicollinearity — the single most common regression-chapter comment committees make — why it happens in real dissertation data, and what a defensible fix actually looks like.",
-  "category": "Dissertation Support",
+  "title": "Why Your Committee Keeps Flagging Multicollinearity",
+  "excerpt": "In 1967, a small real economic dataset broke every regression software package of its time. That dataset is the textbook example of exactly what your committee is reacting to.",
+  "category": "Academic Writing",
   "publishDate": "2026-08-31",
   "sources": []
 }

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2026-08-31">
-<meta name="description" content="In 2004, the Council of Graduate Schools launched a seven year study across 21 major research universities to find out why so many doctoral students who pass every exam and clear every hurdle still never finish. The answer wasn’t intelligence or work ethic. It was three specific, fixable gaps that show up in almost every program that tracks them. Grounded in the CGS PhD Completion Project, and research on advising quality and doctoral attrition.">
+<meta name="description" content="In 1904, psychologist Charles Spearman noticed something odd in a stack of correlated school test scores: children who did well on one subject tended to do well on almost all of them. Chasing that pattern led him to invent factor analysis and discover what he called general intelligence. The same method he built to find a hidden variable behind correlated test scores is exactly what exposes why so many dissertation surveys quietly fail before the data is even analyzed.">
 
-<title>Why 43 Percent of Doctoral Students Never Finish</title>
+<title>Why Surveys Fail: What Factor Analysis Actually Reveals</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -31,17 +31,17 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="Why 43 percent of doctoral students never finish_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/popper.min.js"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Why 43 percent of doctoral students never finish_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Why 43 percent of doctoral students never finish_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Why 43 percent of doctoral students never finish_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Why 43 percent of doctoral students never finish_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Why 43 percent of doctoral students never finish_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Why 43 percent of doctoral students never finish_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/popper.min.js"></script>
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Why surveys fail what factor analysis actually reveals_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Why surveys fail what factor analysis actually reveals_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -55,17 +55,18 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Why 43 Percent of Doctoral Students Never Finish</h1>
+<h1 class="title">Why Surveys Fail: What Factor Analysis Actually Reveals</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Academic Writing</div>
     <div class="quarto-category">Dissertation Support</div>
-    <div class="quarto-category">Graduate School</div>
+    <div class="quarto-category">Survey Design</div>
+    <div class="quarto-category">Statistics</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    In 2004, the Council of Graduate Schools launched a seven year study across 21 major research universities to find out why so many doctoral students who pass every exam and clear every hurdle still never finish. The answer wasn’t intelligence or work ethic. It was three specific, fixable gaps that show up in almost every program that tracks them. Grounded in the CGS PhD Completion Project, and research on advising quality and doctoral attrition.
+    In 1904, psychologist Charles Spearman noticed something odd in a stack of correlated school test scores: children who did well on one subject tended to do well on almost all of them. Chasing that pattern led him to invent factor analysis and discover what he called general intelligence. The same method he built to find a hidden variable behind correlated test scores is exactly what exposes why so many dissertation surveys quietly fail before the data is even analyzed.
   </div>
 </div>
 
@@ -88,37 +89,32 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="the-study-that-tracked-students-instead-of-guessing-about-them" class="level2">
-<h2 class="anchored" data-anchor-id="the-study-that-tracked-students-instead-of-guessing-about-them">The Study That Tracked Students Instead of Guessing About Them</h2>
-<p>For decades, the standard explanation for why doctoral students dropped out was some version of “it wasn’t the right fit,” a phrase vague enough to explain nothing. In 2004, the <a href="https://cgsnet.org/">Council of Graduate Schools</a> launched something no one had really done at scale before: a seven year study, funded in part by the Ford Foundation and Pfizer, tracking actual completion and attrition data across 21 major research universities and tens of thousands of doctoral students, broken out by field, funding type, and program structure.</p>
-<p>The finding that got the most attention was the topline number, an average completion rate hovering around 57 percent across ten years, meaning close to half of students who start a doctoral program never finish it. What mattered more was what the study found underneath that number. Completion rates weren’t primarily explained by GRE scores, undergraduate GPA, or any measure of raw ability. Programs with structurally similar, academically similar students still produced very different completion rates depending on a small number of specific, changeable factors: how early students were folded into a real research or writing community, how structured the milestones were between admission and the dissertation defense, and how consistent the funding and advising support stayed across the years it actually took to finish.</p>
-<p>Universities that redesigned around those findings saw real movement. Structured cohort models, regular milestone check ins instead of one distant deadline, and funding tied to progress rather than to a single grant year all showed measurable gains in completion within the study’s own follow up data. The dropout wasn’t a mystery about individual grit. It was a pattern, and patterns can be designed around.</p>
-<p>That study was about institutions. The three things it found are just as true for a single student working alone on a dissertation right now. Isolation is the thing that actually predicts quitting, not difficulty. The advisor relationship functions as the single highest leverage asset a doctoral student has, and it usually goes unmanaged. And treating the dissertation as one enormous, undated task instead of a sequence of real milestones is exactly the structural gap the highest attrition programs shared.</p>
+<section id="the-correlated-scores-that-led-to-a-new-method" class="level2">
+<h2 class="anchored" data-anchor-id="the-correlated-scores-that-led-to-a-new-method">The Correlated Scores That Led to a New Method</h2>
+<p>In 1904, English psychologist Charles Spearman was looking at something that seemed simple on its surface: school children’s scores across different academic subjects, along with a handful of sensory discrimination tasks. He noticed that a child’s performance across seemingly unrelated tests, classics, French, mathematics, even a test of pitch discrimination, tended to correlate with each other far more than chance would predict. A child who did well on one tended to do reasonably well on most of the others, even when the subjects had no obvious content in common.</p>
+<p>Spearman’s insight was that this pattern of correlations implied something underneath the individual test scores, a smaller number of hidden factors that were actually driving performance across all of them, rather than each test measuring something entirely separate. He built a mathematical method to extract that hidden structure directly from the pattern of correlations, and what came out was a single dominant factor running through nearly every test, which he called general intelligence, or g. The method he invented to find it, factor analysis, became one of the most widely used tools in the social sciences, not because it settled the intelligence debate, which is still argued over today, but because the underlying technique solved a much broader problem: how do you tell, from a set of correlated measurements, how many genuinely distinct things you’re actually measuring.</p>
+<p>That’s the exact question a dissertation survey runs into, usually without anyone framing it that way until the data is already collected. A researcher writes twenty survey items believing they’re capturing four distinct constructs, motivation, satisfaction, engagement, and intent to continue, and only discovers through factor analysis, after the data comes in, that several of those supposedly separate constructs are actually measuring the same underlying thing, or worse, that items intended to measure one construct are quietly measuring something else entirely, an artifact of how the survey was worded rather than anything real about the people who took it.</p>
 </section>
-<section id="its-isolation-not-difficulty-that-predicts-quitting" class="level2">
-<h2 class="anchored" data-anchor-id="its-isolation-not-difficulty-that-predicts-quitting">It’s Isolation, Not Difficulty, That Predicts Quitting</h2>
-<p>Ask a student who left a doctoral program why, and the answer is rarely “the material was too hard.” Difficulty is what gets blamed after the fact. The CGS research and the doctoral attrition literature built on it point somewhere else: students who go quiet, who stop showing up to a lab meeting, a writing group, or a regular check in with an advisor, are the ones who leave, regardless of how strong their earlier coursework performance was. Attrition doesn’t usually happen in a dramatic moment. It happens in the gap between one silent semester and the next, when nobody, including the student, is tracking whether real progress is being made.</p>
-<p>The fix that shows up across the highest completing programs in the CGS data is almost boringly simple: a standing, scheduled touchpoint that exists whether or not there’s exciting progress to report. A weekly or biweekly writing group, a monthly advisor meeting with a specific deliverable attached, even a peer accountability check in, all interrupt the exact mechanism that predicts dropping out, which is disappearing long enough that starting again feels harder than not starting at all.</p>
+<section id="correlated-items-might-be-measuring-fewer-things-than-you-think" class="level2">
+<h2 class="anchored" data-anchor-id="correlated-items-might-be-measuring-fewer-things-than-you-think">Correlated Items Might Be Measuring Fewer Things Than You Think</h2>
+<p>The most common way a survey fails isn’t a low response rate or a bad sample. It’s discovering, at the analysis stage, that the constructs a researcher designed the survey around don’t hold together the way the theory assumed. Spearman’s original insight applies directly here: if items intended to measure four separate constructs correlate with each other about as strongly across constructs as they do within them, factor analysis will reveal that the data doesn’t actually support four distinct factors, no matter how carefully the survey was designed around four separate theoretical constructs on paper.</p>
+<p>This isn’t a failure of the researcher’s theory necessarily. It’s a mismatch between the theory and what the specific wording of the specific items actually captured in that specific sample. Running a factor analysis before committing to a final analysis plan, rather than after, is the difference between discovering this mismatch early enough to address it in the writing and discovering it during a committee meeting.</p>
 </section>
-<section id="the-advisor-relationship-is-the-highest-leverage-asset-you-have-and-its-usually-unmanaged" class="level2">
-<h2 class="anchored" data-anchor-id="the-advisor-relationship-is-the-highest-leverage-asset-you-have-and-its-usually-unmanaged">The Advisor Relationship Is the Highest Leverage Asset You Have, and It’s Usually Unmanaged</h2>
-<p>Doctoral students tend to treat the advisor relationship as something that happens to them rather than something they actively manage. Research on doctoral attrition consistently finds advising quality, not program prestige or funding level, as one of the strongest predictors of whether a student finishes, and yet most students have no explicit agreement with their advisor about how often they’ll meet, what a reasonable turnaround time on feedback looks like, or what a completed chapter actually needs to contain before it’s considered done.</p>
-<p>That gap is expensive precisely because it’s invisible until it isn’t. A student can go months assuming silence from an advisor means things are fine, when it more often means the relationship simply isn’t being actively managed by either side. The fix costs nothing but a slightly uncomfortable conversation early on: a clear, explicit understanding of meeting cadence, feedback turnaround, and what “done” looks like for each chapter, treated as an asset worth protecting rather than a relationship left to run on its own.</p>
+<section id="bad-wording-can-create-a-fake-factor" class="level2">
+<h2 class="anchored" data-anchor-id="bad-wording-can-create-a-fake-factor">Bad Wording Can Create a Fake Factor</h2>
+<p>There’s a version of this problem that’s more insidious than constructs blending together: a factor that shows up in the analysis but doesn’t correspond to anything real about the people being measured. The classic example is reverse worded items, questions deliberately phrased in the opposite direction from the rest of a scale to catch inattentive respondents. In practice, these items frequently load onto their own separate factor in the analysis, not because they’re measuring something psychologically distinct, but because answering a negatively worded question requires a different, more effortful kind of processing than answering a positively worded one, and that processing difference alone is enough to produce a spurious factor. A researcher who doesn’t recognize this can mistake a wording artifact for a genuine third construct, building an entire discussion section around a factor that exists only because of how the questions were phrased.</p>
+<p>This is exactly the kind of finding that gets a chapter sent back, not because the statistics were run incorrectly, but because the interpretation didn’t account for a well documented artifact of survey construction that the factor analysis itself surfaced clearly, if anyone had checked the item content of the factor that emerged.</p>
 </section>
-<section id="turning-one-deadline-into-a-real-sequence-of-milestones" class="level2">
-<h2 class="anchored" data-anchor-id="turning-one-deadline-into-a-real-sequence-of-milestones">Turning One Deadline Into a Real Sequence of Milestones</h2>
-<p>The programs with the worst completion rates in the CGS study tended to share a specific structural gap: a long, undifferentiated stretch of time between coursework and a single, distant dissertation deadline, with no required checkpoints in between. A dissertation framed as one enormous task due at some point in the future behaves exactly like any other project with no intermediate deadlines. Progress becomes optional right up until it’s very late, and by the time that becomes obvious, months or years of silent drift have already happened.</p>
-<p>The programs that improved completion rates replaced that single distant deadline with a real sequence: a proposal defense by a specific date, a completed literature review chapter by another, a data collection or analysis milestone by a third, each with someone other than the student checking in on it. A student working independently can build the same structure without institutional help, by treating each chapter as its own project with its own deadline and its own accountability, rather than treating the entire dissertation as one task that only becomes real in the final year.</p>
-</section>
-<section id="what-the-cgs-study-actually-teaches" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-cgs-study-actually-teaches">What the CGS Study Actually Teaches</h2>
-<p>The Council of Graduate Schools didn’t find that doctoral attrition was a mystery about which students had the right stuff. It found a pattern, isolation predicting dropout more than difficulty, an advisor relationship left unmanaged, and a single distant deadline standing in for a real sequence of milestones, repeating across dozens of universities and thousands of students.</p>
+<section id="a-factor-loading-is-a-number-with-a-margin-not-a-fixed-truth" class="level2">
+<h2 class="anchored" data-anchor-id="a-factor-loading-is-a-number-with-a-margin-not-a-fixed-truth">A Factor Loading Is a Number With a Margin, Not a Fixed Truth</h2>
+<p>Factor structures found in one sample don’t automatically hold in another, and treating a single factor analysis output as a permanent, settled fact is a common way dissertation researchers overstate what their data actually shows. The same logic that applies to any statistical estimate applies here: a factor loading calculated from one sample carries some amount of sampling variability, and a structure that looks clean in one dataset can shift meaningfully if the study were run again on a different sample from the same population.</p>
+<p>The practical version of this caution is straightforward. Where the sample size allows for it, splitting the data and confirming the factor structure holds across both halves, or running a confirmatory factor analysis on a portion of the data held back from the initial exploratory analysis, gives a far more defensible answer than reporting a single exploratory result as though it were a fixed, discovered truth the way Spearman initially treated g, a claim that took decades of further research, and plenty of legitimate criticism, to properly qualify.</p>
 <ul>
-<li><strong>Build a standing, scheduled touchpoint that exists whether or not you have exciting progress.</strong> A writing group, a monthly advisor meeting, a peer check in. The specific format matters less than the fact that it happens on a schedule you don’t control moment to moment.</li>
-<li><strong>Make the advisor relationship explicit instead of assumed.</strong> Agree on meeting cadence, feedback turnaround time, and what counts as a finished chapter, early, before ambiguity has a chance to become months of silent drift.</li>
-<li><strong>Break the dissertation into real, dated milestones, not one distant deadline.</strong> A proposal defense date, a chapter completion date, a data milestone, each treated as its own small project with its own accountability.</li>
+<li><strong>Run your factor analysis before you finalize your analysis plan, not after.</strong> Discovering a construct mismatch during the writing stage is a manageable revision. Discovering it in a committee meeting is a much harder conversation.</li>
+<li><strong>Check the item content of any factor that emerges, especially small ones.</strong> A factor built mostly from reverse worded items is very often a wording artifact, not a genuine third construct, and treating it as real is a common reason a chapter gets flagged.</li>
+<li><strong>Treat your factor structure as an estimate, not a fixed fact.</strong> Splitting your sample or reserving data for a confirmatory check gives a far more defensible result than a single exploratory analysis presented as settled.</li>
 </ul>
-<p>None of this fixes the parts of a dissertation that are genuinely hard: designing a defensible study, running the right analysis, writing something a committee will accept. We work through several of the specific statistical trip points that get dissertations sent back in <a href="https://www.scapedatasolutions.com/blog/seven-statistical-mistakes-that-get-dissertations-sent-back">seven statistical mistakes that get dissertations sent back</a>, and the sample size question that stalls a huge share of proposals in <a href="https://www.scapedatasolutions.com/blog/how-many-participants-regression-chapter">how many participants do you actually need for your regression chapter</a>.</p>
+<p>The same instability shows up in regression models when predictors overlap too heavily to separate their individual effects, which we cover in <a href="https://www.scapedatasolutions.com/blog/why-your-committee-keeps-flagging-multicollinearity">why your committee keeps flagging multicollinearity</a>.</p>
 </section>
 
 </main>
