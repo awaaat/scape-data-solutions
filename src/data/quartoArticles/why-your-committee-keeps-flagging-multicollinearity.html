@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-08-31">
+<meta name="description" content="A plain-English explanation of multicollinearity — the single most common regression-chapter comment committees make — why it happens in real dissertation data, and what a defensible fix actually looks like.">
+
+<title>Why Your Committee Keeps Flagging ‘Multicollinearity’ in Your Regression Chapter (And How to Actually Fix It)</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/clipboard/clipboard.min.js"></script>
+<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/popper.min.js"></script>
+<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/anchor.min.js"></script>
+<link href="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="why-your-committee-keeps-flagging-multicollinearity_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="why-your-committee-keeps-flagging-multicollinearity_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="why-your-committee-keeps-flagging-multicollinearity_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="why-your-committee-keeps-flagging-multicollinearity_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Why Your Committee Keeps Flagging ‘Multicollinearity’ in Your Regression Chapter (And How to Actually Fix It)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Dissertation Support</div>
+    <div class="quarto-category">Data Analysis</div>
+    <div class="quarto-category">Chapter 4</div>
+    <div class="quarto-category">Statistics</div>
+    <div class="quarto-category">Non-Technical</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A plain-English explanation of multicollinearity — the single most common regression-chapter comment committees make — why it happens in real dissertation data, and what a defensible fix actually looks like.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 31, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-comment-that-shows-up-in-almost-every-regression-chapter-review" class="level2">
+<h2 class="anchored" data-anchor-id="the-comment-that-shows-up-in-almost-every-regression-chapter-review">The Comment That Shows Up in Almost Every Regression Chapter Review</h2>
+<p>If you’ve submitted a regression analysis to a dissertation committee and gotten it back with a comment about “multicollinearity” or “variance inflation,” you’re in extremely common company. It’s one of the most frequently raised issues in quantitative dissertation reviews across social science, education, business, and health fields — and it’s also one of the most misunderstood, because the term sounds far more intimidating than the underlying problem actually is.</p>
+<p>Here’s the plain-language version: multicollinearity happens when two or more of the variables you’re using to predict an outcome are themselves closely related to each other. Your regression model can’t tell which of the overlapping variables deserves the credit for the relationship it’s finding, so it starts producing unstable, sometimes contradictory results — a variable that should logically have a positive relationship with your outcome shows up with a negative coefficient, or a variable you’re confident matters shows no statistical significance at all, not because it doesn’t matter, but because a closely related variable in the same model is absorbing its explanatory power.</p>
+</section>
+<section id="why-this-shows-up-so-often-in-dissertation-data-specifically" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-shows-up-so-often-in-dissertation-data-specifically">Why This Shows Up So Often in Dissertation Data Specifically</h2>
+<p>Multicollinearity isn’t a sign of sloppy research. It’s an almost inevitable consequence of how survey and organizational data actually gets collected. Researcher Bruce Thompson’s widely cited analysis of methodological errors across dissertations lists insufficient attention to multivariate relationships as one of seven recurring principles dissertation researchers get wrong — and multicollinearity is the specific, mechanical way that problem shows up when a candidate builds a regression model without checking how their predictor variables relate to each other first.</p>
+<p>Consider a common dissertation scenario: a study examining what predicts employee turnover intention, using job satisfaction, organizational commitment, and work engagement as three separate predictors. These three constructs are measured with different survey instruments and treated as conceptually distinct in the literature review. But in practice, they tend to be strongly correlated with each other in real survey data — an employee who reports high job satisfaction also tends to report high organizational commitment and high engagement, because all three are, to some degree, capturing overlapping aspects of how someone feels about their job. Put all three into one regression model and the model can no longer cleanly separate their individual effects, even though each one, on its own, might show a clear relationship with turnover intention.</p>
+</section>
+<section id="how-to-actually-check-for-it-before-your-committee-does" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-actually-check-for-it-before-your-committee-does">How to Actually Check for It (Before Your Committee Does)</h2>
+<p>The standard diagnostic is called the Variance Inflation Factor, or VIF — a single number, calculated for each predictor variable in your model, that tells you how much that variable’s relationship with your outcome is being distorted by its correlation with your other predictors. A VIF close to 1 means little to no problem. Values above 5, and especially above 10, are widely treated as a warning sign that a model has a real multicollinearity issue that needs to be addressed before the results can be trusted.</p>
+<p>Most standard statistical software — SPSS, R, Stata, Python’s statsmodels — can calculate VIF with a single additional command alongside a standard regression. There is no reasonable excuse for a Chapter 4 to reach a committee without this check having been run and reported, because the check itself takes minutes and the absence of it is one of the first things a quantitatively trained committee member will look for.</p>
+</section>
+<section id="what-to-actually-do-when-you-find-it" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-actually-do-when-you-find-it">What to Actually Do When You Find It</h2>
+<p>Finding a multicollinearity problem doesn’t mean your model, or your study, is broken. It means you have a specific, well-documented decision to make, and several defensible options for making it:</p>
+<ul>
+<li><strong>Combine the overlapping variables into a single composite measure</strong>, if your theoretical framework supports treating them as one underlying construct rather than several distinct ones. This is often the cleanest fix when, as in the turnover example above, the overlapping variables are conceptually close to begin with.</li>
+<li><strong>Drop one or more of the redundant variables</strong>, keeping the one most directly tied to your specific research question, and explicitly justify that choice in your methodology — reviewers respond far better to an acknowledged, reasoned trade-off than to an unaddressed VIF flag.</li>
+<li><strong>Use a regularized regression technique</strong> — Ridge, Lasso, or Elastic Net — which is specifically designed to handle correlated predictors by penalizing the model for leaning too hard on any single overlapping variable, rather than requiring you to remove variables by hand. This is a more advanced fix, but it’s increasingly accepted in quantitative dissertations precisely because it’s a well-documented, defensible solution to exactly this problem rather than an ad hoc workaround.</li>
+<li><strong>Report the multicollinearity check explicitly in your results section, even if your VIF values are fine.</strong> A committee member who doesn’t see the check reported has no way to know whether it wasn’t a problem or simply wasn’t checked — and the second interpretation is the one that generates a revision request.</li>
+</ul>
+</section>
+<section id="why-catching-this-early-matters-more-than-it-seems" class="level2">
+<h2 class="anchored" data-anchor-id="why-catching-this-early-matters-more-than-it-seems">Why Catching This Early Matters More Than It Seems</h2>
+<p>A regression model with an unaddressed multicollinearity problem doesn’t just risk a critical committee comment. It risks something more specific and more damaging: a finding that looks statistically clean in a first draft but falls apart, or reverses direction, when a committee member asks you to rerun the model with one variable removed — which is exactly the kind of question a multicollinearity-aware reviewer asks first. Catching and addressing it before the defense, rather than being asked to address it live in front of your committee, is the difference between a planned revision and an uncomfortable, unplanned one.</p>
+<p>We walk through the full mechanics of Ridge, Lasso, and Elastic Net regression — with real formulas, a worked hand-calculation, and a working example of exactly this overlapping-variable problem — in our companion piece on <a href="https://www.scapedatasolutions.com/blog/ridge-lasso-elastic-net-regression">regularized regression</a>, and we cover how much data you need to run a defensible regression model in the first place in <a href="https://www.scapedatasolutions.com/blog/how-many-participants-regression-chapter">how many participants do you actually need for your regression chapter</a>.</p>
+<p><strong>Sources cited in this article:</strong></p>
+<ul>
+<li>Thompson, B. (1994). “Common Methodology Mistakes in Dissertations, Revisited.”</li>
+<li>scikit-learn documentation on Ridge, Lasso, and Elastic Net regularization</li>
+<li>Standard VIF/multicollinearity diagnostic thresholds as used in applied regression methodology (Kutner, Nachtsheim, &amp; Neter, <em>Applied Linear Statistical Models</em>)</li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
