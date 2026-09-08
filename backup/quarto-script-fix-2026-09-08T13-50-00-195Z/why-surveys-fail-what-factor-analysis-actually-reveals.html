@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-08-31">
+<meta name="description" content="In 1904, psychologist Charles Spearman noticed something odd in a stack of correlated school test scores: children who did well on one subject tended to do well on almost all of them. Chasing that pattern led him to invent factor analysis and discover what he called general intelligence. The same method he built to find a hidden variable behind correlated test scores is exactly what exposes why so many dissertation surveys quietly fail before the data is even analyzed.">
+
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/popper.min.js"></script>
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Why surveys fail what factor analysis actually reveals_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Why surveys fail what factor analysis actually reveals_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Why surveys fail what factor analysis actually reveals_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Why surveys fail what factor analysis actually reveals_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Why Surveys Fail: What Factor Analysis Actually Reveals</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Academic Writing</div>
+    <div class="quarto-category">Dissertation Support</div>
+    <div class="quarto-category">Survey Design</div>
+    <div class="quarto-category">Statistics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    In 1904, psychologist Charles Spearman noticed something odd in a stack of correlated school test scores: children who did well on one subject tended to do well on almost all of them. Chasing that pattern led him to invent factor analysis and discover what he called general intelligence. The same method he built to find a hidden variable behind correlated test scores is exactly what exposes why so many dissertation surveys quietly fail before the data is even analyzed.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 31, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-correlated-scores-that-led-to-a-new-method" class="level2">
+<h2 class="anchored" data-anchor-id="the-correlated-scores-that-led-to-a-new-method">The Correlated Scores That Led to a New Method</h2>
+<p>In 1904, English psychologist Charles Spearman was looking at something that seemed simple on its surface: school children’s scores across different academic subjects, along with a handful of sensory discrimination tasks. He noticed that a child’s performance across seemingly unrelated tests, classics, French, mathematics, even a test of pitch discrimination, tended to correlate with each other far more than chance would predict. A child who did well on one tended to do reasonably well on most of the others, even when the subjects had no obvious content in common.</p>
+<p>Spearman’s insight was that this pattern of correlations implied something underneath the individual test scores, a smaller number of hidden factors that were actually driving performance across all of them, rather than each test measuring something entirely separate. He built a mathematical method to extract that hidden structure directly from the pattern of correlations, and what came out was a single dominant factor running through nearly every test, which he called general intelligence, or g. The method he invented to find it, factor analysis, became one of the most widely used tools in the social sciences, not because it settled the intelligence debate, which is still argued over today, but because the underlying technique solved a much broader problem: how do you tell, from a set of correlated measurements, how many genuinely distinct things you’re actually measuring.</p>
+<p>That’s the exact question a dissertation survey runs into, usually without anyone framing it that way until the data is already collected. A researcher writes twenty survey items believing they’re capturing four distinct constructs, motivation, satisfaction, engagement, and intent to continue, and only discovers through factor analysis, after the data comes in, that several of those supposedly separate constructs are actually measuring the same underlying thing, or worse, that items intended to measure one construct are quietly measuring something else entirely, an artifact of how the survey was worded rather than anything real about the people who took it.</p>
+</section>
+<section id="correlated-items-might-be-measuring-fewer-things-than-you-think" class="level2">
+<h2 class="anchored" data-anchor-id="correlated-items-might-be-measuring-fewer-things-than-you-think">Correlated Items Might Be Measuring Fewer Things Than You Think</h2>
+<p>The most common way a survey fails isn’t a low response rate or a bad sample. It’s discovering, at the analysis stage, that the constructs a researcher designed the survey around don’t hold together the way the theory assumed. Spearman’s original insight applies directly here: if items intended to measure four separate constructs correlate with each other about as strongly across constructs as they do within them, factor analysis will reveal that the data doesn’t actually support four distinct factors, no matter how carefully the survey was designed around four separate theoretical constructs on paper.</p>
+<p>This isn’t a failure of the researcher’s theory necessarily. It’s a mismatch between the theory and what the specific wording of the specific items actually captured in that specific sample. Running a factor analysis before committing to a final analysis plan, rather than after, is the difference between discovering this mismatch early enough to address it in the writing and discovering it during a committee meeting.</p>
+</section>
+<section id="bad-wording-can-create-a-fake-factor" class="level2">
+<h2 class="anchored" data-anchor-id="bad-wording-can-create-a-fake-factor">Bad Wording Can Create a Fake Factor</h2>
+<p>There’s a version of this problem that’s more insidious than constructs blending together: a factor that shows up in the analysis but doesn’t correspond to anything real about the people being measured. The classic example is reverse worded items, questions deliberately phrased in the opposite direction from the rest of a scale to catch inattentive respondents. In practice, these items frequently load onto their own separate factor in the analysis, not because they’re measuring something psychologically distinct, but because answering a negatively worded question requires a different, more effortful kind of processing than answering a positively worded one, and that processing difference alone is enough to produce a spurious factor. A researcher who doesn’t recognize this can mistake a wording artifact for a genuine third construct, building an entire discussion section around a factor that exists only because of how the questions were phrased.</p>
+<p>This is exactly the kind of finding that gets a chapter sent back, not because the statistics were run incorrectly, but because the interpretation didn’t account for a well documented artifact of survey construction that the factor analysis itself surfaced clearly, if anyone had checked the item content of the factor that emerged.</p>
+</section>
+<section id="a-factor-loading-is-a-number-with-a-margin-not-a-fixed-truth" class="level2">
+<h2 class="anchored" data-anchor-id="a-factor-loading-is-a-number-with-a-margin-not-a-fixed-truth">A Factor Loading Is a Number With a Margin, Not a Fixed Truth</h2>
+<p>Factor structures found in one sample don’t automatically hold in another, and treating a single factor analysis output as a permanent, settled fact is a common way dissertation researchers overstate what their data actually shows. The same logic that applies to any statistical estimate applies here: a factor loading calculated from one sample carries some amount of sampling variability, and a structure that looks clean in one dataset can shift meaningfully if the study were run again on a different sample from the same population.</p>
+<p>The practical version of this caution is straightforward. Where the sample size allows for it, splitting the data and confirming the factor structure holds across both halves, or running a confirmatory factor analysis on a portion of the data held back from the initial exploratory analysis, gives a far more defensible answer than reporting a single exploratory result as though it were a fixed, discovered truth the way Spearman initially treated g, a claim that took decades of further research, and plenty of legitimate criticism, to properly qualify.</p>
+<ul>
+<li><strong>Run your factor analysis before you finalize your analysis plan, not after.</strong> Discovering a construct mismatch during the writing stage is a manageable revision. Discovering it in a committee meeting is a much harder conversation.</li>
+<li><strong>Check the item content of any factor that emerges, especially small ones.</strong> A factor built mostly from reverse worded items is very often a wording artifact, not a genuine third construct, and treating it as real is a common reason a chapter gets flagged.</li>
+<li><strong>Treat your factor structure as an estimate, not a fixed fact.</strong> Splitting your sample or reserving data for a confirmatory check gives a far more defensible result than a single exploratory analysis presented as settled.</li>
+</ul>
+<p>The same instability shows up in regression models when predictors overlap too heavily to separate their individual effects, which we cover in <a href="https://www.scapedatasolutions.com/blog/why-your-committee-keeps-flagging-multicollinearity">why your committee keeps flagging multicollinearity</a>.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

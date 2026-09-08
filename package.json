@@ -40,6 +40,7 @@
     "puppeteer": "^24.43.1",
     "puppeteer-core": "^24.43.1",
     "serve-handler": "^6.1.7",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vite-plugin-sitemap": "^0.8.2"
   }
 }

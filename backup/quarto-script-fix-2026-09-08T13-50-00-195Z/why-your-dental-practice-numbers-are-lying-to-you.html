@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-08-31">
+<meta name="description" content="Small Smiles Dental Centers grew into one of the largest pediatric dental chains in the country by paying dentists bonuses tied to procedure volume. In 2010 the company agreed to pay 24 million dollars to settle federal and state fraud allegations, and by 2016 it was in bankruptcy. The same pattern, a growth number hiding the real reason patients leave, a dashboard where correlated metrics get mistaken for causes, and a single confident forecast standing in for a real range, is quietly costing ordinary dental practices patients and revenue today. Grounded in a BMC Oral Health study of patient loyalty, a Westcliff International Journal of Applied Research analysis of retention drivers, and Douglas Hubbard’s work on Monte Carlo forecasting.">
+
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Why your dental practice numbers are lying to you_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Why your dental practice numbers are lying to you_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Why your dental practice numbers are lying to you_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Why your dental practice numbers are lying to you_files/libs/quarto-html/popper.min.js"></script>
+<script src="Why your dental practice numbers are lying to you_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Why your dental practice numbers are lying to you_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Why your dental practice numbers are lying to you_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Why your dental practice numbers are lying to you_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Why your dental practice numbers are lying to you_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Why your dental practice numbers are lying to you_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Why your dental practice numbers are lying to you_files/libs/bootstrap/bootstrap-72e56b457523a0690d5c1d29925df435.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Why Your Dental Practice’s Numbers Are Lying to You</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Business Analytics</div>
+    <div class="quarto-category">Dental Practice Management</div>
+    <div class="quarto-category">Customer Retention</div>
+    <div class="quarto-category">Small Business</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Small Smiles Dental Centers grew into one of the largest pediatric dental chains in the country by paying dentists bonuses tied to procedure volume. In 2010 the company agreed to pay 24 million dollars to settle federal and state fraud allegations, and by 2016 it was in bankruptcy. The same pattern, a growth number hiding the real reason patients leave, a dashboard where correlated metrics get mistaken for causes, and a single confident forecast standing in for a real range, is quietly costing ordinary dental practices patients and revenue today. Grounded in a BMC Oral Health study of patient loyalty, a Westcliff International Journal of Applied Research analysis of retention drivers, and Douglas Hubbard’s work on Monte Carlo forecasting.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 31, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-chain-that-grew-by-watching-the-wrong-number" class="level2">
+<h2 class="anchored" data-anchor-id="the-chain-that-grew-by-watching-the-wrong-number">The Chain That Grew by Watching the Wrong Number</h2>
+<p>Through the 2000s, a company called FORBA Holdings built one of the largest pediatric dental chains in the United States under the name Small Smiles Dental Centers, serving primarily children covered by Medicaid. By most of the numbers a business owner watches, it was a success story: patient volume climbing, new locations opening across the country, revenue growing year over year. Internally, dentists at several locations were reportedly paid bonuses tied directly to the number and type of procedures they performed, a structure that rewarded volume rather than outcomes.</p>
+<p>Over time, state Medicaid programs and attorneys general in more than a dozen states began investigating a very different number: how often children at Small Smiles clinics were receiving treatments, including root canals and other invasive procedures, that were later found to be medically unnecessary. In January 2010, the company agreed to pay 24 million dollars to resolve federal and state False Claims Act allegations and entered a five year corporate integrity agreement with the Department of Health and Human Services. The revenue and growth numbers that had looked so healthy for years had never once captured what was actually happening in the exam room.</p>
+<p>The settlement did not end the story. The company, later renamed Church Street Health Management, continued facing scrutiny and financial pressure through the following years and filed for Chapter 11 bankruptcy in 2016, eventually closing or selling off most of its remaining locations. A chain that had scaled itself around one easy to measure number, procedures performed, collapsed once the harder, slower moving number it never tracked closely enough, whether patients and their families actually trusted what was happening to them, finally caught up with it.</p>
+<p>Small Smiles didn’t fail because demand for pediatric dental care disappeared. It failed for three specific, unglamorous reasons that show up in a much smaller, much less dramatic form on an ordinary dental practice’s own numbers every month. The real reason patients were quietly leaving, or should have been leaving, never showed up on the growth dashboard anyone was watching. Metrics that moved together, procedure volume and revenue, got mistaken for proof that the business was healthy. And a single confident number stood in for a real range of outcomes, right up until reality delivered a number nobody had planned for.</p>
+</section>
+<section id="the-reason-patients-actually-leave-and-why-the-growth-chart-hides-it" class="level2">
+<h2 class="anchored" data-anchor-id="the-reason-patients-actually-leave-and-why-the-growth-chart-hides-it">The Reason Patients Actually Leave, and Why the Growth Chart Hides It</h2>
+<p>Most practice owners have a theory about why patients drift away. Price is the usual suspect. Sometimes it’s true. Often it isn’t, and a chain the size of Small Smiles is the clearest possible example of a business whose growth numbers stayed strong for years while the actual reason to stay, trust in what the provider was doing, was quietly being destroyed underneath it.</p>
+<p>A study published in <a href="https://bmcoralhealth.biomedcentral.com/">BMC Oral Health</a> surveyed 1,121 dental patients and 77 dentists across 41 practices, asking each side, separately, what actually drove a patient’s satisfaction and loyalty. The researchers ran the responses through statistical regression, the same basic tool a bank uses to figure out what predicts a loan default, or a retailer uses to figure out what predicts a sale. What came out the other side was a ranked list of what genuinely moved the needle: how convenient the location was, the patient’s trust in the dentist’s clinical decisions, how clearly treatment was explained, whether the dentist seemed to actually know the patient’s history, and how satisfied patients were with visit frequency. Price wasn’t at the top of the list. Trust and feeling informed were.</p>
+<p>The study also compared what dentists thought mattered to patients against what patients said actually mattered, and found real gaps between the two. That gap is expensive in an ordinary practice. At the scale Small Smiles operated at, with an incentive structure actively pulling attention away from trust and toward procedure count, the gap became the entire story. A separate peer reviewed analysis in the Westcliff International Journal of Applied Research catalogued eighteen distinct factors that influence why a patient stays with or leaves a specific dental practice, then statistically ranked them by how much US patients actually cared about each one. The findings echo a pattern that shows up across almost every service business studied in the customer retention literature, going back to one of the foundational papers in this field, Athanassopoulos’s 2000 study in the <em>Journal of Business Research</em>, which linked customer satisfaction directly to the specific, measurable behaviors that predict whether someone switches providers. The lesson holds well outside dentistry, and it’s the exact lesson Small Smiles proved the hard way: retention is not a mood, it’s a short list of specific, measurable things, and a growth chart that doesn’t track them will keep looking healthy right up until it isn’t.</p>
+</section>
+<section id="the-dashboard-trap-when-growth-and-the-real-problem-move-together" class="level2">
+<h2 class="anchored" data-anchor-id="the-dashboard-trap-when-growth-and-the-real-problem-move-together">The Dashboard Trap: When Growth and the Real Problem Move Together</h2>
+<p>Say procedure volume rose in a given quarter. So did revenue. So did the number of new patients acquired through Medicaid referrals. At Small Smiles scale, it would have been easy, and for years apparently was easy, to read all three lines climbing together as proof the business was working. A business analysis of marketing attribution errors captures almost exactly this trap in a widely cited example unrelated to dentistry: a company saw revenue drop and blamed its affiliate marketing channel, because the drop showed up right as affiliate activity increased. The real cause turned out to be a separate email promotion the company itself had launched at the same time, quietly pulling sales away from the very channel it appeared correlated with. The company had the right data and drew the wrong conclusion, because two numbers moving together is not proof that one is causing the other, and it is very much not proof that the underlying business is healthy.</p>
+<p>This trap has a name in statistics, collinearity, when two or more things being tracked move together so closely that it becomes almost impossible to tell which one is actually doing the work, or whether either one reflects what actually matters. It isn’t a marketing specific problem. Patent filings on marketing attribution systems describe the identical failure pattern showing up in classic sales forecasting: a rising inventory level and rising sales often move together, and a naive read of the numbers assumes stocking more inventory is causing the sales increase, when in reality both are being driven by a third thing entirely. Small Smiles’ revenue, patient volume, and procedure count all rose together because a compensation structure was actively pushing all three in the same direction at once, which made it nearly impossible for anyone reading a simple dashboard to notice that none of those numbers was actually measuring whether care was appropriate.</p>
+<p>For an ordinary dental practice, the equivalent trap looks far less dramatic but runs on the same mechanism: Google Ads spend, Instagram activity, and word of mouth referrals often rise and fall together, because they’re all responding to the same underlying thing, a new hygienist, extended hours, a location change, a seasonal rush. Cut the Google Ads budget because it’s not working and a practice may be cutting the one channel that was never doing the heavy lifting to begin with, while the real driver survives the cut and takes the credit anyway. The practical fix isn’t complicated. It’s the same fix professional marketers reach for once they get burned by this: stop reading channels in isolation, and instead test one variable at a time, pause a single channel for a defined period, in a defined area, and watch what actually happens to the numbers that matter, rather than trusting a chart where three lines happen to be climbing together.</p>
+</section>
+<section id="the-single-confident-number-that-replaced-a-real-range" class="level2">
+<h2 class="anchored" data-anchor-id="the-single-confident-number-that-replaced-a-real-range">The Single Confident Number That Replaced a Real Range</h2>
+<p>Here’s a question no spreadsheet answers by itself: if a practice hires a third hygienist, what’s the actual range of outcomes over the next twelve months? Best case, worst case, and, more usefully, the case that’s actually most likely? Most business owners answer this with a single guess, we’ll probably see forty thousand dollars more in revenue. A single number feels precise. It’s also almost always wrong, because it pretends there’s no uncertainty in patient volume, no show rates, insurance reimbursement timing, or how long it takes a new hire to get fully booked.</p>
+<p>Small Smiles’ own growth strategy ran on a version of this same false precision at a much larger scale: a single confident bet that more procedures performed would keep translating into more revenue, indefinitely, without ever pricing in the range of outcomes that included lawsuits, state investigations, and a corporate integrity agreement. Douglas Hubbard, in his widely read book <em>How to Measure Anything: Finding the Value of Intangibles in Business</em>, makes the case that this single number habit is one of the most expensive mistakes in business decision making, and that the fix doesn’t require a statistics degree, just a spreadsheet and a technique called Monte Carlo simulation. Instead of guessing one outcome, an owner describes a realistic range for each uncertain input, say, new patient volume will likely land somewhere between 8 and 20 a month, with 14 being the most probable, and then lets the spreadsheet run that scenario thousands of times with slightly different random combinations of those ranges. What comes out isn’t a single confident answer. It’s a full picture: a 15 percent chance of losing money in year one, a 60 percent chance of landing solidly profitable, and a 10 percent chance it’s a home run. That’s a very different, and far more honest, basis for a hiring decision than a single guessed number, and it’s the same basic technique Hubbard notes has been used to sharpen everything from NASA mission risk assessments to oil exploration forecasts, built with tools no more exotic than the spreadsheet already open on a practice manager’s desktop.</p>
+</section>
+<section id="what-small-smiles-collapse-actually-teaches" class="level2">
+<h2 class="anchored" data-anchor-id="what-small-smiles-collapse-actually-teaches">What Small Smiles’ Collapse Actually Teaches</h2>
+<p>Small Smiles did not fail because demand for its services disappeared or because a competitor out executed it. It failed because a company with real patient data sitting in its own systems kept optimizing for the number that was easy to move, procedure volume, while the number that actually determined whether the business was sound, trust, went unmeasured until state investigators measured it for them. No single decision caused the collapse. A compensation structure built around the wrong metric, a dashboard where correlated numbers were mistaken for proof of health, and years of confident growth projections that never priced in the real range of outcomes, compounding over most of a decade, did.</p>
+<p>None of that is a dental specific problem, and no ordinary practice is making decisions anywhere near the scale or severity Small Smiles did. But the underlying mechanism is identical, just smaller and slower moving: a growth number that looks fine while the real driver of whether patients stay goes untracked, metrics that move together getting mistaken for proof of a healthy business, and single number forecasts standing in for an honest range.</p>
+<ul>
+<li><strong>Pull twelve months of patients who left and look for the pattern, not the excuse.</strong> Don’t ask why any one patient left. Ask what the patients who left have in common, same time of day, same procedure type, same insurance, same staff member, same season, the same way the BMC Oral Health researchers isolated a ranked list of real drivers instead of accepting anecdotes.</li>
+<li><strong>Before cutting any marketing channel, isolate it.</strong> Pause it in one location or for one defined month rather than reading it off a dashboard where every line moves together. That’s the only way to tell a real driver from a bystander that happened to be correlated.</li>
+<li><strong>Never let a single compensation or growth metric run unchecked against patient outcomes.</strong> Small Smiles is the clearest possible warning of what happens when the metric that’s easy to reward diverges completely from the outcome that actually matters.</li>
+<li><strong>Turn your next big should we spend on this decision into a range, not a guess.</strong> Write down a realistic low, likely, and high outcome instead of one number, and think in terms of the odds of each, the way Hubbard’s Monte Carlo approach frames it.</li>
+</ul>
+<p>If any of this sounds like a discipline problem rather than a data problem, that’s usually because it is. Small Smiles didn’t need better growth numbers to survive. It needed to measure the thing its growth numbers were quietly hiding, on a timeline that mattered. None of this is unique to dentistry either. Swap patient for client, policyholder, or subscriber and the same pattern shows up in a financial planning practice, a med spa, or a subscription business, which we cover from a different angle in <a href="https://www.scapedatasolutions.com/blog/why-financial-advisors-lose-clients-they-never-saw-leaving">why financial advisors lose clients they never saw leaving</a> and <a href="https://www.scapedatasolutions.com/blog/saas-churn-dashboard-wrong-story">why your SaaS churn dashboard is telling you the wrong story</a>. If you want the more technical version of how these patterns get modeled formally, the actual regression math behind which factors really predict who stays, we’ve broken that down with real formulas in our <a href="https://www.scapedatasolutions.com/blog/logistic-regression-softmax-classification">logistic regression and classification guide</a>, and the collinearity problem described above is the same one we work through in detail, coefficient by coefficient, in our <a href="https://www.scapedatasolutions.com/blog/ridge-lasso-elastic-net-regression">piece on regularized regression</a>.</p>
+<p><strong>Sources cited in this article:</strong></p>
+<ul>
+<li>Factors Influencing Patient Satisfaction and Loyalty as Perceived by Dentists and Their Patients, <em>BMC Oral Health</em></li>
+<li>Factors Influencing Customer Retention and Loyalty in Dental Practice in the United States, <em>Westcliff International Journal of Applied Research</em></li>
+<li>Athanassopoulos, A. D. (2000). Customer satisfaction cues to support market segmentation and explain switching behavior. <em>Journal of Business Research</em>, 47(3), 191-207.</li>
+<li>Hubbard, Douglas W. <em>How to Measure Anything: Finding the Value of Intangibles in Business</em></li>
+<li>Historical account of the Small Smiles Dental Centers and FORBA Holdings settlement and bankruptcy, corroborated across public reporting and Department of Justice records</li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
