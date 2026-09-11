@@ -11,7 +11,7 @@
   mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, black 20%, transparent 100%);
   pointer-events: none;
 }
-.heroInner { max-width: 640px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+.heroInner { max-width: 640px; position: relative; z-index: 2; }
 .heroBadge {
   display: inline-flex; align-items: center; gap: var(--space-2);
   border: 1px solid var(--color-border); border-radius: var(--radius-full);
@@ -30,8 +30,8 @@
 .heroTitle .accent { color: var(--color-accent); display: inline-flex; align-items: baseline; }
 .typeCaret { display: inline-block; margin-left: 2px; animation: caretBlink .9s steps(1) infinite; font-weight: 300; }
 @keyframes caretBlink { 0%,45%{opacity:1} 50%,100%{opacity:0} }
-.heroSub { font-size: 1.1rem; line-height: 1.65; color: var(--color-text-secondary); max-width: 480px; margin: var(--space-5) auto 0; }
-.heroBtnRow { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-8); }
+.heroSub { font-size: 1.1rem; line-height: 1.65; color: var(--color-text-secondary); max-width: 480px; margin: var(--space-5) 0 0; }
+.heroBtnRow { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: var(--space-3); margin-top: var(--space-8); }
 
 .btnPrimary {
   display: inline-flex; align-items: center; gap: var(--space-2);
@@ -46,10 +46,122 @@
 }
 .btnSecondary:hover { background: var(--color-border); }
 
-.trustRow { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2); margin-top: var(--space-8); }
+.trustRow { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: var(--space-2); margin-top: var(--space-8); }
+
+/* ============ PROJECT CTA BANNER ============ */
+.projectCtaSection { padding: var(--space-16) 0 0; }
+.projectCtaCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  background: var(--color-bg-card);
+}
+.projectCtaText { max-width: 520px; }
+.projectCtaTitle { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; letter-spacing: -.01em; margin: 0 0 var(--space-2); }
+.projectCtaDesc { margin: 0; font-size: .95rem; line-height: 1.6; color: var(--color-text-secondary); }
+.projectCtaActions { display: flex; gap: var(--space-3); flex-wrap: wrap; flex-shrink: 0; }
+.projectCtaNote { margin: var(--space-4) 0 0; font-size: .8rem; color: var(--color-text-muted); }
+.projectCtaLink { color: var(--color-accent); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
 .trustBadge {
   font-size: .68rem; font-weight: 600; letter-spacing: .03em; color: var(--color-text-muted);
   padding: 4px 12px; border-radius: var(--radius-full); border: 1px solid var(--color-border);
+}
+
+/* ============ HERO: text + image side by side ============ */
+.heroTop {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .heroTop { grid-template-columns: 1fr 1.2fr; gap: var(--space-8); }
+}
+
+.heroImageWrap {
+  position: relative;
+  order: -1;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 900px) {
+  .heroImageWrap { order: 0; justify-content: flex-end; }
+}
+
+.heroViz {
+  width: 100%;
+  max-width: 560px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg-card);
+  overflow: hidden;
+}
+@media (min-width: 900px) {
+  .heroViz { max-width: 620px; }
+}
+.heroVizHeader { display: flex; align-items: center; gap: var(--space-4); padding: 12px 16px; border-bottom: 1px solid var(--color-border); }
+.heroVizDots { display: flex; gap: 5px; }
+.heroVizDots span { width: 6px; height: 6px; border-radius: 50%; background: var(--color-border); }
+.heroVizTabs { display: flex; gap: 14px; overflow: hidden; }
+.heroVizTab { font-size: .7rem; color: var(--color-text-muted); font-weight: 500; white-space: nowrap; }
+.heroVizTabActive { color: var(--color-text); font-weight: 600; position: relative; }
+.heroVizTabActive::after { content: ""; position: absolute; left: 0; right: 0; bottom: -13px; height: 2px; background: #3b82f6; }
+.heroVizLive { margin-left: auto; font-size: .68rem; font-weight: 600; color: #3b82f6; white-space: nowrap; }
+
+.heroVizMain { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1px; background: var(--color-border); }
+.heroVizChartCol { background: var(--color-bg-card); padding: 16px 18px 14px; display: flex; flex-direction: column; gap: 8px; }
+.heroVizChartHead { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); }
+.heroVizChartLabel { display: block; font-size: .64rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+.heroVizChartValue { font-family: var(--font-display); font-size: 1.08rem; font-weight: 600; color: var(--color-text); display: flex; align-items: baseline; gap: 7px; white-space: nowrap; }
+.heroVizDelta { font-size: .7rem; font-weight: 600; color: #3b82f6; }
+.heroVizPeriod { font-size: .62rem; color: var(--color-text-muted); white-space: nowrap; margin-top: 2px; }
+.heroVizAreaSvg { width: 100%; height: 110px; display: block; }
+.heroVizMonths { display: flex; justify-content: space-between; font-size: .58rem; color: var(--color-text-muted); margin-bottom: 6px; }
+
+/* mini region table under the chart */
+.heroVizTable { display: flex; flex-direction: column; border-top: 1px solid var(--color-border); padding-top: 8px; }
+.heroVizTableHeadRow, .heroVizTableRow { display: grid; grid-template-columns: 52px 52px 44px 1fr; align-items: center; gap: 8px; padding: 4px 0; }
+.heroVizTableHeadRow { font-size: .56rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .03em; }
+.heroVizTableRegion { font-size: .64rem; color: var(--color-text); font-weight: 500; }
+.heroVizTableRevenue { font-size: .62rem; color: var(--color-text-secondary); }
+.heroVizTableGrowth { font-size: .6rem; font-weight: 600; color: #3b82f6; }
+.heroVizTableBarTrack { height: 4px; border-radius: 2px; background: var(--color-border); overflow: hidden; }
+.heroVizTableBarFill { height: 100%; border-radius: 2px; background: #3b82f6; }
+
+/* SQL query panel */
+.heroVizSide { background: var(--color-bg-card); padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 14px; }
+.heroVizSql { background: #0d0d0d; border-radius: 4px; overflow: hidden; }
+.heroVizSqlHead { display: flex; align-items: center; gap: 7px; padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.heroVizSqlDot { width: 6px; height: 6px; border-radius: 50%; background: #3b82f6; }
+.heroVizSqlTitle { font-family: var(--font-mono); font-size: .62rem; color: rgba(255,255,255,.55); }
+.heroVizSqlTime { margin-left: auto; font-family: var(--font-mono); font-size: .58rem; color: rgba(255,255,255,.35); }
+.heroVizSqlBody { margin: 0; padding: 10px 12px; font-family: var(--font-mono); font-size: .64rem; line-height: 1.55; color: rgba(255,255,255,.7); white-space: pre; overflow-x: auto; }
+.sqlKeyword { color: #60a5fa; font-weight: 600; }
+.sqlFn { color: rgba(255,255,255,.92); font-weight: 600; }
+.sqlString { color: rgba(255,255,255,.5); font-style: italic; }
+.heroVizSqlStatus { display: flex; align-items: center; gap: 6px; padding: 6px 12px 10px; font-family: var(--font-mono); font-size: .58rem; color: rgba(255,255,255,.4); }
+.heroVizSqlCursor { width: 6px; height: 11px; background: #3b82f6; animation: vizBlink 1s steps(1) infinite; }
+
+.heroVizRingRow { display: flex; align-items: center; gap: 16px; }
+.heroVizRing { position: relative; width: 68px; height: 68px; flex-shrink: 0; }
+.heroVizRingSvg { width: 100%; height: 100%; }
+.heroVizRingLabel { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.heroVizRingPct { font-family: var(--font-display); font-size: .86rem; font-weight: 700; color: var(--color-text); line-height: 1; }
+.heroVizRingSub { font-size: .54rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .03em; margin-top: 2px; }
+.heroVizMiniKpi { display: flex; flex-direction: column; gap: 3px; }
+
+.heroVizFooter { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-border); border-top: 1px solid var(--color-border); }
+.heroVizFooterStat { background: var(--color-bg-card); padding: 12px 14px; display: flex; flex-direction: column; gap: 3px; }
+.heroVizFooterLabel { font-size: .56rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .03em; }
+.heroVizFooterVal { font-family: var(--font-display); font-size: .86rem; font-weight: 600; color: var(--color-text); }
+@media (max-width: 500px) {
+  .heroVizFooter { grid-template-columns: repeat(2, 1fr); }
+  .heroVizMain { grid-template-columns: 1fr; }
 }
 
 /* ============ FEATURE TILES (x.ai style) ============ */
@@ -212,11 +324,11 @@
 .devActions { display: flex; gap: var(--space-3); margin-top: var(--space-8); }
 
 /* ============ FIXES: spacing + stable typing + images ============ */
-.hero { padding: 120px 0 var(--space-16); }
+.hero { padding: 96px 0 var(--space-16); }
 
-.heroTitleRow { display: flex; flex-direction: column; align-items: center; }
+.heroTitleRow { display: flex; flex-direction: column; align-items: flex-start; }
 .typeBox {
-  display: inline-flex; align-items: center; justify-content: center;
+  display: inline-flex; align-items: center; justify-content: flex-start;
   min-height: 1.15em; width: 100%; max-width: 620px;
 }
 .typeText { color: var(--color-text); white-space: nowrap; }

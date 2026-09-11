@@ -136,6 +136,141 @@ function PredictiveViz() {
   );
 }
 
+// --- Hero dashboard mockup (replaces a stock hero photo, matches the tile style below) ---
+function HeroDashboardViz() {
+  const regions = [
+    { name: "West", revenue: "$142K", growth: "+18%", pct: 88 },
+    { name: "East", revenue: "$98K", growth: "+9%", pct: 61 },
+    { name: "Central", revenue: "$71K", growth: "+4%", pct: 45 },
+    { name: "South", revenue: "$56K", growth: "+22%", pct: 35 },
+  ];
+  return (
+    <div className={styles.heroViz}>
+      <div className={styles.heroVizHeader}>
+        <div className={styles.heroVizDots}>
+          <span /><span /><span />
+        </div>
+        <div className={styles.heroVizTabs}>
+          <span className={`${styles.heroVizTab} ${styles.heroVizTabActive}`}>Overview</span>
+          <span className={styles.heroVizTab}>Revenue</span>
+          <span className={styles.heroVizTab}>Query Editor</span>
+          <span className={styles.heroVizTab}>Retention</span>
+        </div>
+        <span className={styles.heroVizLive}>● Live</span>
+      </div>
+
+      <div className={styles.heroVizMain}>
+        <div className={styles.heroVizChartCol}>
+          <div className={styles.heroVizChartHead}>
+            <div>
+              <span className={styles.heroVizChartLabel}>Monthly Revenue</span>
+              <div className={styles.heroVizChartValue}>
+                $482,190 <span className={styles.heroVizDelta}>↑ 32.4%</span>
+              </div>
+            </div>
+            <span className={styles.heroVizPeriod}>Last 6 months</span>
+          </div>
+          <svg viewBox="0 0 300 130" className={styles.heroVizAreaSvg} preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="heroAreaGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <line x1="0" y1="28" x2="300" y2="28" stroke="var(--color-border)" strokeDasharray="3 4" />
+            <line x1="0" y1="70" x2="300" y2="70" stroke="var(--color-border)" strokeDasharray="3 4" />
+            <line x1="0" y1="112" x2="300" y2="112" stroke="var(--color-border)" strokeDasharray="3 4" />
+            <path d="M0,95 L50,80 L100,88 L150,55 L200,64 L250,25 L300,14 L300,130 L0,130 Z" fill="url(#heroAreaGradient)" />
+            <polyline points="0,95 50,80 100,88 150,55 200,64 250,25 300,14" fill="none" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="300" cy="14" r="4" fill="#3b82f6" />
+          </svg>
+          <div className={styles.heroVizMonths}>
+            <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span>
+          </div>
+
+          <div className={styles.heroVizTable}>
+            <div className={styles.heroVizTableHeadRow}>
+              <span>Region</span><span>Revenue</span><span>Growth</span><span>Share</span>
+            </div>
+            {regions.map((r) => (
+              <div key={r.name} className={styles.heroVizTableRow}>
+                <span className={styles.heroVizTableRegion}>{r.name}</span>
+                <span className={styles.heroVizTableRevenue}>{r.revenue}</span>
+                <span className={styles.heroVizTableGrowth}>{r.growth}</span>
+                <div className={styles.heroVizTableBarTrack}>
+                  <div className={styles.heroVizTableBarFill} style={{ width: `${r.pct}%` }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.heroVizSide}>
+          <div className={styles.heroVizSql}>
+            <div className={styles.heroVizSqlHead}>
+              <span className={styles.heroVizSqlDot} />
+              <span className={styles.heroVizSqlTitle}>query.sql</span>
+              <span className={styles.heroVizSqlTime}>412ms</span>
+            </div>
+            <pre className={styles.heroVizSqlBody}>
+              <span className={styles.sqlKeyword}>SELECT</span> region,{"\n"}
+              {"  "}<span className={styles.sqlFn}>SUM</span>(revenue) <span className={styles.sqlKeyword}>AS</span> total{"\n"}
+              <span className={styles.sqlKeyword}>FROM</span> sales{"\n"}
+              <span className={styles.sqlKeyword}>WHERE</span> quarter = <span className={styles.sqlString}>'Q3'</span>{"\n"}
+              <span className={styles.sqlKeyword}>GROUP BY</span> region{"\n"}
+              <span className={styles.sqlKeyword}>ORDER BY</span> total <span className={styles.sqlKeyword}>DESC</span>;
+            </pre>
+            <div className={styles.heroVizSqlStatus}>
+              <span className={styles.heroVizSqlCursor} />
+              <span>4 rows returned</span>
+            </div>
+          </div>
+
+          <div className={styles.heroVizRingRow}>
+            <div className={styles.heroVizRing}>
+              <svg viewBox="0 0 80 80" className={styles.heroVizRingSvg}>
+                <circle cx="40" cy="40" r="34" fill="none" stroke="var(--color-border)" strokeWidth="7" />
+                <circle
+                  cx="40" cy="40" r="34" fill="none" stroke="#3b82f6" strokeWidth="7"
+                  strokeDasharray="213.6" strokeDashoffset="51.3" strokeLinecap="round"
+                  transform="rotate(-90 40 40)"
+                />
+              </svg>
+              <div className={styles.heroVizRingLabel}>
+                <span className={styles.heroVizRingPct}>76%</span>
+                <span className={styles.heroVizRingSub}>Target</span>
+              </div>
+            </div>
+            <div className={styles.heroVizMiniKpi}>
+              <span className={styles.heroVizFooterLabel}>Query Load</span>
+              <span className={styles.heroVizFooterVal}>2.1K/s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.heroVizFooter}>
+        <div className={styles.heroVizFooterStat}>
+          <span className={styles.heroVizFooterLabel}>Revenue</span>
+          <span className={styles.heroVizFooterVal}>$482K</span>
+        </div>
+        <div className={styles.heroVizFooterStat}>
+          <span className={styles.heroVizFooterLabel}>Active Users</span>
+          <span className={styles.heroVizFooterVal}>12.4K</span>
+        </div>
+        <div className={styles.heroVizFooterStat}>
+          <span className={styles.heroVizFooterLabel}>Churn Rate</span>
+          <span className={styles.heroVizFooterVal}>4.2%</span>
+        </div>
+        <div className={styles.heroVizFooterStat}>
+          <span className={styles.heroVizFooterLabel}>Query Latency</span>
+          <span className={styles.heroVizFooterVal}>412ms</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const FEATURE_VIZ = {
   analytics: DataAnalyticsViz,
   etl: EtlViz,
@@ -357,36 +492,43 @@ sales %>%
         {/* ═══ HERO ═══ */}
         <section className={styles.hero}>
           <div className={styles.container}>
-            <div className={styles.heroInner}>
-              <h1 className={styles.heroTitleRow}>
-                <span className={styles.heroTitle}>Turn Data Into</span>
-                <div className={styles.typeBox}>
-                  <span className={styles.heroTitle}>
-                    <span className={styles.typeText}>
-                      {typedHeadline}
-                      {!holding && <span className={styles.typeCaret}>|</span>}
+            <div className={styles.heroTop}>
+              <div className={styles.heroInner}>
+                <h1 className={styles.heroTitleRow}>
+                  <span className={styles.heroTitle}>Turn Data Into</span>
+                  <div className={styles.typeBox}>
+                    <span className={styles.heroTitle}>
+                      <span className={styles.typeText}>
+                        {typedHeadline}
+                        {!holding && <span className={styles.typeCaret}>|</span>}
+                      </span>
                     </span>
-                  </span>
+                  </div>
+                </h1>
+                <p className={styles.heroSub}>
+                  Stop guessing. Start knowing. We help you make smarter business decisions, reduce costs, and unlock new revenue streams with data you already have.
+                </p>
+                <span className={styles.visuallyHidden}>
+                  Turn Data Into Revenue Growth, Predictive Analytics, Real-Time Dashboards, Lower Costs, Faster Decisions.
+                </span>
+                <div className={styles.heroBtnRow}>
+                  <Link to="/contact" className={styles.btnPrimary}>
+                    Start Growing Your Business <ArrowRight size={16} />
+                  </Link>
+                  <Link to="/portfolio" className={styles.btnSecondary}>
+                    See Our Work
+                  </Link>
                 </div>
-              </h1>
-              <p className={styles.heroSub}>
-                Stop guessing. Start knowing. We help you make smarter business decisions, reduce costs, and unlock new revenue streams with data you already have.
-              </p>
-              <span className={styles.visuallyHidden}>
-                Turn Data Into Revenue Growth, Predictive Analytics, Real-Time Dashboards, Lower Costs, Faster Decisions.
-              </span>
-              <div className={styles.heroBtnRow}>
-                <Link to="/contact" className={styles.btnPrimary}>
-                  Start Growing Your Business <ArrowRight size={16} />
-                </Link>
-                <Link to="/portfolio" className={styles.btnSecondary}>
-                  See Our Work
-                </Link>
+                <div className={styles.trustRow}>
+                  {["GDPR", "HIPAA", "SOC 2", "ISO 27001"].map((b) => (
+                    <span key={b} className={styles.trustBadge}>{b}</span>
+                  ))}
+                </div>
               </div>
-              <div className={styles.trustRow}>
-                {["GDPR", "HIPAA", "SOC 2", "ISO 27001"].map((b) => (
-                  <span key={b} className={styles.trustBadge}>{b}</span>
-                ))}
+
+              {/* Hero visual */}
+              <div className={styles.heroImageWrap}>
+                <HeroDashboardViz />
               </div>
             </div>
 
@@ -409,20 +551,22 @@ sales %>%
           </div>
         </section>
 
-        <section className={styles.container} style={{ padding: "3rem 1.5rem" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1.5rem", borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2.5rem" }}>
-            <div>
-              <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Have a project ready to go?</h2>
-              <p style={{ margin: 0, opacity: 0.75, maxWidth: "480px" }}>Skip the calls. Submit your requirements in the client portal and our team starts scoping within one business day.</p>
+        <section className={styles.projectCtaSection}>
+          <div className={styles.container}>
+            <div className={styles.projectCtaCard}>
+              <div className={styles.projectCtaText}>
+                <h2 className={styles.projectCtaTitle}>Have a project ready to go?</h2>
+                <p className={styles.projectCtaDesc}>Skip the calls. Submit your requirements in the client portal and our team starts scoping within one business day.</p>
+              </div>
+              <div className={styles.projectCtaActions}>
+                <a href="https://portal.scapedatasolutions.com/portal/signup" className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></a>
+                <a href="https://portal.scapedatasolutions.com/portal/login" className={styles.btnSecondary}>Log In</a>
+              </div>
             </div>
-            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <a href="https://portal.scapedatasolutions.com/portal/signup" className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></a>
-              <a href="https://portal.scapedatasolutions.com/portal/login" className={styles.btnSecondary}>Log In</a>
-            </div>
+            <p className={styles.projectCtaNote}>
+              Already working with us? <a href="https://portal.scapedatasolutions.com/" className={styles.projectCtaLink}>Visit the client portal</a> to check project status, contracts, and payments.
+            </p>
           </div>
-          <p style={{ marginTop: "0.75rem", fontSize: "0.82rem", opacity: 0.65 }}>
-            Already working with us? <a href="https://portal.scapedatasolutions.com/" style={{ textDecoration: "underline" }}>Visit the client portal</a> to check project status, contracts, and payments.
-          </p>
         </section>
 
         {/* ═══ DEV / CODE SECTION ═══ */}
