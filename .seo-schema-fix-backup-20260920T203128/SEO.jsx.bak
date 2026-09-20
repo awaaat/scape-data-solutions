@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
-import { buildOrganizationSchema } from '../../utils/organizationSchema';
 
 /**
  * SEO component – ensures exactly one title, one description, one canonical,
@@ -13,7 +12,6 @@ const SEO = ({
   keywords,
   image,
   article = false,
-  schema = null,
 }) => {
   const location = useLocation();
   const url = `https://www.scapedatasolutions.com${location.pathname}`;
@@ -28,15 +26,6 @@ const SEO = ({
   const finalKeywords = keywords || 'data analytics, business intelligence, AI, machine learning';
 
   const imageUrl = finalImage.startsWith('http') ? finalImage : `https://www.scapedatasolutions.com${finalImage}`;
-
-  const organizationSchema = buildOrganizationSchema();
-  const schemaNodes = schema
-    ? (Array.isArray(schema?.['@graph']) ? schema['@graph'] : [schema])
-    : [];
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [organizationSchema, ...schemaNodes],
-  };
 
   return (
     <Helmet>
@@ -58,8 +47,6 @@ const SEO = ({
       <meta name="twitter:image" content={imageUrl} />
 
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-
-      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
     </Helmet>
   );
 };

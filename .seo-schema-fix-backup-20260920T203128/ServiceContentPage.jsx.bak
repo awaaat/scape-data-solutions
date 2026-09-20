@@ -78,31 +78,12 @@ const ServiceContentPage = ({
   serviceType,
 }) => {
   const path = `/services/${slug}`;
-  const serviceSchemaNode = buildServiceSchema({
+  const schema = buildServiceSchema({
     name,
     description: metaDescription,
     path,
     serviceType: serviceType || "Data Analytics",
   });
-
-  // Real FAQPage schema built from the SAME faqs data already rendered
-  // in the "Frequently Asked Questions" section below -- no invented
-  // content, just marking up what's genuinely on the page.
-  const faqSchemaNode = faqs?.length
-    ? {
-        "@type": "FAQPage",
-        mainEntity: faqs.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: { "@type": "Answer", text: f.a },
-        })),
-      }
-    : null;
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@graph": faqSchemaNode ? [serviceSchemaNode, faqSchemaNode] : [serviceSchemaNode],
-  };
 
   const titleParts = nameHighlight
     ? name.split(nameHighlight)
