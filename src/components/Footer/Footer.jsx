@@ -10,25 +10,15 @@ import { motion } from "framer-motion";
 import styles from "./Footer.module.css";
 import { NAV_COMPANY, NAV_PORTFOLIO } from "../Navbar/Navbar";
 
-// ── Contact / office items (6 cells → 3 columns × 2 rows) ──────────
+// ── Contact / office items (2 cells) ────────────────────────────────
 const OFFICES = [
-  // ── Row 1 ──────────────────────────────────────────────────────────
   {
-    icon: "/Images/site-images/us_flag.webp",
-    title: "US Office:",
+    icon: null,
+    title: "Office:",
     lines: [
-      { text: "1024 Iron Point Road, Suite 200" },
-      { text: "Folsom, California 95630"        },
-      { text: "US: +1 (757) 598-0582", href: "tel:+17575980582" },
-    ],
-  },
-  {
-    icon: "/Images/site-images/uk-icon.jpeg",
-    title: "UK Office:",
-    lines: [
-      { text: "60 Cannon Street"                },
-      { text: "London EC4N 6NP, United Kingdom" },
-      { text: "UK: +44 7454 744014", href: "tel:+447454744014" },
+      { text: "Global Trade Centre, 14th Floor" },
+      { text: "Westlands Road, Nairobi, Kenya"  },
+      { text: "KE: +254 718 889 559", href: "tel:+254718889559" },
     ],
   },
   {
@@ -37,33 +27,6 @@ const OFFICES = [
     lines: [
       { text: "info@scapedatasolutions.com",  href: "mailto:info@scapedatasolutions.com"  },
       { text: "allan@scapedatasolutions.com", href: "mailto:allan@scapedatasolutions.com" },
-    ],
-  },
-  // ── Row 2 ──────────────────────────────────────────────────────────
-  {
-    icon: "/Images/site-images/canada-flag.webp.webp",
-    title: "Canada Office:",
-    lines: [
-      { text: "400 Centre Street South"    },
-      { text: "Whitby, ON L1N 0G4, Canada" },
-    ],
-  },
-  {
-    icon: "/Images/site-images/pak_flag.webp",
-    title: "Pakistan Office:",
-    lines: [
-      { text: "9th Floor, Tricon Corporate Centre" },
-      { text: "73 Jail Road, Gulberg"              },
-      { text: "Lahore 54000, Pakistan"             },
-    ],
-  },
-  {
-    icon: "/Images/site-images/nairobi-k.jpg",
-    title: "Nairobi Office:",
-    lines: [
-      { text: "Global Trade Centre, 14th Floor" },
-      { text: "Westlands Road, Nairobi, Kenya"  },
-      { text: "KE: +254 718 889 559", href: "tel:+254718889559" },
     ],
   },
 ];
@@ -124,8 +87,7 @@ export default function Footer() {
     <footer className={styles.navyFooter}>
 
       {/* ══════════════════════════════════════════
-          SECTION 1 – 6-cell contact/office grid
-          (3 columns × 2 rows, divided by borders)
+          SECTION 1 – 2-cell contact/office strip
           ══════════════════════════════════════════ */}
       <div className={styles.navyOffStrip}>
         <div className={styles.container}>
@@ -140,16 +102,18 @@ export default function Footer() {
                 whileHover={{ y: -4 }}
                 transition={{ delay: i * 0.08, duration: 0.45, ease: "easeOut" }}
               >
-                <motion.div
-                  className={styles.navyOffIcon}
-                  initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
-                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                  viewport={REPLAY_VIEWPORT}
-                  whileHover={{ scale: 1.12, rotate: 4 }}
-                  transition={{ delay: i * 0.08 + 0.1, duration: 0.4, type: "spring", stiffness: 260, damping: 16 }}
-                >
-                  <img src={office.icon} alt={office.title} />
-                </motion.div>
+                {office.icon && (
+                  <motion.div
+                    className={styles.navyOffIcon}
+                    initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                    viewport={REPLAY_VIEWPORT}
+                    whileHover={{ scale: 1.12, rotate: 4 }}
+                    transition={{ delay: i * 0.08 + 0.1, duration: 0.4, type: "spring", stiffness: 260, damping: 16 }}
+                  >
+                    <img src={office.icon} alt={office.title} />
+                  </motion.div>
+                )}
                 <div className={styles.navyOffText}>
                   <h4>{office.title}</h4>
                   {office.lines.map((line, j) =>

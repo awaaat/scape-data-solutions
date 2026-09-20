@@ -47,10 +47,38 @@ function useTypewriter(words, speed = 140, pause = 15000) {
 }
 
 const FEATURES = [
-  { key: "analytics", title: "Data Analytics", icon: <BarChart3 size={22} />, link: "/services" },
-  { key: "etl", title: "ETL & Integration", icon: <Server size={22} />, link: "/services" },
-  { key: "bi", title: "BI Dashboards", icon: <BarChart2 size={22} />, link: "/services" },
-  { key: "predictive", title: "Predictive Analytics", icon: <TrendingUp size={22} />, link: "/services" },
+  {
+    key: "analytics",
+    title: "Data Analytics",
+    tagline: "Know what happened, and why",
+    icon: <BarChart3 size={22} />,
+    link: "/services",
+    desc: "Every click, sale, and abandoned cart already lives somewhere in your systems. We pull it together and let it tell you a story worth acting on today, not the quarter after.",
+  },
+  {
+    key: "etl",
+    title: "ETL & Integration",
+    tagline: "One home for scattered numbers",
+    icon: <Server size={22} />,
+    link: "/services",
+    desc: "Sales sits in one tool, support tickets in another, inventory somewhere else entirely. We wire it into a single pipeline so nobody spends Friday copying spreadsheets by hand.",
+  },
+  {
+    key: "bi",
+    title: "BI Dashboards",
+    tagline: "Answers without the request queue",
+    icon: <BarChart2 size={22} />,
+    link: "/services",
+    desc: "Your team shouldn't need an analyst on standby just to check last week's numbers. We hand them a dashboard built for exploring and filtering on their own.",
+  },
+  {
+    key: "predictive",
+    title: "Predictive Analytics",
+    tagline: "See the curve before it bends",
+    icon: <TrendingUp size={22} />,
+    link: "/services",
+    desc: "History has patterns worth borrowing from. Our models study yours and flag the demand spike or the churn risk early enough that you still have time to move.",
+  },
 ];
 
 // --- Custom mini-visuals: four distinct UI metaphors, like x.ai's tiles ---
@@ -531,6 +559,37 @@ sales %>%
                 <HeroDashboardViz />
               </div>
             </div>
+
+            {/* ── What We Do: written intro + ordered breakdown, then the visual tiles ── */}
+            <motion.div
+              className={styles.whatWeDo}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEWPORT}
+              variants={fadeUp}
+            >
+              <div className={styles.whatWeDoIntro}>
+                <p className={styles.featureIntroLabel}>What We Do</p>
+                <h2 className={styles.featureIntroTitle}>A complete toolkit for turning data into decisions</h2>
+                <p className={styles.whatWeDoLead}>
+                  Numbers pile up fast: in spreadsheets, in tools that don't talk to each other, in databases
+                  nobody quite trusts anymore. We step into that mess and build a straight line from where
+                  your data sits today to the decision you're actually trying to make.
+                </p>
+              </div>
+
+              <div className={styles.whatWeDoCardsRow}>
+                {FEATURES.map((f) => (
+                  <Link key={f.key} to={f.link} className={styles.whatWeDoCard}>
+                    <span className={styles.whatWeDoCardIconRing}>
+                      <span className={styles.whatWeDoCardIcon}>{f.icon}</span>
+                    </span>
+                    <h3 className={styles.whatWeDoCardTitle}>{f.title}</h3>
+                    <p className={styles.whatWeDoCardDesc}>{f.desc}</p>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
 
             <motion.div className={styles.featureGrid} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={stagger}>
               {FEATURES.map((f, i) => (

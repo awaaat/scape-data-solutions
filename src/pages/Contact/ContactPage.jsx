@@ -28,7 +28,7 @@ const slideR = {
 const REPLAY_VIEWPORT = { once: false, amount: 0.15 };
 
 const TYPED_WORDS = [
-  "a Free Consultation",
+  "an Almost Consultation",
   "Real Business Results",
   "a Clear Data Roadmap",
   "Measurable ROI",
@@ -37,22 +37,6 @@ const TYPED_WORDS = [
 
 // ─── Offices ──────────────────────────────────────────────────────
 const OFFICES = [
-  {
-    label: "US Office",
-    value: "1024 Iron Point Road, Suite 200\nFolsom, California 95630\nUS: +1 (757) 598-0582",
-  },
-  {
-    label: "UK Office",
-    value: "60 Cannon Street\nLondon EC4N 6NP, United Kingdom\nUK: +44 7454 744014",
-  },
-  {
-    label: "Canada Office",
-    value: "400 Centre Street South\nWhitby, ON L1N 0G4, Canada",
-  },
-  {
-    label: "Pakistan Office",
-    value: "9th Floor, Tricon Corporate Centre\n73 Jail Road, Gulberg\nLahore 54000, Pakistan",
-  },
   {
     label: "Nairobi Office",
     value: "Global Trade Centre, 14th Floor\nWestlands Road, Nairobi, Kenya\nKE: +254 718 889 559",
@@ -168,7 +152,7 @@ export default function ContactPage() {
     <div className={hStyles.page}>
       <SEO
         title="Contact Us | Get Free Data Consultation - Scape Data Solutions"
-        description="Contact Scape Data Solutions for a free consultation. Offices in the US, Canada, Pakistan, and Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
+        description="Contact Scape Data Solutions for a consultation session. Offices in the US, Canada, Pakistan, and Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
         path="/contact"
       />
 
@@ -212,7 +196,7 @@ export default function ContactPage() {
                     {[
                       "We'll review your inquiry",
                       "A team member will reach out within 24 hours",
-                      "We'll schedule a free consultation call",
+                      "We'll schedule a consultation call",
                       "You'll receive a custom proposal",
                     ].map((s, i) => (
                       <motion.li
@@ -290,7 +274,7 @@ export default function ContactPage() {
                     transition={{ delay: 0.2 }}
                     style={{ marginBottom: 16 }}
                   >
-                    <Sparkles size={13} /> Free Consultation
+                    <Sparkles size={13} /> Get your Consultation Today
                   </motion.div>
 
                   <motion.h1 className={styles.heroTitle} variants={slideL}>
@@ -299,7 +283,7 @@ export default function ContactPage() {
 
                   <motion.p className={styles.heroSubtitle} variants={fadeUp}>
                     Ready to transform your data into your biggest competitive advantage?
-                    Schedule a free consultation with our team.
+                    Schedule a brief consultation with our team.
                   </motion.p>
 
                   <motion.div

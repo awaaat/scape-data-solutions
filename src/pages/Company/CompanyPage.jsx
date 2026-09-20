@@ -76,11 +76,7 @@ const QUICK_LINKS = [
 ];
 
 const OFFICES = [
-  { city: "Folsom, CA", country: "USA" },
-  { city: "Whitby, ON", country: "Canada" },
-  { city: "Lahore", country: "Pakistan" },
   { city: "Nairobi", country: "Kenya" },
-  { city: "London", country: "UK" },
 ];
 
 // Milestones – sentence case labels, proper descriptions, no all caps
@@ -97,8 +93,8 @@ const MILESTONES = [
   },
   { 
     date: "2020", 
-    label: "Cross-border expansion", 
-    desc: "Opened our US office in Folsom, CA and Canada office in Whitby, ON, serving clients across multiple time zones with 24/7 support." 
+    label: "Growing client base", 
+    desc: "Expanded our team and client base out of Nairobi, taking on larger engagements across multiple industries." 
   },
   { 
     date: "2022", 
