@@ -28,6 +28,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, 'dist');
 const PORT = 4173;
 const BASE_URL = `http://localhost:${PORT}`;
+const SITE_URL = 'https://www.scapedatasolutions.com';
 
 // Vercel sets this env var automatically during build
 const IS_VERCEL = !!process.env.VERCEL;
@@ -218,6 +219,35 @@ async function prerenderRoute(browser, route) {
   console.log(`  ✓ Prerendered ${route}  →  ${outFile.replace(__dirname, '.')}`);
 }
 
+
+// ─── Sitemap generation ─────────────────────────────────────────────
+// Generated from the SAME ROUTES array used for prerendering above --
+// one source of truth, so sitemap.xml can never drift out of sync
+// with the real, current set of pages the way the old hand-maintained
+// public/sitemap.xml did.
+function priorityFor(route) {
+  if (route === '/') return { priority: '1.0', changefreq: 'weekly' };
+  if (route === '/services' || route === '/resources') return { priority: '0.9', changefreq: 'weekly' };
+  if (route.startsWith('/services/')) return { priority: '0.85', changefreq: 'monthly' };
+  if (route.startsWith('/resources/')) return { priority: '0.6', changefreq: 'monthly' };
+  return { priority: '0.7', changefreq: 'monthly' };
+}
+
+function generateSitemap(routes) {
+  const today = new Date().toISOString().slice(0, 10);
+  const urls = routes
+    .map((route) => {
+      const { priority, changefreq } = priorityFor(route);
+      return `  <url><loc>${SITE_URL}${route}</loc><lastmod>${today}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
+    })
+    .join('\n');
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+
+  writeFileSync(join(DIST_DIR, 'sitemap.xml'), xml, 'utf-8');
+  console.log(`✓ Generated sitemap.xml with ${routes.length} URLs (from the live ROUTES list, not a hand-maintained file)`);
+}
+
 async function run() {
   if (!existsSync(DIST_DIR)) {
     console.error('✗ dist/ folder not found. Run `vite build` first.');
@@ -241,6 +271,8 @@ async function run() {
   }
 
   console.log('\n✓ Prerendering complete. All routes now have static HTML.');
+
+  generateSitemap(ROUTES);
 }
 
 run().catch((err) => {
