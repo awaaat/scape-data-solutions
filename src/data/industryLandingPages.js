@@ -145,9 +145,9 @@ const industryLandingPages = {
     ],
 
     relatedArticleSlugs: [
-      "dental-kpi-dashboard",
-      "reduce-dental-no-shows",
-      "patient-retention-dental-clinic",
+      "dental-kpi-dashboard-metrics-every-practice-should-track",
+      "how-to-reduce-patient-no-shows-in-dental-clinics",
+      "patient-retention-strategies-for-dental-practices",
       "why-your-dental-practice-numbers-are-lying-to-you",
     ],
     ctaHeading: "See your practice's numbers, automatically.",
@@ -291,7 +291,7 @@ const industryLandingPages = {
 
     relatedArticleSlugs: [
       "veterinary-kpi-dashboard",
-      "veterinary-client-retention",
+      "veterinary-client-retention-a-data-driven-guide",
       "how-to-measure-veterinary-clinic-performance",
     ],
     ctaHeading: "See your clinic's numbers, automatically.",

@@ -32,6 +32,9 @@ const SITE_URL = 'https://www.scapedatasolutions.com';
 
 // Vercel sets this env var automatically during build
 const IS_VERCEL = !!process.env.VERCEL;
+const FALLBACK_TITLE = 'Data Analytics & BI Consulting | Scape Data Solutions';
+const BRAND = 'Scape Data Solutions';
+const SKIPPED = new Set();
 
 // ─── Every real route from App.jsx (kept in sync manually) ────────
 // If you add a new <Route> in App.jsx, add its path here too.
@@ -48,14 +51,6 @@ const ROUTES = [
   '/careers',
   '/faq',
   '/resources',
-  '/resources/dental-kpi-dashboard',
-  '/resources/reduce-dental-no-shows',
-  '/resources/patient-retention-dental-clinic',
-  '/resources/veterinary-kpi-dashboard',
-  '/resources/veterinary-client-retention',
-  '/resources/medical-practice-revenue-cycle-analytics',
-  '/resources/reduce-patient-no-shows-predictive-analytics',
-  '/resources/how-to-measure-veterinary-clinic-performance',
   '/dental-analytics',
   '/veterinary-analytics',
   '/medical-practice-analytics',
@@ -147,6 +142,39 @@ if (existsSync(QUARTO_ARTICLES_DIR)) {
   }
 }
 
+// ─── Exclude duplicate routes (301-redirected in vercel.json) ───
+const EXCLUDED_ROUTES = new Set(["/services/demand-forecasting-inventory-planning","/services/pricing-analytics-optimization"]);
+for (let i = ROUTES.length - 1; i >= 0; i--) {
+  if (EXCLUDED_ROUTES.has(ROUTES[i])) ROUTES.splice(i, 1);
+}
+
+// HOME_LAST: prerendering '/' overwrites dist/index.html. Every later route would then
+// load the homepage's rendered HTML (stale canonical/og/title) as its template.
+{
+  const i = ROUTES.indexOf('/');
+  if (i !== -1) { ROUTES.splice(i, 1); ROUTES.push('/'); }
+}
+
+// SANITY_DISCOVERY: articles live in Sanity and are not auto-discovered, so fetch slugs at build time (node has no CORS)
+async function discoverSanityRoutes() {
+  try {
+    const q = encodeURIComponent('*[_type=="article" && defined(slug.current)].slug.current');
+    const res = await fetch('https://5q5grbf2.api.sanity.io/v2021-06-07/data/query/production?query=' + q);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const { result } = await res.json();
+    let added = 0;
+    for (const slug of result || []) {
+      const route = '/resources/' + slug;
+      if (!ROUTES.includes(route)) { ROUTES.push(route); added++; }
+    }
+    const i = ROUTES.indexOf('/');
+    if (i !== -1) { ROUTES.splice(i, 1); ROUTES.push('/'); }
+    console.log('✓ Sanity: ' + (result || []).length + ' articles, ' + added + ' new routes added');
+  } catch (e) {
+    console.warn('  ! Sanity discovery failed: ' + e.message + ' (continuing with existing routes)');
+  }
+}
+
 function startServer() {
   return new Promise((resolve) => {
     const server = http.createServer((req, res) =>
@@ -166,7 +194,7 @@ async function launchBrowser() {
     const chromium = (await import('@sparticuz/chromium')).default;
 
     return puppeteer.launch({
-      args: [...chromium.args, '--disable-dev-shm-usage', '--no-zygote', '--single-process'],
+      args: [...chromium.args, '--disable-dev-shm-usage', '--disable-web-security', '--no-zygote', '--single-process'],
       executablePath: await chromium.executablePath(),
       headless: chromium.headless,
     });
@@ -177,7 +205,7 @@ async function launchBrowser() {
     return puppeteer.launch({
       executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
       headless: 'new',
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--no-zygote', '--single-process'],
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-web-security', '--disable-gpu', '--no-zygote', '--single-process'],
     });
   }
 }
@@ -200,10 +228,39 @@ async function prerenderRoute(browser, route) {
 
   await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
 
-  // Give React + react-helmet-async a moment to finish writing
-  // <title>/<meta>/<script> tags into <head> after route render.
-  await new Promise((r) => setTimeout(r, 500));
+  // Wait for Helmet to replace the fallback title (except on home)
+  if (route !== '/') {
+    await page
+      .waitForFunction((fb) => document.title && document.title !== fb, { timeout: 5000 }, FALLBACK_TITLE)
+      .catch(() => console.warn(`  ! ${route}: title is still the fallback (no SEO metadata?)`));
+  }
+  await new Promise((r) => setTimeout(r, 300));
 
+  // Force exactly one correct canonical + og:url, fix doubled brand suffix
+  const canonical = route === '/' ? `${SITE_URL}/` : `${SITE_URL}${route}`;
+  await page.evaluate((canonical, brand) => {
+    document.querySelectorAll('link[rel="canonical"]').forEach((el) => el.remove());
+    const link = document.createElement('link');
+    link.rel = 'canonical';
+    link.href = canonical;
+    link.setAttribute('data-rh', 'true');
+    document.head.appendChild(link);
+
+    document.querySelectorAll('meta[property="og:url"]').forEach((el) => el.setAttribute('content', canonical));
+
+    const suffix = ` | ${brand}`;
+    while (document.title.endsWith(suffix + suffix)) {
+      document.title = document.title.slice(0, -suffix.length);
+    }
+  }, canonical, BRAND);
+
+  const finalPath = new URL(page.url()).pathname.replace(/\/+$/, '') || '/';
+  if (finalPath !== route) {
+    console.warn('  ! ' + route + ': redirected to ' + finalPath + ' - skipped (not a real page)');
+    SKIPPED.add(route);
+    await page.close();
+    return;
+  }
   const html = await page.content();
   await page.close();
 
@@ -256,6 +313,7 @@ async function run() {
 
   console.log(`Prerendering ${ROUTES.length} routes...\n`);
 
+  await discoverSanityRoutes();
   const server = await startServer();
   const browser = await launchBrowser();
 
@@ -272,7 +330,7 @@ async function run() {
 
   console.log('\n✓ Prerendering complete. All routes now have static HTML.');
 
-  generateSitemap(ROUTES);
+  generateSitemap(ROUTES.filter((r) => !SKIPPED.has(r)));
 }
 
 run().catch((err) => {

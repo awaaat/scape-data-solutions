@@ -14,15 +14,21 @@ const SEO = ({
   image,
   article = false,
   schema = null,
+  path,
 }) => {
   const location = useLocation();
-  const url = `https://www.scapedatasolutions.com${location.pathname}`;
+  const rawPath = path || location.pathname;
+  const cleanPath = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
+  const url = 'https://www.scapedatasolutions.com' + cleanPath;
 
   const defaultTitle = 'Scape Data Solutions | AI-Powered Data Analytics & Business Intelligence';
   const defaultDescription = 'Expert data analytics, BI dashboards, AI/ML solutions. We turn your data into revenue.';
   const defaultImage = '/Images/site-images/og-default.jpg';
 
-  const finalTitle = title ? `${title} | Scape Data Solutions` : defaultTitle;
+  const BRAND = 'Scape Data Solutions';
+  const finalTitle = title
+    ? (title.includes(BRAND) ? title : title + ' | ' + BRAND)
+    : defaultTitle;
   const finalDescription = description || defaultDescription;
   const finalImage = image || defaultImage;
   const finalKeywords = keywords || 'data analytics, business intelligence, AI, machine learning';

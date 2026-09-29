@@ -1,66 +1,140 @@
 {
-    "redirects": [
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
         {
-            "source": "/(.*)",
-            "has": [{ "type": "host", "value": "scapedatasolutions.com" }],
-            "destination": "https://www.scapedatasolutions.com/$1",
-            "permanent": true
+          "type": "host",
+          "value": "scapedatasolutions.com"
         }
-    ],
-    "rewrites": [
-        { "source": "/login", "destination": "/index.html" },
-        { "source": "/signup", "destination": "/index.html" },
-        { "source": "/forgot-password", "destination": "/index.html" },
-        { "source": "/reset-password", "destination": "/index.html" },
-        { "source": "/verify-email", "destination": "/index.html" },
-        { "source": "/dashboard", "destination": "/index.html" },
-        { "source": "/dashboard/:path*", "destination": "/index.html" },
-        { "source": "/(.*)", "destination": "/index.html" }
-    ],
-    "headers": [
+      ],
+      "destination": "https://www.scapedatasolutions.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/services/demand-forecasting-inventory-planning",
+      "destination": "/services/demand-forecasting",
+      "permanent": true
+    },
+    {
+      "source": "/services/pricing-analytics-optimization",
+      "destination": "/services/pricing-optimization",
+      "permanent": true
+    },
+    {
+      "source": "/resources/dental-kpi-dashboard",
+      "destination": "/resources/dental-kpi-dashboard-metrics-every-practice-should-track",
+      "permanent": true
+    },
+    {
+      "source": "/resources/reduce-dental-no-shows",
+      "destination": "/resources/how-to-reduce-patient-no-shows-in-dental-clinics",
+      "permanent": true
+    },
+    {
+      "source": "/resources/patient-retention-dental-clinic",
+      "destination": "/resources/patient-retention-strategies-for-dental-practices",
+      "permanent": true
+    },
+    {
+      "source": "/resources/veterinary-client-retention",
+      "destination": "/resources/veterinary-client-retention-a-data-driven-guide",
+      "permanent": true
+    },
+    {
+      "source": "/resources/veterinary-kpi-dashboard",
+      "destination": "/veterinary-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/resources/medical-practice-revenue-cycle-analytics",
+      "destination": "/medical-practice-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/resources/reduce-patient-no-shows-predictive-analytics",
+      "destination": "/medical-practice-analytics",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/login",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/signup",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/forgot-password",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/reset-password",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/verify-email",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/dashboard/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
         {
-            "source": "/(.*)",
-            "headers": [
-                {
-                    "key": "X-Content-Type-Options",
-                    "value": "nosniff"
-                },
-                {
-                    "key": "X-Frame-Options",
-                    "value": "DENY"
-                },
-                {
-                    "key": "X-XSS-Protection",
-                    "value": "1; mode=block"
-                }
-            ]
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
         },
         {
-            "source": "/sitemap.xml",
-            "headers": [
-                {
-                    "key": "Content-Type",
-                    "value": "application/xml"
-                },
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=3600, must-revalidate"
-                }
-            ]
+          "key": "X-Frame-Options",
+          "value": "DENY"
         },
         {
-            "source": "/robots.txt",
-            "headers": [
-                {
-                    "key": "Content-Type",
-                    "value": "text/plain"
-                },
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=3600, must-revalidate"
-                }
-            ]
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
         }
-    ],
-    "installCommand": "npm install --legacy-peer-deps"
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "installCommand": "npm install --legacy-peer-deps"
 }

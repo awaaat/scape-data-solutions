@@ -109,18 +109,6 @@ export default function DataVisualizationPagePage() {
         path: "/services/data-visualization",
       })}
     />
-      <Helmet>
-        <title>Data Visualization Services | Scape Data Solutions</title>
-        <meta
-          name="description"
-          content="Custom dashboards, reporting suites, and embedded analytics that turn raw data into decisions your team can act on daily."
-        />
-        <link
-          rel="canonical"
-          href="https://www.scapedatasolutions.com/services/data-visualization"
-        />
-      </Helmet>
-
       {/* ── Hero ── */}
       <motion.section
         className={styles.hero}
