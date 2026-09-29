@@ -262,6 +262,12 @@ async function prerenderRoute(browser, route) {
     return;
   }
   const html = await page.content();
+  if (html.includes('Something went wrong loading this page')) { /* ERRFALLBACK */
+    console.warn('  ! ' + route + ': page rendered the error fallback - skipped');
+    SKIPPED.add(route);
+    await page.close();
+    return;
+  }
   await page.close();
 
   // Decide output path: "/" -> dist/index.html (already exists, overwrite)

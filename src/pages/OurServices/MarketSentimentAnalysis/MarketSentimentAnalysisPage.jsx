@@ -18,6 +18,7 @@ import {
 import PageLayout from "../../../components/Layout/PageLayout";
 import { apiService } from "../../../services/api";
 import styles from "./MarketSentimentAnalysisPage.module.css";
+import { buildServiceSchema } from '../../../utils/serviceSchema';
 
 // ─── YOUR REAL IMAGES ──────────────────────────────────────────────
 const heroImage = "/Images/site-images/lottie-preview-image.webp";
