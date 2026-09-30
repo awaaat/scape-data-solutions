@@ -41,7 +41,7 @@ const SPSSDataAnalysisPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="SPSS Data Analysis | Scape Data Solutions"
+      title="SPSS Data Analysis | Scape Technologies"
       description="Expert, accurate SPSS data analysis, from descriptive statistics to complex inferential tests and predictive modeling."
       path="/services/spss-data-analysis"
       schema={buildServiceSchema({

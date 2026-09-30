@@ -140,7 +140,7 @@ const StaffBehaviorRetentionPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Staff Behavior & Retention Analytics | Scape Data Solutions"
+      title="Staff Behavior & Retention Analytics | Scape Technologies"
       description="AI-powered analytics that predict burnout and identify turnover risk to build a thriving workplace culture."
       path="/services/staff-behavior-retention"
       schema={buildServiceSchema({

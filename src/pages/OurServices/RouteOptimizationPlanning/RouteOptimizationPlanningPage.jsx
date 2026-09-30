@@ -143,7 +143,7 @@ const RouteOptimizationPlanningPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Route Optimization & Planning | Scape Data Solutions"
+      title="Route Optimization & Planning | Scape Technologies"
       description="AI-powered route optimization that reduces fuel costs and maximizes fleet efficiency."
       path="/services/route-optimization-planning"
       schema={buildServiceSchema({

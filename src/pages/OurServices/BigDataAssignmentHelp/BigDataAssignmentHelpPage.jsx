@@ -337,7 +337,7 @@ export default function BigDataAssignmentHelp() {
   return (
     <div className={styles.container}>
       <SEO
-        title="Big Data Assignment Help | Scape Data Solutions"
+        title="Big Data Assignment Help | Scape Technologies"
         description="Professional Big Data assignment help, Spark, Hadoop, MapReduce, and real-time analytics support from experienced engineers."
         path="/services/big-data-assignment-help"
       />
@@ -352,7 +352,7 @@ export default function BigDataAssignmentHelp() {
           variants={fadeUp}
         >
           <h1>Big Data Assignment Help</h1>
-          <p>Professional Big Data Assignment Help services by Scape Data Solutions.</p>
+          <p>Professional Big Data Assignment Help services by Scape Technologies.</p>
           <p className={styles.sub}>
             Plagiarism-free code. Affordable pricing. Experienced experts. Any deadline, any subject.
           </p>
@@ -374,7 +374,7 @@ export default function BigDataAssignmentHelp() {
         >
           <h2>Big Data Assignment Help</h2>
           <p>
-            Scape Data Solutions is a top-rated destination for Big Data project, assignment, and homework help.
+            Scape Technologies is a top-rated destination for Big Data project, assignment, and homework help.
             Our dedicated team of Big Data experts will guide you throughout your Big Data analytics
             learning journey.
           </p>
@@ -387,7 +387,7 @@ export default function BigDataAssignmentHelp() {
           </p>
           <p>
             The programming side is always convoluted, and it keeps students puzzled. That's why
-            Scape Data Solutions has appointed the best programming experts to assist you with Big Data analytics
+            Scape Technologies has appointed the best programming experts to assist you with Big Data analytics
             assignments.
           </p>
           <div className={styles.analyticsFlow}>

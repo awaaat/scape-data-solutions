@@ -66,7 +66,7 @@ export default function FAQPage() {
   return (
     <div className={styles.page}>
       <SEO
-        title="FAQ | Scape Data Solutions"
+        title="FAQ | Scape Technologies"
         description="Frequently asked questions about AI, machine learning, financial modelling, statistics, data engineering, and BI."
         path="/faq"
         schema={faqSchema}

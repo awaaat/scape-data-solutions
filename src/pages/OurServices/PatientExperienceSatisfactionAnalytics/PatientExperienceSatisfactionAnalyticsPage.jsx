@@ -142,7 +142,7 @@ const PatientExperienceSatisfactionAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Patient Experience & Satisfaction Analytics | Scape Data Solutions"
+      title="Patient Experience & Satisfaction Analytics | Scape Technologies"
       description="AI and NLP-powered analysis of patient feedback that identifies drivers of satisfaction and improves HCAHPS scores."
       path="/services/patient-experience-satisfaction-analytics"
       schema={buildServiceSchema({

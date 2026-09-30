@@ -499,7 +499,7 @@ const ChatbotDevelopmentPage = () => {
   return (
     <PageLayout>
       <SEO
-        title="AI Chatbot Development Services | Scape Data Solutions"
+        title="AI Chatbot Development Services | Scape Technologies"
         description="Custom AI chatbots grounded in your own data — RAG, LLMs, and enterprise-grade security. 650+ projects delivered."
         path="/services/chatbot-development"
         schema={{
@@ -508,7 +508,7 @@ const ChatbotDevelopmentPage = () => {
             {
               "@type": "Service",
               serviceType: "AI Chatbot Development",
-              provider: { "@type": "Organization", name: "Scape Data Solutions", url: "https://www.scapedatasolutions.com" },
+              provider: { "@type": "Organization", name: "Scape Technologies", url: "https://www.scapedatasolutions.com" },
               areaServed: ["US", "CA", "PK", "KE", "GB"],
               description: "Conversational AI tools that answer accurately from your own documentation and data.",
               offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceSpecification: { "@type": "PriceSpecification", priceCurrency: "USD", price: "Contact for pricing" } },

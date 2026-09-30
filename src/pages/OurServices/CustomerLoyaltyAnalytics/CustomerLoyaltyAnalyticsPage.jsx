@@ -141,7 +141,7 @@ const CustomerLoyaltyAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Customer Loyalty Analytics | Scape Data Solutions"
+      title="Customer Loyalty Analytics | Scape Technologies"
       description="AI-powered analytics that optimize your loyalty program, predict churn, and maximize customer lifetime value."
       path="/services/customer-loyalty-analytics"
       schema={buildServiceSchema({

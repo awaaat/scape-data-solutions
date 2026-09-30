@@ -50,7 +50,7 @@ const AnimatedNumber = ({ value, suffix = "", prefix = "", decimals = 0, duratio
   return (
     <motion.span onViewportEnter={handleEnter} viewport={{ once: true, amount: 0.6 }}>
     <SEO
-      title="Regulatory Compliance Analytics | Scape Data Solutions"
+      title="Regulatory Compliance Analytics | Scape Technologies"
       description="Audit-ready regulatory compliance analytics that help organizations monitor requirements and reduce risk."
       path="/services/regulatory-compliance-analytics"
       schema={buildServiceSchema({

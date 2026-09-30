@@ -84,14 +84,14 @@ const DataCleaningPage = () => {
     name: "Data Cleaning",
     description:
       "Duplicate removal, missing data handling, and standardization of messy datasets before analysis.",
-    provider: { "@type": "ProfessionalService", name: "Scape Data Solutions" },
+    provider: { "@type": "ProfessionalService", name: "Scape Technologies" },
     areaServed: ["US", "CA", "PK", "KE"],
   };
 
   return (
     <>
       <SEO
-        title="Data Cleaning | Scape Data Solutions"
+        title="Data Cleaning | Scape Technologies"
         description="Duplicates, missing values, inconsistent labels — sorted before analysis begins. Every change documented."
         path="/services/data-cleaning"
         schema={schema}

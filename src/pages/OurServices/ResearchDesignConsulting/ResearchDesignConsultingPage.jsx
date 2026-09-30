@@ -8,7 +8,7 @@ export default function ResearchDesignConsultingPage() {
       <SEO
         title={"Research Design Consulting"}
         description={"Rigorous Research Design Consulting support, from design through interpretation, for dissertations and peer-reviewed research."}
-        keywords={"Research Design Consulting, research-methods, data analytics services, Scape Data Solutions"}
+        keywords={"Research Design Consulting, research-methods, data analytics services, Scape Technologies"}
       />
       <section style={{ padding: '4rem 0 5rem' }}>
         <p style={{ textTransform: 'uppercase', fontSize: '.75rem', letterSpacing: '.08em', fontWeight: 600, color: 'var(--color-text-secondary, #64748b)', marginBottom: '.5rem' }}>{"research-methods"}</p>

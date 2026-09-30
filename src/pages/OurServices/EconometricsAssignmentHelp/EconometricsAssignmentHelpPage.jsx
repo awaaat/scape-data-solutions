@@ -8,7 +8,7 @@ export default function EconometricsAssignmentHelpPage() {
       <SEO
         title={"Econometrics Assignment Help"}
         description={"Expert help with Econometrics Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
-        keywords={"Econometrics Assignment Help, assignment-help, data analytics services, Scape Data Solutions"}
+        keywords={"Econometrics Assignment Help, assignment-help, data analytics services, Scape Technologies"}
       />
       <section style={{ padding: '4rem 0 5rem' }}>
         <p style={{ textTransform: 'uppercase', fontSize: '.75rem', letterSpacing: '.08em', fontWeight: 600, color: 'var(--color-text-secondary, #64748b)', marginBottom: '.5rem' }}>{"assignment-help"}</p>

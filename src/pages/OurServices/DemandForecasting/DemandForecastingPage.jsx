@@ -140,7 +140,7 @@ const DemandForecastingPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Demand Forecasting | Scape Data Solutions"
+      title="Demand Forecasting | Scape Technologies"
       description="AI-powered demand forecasting that delivers accurate sales predictions for optimized inventory and smarter promotions."
       path="/services/demand-forecasting"
       schema={buildServiceSchema({

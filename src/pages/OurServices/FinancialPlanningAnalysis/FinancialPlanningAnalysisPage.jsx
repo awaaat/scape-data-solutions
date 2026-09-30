@@ -144,7 +144,7 @@ const FinancialPlanningAnalysisPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Financial Planning & Analysis | Scape Data Solutions"
+      title="Financial Planning & Analysis | Scape Technologies"
       description="AI-powered financial planning and analysis that transforms budgeting, forecasting, and performance monitoring."
       path="/services/financial-planning-analysis"
       schema={buildServiceSchema({

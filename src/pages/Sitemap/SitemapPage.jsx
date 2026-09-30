@@ -87,8 +87,8 @@ const SitemapPage = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="Sitemap | Scape Data Solutions"
-        description="Every page on the Scape Data Solutions website."
+        title="Sitemap | Scape Technologies"
+        description="Every page on the Scape Technologies website."
         path="/sitemap"
       />
 

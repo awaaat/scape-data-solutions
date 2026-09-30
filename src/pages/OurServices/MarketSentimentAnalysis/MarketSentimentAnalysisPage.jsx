@@ -139,7 +139,7 @@ const MarketSentimentAnalysisPage = () => {
   return (
     <PageLayout>
       <SEO
-        title="Market Sentiment Analysis | Scape Data Solutions"
+        title="Market Sentiment Analysis | Scape Technologies"
         description="AI-powered market sentiment analysis. Monitor brand perception, predict market movements, and gain competitive intelligence from news, social media, and financial data."
         path="/services/market-sentiment-analysis"
         schema={buildServiceSchema({

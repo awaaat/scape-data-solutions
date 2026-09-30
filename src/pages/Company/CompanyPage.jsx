@@ -84,7 +84,7 @@ const MILESTONES = [
   { 
     date: "2017", 
     label: "Founded with a mission", 
-    desc: "Scape Data Solutions launched to help businesses unlock the value hidden in their data, starting with a small team of 4." 
+    desc: "Scape Technologies launched to help businesses unlock the value hidden in their data, starting with a small team of 4." 
   },
   { 
     date: "2018", 
@@ -128,8 +128,8 @@ export default function CompanyPage() {
   return (
     <div className={styles.page}>
       <SEO
-        title="About Scape Data Solutions | Premier Data Analytics Company"
-        description="Scape Data Solutions is a premier data analytics firm founded in 2017. Quick response, expert team, 100% client satisfaction goal."
+        title="About Scape Technologies | Premier Data Analytics Company"
+        description="Scape Technologies is a premier data analytics firm founded in 2017. Quick response, expert team, 100% client satisfaction goal."
         path="/company"
       />
       <Navbar activeNav="company" />
@@ -239,7 +239,7 @@ export default function CompanyPage() {
             <div className={styles.missionBlock}>
               <motion.p className={styles.sectionLabel} variants={fadeUp}>Our story</motion.p>
               <motion.h2 className={styles.sectionTitle} variants={fadeUp}>
-                Scape Data Solutions was founded with a vision to make data work for you
+                Scape Technologies was founded with a vision to make data work for you
               </motion.h2>
               <motion.p className={styles.missionDesc} variants={fadeUp}>
                 With a driving vision to provide excellent solutions to enhance efficiency
@@ -252,7 +252,7 @@ export default function CompanyPage() {
                 us into a premium position in the data analytics space.
               </motion.p>
               <motion.p className={styles.missionDesc} variants={fadeUp}>
-                Scape Data Solutions pivots on client satisfaction with an area of expertise
+                Scape Technologies pivots on client satisfaction with an area of expertise
                 that covers today's latest data technologies. When our clients are happy, we are successful.
               </motion.p>
               <motion.div variants={fadeUp}>
@@ -391,7 +391,7 @@ export default function CompanyPage() {
             <div className={styles.ctaBox}>
               <p>
                 Please <Link to="/contact" style={{ color: ACCENT, fontWeight: 500 }}>contact us</Link>{" "}
-                and find out more about Scape Data Solutions and how we can help you in your data-driven business.
+                and find out more about Scape Technologies and how we can help you in your data-driven business.
               </p>
             </div>
           </div>

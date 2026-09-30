@@ -41,7 +41,7 @@ const ReportWritingSupportPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Report Writing Support | Scape Data Solutions"
+      title="Report Writing Support | Scape Technologies"
       description="Expert report writing support that turns your analysis into a compelling, clear, and confident story."
       path="/services/report-writing-support"
       schema={buildServiceSchema({

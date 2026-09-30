@@ -141,7 +141,7 @@ const StorePerformanceAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Store Performance Comparison | Scape Data Solutions"
+      title="Store Performance Comparison | Scape Technologies"
       description="AI-powered store comparison that benchmarks performance and uncovers best practices across your chain."
       path="/services/store-performance-comparison"
       schema={buildServiceSchema({

@@ -8,7 +8,7 @@ export default function QualitativeDataAnalysisPage() {
       <SEO
         title={"Qualitative Data Analysis"}
         description={"Rigorous Qualitative Data Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
-        keywords={"Qualitative Data Analysis, research-methods, data analytics services, Scape Data Solutions"}
+        keywords={"Qualitative Data Analysis, research-methods, data analytics services, Scape Technologies"}
       />
       <section style={{ padding: '4rem 0 5rem' }}>
         <p style={{ textTransform: 'uppercase', fontSize: '.75rem', letterSpacing: '.08em', fontWeight: 600, color: 'var(--color-text-secondary, #64748b)', marginBottom: '.5rem' }}>{"research-methods"}</p>

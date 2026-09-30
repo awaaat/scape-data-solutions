@@ -8,7 +8,7 @@ export default function ConferencePaperWritingPage() {
       <SEO
         title={"Conference Paper Writing"}
         description={"Professional Conference Paper Writing that strengthens your manuscript for submission, review, and publication."}
-        keywords={"Conference Paper Writing, academic-writing, data analytics services, Scape Data Solutions"}
+        keywords={"Conference Paper Writing, academic-writing, data analytics services, Scape Technologies"}
       />
       <section style={{ padding: '4rem 0 5rem' }}>
         <p style={{ textTransform: 'uppercase', fontSize: '.75rem', letterSpacing: '.08em', fontWeight: 600, color: 'var(--color-text-secondary, #64748b)', marginBottom: '.5rem' }}>{"academic-writing"}</p>

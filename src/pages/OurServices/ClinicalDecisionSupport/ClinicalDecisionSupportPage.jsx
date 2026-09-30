@@ -723,7 +723,7 @@ const faqSchema = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Scape Data Solutions",
+  name: "Scape Technologies",
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   sameAs: ["https://www.linkedin.com/company/scape-data-solutions", "https://twitter.com/scapedata"],
@@ -787,7 +787,7 @@ export default function ClinicalDecisionSupportPage() {
   return (
     <div className={styles.page}>
       <SEO
-        title="Clinical Decision Support | Evidence-Based Alerts at the Point of Care | Scape Data Solutions"
+        title="Clinical Decision Support | Evidence-Based Alerts at the Point of Care | Scape Technologies"
         description="Real-time clinical risk alerts, patient-specific risk scoring, and evidence-based recommendations integrated directly into your EHR workflow, grounded in published clinical research."
         path="/clinical-decision-support"
         image="/Images/clinical-decision-support-og.webp"

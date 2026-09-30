@@ -141,7 +141,7 @@ const TelehealthRemoteMonitoringAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Telehealth & Remote Monitoring Analytics | Scape Data Solutions"
+      title="Telehealth & Remote Monitoring Analytics | Scape Technologies"
       description="Advanced analytics that measure engagement, clinical outcomes, and ROI of telehealth programs."
       path="/services/telehealth-remote-monitoring-analytics"
       schema={buildServiceSchema({

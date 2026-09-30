@@ -139,7 +139,7 @@ const SalesPerformanceDashboardPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Sales Performance Dashboard | Scape Data Solutions"
+      title="Sales Performance Dashboard | Scape Technologies"
       description="AI-powered dashboards that provide real-time visibility into sales performance across stores and channels."
       path="/services/sales-performance-dashboard"
       schema={buildServiceSchema({

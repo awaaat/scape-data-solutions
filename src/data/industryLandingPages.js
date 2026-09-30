@@ -9,7 +9,7 @@ const industryLandingPages = {
   "dental-analytics": {
     slug: "dental-analytics",
     industry: "Dental Practices",
-    metaTitle: "Dental Practice Analytics & AI Dashboards | Scape Data Solutions",
+    metaTitle: "Dental Practice Analytics & AI Dashboards | Scape Technologies",
     metaDescription:
       "Automated dental practice analytics — patient retention, no-show prediction, and KPI dashboards built from your practice management data. Book a free demo.",
     badge: "Dental Practice Analytics",
@@ -157,7 +157,7 @@ const industryLandingPages = {
   "veterinary-analytics": {
     slug: "veterinary-analytics",
     industry: "Veterinary Practices",
-    metaTitle: "Veterinary Practice Analytics & AI Dashboards | Scape Data Solutions",
+    metaTitle: "Veterinary Practice Analytics & AI Dashboards | Scape Technologies",
     metaDescription:
       "Automated veterinary practice analytics — client retention, appointment forecasting, and revenue dashboards built from your practice management data.",
     badge: "Veterinary Practice Analytics",
@@ -301,7 +301,7 @@ const industryLandingPages = {
   "medical-practice-analytics": {
     slug: "medical-practice-analytics",
     industry: "Medical Practices",
-    metaTitle: "Medical Practice Analytics & AI Dashboards | Scape Data Solutions",
+    metaTitle: "Medical Practice Analytics & AI Dashboards | Scape Technologies",
     metaDescription:
       "Automated medical practice analytics — patient retention, no-show prediction, and revenue dashboards built directly from your EHR and billing data.",
     badge: "Medical Practice Analytics",

@@ -145,7 +145,7 @@ const RevenueOperationsAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Revenue Operations Analytics | Scape Data Solutions"
+      title="Revenue Operations Analytics | Scape Technologies"
       description="AI-powered revenue operations analytics that unify sales, marketing, and customer success data."
       path="/services/revenue-operations-analytics"
       schema={buildServiceSchema({

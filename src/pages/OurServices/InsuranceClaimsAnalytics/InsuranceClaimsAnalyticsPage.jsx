@@ -57,7 +57,7 @@ const InsuranceClaimsAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Insurance Claims Analytics | Scape Data Solutions"
+      title="Insurance Claims Analytics | Scape Technologies"
       description="AI-powered claims analytics that optimize processing, detect fraud, and improve loss ratios."
       path="/services/insurance-claims-analytics"
       schema={buildServiceSchema({

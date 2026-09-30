@@ -143,7 +143,7 @@ const SupplyChainVisibilityPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Supply Chain Visibility & Tracking | Scape Data Solutions"
+      title="Supply Chain Visibility & Tracking | Scape Technologies"
       description="AI-powered supply chain visibility that provides real-time tracking and predictive ETAs."
       path="/services/supply-chain-visibility-tracking"
       schema={buildServiceSchema({

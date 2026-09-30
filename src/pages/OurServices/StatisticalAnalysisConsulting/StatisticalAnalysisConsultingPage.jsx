@@ -70,14 +70,14 @@ const StatisticalAnalysisConsultingPage = () => {
     name: "Statistical Consulting",
     description:
       "Test-selection guidance, study design review, and analysis consulting for anyone unsure which statistical method fits their data.",
-    provider: { "@type": "ProfessionalService", name: "Scape Data Solutions" },
+    provider: { "@type": "ProfessionalService", name: "Scape Technologies" },
     areaServed: ["US", "CA", "PK", "KE"],
   };
 
   return (
     <>
       <SEO
-        title="Statistical Consulting | Scape Data Solutions"
+        title="Statistical Consulting | Scape Technologies"
         description="Not sure whether you need a t-test, ANOVA, or regression? Get expert statistical consulting before you run anything."
         path="/services/statistical-consulting"
         schema={schema}

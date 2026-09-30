@@ -141,7 +141,7 @@ const MedicalImagingAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Medical Imaging & Radiology Analytics | Scape Data Solutions"
+      title="Medical Imaging & Radiology Analytics | Scape Technologies"
       description="AI and analytics applied to medical imaging to improve diagnostic accuracy and optimize radiology workflow."
       path="/services/medical-imaging-radiology-analytics"
       schema={buildServiceSchema({

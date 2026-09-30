@@ -83,7 +83,7 @@ const INDUSTRY_COLORS = {
 };
 
 const testimonials = [
-  { quote: "Scape Data Solutions transformed how we handle financial reporting. Real-time visibility across all our branches — up and running in weeks.", organization: "The Family Building Society", location: "Epsom, UK" },
+  { quote: "Scape Technologies transformed how we handle financial reporting. Real-time visibility across all our branches — up and running in weeks.", organization: "The Family Building Society", location: "Epsom, UK" },
   { quote: "Their data governance framework gave us complete compliance with Australian privacy regulations. The team delivered beyond what we expected.", organization: "Bayview Mutual Bank", location: "Sydney, AU" },
   { quote: "The predictive analytics platform they built for us has directly improved patient outcomes and operational efficiency across our network.", organization: "Holmesglen Private Hospital", location: "Moorabbin, AU" },
   { quote: "We consolidated several different data silos into one unified platform. Supply chain decisions that took days now happen in minutes.", organization: "Ridgeline Precision Manufacturing", location: "Cincinnati, OH" },
@@ -254,8 +254,8 @@ const ClientsPage = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="Our Clients | Scape Data Solutions"
-        description="Organizations across finance, healthcare, retail, energy and technology trust Scape Data Solutions."
+        title="Our Clients | Scape Technologies"
+        description="Organizations across finance, healthcare, retail, energy and technology trust Scape Technologies."
         path="/clients"
       />
 

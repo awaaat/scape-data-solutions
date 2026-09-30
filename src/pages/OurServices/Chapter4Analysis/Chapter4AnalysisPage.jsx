@@ -324,7 +324,7 @@ const Chapter4AnalysisPage = () => {
     name: "Chapter 4 Analysis",
     description:
       "Data coding, statistical analysis, and results write-up for thesis and dissertation Chapter 4, Results and Findings.",
-    provider: { "@type": "ProfessionalService", name: "Scape Data Solutions" },
+    provider: { "@type": "ProfessionalService", name: "Scape Technologies" },
     areaServed: ["US", "CA", "PK", "KE", "GB"],
   };
 
@@ -401,7 +401,7 @@ const Chapter4AnalysisPage = () => {
   return (
     <>
       <SEO
-        title="Chapter 4 Analysis Help | Thesis & Dissertation Results Writing | Scape Data Solutions"
+        title="Chapter 4 Analysis Help | Thesis & Dissertation Results Writing | Scape Technologies"
         description="Stuck on your dissertation Chapter 4? Get expert statistical analysis, SPSS/STATA/R data coding, and a defensible Results & Findings chapter, formatted to your university's requirements."
         path="/services/chapter-4-analysis"
         schema={schema}

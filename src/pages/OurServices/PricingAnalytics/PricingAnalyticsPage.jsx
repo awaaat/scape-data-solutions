@@ -142,7 +142,7 @@ const PricingAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Pricing Analytics & Optimization | Scape Data Solutions"
+      title="Pricing Analytics & Optimization | Scape Technologies"
       description="AI-powered pricing analytics that analyze price elasticity and optimize pricing strategies in real time."
       path="/services/pricing-analytics-optimization"
       schema={buildServiceSchema({

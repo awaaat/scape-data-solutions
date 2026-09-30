@@ -154,7 +154,7 @@ export default function WhyUsPage() {
   return (
     <div className={styles.page}>
       <SEO
-        title="Why Scape Data Solutions | Proven Data & AI Partner"
+        title="Why Scape Technologies | Proven Data & AI Partner"
         description="200+ projects delivered. 99% client satisfaction. 60+ countries. GDPR, HIPAA, SOC 2, ISO 27001. 3+ year average partnerships."
         path="/why-us"
       />
@@ -168,7 +168,7 @@ export default function WhyUsPage() {
             <div className={styles.heroInner}>
               <div className={styles.heroLeft}>
                 <div className={styles.heroBadge}>
-                  <Sparkles size={12} /> Why Scape Data Solutions
+                  <Sparkles size={12} /> Why Scape Technologies
                 </div>
                 <h1 className={styles.heroTitle}>
                   Why Choose Us?
@@ -242,7 +242,7 @@ export default function WhyUsPage() {
           <div className={styles.container}>
             <div className={styles.sectionHead}>
               <h2 className={styles.sectionTitle}>What Sets Us Apart</h2>
-              <p className={styles.sectionSub}>Discover what makes Scape Data Solutions the right partner for your business.</p>
+              <p className={styles.sectionSub}>Discover what makes Scape Technologies the right partner for your business.</p>
             </div>
 
             <motion.div className={styles.reasonsGrid} variants={stagger}>

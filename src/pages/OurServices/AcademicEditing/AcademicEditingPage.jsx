@@ -973,7 +973,7 @@ export default function AcademicEditingPage() {
               variants={fadeUp}
               transition={{ duration: 0.6 }}
             >
-              <h2>Why Researchers Choose Scape Data Solutions</h2>
+              <h2>Why Researchers Choose Scape Technologies</h2>
               <p>Careful, subject-aware editing from people who understand academic writing.</p>
             </motion.div>
 

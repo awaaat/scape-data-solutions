@@ -143,7 +143,7 @@ const InventoryDemandForecastingPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Demand Forecasting & Inventory Planning | Scape Data Solutions"
+      title="Demand Forecasting & Inventory Planning | Scape Technologies"
       description="AI-powered demand forecasting and inventory planning that reduces stockouts and lowers carrying costs."
       path="/services/demand-forecasting-inventory-planning"
       schema={buildServiceSchema({

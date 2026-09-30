@@ -37,7 +37,7 @@ export default function BusinessIntelForgotPasswordPage() {
   return (
     <div className={styles.page}>
       <SEO
-        title="Forgot Password | Business Location Intelligence | Scape Data Solutions"
+        title="Forgot Password | Business Location Intelligence | Scape Technologies"
         description="Reset your Business Location Intelligence account password."
         path="/business-intel/forgot-password"
       />

@@ -284,7 +284,7 @@ export default function Footer() {
             viewport={REPLAY_VIEWPORT}
             variants={fadeUp}
           >
-            © {new Date().getFullYear()} Scape Data Solutions. All rights reserved.
+            © {new Date().getFullYear()} Scape Technologies. All rights reserved.
           </motion.p>
         </div>
       </div>

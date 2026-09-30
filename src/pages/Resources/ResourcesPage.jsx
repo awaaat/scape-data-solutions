@@ -90,7 +90,7 @@ const ResourcesPage = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="Resources | Dental & Practice Analytics Guides - Scape Data Solutions"
+        title="Resources | Dental & Practice Analytics Guides - Scape Technologies"
         description="Practical guides on dental KPIs, patient retention, and reducing no-shows — written for practice owners, not data scientists."
         path="/resources"
       />

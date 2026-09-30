@@ -42,7 +42,7 @@ const ExcelDecisionModelingPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Excel Decision Modeling | Scape Data Solutions"
+      title="Excel Decision Modeling | Scape Technologies"
       description="We transform your Excel files into powerful decision-making tools — financial models, forecasts, and scenario planners."
       path="/services/excel-decision-modeling"
       schema={buildServiceSchema({

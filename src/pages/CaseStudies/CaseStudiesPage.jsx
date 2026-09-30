@@ -12,7 +12,7 @@ const CaseStudiesPage = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="Case Studies | Scape Data Solutions"
+        title="Case Studies | Scape Technologies"
         description="Real results from real client partnerships."
         path="/case-studies"
         noindex={true}

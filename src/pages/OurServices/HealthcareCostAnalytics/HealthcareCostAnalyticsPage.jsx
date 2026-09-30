@@ -145,7 +145,7 @@ const HealthcareCostAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Healthcare Cost & Utilization Analysis | Scape Data Solutions"
+      title="Healthcare Cost & Utilization Analysis | Scape Technologies"
       description="AI-powered analytics that uncover cost drivers and utilization patterns across your healthcare organization."
       path="/services/healthcare-cost-utilization-analysis"
       schema={buildServiceSchema({

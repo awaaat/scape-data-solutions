@@ -100,7 +100,7 @@ export default function DataVisualizationPagePage() {
   return (
     <PageLayout activeNav="services">
     <SEO
-      title="Data Visualization | Scape Data Solutions"
+      title="Data Visualization | Scape Technologies"
       description="We turn scattered spreadsheets and disconnected data sources into clear, interactive dashboards."
       path="/services/data-visualization"
       schema={buildServiceSchema({

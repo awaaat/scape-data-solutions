@@ -142,7 +142,7 @@ const LearningAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Curriculum Effectiveness & Learning Analytics | Scape Data Solutions"
+      title="Curriculum Effectiveness & Learning Analytics | Scape Technologies"
       description="AI-powered analytics that measure instructional impact, identify best practices, and close achievement gaps."
       path="/services/curriculum-effectiveness-learning-analytics"
       schema={buildServiceSchema({

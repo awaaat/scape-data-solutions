@@ -67,14 +67,14 @@ const ResearchDataAnalysisPage = () => {
     name: "Research Data Analysis",
     description:
       "Statistical analysis of collected research data — descriptive and inferential statistics, regression, and results write-up.",
-    provider: { "@type": "ProfessionalService", name: "Scape Data Solutions" },
+    provider: { "@type": "ProfessionalService", name: "Scape Technologies" },
     areaServed: ["US", "CA", "PK", "KE"],
   };
 
   return (
     <>
       <SEO
-        title="Research Data Analysis | Scape Data Solutions"
+        title="Research Data Analysis | Scape Technologies"
         description="You've collected your data. We turn it into defensible, publication-ready statistical results — for researchers, NGOs, and postgraduate students."
         path="/services/research-data-analysis"
         schema={schema}

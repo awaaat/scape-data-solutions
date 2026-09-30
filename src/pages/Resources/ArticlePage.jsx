@@ -353,7 +353,7 @@ const ArticlePage = () => {
     description: article.excerpt,
     datePublished: article.publishDate,
     dateModified: article.publishDate,
-    author: { "@type": "Organization", name: "Scape Data Solutions" },
+    author: { "@type": "Organization", name: "Scape Technologies" },
     publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: `${SITE_URL}/resources/${article.slug.current}`,
   };
@@ -364,7 +364,7 @@ const ArticlePage = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title={`${article.title} | Scape Data Solutions`}
+        title={`${article.title} | Scape Technologies`}
         description={article.excerpt}
         path={`/resources/${article.slug.current}`}
         schema={articleSchema}

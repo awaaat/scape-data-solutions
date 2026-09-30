@@ -45,7 +45,7 @@ export default function BusinessIntelLoginPage() {
   return (
     <div className={styles.page}>
       <SEO
-        title="Log In | Business Location Intelligence | Scape Data Solutions"
+        title="Log In | Business Location Intelligence | Scape Technologies"
         description="Log in to your Business Location Intelligence account to view and generate site-selection reports."
         path="/business-intel/login"
       />

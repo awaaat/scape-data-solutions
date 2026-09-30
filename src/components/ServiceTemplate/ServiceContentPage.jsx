@@ -54,7 +54,7 @@ const Reveal = ({ children, className }) => {
  * @param {string[]} offerings - 4-6 bullet items for "What's Included"
  * @param {string[]} tools - Tool/tech tags, e.g. ["Python","Airflow","Snowflake"]
  * @param {{title:string,description:string}[]} workflow - Exactly 4 "How It Works" steps
- * @param {string[]} whyUs - 4 bullet reasons to choose Scape Data Solutions for this service
+ * @param {string[]} whyUs - 4 bullet reasons to choose Scape Technologies for this service
  * @param {{q:string,a:string}[]} faqs - 4-6 FAQ pairs
  * @param {string} metaDescription - 150-160 char SEO meta description
  * @param {string} serviceType - Category label for Schema.org (e.g. "Data Engineering")
@@ -111,7 +111,7 @@ const ServiceContentPage = ({
   return (
     <>
       <SEO
-        title={`${name} | Scape Data Solutions`}
+        title={`${name} | Scape Technologies`}
         description={metaDescription}
         path={path}
         schema={schema}

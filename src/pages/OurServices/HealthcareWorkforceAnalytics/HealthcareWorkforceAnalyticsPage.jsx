@@ -141,7 +141,7 @@ const HealthcareWorkforceAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Healthcare Workforce & Staffing Analytics | Scape Data Solutions"
+      title="Healthcare Workforce & Staffing Analytics | Scape Technologies"
       description="AI-powered analytics that optimize staffing, reduce burnout, and improve clinician productivity."
       path="/services/healthcare-workforce-staffing-analytics"
       schema={buildServiceSchema({

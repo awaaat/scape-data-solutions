@@ -141,7 +141,7 @@ const HealthcareSupplyChainAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Healthcare Supply Chain Analytics | Scape Data Solutions"
+      title="Healthcare Supply Chain Analytics | Scape Technologies"
       description="AI-powered analytics that reduce supply chain costs and optimize inventory across your healthcare organization."
       path="/services/healthcare-supply-chain-analytics"
       schema={buildServiceSchema({

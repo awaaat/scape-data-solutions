@@ -245,7 +245,7 @@ export default function AIAutomationPage() {
   ];
 
   const testimonial = {
-    quote: '"Scape Data Solutions has revolutionised our operations. We\'ve cut processing times by 70% and our team can now focus on strategic initiatives."',
+    quote: '"Scape Technologies has revolutionised our operations. We\'ve cut processing times by 70% and our team can now focus on strategic initiatives."',
     name: "Sarah Chen",
     role: "VP of Operations, NexGen Logistics"
   };
@@ -287,7 +287,7 @@ export default function AIAutomationPage() {
       a: "We are SOC 2 Type II compliant, use enterprise‑grade encryption, and never use your data to train models for other customers."
     },
     {
-      q: "Can I use my own AI models with Scape Data Solutions?",
+      q: "Can I use my own AI models with Scape Technologies?",
       a: "Absolutely. We offer a 'Bring Your Own Model' capability, giving you full control while leveraging our orchestration and security layers."
     },
     {

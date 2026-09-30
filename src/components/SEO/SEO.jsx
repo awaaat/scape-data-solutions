@@ -21,11 +21,11 @@ const SEO = ({
   const cleanPath = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
   const url = 'https://www.scapedatasolutions.com' + cleanPath;
 
-  const defaultTitle = 'Scape Data Solutions | AI-Powered Data Analytics & Business Intelligence';
+  const defaultTitle = 'Scape Technologies | AI-Powered Data Analytics & Business Intelligence';
   const defaultDescription = 'Expert data analytics, BI dashboards, AI/ML solutions. We turn your data into revenue.';
   const defaultImage = '/Images/site-images/og-default.jpg';
 
-  const BRAND = 'Scape Data Solutions';
+  const BRAND = 'Scape Technologies';
   const finalTitle = title
     ? (title.includes(BRAND) ? title : title + ' | ' + BRAND)
     : defaultTitle;
@@ -56,7 +56,7 @@ const SEO = ({
       <meta property="og:url" content={url} />
       <meta property="og:image" content={imageUrl} />
       <meta property="og:type" content={article ? 'article' : 'website'} />
-      <meta property="og:site_name" content="Scape Data Solutions" />
+      <meta property="og:site_name" content="Scape Technologies" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={finalTitle} />

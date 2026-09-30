@@ -145,7 +145,7 @@ const FleetManagementTelematicsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Fleet Management & Telematics Analytics | Scape Data Solutions"
+      title="Fleet Management & Telematics Analytics | Scape Technologies"
       description="AI-powered fleet management and telematics analytics that monitor vehicle health and reduce fuel costs."
       path="/services/fleet-management-telematics"
       schema={buildServiceSchema({

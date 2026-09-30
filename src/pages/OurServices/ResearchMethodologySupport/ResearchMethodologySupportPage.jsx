@@ -41,7 +41,7 @@ const ResearchMethodologySupportPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Research Methodology Consulting | Scape Data Solutions"
+      title="Research Methodology Consulting | Scape Technologies"
       description="Expert guidance on research design, methodology selection, sampling strategies, and questionnaire development."
       path="/services/research-methodology-consulting"
       schema={buildServiceSchema({

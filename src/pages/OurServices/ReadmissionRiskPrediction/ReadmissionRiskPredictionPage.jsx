@@ -63,7 +63,7 @@ const ReadmissionRiskPredictionPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Readmission Risk Prediction | Scape Data Solutions"
+      title="Readmission Risk Prediction | Scape Technologies"
       description="AI-powered readmission risk prediction that identifies patients at high risk of 30-day readmission."
       path="/services/readmission-risk-prediction"
       schema={buildServiceSchema({

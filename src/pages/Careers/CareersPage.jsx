@@ -142,7 +142,7 @@ function Benefits() {
     <section ref={ref} className={`${styles.benefitsSection} ${styles.animateOnScroll}`}>
       <div className={styles.container}>
         <div className={styles.benefitsHead}>
-          <p className={styles.sectionLabel}>Why Scape Data Solutions</p>
+          <p className={styles.sectionLabel}>Why Scape Technologies</p>
           <h2 className={styles.sectionTitle}>Ambitious goals, fast execution</h2>
           <p className={styles.sectionSub}>
             We are driven by curiosity, commitment, and a strong sense of urgency.
@@ -814,7 +814,7 @@ const CareerPage = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="Careers | Scape Data Solutions"
+        title="Careers | Scape Technologies"
         description="Join our team of data experts. Browse open roles and apply."
         path="/careers"
       />

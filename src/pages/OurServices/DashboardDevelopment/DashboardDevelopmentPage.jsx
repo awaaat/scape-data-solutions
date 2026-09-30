@@ -41,7 +41,7 @@ const DashboardDevelopmentPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Dashboard Development | Scape Data Solutions"
+      title="Dashboard Development | Scape Technologies"
       description="Custom dashboards that bring your data to life — interactive, real-time, and tailored to how your team works."
       path="/services/dashboard-development"
       schema={buildServiceSchema({

@@ -141,7 +141,7 @@ const StudentPerformanceAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Student Performance Analytics | Scape Data Solutions"
+      title="Student Performance Analytics | Scape Technologies"
       description="AI-powered analytics that identify at-risk students early and personalize learning paths."
       path="/services/student-performance-analytics"
       schema={buildServiceSchema({

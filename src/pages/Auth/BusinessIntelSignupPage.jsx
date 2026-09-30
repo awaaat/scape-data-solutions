@@ -56,7 +56,7 @@ export default function BusinessIntelSignupPage() {
   return (
     <div className={styles.page}>
       <SEO
-        title="Sign Up | Business Location Intelligence | Scape Data Solutions"
+        title="Sign Up | Business Location Intelligence | Scape Technologies"
         description="Create a Business Location Intelligence account to generate site-selection reports."
         path="/business-intel/signup"
       />
@@ -138,7 +138,7 @@ export default function BusinessIntelSignupPage() {
                     checked={form.consentGiven} onChange={handleChange}
                   />
                   <span>
-                    I agree to Scape Data Solutions' <a href="/faq" target="_blank" rel="noreferrer">privacy policy</a> and
+                    I agree to Scape Technologies' <a href="/faq" target="_blank" rel="noreferrer">privacy policy</a> and
                     consent to being contacted about my account and reports.
                   </span>
                 </label>

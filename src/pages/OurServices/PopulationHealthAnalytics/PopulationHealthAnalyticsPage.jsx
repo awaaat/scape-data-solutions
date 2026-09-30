@@ -64,7 +64,7 @@ const PopulationHealthAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Population Health Analytics | Scape Data Solutions"
+      title="Population Health Analytics | Scape Technologies"
       description="AI-powered population health analytics that stratify patient populations and identify high-risk cohorts."
       path="/services/population-health-analytics"
       schema={buildServiceSchema({

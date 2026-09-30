@@ -12,7 +12,7 @@ export function buildOrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `${SITE_URL}/#organization`,
-    name: 'Scape Data Solutions',
+    name: 'Scape Technologies',
     url: SITE_URL,
     logo: `${SITE_URL}/Images/site-images/logo-image.png`,
     email: 'info@scapedatasolutions.com',

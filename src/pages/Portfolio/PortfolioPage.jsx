@@ -302,7 +302,7 @@ const PortfolioPage = () => {
   return (
     <div className={`${homeStyles.page} ${styles.page}`}>
       <SEO
-        title="Portfolio | Scape Data Solutions"
+        title="Portfolio | Scape Technologies"
         description="A record of completed engagements across business intelligence, AI applications, data pipelines, and mobile analytics."
         path="/portfolio"
       />
@@ -355,7 +355,7 @@ const PortfolioPage = () => {
                 <div className={styles.heroImgFrame} />
               </motion.div>
               <motion.div className={styles.heroImgPrimary} initial="hidden" animate={pageLoaded ? "visible" : "hidden"} variants={heroImgPrimaryVariant} whileHover={{ y: -6, transition: { duration: 0.35 } }}>
-                <img src="/Images/site-images/Professional-portfolio-1472x828.webp" alt="Scape Data Solutions portfolio overview" />
+                <img src="/Images/site-images/Professional-portfolio-1472x828.webp" alt="Scape Technologies portfolio overview" />
                 <div className={styles.heroImgFrame} />
                 <span className={styles.heroImgCaption}>Field notes, 2022–2025</span>
               </motion.div>

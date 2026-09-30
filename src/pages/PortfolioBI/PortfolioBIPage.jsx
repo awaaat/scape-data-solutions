@@ -859,7 +859,7 @@ const PortfolioBIPage = () => {
   return (
     <div className={homeStyles.page}>
       <SEO
-        title="Business Intelligence Portfolio | Scape Data Solutions"
+        title="Business Intelligence Portfolio | Scape Technologies"
         description="Enterprise-grade Power BI dashboards and analytics platforms for retail, healthcare, finance, and manufacturing."
         path="/portfolio/bi"
       />

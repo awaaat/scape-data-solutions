@@ -153,7 +153,7 @@ const MarketBasketAnalysisPage = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="Market Basket & Cross-Sell Analysis | Scape Data Solutions"
+        title="Market Basket & Cross-Sell Analysis | Scape Technologies"
         description="Uncover hidden purchase patterns with AI-powered market basket analysis and drive cross-sell revenue through smarter product bundling."
         path="/services/market-basket-analysis"
         schema={buildServiceSchema({

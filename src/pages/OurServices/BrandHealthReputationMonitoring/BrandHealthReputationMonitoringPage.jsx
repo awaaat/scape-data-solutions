@@ -194,7 +194,7 @@ const BrandHealthReputationMonitoringPage = () => {
   return (
     <PageLayout>
       <SEO
-        title="Brand Health & Reputation Monitoring | AI Sentiment Analysis | Scape Data Solutions"
+        title="Brand Health & Reputation Monitoring | AI Sentiment Analysis | Scape Technologies"
         description="Protect your brand reputation with AI-powered sentiment analysis, share of voice tracking, and real-time crisis detection across 100,000+ sources. Monitor news, social media, reviews, and forums 24/7."
         path="/services/brand-health-reputation-monitoring"
         schema={{
@@ -203,7 +203,7 @@ const BrandHealthReputationMonitoringPage = () => {
             {
               "@type": "Service",
               serviceType: "Brand Health & Reputation Monitoring",
-              provider: { "@type": "Organization", name: "Scape Data Solutions", url: "https://www.scapedatasolutions.com" },
+              provider: { "@type": "Organization", name: "Scape Technologies", url: "https://www.scapedatasolutions.com" },
               areaServed: ["US", "CA", "PK", "KE", "GB"],
               description: "AI-powered brand monitoring with sentiment analysis, share of voice tracking, and crisis detection across news, social media, reviews, forums, and traditional media.",
               offers: {

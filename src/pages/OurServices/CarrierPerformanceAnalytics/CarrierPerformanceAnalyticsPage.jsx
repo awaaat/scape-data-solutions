@@ -441,7 +441,7 @@ export default function CarrierPerformanceAnalyticsPage() {
     <div className={styles.page}>
       <SEO
         title="Carrier Performance Analytics | Independent Scorecards & SLA Tracking"
-        description="Scape Data Solutions' carrier performance analytics service turns tracking scans and contract terms into independent scorecards, SLA breach alerts, and service credit recovery for transportation, finance, and customer care teams."
+        description="Scape Technologies' carrier performance analytics service turns tracking scans and contract terms into independent scorecards, SLA breach alerts, and service credit recovery for transportation, finance, and customer care teams."
         path="/services/carrier-performance-analytics"
       />
 
@@ -478,7 +478,7 @@ export default function CarrierPerformanceAnalyticsPage() {
                     viewport={viewport}
                     transition={{ duration: 0.7 }}
                   >
-                    Scape Data Solutions' first<br />
+                    Scape Technologies' first<br />
                     <span style={{ color: "#000000" }}>Carrier Performance Scorecard</span>
                   </motion.h1>
 
@@ -501,7 +501,7 @@ export default function CarrierPerformanceAnalyticsPage() {
                     viewport={viewport}
                     transition={{ duration: 0.7, delay: 0.15 }}
                   >
-                    Scape Data Solutions turns tracking scans, EDI events, and negotiated contracts
+                    Scape Technologies turns tracking scans, EDI events, and negotiated contracts
                     into one independent scorecard. Transportation, finance, and customer care teams
                     act on what actually happened — not what a carrier chose to report.
                   </motion.p>
@@ -556,7 +556,7 @@ export default function CarrierPerformanceAnalyticsPage() {
                 src={IMAGES.dashboard}
                 loading="lazy"
                 width="960"
-                alt="Scape Data Solutions Carrier Analytics Dashboard"
+                alt="Scape Technologies Carrier Analytics Dashboard"
                 className={styles["home--hero-img"]}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -654,7 +654,7 @@ export default function CarrierPerformanceAnalyticsPage() {
                       viewport={viewport}
                       transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                      Scape Data Solutions normalizes tracking scans, EDI events, and contract terms
+                      Scape Technologies normalizes tracking scans, EDI events, and contract terms
                       into one unified scorecard. Every team sees the same performance record, so
                       disputes and negotiations are backed by evidence everyone trusts.
                     </motion.p>
@@ -671,14 +671,14 @@ export default function CarrierPerformanceAnalyticsPage() {
                     src={IMAGES.platform_desktop}
                     loading="lazy"
                     width="1200"
-                    alt="Scape Data Solutions unified carrier data platform"
+                    alt="Scape Technologies unified carrier data platform"
                     className={styles["img-desktop"]}
                   />
                   <img
                     src={IMAGES.platform_mobile}
                     loading="lazy"
                     width="493"
-                    alt="Scape Data Solutions unified carrier data platform, mobile view"
+                    alt="Scape Technologies unified carrier data platform, mobile view"
                     className={styles["img-mobile"]}
                   />
                 </motion.div>
@@ -760,7 +760,7 @@ export default function CarrierPerformanceAnalyticsPage() {
                 >
                   <motion.h2 variants={fadeUp}>Control freight spend</motion.h2>
                   <motion.p variants={fadeUp} className={`${styles["ts-p2"]} ${styles["tc-secondary"]}`}>
-                    Stop overpaying for service failures and accessorial fees. Scape Data Solutions'
+                    Stop overpaying for service failures and accessorial fees. Scape Technologies'
                     scorecards automatically flag SLA breaches and generate claims packets, so finance
                     teams recover what's owed and renegotiate from a position of strength.
                   </motion.p>
@@ -889,7 +889,7 @@ export default function CarrierPerformanceAnalyticsPage() {
                       viewport={viewport}
                       transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                      Scape Data Solutions builds carrier scorecards from your own tracking and
+                      Scape Technologies builds carrier scorecards from your own tracking and
                       contract data, with a methodology your team can audit line by line —
                       no proprietary rating you have to take on faith.
                     </motion.p>
@@ -901,7 +901,7 @@ export default function CarrierPerformanceAnalyticsPage() {
                       transition={{ duration: 0.6, delay: 0.2 }}
                     >
                       <Link to="/company" className={`${styles.button} ${styles["is-secondary"]} w-inline-block`}>
-                        <div className={styles["button-text"]}>About Scape Data Solutions</div>
+                        <div className={styles["button-text"]}>About Scape Technologies</div>
                         <div className={`${styles["button-hover-bg"]} ${styles["is-secondary"]}`} />
                         <div className={`${styles["button-border"]} ${styles["is-secondary"]}`} />
                       </Link>

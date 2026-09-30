@@ -63,7 +63,7 @@ const ScrollReveal = ({ children, delay = 0, direction = "up" }) => {
       variants={variants}
     >
     <SEO
-      title="Credit Risk Scoring | Scape Data Solutions"
+      title="Credit Risk Scoring | Scape Technologies"
       description="AI-powered credit risk scoring that helps lenders assess borrower risk accurately and lend with confidence."
       path="/services/credit-risk-scoring"
       schema={buildServiceSchema({
@@ -463,7 +463,7 @@ const CreditRiskScoringPage = () => {
   return (
     <PageLayout>
       <Helmet>
-        <title>Credit Risk Scoring | Scape Data Solutions</title>
+        <title>Credit Risk Scoring | Scape Technologies</title>
         <meta name="description" content="AI-powered credit risk scoring with real-time analytics and predictive modeling." />
       </Helmet>
 

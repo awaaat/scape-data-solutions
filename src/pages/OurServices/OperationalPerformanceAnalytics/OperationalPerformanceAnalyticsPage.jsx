@@ -146,7 +146,7 @@ const OperationalPerformanceAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Operational Performance Analytics | Scape Data Solutions"
+      title="Operational Performance Analytics | Scape Technologies"
       description="AI-powered operational performance analytics that monitor KPIs and identify bottlenecks."
       path="/services/operational-performance-analytics"
       schema={buildServiceSchema({

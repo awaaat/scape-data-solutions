@@ -76,7 +76,7 @@ const IndustryLandingPage = ({ dataKey }) => {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: `${data.industry} Analytics`,
-    provider: { "@type": "Organization", name: "Scape Data Solutions" },
+    provider: { "@type": "Organization", name: "Scape Technologies" },
     areaServed: "US",
     description: data.metaDescription,
   };

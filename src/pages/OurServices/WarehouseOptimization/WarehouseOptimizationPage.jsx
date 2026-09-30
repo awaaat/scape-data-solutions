@@ -145,7 +145,7 @@ const WarehouseOptimizationPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Warehouse Optimization & Inventory Management | Scape Data Solutions"
+      title="Warehouse Optimization & Inventory Management | Scape Technologies"
       description="AI-powered warehouse optimization and inventory management that reduces costs and accelerates fulfillment."
       path="/services/warehouse-optimization-inventory-management"
       schema={buildServiceSchema({

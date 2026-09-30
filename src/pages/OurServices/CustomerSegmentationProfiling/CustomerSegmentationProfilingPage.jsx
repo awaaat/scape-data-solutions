@@ -142,7 +142,7 @@ const CustomerSegmentationProfilingPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Customer Segmentation & Profiling | Scape Data Solutions"
+      title="Customer Segmentation & Profiling | Scape Technologies"
       description="AI-powered customer segmentation and profiling that uncovers hidden patterns and identifies high-value segments."
       path="/services/customer-segmentation-profiling"
       schema={buildServiceSchema({

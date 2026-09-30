@@ -8,7 +8,7 @@ export default function ResearchPaperEditingPage() {
       <SEO
         title={"Research Paper Editing"}
         description={"Professional Research Paper Editing that strengthens your manuscript for submission, review, and publication."}
-        keywords={"Research Paper Editing, academic-writing, data analytics services, Scape Data Solutions"}
+        keywords={"Research Paper Editing, academic-writing, data analytics services, Scape Technologies"}
       />
       <section style={{ padding: '4rem 0 5rem' }}>
         <p style={{ textTransform: 'uppercase', fontSize: '.75rem', letterSpacing: '.08em', fontWeight: 600, color: 'var(--color-text-secondary, #64748b)', marginBottom: '.5rem' }}>{"academic-writing"}</p>

@@ -61,7 +61,7 @@ const FinancialStatementAnalysisPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Financial Statement Analysis | Scape Data Solutions"
+      title="Financial Statement Analysis | Scape Technologies"
       description="AI-powered analysis of your balance sheet, income statement, and cash flow, benchmarked to reveal real financial health."
       path="/services/financial-statement-analysis"
       schema={buildServiceSchema({

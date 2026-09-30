@@ -88,7 +88,7 @@ const AnimatedCounter = ({ target, suffix = "", prefix = "" }) => {
   return (
     <span ref={ref} className={styles.statValue}>
     <SEO
-      title="Fraud Detection & Prevention | Scape Data Solutions"
+      title="Fraud Detection & Prevention | Scape Technologies"
       description="AI-powered fraud detection and prevention that identifies suspicious activity in real time."
       path="/services/fraud-detection-prevention"
       schema={buildServiceSchema({

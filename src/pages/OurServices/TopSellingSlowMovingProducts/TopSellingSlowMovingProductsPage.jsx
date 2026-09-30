@@ -141,7 +141,7 @@ const TopSellingSlowMovingProductsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Top-Selling & Slow-Moving Products Analysis | Scape Data Solutions"
+      title="Top-Selling & Slow-Moving Products Analysis | Scape Technologies"
       description="AI-powered analysis that identifies top-selling and slow-moving products for data-driven assortment decisions."
       path="/services/top-selling-slow-moving-products"
       schema={buildServiceSchema({

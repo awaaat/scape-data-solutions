@@ -508,7 +508,7 @@ sales %>%
   return (
     <div className={styles.page}>
       <SEO
-        title="Data Analytics & BI Consulting | Scape Data Solutions"
+        title="Data Analytics & BI Consulting | Scape Technologies"
         description="Expert data analytics, SQL development, BI dashboards, ETL pipelines, and predictive modeling. We turn your data into revenue, faster decisions, and lower costs."
         path="/"
         image="/Images/site-images/homepage-dashboard-preview.webp"

@@ -277,8 +277,8 @@ const TestimonialsPage = () => {
   return (
     <div className={homeStyles.page}>
       <SEO
-        title="Testimonials | Scape Data Solutions"
-        description="Real stories from real businesses that have grown with Scape Data Solutions."
+        title="Testimonials | Scape Technologies"
+        description="Real stories from real businesses that have grown with Scape Technologies."
         path="/testimonials"
       />
 
@@ -314,7 +314,7 @@ const TestimonialsPage = () => {
               viewport={{ once: false, amount: 0.2 }}
               variants={fadeUp}
             >
-              Real stories from real businesses that have grown with Scape Data Solutions.
+              Real stories from real businesses that have grown with Scape Technologies.
             </motion.p>
           </div>
         </section>

@@ -111,7 +111,7 @@ const AnimatedCounter = ({ target, label, suffix = "%", prefix = "", duration = 
       variants={scaleUp}
     >
     <SEO
-      title="Sales Forecasting & Demand Planning | Scape Data Solutions"
+      title="Sales Forecasting & Demand Planning | Scape Technologies"
       description="AI-powered forecasting that helps you predict future sales with up to 95% accuracy."
       path="/services/sales-forecasting-demand-planning"
       schema={buildServiceSchema({

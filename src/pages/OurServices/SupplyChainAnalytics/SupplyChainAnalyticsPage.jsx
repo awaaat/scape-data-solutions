@@ -8,7 +8,7 @@ export default function SupplyChainAnalyticsPage() {
       <SEO
         title={"Supply Chain Analytics"}
         description={"Gain end‑to‑end visibility and improve logistics, procurement, and distribution."}
-        keywords={"Supply Chain Analytics, manufacturing, data analytics services, Scape Data Solutions"}
+        keywords={"Supply Chain Analytics, manufacturing, data analytics services, Scape Technologies"}
       />
       <section style={{ padding: '4rem 0 5rem' }}>
         <p style={{ textTransform: 'uppercase', fontSize: '.75rem', letterSpacing: '.08em', fontWeight: 600, color: 'var(--color-text-secondary, #64748b)', marginBottom: '.5rem' }}>{"manufacturing"}</p>

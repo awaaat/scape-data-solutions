@@ -141,7 +141,7 @@ const ClinicalTrialAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Clinical Trial Analytics | Scape Data Solutions"
+      title="Clinical Trial Analytics | Scape Technologies"
       description="AI-powered analytics that optimize patient recruitment, monitor safety and efficacy, and improve trial success rates."
       path="/services/clinical-trial-analytics"
       schema={buildServiceSchema({

@@ -110,7 +110,7 @@ const AnimatedNumber = ({ target, label, suffix = "%", prefix = "" }) => {
       variants={scaleUp}
     >
     <SEO
-      title="Customer Churn & Lifetime Value Analysis | Scape Data Solutions"
+      title="Customer Churn & Lifetime Value Analysis | Scape Technologies"
       description="Predictive churn modeling and lifetime value analysis that bring your sales, marketing, and service teams together."
       path="/services/customer-churn-lifetime-value"
       schema={buildServiceSchema({

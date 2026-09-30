@@ -8,7 +8,7 @@ export default function JASPAssignmentHelpPage() {
       <SEO
         title={"JASP Assignment Help"}
         description={"Expert help with JASP Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
-        keywords={"JASP Assignment Help, assignment-help, data analytics services, Scape Data Solutions"}
+        keywords={"JASP Assignment Help, assignment-help, data analytics services, Scape Technologies"}
       />
       <section style={{ padding: '4rem 0 5rem' }}>
         <p style={{ textTransform: 'uppercase', fontSize: '.75rem', letterSpacing: '.08em', fontWeight: 600, color: 'var(--color-text-secondary, #64748b)', marginBottom: '.5rem' }}>{"assignment-help"}</p>

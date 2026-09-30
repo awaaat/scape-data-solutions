@@ -146,7 +146,7 @@ const MarketingMixModelingPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Marketing Mix Modeling | Scape Data Solutions"
+      title="Marketing Mix Modeling | Scape Technologies"
       description="AI-powered marketing mix modeling that quantifies channel impact and optimizes budget allocation."
       path="/services/marketing-mix-modeling"
       schema={buildServiceSchema({

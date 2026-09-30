@@ -145,7 +145,7 @@ const CustomerJourneyAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Customer Journey Analytics | Scape Data Solutions"
+      title="Customer Journey Analytics | Scape Technologies"
       description="AI-powered customer journey analytics that map, analyze, and optimize every touchpoint across channels."
       path="/services/customer-journey-analytics"
       schema={buildServiceSchema({

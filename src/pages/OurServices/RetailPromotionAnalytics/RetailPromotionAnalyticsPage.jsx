@@ -141,7 +141,7 @@ const RetailPromotionAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Promotion & Discount Performance Analytics | Scape Data Solutions"
+      title="Promotion & Discount Performance Analytics | Scape Technologies"
       description="AI-powered analytics that measure promotion ROI and identify cannibalization to protect margins."
       path="/services/promotion-discount-performance"
       schema={buildServiceSchema({

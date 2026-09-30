@@ -530,7 +530,7 @@ export default function AcademicFormattingPage() {
         >
           <div className={styles.container}>
             <motion.div className={styles.sectionHeader} variants={fadeUp}>
-              <h2>Why Choose Scape Data Solutions</h2>
+              <h2>Why Choose Scape Technologies</h2>
               <p>We combine formatting expertise with a deep understanding of academic publishing.</p>
             </motion.div>
             <div className={styles.whyGrid}>

@@ -145,7 +145,7 @@ const WorkforceAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Workforce & HR Analytics | Scape Data Solutions"
+      title="Workforce & HR Analytics | Scape Technologies"
       description="AI-powered workforce and HR analytics that optimize employee performance, engagement, and retention."
       path="/services/workforce-hr-analytics"
       schema={buildServiceSchema({

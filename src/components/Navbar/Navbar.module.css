@@ -15,7 +15,9 @@
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 1.4rem 0;
+  box-sizing: border-box;
+  height: 72px;
+  padding: 0;
   display: none;
   max-height: 72px;
   overflow: hidden;
@@ -28,7 +30,8 @@
 }
 @media (min-width: 1024px) {
   .navTopBar {
-    display: block;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -41,6 +44,7 @@
 }
 
 .navTopInner {
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
   padding: 0 4rem;
@@ -149,10 +153,12 @@
   display: flex;
   align-items: center;
   text-decoration: none;
+  flex-shrink: 0;
 }
 .navbarBrand img {
-  height: 56px;
+  height: 68px;
   width: auto;
+  flex-shrink: 0;
 }
 
 .navList {
@@ -282,7 +288,7 @@
   width: 100%;
 }
 .mobileLogo img {
-  height: 40px;
+  height: 48px;
   width: auto;
 }
 

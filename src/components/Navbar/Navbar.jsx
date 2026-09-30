@@ -172,7 +172,7 @@ export default function Navbar({ activeNav = "" }) {
       <div ref={mobileHeaderRef} className={styles.mobileHeader}>
         <div className={styles.mContainer}>
           <Link to="/" className={styles.mobileLogo}>
-            <img src="/Images/site-images/logo.svg" alt="Scape Data Solutions" />
+            <img src="/Images/site-images/logo.svg" alt="Scape Technologies" />
           </Link>
           <button
             className={`${styles.burger}${navOpen ? " " + styles.burgerOpen : ""}`}
@@ -276,7 +276,7 @@ export default function Navbar({ activeNav = "" }) {
         />
         <div className={styles.navbarInner}>
           <Link to="/" className={styles.navbarBrand}>
-            <img src="/Images/site-images/logo.svg" alt="Scape Data Solutions" />
+            <img src="/Images/site-images/logo.svg" alt="Scape Technologies" />
           </Link>
 
           <ul className={styles.navList}>

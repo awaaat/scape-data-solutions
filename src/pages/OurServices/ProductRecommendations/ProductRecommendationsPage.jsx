@@ -140,7 +140,7 @@ const ProductRecommendationsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Product Recommendations | Scape Data Solutions"
+      title="Product Recommendations | Scape Technologies"
       description="AI-powered product recommendations that increase cross-sell and up-sell and boost average order value."
       path="/services/product-recommendations"
       schema={buildServiceSchema({

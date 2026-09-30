@@ -422,8 +422,8 @@ const PortfolioMobilePage = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="Mobile Analytics Portfolio | Scape Data Solutions"
-        description="Mobile app analytics projects delivered by Scape Data Solutions across health, retail, gaming, travel, social, and finance."
+        title="Mobile Analytics Portfolio | Scape Technologies"
+        description="Mobile app analytics projects delivered by Scape Technologies across health, retail, gaming, travel, social, and finance."
         path="/portfolio/mobile"
       />
 

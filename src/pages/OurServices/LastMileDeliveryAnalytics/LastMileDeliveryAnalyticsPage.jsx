@@ -145,7 +145,7 @@ const LastMileDeliveryAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Last-Mile Delivery Analytics | Scape Data Solutions"
+      title="Last-Mile Delivery Analytics | Scape Technologies"
       description="AI-powered analytics that optimize delivery routes and improve on-time performance."
       path="/services/last-mile-delivery-analytics"
       schema={buildServiceSchema({

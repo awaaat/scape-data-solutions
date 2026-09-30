@@ -360,7 +360,7 @@ const PortfolioAIPage = () => {
     },
     {
       date: 'Jul 12, 2026',
-      title: 'Scape Data Solutions Named AI Innovator of the Year',
+      title: 'Scape Technologies Named AI Innovator of the Year',
       image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=315&fit=crop&crop=center',
     },
     {
@@ -378,8 +378,8 @@ const PortfolioAIPage = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="AI Applications | Scape Data Solutions"
-        description="AI and machine learning projects delivered by Scape Data Solutions across retail, finance, healthcare and more."
+        title="AI Applications | Scape Technologies"
+        description="AI and machine learning projects delivered by Scape Technologies across retail, finance, healthcare and more."
         path="/portfolio/ai"
       />
 

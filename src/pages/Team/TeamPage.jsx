@@ -20,8 +20,8 @@ const TeamPage = () => {
   return (
     <div className={styles.container}>
       <SEO
-        title="Our Team | Scape Data Solutions"
-        description="Meet the talented professionals behind Scape Data Solutions – data scientists, engineers, and designers."
+        title="Our Team | Scape Technologies"
+        description="Meet the talented professionals behind Scape Technologies – data scientists, engineers, and designers."
         path="/team"
       />
 

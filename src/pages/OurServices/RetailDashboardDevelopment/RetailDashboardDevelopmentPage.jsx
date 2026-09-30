@@ -8,7 +8,7 @@ export default function RetailDashboardDevelopmentPage() {
       <SEO
         title={"Retail Dashboard Development"}
         description={"AI-powered Retail Dashboard Development that helps retailers grow revenue and serve customers more effectively."}
-        keywords={"Retail Dashboard Development, retail, data analytics services, Scape Data Solutions"}
+        keywords={"Retail Dashboard Development, retail, data analytics services, Scape Technologies"}
       />
       <section style={{ padding: '4rem 0 5rem' }}>
         <p style={{ textTransform: 'uppercase', fontSize: '.75rem', letterSpacing: '.08em', fontWeight: 600, color: 'var(--color-text-secondary, #64748b)', marginBottom: '.5rem' }}>{"retail"}</p>

@@ -139,7 +139,7 @@ const ClinicalPathwayOptimizationPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Clinical Pathway Optimization | Scape Data Solutions"
+      title="Clinical Pathway Optimization | Scape Technologies"
       description="Analyze and optimize clinical pathways to reduce unwarranted variation and improve patient outcomes with data-driven insights."
       path="/services/clinical-pathway-optimization"
       schema={buildServiceSchema({

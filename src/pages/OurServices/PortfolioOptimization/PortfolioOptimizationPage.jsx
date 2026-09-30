@@ -62,7 +62,7 @@ const ScrollReveal = ({ children, delay = 0, direction = "up" }) => {
       variants={variants}
     >
     <SEO
-      title="Portfolio Optimization & Risk Management | Scape Data Solutions"
+      title="Portfolio Optimization & Risk Management | Scape Technologies"
       description="AI-powered portfolio optimization and risk management that helps investors maximize returns while minimizing risk."
       path="/services/portfolio-optimization-risk-management"
       schema={buildServiceSchema({

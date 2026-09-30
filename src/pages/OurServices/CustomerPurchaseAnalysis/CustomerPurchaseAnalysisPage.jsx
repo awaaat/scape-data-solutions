@@ -140,7 +140,7 @@ const CustomerPurchaseAnalysisPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Customer Purchase Analysis | Scape Data Solutions"
+      title="Customer Purchase Analysis | Scape Technologies"
       description="AI-powered customer purchase analysis that uncovers buying patterns and predicts future value to maximize revenue."
       path="/services/customer-purchase-analysis"
       schema={buildServiceSchema({

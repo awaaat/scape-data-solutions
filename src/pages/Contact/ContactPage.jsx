@@ -151,8 +151,8 @@ export default function ContactPage() {
   return (
     <div className={hStyles.page}>
       <SEO
-        title="Contact Us | Get Free Data Consultation - Scape Data Solutions"
-        description="Contact Scape Data Solutions for a consultation session. Offices in the US, Canada, Pakistan, and Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
+        title="Contact Us | Get Free Data Consultation - Scape Technologies"
+        description="Contact Scape Technologies for a consultation session. Offices in the US, Canada, Pakistan, and Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
         path="/contact"
       />
 

@@ -115,7 +115,7 @@ export default function BusinessIntelLandingPage() {
   return (
     <div className={styles.page}>
       <SEO
-        title="Business Location Intelligence | Scape Data Solutions"
+        title="Business Location Intelligence | Scape Technologies"
         description="Site-selection reports for new business locations -- demand, competition, and risk signals before you commit."
         path="/business-intel"
       />

@@ -156,7 +156,7 @@ const ServicesPage = () => {
   return (
     <div className={homeStyles.page}>
       <SEO
-        title="Data Analytics & AI Services | Scape Data Solutions"
+        title="Data Analytics & AI Services | Scape Technologies"
         description="Expert data analytics and AI services across academic, analytics, finance, healthcare, manufacturing, and retail."
         path="/services"
       />

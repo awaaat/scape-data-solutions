@@ -140,7 +140,7 @@ const InventoryManagementAnalyticsPage = () => {
   return (
     <PageLayout>
     <SEO
-      title="Inventory Management Analytics | Scape Data Solutions"
+      title="Inventory Management Analytics | Scape Technologies"
       description="AI-powered analytics that optimize stock levels, reduce carrying costs, and prevent stockouts."
       path="/services/inventory-management-analytics"
       schema={buildServiceSchema({

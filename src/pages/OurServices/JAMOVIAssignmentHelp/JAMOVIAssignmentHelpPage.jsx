@@ -8,7 +8,7 @@ export default function JAMOVIAssignmentHelpPage() {
       <SEO
         title={"JAMOVI Assignment Help"}
         description={"Expert help with JAMOVI Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
-        keywords={"JAMOVI Assignment Help, assignment-help, data analytics services, Scape Data Solutions"}
+        keywords={"JAMOVI Assignment Help, assignment-help, data analytics services, Scape Technologies"}
       />
       <section style={{ padding: '4rem 0 5rem' }}>
         <p style={{ textTransform: 'uppercase', fontSize: '.75rem', letterSpacing: '.08em', fontWeight: 600, color: 'var(--color-text-secondary, #64748b)', marginBottom: '.5rem' }}>{"assignment-help"}</p>

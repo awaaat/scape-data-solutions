@@ -130,8 +130,8 @@ export default function AboutPage() {
   return (
     <div className={styles.page}>
       <SEO
-        title="About Us | Expert Data Science Team - Scape Data Solutions"
-        description="Scape Data Solutions is a premier data analytics firm with 50+ years of combined experience. Expert team, 200+ projects, 98% satisfaction."
+        title="About Us | Expert Data Science Team - Scape Technologies"
+        description="Scape Technologies is a premier data analytics firm with 50+ years of combined experience. Expert team, 200+ projects, 98% satisfaction."
         path="/about"
       />
       <Navbar activeNav="about" />

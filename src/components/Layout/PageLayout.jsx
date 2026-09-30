@@ -54,7 +54,7 @@ export default function PageLayout({ children, activeNav = "" }) {
   const [newsIndex, setNewsIndex] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
   const [chatMsg, setChatMsg] = useState("");
-  const [chatLog, setChatLog] = useState([{from:"bot", text:"Hi! 👋 How can Scape Data Solutions help your business grow today?"}]);
+  const [chatLog, setChatLog] = useState([{from:"bot", text:"Hi! 👋 How can Scape Technologies help your business grow today?"}]);
 
   // Scroll tracking
   useEffect(() => {

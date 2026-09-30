@@ -102,7 +102,7 @@ const FAQ_DATA = [
 
 // ─── STATIC TESTIMONIALS ──────────────────────────────────────────
 const TESTIMONIALS = [
-  { name: "David Chen", role: "Quantitative Trader", quote: "We've been using Scape Data Solutions for over two years. The backtesting engine is the most reliable we've tested, and the execution latency is consistently under 10ms." },
+  { name: "David Chen", role: "Quantitative Trader", quote: "We've been using Scape Technologies for over two years. The backtesting engine is the most reliable we've tested, and the execution latency is consistently under 10ms." },
   { name: "Sarah Okafor", role: "Hedge Fund Analyst", quote: "The ability to deploy strategies across multiple platforms from a single interface saved our team months of integration work. The support team actually understands our workflow." },
   { name: "James Whitaker", role: "CTO, Prop Trading Firm", quote: "They don't just sell software—they helped us redesign our entire data pipeline. Our strategies are now more responsive and our risk management is bulletproof." },
 ];
@@ -179,7 +179,7 @@ const AlgorithmicTradingAnalyticsPage = () => {
   return (
     <PageLayout>
       <SEO
-        title="Algorithmic Trading Analytics | Scape Data Solutions"
+        title="Algorithmic Trading Analytics | Scape Technologies"
         description="Build, backtest and deploy algorithmic trading strategies across MetaTrader 4, ProRealTime and our own API — backed by real-time analytics and risk controls."
         path="/services/algorithmic-trading-analytics"
         schema={buildServiceSchema({

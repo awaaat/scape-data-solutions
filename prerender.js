@@ -32,8 +32,8 @@ const SITE_URL = 'https://www.scapedatasolutions.com';
 
 // Vercel sets this env var automatically during build
 const IS_VERCEL = !!process.env.VERCEL;
-const FALLBACK_TITLE = 'Data Analytics & BI Consulting | Scape Data Solutions';
-const BRAND = 'Scape Data Solutions';
+const FALLBACK_TITLE = 'Data Analytics & BI Consulting | Scape Technologies';
+const BRAND = 'Scape Technologies';
 const SKIPPED = new Set();
 
 // ─── Every real route from App.jsx (kept in sync manually) ────────

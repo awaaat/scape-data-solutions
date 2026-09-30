@@ -84,14 +84,14 @@ const SurveyDataAnalysisPage = () => {
     name: "Survey Data Analysis",
     description:
       "Cleaning and statistical analysis of survey exports from Kobo, ODK, Google Forms, and SurveyMonkey for NGOs, companies, and researchers.",
-    provider: { "@type": "ProfessionalService", name: "Scape Data Solutions" },
+    provider: { "@type": "ProfessionalService", name: "Scape Technologies" },
     areaServed: ["US", "CA", "PK", "KE"],
   };
 
   return (
     <>
       <SEO
-        title="Survey Data Analysis | Scape Data Solutions"
+        title="Survey Data Analysis | Scape Technologies"
         description="From Kobo, ODK, or Google Forms exports to clean, analyzed survey results — for NGOs, companies, and researchers."
         path="/services/survey-data-analysis"
         schema={schema}
