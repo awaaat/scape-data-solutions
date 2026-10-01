@@ -146,9 +146,6 @@ export default function BusinessIntelLandingPage() {
               <a href="mailto:info@scapedatasolutions.com" className={styles.secondaryBtn}>
                 <Mail size={15} /> info@scapedatasolutions.com
               </a>
-              <a href="tel:+17575980582" className={styles.secondaryBtn}>
-                <Phone size={15} /> +1 (757) 598-0582
-              </a>
             </div>
           </motion.div>
         </section>

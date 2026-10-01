@@ -80,7 +80,7 @@ export default function PageLayout({ children, activeNav = "" }) {
     setTimeout(() => {
       setChatLog(l => [...l, {
         from: "bot",
-        text: "Thanks for reaching out! Our team will respond within 1 hour. For urgent queries, call +1 (312) 212-3396"
+        text: "Thanks for reaching out! Our team will respond within 1 hour. For urgent queries, email info@scapedatasolutions.com"
       }]);
     }, 900);
   }, [chatMsg]);

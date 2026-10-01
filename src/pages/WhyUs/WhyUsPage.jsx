@@ -110,9 +110,8 @@ const REASONS = [
   {
     icon: <Globe size={24} />,
     title: "Global Reach",
-    summary: "Offices in the US, Canada, Pakistan, Kenya, and the UK, serving 60+ countries.",
+    summary: "Serving clients in 60+ countries.",
     details: [
-      "Offices in the US, Canada, Pakistan, Kenya, and the UK",
       "Serving 60+ countries worldwide",
       "Round‑the‑clock, multilingual support",
       "Global perspective with local expertise",

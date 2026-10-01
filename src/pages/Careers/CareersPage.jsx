@@ -169,39 +169,6 @@ function Benefits() {
   );
 }
 
-// ─── Offices ──────────────────────────────────────────────────
-function Offices() {
-  const ref = useRevealOnScroll();
-  return (
-    <section ref={ref} className={`${styles.officesSection} ${styles.animateOnScroll}`}>
-      <div className={styles.container}>
-        <div className={styles.officesGrid}>
-          <div className={styles.officesLeft}>
-            <p className={styles.sectionLabel}>Offices</p>
-            <h2 className={styles.sectionTitle}>Collaboration across borders</h2>
-            <p className={styles.sectionSub}>
-              We are hiring across all our offices. We prioritize in‑person work
-              to support fast‑paced, collaborative projects.
-            </p>
-          </div>
-          <div className={styles.officesRight}>
-            <div className={styles.globeWrap}>
-              <Globe size={120} className={styles.globeIcon} />
-              <div className={styles.globeDots}>
-                <span className={styles.globeDot} style={{ top: "20%", left: "30%" }} />
-                <span className={styles.globeDot} style={{ top: "40%", left: "70%" }} />
-                <span className={styles.globeDot} style={{ top: "70%", left: "20%" }} />
-                <span className={styles.globeDot} style={{ top: "80%", left: "60%" }} />
-                <span className={styles.globeDot} style={{ top: "30%", left: "85%" }} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── Job List ──────────────────────────────────────────────────
 function JobList({ onSelect }) {
   const [Country, setCountry] = useState(null);
@@ -844,7 +811,6 @@ const CareerPage = () => {
             </LazySection>
 
             <LazySection>
-              <Offices />
             </LazySection>
           </>
         )}

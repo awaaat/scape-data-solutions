@@ -729,7 +729,6 @@ const organizationSchema = {
   sameAs: ["https://www.linkedin.com/company/scape-data-solutions", "https://twitter.com/scapedata"],
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-757-598-0582",
     contactType: "Sales",
     email: "info@scapedatasolutions.com",
   },

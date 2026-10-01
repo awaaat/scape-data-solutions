@@ -687,13 +687,6 @@ const MarketSentimentAnalysisPage = () => {
                       <span className={styles.methodValue}>info@scapedatasolutions.com</span>
                     </div>
                   </div>
-                  <div className={styles.contactMethod}>
-                    <Phone size={17} />
-                    <div>
-                      <span className={styles.methodLabel}>Phone</span>
-                      <span className={styles.methodValue}>+1 (757) 598-0582</span>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
 

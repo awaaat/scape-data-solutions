@@ -75,9 +75,6 @@ const QUICK_LINKS = [
   { title: "Careers", desc: "Join the team.", href: "/careers" },
 ];
 
-const OFFICES = [
-  { city: "Nairobi", country: "Kenya" },
-];
 
 // Milestones – sentence case labels, proper descriptions, no all caps
 const MILESTONES = [
@@ -286,38 +283,7 @@ export default function CompanyPage() {
           </div>
         </motion.section>
 
-        {/* ─── OFFICES ────────────────────────────────────────────── */}
-        <motion.section
-          className={styles.officesSection}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT}
-          variants={staggerContainer}
-        >
-          <div className={styles.container}>
-            <div className={styles.officesHead}>
-              <motion.div variants={fadeUp}>
-                <p className={styles.officesLabel}>Offices</p>
-                <h2 className={styles.officesTitle}>Collaboration across borders</h2>
-                <p className={styles.officesDesc}>
-                  We are hiring across all our offices. We prioritize in-person work
-                  to support our fast-paced, collaborative projects.
-                </p>
-              </motion.div>
-              <motion.div className={styles.officesActions} variants={fadeUp}>
-                <Link to="/careers" className={styles.btnPrimary}>Open Roles</Link>
-                <Link to="/careers" className={styles.btnSecondary}>Careers</Link>
-              </motion.div>
-            </div>
-            <div className={styles.officesGrid}>
-              {OFFICES.map((office) => (
-                <motion.div key={office.city} className={styles.officeCard} variants={fadeUp}>
-                  {office.city}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
+        
 
         {/* ─── TIMELINE WITH TOOLTIPS ────────────────────────────── */}
         <motion.section

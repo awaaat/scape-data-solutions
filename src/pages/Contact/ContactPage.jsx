@@ -35,13 +35,6 @@ const TYPED_WORDS = [
   "Your Competitive Advantage",
 ];
 
-// ─── Offices ──────────────────────────────────────────────────────
-const OFFICES = [
-  {
-    label: "Nairobi Office",
-    value: "Global Trade Centre, 14th Floor\nWestlands Road, Nairobi, Kenya\nKE: +254 718 889 559",
-  },
-];
 
 export default function ContactPage() {
   const formRef     = useRef(null);
@@ -152,7 +145,7 @@ export default function ContactPage() {
     <div className={hStyles.page}>
       <SEO
         title="Contact Us | Get Free Data Consultation - Scape Technologies"
-        description="Contact Scape Technologies for a consultation session. Offices in the US, Canada, Pakistan, and Nairobi. Email: info@scapedatasolutions.com. 24-hour response time."
+        description="Contact Scape Technologies for a consultation session. Email: info@scapedatasolutions.com. 24-hour response time."
         path="/contact"
       />
 
@@ -334,11 +327,6 @@ export default function ContactPage() {
                             icon: <Mail size={17} />,
                             label: "Email",
                             value: "info@scapedatasolutions.com\nallan@scapedatasolutions.com",
-                          },
-                          {
-                            icon: <Phone size={17} />,
-                            label: "Phone",
-                            value: "US: +1 (757) 598-0582\nUK: +44 7454 744014",
                           },
                         ].map((m, i) => (
                           <motion.div
@@ -611,63 +599,7 @@ export default function ContactPage() {
               </section>
 
               {/* ─── OFFICES SECTION ── */}
-              <section className={styles.contactSection} style={{ paddingTop: 0 }}>
-                <div className={styles.sectionContent}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={REPLAY_VIEWPORT}
-                    transition={{ delay: 0.1 }}
-                  >
-                    <h2
-                      className={styles.infoTitle}
-                      style={{ marginBottom: 24, textAlign: "center" }}
-                    >
-                      Our Offices
-                    </h2>
-                    <div
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                        gap: "16px",
-                      }}
-                    >
-                      {OFFICES.map((o, i) => (
-                        <motion.div
-                          key={o.label}
-                          className={styles.contactMethod}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={REPLAY_VIEWPORT}
-                          transition={{ delay: 0.1 + i * 0.08, type: "spring", stiffness: 260 }}
-                          style={{ alignItems: "flex-start" }}
-                        >
-                          <motion.div
-                            className={styles.methodIcon}
-                            whileHover={{
-                              scale: 1.12,
-                              backgroundColor: "#fdb840",
-                              color: "#fff",
-                              borderColor: "#fdb840",
-                            }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <MapPin size={17} />
-                          </motion.div>
-                          <div>
-                            <div className={styles.methodLabel}>{o.label}</div>
-                            <div className={styles.methodValue}>
-                              {o.value.split("\n").map((l, j) => (
-                                <span key={j} style={{ display: "block" }}>{l}</span>
-                              ))}
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                </div>
-              </section>
+              
 
             </>
           )}

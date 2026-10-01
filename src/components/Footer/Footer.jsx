@@ -10,26 +10,6 @@ import { motion } from "framer-motion";
 import styles from "./Footer.module.css";
 import { NAV_COMPANY, NAV_PORTFOLIO } from "../Navbar/Navbar";
 
-// ── Contact / office items (2 cells) ────────────────────────────────
-const OFFICES = [
-  {
-    icon: null,
-    title: "Office:",
-    lines: [
-      { text: "Global Trade Centre, 14th Floor" },
-      { text: "Westlands Road, Nairobi, Kenya"  },
-      { text: "KE: +254 718 889 559", href: "tel:+254718889559" },
-    ],
-  },
-  {
-    icon: "/Images/site-images/email_icon.webp",
-    title: "General Inquiry:",
-    lines: [
-      { text: "info@scapedatasolutions.com",  href: "mailto:info@scapedatasolutions.com"  },
-      { text: "allan@scapedatasolutions.com", href: "mailto:allan@scapedatasolutions.com" },
-    ],
-  },
-];
 
 // ── Curated services subset for the footer ──────────────────────────
 // (The full 11-category list lives in the Navbar's "Services" dropdown.
@@ -85,57 +65,6 @@ const linkItemVariants = {
 export default function Footer() {
   return (
     <footer className={styles.navyFooter}>
-
-      {/* ══════════════════════════════════════════
-          SECTION 1 – 2-cell contact/office strip
-          ══════════════════════════════════════════ */}
-      <div className={styles.navyOffStrip}>
-        <div className={styles.container}>
-          <div className={styles.navyOffGrid}>
-            {OFFICES.map((office, i) => (
-              <motion.div
-                key={i}
-                className={styles.navyOffItem}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={REPLAY_VIEWPORT}
-                whileHover={{ y: -4 }}
-                transition={{ delay: i * 0.08, duration: 0.45, ease: "easeOut" }}
-              >
-                {office.icon && (
-                  <motion.div
-                    className={styles.navyOffIcon}
-                    initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
-                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                    viewport={REPLAY_VIEWPORT}
-                    whileHover={{ scale: 1.12, rotate: 4 }}
-                    transition={{ delay: i * 0.08 + 0.1, duration: 0.4, type: "spring", stiffness: 260, damping: 16 }}
-                  >
-                    <img src={office.icon} alt={office.title} />
-                  </motion.div>
-                )}
-                <div className={styles.navyOffText}>
-                  <h4>{office.title}</h4>
-                  {office.lines.map((line, j) =>
-                    line.href ? (
-                      <p key={j}>
-                        <a
-                          href={line.href}
-                          {...(line.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                        >
-                          {line.text}
-                        </a>
-                      </p>
-                    ) : (
-                      <p key={j}>{line.text}</p>
-                    )
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* ══════════════════════════════════════════
           SECTION 2 – 4-column links grid
@@ -273,6 +202,11 @@ export default function Footer() {
         </div>
       </div>
 
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "8px 36px", padding: "18px 20px", borderTop: "1px solid rgba(128,128,128,0.25)", fontSize: 14 }}>
+        <a href="mailto:info@scapedatasolutions.com" style={{ color: "inherit", textDecoration: "none" }}>info@scapedatasolutions.com</a>
+        <a href="mailto:allan@scapedatasolutions.com" style={{ color: "inherit", textDecoration: "none" }}>allan@scapedatasolutions.com</a>
+      </div>
+
       {/* ══════════════════════════════════════════
           SECTION 3 – Copyright
           ══════════════════════════════════════════ */}
@@ -288,6 +222,7 @@ export default function Footer() {
           </motion.p>
         </div>
       </div>
-  </footer>
+
+    </footer>
   );
 }
