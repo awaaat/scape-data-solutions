@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" role="img" aria-labelledby="t d">
+<title id="t">Data quality scorecard dashboard</title>
+<desc id="d">A dashboard showing completeness, uniqueness and validity rising after cleaning, a 30-day quality score line with one alert and recovery, and rule failures reduced to near zero.</desc>
+<style>
+text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#7c828d}
+.h{font-weight:700;font-size:13px}.s{font-size:10.5px}.big{font-size:26px;font-weight:700}
+.panel{fill:rgba(128,128,128,.06);stroke:rgba(128,128,128,.35)}
+.tile{fill:rgba(128,128,128,.08);stroke:rgba(128,128,128,.3)}
+.goodt{fill:#16a34a}.badt{fill:#ef4444}
+.grid{stroke:rgba(128,128,128,.25);stroke-dasharray:4 4}
+.ln{fill:none;stroke:#22c55e;stroke-width:2.5;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.dot{fill:#ef4444;animation:pulse 1.2s ease infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{50%{transform:scale(1.6)}}
+.track{fill:rgba(128,128,128,.2)}
+.bar{fill:#ef4444;transform-box:fill-box;transform-origin:left center;animation:grow 1.2s ease both}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+</style>
+<rect class="panel" x="10" y="10" width="880" height="440" rx="16"/>
+<text class="h" x="36" y="44">Data quality scorecard · last 30 days</text><text class="s goodt" x="864" y="44" text-anchor="end">● PASS</text>
+<rect class="tile" x="36" y="64" width="268" height="76" rx="10"/><text class="s" x="52" y="90">Completeness</text><text class="big goodt" x="52" y="124">98%</text><text class="s" x="288" y="124" text-anchor="end">was 64%</text>
+<rect class="tile" x="316" y="64" width="268" height="76" rx="10"/><text class="s" x="332" y="90">Uniqueness</text><text class="big goodt" x="332" y="124">100%</text><text class="s" x="568" y="124" text-anchor="end">was 77%</text>
+<rect class="tile" x="596" y="64" width="268" height="76" rx="10"/><text class="s" x="612" y="90">Validity</text><text class="big goodt" x="612" y="124">99%</text><text class="s" x="848" y="124" text-anchor="end">was 69%</text>
+<rect class="panel" x="36" y="156" width="520" height="270" rx="12"/><text class="h" x="52" y="182">Quality score (daily)</text>
+<line class="grid" x1="56" x2="536" y1="253" y2="253"/><text class="s" x="60" y="247">target 95</text>
+<path class="ln" pathLength="1" d="M56,383 L93,366 L130,350 L167,320 L204,295 L241,274 L277,257 L314,249 L351,282 L388,261 L425,245 L462,240 L499,240 L536,236"/>
+<circle class="dot" cx="351" cy="282" r="5"/><text class="s badt" x="351" y="304" text-anchor="middle">rule failed → alert</text>
+<text class="s" x="56" y="416">day 1</text><text class="s" x="536" y="416" text-anchor="end">day 30</text>
+<rect class="panel" x="576" y="156" width="288" height="270" rx="12"/><text class="h" x="592" y="182">Rule failures fixed</text>
+<text class="s" x="592" y="216">Duplicate emails</text><text class="s goodt" x="848" y="216" text-anchor="end">412 → 0</text><rect class="track" x="592" y="222" width="256" height="10" rx="5"/><rect class="bar" x="592" y="222" width="256" height="10" rx="5"/>
+<text class="s" x="592" y="258">Null phone numbers</text><text class="s goodt" x="848" y="258" text-anchor="end">268 → 6</text><rect class="track" x="592" y="264" width="256" height="10" rx="5"/><rect class="bar" x="592" y="264" width="167" height="10" rx="5" style="animation-delay:.15s"/>
+<text class="s" x="592" y="300">Invalid dates</text><text class="s goodt" x="848" y="300" text-anchor="end">190 → 0</text><rect class="track" x="592" y="306" width="256" height="10" rx="5"/><rect class="bar" x="592" y="306" width="118" height="10" rx="5" style="animation-delay:.3s"/>
+<text class="s" x="592" y="342">Mixed country names</text><text class="s goodt" x="848" y="342" text-anchor="end">143 → 0</text><rect class="track" x="592" y="348" width="256" height="10" rx="5"/><rect class="bar" x="592" y="348" width="89" height="10" rx="5" style="animation-delay:.45s"/>
+<text class="s" x="592" y="384">Outlier amounts</text><text class="s goodt" x="848" y="384" text-anchor="end">57 → 2</text><rect class="track" x="592" y="390" width="256" height="10" rx="5"/><rect class="bar" x="592" y="390" width="36" height="10" rx="5" style="animation-delay:.6s"/>
+</svg>

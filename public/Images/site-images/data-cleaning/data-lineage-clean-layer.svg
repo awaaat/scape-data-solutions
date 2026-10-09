@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" role="img" aria-labelledby="t d">
+<title id="t">Data lineage: where data cleaning sits in the analytics stack</title>
+<desc id="d">CRM, ERP, spreadsheet and API sources load into a raw staging area, pass through a clean layer built with Python, SQL, R, dbt and Power Query with automated quality tests, then feed Power BI, Tableau, Excel and machine learning models.</desc>
+<style>
+text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#7c828d}
+.h{font-weight:700;font-size:12.5px}.s{font-size:10.5px}
+.box{fill:rgba(128,128,128,.07);stroke:rgba(128,128,128,.4)}
+.clean{fill:rgba(34,197,94,.1);stroke:#22c55e}
+.goodt{fill:#16a34a}
+.flow{stroke:rgba(128,128,128,.55);stroke-width:2;stroke-dasharray:6 8;fill:none;animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-14}}
+</style>
+<text class="s" x="115" y="26" text-anchor="middle">SOURCES</text><text class="s" x="360" y="26" text-anchor="middle">STAGING</text><text class="s" x="600" y="26" text-anchor="middle">CLEAN LAYER</text><text class="s" x="885" y="26" text-anchor="middle">CONSUMERS</text>
+<rect class="box" x="30" y="46" width="170" height="52" rx="10"/><text class="h" x="46" y="77">CRM export</text>
+<rect class="box" x="30" y="122" width="170" height="52" rx="10"/><text class="h" x="46" y="153">ERP / SQL database</text>
+<rect class="box" x="30" y="198" width="170" height="52" rx="10"/><text class="h" x="46" y="229">CSV and Excel files</text>
+<rect class="box" x="30" y="274" width="170" height="52" rx="10"/><text class="h" x="46" y="305">REST API / web forms</text>
+<path class="flow" d="M200,72 C250,72 260,186 290,186"/><path class="flow" d="M200,148 C245,148 260,186 290,186"/><path class="flow" d="M200,224 C245,224 260,186 290,186"/><path class="flow" d="M200,300 C250,300 260,186 290,186"/>
+<rect class="box" x="290" y="110" width="140" height="152" rx="12"/><text class="h" x="360" y="170" text-anchor="middle">Raw staging</text><text class="s" x="360" y="192" text-anchor="middle">untouched copy</text><text class="s" x="360" y="210" text-anchor="middle">immutable</text>
+<path class="flow" d="M430,186 L500,186"/><polygon points="500,180 512,186 500,192" fill="#22c55e"/>
+<rect class="clean" x="512" y="80" width="176" height="212" rx="12"/><text class="h goodt" x="600" y="110" text-anchor="middle">CLEAN LAYER</text>
+<text class="s" x="600" y="140" text-anchor="middle">Python · SQL · R</text><text class="s" x="600" y="160" text-anchor="middle">dbt · Power Query</text><text class="s" x="600" y="190" text-anchor="middle">dedupe · standardize</text><text class="s" x="600" y="210" text-anchor="middle">impute · validate</text><text class="s goodt" x="600" y="250" text-anchor="middle">✓ automated quality tests</text><text class="s goodt" x="600" y="270" text-anchor="middle">✓ full audit log</text>
+<path class="flow" d="M688,186 C730,186 740,72 790,72"/><path class="flow" d="M688,186 C730,186 740,148 790,148"/><path class="flow" d="M688,186 C730,186 740,224 790,224"/><path class="flow" d="M688,186 C730,186 740,300 790,300"/>
+<rect class="box" x="790" y="46" width="170" height="52" rx="10"/><text class="h" x="806" y="77">Power BI</text>
+<rect class="box" x="790" y="122" width="170" height="52" rx="10"/><text class="h" x="806" y="153">Tableau</text>
+<rect class="box" x="790" y="198" width="170" height="52" rx="10"/><text class="h" x="806" y="229">Excel</text>
+<rect class="box" x="790" y="274" width="170" height="52" rx="10"/><text class="h" x="806" y="305">ML models / notebooks</text>
+<text class="s" x="500" y="360" text-anchor="middle">Raw data stays untouched · every transformation is logged · outputs refresh automatically</text>
+</svg>

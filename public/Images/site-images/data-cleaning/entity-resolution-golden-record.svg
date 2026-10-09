@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="t d">
+<title id="t">Record linkage: four duplicate records merged into one golden record</title>
+<desc id="d">Four customer records with different spellings, emails and phone formats are fuzzy matched with a 0.97 score and merged into a single golden customer record.</desc>
+<style>
+text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#7c828d}
+.h{font-weight:700;font-size:13px}.s{font-size:10.5px}.v{font-size:11px;font-weight:700}
+.panel{fill:rgba(128,128,128,.07);stroke:rgba(128,128,128,.35)}
+.goodt{fill:#16a34a}
+.flow{stroke:rgba(128,128,128,.55);stroke-width:2;stroke-dasharray:6 8;fill:none;animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-14}}
+.node{fill:rgba(34,197,94,.14);stroke:#22c55e;stroke-width:2;animation:pulse 2.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{50%{transform:scale(1.1)}}
+.rec{fill:rgba(239,68,68,.1);stroke:rgba(239,68,68,.45)}
+</style>
+<rect class="rec" x="30" y="30" width="270" height="76" rx="10"/><text class="h" x="46" y="62">Emma Johnson</text><text class="s" x="46" y="84">emma.johnson@example.com</text>
+<rect class="rec" x="30" y="122" width="270" height="76" rx="10"/><text class="h" x="46" y="154">E. Johnson</text><text class="s" x="46" y="176">emma.johnson@example.com</text>
+<rect class="rec" x="30" y="214" width="270" height="76" rx="10"/><text class="h" x="46" y="246">Emma J.</text><text class="s" x="46" y="268">ejohnson@gmail.com · New York</text>
+<rect class="rec" x="30" y="306" width="270" height="76" rx="10"/><text class="h" x="46" y="338">Johnson, Emma</text><text class="s" x="46" y="360">+1 (202) 555-0143</text>
+<path class="flow" d="M300,68 C380,68 390,210 440,210"/><path class="flow" d="M300,160 C370,160 395,210 440,210"/><path class="flow" d="M300,252 C370,252 395,210 440,210"/><path class="flow" d="M300,344 C380,344 390,210 440,210"/>
+<circle class="node" cx="470" cy="210" r="30"/><text class="h goodt" x="470" y="215" text-anchor="middle">0.97</text><text class="s" x="470" y="262" text-anchor="middle">match score</text>
+<path class="flow" d="M500,210 L596,210"/><polygon points="596,203 610,210 596,217" fill="#22c55e"/>
+<rect class="panel" x="614" y="70" width="270" height="280" rx="14" style="stroke:#22c55e"/>
+<text class="h goodt" x="632" y="104">GOLDEN RECORD</text>
+<text class="s" x="632" y="140">name</text><text class="v" x="690" y="140">Emma Johnson</text>
+<text class="s" x="632" y="170">email</text><text class="v" x="690" y="170">emma.johnson@example.com</text>
+<text class="s" x="632" y="200">phone</text><text class="v" x="690" y="200">+1 202 555 0143</text>
+<text class="s" x="632" y="230">city</text><text class="v" x="690" y="230">New York, US</text>
+<text class="s" x="632" y="260">sources</text><text class="v goodt" x="690" y="260">4 records → 1</text>
+<text class="s" x="632" y="304">rule: most recent non-null wins</text><text class="s" x="632" y="322">audit log keeps all 4 source IDs</text>
+<text class="s" x="450" y="408" text-anchor="middle">Fuzzy matching + survivorship rules, with a reversible audit trail</text>
+</svg>
