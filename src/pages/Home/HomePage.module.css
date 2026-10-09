@@ -576,3 +576,51 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ============ FIX: hero clears the navbar + no horizontal clipping ============ */
+.hero {
+  padding: 200px 0 var(--space-16);
+}
+@media (max-width: 900px) {
+  .hero { padding: 150px 0 var(--space-12); }
+}
+@media (max-width: 560px) {
+  .hero { padding: 130px 0 var(--space-10); }
+}
+
+/* let grid children shrink instead of overflowing off-screen */
+.heroTop > * { min-width: 0; }
+.heroInner { min-width: 0; }
+
+.heroImageWrap {
+  width: 100%;
+  min-width: 0;
+  margin-top: var(--space-4);
+}
+.heroViz {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+@media (min-width: 900px) {
+  .heroViz { max-width: 620px; }
+}
+
+/* keep the dashboard tabs and SQL panel from forcing the card wider */
+.heroVizMain > * { min-width: 0; }
+.heroVizTabs { min-width: 0; }
+
+/* ============ FIX v2: hero sits just below the navbar ============ */
+.hero {
+  padding: 110px 0 var(--space-16);
+}
+@media (max-width: 900px) {
+  .hero { padding: 100px 0 var(--space-12); }
+}
+@media (max-width: 560px) {
+  .hero { padding: 90px 0 var(--space-10); }
+}
+
+.heroImageWrap {
+  margin-top: 0;
+}
