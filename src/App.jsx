@@ -4,6 +4,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import styles from './App.module.css';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import PageLayout from './components/Layout/PageLayout';
+import ScrollToTop from './components/ScrollToTop';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { apiService } from './services/api';
 
@@ -12,6 +14,7 @@ import HomePage from './pages/Home/HomePage';
 const AboutPage = lazy(() => import('./pages/About/AboutPage'));
 const ContactPage = lazy(() => import('./pages/Contact/ContactPage'));
 const ServicesPage = lazy(() => import('./pages/OurServices/ServicesPage'));
+const ServicesCategoryPage = lazy(() => import('./pages/OurServices/ServicesCategoryPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFound/NotFoundPage'));
 
 // ─── Business Intel Dashboard ────────────────────────────────
@@ -256,12 +259,14 @@ const AppContent = () => {
 
     return (
         <div className={styles.app}>
+            <ScrollToTop />
             <main className={styles.main}>
-                <ErrorBoundary>
+                <ErrorBoundary key={location.pathname}>
                     <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
                         <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="/services" element={<ServicesPage />} />
+                            <Route path="/services/category/:categoryId" element={<ServicesCategoryPage />} />
                             <Route path="/about" element={<AboutPage />} />
                             <Route path="/contact" element={<ContactPage />} />
 
@@ -361,7 +366,7 @@ const AppContent = () => {
                             <Route path="/services/supply-chain-visibility-tracking" element={<SupplyChainVisibilityTrackingPage />} />
                             <Route path="/services/warehouse-optimization-inventory-management" element={<WarehouseOptimizationInventoryManagementPage />} />
                             <Route path="/services/workforce-hr-analytics" element={<WorkforceHRAnalyticsPage />} />
-                            <Route path="/services/market-basket-analysis" element={<MarketBasketAnalysisPage />} />
+                            <Route path="/services/market-basket-analysis" element={<PageLayout activeNav="services"><MarketBasketAnalysisPage /></PageLayout>} />
 
                             {/* ─── Newly wired service routes ─────────────────────── */}
                             <Route path="/services/ai-automation" element={<AIAutomationPage />} />
@@ -377,115 +382,115 @@ const AppContent = () => {
                             <Route path="/services/clinic-analytics" element={<ClinicAnalyticsPage />} />
                             <Route path="/services/clinical-decision-support" element={<ClinicalDecisionSupportPage />} />
                             <Route path="/services/computer-vision-solutions" element={<ComputerVisionSolutionsPage />} />
-                            <Route path="/services/conference-paper-writing" element={<ConferencePaperWritingPage />} />
-                            <Route path="/services/content-analysis-services" element={<ContentAnalysisServicesPage />} />
-                            <Route path="/services/cronbach-alpha-analysis" element={<CronbachAlphaAnalysisPage />} />
+                            <Route path="/services/conference-paper-writing" element={<PageLayout activeNav="services"><ConferencePaperWritingPage /></PageLayout>} />
+                            <Route path="/services/content-analysis-services" element={<PageLayout activeNav="services"><ContentAnalysisServicesPage /></PageLayout>} />
+                            <Route path="/services/cronbach-alpha-analysis" element={<PageLayout activeNav="services"><CronbachAlphaAnalysisPage /></PageLayout>} />
                             <Route path="/services/data-engineering" element={<DataEngineeringPage />} />
                             <Route path="/services/data-migration" element={<DataMigrationPage />} />
-                            <Route path="/services/data-mining-assignment-help" element={<DataMiningAssignmentHelpPage />} />
+                            <Route path="/services/data-mining-assignment-help" element={<PageLayout activeNav="services"><DataMiningAssignmentHelpPage /></PageLayout>} />
                             <Route path="/services/data-quality-assessment" element={<DataQualityAssessmentPage />} />
                             <Route path="/services/data-warehouse-development" element={<DataWarehouseDevelopmentPage />} />
-                            <Route path="/services/deep-learning-assignment-help" element={<DeepLearningAssignmentHelpPage />} />
+                            <Route path="/services/deep-learning-assignment-help" element={<PageLayout activeNav="services"><DeepLearningAssignmentHelpPage /></PageLayout>} />
                             <Route path="/services/deep-learning-solutions" element={<DeepLearningSolutionsPage />} />
                             <Route path="/services/delivery-performance-analytics" element={<DeliveryPerformanceAnalyticsPage />} />
-                            <Route path="/services/dissertation-statistics-help" element={<DissertationStatisticsHelpPage />} />
+                            <Route path="/services/dissertation-statistics-help" element={<PageLayout activeNav="services"><DissertationStatisticsHelpPage /></PageLayout>} />
                             <Route path="/services/etl-pipeline-development" element={<ETLPipelineDevelopmentPage />} />
-                            <Route path="/services/eviews-assignment-help" element={<EViewsAssignmentHelpPage />} />
-                            <Route path="/services/econometrics-assignment-help" element={<EconometricsAssignmentHelpPage />} />
-                            <Route path="/services/excel-assignment-help" element={<ExcelAssignmentHelpPage />} />
-                            <Route path="/services/experimental-design-consulting" element={<ExperimentalDesignConsultingPage />} />
-                            <Route path="/services/factor-analysis-help" element={<FactorAnalysisHelpPage />} />
+                            <Route path="/services/eviews-assignment-help" element={<PageLayout activeNav="services"><EViewsAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/econometrics-assignment-help" element={<PageLayout activeNav="services"><EconometricsAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/excel-assignment-help" element={<PageLayout activeNav="services"><ExcelAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/experimental-design-consulting" element={<PageLayout activeNav="services"><ExperimentalDesignConsultingPage /></PageLayout>} />
+                            <Route path="/services/factor-analysis-help" element={<PageLayout activeNav="services"><FactorAnalysisHelpPage /></PageLayout>} />
                             <Route path="/services/factory-performance-analytics" element={<FactoryPerformanceAnalyticsPage />} />
                             <Route path="/services/fleet-analytics" element={<FleetAnalyticsPage />} />
                             <Route path="/services/freight-cost-analytics" element={<FreightCostAnalyticsPage />} />
                             <Route path="/services/generative-ai-consulting" element={<GenerativeAIConsultingPage />} />
-                            <Route path="/services/graphpad-prism-help" element={<GraphPadPrismHelpPage />} />
-                            <Route path="/services/grounded-theory-analysis" element={<GroundedTheoryAnalysisPage />} />
+                            <Route path="/services/graphpad-prism-help" element={<PageLayout activeNav="services"><GraphPadPrismHelpPage /></PageLayout>} />
+                            <Route path="/services/grounded-theory-analysis" element={<PageLayout activeNav="services"><GroundedTheoryAnalysisPage /></PageLayout>} />
                             <Route path="/services/healthcare-bi" element={<HealthcareBIPage />} />
                             <Route path="/services/healthcare-dashboard-development" element={<HealthcareDashboardDevelopmentPage />} />
                             <Route path="/services/healthcare-revenue-analytics" element={<HealthcareRevenueAnalyticsPage />} />
                             <Route path="/services/hospital-analytics" element={<HospitalAnalyticsPage />} />
                             <Route path="/services/hospital-operations-analytics" element={<HospitalOperationsAnalyticsPage />} />
-                            <Route path="/services/jamovi-assignment-help" element={<JAMOVIAssignmentHelpPage />} />
-                            <Route path="/services/jasp-assignment-help" element={<JASPAssignmentHelpPage />} />
-                            <Route path="/services/journal-formatting" element={<JournalFormattingPage />} />
-                            <Route path="/services/journal-manuscript-editing" element={<JournalManuscriptEditingPage />} />
-                            <Route path="/services/journal-publication-support" element={<JournalPublicationSupportPage />} />
-                            <Route path="/services/journal-submission-support" element={<JournalSubmissionSupportPage />} />
+                            <Route path="/services/jamovi-assignment-help" element={<PageLayout activeNav="services"><JAMOVIAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/jasp-assignment-help" element={<PageLayout activeNav="services"><JASPAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/journal-formatting" element={<PageLayout activeNav="services"><JournalFormattingPage /></PageLayout>} />
+                            <Route path="/services/journal-manuscript-editing" element={<PageLayout activeNav="services"><JournalManuscriptEditingPage /></PageLayout>} />
+                            <Route path="/services/journal-publication-support" element={<PageLayout activeNav="services"><JournalPublicationSupportPage /></PageLayout>} />
+                            <Route path="/services/journal-submission-support" element={<PageLayout activeNav="services"><JournalSubmissionSupportPage /></PageLayout>} />
                             <Route path="/services/llm-development" element={<LLMDevelopmentPage />} />
                             <Route path="/services/looker-studio-consulting" element={<LookerStudioConsultingPage />} />
-                            <Route path="/services/matlab-assignment-help" element={<MATLABAssignmentHelpPage />} />
-                            <Route path="/services/matlab-data-analysis" element={<MATLABDataAnalysisPage />} />
-                            <Route path="/services/matlab-programming-assignment-help" element={<MATLABProgrammingAssignmentHelpPage />} />
-                            <Route path="/services/matlab-simulation-help" element={<MATLABSimulationHelpPage />} />
+                            <Route path="/services/matlab-assignment-help" element={<PageLayout activeNav="services"><MATLABAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/matlab-data-analysis" element={<PageLayout activeNav="services"><MATLABDataAnalysisPage /></PageLayout>} />
+                            <Route path="/services/matlab-programming-assignment-help" element={<PageLayout activeNav="services"><MATLABProgrammingAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/matlab-simulation-help" element={<PageLayout activeNav="services"><MATLABSimulationHelpPage /></PageLayout>} />
                             <Route path="/services/mlops-consulting" element={<MLOpsConsultingPage />} />
-                            <Route path="/services/machine-learning-assignment-help" element={<MachineLearningAssignmentHelpPage />} />
+                            <Route path="/services/machine-learning-assignment-help" element={<PageLayout activeNav="services"><MachineLearningAssignmentHelpPage /></PageLayout>} />
                             <Route path="/services/machine-learning-consulting" element={<MachineLearningConsultingPage />} />
                             <Route path="/services/manufacturing-analytics" element={<ManufacturingAnalyticsPage />} />
                             <Route path="/services/manufacturing-forecasting" element={<ManufacturingForecastingPage />} />
-                            <Route path="/services/manufacturing-kp-is" element={<ManufacturingKPIsPage />} />
+                            <Route path="/services/manufacturing-kp-is" element={<PageLayout activeNav="services"><ManufacturingKPIsPage /></PageLayout>} />
                             <Route path="/services/medical-claims-analytics" element={<MedicalClaimsAnalyticsPage />} />
-                            <Route path="/services/meta-analysis-data-analysis" element={<MetaAnalysisDataAnalysisPage />} />
-                            <Route path="/services/meta-analysis-services" element={<MetaAnalysisServicesPage />} />
-                            <Route path="/services/minitab-assignment-help" element={<MinitabAssignmentHelpPage />} />
-                            <Route path="/services/mixed-methods-research" element={<MixedMethodsResearchPage />} />
-                            <Route path="/services/nvivo-analysis-help" element={<NVivoAnalysisHelpPage />} />
+                            <Route path="/services/meta-analysis-data-analysis" element={<PageLayout activeNav="services"><MetaAnalysisDataAnalysisPage /></PageLayout>} />
+                            <Route path="/services/meta-analysis-services" element={<PageLayout activeNav="services"><MetaAnalysisServicesPage /></PageLayout>} />
+                            <Route path="/services/minitab-assignment-help" element={<PageLayout activeNav="services"><MinitabAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/mixed-methods-research" element={<PageLayout activeNav="services"><MixedMethodsResearchPage /></PageLayout>} />
+                            <Route path="/services/nvivo-analysis-help" element={<PageLayout activeNav="services"><NVivoAnalysisHelpPage /></PageLayout>} />
                             <Route path="/services/natural-language-processing" element={<NaturalLanguageProcessingPage />} />
-                            <Route path="/services/originpro-assignment-help" element={<OriginProAssignmentHelpPage />} />
-                            <Route path="/services/pls-sem-analysis" element={<PLSSEMAnalysisPage />} />
+                            <Route path="/services/originpro-assignment-help" element={<PageLayout activeNav="services"><OriginProAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/pls-sem-analysis" element={<PageLayout activeNav="services"><PLSSEMAnalysisPage /></PageLayout>} />
                             <Route path="/services/patient-flow-analytics" element={<PatientFlowAnalyticsPage />} />
-                            <Route path="/services/power-bi-assignment-help" element={<PowerBIAssignmentHelpPage />} />
+                            <Route path="/services/power-bi-assignment-help" element={<PageLayout activeNav="services"><PowerBIAssignmentHelpPage /></PageLayout>} />
                             <Route path="/services/power-bi-consulting" element={<PowerBIConsultingPage />} />
                             <Route path="/services/predictive-analytics" element={<PredictiveAnalyticsPage />} />
                             <Route path="/services/predictive-maintenance" element={<PredictiveMaintenancePage />} />
-                            <Route path="/services/principal-component-analysis" element={<PrincipalComponentAnalysisPage />} />
+                            <Route path="/services/principal-component-analysis" element={<PageLayout activeNav="services"><PrincipalComponentAnalysisPage /></PageLayout>} />
                             <Route path="/services/production-analytics" element={<ProductionAnalyticsPage />} />
-                            <Route path="/services/publication-ready-manuscript" element={<PublicationReadyManuscriptPage />} />
-                            <Route path="/services/pytorch-assignment-help" element={<PyTorchAssignmentHelpPage />} />
-                            <Route path="/services/python-assignment-help" element={<PythonAssignmentHelpPage />} />
-                            <Route path="/services/qualitative-data-analysis" element={<QualitativeDataAnalysisPage />} />
+                            <Route path="/services/publication-ready-manuscript" element={<PageLayout activeNav="services"><PublicationReadyManuscriptPage /></PageLayout>} />
+                            <Route path="/services/pytorch-assignment-help" element={<PageLayout activeNav="services"><PyTorchAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/python-assignment-help" element={<PageLayout activeNav="services"><PythonAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/qualitative-data-analysis" element={<PageLayout activeNav="services"><QualitativeDataAnalysisPage /></PageLayout>} />
                             <Route path="/services/quality-control-analytics" element={<QualityControlAnalyticsPage />} />
-                            <Route path="/services/questionnaire-design-help" element={<QuestionnaireDesignHelpPage />} />
-                            <Route path="/services/questionnaire-validation" element={<QuestionnaireValidationPage />} />
-                            <Route path="/services/r-programming-assignment-help" element={<RProgrammingAssignmentHelpPage />} />
-                            <Route path="/services/rstudio-assignment-help" element={<RStudioAssignmentHelpPage />} />
+                            <Route path="/services/questionnaire-design-help" element={<PageLayout activeNav="services"><QuestionnaireDesignHelpPage /></PageLayout>} />
+                            <Route path="/services/questionnaire-validation" element={<PageLayout activeNav="services"><QuestionnaireValidationPage /></PageLayout>} />
+                            <Route path="/services/r-programming-assignment-help" element={<PageLayout activeNav="services"><RProgrammingAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/rstudio-assignment-help" element={<PageLayout activeNav="services"><RStudioAssignmentHelpPage /></PageLayout>} />
                             <Route path="/services/recommendation-systems" element={<RecommendationSystemsPage />} />
-                            <Route path="/services/regression-analysis-help" element={<RegressionAnalysisHelpPage />} />
-                            <Route path="/services/research-design-consulting" element={<ResearchDesignConsultingPage />} />
-                            <Route path="/services/research-gap-analysis" element={<ResearchGapAnalysisPage />} />
+                            <Route path="/services/regression-analysis-help" element={<PageLayout activeNav="services"><RegressionAnalysisHelpPage /></PageLayout>} />
+                            <Route path="/services/research-design-consulting" element={<PageLayout activeNav="services"><ResearchDesignConsultingPage /></PageLayout>} />
+                            <Route path="/services/research-gap-analysis" element={<PageLayout activeNav="services"><ResearchGapAnalysisPage /></PageLayout>} />
                             <Route path="/services/research-methodology-support" element={<ResearchMethodologySupportPage />} />
-                            <Route path="/services/research-paper-editing" element={<ResearchPaperEditingPage />} />
-                            <Route path="/services/research-paper-writing" element={<ResearchPaperWritingPage />} />
-                            <Route path="/services/research-proposal-help" element={<ResearchProposalHelpPage />} />
+                            <Route path="/services/research-paper-editing" element={<PageLayout activeNav="services"><ResearchPaperEditingPage /></PageLayout>} />
+                            <Route path="/services/research-paper-writing" element={<PageLayout activeNav="services"><ResearchPaperWritingPage /></PageLayout>} />
+                            <Route path="/services/research-proposal-help" element={<PageLayout activeNav="services"><ResearchProposalHelpPage /></PageLayout>} />
                             <Route path="/services/retail-analytics" element={<RetailAnalyticsPage />} />
-                            <Route path="/services/retail-dashboard-development" element={<RetailDashboardDevelopmentPage />} />
+                            <Route path="/services/retail-dashboard-development" element={<PageLayout activeNav="services"><RetailDashboardDevelopmentPage /></PageLayout>} />
                             <Route path="/services/retail-pricing-analytics" element={<RetailPricingAnalyticsPage />} />
                             <Route path="/services/retail-revenue-analytics" element={<RetailRevenueAnalyticsPage />} />
                             <Route path="/services/retail-sales-analytics" element={<RetailSalesAnalyticsPage />} />
-                            <Route path="/services/sas-assignment-help" element={<SASAssignmentHelpPage />} />
-                            <Route path="/services/sql-assignment-help" element={<SQLAssignmentHelpPage />} />
-                            <Route path="/services/scale-reliability-analysis" element={<ScaleReliabilityAnalysisPage />} />
-                            <Route path="/services/scientific-manuscript-editing" element={<ScientificManuscriptEditingPage />} />
-                            <Route path="/services/scientific-research-consulting" element={<ScientificResearchConsultingPage />} />
-                            <Route path="/services/scientific-research-data-analysis" element={<ScientificResearchDataAnalysisPage />} />
-                            <Route path="/services/scientific-research-support" element={<ScientificResearchSupportPage />} />
-                            <Route path="/services/scientific-research-writing" element={<ScientificResearchWritingPage />} />
-                            <Route path="/services/scoping-review-support" element={<ScopingReviewSupportPage />} />
+                            <Route path="/services/sas-assignment-help" element={<PageLayout activeNav="services"><SASAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/sql-assignment-help" element={<PageLayout activeNav="services"><SQLAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/scale-reliability-analysis" element={<PageLayout activeNav="services"><ScaleReliabilityAnalysisPage /></PageLayout>} />
+                            <Route path="/services/scientific-manuscript-editing" element={<PageLayout activeNav="services"><ScientificManuscriptEditingPage /></PageLayout>} />
+                            <Route path="/services/scientific-research-consulting" element={<PageLayout activeNav="services"><ScientificResearchConsultingPage /></PageLayout>} />
+                            <Route path="/services/scientific-research-data-analysis" element={<PageLayout activeNav="services"><ScientificResearchDataAnalysisPage /></PageLayout>} />
+                            <Route path="/services/scientific-research-support" element={<PageLayout activeNav="services"><ScientificResearchSupportPage /></PageLayout>} />
+                            <Route path="/services/scientific-research-writing" element={<PageLayout activeNav="services"><ScientificResearchWritingPage /></PageLayout>} />
+                            <Route path="/services/scoping-review-support" element={<PageLayout activeNav="services"><ScopingReviewSupportPage /></PageLayout>} />
                             <Route path="/services/shipment-analytics" element={<ShipmentAnalyticsPage />} />
-                            <Route path="/services/stata-assignment-help" element={<StataAssignmentHelpPage />} />
+                            <Route path="/services/stata-assignment-help" element={<PageLayout activeNav="services"><StataAssignmentHelpPage /></PageLayout>} />
                             <Route path="/services/statistical-analysis-consulting" element={<StatisticalAnalysisConsultingPage />} />
-                            <Route path="/services/structural-equation-modeling" element={<StructuralEquationModelingPage />} />
-                            <Route path="/services/supply-chain-analytics" element={<SupplyChainAnalyticsPage />} />
+                            <Route path="/services/structural-equation-modeling" element={<PageLayout activeNav="services"><StructuralEquationModelingPage /></PageLayout>} />
+                            <Route path="/services/supply-chain-analytics" element={<PageLayout activeNav="services"><SupplyChainAnalyticsPage /></PageLayout>} />
                             <Route path="/services/supply-planning" element={<SupplyPlanningPage />} />
-                            <Route path="/services/survey-data-cleaning" element={<SurveyDataCleaningPage />} />
-                            <Route path="/services/systematic-literature-review" element={<SystematicLiteratureReviewPage />} />
-                            <Route path="/services/systematic-review-data-analysis" element={<SystematicReviewDataAnalysisPage />} />
-                            <Route path="/services/tableau-assignment-help" element={<TableauAssignmentHelpPage />} />
+                            <Route path="/services/survey-data-cleaning" element={<PageLayout activeNav="services"><SurveyDataCleaningPage /></PageLayout>} />
+                            <Route path="/services/systematic-literature-review" element={<PageLayout activeNav="services"><SystematicLiteratureReviewPage /></PageLayout>} />
+                            <Route path="/services/systematic-review-data-analysis" element={<PageLayout activeNav="services"><SystematicReviewDataAnalysisPage /></PageLayout>} />
+                            <Route path="/services/tableau-assignment-help" element={<PageLayout activeNav="services"><TableauAssignmentHelpPage /></PageLayout>} />
                             <Route path="/services/tableau-consulting" element={<TableauConsultingPage />} />
-                            <Route path="/services/tensorflow-assignment-help" element={<TensorFlowAssignmentHelpPage />} />
-                            <Route path="/services/thematic-analysis-services" element={<ThematicAnalysisServicesPage />} />
-                            <Route path="/services/thesis-data-analysis" element={<ThesisDataAnalysisPage />} />
-                            <Route path="/services/time-series-analysis-help" element={<TimeSeriesAnalysisHelpPage />} />
+                            <Route path="/services/tensorflow-assignment-help" element={<PageLayout activeNav="services"><TensorFlowAssignmentHelpPage /></PageLayout>} />
+                            <Route path="/services/thematic-analysis-services" element={<PageLayout activeNav="services"><ThematicAnalysisServicesPage /></PageLayout>} />
+                            <Route path="/services/thesis-data-analysis" element={<PageLayout activeNav="services"><ThesisDataAnalysisPage /></PageLayout>} />
+                            <Route path="/services/time-series-analysis-help" element={<PageLayout activeNav="services"><TimeSeriesAnalysisHelpPage /></PageLayout>} />
                             <Route path="/services/transport-analytics" element={<TransportAnalyticsPage />} />
                             <Route path="/services/warehouse-analytics" element={<WarehouseAnalyticsPage />} />
 
@@ -508,7 +513,7 @@ if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
 function App() {
     return (
         <HelmetProvider>
-            <Router>
+            <Router unstable_useTransitions={false}>
                 <AppContent />
             </Router>
         </HelmetProvider>

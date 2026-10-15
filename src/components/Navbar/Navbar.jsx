@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Mail } from "lucide-react";
 import styles from "./Navbar.module.css";
+import useUniformNavGap from "./useUniformNavGap";
 
 // Navigation data
 export const NAV_COMPANY = [
@@ -15,17 +16,17 @@ export const NAV_COMPANY = [
 
 export const NAV_SERVICES = [
   { label: "All Services", href: "/services" },
-  { label: "Academic & Research", href: "/services?category=academic" },
-  { label: "Advanced Analytics", href: "/services?category=analytics" },
-  { label: "Finance & Risk", href: "/services?category=finance" },
-  { label: "Healthcare & Life Sciences", href: "/services?category=healthcare" },
-  { label: "Manufacturing & Supply Chain", href: "/services?category=manufacturing" },
-  { label: "Retail & E-Commerce", href: "/services?category=retail" },
-  { label: "AI & Machine Learning", href: "/services?category=ai-ml" },
-  { label: "Data Engineering & BI Tools", href: "/services?category=data-engineering" },
-  { label: "Statistical & Research Methods", href: "/services?category=research-methods" },
-  { label: "Academic Writing & Publishing", href: "/services?category=academic-writing" },
-  { label: "Assignment & Software Help", href: "/services?category=assignment-help" },
+  { label: "Academic & Research", href: "/services/category/academic" },
+  { label: "Advanced Analytics", href: "/services/category/analytics" },
+  { label: "Finance & Risk", href: "/services/category/finance" },
+  { label: "Healthcare & Life Sciences", href: "/services/category/healthcare" },
+  { label: "Manufacturing & Supply Chain", href: "/services/category/manufacturing" },
+  { label: "Retail & E-Commerce", href: "/services/category/retail" },
+  { label: "AI & Machine Learning", href: "/services/category/ai-ml" },
+  { label: "Data Engineering & BI Tools", href: "/services/category/data-engineering" },
+  { label: "Statistical & Research Methods", href: "/services/category/research-methods" },
+  { label: "Academic Writing & Publishing", href: "/services/category/academic-writing" },
+  { label: "Assignment & Software Help", href: "/services/category/assignment-help" },
 ];
 
 export const NAV_PORTFOLIO = [
@@ -81,6 +82,7 @@ const LinkedinIcon = () => (
 
 export default function Navbar({ activeNav = "" }) {
   const location = useLocation();
+  useUniformNavGap(location.pathname);
   const [navOpen, setNavOpen] = useState(false);
   const [compOpen, setCompOpen] = useState(false);
   const [servOpen, setServOpen] = useState(false);
@@ -100,9 +102,8 @@ export default function Navbar({ activeNav = "" }) {
 
   useEffect(() => {
     const measure = () => {
-      const topBarH = topBarRef.current ? topBarRef.current.offsetHeight : 0;
       const headerH = headerRef.current ? headerRef.current.offsetHeight : 0;
-      setDesktopSpacerHeight(topBarH + headerH - 100);
+      const desk = 40 + headerH; setDesktopSpacerHeight(desk); const mob = mobileHeaderRef.current ? mobileHeaderRef.current.offsetHeight : 0; document.documentElement.style.setProperty("--nav-h", (window.innerWidth >= 1024 ? desk : mob) + "px");
       setMobileSpacerHeight(mobileHeaderRef.current ? mobileHeaderRef.current.offsetHeight : 0);
     };
 
@@ -359,7 +360,7 @@ export default function Navbar({ activeNav = "" }) {
       </header>
 
       <div className={styles.navSpacer} style={{ height: desktopSpacerHeight }} />
-      <div className={styles.navSpacerMobile} style={{ height: mobileSpacerHeight }} />
+      <div data-nav-end className={styles.navSpacerMobile} style={{ height: mobileSpacerHeight }} />
     </>
   );
 }

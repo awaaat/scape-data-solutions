@@ -412,3 +412,58 @@
     display: none;
   }
 }
+/* ================================================================
+   SLIM NAV OVERRIDES
+   Top bar 72px -> 40px, header 80px -> 68px  (total 152px -> 108px)
+   The spacer in Navbar.jsx = 40 + measured header height.
+   ================================================================ */
+.navTopBar {
+  height: 40px;
+  max-height: 40px;
+}
+.navTopInner {
+  padding: 0 3.5rem;
+}
+.navTopLeft,
+.navTopContact {
+  font-size: 0.875rem;
+}
+.navSocialIcon {
+  width: 32px;
+  height: 32px;
+}
+.navSocialIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (min-width: 1024px) {
+  .navbarFixed {
+    top: 40px;
+  }
+  /* .navbarFixed.navbarFixedTop (top: 0 once scrolled) has higher
+     specificity, so the scrolled state keeps working. */
+}
+
+.navbarInner {
+  height: 68px;
+}
+.navbarBrand img {
+  height: 52px;
+}
+
+/* Mobile: hide the duplicate fixed desktop header and pin the real
+   mobile header so the mobile spacer actually has something to offset. */
+@media (max-width: 1023.98px) {
+  .navbarFixed {
+    display: none;
+  }
+  .mobileHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+}

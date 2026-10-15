@@ -16,11 +16,11 @@ import { NAV_COMPANY, NAV_PORTFOLIO } from "../Navbar/Navbar";
 //  The footer only needs the handful most people will click.)
 const FOOTER_SERVICES = [
   { label: "All Services",                 href: "/services" },
-  { label: "Advanced Analytics",           href: "/services?category=analytics" },
-  { label: "AI & Machine Learning",        href: "/services?category=ai-ml" },
-  { label: "Finance & Risk",               href: "/services?category=finance" },
-  { label: "Healthcare & Life Sciences",   href: "/services?category=healthcare" },
-  { label: "Data Engineering & BI Tools",  href: "/services?category=data-engineering" },
+  { label: "Advanced Analytics",           href: "/services/category/analytics" },
+  { label: "AI & Machine Learning",        href: "/services/category/ai-ml" },
+  { label: "Finance & Risk",               href: "/services/category/finance" },
+  { label: "Healthcare & Life Sciences",   href: "/services/category/healthcare" },
+  { label: "Data Engineering & BI Tools",  href: "/services/category/data-engineering" },
 ];
 
 // ── Curated resources subset for the footer ─────────────────────────

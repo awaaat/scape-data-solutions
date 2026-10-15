@@ -115,3 +115,15 @@ h4, h5, h6 {
 *::-webkit-scrollbar-thumb:hover {
   background: rgba(0,0,0,0.4);
 }
+
+/* Anchor jumps / scrollIntoView land below the fixed navbar */
+html {
+  scroll-padding-top: calc(var(--nav-h, 108px) + 16px);
+}
+
+/* A page module leaks `html { scroll-behavior: smooth }` site-wide, which breaks
+   scroll-to-top on navigation. Force auto; buttons that pass behavior:'smooth'
+   explicitly still animate. */
+html {
+  scroll-behavior: auto !important;
+}

@@ -62,6 +62,10 @@ const filterCategories = [
 const ServicesPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  useEffect(() => {
+    const c = new URLSearchParams(location.search).get("category");
+    if (c && c !== "all" && categories.includes(c)) navigate(`/services/category/${c}`, { replace: true });
+  }, [location.search]);
   const queryParams = new URLSearchParams(location.search);
   const categoryFromUrl = queryParams.get('category') || 'all';
 
@@ -124,7 +128,7 @@ const ServicesPage = () => {
     const cat = queryParams.get('category') || 'all';
     if (validCategoryIds.includes(cat)) {
       setActiveCategory(cat);
-      if (cat !== 'all' && filterSectionRef.current) {
+      if (false) { // disabled: pages always open at the top
         setTimeout(() => {
           const top =
             filterSectionRef.current.getBoundingClientRect().top +
