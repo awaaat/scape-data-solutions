@@ -64,6 +64,32 @@ const ROUTES = [
   '/sitemap',
   '/case-studies',
 
+  // Service category landing pages (/services/category/:categoryId)
+  '/services/category/academic',
+  '/services/category/analytics',
+  '/services/category/finance',
+  '/services/category/healthcare',
+  '/services/category/manufacturing',
+  '/services/category/retail',
+  '/services/category/ai-ml',
+  '/services/category/data-engineering',
+  '/services/category/research-methods',
+  '/services/category/academic-writing',
+  '/services/category/assignment-help',
+
+  // Service category landing pages (/services/category/:categoryId)
+  '/services/category/academic',
+  '/services/category/analytics',
+  '/services/category/finance',
+  '/services/category/healthcare',
+  '/services/category/manufacturing',
+  '/services/category/retail',
+  '/services/category/ai-ml',
+  '/services/category/data-engineering',
+  '/services/category/research-methods',
+  '/services/category/academic-writing',
+  '/services/category/assignment-help',
+
   '/services/algorithmic-trading-analytics',
   '/services/brand-health-reputation-monitoring',
   '/services/carrier-performance-freight-cost-analytics',
