@@ -303,3 +303,7 @@
   .howGrid { flex-direction: column; }
   .howArrow { display: none; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.secLabel,
+.secLabelCenter { display: none !important; }

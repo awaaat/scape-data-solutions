@@ -242,3 +242,6 @@
   .ctaBox { padding: 2rem 1.5rem; }
   .ctaBox h3 { font-size: 1.4rem; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

@@ -345,3 +345,6 @@
     padding: 50px 20px;
   }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

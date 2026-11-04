@@ -467,3 +467,409 @@
     box-sizing: border-box;
   }
 }
+
+/* ---------- Navbar CTA ---------- */
+.navCta {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: .85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform .2s ease, filter .2s ease;
+}
+.navCta:hover { transform: translateY(-1px); filter: brightness(.88); }
+
+.drawerCta {
+  display: block;
+  margin-top: 12px;
+  padding: 14px 20px;
+  border-radius: var(--radius-full);
+  background: var(--color-text);
+  color: var(--color-bg) !important;
+  text-align: center;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* ---------- Top-bar CTA (same level as email + social icons) ---------- */
+.navTopSocial { align-items: center; }
+.navTopCta {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  margin-right: 16px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: .78rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: transform .2s ease, filter .2s ease;
+}
+.navTopCta:hover { transform: translateY(-1px); filter: brightness(.88); }
+
+/* =====================================================================
+   NAVBAR REDESIGN: dark utility strip + glass nav + scroll progress
+   (uses existing theme variables only)
+   ===================================================================== */
+
+/* ---------- Top strip: inverted, three zones ---------- */
+.navTopBar {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+.navTopContact { color: color-mix(in srgb, var(--color-bg) 72%, transparent); font-size: .8rem; transition: color .2s ease; }
+.navTopContact:hover { color: var(--color-bg); }
+.navTopInner { position: relative; }
+
+.navTopStatus {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--color-bg) 62%, transparent);
+  pointer-events: none;
+}
+.navTopPulse {
+  position: relative;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+.navTopPulse::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: navPulse 2s ease-out infinite;
+}
+@keyframes navPulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(3.2); opacity: 0; } }
+@media (max-width: 1100px) { .navTopStatus { display: none; } }
+
+/* CTA: the one loud thing on the strip */
+.navTopCta {
+  margin-right: 20px;
+  padding: 6px 6px 6px 16px;
+  gap: 10px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: .76rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset;
+}
+.navTopCta::after {
+  content: "\2192";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  font-size: .8rem;
+  transition: transform .25s ease;
+}
+.navTopCta:hover { filter: brightness(1.08); transform: none; }
+.navTopCta:hover::after { transform: translateX(3px); }
+
+.navSocialIcon { color: color-mix(in srgb, var(--color-bg) 60%, transparent); transition: color .2s ease, transform .2s ease; }
+.navSocialIcon:hover { color: var(--color-bg); transform: translateY(-1px); }
+
+/* ---------- Main nav: glass on scroll, animated links ---------- */
+.navbarFixedTop {
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
+          backdrop-filter: saturate(160%) blur(16px);
+  background: color-mix(in srgb, var(--color-bg) 80%, transparent);
+}
+
+.navLink {
+  position: relative;
+  font-size: .9rem;
+  letter-spacing: -.005em;
+  transition: color .2s ease;
+}
+.navLink:hover { color: var(--color-text); }
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -8px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .28s cubic-bezier(.2,.7,.2,1);
+}
+.navLink:hover::after { transform: scaleX(.55); }
+.navActive::after { transform: scaleX(1) !important; }
+
+/* CTA that replaces Contact once the page is scrolled */
+.navCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 8px 8px 20px;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: .84rem;
+  font-weight: 500;
+}
+.navCta::after {
+  content: "\2192";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: .85rem;
+  transition: transform .25s ease;
+}
+.navCta:hover { transform: none; filter: brightness(.92); }
+.navCta:hover::after { transform: translateX(3px); }
+
+/* ---------- Dropdowns ---------- */
+.drop {
+  border-radius: var(--radius-xl);
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,.35), 0 0 0 1px var(--color-border);
+}
+.dropLink { transition: padding-left .2s ease, color .2s ease; }
+.dropLink:hover { padding-left: 4px; color: var(--color-accent); }
+
+/* ---------- Scroll progress line (Chrome/Edge/Safari 18+) ---------- */
+@supports (animation-timeline: scroll()) {
+  .navbarFixed::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%; height: 2px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: navProgress linear both;
+    animation-timeline: scroll(root block);
+    pointer-events: none;
+  }
+  @keyframes navProgress { to { transform: scaleX(1); } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navTopPulse::after, .navbarFixed::after { animation: none; }
+  .navLink::after { transition: none; }
+}
+
+/* ---------- Neutral palette fix: no green, no blue button ---------- */
+.navTopStatus, .navTopPulse { display: none !important; }
+
+/* Top-strip CTA: inverted, white pill on the dark strip */
+.navTopCta {
+  background: var(--color-bg);
+  color: var(--color-text);
+  box-shadow: none;
+}
+.navTopCta::after {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+.navTopCta:hover { filter: brightness(.92); }
+
+/* Scrolled-state CTA: arrow chip in neutral instead of blue */
+.navCta::after {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Scroll progress line in the text color */
+@supports (animation-timeline: scroll()) {
+  .navbarFixed::after { background: var(--color-text); }
+}
+
+/* =====================================================================
+   ROOMY TOP BAR (LeadConcept-style): light, 72px, boxed icons, real CTA
+   ===================================================================== */
+:root { --top-h: 72px; }
+
+.navTopBar {
+  height: var(--top-h);
+  display: flex;
+  align-items: center;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+.navTopInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navTopLeft { display: flex; align-items: center; gap: 28px; }
+
+.navTopContact {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: opacity .2s ease;
+}
+.navTopContact:hover { opacity: .65; }
+.navTopContact svg { width: 22px; height: 22px; }
+
+/* right side: boxed social tiles, then the CTA */
+.navTopSocial { display: flex; align-items: center; gap: 12px; }
+.navSocialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.navSocialIcon:hover {
+  color: var(--color-text);
+  border-color: var(--color-text);
+  background: var(--color-bg-card);
+  transform: translateY(-2px);
+}
+
+/* CTA: solid dark button, sits at the far right after the icons */
+.navTopCta {
+  order: 3;
+  margin: 0 0 0 12px;
+  height: 44px;
+  padding: 0 8px 0 22px;
+  gap: 14px;
+  border-radius: var(--radius-full);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+.navTopCta::after {
+  width: 28px; height: 28px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: .9rem;
+}
+.navTopCta:hover { filter: brightness(.88); transform: none; }
+
+/* main nav sits below the taller strip */
+.navbarFixed { top: var(--top-h) !important; }
+.navbarFixedTop { top: 0 !important; }
+
+/* generous nav row */
+.navbarInner { padding-top: 14px; padding-bottom: 14px; }
+.navLink { font-weight: 500; }
+
+/* hide the strip below desktop width, where the mobile header takes over */
+@media (max-width: 1023px) {
+  :root { --top-h: 0px; }
+}
+
+/* =====================================================================
+   FINAL FIX: one continuous header, no partition, roomy top row
+   ===================================================================== */
+:root { --top-h: 68px; }
+
+.navTopBar {
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; right: 0 !important;
+  height: var(--top-h) !important;
+  min-height: var(--top-h) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 10px 0 0 !important;
+  background: var(--color-bg) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.navTopInner {
+  height: auto !important;
+  align-items: center !important;
+}
+
+/* no divider anywhere between strip and nav while at the top */
+.navbarFixed {
+  top: var(--top-h) !important;
+  background: var(--color-bg) !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+.navbarFixed:not(.navbarFixedTop) .navbarBorder { display: none !important; }
+.navbarFixedTop { top: 0 !important; }
+
+/* tighter nav row so there is no big gap under the strip */
+.navbarInner { padding-top: 6px !important; padding-bottom: 12px !important; }
+
+@media (max-width: 1023px) {
+  :root { --top-h: 0px; }
+}
+
+/* ---------- Remove scroll progress line ---------- */
+.navbarFixed::after {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
+
+/* ---------- Dropdown fix: single clean border, light shadow ---------- */
+.drop {
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-lg) !important;
+  background: var(--color-bg) !important;
+  box-shadow: 0 8px 24px -12px rgba(0,0,0,.18) !important;
+  outline: none !important;
+  opacity: 1 !important;
+  z-index: 1000;
+}
+.dropGrid, .dropGrid1 {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  outline: none !important;
+}
+
+/* hide the nav underline while its dropdown is open so it doesn't sit on the dropdown edge */
+.hasDrop:hover > .navLink::after { opacity: 0; }
+
+/* ---------- Restore dropdown hide/show behavior ---------- */
+.drop {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(6px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s !important;
+}
+.hasDrop:hover > .drop,
+.hasDrop:focus-within > .drop {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0);
+}

@@ -53,7 +53,7 @@ const FEATURES = [
     tagline: "Know what happened, and why",
     icon: <BarChart3 size={22} />,
     link: "/services",
-    desc: "Every click, sale, and abandoned cart already lives somewhere in your systems. We pull it together and let it tell you a story worth acting on today, not the quarter after.",
+    desc: "Your sales, web traffic, and customer records already hold the answers. We clean them up and report on what is actually happening in the business.",
   },
   {
     key: "etl",
@@ -61,7 +61,7 @@ const FEATURES = [
     tagline: "One home for scattered numbers",
     icon: <Server size={22} />,
     link: "/services",
-    desc: "Sales sits in one tool, support tickets in another, inventory somewhere else entirely. We wire it into a single pipeline so nobody spends Friday copying spreadsheets by hand.",
+    desc: "When sales, support, and inventory live in different tools, we connect them into one pipeline so nobody has to copy numbers between spreadsheets.",
   },
   {
     key: "bi",
@@ -69,7 +69,7 @@ const FEATURES = [
     tagline: "Answers without the request queue",
     icon: <BarChart2 size={22} />,
     link: "/services",
-    desc: "Your team shouldn't need an analyst on standby just to check last week's numbers. We hand them a dashboard built for exploring and filtering on their own.",
+    desc: "We build dashboards your team can filter and explore themselves, so checking last week's numbers doesn't need an analyst.",
   },
   {
     key: "predictive",
@@ -77,7 +77,7 @@ const FEATURES = [
     tagline: "See the curve before it bends",
     icon: <TrendingUp size={22} />,
     link: "/services",
-    desc: "History has patterns worth borrowing from. Our models study yours and flag the demand spike or the churn risk early enough that you still have time to move.",
+    desc: "We build forecasting models from your history to flag demand changes and churn risk early enough to act on them.",
   },
 ];
 
@@ -534,19 +534,20 @@ sales %>%
                   </div>
                 </h1>
                 <p className={styles.heroSub}>
-                  Stop guessing. Start knowing. We help you make smarter business decisions, reduce costs, and unlock new revenue streams with data you already have.
+                  We help businesses use the data they already have to cut costs, find new revenue, and make decisions with real numbers behind them.
                 </p>
                 <span className={styles.visuallyHidden}>
                   Turn Data Into Revenue Growth, Predictive Analytics, Real-Time Dashboards, Lower Costs, Faster Decisions.
                 </span>
                 <div className={styles.heroBtnRow}>
                   <Link to="/contact" className={styles.btnPrimary}>
-                    Start Growing Your Business <ArrowRight size={16} />
+                    Request a Consultation <ArrowRight size={16} />
                   </Link>
                   <Link to="/portfolio" className={styles.btnSecondary}>
                     See Our Work
                   </Link>
                 </div>
+                <p className={styles.heroNote}>No-obligation consultation. We reply within one business day.</p>
                 <div className={styles.trustRow}>
                   {["GDPR", "HIPAA", "SOC 2", "ISO 27001"].map((b) => (
                     <span key={b} className={styles.trustBadge}>{b}</span>
@@ -570,11 +571,9 @@ sales %>%
             >
               <div className={styles.whatWeDoIntro}>
                 <p className={styles.featureIntroLabel}>What We Do</p>
-                <h2 className={styles.featureIntroTitle}>A complete toolkit for turning data into decisions</h2>
+                <h2 className={styles.featureIntroTitle}>What we build for our clients</h2>
                 <p className={styles.whatWeDoLead}>
-                  Numbers pile up fast: in spreadsheets, in tools that don't talk to each other, in databases
-                  nobody quite trusts anymore. We step into that mess and build a straight line from where
-                  your data sits today to the decision you're actually trying to make.
+                  Most companies have data spread across spreadsheets, separate tools, and databases nobody fully trusts. We organize it and build the reports you need to run the business.
                 </p>
               </div>
 
@@ -610,21 +609,61 @@ sales %>%
           </div>
         </section>
 
+        {/* ═══ PROOF STRIP ═══ */}
+        <section className={styles.proofStrip}>
+          <div className={styles.container}>
+            <div className={styles.proofGrid}>
+              <div><span className={styles.proofNum}>200+</span><span className={styles.proofLabel}>Clients served</span></div>
+              <div><span className={styles.proofNum}>500+</span><span className={styles.proofLabel}>Projects delivered</span></div>
+              <div><span className={styles.proofNum}>60+</span><span className={styles.proofLabel}>Countries</span></div>
+              <div><span className={styles.proofNum}>99.5%</span><span className={styles.proofLabel}>Client satisfaction</span></div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ HOW IT WORKS ═══ */}
+        <section className={styles.sec}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>How we get started</h2>
+              <p className={`${styles.secSubtitle} ${styles.secSubtitleCenter}`}>
+                Three steps from first conversation to working results.
+              </p>
+            </div>
+            <ol className={styles.stepsList}>
+              <li className={styles.stepItem}>
+                <span className={styles.stepNum}>01</span>
+                <h3 className={styles.stepTitle}>Tell us the problem</h3>
+                <p className={styles.stepDesc}>Book a consultation. We look at what data you have and tell you plainly whether we can help.</p>
+              </li>
+              <li className={styles.stepItem}>
+                <span className={styles.stepNum}>02</span>
+                <h3 className={styles.stepTitle}>Get a scoped plan</h3>
+                <p className={styles.stepDesc}>Scoping starts within one business day. You see the plan, timeline, and price before any work begins.</p>
+              </li>
+              <li className={styles.stepItem}>
+                <span className={styles.stepNum}>03</span>
+                <h3 className={styles.stepTitle}>See results fast</h3>
+                <p className={styles.stepDesc}>A first working dashboard typically ships in 2 to 4 weeks, then we refine it with your feedback.</p>
+              </li>
+            </ol>
+            <div className={styles.stepsCta}>
+              <Link to="/contact" className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></Link>
+            </div>
+          </div>
+        </section>
+
         <section className={styles.projectCtaSection}>
           <div className={styles.container}>
             <div className={styles.projectCtaCard}>
               <div className={styles.projectCtaText}>
                 <h2 className={styles.projectCtaTitle}>Have a project ready to go?</h2>
-                <p className={styles.projectCtaDesc}>Skip the calls. Submit your requirements in the client portal and our team starts scoping within one business day.</p>
+                <p className={styles.projectCtaDesc}>Send us your project brief and our team will scope it within one business day, no sales call required.</p>
               </div>
               <div className={styles.projectCtaActions}>
-                <a href="https://portal.scapedatasolutions.com/portal/signup" className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></a>
-                <a href="https://portal.scapedatasolutions.com/portal/login" className={styles.btnSecondary}>Log In</a>
+                <Link to="/contact" className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></Link>
               </div>
             </div>
-            <p className={styles.projectCtaNote}>
-              Already working with us? <a href="https://portal.scapedatasolutions.com/" className={styles.projectCtaLink}>Visit the client portal</a> to check project status, contracts, and payments.
-            </p>
           </div>
         </section>
 
@@ -634,9 +673,9 @@ sales %>%
             <div className={styles.devGrid}>
               <div className={styles.devTextBlock}>
                 <p className={styles.secLabel}>For data teams</p>
-                <h2 className={styles.secTitle}>One platform.<br />Every data need.</h2>
+                <h2 className={styles.secTitle}>From raw data<br />to working dashboard</h2>
                 <p className={styles.devDesc}>
-                  From ETL to dashboards, we provide a unified data stack that scales with your business. Start building in days, not months.
+                  We handle the pipelines, the warehouse, and the dashboards, so your team works from one set of numbers.
                 </p>
                 <div className={styles.devActions}>
                   <Link to="/contact" className={styles.btnPrimary}>Get Started</Link>
@@ -722,6 +761,20 @@ sales %>%
             </motion.ul>
           </div>
         </motion.section>
+
+        {/* ═══ CTA BAND 1 ═══ */}
+        <section className={styles.ctaBand}>
+          <div className={styles.container}>
+            <div className={styles.ctaBandInner}>
+              <h2 className={styles.ctaBandTitle}>Not sure where to start?</h2>
+              <p className={styles.ctaBandText}>Tell us what you are trying to figure out. We will tell you honestly whether your data can answer it.</p>
+              <div className={styles.ctaBandBtns}>
+                <Link to="/contact" className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></Link>
+                <Link to="/portfolio" className={styles.btnSecondary}>See Our Work</Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* ═══ TECHNOLOGIES ═══ */}
         <section className={styles.sec}>
@@ -862,6 +915,19 @@ sales %>%
           </div>
         </motion.section>
 
+        {/* ═══ CTA BAND 2 ═══ */}
+        <section className={styles.ctaBand}>
+          <div className={styles.container}>
+            <div className={styles.ctaBandInner}>
+              <h2 className={styles.ctaBandTitle}>Ready to put your data to work?</h2>
+              <p className={styles.ctaBandText}>Book a consultation and we will come back with a scoped plan within one business day.</p>
+              <div className={styles.ctaBandBtns}>
+                <Link to="/contact" className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ═══ GET STARTED ═══ */}
         <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
           <div className={styles.container}>
@@ -879,7 +945,7 @@ sales %>%
                   <li>Automated ETL pipelines</li>
                   <li>Comprehensive documentation</li>
                 </ul>
-                <Link to="/contact" className={styles.btnPrimary} style={{ justifyContent: "center" }}>Start Building</Link>
+                <Link to="/contact" className={styles.btnPrimary} style={{ justifyContent: "center" }}>Request a Consultation</Link>
               </div>
               <div className={styles.getStartedCard}>
                 <h3 className={styles.getStartedCardTitle}>Get extra support</h3>
@@ -891,7 +957,7 @@ sales %>%
                   <li>On-demand training</li>
                   <li>24/7 monitoring and alerts</li>
                 </ul>
-                <Link to="/contact" className={styles.btnSecondary} style={{ justifyContent: "center" }}>Contact Sales</Link>
+                <Link to="/contact" className={styles.btnSecondary} style={{ justifyContent: "center" }}>Talk to Our Team</Link>
               </div>
             </div>
           </div>

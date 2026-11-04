@@ -431,3 +431,6 @@
     aspect-ratio: 16 / 11;
   }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

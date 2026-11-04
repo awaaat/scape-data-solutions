@@ -191,3 +191,6 @@
 .processCard, .featureCard, .applicationCard { background: var(--color-bg); }
 .featuresSection, .processSection, .ctaSection { background: var(--color-bg); }
 .applicationsSection, .overviewSection, .benefitsSection, .labSection { background: var(--color-bg-card); }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

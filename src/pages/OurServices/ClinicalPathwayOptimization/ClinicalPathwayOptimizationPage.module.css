@@ -431,3 +431,6 @@
   .challengeCard, .howCard, .featureCard { padding: 18px 16px; }
   .visualPlaceholder { aspect-ratio: 16 / 11; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

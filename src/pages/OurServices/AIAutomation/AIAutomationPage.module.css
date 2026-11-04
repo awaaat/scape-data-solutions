@@ -720,3 +720,6 @@
   line-height: 1.6;
   overflow: hidden;
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

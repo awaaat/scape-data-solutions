@@ -196,7 +196,7 @@ export default function CompanyPage() {
             <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Curious how we actually work?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "560px" }}>The clearest way to find out is to start. Submit a brief through the client portal and see our process firsthand.</p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <a href="https://portal.scapedatasolutions.com/portal/signup" className={styles.btnPrimary}>Get Started in the Portal <ArrowRight size={16} /></a>
+              <Link to="/contact" className={styles.btnPrimary}>Get Started in the Portal <ArrowRight size={16} /></Link>
               <Link to="/contact" className={styles.btnSecondary}>Talk to Us First</Link>
             </div>
           </div>

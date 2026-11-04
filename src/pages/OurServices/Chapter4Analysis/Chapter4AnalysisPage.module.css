@@ -396,3 +396,8 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .ctaButton, .finalCtaButton, .articleLink { transition: none; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.eyebrow,
+.finalCtaEyebrow,
+.heroBadge { display: none !important; }

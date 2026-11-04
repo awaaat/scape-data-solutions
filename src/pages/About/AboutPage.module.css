@@ -515,3 +515,6 @@
   .timelineLabels { font-size: 0.6rem; flex-wrap: wrap; gap: 0.25rem; }
   .ctaTitle { font-size: 1.6rem; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.sectionLabel { display: none !important; }

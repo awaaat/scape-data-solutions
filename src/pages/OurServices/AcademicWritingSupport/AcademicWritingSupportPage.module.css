@@ -746,3 +746,6 @@
   .guaranteeBadges { gap: 0.75rem; }
   .guaranteeBadge { font-size: 0.7rem; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

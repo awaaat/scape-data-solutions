@@ -301,7 +301,7 @@ const ClientsPage = () => {
           <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem", textAlign: "center" }}>
             <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Want to be our next success story?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75 }}>Submit your project through the client portal and see how quickly we get to work.</p>
-            <a href="https://portal.scapedatasolutions.com/portal/signup" className={styles.ctaButton}>Submit a Project <ArrowRight size={16} /></a>
+            <Link to="/contact" className={styles.ctaButton}>Submit a Project <ArrowRight size={16} /></Link>
           </div>
         </section>
 

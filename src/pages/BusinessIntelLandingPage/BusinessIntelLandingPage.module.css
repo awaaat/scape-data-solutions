@@ -112,3 +112,7 @@
   .hero { padding: 100px var(--space-4) var(--space-10); }
   .reportScoreRow { justify-content: center; text-align: center; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.eyebrow,
+.secLabel { display: none !important; }

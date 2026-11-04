@@ -176,3 +176,6 @@
   .dashboardTile { padding: 48px 0; }
   .tileHeader { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

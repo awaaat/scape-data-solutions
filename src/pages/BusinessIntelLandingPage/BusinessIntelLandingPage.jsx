@@ -155,7 +155,6 @@ export default function BusinessIntelLandingPage() {
             <h2 style={{ fontSize: "1.3rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Already working with us on something else?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "540px" }}>Existing clients can check active projects, signed agreements, and payments in the client portal.</p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <a href="https://portal.scapedatasolutions.com/portal/login" className={styles.primaryBtn}>Open the Portal <ArrowRight size={16} /></a>
               <Link to="/contact" className={styles.secondaryBtn}>Contact Us</Link>
             </div>
           </div>

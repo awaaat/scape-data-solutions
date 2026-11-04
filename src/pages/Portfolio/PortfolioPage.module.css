@@ -706,3 +706,6 @@
   .filterBtn { font-size: 0.8rem; padding: 6px 14px; }
   .processRow { grid-template-columns: 1fr; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroEyebrow { display: none !important; }

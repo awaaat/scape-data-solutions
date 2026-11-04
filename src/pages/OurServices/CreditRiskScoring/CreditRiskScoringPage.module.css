@@ -1141,3 +1141,7 @@
     transition: none;
   }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.ctaBadge,
+.heroBadge { display: none !important; }

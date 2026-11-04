@@ -224,8 +224,7 @@ export default function WhyUsPage() {
             <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Ready to see the difference?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "560px" }}>Put us to the test on a real project. Submit it through the portal and track every milestone from your dashboard.</p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <a href="https://portal.scapedatasolutions.com/portal/signup" className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></a>
-              <a href="https://portal.scapedatasolutions.com/portal/login" className={styles.btnSecondary}>Log In</a>
+              <Link to="/contact" className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></Link>
             </div>
           </div>
         </section>

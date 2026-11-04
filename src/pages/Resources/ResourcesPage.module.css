@@ -600,3 +600,6 @@
   .heroImageWrapper { max-width: 200px; }
   .heroRow { padding: 0 16px; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

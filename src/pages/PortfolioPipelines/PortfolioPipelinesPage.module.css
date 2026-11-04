@@ -437,3 +437,13 @@
 }
 .scrollTop:hover { opacity: 0.85; transform: scale(1.05); }
 .scrollTop:active { transform: scale(0.95); }
+
+/* ---------- Section identifiers removed ---------- */
+.badgeDot,
+.badgeNew,
+.badgeStrong,
+.badgeSub,
+.badgeText,
+.eyebrow,
+.heroBadge,
+.heroBadgeWrap { display: none !important; }

@@ -339,3 +339,9 @@
   .heroTitle { font-size: 2rem; }
   .rightsGrid { grid-template-columns: 1fr; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.ctaBadge,
+.heroBadge,
+.heroBadgeMarket,
+.secLabel { display: none !important; }

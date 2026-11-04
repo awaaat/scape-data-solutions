@@ -103,7 +103,7 @@ export default function Navbar({ activeNav = "" }) {
   useEffect(() => {
     const measure = () => {
       const headerH = headerRef.current ? headerRef.current.offsetHeight : 0;
-      const desk = 40 + headerH; setDesktopSpacerHeight(desk); const mob = mobileHeaderRef.current ? mobileHeaderRef.current.offsetHeight : 0; document.documentElement.style.setProperty("--nav-h", (window.innerWidth >= 1024 ? desk : mob) + "px");
+      const desk = 68 + headerH; setDesktopSpacerHeight(desk); const mob = mobileHeaderRef.current ? mobileHeaderRef.current.offsetHeight : 0; document.documentElement.style.setProperty("--nav-h", (window.innerWidth >= 1024 ? desk : mob) + "px");
       setMobileSpacerHeight(mobileHeaderRef.current ? mobileHeaderRef.current.offsetHeight : 0);
     };
 
@@ -146,8 +146,8 @@ export default function Navbar({ activeNav = "" }) {
               info@scapedatasolutions.com
             </a>
           </div>
-
           <div className={styles.navTopSocial}>
+            <Link to="/contact" className={styles.navTopCta}>Request a Consultation</Link>
             <a
               href="https://www.facebook.com/profile.php?id=61591435187674"
               target="_blank"
@@ -258,6 +258,7 @@ export default function Navbar({ activeNav = "" }) {
                 <li><Link to="/testimonials" onClick={() => setNavOpen(false)}>Testimonials</Link></li>
                 <li><a href="https://portal.scapedatasolutions.com/" onClick={() => setNavOpen(false)}>Client Portal</a></li>
                 <li><Link to="/contact" onClick={() => setNavOpen(false)}>Contact</Link></li>
+                <li><Link to="/contact" className={styles.drawerCta} onClick={() => setNavOpen(false)}>Request a Consultation</Link></li>
               </ul>
             </motion.nav>
           </>
@@ -345,16 +346,17 @@ export default function Navbar({ activeNav = "" }) {
             <li>
               <Link to="/testimonials" className={`${styles.navLink}${activeNav === "testimonials" ? " " + styles.navActive : ""}`}>Testimonials</Link>
             </li>
-            <li>
-              <a href="https://portal.scapedatasolutions.com/" className={styles.navLink}>
-                Client Portal
-              </a>
-            </li>
-            <li>
-              <Link to="/contact" className={`${styles.navLink}${activeNav === "contact" ? " " + styles.navActive : ""}`}>
-                Contact
-              </Link>
-            </li>
+            {isScrolled ? (
+              <li>
+                <Link to="/contact" className={styles.navCta}>Request a Consultation</Link>
+              </li>
+            ) : (
+              <li>
+                <Link to="/contact" className={`${styles.navLink}${activeNav === "contact" ? " " + styles.navActive : ""}`}>
+                  Contact
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </header>

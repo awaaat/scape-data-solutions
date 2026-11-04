@@ -712,3 +712,6 @@
     font-size: 28px;
   }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.integrationsBadge { display: none !important; }

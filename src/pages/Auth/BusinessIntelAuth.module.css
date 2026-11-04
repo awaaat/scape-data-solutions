@@ -233,3 +233,6 @@
 .centerText {
   text-align: center;
 }
+
+/* ---------- Section identifiers removed ---------- */
+.eyebrow { display: none !important; }

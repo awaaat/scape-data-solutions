@@ -835,3 +835,6 @@
 @media (max-width: 600px) {
   .ctaBox { padding: 40px 20px; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

@@ -558,3 +558,7 @@
   .tabNav { flex-wrap: wrap; }
   .tabButton { font-size: 0.8rem; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge,
+.sectionLabel { display: none !important; }

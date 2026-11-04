@@ -596,3 +596,6 @@
   .beforeAfter { grid-template-columns: 1fr; }
   .turnaroundGrid { grid-template-columns: 1fr; max-width: 100%; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

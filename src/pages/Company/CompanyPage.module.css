@@ -471,3 +471,6 @@
   text-transform: none;
   color: #d4d4d4;
 }
+
+/* ---------- Section identifiers removed ---------- */
+.sectionLabel { display: none !important; }

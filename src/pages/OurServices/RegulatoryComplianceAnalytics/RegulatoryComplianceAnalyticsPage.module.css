@@ -395,3 +395,10 @@
   .statFlowItem { flex: 1 1 100%; }
   .violationTop { flex-wrap: wrap; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.challengesBadge,
+.ctaBadge,
+.heroBadge,
+.sectionBadge,
+.solutionsBadge { display: none !important; }

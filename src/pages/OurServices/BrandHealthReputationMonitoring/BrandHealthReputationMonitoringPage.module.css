@@ -1104,3 +1104,6 @@ section {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

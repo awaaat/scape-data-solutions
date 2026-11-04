@@ -704,3 +704,6 @@
   text-align: center;
   margin-top: 0.5rem;
 }
+
+/* ---------- Section identifiers removed ---------- */
+.eyebrow { display: none !important; }

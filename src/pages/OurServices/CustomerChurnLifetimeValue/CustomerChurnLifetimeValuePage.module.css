@@ -951,3 +951,6 @@
   color: #6e6e63;
   text-align: right;
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

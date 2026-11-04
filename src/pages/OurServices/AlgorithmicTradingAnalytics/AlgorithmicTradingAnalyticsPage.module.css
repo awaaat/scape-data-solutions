@@ -925,3 +925,6 @@
   border-top: none !important;
   border-bottom: none !important;
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

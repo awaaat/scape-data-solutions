@@ -280,3 +280,8 @@
   .sec, .statsBand, .finalCta { padding: var(--space-14, 64px) 0; }
   .whyGrid { grid-template-columns: 1fr; }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge,
+.heroBadgeTag,
+.secLabel { display: none !important; }

@@ -1095,3 +1095,9 @@
     font-size: 14px;
   }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.ctaBadge,
+.heroBadge,
+.overviewBadge,
+.sectionBadge { display: none !important; }

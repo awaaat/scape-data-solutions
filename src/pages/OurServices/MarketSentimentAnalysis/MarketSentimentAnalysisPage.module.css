@@ -1146,3 +1146,6 @@
     font-size: 32px;
   }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }

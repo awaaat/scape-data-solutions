@@ -308,3 +308,6 @@
     top: 30px;
   }
 }
+
+/* ---------- Section identifiers removed ---------- */
+.heroBadge { display: none !important; }
