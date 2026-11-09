@@ -6,6 +6,7 @@ export default function FactorAnalysisHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Factor Analysis Help"}
         description={"Rigorous Factor Analysis Help support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Factor Analysis Help, research-methods, data analytics services, Scape Technologies"}

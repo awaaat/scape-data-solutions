@@ -6,6 +6,7 @@ export default function MATLABProgrammingAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"MATLAB Programming Assignment Help"}
         description={"Expert help with MATLAB Programming Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"MATLAB Programming Assignment Help, assignment-help, data analytics services, Scape Technologies"}

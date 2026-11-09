@@ -6,6 +6,7 @@ export default function ThematicAnalysisServicesPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Thematic Analysis Services"}
         description={"Rigorous Thematic Analysis Services support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Thematic Analysis Services, research-methods, data analytics services, Scape Technologies"}

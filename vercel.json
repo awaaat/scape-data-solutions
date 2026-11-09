@@ -55,40 +55,170 @@
       "source": "/resources/reduce-patient-no-shows-predictive-analytics",
       "destination": "/medical-practice-analytics",
       "permanent": true
+    },
+    {
+      "source": "/services/technical-report-writing",
+      "destination": "/services/report-writing-support",
+      "permanent": true
+    },
+    {
+      "source": "/services/customer-lifetime-value-analytics",
+      "destination": "/services/customer-churn-lifetime-value",
+      "permanent": true
+    },
+    {
+      "source": "/services/research-methodology-support",
+      "destination": "/services/research-methodology-consulting",
+      "permanent": true
+    },
+    {
+      "source": "/services/statistical-analysis-consulting",
+      "destination": "/services/statistical-consulting",
+      "permanent": true
+    },
+    {
+      "source": "/services/carrier-performance-analytics",
+      "destination": "/services/carrier-performance-freight-cost-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/clinical-decision-support",
+      "destination": "/services/clinical-decision-support",
+      "permanent": true
+    },
+    {
+      "source": "/services/ai-agents",
+      "destination": "/services/llm-development",
+      "permanent": true
+    },
+    {
+      "source": "/services/workflow-automation",
+      "destination": "/services/chatbot-development",
+      "permanent": true
+    },
+    {
+      "source": "/services/intelligent-analytics",
+      "destination": "/services/predictive-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/services/digital-twin-process-simulation",
+      "destination": "/services/predictive-maintenance",
+      "permanent": true
+    },
+    {
+      "source": "/services/quality-assurance-defect-detection",
+      "destination": "/services/quality-control-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/services/bed-utilization-analytics",
+      "destination": "/services/hospital-operations-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/services/social-media-analytics",
+      "destination": "/services/market-sentiment-analysis",
+      "permanent": true
+    },
+    {
+      "source": "/services/competitive-intelligence",
+      "destination": "/services/market-sentiment-analysis",
+      "permanent": true
+    },
+    {
+      "source": "/services/customer-experience-analytics",
+      "destination": "/services/customer-journey-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/services/marketing-analytics",
+      "destination": "/services/marketing-mix-modeling",
+      "permanent": true
+    },
+    {
+      "source": "/services/brand-tracking",
+      "destination": "/services/brand-health-reputation-monitoring",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/acme-corp",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/brand-monitoring",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/resources/brand-tracking-research",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/ai-workflow-guide",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/automation-roadmap-webinar",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/ai-roi-whitepaper",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/solutions",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/career",
+      "destination": "/careers",
+      "permanent": true
+    },
+    {
+      "source": "/expertise",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/blog/saas-churn-dashboard-wrong-story",
+      "destination": "/resources/why-your-saas-churn-dashboard-is-telling-you-the-wrong-story",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/resources/:slug",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
-      "source": "/login",
-      "destination": "/index.html"
+      "source": "/business-intel",
+      "destination": "/app-shell.html"
     },
     {
-      "source": "/signup",
-      "destination": "/index.html"
+      "source": "/business-intel/:path*",
+      "destination": "/app-shell.html"
     },
     {
-      "source": "/forgot-password",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/reset-password",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/verify-email",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/dashboard",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/dashboard/:path*",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/resources/:slug",
+      "destination": "/app-shell.html"
     }
   ],
   "headers": [
@@ -132,6 +262,15 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/business-intel/(login|signup|forgot-password|dashboard)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
         }
       ]
     }

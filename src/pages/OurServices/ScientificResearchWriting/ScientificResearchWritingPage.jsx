@@ -6,6 +6,7 @@ export default function ScientificResearchWritingPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Scientific Research Writing"}
         description={"Professional Scientific Research Writing that strengthens your manuscript for submission, review, and publication."}
         keywords={"Scientific Research Writing, academic-writing, data analytics services, Scape Technologies"}

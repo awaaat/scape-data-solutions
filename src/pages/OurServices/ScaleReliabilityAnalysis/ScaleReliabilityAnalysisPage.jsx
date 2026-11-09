@@ -6,6 +6,7 @@ export default function ScaleReliabilityAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Scale Reliability Analysis"}
         description={"Rigorous Scale Reliability Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Scale Reliability Analysis, research-methods, data analytics services, Scape Technologies"}

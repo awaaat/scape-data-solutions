@@ -788,7 +788,7 @@ export default function ClinicalDecisionSupportPage() {
       <SEO
         title="Clinical Decision Support | Evidence-Based Alerts at the Point of Care | Scape Technologies"
         description="Real-time clinical risk alerts, patient-specific risk scoring, and evidence-based recommendations integrated directly into your EHR workflow, grounded in published clinical research."
-        path="/clinical-decision-support"
+        path="/services/clinical-decision-support"
         image="/Images/clinical-decision-support-og.webp"
         keywords="clinical decision support, CDS, EHR alerts, sepsis prediction, risk scoring, evidence-based medicine, healthcare AI, alert fatigue"
         schema={{ "@context": "https://schema.org", "@graph": [serviceSchema, faqSchema, organizationSchema] }}

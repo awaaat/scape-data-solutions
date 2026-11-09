@@ -6,6 +6,7 @@ export default function QuestionnaireDesignHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Questionnaire Design Help"}
         description={"Rigorous Questionnaire Design Help support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Questionnaire Design Help, research-methods, data analytics services, Scape Technologies"}

@@ -6,6 +6,7 @@ export default function JASPAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"JASP Assignment Help"}
         description={"Expert help with JASP Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"JASP Assignment Help, assignment-help, data analytics services, Scape Technologies"}

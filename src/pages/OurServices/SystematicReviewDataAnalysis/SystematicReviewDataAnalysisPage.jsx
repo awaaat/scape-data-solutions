@@ -6,6 +6,7 @@ export default function SystematicReviewDataAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Systematic Review Data Analysis"}
         description={"Rigorous Systematic Review Data Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Systematic Review Data Analysis, research-methods, data analytics services, Scape Technologies"}

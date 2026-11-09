@@ -6,6 +6,7 @@ export default function QualitativeDataAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Qualitative Data Analysis"}
         description={"Rigorous Qualitative Data Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Qualitative Data Analysis, research-methods, data analytics services, Scape Technologies"}

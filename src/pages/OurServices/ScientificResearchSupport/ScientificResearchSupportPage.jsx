@@ -6,6 +6,7 @@ export default function ScientificResearchSupportPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Scientific Research Support"}
         description={"Rigorous Scientific Research Support support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Scientific Research Support, research-methods, data analytics services, Scape Technologies"}

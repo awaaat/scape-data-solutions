@@ -6,6 +6,7 @@ export default function MATLABSimulationHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"MATLAB Simulation Help"}
         description={"Expert help with MATLAB Simulation Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"MATLAB Simulation Help, assignment-help, data analytics services, Scape Technologies"}

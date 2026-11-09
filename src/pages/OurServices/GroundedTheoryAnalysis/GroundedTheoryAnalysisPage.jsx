@@ -6,6 +6,7 @@ export default function GroundedTheoryAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Grounded Theory Analysis"}
         description={"Rigorous Grounded Theory Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Grounded Theory Analysis, research-methods, data analytics services, Scape Technologies"}

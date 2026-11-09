@@ -6,6 +6,7 @@ export default function PythonAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Python Assignment Help"}
         description={"Expert help with Python Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"Python Assignment Help, assignment-help, data analytics services, Scape Technologies"}

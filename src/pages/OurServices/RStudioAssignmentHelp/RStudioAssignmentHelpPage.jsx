@@ -6,6 +6,7 @@ export default function RStudioAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"RStudio Assignment Help"}
         description={"Expert help with RStudio Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"RStudio Assignment Help, assignment-help, data analytics services, Scape Technologies"}

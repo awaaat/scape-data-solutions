@@ -6,6 +6,7 @@ export default function RProgrammingAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"R Programming Assignment Help"}
         description={"Expert help with R Programming Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"R Programming Assignment Help, assignment-help, data analytics services, Scape Technologies"}

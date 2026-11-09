@@ -6,6 +6,7 @@ export default function OriginProAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"OriginPro Assignment Help"}
         description={"Expert help with OriginPro Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"OriginPro Assignment Help, assignment-help, data analytics services, Scape Technologies"}

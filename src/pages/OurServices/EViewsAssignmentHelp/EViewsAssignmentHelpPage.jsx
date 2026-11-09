@@ -6,6 +6,7 @@ export default function EViewsAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"EViews Assignment Help"}
         description={"Expert help with EViews Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"EViews Assignment Help, assignment-help, data analytics services, Scape Technologies"}

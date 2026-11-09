@@ -442,7 +442,7 @@ export default function CarrierPerformanceAnalyticsPage() {
       <SEO
         title="Carrier Performance Analytics | Independent Scorecards & SLA Tracking"
         description="Scape Technologies' carrier performance analytics service turns tracking scans and contract terms into independent scorecards, SLA breach alerts, and service credit recovery for transportation, finance, and customer care teams."
-        path="/services/carrier-performance-analytics"
+        path="/services/carrier-performance-freight-cost-analytics"
       />
 
       <Navbar activeNav="services" />

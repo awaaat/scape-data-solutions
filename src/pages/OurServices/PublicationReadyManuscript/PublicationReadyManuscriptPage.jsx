@@ -6,6 +6,7 @@ export default function PublicationReadyManuscriptPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Publication Ready Manuscript"}
         description={"Professional Publication Ready Manuscript that strengthens your manuscript for submission, review, and publication."}
         keywords={"Publication Ready Manuscript, academic-writing, data analytics services, Scape Technologies"}

@@ -6,6 +6,7 @@ export default function MetaAnalysisDataAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Meta Analysis Data Analysis"}
         description={"Rigorous Meta Analysis Data Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Meta Analysis Data Analysis, research-methods, data analytics services, Scape Technologies"}

@@ -6,6 +6,7 @@ export default function MATLABDataAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"MATLAB Data Analysis"}
         description={"Expert help with MATLAB Data Analysis, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"MATLAB Data Analysis, assignment-help, data analytics services, Scape Technologies"}

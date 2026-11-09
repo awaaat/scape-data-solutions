@@ -14,7 +14,7 @@ export function buildOrganizationSchema() {
     '@id': `${SITE_URL}/#organization`,
     name: 'Scape Technologies',
     url: SITE_URL,
-    logo: `${SITE_URL}/Images/site-images/logo-image.png`,
+    logo: `${SITE_URL}/icon-512.png`,
     email: 'info@scapedatasolutions.com',
     sameAs: [
       'https://www.facebook.com/profile.php?id=61591435187674',

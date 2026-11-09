@@ -6,6 +6,7 @@ export default function SupplyChainAnalyticsPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Supply Chain Analytics"}
         description={"Gain end‑to‑end visibility and improve logistics, procurement, and distribution."}
         keywords={"Supply Chain Analytics, manufacturing, data analytics services, Scape Technologies"}

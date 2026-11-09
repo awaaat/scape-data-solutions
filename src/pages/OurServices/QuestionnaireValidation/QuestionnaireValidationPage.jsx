@@ -6,6 +6,7 @@ export default function QuestionnaireValidationPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Questionnaire Validation"}
         description={"Rigorous Questionnaire Validation support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Questionnaire Validation, research-methods, data analytics services, Scape Technologies"}

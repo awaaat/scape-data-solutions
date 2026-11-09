@@ -6,6 +6,7 @@ export default function SQLAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"SQL Assignment Help"}
         description={"Expert help with SQL Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"SQL Assignment Help, assignment-help, data analytics services, Scape Technologies"}

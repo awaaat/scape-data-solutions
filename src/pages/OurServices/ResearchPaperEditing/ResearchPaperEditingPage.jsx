@@ -6,6 +6,7 @@ export default function ResearchPaperEditingPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Research Paper Editing"}
         description={"Professional Research Paper Editing that strengthens your manuscript for submission, review, and publication."}
         keywords={"Research Paper Editing, academic-writing, data analytics services, Scape Technologies"}

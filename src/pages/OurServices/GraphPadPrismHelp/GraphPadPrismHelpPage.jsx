@@ -6,6 +6,7 @@ export default function GraphPadPrismHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"GraphPad Prism Help"}
         description={"Expert help with GraphPad Prism Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"GraphPad Prism Help, assignment-help, data analytics services, Scape Technologies"}

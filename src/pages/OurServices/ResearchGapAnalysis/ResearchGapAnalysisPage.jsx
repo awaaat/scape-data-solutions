@@ -6,6 +6,7 @@ export default function ResearchGapAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Research Gap Analysis"}
         description={"Rigorous Research Gap Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Research Gap Analysis, research-methods, data analytics services, Scape Technologies"}

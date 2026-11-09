@@ -6,6 +6,7 @@ export default function NVivoAnalysisHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"NVivo Analysis Help"}
         description={"Expert help with NVivo Analysis Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"NVivo Analysis Help, assignment-help, data analytics services, Scape Technologies"}

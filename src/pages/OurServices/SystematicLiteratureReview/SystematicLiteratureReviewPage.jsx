@@ -6,6 +6,7 @@ export default function SystematicLiteratureReviewPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Systematic Literature Review"}
         description={"Rigorous Systematic Literature Review support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Systematic Literature Review, research-methods, data analytics services, Scape Technologies"}

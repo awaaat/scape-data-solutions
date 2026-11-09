@@ -6,6 +6,7 @@ export default function RetailDashboardDevelopmentPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Retail Dashboard Development"}
         description={"AI-powered Retail Dashboard Development that helps retailers grow revenue and serve customers more effectively."}
         keywords={"Retail Dashboard Development, retail, data analytics services, Scape Technologies"}

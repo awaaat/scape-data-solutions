@@ -6,6 +6,7 @@ export default function ThesisDataAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Thesis Data Analysis"}
         description={"Professional Thesis Data Analysis that strengthens your manuscript for submission, review, and publication."}
         keywords={"Thesis Data Analysis, academic-writing, data analytics services, Scape Technologies"}

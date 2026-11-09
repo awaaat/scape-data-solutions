@@ -127,3 +127,111 @@ html {
 html {
   scroll-behavior: auto !important;
 }
+
+/* =====================================================================
+   SERVICE CONTENT PAGE — retail family theme hooks
+   These are additive: they only style the semantic class names the
+   ServiceTemplate emits, and they reuse the existing app tokens.
+   ===================================================================== */
+
+/* Hero meta strip (e.g. "Real-time", "Store & SKU", "Alerted") */
+.serviceHeroMeta,
+.heroMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+/* Numbered step list */
+.serviceStepNum {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.serviceStepTitle {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 0 0 8px;
+}
+
+.serviceStepDesc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* FAQ accordion rows */
+.serviceFaqItem {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  transition: background 0.2s ease;
+}
+
+.serviceFaqItem:hover {
+  background: var(--color-bg-card);
+}
+
+.serviceFaqQuestion {
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: -0.01em;
+}
+
+.serviceFaqAnswer p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* Closing CTA card for service pages */
+.serviceCtaCard {
+  border-radius: var(--radius-2xl);
+  background:
+    radial-gradient(
+      ellipse 60% 120% at 100% 0%,
+      color-mix(in srgb, var(--color-accent) 10%, transparent),
+      transparent 70%
+    ),
+    var(--color-bg-card);
+}
+
+.serviceCtaTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.serviceCtaDesc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* Section rhythm */
+.serviceSection {
+  padding: 112px 0;
+}
+
+@media (max-width: 768px) {
+  .serviceSection {
+    padding: 72px 0;
+  }
+}
+
+/* Respect reduced motion for any reveal animations the template adds */
+@media (prefers-reduced-motion: reduce) {
+  .serviceStepNum,
+  .serviceFaqItem {
+    transition: none;
+  }
+}

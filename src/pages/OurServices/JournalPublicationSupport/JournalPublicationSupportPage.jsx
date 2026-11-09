@@ -6,6 +6,7 @@ export default function JournalPublicationSupportPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Journal Publication Support"}
         description={"Professional Journal Publication Support that strengthens your manuscript for submission, review, and publication."}
         keywords={"Journal Publication Support, academic-writing, data analytics services, Scape Technologies"}

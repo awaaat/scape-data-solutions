@@ -6,6 +6,7 @@ export default function DataMiningAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Data Mining Assignment Help"}
         description={"Expert help with Data Mining Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"Data Mining Assignment Help, assignment-help, data analytics services, Scape Technologies"}

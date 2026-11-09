@@ -1,0 +1,66 @@
+.page { display: block; }
+
+.page :global(.serviceHeroMeta),
+.page :global(.heroMeta) {
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.page :global(.serviceToolsList) { gap: 8px; }
+
+.page :global(.serviceToolItem) {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+
+.page :global(.serviceStepNum) {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+}
+
+.page :global(.serviceStepTitle) {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  letter-spacing: -0.015em;
+  margin: 0 0 8px;
+}
+
+.page :global(.serviceStepDesc) {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.page :global(.serviceFaqItem) {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  transition: background 0.2s ease;
+}
+.page :global(.serviceFaqItem:hover) { background: var(--color-bg-card); }
+.page :global(.serviceFaqQuestion) { font-weight: 600; font-size: 0.98rem; letter-spacing: -0.01em; }
+.page :global(.serviceFaqAnswer p) { font-size: 0.92rem; line-height: 1.7; color: var(--color-text-secondary); }
+
+.page :global(.serviceCtaCard) {
+  border-radius: var(--radius-2xl);
+  background:
+    radial-gradient(ellipse 60% 120% at 100% 0%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 70%),
+    var(--color-bg-card);
+}
+.page :global(.serviceCtaTitle) {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.page :global(.serviceCtaDesc) { font-size: 1rem; line-height: 1.6; color: var(--color-text-secondary); }
+
+.page :global(.serviceSection) { padding: 112px 0; }
+@media (max-width: 768px) { .page :global(.serviceSection) { padding: 72px 0; } }

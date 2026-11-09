@@ -18,7 +18,7 @@
 // with Vercel's build container) via puppeteer-core.
 // Locally: falls back to full `puppeteer`'s bundled Chrome.
 
-import { existsSync, mkdirSync, writeFileSync, readdirSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync, readdirSync, readFileSync } from 'fs'; // SCAPE_FIX_V1
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import handler from 'serve-handler';
@@ -35,6 +35,19 @@ const IS_VERCEL = !!process.env.VERCEL;
 const FALLBACK_TITLE = 'Data Analytics & BI Consulting | Scape Technologies';
 const BRAND = 'Scape Technologies';
 const SKIPPED = new Set();
+const NOINDEXED = new Set();
+let SHELL_HTML = null;
+// SCAPE_FIX_V1: neutral client-rendered shell (no canonical, no prerendered body) for routes that can't be prerendered
+function writeShell(route) {
+  if (!SHELL_HTML || route === '/') return;
+  const dir = join(DIST_DIR, route.slice(1));
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, 'index.html'), SHELL_HTML, 'utf-8');
+}
+function write404() {
+  if (SHELL_HTML) writeFileSync(join(DIST_DIR, '404.html'), SHELL_HTML, 'utf-8');
+}
+
 
 // ─── Every real route from App.jsx (kept in sync manually) ────────
 // If you add a new <Route> in App.jsx, add its path here too.
@@ -168,8 +181,23 @@ if (existsSync(QUARTO_ARTICLES_DIR)) {
   }
 }
 
+// ─── Auto-discover static routes from src/App.jsx (SCAPE_FIX_V1) ───
+{
+  const appSrc = existsSync(join(__dirname, 'src', 'App.jsx')) ? readFileSync(join(__dirname, 'src', 'App.jsx'), 'utf8') : '';
+  let added = 0;
+  for (const m of appSrc.matchAll(/<Route\s+path="(\/[^"]*)"\s+element=\{([^\n]*)\}\s*\/>/g)) {
+    const p = m[1];
+    if (p.includes(':') || p.includes('*')) continue;
+    if (/<Navigate\b/.test(m[2])) continue;
+    if (p === '/business-intel' || p.startsWith('/business-intel/')) continue;
+    if (!ROUTES.includes(p)) { ROUTES.push(p); added++; }
+  }
+  console.log('✓ Auto-discovered ' + added + ' extra routes from App.jsx');
+}
+{ const uniq = [...new Set(ROUTES)]; ROUTES.length = 0; ROUTES.push(...uniq); }
+
 // ─── Exclude duplicate routes (301-redirected in vercel.json) ───
-const EXCLUDED_ROUTES = new Set(["/services/demand-forecasting-inventory-planning","/services/pricing-analytics-optimization"]);
+const EXCLUDED_ROUTES = new Set(["/services/demand-forecasting-inventory-planning","/services/pricing-analytics-optimization","/services/research-methodology-support","/services/statistical-analysis-consulting"]);
 for (let i = ROUTES.length - 1; i >= 0; i--) {
   if (EXCLUDED_ROUTES.has(ROUTES[i])) ROUTES.splice(i, 1);
 }
@@ -280,11 +308,17 @@ async function prerenderRoute(browser, route) {
     }
   }, canonical, BRAND);
 
+  // SCAPE_FIX_V1: exactly one robots meta (Helmet-managed wins over the static one from index.html)
+  await page.evaluate(() => {
+    const managed = document.querySelectorAll('meta[name="robots"][data-rh]');
+    if (managed.length) document.querySelectorAll('meta[name="robots"]:not([data-rh])').forEach((el) => el.remove());
+  });
   const finalPath = new URL(page.url()).pathname.replace(/\/+$/, '') || '/';
   if (finalPath !== route) {
     console.warn('  ! ' + route + ': redirected to ' + finalPath + ' - skipped (not a real page)');
     SKIPPED.add(route);
     await page.close();
+    writeShell(route);
     return;
   }
   const html = await page.content();
@@ -292,10 +326,12 @@ async function prerenderRoute(browser, route) {
     console.warn('  ! ' + route + ': page rendered the error fallback - skipped');
     SKIPPED.add(route);
     await page.close();
+    writeShell(route);
     return;
   }
   await page.close();
 
+  if (/<meta[^>]+name="robots"[^>]*content="[^"]*noindex/i.test(html)) NOINDEXED.add(route);
   // Decide output path: "/" -> dist/index.html (already exists, overwrite)
   // "/services" -> dist/services/index.html
   const outDir = route === '/' ? DIST_DIR : join(DIST_DIR, route.slice(1));
@@ -345,6 +381,17 @@ async function run() {
 
   console.log(`Prerendering ${ROUTES.length} routes...\n`);
 
+  {
+    const idx = join(DIST_DIR, 'index.html');
+    const shellPath = join(DIST_DIR, 'app-shell.html');
+    if (existsSync(shellPath)) {
+      SHELL_HTML = readFileSync(shellPath, 'utf8');
+    } else if (existsSync(idx)) {
+      const raw = readFileSync(idx, 'utf8');
+      if (raw.includes('data-rh="true"')) console.warn('  ! dist/index.html already prerendered - run vite build first; shell fallback disabled');
+      else { SHELL_HTML = raw; writeFileSync(shellPath, raw, 'utf-8'); console.log('✓ Saved clean app shell -> dist/app-shell.html'); }
+    }
+  }
   await discoverSanityRoutes();
   const server = await startServer();
   const browser = await launchBrowser();
@@ -353,7 +400,12 @@ async function run() {
     // Run sequentially (not parallel) to keep memory usage low —
     // fine for ~30 pages, well within typical CI build limits.
     for (const route of ROUTES) {
-      await prerenderRoute(browser, route);
+      try { await prerenderRoute(browser, route); }
+      catch (e) {
+        if (route === '/') throw e;
+        console.warn('  ! ' + route + ': ' + e.message + ' - using shell fallback');
+        SKIPPED.add(route); writeShell(route);
+      }
     }
   } finally {
     await browser.close();
@@ -362,7 +414,9 @@ async function run() {
 
   console.log('\n✓ Prerendering complete. All routes now have static HTML.');
 
-  generateSitemap(ROUTES.filter((r) => !SKIPPED.has(r)));
+  generateSitemap(ROUTES.filter((r) => !SKIPPED.has(r) && !NOINDEXED.has(r)));
+  write404();
+  console.log('✓ noindex pages kept out of sitemap: ' + NOINDEXED.size + ' | shell fallbacks: ' + SKIPPED.size);
 }
 
 run().catch((err) => {

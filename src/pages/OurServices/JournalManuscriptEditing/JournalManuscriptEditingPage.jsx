@@ -6,6 +6,7 @@ export default function JournalManuscriptEditingPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Journal Manuscript Editing"}
         description={"Professional Journal Manuscript Editing that strengthens your manuscript for submission, review, and publication."}
         keywords={"Journal Manuscript Editing, academic-writing, data analytics services, Scape Technologies"}

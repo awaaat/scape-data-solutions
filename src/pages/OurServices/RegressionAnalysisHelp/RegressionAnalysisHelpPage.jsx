@@ -6,6 +6,7 @@ export default function RegressionAnalysisHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Regression Analysis Help"}
         description={"Rigorous Regression Analysis Help support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Regression Analysis Help, research-methods, data analytics services, Scape Technologies"}

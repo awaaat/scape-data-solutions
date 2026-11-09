@@ -6,6 +6,7 @@ export default function DissertationStatisticsHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Dissertation Statistics Help"}
         description={"Expert help with Dissertation Statistics Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"Dissertation Statistics Help, assignment-help, data analytics services, Scape Technologies"}

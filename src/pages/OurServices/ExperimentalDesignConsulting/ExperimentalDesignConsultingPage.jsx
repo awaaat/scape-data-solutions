@@ -6,6 +6,7 @@ export default function ExperimentalDesignConsultingPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Experimental Design Consulting"}
         description={"Rigorous Experimental Design Consulting support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Experimental Design Consulting, research-methods, data analytics services, Scape Technologies"}

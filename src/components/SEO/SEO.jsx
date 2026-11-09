@@ -15,6 +15,7 @@ const SEO = ({
   article = false,
   schema = null,
   path,
+  noindex = false,
 }) => {
   const location = useLocation();
   const rawPath = path || location.pathname;
@@ -63,7 +64,7 @@ const SEO = ({
       <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={imageUrl} />
 
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+      <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-snippet:-1, max-image-preview:large'} />
 
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
     </Helmet>

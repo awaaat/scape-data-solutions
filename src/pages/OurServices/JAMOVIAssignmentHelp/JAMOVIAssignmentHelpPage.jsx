@@ -6,6 +6,7 @@ export default function JAMOVIAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"JAMOVI Assignment Help"}
         description={"Expert help with JAMOVI Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"JAMOVI Assignment Help, assignment-help, data analytics services, Scape Technologies"}

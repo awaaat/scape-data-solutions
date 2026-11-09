@@ -6,6 +6,7 @@ export default function ScientificResearchDataAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Scientific Research Data Analysis"}
         description={"Rigorous Scientific Research Data Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Scientific Research Data Analysis, research-methods, data analytics services, Scape Technologies"}

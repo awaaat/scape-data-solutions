@@ -6,6 +6,7 @@ export default function SASAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"SAS Assignment Help"}
         description={"Expert help with SAS Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"SAS Assignment Help, assignment-help, data analytics services, Scape Technologies"}

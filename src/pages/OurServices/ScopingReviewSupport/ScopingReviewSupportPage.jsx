@@ -6,6 +6,7 @@ export default function ScopingReviewSupportPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Scoping Review Support"}
         description={"Rigorous Scoping Review Support support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Scoping Review Support, research-methods, data analytics services, Scape Technologies"}

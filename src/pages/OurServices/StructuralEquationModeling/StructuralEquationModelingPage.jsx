@@ -6,6 +6,7 @@ export default function StructuralEquationModelingPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Structural Equation Modeling"}
         description={"Rigorous Structural Equation Modeling support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Structural Equation Modeling, research-methods, data analytics services, Scape Technologies"}

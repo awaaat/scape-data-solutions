@@ -6,6 +6,7 @@ export default function MinitabAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Minitab Assignment Help"}
         description={"Expert help with Minitab Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"Minitab Assignment Help, assignment-help, data analytics services, Scape Technologies"}

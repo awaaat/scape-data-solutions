@@ -6,6 +6,7 @@ export default function PLSSEMAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"PLS-SEM Analysis"}
         description={"Rigorous PLS-SEM Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"PLS-SEM Analysis, research-methods, data analytics services, Scape Technologies"}

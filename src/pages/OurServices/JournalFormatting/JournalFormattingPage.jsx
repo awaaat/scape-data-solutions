@@ -6,6 +6,7 @@ export default function JournalFormattingPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Journal Formatting"}
         description={"Professional Journal Formatting that strengthens your manuscript for submission, review, and publication."}
         keywords={"Journal Formatting, academic-writing, data analytics services, Scape Technologies"}

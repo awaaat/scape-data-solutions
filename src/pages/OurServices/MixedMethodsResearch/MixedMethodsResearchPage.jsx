@@ -6,6 +6,7 @@ export default function MixedMethodsResearchPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Mixed Methods Research"}
         description={"Rigorous Mixed Methods Research support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Mixed Methods Research, research-methods, data analytics services, Scape Technologies"}

@@ -6,6 +6,7 @@ export default function CronbachAlphaAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Cronbach Alpha Analysis"}
         description={"Rigorous Cronbach Alpha Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Cronbach Alpha Analysis, research-methods, data analytics services, Scape Technologies"}

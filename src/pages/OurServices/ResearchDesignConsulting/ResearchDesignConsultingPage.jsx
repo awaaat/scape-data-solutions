@@ -6,6 +6,7 @@ export default function ResearchDesignConsultingPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Research Design Consulting"}
         description={"Rigorous Research Design Consulting support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Research Design Consulting, research-methods, data analytics services, Scape Technologies"}

@@ -6,6 +6,7 @@ export default function PrincipalComponentAnalysisPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Principal Component Analysis"}
         description={"Rigorous Principal Component Analysis support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Principal Component Analysis, research-methods, data analytics services, Scape Technologies"}

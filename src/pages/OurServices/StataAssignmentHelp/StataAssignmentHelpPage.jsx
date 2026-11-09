@@ -6,6 +6,7 @@ export default function StataAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Stata Assignment Help"}
         description={"Expert help with Stata Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"Stata Assignment Help, assignment-help, data analytics services, Scape Technologies"}

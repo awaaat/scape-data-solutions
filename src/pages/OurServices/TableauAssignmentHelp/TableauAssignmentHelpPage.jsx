@@ -6,6 +6,7 @@ export default function TableauAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Tableau Assignment Help"}
         description={"Expert help with Tableau Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"Tableau Assignment Help, assignment-help, data analytics services, Scape Technologies"}

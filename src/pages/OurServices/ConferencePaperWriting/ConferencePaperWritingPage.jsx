@@ -6,6 +6,7 @@ export default function ConferencePaperWritingPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Conference Paper Writing"}
         description={"Professional Conference Paper Writing that strengthens your manuscript for submission, review, and publication."}
         keywords={"Conference Paper Writing, academic-writing, data analytics services, Scape Technologies"}

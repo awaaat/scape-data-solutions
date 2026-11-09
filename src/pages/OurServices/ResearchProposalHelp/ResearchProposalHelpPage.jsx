@@ -6,6 +6,7 @@ export default function ResearchProposalHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Research Proposal Help"}
         description={"Professional Research Proposal Help that strengthens your manuscript for submission, review, and publication."}
         keywords={"Research Proposal Help, academic-writing, data analytics services, Scape Technologies"}

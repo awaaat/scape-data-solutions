@@ -6,6 +6,7 @@ export default function ExcelAssignmentHelpPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Excel Assignment Help"}
         description={"Expert help with Excel Assignment Help, delivered fast — accurate results, clear explanations, and on-time delivery."}
         keywords={"Excel Assignment Help, assignment-help, data analytics services, Scape Technologies"}

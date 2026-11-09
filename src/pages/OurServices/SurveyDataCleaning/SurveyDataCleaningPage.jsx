@@ -6,6 +6,7 @@ export default function SurveyDataCleaningPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Survey Data Cleaning"}
         description={"Rigorous Survey Data Cleaning support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Survey Data Cleaning, research-methods, data analytics services, Scape Technologies"}

@@ -6,6 +6,7 @@ export default function ContentAnalysisServicesPage() {
   return (
     <div className={styles.container}>
       <SEO
+        noindex
         title={"Content Analysis Services"}
         description={"Rigorous Content Analysis Services support, from design through interpretation, for dissertations and peer-reviewed research."}
         keywords={"Content Analysis Services, research-methods, data analytics services, Scape Technologies"}
