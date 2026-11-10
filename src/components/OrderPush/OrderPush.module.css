@@ -158,3 +158,25 @@
 
 .selWrap select option, .selWrap select optgroup { font: 400 1rem "Mulish", Arial, sans-serif; color: #191e28; background: #fff; }
 .selWrap select { max-width: min(100%, 680px); text-overflow: ellipsis; }
+
+/* ───── scenarios final: one row at a time, whole row swaps, 10s hold ───── */
+.pageRow { min-height: 300px; }
+.pageCard { opacity: 1; transform: rotate(var(--tilt)); }
+.pageIn { animation: pageIn .6s cubic-bezier(.2,.9,.3,1) backwards; animation-delay: calc(var(--i) * 90ms); }
+.pageOut { animation: pageOut .42s cubic-bezier(.5,0,.8,.4) forwards; animation-delay: calc(var(--i) * 50ms); pointer-events: none; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(36px) rotate(var(--tilt)) scale(.96); } }
+@keyframes pageOut { to { opacity: 0; transform: translateY(-30px) rotate(var(--tilt)) scale(.96); } }
+.pageDots { display: flex; justify-content: center; gap: 8px; margin-top: 28px; flex-wrap: wrap; }
+.pageDot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: #c4c6ca; cursor: pointer; transition: background .2s, width .2s; }
+.pageDot:hover { background: #204ecf; }
+.pageDotOn { width: 26px; border-radius: 5px; background: #204ecf; }
+.scene:hover .sceneIcon { animation: sceneWiggle .5s ease; }
+@keyframes sceneWiggle { 25% { transform: rotate(-12deg) scale(1.15); } 60% { transform: rotate(8deg) scale(1.15); } }
+.sceneRush { background: #030a42; border-color: #030a42; }
+.sceneRush strong, .sceneRush .sceneIcon { color: #fff; }
+.sceneRush > span:not(.sceneTag):not(.sceneGo) { color: #c4c6ca; }
+.sceneRush .sceneTag, .sceneRush .sceneGo { color: #25a9ef; }
+.sceneRush:hover { background: #0f256e; box-shadow: 6px 8px 0 #25a9ef; }
+.sceneRush .sceneIcon { animation: sceneSpin 3s ease-in-out infinite; }
+@keyframes sceneSpin { 0%,60%,100% { transform: rotate(0); } 80% { transform: rotate(180deg); } }
+@media (prefers-reduced-motion: reduce) { .pageIn, .pageOut, .sceneRush .sceneIcon, .scene:hover .sceneIcon { animation: none; } .pageOut { opacity: 0; } }
