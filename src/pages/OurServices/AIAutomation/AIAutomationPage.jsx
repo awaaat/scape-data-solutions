@@ -596,7 +596,7 @@ export default function AIAutomationPage() {
                 <p>Get started with a free 14‑day trial of our AI automation platform. No credit card required.</p>
                 <div className={styles.promoButtons}>
                   <a href={orderUrl({ medium: "page-cta", content: "aiautomation-1" })} className={styles.btnPrimary}>{orderLabel()}</a>
-                  <a href={orderUrl({ medium: "page-cta", content: "aiautomation-2" })} className={styles.btnSecondary}>{orderLabel()}</a>
+                  <Link to="/contact" className={styles.btnSecondary}>Talk to our team</Link>
                 </div>
               </div>
             </motion.div>

@@ -29,6 +29,7 @@ import styles from "./CustomerChurnLifetimeValuePage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
 import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
+import { Link } from "react-router-dom";
 
 // ─── Images ──────────────────────────────────────────────────────
 const heroImg = "/Images/site-images/churn-4.png";
@@ -390,7 +391,7 @@ const CustomerChurnLifetimeValuePage = () => {
 
               <motion.div className={styles.heroCta} variants={fadeUp}>
                 <a href={orderUrl({ medium: "page-cta", content: "customerchurnlifetimevalue-1" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
-                <a href={orderUrl({ medium: "page-cta", content: "customerchurnlifetimevalue-2" })} className={styles.btnSecondary}>{orderLabel()} <Play size={15} /></a>
+                <Link to="/contact" className={styles.btnSecondary}>Talk to our team <Play size={15} /></Link>
               </motion.div>
 
               <motion.div className={styles.heroStats} variants={staggerChildrenFast}>

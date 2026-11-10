@@ -3,11 +3,13 @@
 import { createElement, useState } from "react";
 import { ArrowRight, FileText, MessagesSquare, LayoutDashboard, Hourglass } from "lucide-react";
 import s from "./OrderPush.module.css";
-import { orderUrl, SERVICES } from "./orderLinks";
+import { orderUrl } from "./orderLinks";
+import { SERVICE_CARDS, categories } from "../../data/servicesData";
+const CATLABEL = { academic: "Academic & Research", analytics: "Advanced Analytics", finance: "Finance & Risk", healthcare: "Healthcare & Life Sciences", manufacturing: "Manufacturing & Supply Chain", retail: "Retail & E-Commerce", "assignment-help": "Assignment & Software Help", "academic-writing": "Academic Writing & Publishing", "research-methods": "Statistical & Research Methods", "ai-ml": "AI & Machine Learning", "data-engineering": "Data Engineering & BI Tools" };
 
 export function OrderDesk() {
   const [svc, setSvc] = useState("");
-  const slug = SERVICES.find((x) => x.key === svc)?.slug;
+  const slug = svc || null;
   return (
     <section className={s.desk} aria-label="Order desk">
       <div className={s.deskInner}>
@@ -17,7 +19,8 @@ export function OrderDesk() {
           <span className={s.selWrap}>
             <select value={svc} onChange={(e) => setSvc(e.target.value)} aria-label="What do you need">
               <option value="">pick one…</option>
-              {SERVICES.map((x) => <option key={x.key} value={x.key}>{x.label.toLowerCase()}</option>)}
+              {categories.map((c) => { const items = SERVICE_CARDS.filter((x) => x.category === c && x.href); return items.length ? (<optgroup key={c} label={CATLABEL[c] || c}>{items.map((x) => <option key={x.href} value={x.href.replace("/services/", "")}>{x.title.replace(/&amp;/g, "&")}</option>)}</optgroup>) : null; })}
+              <option value="other">Something else</option>
             </select>
           </span>{" "}
           and I want a quote <em>today</em>.

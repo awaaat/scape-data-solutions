@@ -1173,3 +1173,6 @@
 .heroBadge,
 .heroBadgeTag,
 .secLabel { display: none !important; }
+
+/* hero title half: was clamp(1.9rem, 6vw, 4.4rem) */
+.heroTitle { font-size: clamp(1.7rem, 4.4vw, 3.2rem) !important; line-height: 1.08 !important; letter-spacing: -.035em !important; }

@@ -42,6 +42,7 @@ import styles from "./FraudDetectionPreventionPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
 import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
+import { Link } from "react-router-dom";
 
 // ─── Custom Hook for Scroll Animations ──────────────────────────
 const useScrollAnimation = () => {
@@ -700,7 +701,7 @@ const FraudDetectionPreventionPage = () => {
                 <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-2" })} className={styles.ctaBtn}>{orderLabel()} <ShieldCheck size={18} /> <ArrowRight size={18} className={styles.btnArrow} /></a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-3" })} className={styles.ctaBtnSecondary}>{orderLabel()} <Play size={18} /></a>
+                <Link to="/contact" className={styles.ctaBtnSecondary}>Talk to our team <Play size={18} /></Link>
               </motion.div>
             </div>
             <div className={styles.ctaTrust}>

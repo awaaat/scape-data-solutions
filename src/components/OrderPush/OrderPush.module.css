@@ -155,3 +155,6 @@
 
 .navOrderTop { }
 @media (max-width: 900px) { .navOrderTop { display: none; } }
+
+.selWrap select option, .selWrap select optgroup { font: 400 1rem "Mulish", Arial, sans-serif; color: #191e28; background: #fff; }
+.selWrap select { max-width: min(100%, 680px); text-overflow: ellipsis; }

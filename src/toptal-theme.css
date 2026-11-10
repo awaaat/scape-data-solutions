@@ -40,14 +40,14 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--t
 
 /* primary buttons: flat Toptal blue, white bold text, hard hover */
 [class*="_btnPrimary_"], [class*="_primaryBtn_"], [class*="_primaryButton_"], [class*="_ctaBtn_"], [class*="_ctaButton_"], [class*="_heroBtn_"],
-[class*="_heroCta_"], [class*="_finalCtaBtn_"], [class*="_finalCtaButton_"], [class*="_ctaBtnPrimary_"], [class*="_ribbonBtn_"], [class*="_submitBtn_"],
+[class*="_finalCtaBtn_"], [class*="_finalCtaButton_"], [class*="_ctaBtnPrimary_"], [class*="_ribbonBtn_"], [class*="_submitBtn_"],
 [class*="_submitButton_"], [class*="_navCta_"], [class*="_navTopCta_"], [class*="_drawerCta_"], [class*="_buttonPrimary_"], [class*="_testiBtn_"] {
   background: var(--tt-blue) !important; color: #fff !important; border: 1px solid var(--tt-blue) !important; border-radius: var(--tt-r) !important;
   font-family: var(--font-sans) !important; font-weight: 700 !important; letter-spacing: 0 !important; text-transform: none !important;
   box-shadow: none !important; filter: none !important; transition: background .15s, border-color .15s, transform .15s !important;
 }
 [class*="_btnPrimary_"]:hover, [class*="_primaryBtn_"]:hover, [class*="_primaryButton_"]:hover, [class*="_ctaBtn_"]:hover, [class*="_ctaButton_"]:hover,
-[class*="_heroBtn_"]:hover, [class*="_heroCta_"]:hover, [class*="_finalCtaBtn_"]:hover, [class*="_finalCtaButton_"]:hover, [class*="_ctaBtnPrimary_"]:hover,
+[class*="_heroBtn_"]:hover, [class*="_finalCtaBtn_"]:hover, [class*="_finalCtaButton_"]:hover, [class*="_ctaBtnPrimary_"]:hover,
 [class*="_ribbonBtn_"]:hover, [class*="_submitBtn_"]:hover, [class*="_submitButton_"]:hover, [class*="_navCta_"]:hover, [class*="_navTopCta_"]:hover,
 [class*="_drawerCta_"]:hover, [class*="_buttonPrimary_"]:hover, [class*="_testiBtn_"]:hover {
   background: var(--tt-blue-dark) !important; border-color: var(--tt-blue-dark) !important; transform: none !important; filter: none !important;
@@ -80,3 +80,6 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--t
 [class*="_section_"]:nth-of-type(even) { background-color: var(--tt-gray-50); }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* hero cta spacing */
+[class*="_heroCta_"] { margin-top: 32px !important; }

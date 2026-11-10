@@ -546,7 +546,7 @@ sales %>%
                   <a href={orderUrl({ medium: "home-hero" })} className={op.orderBtn}>
                     Place an Order <ArrowRight size={16} />
                   </a>
-                  <a href={orderUrl({ medium: "page-cta", content: "home-1" })} className={styles.btnSecondary}>{orderLabel()} <ArrowRight size={16} /></a>
+                  <Link to="/contact" className={styles.btnSecondary}>Request a Consultation <ArrowRight size={16} /></Link>
                   <Link to="/portfolio" className={styles.btnSecondary}>
                     See Our Work
                   </Link>
@@ -778,7 +778,7 @@ sales %>%
               <p className={styles.ctaBandText}>Tell us what you are trying to figure out. We will tell you honestly whether your data can answer it.</p>
               <div className={styles.ctaBandBtns}>
                 <a href={orderUrl({ medium: "home-cta-band" })} className={op.orderBtn}>Place an Order <ArrowRight size={16} /></a>
-                <a href={orderUrl({ medium: "page-cta", content: "home-5" })} className={styles.btnSecondary}>{orderLabel()}</a>
+                <Link to="/contact" className={styles.btnSecondary}>Request a Consultation</Link>
               </div>
             </div>
           </div>
@@ -965,7 +965,7 @@ sales %>%
                   <li>On-demand training</li>
                   <li>24/7 monitoring and alerts</li>
                 </ul>
-                <a href={orderUrl({ medium: "page-cta", content: "home-8" })} className={styles.btnSecondary} style={{ justifyContent: "center" }}>{orderLabel()}</a>
+                <Link to="/contact" className={styles.btnSecondary} style={{ justifyContent: "center" }}>Request a Consultation</Link>
               </div>
             </div>
           </div>
