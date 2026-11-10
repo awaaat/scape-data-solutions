@@ -16,6 +16,7 @@ import {
   loadToken, saveToken, clearToken, attribution,
 } from "../../services/ordersApi";
 import ServiceSearch from "../../components/ServiceSearch/ServiceSearch";
+import { useEffect as useEffectSW, useRef as useRefSW } from "react";
 import s from "./OrderPage.module.css";
 
 const decode = (t = "") => t.replace(/&amp;/g, "&").replace(/&#39;/g, "'").replace(/&quot;/g, '"');
@@ -396,6 +397,7 @@ export default function OrderPage() {
                 <div className={s.progress} aria-hidden="true"><div style={{ width: `${Math.round((n / total) * 100)}%` }} /></div>
                 {resumed && idx > first && <p className={s.intro}>Welcome back. Your answers are saved.</p>}
                 <p className={s.kicker}>Step {n} of {total}</p>
+                <ScrollToWizard dep={step && (step.key || step.id || step.title)} />
                 <h2 className={s.h2}>{stepTitle(step, svc)}</h2>
                 {step.subtitle && <p className={s.sub}>{step.subtitle}</p>}
                 {banner && <div className={s.err} role="alert">{banner} <a href="mailto:info@scapedatasolutions.com?subject=New%20order">Email us instead</a></div>}
@@ -453,4 +455,17 @@ function stepTitle(step, svc) {
   if (key === "contact") return `Get your ${name} quote`;
   if (key === "review") return `Review your ${name} order`;
   return step.title;
+}
+
+
+// Keeps the visitor at the form: on arrival, and on every step change, scroll so the step card sits just under the fixed header.
+function ScrollToWizard({ dep }) {
+  const ref = useRefSW(null);
+  const first = useRefSW(true);
+  useEffectSW(() => {
+    const go = () => ref.current && ref.current.scrollIntoView({ behavior: first.current ? "auto" : "smooth", block: "start" });
+    const t = setTimeout(() => { go(); first.current = false; }, first.current ? 80 : 0);
+    return () => clearTimeout(t);
+  }, [dep]);
+  return <span ref={ref} aria-hidden="true" style={{ display: "block", height: 0, scrollMarginTop: "calc(var(--nav-h, 72px) + 80px)" }} />;
 }
