@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Mail } from "lucide-react";
 import styles from "./Navbar.module.css";
 import useUniformNavGap from "./useUniformNavGap";
+import op from "../OrderPush/OrderPush.module.css";
+import { orderUrl } from "../OrderPush/orderLinks";
 
 // Navigation data
 export const NAV_COMPANY = [
@@ -147,7 +149,8 @@ export default function Navbar({ activeNav = "" }) {
             </a>
           </div>
           <div className={styles.navTopSocial}>
-            <Link to="/contact" className={styles.navTopCta}>Request a Consultation</Link>
+            <a href={orderUrl({ medium: "nav-top" })} className={`${op.navOrderBtn} ${op.navOrderTop}`}>Order Now</a>
+            <Link to="/contact" className={styles.navTopCta}>Contact Us</Link>
             <a
               href="https://www.facebook.com/profile.php?id=61591435187674"
               target="_blank"
@@ -258,7 +261,8 @@ export default function Navbar({ activeNav = "" }) {
                 <li><Link to="/testimonials" onClick={() => setNavOpen(false)}>Testimonials</Link></li>
                 <li><a href="https://portal.scapedatasolutions.com/" onClick={() => setNavOpen(false)}>Client Portal</a></li>
                 <li><Link to="/contact" onClick={() => setNavOpen(false)}>Contact</Link></li>
-                <li><Link to="/contact" className={styles.drawerCta} onClick={() => setNavOpen(false)}>Request a Consultation</Link></li>
+                <li><a href={orderUrl({ medium: "nav-drawer" })} className={op.navOrderBtn} style={{ display: "flex", justifyContent: "center", padding: "14px 18px" }}>Order Now</a></li>
+                <li><Link to="/contact" className={styles.drawerCta} onClick={() => setNavOpen(false)}>Contact Us</Link></li>
               </ul>
             </motion.nav>
           </>
@@ -348,7 +352,7 @@ export default function Navbar({ activeNav = "" }) {
             </li>
             {isScrolled ? (
               <li>
-                <Link to="/contact" className={styles.navCta}>Request a Consultation</Link>
+                <a href={orderUrl({ medium: "nav-sticky" })} className={styles.navCta}>Order Now</a>
               </li>
             ) : (
               <li>

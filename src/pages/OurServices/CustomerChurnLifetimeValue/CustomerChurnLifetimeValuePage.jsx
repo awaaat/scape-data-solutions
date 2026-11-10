@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import {
   ArrowRight,
@@ -28,6 +28,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./CustomerChurnLifetimeValuePage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 // ─── Images ──────────────────────────────────────────────────────
 const heroImg = "/Images/site-images/churn-4.png";
@@ -388,12 +389,12 @@ const CustomerChurnLifetimeValuePage = () => {
               </motion.p>
 
               <motion.div className={styles.heroCta} variants={fadeUp}>
-                <Link to="/contact" className={styles.btnPrimary}>
+                <a href={orderUrl({ medium: "page-cta", content: "customerchurnlifetimevalue-1" })} className={styles.btnPrimary}>
                   Book a demo <ArrowRight size={16} />
-                </Link>
-                <Link to="/contact" className={styles.btnSecondary}>
+                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "customerchurnlifetimevalue-2" })} className={styles.btnSecondary}>
                   Take a product tour <Play size={15} />
-                </Link>
+                </a>
               </motion.div>
 
               <motion.div className={styles.heroStats} variants={staggerChildrenFast}>
@@ -919,9 +920,9 @@ const CustomerChurnLifetimeValuePage = () => {
               growth strategies, introduce our churn prediction suite, and define your
               next steps.
             </p>
-            <Link to="/contact" className={styles.ctaBtn}>
+            <a href={orderUrl({ medium: "page-cta", content: "customerchurnlifetimevalue-3" })} className={styles.ctaBtn}>
               Schedule Now <ArrowRight size={18} />
-            </Link>
+            </a>
             <p className={styles.ctaConsent}>
               By submitting this form, you consent to our privacy statement and agree to
               sign up to our mailing list.

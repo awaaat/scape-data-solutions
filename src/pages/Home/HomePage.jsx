@@ -13,6 +13,9 @@ import Footer from "../../components/Footer/Footer";
 import styles from "../Home/HomePage.module.css";
 import { submitLead } from "../../services/api";
 import SEO from "../../components/SEO/SEO";
+import op from "../../components/OrderPush/OrderPush.module.css";
+import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { OrderDesk, SituationGrid } from "../../components/OrderPush/HomeOrder";
 
 const ACCENT = "#3b82f6";
 
@@ -540,9 +543,12 @@ sales %>%
                   Turn Data Into Revenue Growth, Predictive Analytics, Real-Time Dashboards, Lower Costs, Faster Decisions.
                 </span>
                 <div className={styles.heroBtnRow}>
-                  <Link to="/contact" className={styles.btnPrimary}>
+                  <a href={orderUrl({ medium: "home-hero" })} className={op.orderBtn}>
+                    Place an Order <ArrowRight size={16} />
+                  </a>
+                  <a href={orderUrl({ medium: "page-cta", content: "home-1" })} className={styles.btnSecondary}>
                     Request a Consultation <ArrowRight size={16} />
-                  </Link>
+                  </a>
                   <Link to="/portfolio" className={styles.btnSecondary}>
                     See Our Work
                   </Link>
@@ -621,6 +627,8 @@ sales %>%
           </div>
         </section>
 
+        <OrderDesk />
+
         {/* ═══ HOW IT WORKS ═══ */}
         <section className={styles.sec}>
           <div className={styles.container}>
@@ -648,10 +656,12 @@ sales %>%
               </li>
             </ol>
             <div className={styles.stepsCta}>
-              <Link to="/contact" className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></Link>
+              <a href={orderUrl({ medium: "page-cta", content: "home-2" })} className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></a>
             </div>
           </div>
         </section>
+
+        <SituationGrid />
 
         <section className={styles.projectCtaSection}>
           <div className={styles.container}>
@@ -661,7 +671,7 @@ sales %>%
                 <p className={styles.projectCtaDesc}>Send us your project brief and our team will scope it within one business day, no sales call required.</p>
               </div>
               <div className={styles.projectCtaActions}>
-                <Link to="/contact" className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></Link>
+                <a href={orderUrl({ medium: "page-cta", content: "home-3" })} className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></a>
               </div>
             </div>
           </div>
@@ -678,7 +688,7 @@ sales %>%
                   We handle the pipelines, the warehouse, and the dashboards, so your team works from one set of numbers.
                 </p>
                 <div className={styles.devActions}>
-                  <Link to="/contact" className={styles.btnPrimary}>Get Started</Link>
+                  <a href={orderUrl({ medium: "page-cta", content: "home-4" })} className={styles.btnPrimary}>Get Started</a>
                   <Link to="/services" className={styles.btnSecondary}>View Services</Link>
                 </div>
                 <div className={styles.devStats}>
@@ -769,8 +779,8 @@ sales %>%
               <h2 className={styles.ctaBandTitle}>Not sure where to start?</h2>
               <p className={styles.ctaBandText}>Tell us what you are trying to figure out. We will tell you honestly whether your data can answer it.</p>
               <div className={styles.ctaBandBtns}>
-                <Link to="/contact" className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></Link>
-                <Link to="/portfolio" className={styles.btnSecondary}>See Our Work</Link>
+                <a href={orderUrl({ medium: "home-cta-band" })} className={op.orderBtn}>Place an Order <ArrowRight size={16} /></a>
+                <a href={orderUrl({ medium: "page-cta", content: "home-5" })} className={styles.btnSecondary}>Request a Consultation</a>
               </div>
             </div>
           </div>
@@ -922,7 +932,7 @@ sales %>%
               <h2 className={styles.ctaBandTitle}>Ready to put your data to work?</h2>
               <p className={styles.ctaBandText}>Book a consultation and we will come back with a scoped plan within one business day.</p>
               <div className={styles.ctaBandBtns}>
-                <Link to="/contact" className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></Link>
+                <a href={orderUrl({ medium: "page-cta", content: "home-6" })} className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></a>
               </div>
             </div>
           </div>
@@ -945,7 +955,7 @@ sales %>%
                   <li>Automated ETL pipelines</li>
                   <li>Comprehensive documentation</li>
                 </ul>
-                <Link to="/contact" className={styles.btnPrimary} style={{ justifyContent: "center" }}>Request a Consultation</Link>
+                <a href={orderUrl({ medium: "page-cta", content: "home-7" })} className={styles.btnPrimary} style={{ justifyContent: "center" }}>Request a Consultation</a>
               </div>
               <div className={styles.getStartedCard}>
                 <h3 className={styles.getStartedCardTitle}>Get extra support</h3>
@@ -957,7 +967,7 @@ sales %>%
                   <li>On-demand training</li>
                   <li>24/7 monitoring and alerts</li>
                 </ul>
-                <Link to="/contact" className={styles.btnSecondary} style={{ justifyContent: "center" }}>Talk to Our Team</Link>
+                <a href={orderUrl({ medium: "page-cta", content: "home-8" })} className={styles.btnSecondary} style={{ justifyContent: "center" }}>Talk to Our Team</a>
               </div>
             </div>
           </div>

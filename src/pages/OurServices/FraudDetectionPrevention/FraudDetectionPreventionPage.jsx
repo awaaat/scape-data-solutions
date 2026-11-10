@@ -1,6 +1,6 @@
 // src/pages/Services/FraudDetectionPrevention/FraudDetectionPreventionPage.jsx
 import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+
 import { motion, useAnimation, useInView } from "framer-motion";
 import {
   ArrowRight,
@@ -41,6 +41,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./FraudDetectionPreventionPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 // ─── Custom Hook for Scroll Animations ──────────────────────────
 const useScrollAnimation = () => {
@@ -208,11 +209,11 @@ const FraudDetectionPreventionPage = () => {
               }}
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link to="/contact" className={styles.heroBtn}>
+                <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-1" })} className={styles.heroBtn}>
                   <ShieldCheck size={18} />
                   Start Protecting Now
                   <ArrowRight size={16} className={styles.btnArrow} />
-                </Link>
+                </a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a href="#how-it-works" className={styles.heroBtnSecondary}>
@@ -700,17 +701,17 @@ const FraudDetectionPreventionPage = () => {
             </p>
             <div className={styles.ctaButtons}>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link to="/contact" className={styles.ctaBtn}>
+                <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-2" })} className={styles.ctaBtn}>
                   <ShieldCheck size={18} />
                   Start Your Security Assessment
                   <ArrowRight size={18} className={styles.btnArrow} />
-                </Link>
+                </a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link to="/contact" className={styles.ctaBtnSecondary}>
+                <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-3" })} className={styles.ctaBtnSecondary}>
                   <Play size={18} />
                   Watch Demo
-                </Link>
+                </a>
               </motion.div>
             </div>
             <div className={styles.ctaTrust}>

@@ -1,6 +1,6 @@
 // src/pages/PortfolioPipelinesPage.jsx
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight,
@@ -21,6 +21,7 @@ import SEO from '../../components/SEO/SEO';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import styles from './PortfolioPipelinesPage.module.css';
+import { orderUrl } from "../../components/OrderPush/orderLinks";
 
 // ─── PROJECTS ───
 const projects = [
@@ -496,9 +497,9 @@ const PortfolioPipelinesPage = () => {
 
             <motion.div className={styles.heroCtas} variants={stagger}>
               <motion.div variants={scaleUp}>
-                <Link to="/contact" className={styles.ctaPrimary}>
+                <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-1" })} className={styles.ctaPrimary}>
                   Talk to Our Data Engineers <ArrowRight size={18} />
-                </Link>
+                </a>
               </motion.div>
               <motion.div variants={scaleUp}>
                 <a href="#work" className={styles.ctaSecondary}>
@@ -712,9 +713,9 @@ const PortfolioPipelinesPage = () => {
                   ))}
                 </div>
                 <div className={styles.engageCta}>
-                  <Link to="/contact" className={styles.ctaSecondary}>
+                  <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-2" })} className={styles.ctaSecondary}>
                     Get the Playbook <ArrowUpRight size={16} />
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
 
@@ -737,9 +738,9 @@ const PortfolioPipelinesPage = () => {
                   ))}
                 </div>
                 <div className={styles.engageCta}>
-                  <Link to="/contact" className={styles.ctaPrimary}>
+                  <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-3" })} className={styles.ctaPrimary}>
                     Talk to Engineering <ArrowRight size={16} />
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             </motion.div>
@@ -762,9 +763,9 @@ const PortfolioPipelinesPage = () => {
               Let's architect infrastructure that scales with your data, not against it.
             </motion.p>
             <motion.div className={styles.finalCtaButton} variants={scaleUp}>
-              <Link to="/contact" className={styles.ctaPrimary}>
+              <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-4" })} className={styles.ctaPrimary}>
                 Let's Architect It <ArrowRight size={18} />
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
         </motion.section>

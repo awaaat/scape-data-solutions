@@ -11,6 +11,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
 import styles from "./WhyUsPage.module.css";
+import { orderUrl } from "../../components/OrderPush/orderLinks";
 
 const ACCENT = "#3b82f6";
 
@@ -177,9 +178,9 @@ export default function WhyUsPage() {
                   Trusted by organizations worldwide for our expertise, speed, and commitment.
                 </p>
                 <div className={styles.heroButtons}>
-                  <Link to="/contact" className={styles.btnPrimary}>
+                  <a href={orderUrl({ medium: "page-cta", content: "whyus-1" })} className={styles.btnPrimary}>
                     Get Started <ArrowRight size={16} />
-                  </Link>
+                  </a>
                   <Link to="/testimonials" className={styles.btnSecondary}>
                     Read Testimonials
                   </Link>
@@ -224,7 +225,7 @@ export default function WhyUsPage() {
             <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Ready to see the difference?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "560px" }}>Put us to the test on a real project. Submit it through the portal and track every milestone from your dashboard.</p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <Link to="/contact" className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></Link>
+              <a href={orderUrl({ medium: "page-cta", content: "whyus-2" })} className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></a>
             </div>
           </div>
         </section>
@@ -304,9 +305,9 @@ export default function WhyUsPage() {
             <div className={styles.ctaBox}>
               <h2 className={styles.ctaTitle}>Ready to work with the <span style={{ color: ACCENT }}>best</span>?</h2>
               <p className={styles.ctaDesc}>Let's turn your data into a competitive advantage.</p>
-              <Link to="/contact" className={styles.btnPrimary}>
+              <a href={orderUrl({ medium: "page-cta", content: "whyus-3" })} className={styles.btnPrimary}>
                 Get Started <ArrowRight size={16} />
-              </Link>
+              </a>
             </div>
           </div>
         </motion.section>

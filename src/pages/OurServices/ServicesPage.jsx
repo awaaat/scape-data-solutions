@@ -26,6 +26,7 @@ import Footer from '../../components/Footer/Footer';
 import { SERVICE_CARDS, categories, SLUG_MAP } from '../../data/servicesData';
 import styles from './ServicesPage.module.css';
 import homeStyles from '../Home/HomePage.module.css';
+import { orderUrl } from "../../components/OrderPush/orderLinks";
 
 const categoryMap = {
   academic:   { icon: <GraduationCap size={16} />, label: 'Academic & Research' },
@@ -184,9 +185,9 @@ const ServicesPage = () => {
                 real‑world problems with measurable results.
               </p>
               <div className={styles.heroCta}>
-                <Link to="/contact" className={styles.heroBtn}>
+                <a href={orderUrl({ medium: "page-cta", content: "ourservices-1" })} className={styles.heroBtn}>
                   Get Started <ArrowRight size={16} />
-                </Link>
+                </a>
                 <Link to="/portfolio" className={styles.heroBtnSecondary}>
                   See Our Work
                 </Link>
@@ -200,7 +201,7 @@ const ServicesPage = () => {
             <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Found the service you need?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "560px" }}>Send us your project brief and our team will scope it within one business day, no sales call required.</p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <Link to="/contact" className={styles.heroBtn}>Submit a Project <ArrowRight size={16} /></Link>
+              <a href={orderUrl({ medium: "page-cta", content: "ourservices-2" })} className={styles.heroBtn}>Submit a Project <ArrowRight size={16} /></a>
             </div>
           </div>
         </section>
@@ -371,9 +372,9 @@ const ServicesPage = () => {
                 Let's discuss how our analytics and AI services can drive your business forward.
               </p>
               <div className={styles.ctaButtons}>
-                <Link to="/contact" className={styles.ctaBtnPrimary}>
-                  Contact Sales <ArrowRight size={16} />
-                </Link>
+                <a href={orderUrl({ medium: "page-cta", content: "ourservices-3" })} className={styles.ctaBtnPrimary}>
+                  Place an Order <ArrowRight size={16} />
+                </a>
                 <Link to="/portfolio" className={styles.ctaBtnSecondary}>
                   View Our Work
                 </Link>

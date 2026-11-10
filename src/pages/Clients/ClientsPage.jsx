@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import SEO from "../../components/SEO/SEO";
-import { Link } from 'react-router-dom';
+
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight, Users, MapPin, Star, Quote, Briefcase,
@@ -12,6 +12,7 @@ import {
 import styles from './ClientsPage.module.css';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import { orderUrl } from "../../components/OrderPush/orderLinks";
 
 // ─── Client Data ──────────────────────────────────────────────────────
 const CLIENTS = [
@@ -301,7 +302,7 @@ const ClientsPage = () => {
           <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem", textAlign: "center" }}>
             <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Want to be our next success story?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75 }}>Submit your project through the client portal and see how quickly we get to work.</p>
-            <Link to="/contact" className={styles.ctaButton}>Submit a Project <ArrowRight size={16} /></Link>
+            <a href={orderUrl({ medium: "page-cta", content: "clients-1" })} className={styles.ctaButton}>Submit a Project <ArrowRight size={16} /></a>
           </div>
         </section>
 
@@ -414,9 +415,9 @@ const ClientsPage = () => {
               <h2>Ready to Join Our Client Roster?</h2>
               <p>Let's talk about how we can help your organization grow with data.</p>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Link to="/contact" className={styles.ctaButton}>
+                <a href={orderUrl({ medium: "page-cta", content: "clients-2" })} className={styles.ctaButton}>
                   Become a Client <ArrowRight size={18} />
-                </Link>
+                </a>
               </motion.div>
             </motion.div>
           </div>

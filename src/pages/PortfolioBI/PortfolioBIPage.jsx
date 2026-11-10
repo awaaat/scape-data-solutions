@@ -1,7 +1,7 @@
 // src/pages/PortfolioBI/PortfolioBIPage.jsx
 import { useEffect, useState } from 'react';
 import SEO from "../../components/SEO/SEO";
-import { Link } from 'react-router-dom';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight,
@@ -32,6 +32,7 @@ import styles from './PortfolioBIPage.module.css';
 import homeStyles from '../Home/HomePage.module.css';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import { orderUrl } from "../../components/OrderPush/orderLinks";
 
 // ─── ENTERPRISE BI DASHBOARD DATA ──────────────────────────────
 const dashboardData = [
@@ -1000,9 +1001,9 @@ const PortfolioBIPage = () => {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
-            <Link to="/contact" className={styles.ctaBtn}>
-              Start the Conversation <ArrowRight size={18} />
-            </Link>
+            <a href={orderUrl({ medium: "page-cta", content: "portfoliobi-1" })} className={styles.ctaBtn}>
+              Place an Order <ArrowRight size={18} />
+            </a>
           </motion.div>
         </motion.section>
       </main>

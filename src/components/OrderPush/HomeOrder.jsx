@@ -1,0 +1,62 @@
+// src/components/OrderPush/HomeOrder.jsx
+// Home-only order sections: a one-line composer, and a "which one is you" scenario grid.
+import { createElement, useState } from "react";
+import { ArrowRight, FileText, MessagesSquare, LayoutDashboard, Hourglass } from "lucide-react";
+import s from "./OrderPush.module.css";
+import { orderUrl, SERVICES } from "./orderLinks";
+
+export function OrderDesk() {
+  const [svc, setSvc] = useState("");
+  const slug = SERVICES.find((x) => x.key === svc)?.slug;
+  return (
+    <section className={s.desk} aria-label="Order desk">
+      <div className={s.deskInner}>
+        <p className={s.kicker}>Order desk · open now</p>
+        <p className={s.deskSentence}>
+          I need help with{" "}
+          <span className={s.selWrap}>
+            <select value={svc} onChange={(e) => setSvc(e.target.value)} aria-label="What do you need">
+              <option value="">pick one…</option>
+              {SERVICES.map((x) => <option key={x.key} value={x.key}>{x.label.toLowerCase()}</option>)}
+            </select>
+          </span>{" "}
+          and I want a quote <em>today</em>.
+        </p>
+        <a className={s.orderBtnLg} href={orderUrl({ service: slug, medium: "home-desk" })}>Start my order <ArrowRight size={18} /></a>
+        <ul className={s.deskPoints}>
+          <li><b>2 min</b> to fill in</li>
+          <li><b>24 h</b> to a fixed quote</li>
+          <li><b>$0</b> until you agree</li>
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+const SCENES = [
+  { Icon: MessagesSquare, tag: "Scenario 01", t: "“My supervisor sent my stats back.”", d: "We redo the analysis properly and show you why each test was chosen.", slug: "thesis-data-analysis-help", c: "supervisor" },
+  { Icon: FileText, tag: "Scenario 02", t: "“I have survey data and no idea where to start.”", d: "Send the file. We clean it, run it, and hand back tables you can paste in.", slug: "questionnaire-data-analysis-help", c: "survey" },
+  { Icon: LayoutDashboard, tag: "Scenario 03", t: "“My team needs a dashboard by Friday.”", d: "One clear view of the numbers that matter, built around your data.", slug: "other", c: "dashboard" },
+  { Icon: Hourglass, tag: "Scenario 04", t: "“My deadline is this week.”", d: "Rush orders are what the 24-hour quote is for. Mark it urgent and go.", slug: undefined, c: "rush" },
+];
+export function SituationGrid() {
+  return (
+    <section className={s.scenes} aria-label="Which one sounds like you">
+      <div className={s.scenesInner}>
+        <h2 className={s.scenesTitle}>Which one sounds like you?</h2>
+        <p className={s.scenesSub}>Tap yours. The order form opens already set up for it.</p>
+        <div className={s.sceneGrid}>
+          {SCENES.map(({ Icon, tag, t, d, slug, c }, n) => (
+            <a key={c} className={s.scene} style={{ "--tilt": `${[-1.2, 0.8, -0.6, 1][n]}deg` }} href={orderUrl({ service: slug, medium: "home-scenario", content: c })}>
+              <span className={s.sceneTag}>{tag}</span>
+              {createElement(Icon, { size: 22, className: s.sceneIcon })}
+              <strong>{t}</strong>
+              <span>{d}</span>
+              <span className={s.sceneGo}>Order this <ArrowRight size={15} /></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import styles from "./Footer.module.css";
 import { NAV_COMPANY, NAV_PORTFOLIO } from "../Navbar/Navbar";
+import OrderBreak from "../OrderPush/OrderBreak";
 
 
 // ── Curated services subset for the footer ──────────────────────────
@@ -64,6 +65,8 @@ const linkItemVariants = {
 
 export default function Footer() {
   return (
+    <>
+    <OrderBreak />
     <footer className={styles.navyFooter}>
 
       {/* ══════════════════════════════════════════
@@ -224,5 +227,6 @@ export default function Footer() {
       </div>
 
     </footer>
+    </>
   );
 }

@@ -6,6 +6,7 @@ import styles from './App.module.css';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import PageLayout from './components/Layout/PageLayout';
 import ScrollToTop from './components/ScrollToTop';
+import OrderLayer from './components/OrderPush/OrderLayer';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { apiService } from './services/api';
 
@@ -260,6 +261,7 @@ const AppContent = () => {
     return (
         <div className={styles.app}>
             <ScrollToTop />
+            <OrderLayer />
             <main className={styles.main}>
                 <ErrorBoundary key={location.pathname}>
                     <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>

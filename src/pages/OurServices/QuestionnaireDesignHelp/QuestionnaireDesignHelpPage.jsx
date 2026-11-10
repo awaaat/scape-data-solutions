@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+
 import SEO from '../../../components/SEO/SEO';
 import styles from './QuestionnaireDesignHelpPage.module.css';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 export default function QuestionnaireDesignHelpPage() {
   return (
@@ -23,9 +24,9 @@ export default function QuestionnaireDesignHelpPage() {
           <li>{"Results Interpretation"}</li>
         </ul>
         <p>
-          <Link to="/contact" style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '999px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
+          <a href={orderUrl({ medium: "page-cta", content: "questionnairedesignhelp-1" })} style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '999px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
             Talk to our team about {"Questionnaire Design Help"}
-          </Link>
+          </a>
         </p>
       </section>
     </div>

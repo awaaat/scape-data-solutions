@@ -32,6 +32,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./BrandHealthReputationMonitoringPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 // ─── SCROLL REVEAL ──────────────────────────────────────────────
 const ScrollSection = ({ children, delay = 0, className = "" }) => {
@@ -251,9 +252,9 @@ const BrandHealthReputationMonitoringPage = () => {
             </motion.p>
             <motion.div className={styles.heroCta} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link to="/contact" className={styles.heroBtn}>
+                <a href={orderUrl({ medium: "page-cta", content: "brandhealthreputationmonitoring-1" })} className={styles.heroBtn}>
                   Monitor Your Brand <ArrowRight size={16} />
-                </Link>
+                </a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a href="#how-it-works" className={styles.heroBtnSecondary}>
@@ -792,9 +793,9 @@ const BrandHealthReputationMonitoringPage = () => {
                 Let's start your brand health journey today. Get a free consultation and see how Scape's monitoring can transform your brand tracking and drive sustainable growth.
               </p>
               <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-                <Link to="/contact" className={styles.finalCtaBtn}>
+                <a href={orderUrl({ medium: "page-cta", content: "brandhealthreputationmonitoring-2" })} className={styles.finalCtaBtn}>
                   Get Started <ArrowRight size={18} />
-                </Link>
+                </a>
               </motion.div>
             </div>
           </div>

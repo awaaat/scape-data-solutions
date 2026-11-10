@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+
 import SEO from '../../../components/SEO/SEO';
 import styles from './PrincipalComponentAnalysisPage.module.css';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 export default function PrincipalComponentAnalysisPage() {
   return (
@@ -23,9 +24,9 @@ export default function PrincipalComponentAnalysisPage() {
           <li>{"Results Interpretation"}</li>
         </ul>
         <p>
-          <Link to="/contact" style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '999px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
+          <a href={orderUrl({ medium: "page-cta", content: "principalcomponentanalysis-1" })} style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '999px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
             Talk to our team about {"Principal Component Analysis"}
-          </Link>
+          </a>
         </p>
       </section>
     </div>

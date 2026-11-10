@@ -1,6 +1,6 @@
 // src/pages/Services/AlgorithmicTradingAnalytics/AlgorithmicTradingAnalyticsPage.jsx
 import React, { useEffect, useState, useRef, useMemo } from "react";
-import { Link } from "react-router-dom";
+
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   ArrowRight,
@@ -41,6 +41,7 @@ import styles from "./AlgorithmicTradingAnalyticsPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
 import { apiService } from '../../../services/api';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 // ─── SCROLL‑REVEAL WRAPPER ──────────────────────────────────────
 const ScrollSection = ({ children, delay = 0, className = "" }) => {
@@ -220,9 +221,9 @@ const AlgorithmicTradingAnalyticsPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
                 >
-                  <Link to="/contact" className={styles.heroBtn}>
+                  <a href={orderUrl({ medium: "page-cta", content: "algorithmictradinganalytics-1" })} className={styles.heroBtn}>
                     Talk to Us <ArrowRight size={14} />
-                  </Link>
+                  </a>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}

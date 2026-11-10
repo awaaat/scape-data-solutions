@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+
 import SEO from '../../../components/SEO/SEO';
 import styles from './StataAssignmentHelpPage.module.css';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 export default function StataAssignmentHelpPage() {
   return (
@@ -23,9 +24,9 @@ export default function StataAssignmentHelpPage() {
           <li>{"Revision Support"}</li>
         </ul>
         <p>
-          <Link to="/contact" style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '999px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
+          <a href={orderUrl({ medium: "page-cta", content: "stataassignmenthelp-1" })} style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '999px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
             Talk to our team about {"Stata Assignment Help"}
-          </Link>
+          </a>
         </p>
       </section>
     </div>

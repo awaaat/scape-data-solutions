@@ -1,3 +1,4 @@
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 export const manufacturingKPIs = {
   slug: "manufacturing-kpis",
   category: "Manufacturing & Supply Chain",
@@ -10,7 +11,7 @@ export const manufacturingKPIs = {
       "Data-driven Manufacturing KPIs that improve throughput, reduce downtime, and cut operating costs.",
     description:
       "Track OEE, yield, scrap rate, and downtime in one live dashboard instead of chasing numbers across spreadsheets and shift reports. See where the line is losing time and cost before it shows up on the P&L.",
-    primaryCta: { label: "Get Started", href: "/contact" },
+    primaryCta: { label: "Get Started", href: orderUrl({ medium: "page-cta", content: "manufacturingkpis-d1" }) },
     secondaryCta: { label: "See Our Work", href: "/portfolio" },
   },
 

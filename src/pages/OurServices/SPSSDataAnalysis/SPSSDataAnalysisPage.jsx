@@ -1,6 +1,6 @@
 // src/pages/Services/SPSSDataAnalysis/SPSSDataAnalysisPage.jsx
 import React from "react";
-import { Link } from "react-router-dom";
+
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -24,6 +24,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./SPSSDataAnalysisPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 // ─── Variants ─────────────────────────────────────────────────────
 const fadeUp = {
@@ -74,9 +75,9 @@ const SPSSDataAnalysisPage = () => {
             </motion.p>
             <motion.div className={styles.heroCta} variants={fadeUp}>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link to="/contact" className={styles.heroBtn}>
+                <a href={orderUrl({ medium: "page-cta", content: "spssdataanalysis-1" })} className={styles.heroBtn}>
                   Start Your Analysis <ArrowRight size={16} />
-                </Link>
+                </a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a href="#features" className={styles.heroBtnSecondary}>
@@ -400,9 +401,9 @@ const SPSSDataAnalysisPage = () => {
               accurate results, clear interpretations, and the confidence to present your findings.
             </p>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-              <Link to="/contact" className={styles.ctaBtn}>
+              <a href={orderUrl({ medium: "page-cta", content: "spssdataanalysis-2" })} className={styles.ctaBtn}>
                 Get Started <ArrowRight size={18} />
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
         </div>

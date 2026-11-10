@@ -1,0 +1,1039 @@
+// src/pages/Home/HomePage.jsx
+import { useEffect, useState, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import {
+  ArrowRight, BarChart3, BarChart2, Server, TrendingUp, Database, Shield,
+  Users, Award, Zap, Globe, Heart, DollarSign, Cpu, Cloud, Star,
+  ChevronDown, ChevronLeft, ChevronRight, ChevronUp, CheckCircle, Loader2, Send,
+} from "lucide-react";
+
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
+import styles from "../Home/HomePage.module.css";
+import { submitLead } from "../../services/api";
+import SEO from "../../components/SEO/SEO";
+
+const ACCENT = "#3b82f6";
+
+// Rotating hero words - tied to real services, not filler buzzwords
+const ROTATING_WORDS = ["Revenue Growth", "Predictive Analytics", "Real-Time Dashboards", "Lower Costs", "Faster Decisions"];
+
+function useTypewriter(words, speed = 140, pause = 15000) {
+  const [text, setText] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const [holding, setHolding] = useState(false);
+
+  useEffect(() => {
+    const current = words[wordIndex % words.length];
+    let t;
+    if (!deleting && text.length < current.length) {
+      setHolding(false);
+      t = setTimeout(() => setText(current.slice(0, text.length + 1)), speed);
+    } else if (!deleting && text.length === current.length) {
+      setHolding(true);
+      t = setTimeout(() => { setHolding(false); setDeleting(true); }, pause);
+    } else if (deleting && text.length > 0) {
+      t = setTimeout(() => setText(current.slice(0, text.length - 1)), speed / 2);
+    } else {
+      setDeleting(false);
+      setWordIndex((i) => i + 1);
+    }
+    return () => clearTimeout(t);
+  }, [text, deleting, wordIndex, words, speed, pause]);
+
+  return { text, holding };
+}
+
+const FEATURES = [
+  {
+    key: "analytics",
+    title: "Data Analytics",
+    tagline: "Know what happened, and why",
+    icon: <BarChart3 size={22} />,
+    link: "/services",
+    desc: "Your sales, web traffic, and customer records already hold the answers. We clean them up and report on what is actually happening in the business.",
+  },
+  {
+    key: "etl",
+    title: "ETL & Integration",
+    tagline: "One home for scattered numbers",
+    icon: <Server size={22} />,
+    link: "/services",
+    desc: "When sales, support, and inventory live in different tools, we connect them into one pipeline so nobody has to copy numbers between spreadsheets.",
+  },
+  {
+    key: "bi",
+    title: "BI Dashboards",
+    tagline: "Answers without the request queue",
+    icon: <BarChart2 size={22} />,
+    link: "/services",
+    desc: "We build dashboards your team can filter and explore themselves, so checking last week's numbers doesn't need an analyst.",
+  },
+  {
+    key: "predictive",
+    title: "Predictive Analytics",
+    tagline: "See the curve before it bends",
+    icon: <TrendingUp size={22} />,
+    link: "/services",
+    desc: "We build forecasting models from your history to flag demand changes and churn risk early enough to act on them.",
+  },
+];
+
+// --- Custom mini-visuals: four distinct UI metaphors, like x.ai's tiles ---
+function DataAnalyticsViz() {
+  return (
+    <div className={styles.vizPanel}>
+      <div className={styles.vizPanelHead}>
+        <span>Revenue by Region</span>
+        <span className={styles.vizPanelBadge}>Live</span>
+      </div>
+      <svg viewBox="0 0 260 90" className={styles.vizChartSvg} preserveAspectRatio="none">
+        <polyline points="0,70 40,55 80,60 120,35 160,42 200,20 240,28" fill="none" stroke="#3b82f6" strokeWidth="2" />
+        <circle cx="200" cy="20" r="3" fill="#3b82f6" />
+      </svg>
+      <div className={styles.vizLegendRow}>
+        <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
+      </div>
+    </div>
+  );
+}
+
+function EtlViz() {
+  const lines = [
+    { c: "#22c55e", t: "extract → 3 sources connected" },
+    { c: "#3b82f6", t: "transform: dedup 12,402 rows" },
+    { c: "#eab308", t: "load → warehouse.sales" },
+    { c: "#22c55e", t: "pipeline complete (4.2s)" },
+  ];
+  return (
+    <div className={styles.vizTerminalWindow}>
+      <div className={styles.vizTermDots}>
+        <span style={{ background: "#ff5f57" }} />
+        <span style={{ background: "#febc2e" }} />
+        <span style={{ background: "#28c840" }} />
+      </div>
+      <div className={styles.vizTermBody}>
+        {lines.map((l, i) => (
+          <div key={i} className={styles.vizLogLine}>
+            <span className={styles.vizLogDot} style={{ background: l.c }} />
+            {l.t}
+          </div>
+        ))}
+        <div className={styles.vizTermCursor}>run --watch</div>
+      </div>
+    </div>
+  );
+}
+
+function BiDashboardsViz() {
+  const bars = [40, 65, 50, 80, 60, 90];
+  return (
+    <div className={styles.vizCollage}>
+      <div className={styles.vizCollageBig}>
+        <span className={styles.vizWidgetLabel}>Revenue</span>
+        <div className={styles.vizMiniBars}>
+          {bars.map((h, i) => (
+            <div key={i} className={styles.vizMiniBar} style={{ height: `${h}%` }} />
+          ))}
+        </div>
+        <span className={styles.vizWidgetVal}>$482K</span>
+      </div>
+      <div className={styles.vizCollageSmall}>
+        <span className={styles.vizWidgetLabel}>Users</span>
+        <span className={styles.vizMiniArrow}>↗</span>
+        <span className={styles.vizWidgetVal}>12.4K</span>
+      </div>
+      <div className={styles.vizCollageSmall}>
+        <span className={styles.vizWidgetLabel}>Growth</span>
+        <span className={styles.vizMiniArrow}>↗</span>
+        <span className={styles.vizWidgetVal}>+23%</span>
+      </div>
+    </div>
+  );
+}
+
+function PredictiveViz() {
+  return (
+    <div className={styles.vizChatWrap}>
+      <div className={styles.vizBubbleLeft}>Forecast churn for next quarter?</div>
+      <div className={styles.vizTyping}><span/><span/><span/></div>
+      <div className={styles.vizBubbleRight}>Predicted 4.2% churn, down from 6.1%, model confidence 91%.</div>
+    </div>
+  );
+}
+
+// --- Hero dashboard mockup (replaces a stock hero photo, matches the tile style below) ---
+function HeroDashboardViz() {
+  const regions = [
+    { name: "West", revenue: "$142K", growth: "+18%", pct: 88 },
+    { name: "East", revenue: "$98K", growth: "+9%", pct: 61 },
+    { name: "Central", revenue: "$71K", growth: "+4%", pct: 45 },
+    { name: "South", revenue: "$56K", growth: "+22%", pct: 35 },
+  ];
+  return (
+    <div className={styles.heroViz}>
+      <div className={styles.heroVizHeader}>
+        <div className={styles.heroVizDots}>
+          <span /><span /><span />
+        </div>
+        <div className={styles.heroVizTabs}>
+          <span className={`${styles.heroVizTab} ${styles.heroVizTabActive}`}>Overview</span>
+          <span className={styles.heroVizTab}>Revenue</span>
+          <span className={styles.heroVizTab}>Query Editor</span>
+          <span className={styles.heroVizTab}>Retention</span>
+        </div>
+        <span className={styles.heroVizLive}>● Live</span>
+      </div>
+
+      <div className={styles.heroVizMain}>
+        <div className={styles.heroVizChartCol}>
+          <div className={styles.heroVizChartHead}>
+            <div>
+              <span className={styles.heroVizChartLabel}>Monthly Revenue</span>
+              <div className={styles.heroVizChartValue}>
+                $482,190 <span className={styles.heroVizDelta}>↑ 32.4%</span>
+              </div>
+            </div>
+            <span className={styles.heroVizPeriod}>Last 6 months</span>
+          </div>
+          <svg viewBox="0 0 300 130" className={styles.heroVizAreaSvg} preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="heroAreaGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <line x1="0" y1="28" x2="300" y2="28" stroke="var(--color-border)" strokeDasharray="3 4" />
+            <line x1="0" y1="70" x2="300" y2="70" stroke="var(--color-border)" strokeDasharray="3 4" />
+            <line x1="0" y1="112" x2="300" y2="112" stroke="var(--color-border)" strokeDasharray="3 4" />
+            <path d="M0,95 L50,80 L100,88 L150,55 L200,64 L250,25 L300,14 L300,130 L0,130 Z" fill="url(#heroAreaGradient)" />
+            <polyline points="0,95 50,80 100,88 150,55 200,64 250,25 300,14" fill="none" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="300" cy="14" r="4" fill="#3b82f6" />
+          </svg>
+          <div className={styles.heroVizMonths}>
+            <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span>
+          </div>
+
+          <div className={styles.heroVizTable}>
+            <div className={styles.heroVizTableHeadRow}>
+              <span>Region</span><span>Revenue</span><span>Growth</span><span>Share</span>
+            </div>
+            {regions.map((r) => (
+              <div key={r.name} className={styles.heroVizTableRow}>
+                <span className={styles.heroVizTableRegion}>{r.name}</span>
+                <span className={styles.heroVizTableRevenue}>{r.revenue}</span>
+                <span className={styles.heroVizTableGrowth}>{r.growth}</span>
+                <div className={styles.heroVizTableBarTrack}>
+                  <div className={styles.heroVizTableBarFill} style={{ width: `${r.pct}%` }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.heroVizSide}>
+          <div className={styles.heroVizSql}>
+            <div className={styles.heroVizSqlHead}>
+              <span className={styles.heroVizSqlDot} />
+              <span className={styles.heroVizSqlTitle}>query.sql</span>
+              <span className={styles.heroVizSqlTime}>412ms</span>
+            </div>
+            <pre className={styles.heroVizSqlBody}>
+              <span className={styles.sqlKeyword}>SELECT</span> region,{"\n"}
+              {"  "}<span className={styles.sqlFn}>SUM</span>(revenue) <span className={styles.sqlKeyword}>AS</span> total{"\n"}
+              <span className={styles.sqlKeyword}>FROM</span> sales{"\n"}
+              <span className={styles.sqlKeyword}>WHERE</span> quarter = <span className={styles.sqlString}>'Q3'</span>{"\n"}
+              <span className={styles.sqlKeyword}>GROUP BY</span> region{"\n"}
+              <span className={styles.sqlKeyword}>ORDER BY</span> total <span className={styles.sqlKeyword}>DESC</span>;
+            </pre>
+            <div className={styles.heroVizSqlStatus}>
+              <span className={styles.heroVizSqlCursor} />
+              <span>4 rows returned</span>
+            </div>
+          </div>
+
+          <div className={styles.heroVizRingRow}>
+            <div className={styles.heroVizRing}>
+              <svg viewBox="0 0 80 80" className={styles.heroVizRingSvg}>
+                <circle cx="40" cy="40" r="34" fill="none" stroke="var(--color-border)" strokeWidth="7" />
+                <circle
+                  cx="40" cy="40" r="34" fill="none" stroke="#3b82f6" strokeWidth="7"
+                  strokeDasharray="213.6" strokeDashoffset="51.3" strokeLinecap="round"
+                  transform="rotate(-90 40 40)"
+                />
+              </svg>
+              <div className={styles.heroVizRingLabel}>
+                <span className={styles.heroVizRingPct}>76%</span>
+                <span className={styles.heroVizRingSub}>Target</span>
+              </div>
+            </div>
+            <div className={styles.heroVizMiniKpi}>
+              <span className={styles.heroVizFooterLabel}>Query Load</span>
+              <span className={styles.heroVizFooterVal}>2.1K/s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.heroVizFooter}>
+        <div className={styles.heroVizFooterStat}>
+          <span className={styles.heroVizFooterLabel}>Revenue</span>
+          <span className={styles.heroVizFooterVal}>$482K</span>
+        </div>
+        <div className={styles.heroVizFooterStat}>
+          <span className={styles.heroVizFooterLabel}>Active Users</span>
+          <span className={styles.heroVizFooterVal}>12.4K</span>
+        </div>
+        <div className={styles.heroVizFooterStat}>
+          <span className={styles.heroVizFooterLabel}>Churn Rate</span>
+          <span className={styles.heroVizFooterVal}>4.2%</span>
+        </div>
+        <div className={styles.heroVizFooterStat}>
+          <span className={styles.heroVizFooterLabel}>Query Latency</span>
+          <span className={styles.heroVizFooterVal}>412ms</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const FEATURE_VIZ = {
+  analytics: DataAnalyticsViz,
+  etl: EtlViz,
+  bi: BiDashboardsViz,
+  predictive: PredictiveViz,
+};
+
+const SERVICES = [
+  { icon: <BarChart3 size={20} />, title: "Data Analytics & Visualization", desc: "We turn your raw numbers into clear, visual dashboards that highlight what's working, what's not, and where your next opportunity lies.", tools: ["Tableau", "Power BI", "Looker"] },
+  { icon: <Database size={20} />, title: "SQL & Data Warehousing", desc: "We design and optimize databases that store your business data in one secure, fast-to-query place.", tools: ["PostgreSQL", "Snowflake", "Redshift"] },
+  { icon: <Server size={20} />, title: "ETL & Data Integration", desc: "We bring together data from sales, marketing, and operations into one trusted, accurate system.", tools: ["Apache Airflow", "dbt", "Fivetran"] },
+  { icon: <BarChart2 size={20} />, title: "Business Intelligence Dashboards", desc: "We build dashboards your whole team can explore on their own, no coding needed.", tools: ["Tableau", "Power BI", "Looker"] },
+  { icon: <TrendingUp size={20} />, title: "Predictive Analytics & Forecasting", desc: "We use your past data to predict sales, churn, and market shifts so you can plan ahead.", tools: ["Prophet", "XGBoost", "ARIMA"] },
+  { icon: <Shield size={20} />, title: "Data Governance & Security", desc: "We set up clear rules and strong protections to keep your data safe and fully compliant.", tools: ["GDPR", "HIPAA", "SOC 2"] },
+  { icon: <Cloud size={20} />, title: "Cloud Data Migration", desc: "We move your data infrastructure to the cloud with zero downtime, cutting costs while improving scalability.", tools: ["AWS", "Azure", "GCP"] },
+  { icon: <Cpu size={20} />, title: "Custom AI & Machine Learning", desc: "We build and deploy custom models tailored to your business, from recommendation engines to fraud detection.", tools: ["PyTorch", "TensorFlow", "MLflow"] },
+];
+
+const TECH_ROW1 = [
+  { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  { name: "TensorFlow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+  { name: "Apache Airflow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+];
+const TECH_ROW2 = [
+  { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+  { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+  { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
+  { name: "Kafka", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" },
+];
+const T1_DUP = [...TECH_ROW1, ...TECH_ROW1];
+const T2_DUP = [...TECH_ROW2, ...TECH_ROW2];
+
+const TESTIMONIALS = [
+  { name: "Omar AlQabandi", role: "CEO", company: "BilBio Kuwait", img: "/Images/site-images/Omar-AlQabandi.webp.webp", quote: "The team delivered on time and on budget, with quality work.", rating: 5 },
+  { name: "Nathan French", role: "Director of I.T.", company: "Treaterpro.com", img: "/Images/site-images/nathan.webp", quote: "The best team I've worked with for complex projects.", rating: 5 },
+  { name: "Charles Johnson", role: "CEO", company: "BidLock, LLC", img: "/Images/site-images/charles_johnson.webp", quote: "Phenomenal team. Professional, patient, and truly the best in the business.", rating: 5 },
+];
+
+const WHY_CHOOSE = [
+  { icon: <Users size={18} />, title: "Domain Expertise", desc: "Deep experience in SQL, data modeling, and analytics, not just generic tech consulting." },
+  { icon: <Award size={18} />, title: "Proven Methodologies", desc: "Industry best practices for governance, ETL, and dashboard development." },
+  { icon: <Shield size={18} />, title: "Security & Compliance", desc: "GDPR, HIPAA, and SOC 2 aligned from day one." },
+  { icon: <Zap size={18} />, title: "Agile Delivery", desc: "Short sprints, incremental value, feedback built into every step." },
+  { icon: <Globe size={18} />, title: "Global Reach", desc: "Teams across the US, Pakistan, and Canada for round-the-clock support." },
+  { icon: <Heart size={18} />, title: "Long-Term Partnership", desc: "Average engagement exceeds 3 years, we become part of your team." },
+  { icon: <Database size={18} />, title: "Full-Stack Data Expertise", desc: "From raw ingestion to executive dashboards, we own the entire pipeline end-to-end." },
+  { icon: <BarChart3 size={18} />, title: "Measurable Impact", desc: "Every engagement is tied to a clear metric (revenue, cost, or time saved), not vanity reporting." },
+];
+
+const CASE_STUDIES = [
+  { title: "E-Commerce Revenue Growth", client: "RetailMax", challenge: "Stagnant sales and 74% cart abandonment.", solution: "Real-time analytics pipeline with dynamic pricing.", result: "85% revenue growth in 6 months" },
+  { title: "Healthcare Cost Reduction", client: "HealthTech Solutions", challenge: "Rising operational costs, long wait times.", solution: "Predictive models for patient flow and staffing.", result: "45% cost reduction" },
+  { title: "Supply Chain Optimization", client: "Industrial Leader", challenge: "Inefficient inventory across 12 warehouses.", solution: "Real-time inventory dashboard with auto-reorder.", result: "50% cost savings" },
+];
+
+const INDUSTRIES = [
+  { icon: <Heart size={18} />, name: "Healthcare" },
+  { icon: <DollarSign size={18} />, name: "Finance" },
+  { icon: <BarChart2 size={18} />, name: "Retail" },
+  { icon: <Cpu size={18} />, name: "Manufacturing" },
+  { icon: <Cloud size={18} />, name: "Technology" },
+  { icon: <Globe size={18} />, name: "Logistics" },
+];
+
+
+const SITE_URL = "https://www.scapedatasolutions.com";
+
+const homepageServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: SERVICES.map((svc, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: svc.title,
+      description: svc.desc,
+      provider: { "@id": `${SITE_URL}/#organization` },
+      areaServed: ["US", "CA", "PK", "KE", "GB"],
+    },
+  })),
+};
+
+const HOME_FAQS = [
+  { q: "How much does a data analytics engagement cost?", a: "Pricing depends on scope, but most engagements start with a fixed-price discovery phase before any ongoing retainer or project cost is agreed." },
+  { q: "How long does it take to build a BI dashboard?", a: "A first working dashboard typically ships in 2 to 4 weeks, with iteration continuing based on stakeholder feedback." },
+  { q: "Do you work with small businesses or only enterprises?", a: "We work with both. Engagement scope and delivery timeline scale to the size of the data problem, not the size of the company." },
+  { q: "What tools and platforms do you use?", a: "We work across Tableau, Power BI, Looker, Snowflake, Redshift, PostgreSQL, Apache Airflow, dbt, and cloud platforms including AWS, Azure, and GCP." },
+  { q: "Can you migrate our existing data infrastructure to the cloud?", a: "Yes, we handle cloud data migrations with a focus on zero downtime and improved scalability, typically completed alongside your existing operations." },
+];
+
+const homepageFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
+const stagger = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.06 } } };
+const VIEWPORT = { once: false, amount: 0.15 };
+
+export default function HomePage() {
+  const [testi, setTesti] = useState(0);
+  const [showTop, setShowTop] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const [expandedCase, setExpandedCase] = useState(null);
+  const [activeIndustry, setActiveIndustry] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [counters, setCounters] = useState({ clients: 0, projects: 0, satisfaction: 0, countries: 0 });
+  const [codeTab, setCodeTab] = useState("python");
+
+  const { text: typedHeadline, holding } = useTypewriter(ROTATING_WORDS);
+  const counterRef = useRef(null);
+  const isCounterInView = useInView(counterRef, { once: false, amount: 0.4 });
+
+  useEffect(() => {
+    const t = setInterval(() => setTesti((t) => (t + 1) % TESTIMONIALS.length), 6000);
+    return () => clearInterval(t);
+  }, []);
+  useEffect(() => {
+    const t = setInterval(() => setActiveIndustry((p) => (p + 1) % INDUSTRIES.length), 2600);
+    return () => clearInterval(t);
+  }, []);
+  useEffect(() => {
+    const h = () => setShowTop(window.scrollY > 500);
+    window.addEventListener("scroll", h);
+    return () => window.removeEventListener("scroll", h);
+  }, []);
+  useEffect(() => {
+    if (!isCounterInView) return;
+    const targets = { clients: 200, projects: 500, satisfaction: 99.5, countries: 60 };
+    let step = 0;
+    const steps = 80;
+    const iv = setInterval(() => {
+      step++;
+      const ease = 1 - Math.pow(1 - step / steps, 3);
+      setCounters({
+        clients: targets.clients * ease,
+        projects: targets.projects * ease,
+        satisfaction: targets.satisfaction * ease,
+        countries: targets.countries * ease,
+      });
+      if (step >= steps) clearInterval(iv);
+    }, 1800 / steps);
+    return () => clearInterval(iv);
+  }, [isCounterInView]);
+
+  const stars = (n = 5) => [...Array(n)].map((_, i) => <Star key={i} size={12} fill={ACCENT} color={ACCENT} />);
+  const change = (f, v) => setFormData((p) => ({ ...p, [f]: v }));
+
+  const validate = () => {
+    const e = {};
+    if (!formData.name.trim()) e.name = "Name is required";
+    if (!/\S+@\S+\.\S+/.test(formData.email)) e.email = "Valid email required";
+    if (!formData.message.trim()) e.message = "Message is required";
+    return e;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length) { setFormErrors(errs); return; }
+    setLoading(true);
+    setSubmitError(null);
+    try {
+      await submitLead({ name: formData.name, email: formData.email, message: formData.message, company: "", phone: "", service: "" });
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      setSubmitError(error.message || "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const CODE_SNIPPETS = {
+    python: `import pandas as pd
+from sqlalchemy import create_engine
+
+engine = create_engine("postgresql://user:pass@host/db")
+df = pd.read_sql("SELECT * FROM sales", engine)
+df["revenue"] = df["price"] * df["quantity"]
+df.to_sql("daily_revenue", engine, if_exists="replace")`,
+    sql: `SELECT
+  date_trunc('day', created_at) AS day,
+  SUM(price * quantity) AS revenue
+FROM sales
+GROUP BY 1
+ORDER BY 1 DESC
+LIMIT 30;`,
+    r: `library(dplyr)
+sales <- read.csv("sales.csv")
+sales %>%
+  mutate(revenue = price * quantity) %>%
+  group_by(day = as.Date(created_at)) %>%
+  summarise(total = sum(revenue))`,
+  };
+
+  return (
+    <div className={styles.page}>
+      <SEO
+        title="Data Analytics & BI Consulting | Scape Technologies"
+        description="Expert data analytics, SQL development, BI dashboards, ETL pipelines, and predictive modeling. We turn your data into revenue, faster decisions, and lower costs."
+        path="/"
+        image="/Images/site-images/homepage-dashboard-preview.webp"
+        schema={{ "@context": "https://schema.org", "@graph": [homepageServiceSchema, homepageFaqSchema] }}
+      />
+      <Navbar activeNav="home" />
+
+      <main>
+        {/* ═══ HERO ═══ */}
+        <section className={styles.hero}>
+          <div className={styles.container}>
+            <div className={styles.heroTop}>
+              <div className={styles.heroInner}>
+                <h1 className={styles.heroTitleRow}>
+                  <span className={styles.heroTitle}>Turn Data Into</span>
+                  <div className={styles.typeBox}>
+                    <span className={styles.heroTitle}>
+                      <span className={styles.typeText}>
+                        {typedHeadline}
+                        {!holding && <span className={styles.typeCaret}>|</span>}
+                      </span>
+                    </span>
+                  </div>
+                </h1>
+                <p className={styles.heroSub}>
+                  We help businesses use the data they already have to cut costs, find new revenue, and make decisions with real numbers behind them.
+                </p>
+                <span className={styles.visuallyHidden}>
+                  Turn Data Into Revenue Growth, Predictive Analytics, Real-Time Dashboards, Lower Costs, Faster Decisions.
+                </span>
+                <div className={styles.heroBtnRow}>
+                  <Link to="/contact" className={styles.btnPrimary}>
+                    Request a Consultation <ArrowRight size={16} />
+                  </Link>
+                  <Link to="/portfolio" className={styles.btnSecondary}>
+                    See Our Work
+                  </Link>
+                </div>
+                <p className={styles.heroNote}>No-obligation consultation. We reply within one business day.</p>
+                <div className={styles.trustRow}>
+                  {["GDPR", "HIPAA", "SOC 2", "ISO 27001"].map((b) => (
+                    <span key={b} className={styles.trustBadge}>{b}</span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Hero visual */}
+              <div className={styles.heroImageWrap}>
+                <HeroDashboardViz />
+              </div>
+            </div>
+
+            {/* ── What We Do: written intro + ordered breakdown, then the visual tiles ── */}
+            <motion.div
+              className={styles.whatWeDo}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEWPORT}
+              variants={fadeUp}
+            >
+              <div className={styles.whatWeDoIntro}>
+                <p className={styles.featureIntroLabel}>What We Do</p>
+                <h2 className={styles.featureIntroTitle}>What we build for our clients</h2>
+                <p className={styles.whatWeDoLead}>
+                  Most companies have data spread across spreadsheets, separate tools, and databases nobody fully trusts. We organize it and build the reports you need to run the business.
+                </p>
+              </div>
+
+              <div className={styles.whatWeDoCardsRow}>
+                {FEATURES.map((f) => (
+                  <Link key={f.key} to={f.link} className={styles.whatWeDoCard}>
+                    <span className={styles.whatWeDoCardIconRing}>
+                      <span className={styles.whatWeDoCardIcon}>{f.icon}</span>
+                    </span>
+                    <h3 className={styles.whatWeDoCardTitle}>{f.title}</h3>
+                    <p className={styles.whatWeDoCardDesc}>{f.desc}</p>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div className={styles.featureGrid} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={stagger}>
+              {FEATURES.map((f, i) => (
+                <motion.div key={i} variants={fadeUp}>
+                  <Link to={f.link} className={styles.featureCard}>
+                    <div className={styles.featureVisual}>
+                      {(() => { const Viz = FEATURE_VIZ[f.key]; return <Viz />; })()}
+                    </div>
+                    <div className={styles.featureCardIcon}>{f.icon}</div>
+                    <div className={styles.featureCardBody}>
+                      <span className={styles.featureCardTitle}>{f.title}</span>
+                      <span className={styles.featureCardCta}>Explore →</span>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ═══ PROOF STRIP ═══ */}
+        <section className={styles.proofStrip}>
+          <div className={styles.container}>
+            <div className={styles.proofGrid}>
+              <div><span className={styles.proofNum}>200+</span><span className={styles.proofLabel}>Clients served</span></div>
+              <div><span className={styles.proofNum}>500+</span><span className={styles.proofLabel}>Projects delivered</span></div>
+              <div><span className={styles.proofNum}>60+</span><span className={styles.proofLabel}>Countries</span></div>
+              <div><span className={styles.proofNum}>99.5%</span><span className={styles.proofLabel}>Client satisfaction</span></div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ HOW IT WORKS ═══ */}
+        <section className={styles.sec}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>How we get started</h2>
+              <p className={`${styles.secSubtitle} ${styles.secSubtitleCenter}`}>
+                Three steps from first conversation to working results.
+              </p>
+            </div>
+            <ol className={styles.stepsList}>
+              <li className={styles.stepItem}>
+                <span className={styles.stepNum}>01</span>
+                <h3 className={styles.stepTitle}>Tell us the problem</h3>
+                <p className={styles.stepDesc}>Book a consultation. We look at what data you have and tell you plainly whether we can help.</p>
+              </li>
+              <li className={styles.stepItem}>
+                <span className={styles.stepNum}>02</span>
+                <h3 className={styles.stepTitle}>Get a scoped plan</h3>
+                <p className={styles.stepDesc}>Scoping starts within one business day. You see the plan, timeline, and price before any work begins.</p>
+              </li>
+              <li className={styles.stepItem}>
+                <span className={styles.stepNum}>03</span>
+                <h3 className={styles.stepTitle}>See results fast</h3>
+                <p className={styles.stepDesc}>A first working dashboard typically ships in 2 to 4 weeks, then we refine it with your feedback.</p>
+              </li>
+            </ol>
+            <div className={styles.stepsCta}>
+              <Link to="/contact" className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></Link>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.projectCtaSection}>
+          <div className={styles.container}>
+            <div className={styles.projectCtaCard}>
+              <div className={styles.projectCtaText}>
+                <h2 className={styles.projectCtaTitle}>Have a project ready to go?</h2>
+                <p className={styles.projectCtaDesc}>Send us your project brief and our team will scope it within one business day, no sales call required.</p>
+              </div>
+              <div className={styles.projectCtaActions}>
+                <Link to="/contact" className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ DEV / CODE SECTION ═══ */}
+        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={styles.devGrid}>
+              <div className={styles.devTextBlock}>
+                <p className={styles.secLabel}>For data teams</p>
+                <h2 className={styles.secTitle}>From raw data<br />to working dashboard</h2>
+                <p className={styles.devDesc}>
+                  We handle the pipelines, the warehouse, and the dashboards, so your team works from one set of numbers.
+                </p>
+                <div className={styles.devActions}>
+                  <Link to="/contact" className={styles.btnPrimary}>Get Started</Link>
+                  <Link to="/services" className={styles.btnSecondary}>View Services</Link>
+                </div>
+                <div className={styles.devStats}>
+                  <div><p className={styles.devStatNum}>1M+</p><p className={styles.devStatLabel}>Data points processed daily</p></div>
+                  <div><p className={styles.devStatNum}>&lt;200ms</p><p className={styles.devStatLabel}>Average query latency</p></div>
+                  <div><p className={styles.devStatNum}>5+</p><p className={styles.devStatLabel}>Integration methods</p></div>
+                </div>
+              </div>
+
+              <div>
+                <div className={styles.codeWindow}>
+                  <div className={styles.codeHeader}>
+                    <span className={styles.codeDot} style={{ background: "#ff5f57" }} />
+                    <span className={styles.codeDot} style={{ background: "#febc2e" }} />
+                    <span className={styles.codeDot} style={{ background: "#28c840" }} />
+                    <button className={styles.codeCopy} onClick={() => navigator.clipboard.writeText(CODE_SNIPPETS[codeTab])}>Copy</button>
+                  </div>
+                  <div className={styles.codeBody}>
+                    <pre className={styles.codePre}><code>{CODE_SNIPPETS[codeTab]}</code></pre>
+                  </div>
+                  <div className={styles.codeTabs}>
+                    {Object.keys(CODE_SNIPPETS).map((k) => (
+                      <button key={k} className={`${styles.codeTab} ${codeTab === k ? styles.codeTabActive : ""}`} onClick={() => setCodeTab(k)}>
+                        {k === "python" ? "Python" : k === "sql" ? "SQL" : "R"}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ═══ STATS BAND ═══ */}
+        <motion.section className={styles.statsBand} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={styles.statsGrid} ref={counterRef}>
+              <div>
+                <span className={styles.statsNumber}>{Math.floor(counters.clients)}+</span>
+                <p className={styles.statsLabel}>Happy Clients</p>
+              </div>
+              <div>
+                <span className={styles.statsNumber}>{Math.floor(counters.projects)}+</span>
+                <p className={styles.statsLabel}>Projects Delivered</p>
+              </div>
+              <div>
+                <span className={styles.statsNumber}>{counters.satisfaction.toFixed(1)}%</span>
+                <p className={styles.statsLabel}>Satisfaction Rate</p>
+              </div>
+              <div>
+                <span className={styles.statsNumber}>{Math.floor(counters.countries)}+</span>
+                <p className={styles.statsLabel}>Countries Served</p>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ═══ SERVICES ═══ */}
+        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={`${styles.secHead}`} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Our Services</h2>
+              <p className={`${styles.secSubtitle} ${styles.secSubtitleCenter}`}>
+                We specialize in every layer of the data stack, from raw ingestion to executive dashboards.
+              </p>
+            </div>
+            <motion.ul className={styles.serviceList} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={stagger}>
+              {SERVICES.map((svc, i) => (
+                <motion.li key={i} className={styles.serviceItem} variants={fadeUp}>
+                  <span className={styles.serviceIcon} style={{ color: ACCENT }}>{svc.icon}</span>
+                  <div>
+                    <h3 className={styles.serviceTitle}>{svc.title}</h3>
+                    <p className={styles.serviceDesc}>{svc.desc}</p>
+                    <ul className={styles.serviceToolsList}>
+                      {svc.tools.map((tool, j) => <li key={j} className={styles.serviceToolItem}>{tool}</li>)}
+                    </ul>
+                  </div>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
+        </motion.section>
+
+        {/* ═══ CTA BAND 1 ═══ */}
+        <section className={styles.ctaBand}>
+          <div className={styles.container}>
+            <div className={styles.ctaBandInner}>
+              <h2 className={styles.ctaBandTitle}>Not sure where to start?</h2>
+              <p className={styles.ctaBandText}>Tell us what you are trying to figure out. We will tell you honestly whether your data can answer it.</p>
+              <div className={styles.ctaBandBtns}>
+                <Link to="/contact" className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></Link>
+                <Link to="/portfolio" className={styles.btnSecondary}>See Our Work</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ TECHNOLOGIES ═══ */}
+        <section className={styles.sec}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Technologies We Use</h2>
+            </div>
+          </div>
+          <div className={styles.techBlock}>
+            <div className={styles.marqueeRow}>
+              <div className={styles.marqueeTrack}>
+                {T1_DUP.map((t, i) => (
+                  <div key={i} className={styles.techChip}>
+                    <div className={styles.techChipIcon}><img src={t.icon} alt={t.name} /></div>
+                    <span className={styles.techChipName}>{t.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.marqueeRow}>
+              <div className={`${styles.marqueeTrack} ${styles.marqueeRev}`}>
+                {T2_DUP.map((t, i) => (
+                  <div key={i} className={styles.techChip}>
+                    <div className={styles.techChipIcon}><img src={t.icon} alt={t.name} /></div>
+                    <span className={styles.techChipName}>{t.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ INDUSTRIES ═══ */}
+        <motion.section className={styles.industriesSection} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Industries We Serve</h2>
+            </div>
+            <ul className={styles.industryList}>
+              {INDUSTRIES.map((ind, i) => (
+                <li
+                  key={i}
+                  className={`${styles.industryItem} ${activeIndustry === i ? styles.industryItemActive : ""}`}
+                  onClick={() => setActiveIndustry(i)}
+                >
+                  <span style={{ color: ACCENT }}>{ind.icon}</span>
+                  <span className={styles.industryName}>{ind.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.section>
+
+        {/* ═══ WHY CHOOSE US ═══ */}
+        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Why Choose Us</h2>
+            </div>
+            <dl className={styles.whyDefList}>
+              {WHY_CHOOSE.map((item, i) => (
+                <div key={i} className={styles.whyDefRow}>
+                  <dt className={styles.whyDefTerm}>
+                    <span style={{ color: ACCENT }}>{item.icon}</span>
+                    {item.title}
+                  </dt>
+                  <dd className={styles.whyDefDesc}>{item.desc}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </motion.section>
+
+        {/* ═══ CASE STUDIES ═══ */}
+        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Case Studies</h2>
+            </div>
+            <div className={styles.caseList}>
+              {CASE_STUDIES.map((s, i) => (
+                <div key={i} className={styles.caseItem} onClick={() => setExpandedCase(expandedCase === i ? null : i)}>
+                  <div className={styles.caseHeader}>
+                    <div>
+                      <span className={styles.caseTitle}>{s.title}</span>
+                      <span className={styles.caseClient}>, {s.client}</span>
+                    </div>
+                    <span className={styles.caseResult}>{s.result}</span>
+                    <ChevronDown size={16} style={{ transform: expandedCase === i ? "rotate(180deg)" : "none", transition: "transform .2s" }} />
+                  </div>
+                  <AnimatePresence>
+                    {expandedCase === i && (
+                      <motion.div className={styles.caseBody} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
+                        <p><strong>Challenge:</strong> {s.challenge}</p>
+                        <p><strong>Solution:</strong> {s.solution}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ═══ TESTIMONIALS ═══ */}
+        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>What Our Clients Say</h2>
+            </div>
+            <div className={styles.testiWrap}>
+              <AnimatePresence mode="wait">
+                <motion.div key={testi} className={styles.testiCard} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }}>
+                  <div className={styles.testiTop}>
+                    <img src={TESTIMONIALS[testi].img} alt={TESTIMONIALS[testi].name} className={styles.testiAv} />
+                    <div>
+                      <strong className={styles.testiName}>{TESTIMONIALS[testi].name}</strong>
+                      <p className={styles.testiRole}>{TESTIMONIALS[testi].role}, {TESTIMONIALS[testi].company}</p>
+                      <div className={styles.stars}>{stars(TESTIMONIALS[testi].rating)}</div>
+                    </div>
+                  </div>
+                  <p className={styles.testiQ}>{TESTIMONIALS[testi].quote}</p>
+                  <div className={styles.testiFooter}>
+                    <span style={{ fontSize: ".78rem", color: "var(--color-text-secondary)" }}>{testi + 1} / {TESTIMONIALS.length}</span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+              <div className={styles.testiNav}>
+                <button className={styles.testiBtn} onClick={() => setTesti((t) => (t - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}><ChevronLeft size={16} /></button>
+                <div className={styles.testiDots}>
+                  {TESTIMONIALS.map((_, i) => (
+                    <span key={i} className={`${styles.tDot} ${i === testi ? styles.tDotOn : ""}`} onClick={() => setTesti(i)} />
+                  ))}
+                </div>
+                <button className={styles.testiBtn} onClick={() => setTesti((t) => (t + 1) % TESTIMONIALS.length)}><ChevronRight size={16} /></button>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ═══ CTA BAND 2 ═══ */}
+        <section className={styles.ctaBand}>
+          <div className={styles.container}>
+            <div className={styles.ctaBandInner}>
+              <h2 className={styles.ctaBandTitle}>Ready to put your data to work?</h2>
+              <p className={styles.ctaBandText}>Book a consultation and we will come back with a scoped plan within one business day.</p>
+              <div className={styles.ctaBandBtns}>
+                <Link to="/contact" className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ GET STARTED ═══ */}
+        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Choose How To Get Started</h2>
+            </div>
+            <div className={styles.getStartedGrid}>
+              <div className={styles.getStartedCard}>
+                <h3 className={styles.getStartedCardTitle}>Build on your own</h3>
+                <p className={styles.getStartedCardDesc}>Access our full data stack with self-service tools.</p>
+                <hr className={styles.getStartedDivider} />
+                <ul className={styles.getStartedList}>
+                  <li>Connect to 100+ data sources</li>
+                  <li>Build dashboards without code</li>
+                  <li>Automated ETL pipelines</li>
+                  <li>Comprehensive documentation</li>
+                </ul>
+                <Link to="/contact" className={styles.btnPrimary} style={{ justifyContent: "center" }}>Request a Consultation</Link>
+              </div>
+              <div className={styles.getStartedCard}>
+                <h3 className={styles.getStartedCardTitle}>Get extra support</h3>
+                <p className={styles.getStartedCardDesc}>Custom solutions and hands-on help for your team.</p>
+                <hr className={styles.getStartedDivider} />
+                <ul className={styles.getStartedList}>
+                  <li>Dedicated data architect</li>
+                  <li>Custom schema design</li>
+                  <li>On-demand training</li>
+                  <li>24/7 monitoring and alerts</li>
+                </ul>
+                <Link to="/contact" className={styles.btnSecondary} style={{ justifyContent: "center" }}>Talk to Our Team</Link>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ═══ FAQ ═══ */}
+        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Frequently Asked Questions</h2>
+            </div>
+            <dl className={styles.whyDefList}>
+              {HOME_FAQS.map((f, i) => (
+                <div key={i} className={styles.whyDefRow}>
+                  <dt className={styles.whyDefTerm}>{f.q}</dt>
+                  <dd className={styles.whyDefDesc}>{f.a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </motion.section>
+
+        {/* ═══ CONTACT ═══ */}
+        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+          <div className={styles.container}>
+            <div className={styles.secHead} style={{ textAlign: "center" }}>
+              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Get In Touch</h2>
+              <p className={`${styles.secSubtitle} ${styles.secSubtitleCenter}`}>
+                Have a data challenge? Reach out and we'll get back to you within one business day.
+              </p>
+            </div>
+            {submitted ? (
+              <div className={styles.formOk}><CheckCircle size={20} /> Thank you, our data team will be in touch shortly.</div>
+            ) : (
+              <form className={styles.cForm} onSubmit={handleSubmit} noValidate>
+                {submitError && <div style={{ color: "#e74c3c", fontSize: 14 }}>{submitError}</div>}
+                <div className={styles.fGroup}>
+                  <label className={styles.fLabel}>Your Name *</label>
+                  <input type="text" value={formData.name} onChange={(e) => change("name", e.target.value)} />
+                  {formErrors.name && <span className={styles.fErr}>{formErrors.name}</span>}
+                </div>
+                <div className={styles.fGroup}>
+                  <label className={styles.fLabel}>Email Address *</label>
+                  <input type="email" value={formData.email} onChange={(e) => change("email", e.target.value)} />
+                  {formErrors.email && <span className={styles.fErr}>{formErrors.email}</span>}
+                </div>
+                <div className={styles.fGroup}>
+                  <label className={styles.fLabel}>Message *</label>
+                  <textarea rows={4} value={formData.message} onChange={(e) => change("message", e.target.value)} />
+                  {formErrors.message && <span className={styles.fErr}>{formErrors.message}</span>}
+                </div>
+                <button type="submit" className={styles.submitBtn} disabled={loading}>
+                  {loading ? <><Loader2 size={16} className={styles.spinner} /> Sending…</> : <><Send size={14} /> Send Message</>}
+                </button>
+                <p className={styles.privacy}>By submitting this form, you agree to our privacy policy.</p>
+              </form>
+            )}
+          </div>
+        </motion.section>
+      </main>
+
+      <Footer />
+
+      <AnimatePresence>
+        {showTop && (
+          <motion.button
+            className={styles.scrollTop}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+          >
+            <ChevronUp size={18} />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}

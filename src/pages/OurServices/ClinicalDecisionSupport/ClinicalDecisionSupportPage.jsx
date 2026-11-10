@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useMemo } from "react";
-import { Link } from "react-router-dom";
+
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import {
   ArrowRight,
@@ -48,6 +48,7 @@ import Navbar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import SEO from "../../../components/SEO/SEO";
 import styles from "./ClinicalDecisionSupportPage.module.css";
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 // ─── ROTATING WORDS ───
 const ROTATING_WORDS = [
@@ -829,9 +830,9 @@ export default function ClinicalDecisionSupportPage() {
                   throughout this page — not company-specific claims.
                 </p>
                 <div className={styles.heroBtnRow}>
-                  <Link to="/contact" className={styles.btnPrimary}>
+                  <a href={orderUrl({ medium: "page-cta", content: "clinicaldecisionsupport-1" })} className={styles.btnPrimary}>
                     Get Started <ArrowRight size={16} />
-                  </Link>
+                  </a>
                   <button
                     className={styles.btnSecondary}
                     onClick={() => document.getElementById("interactive")?.scrollIntoView({ behavior: "smooth" })}

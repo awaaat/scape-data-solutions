@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -28,6 +28,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./CustomerSegmentationProfilingPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -169,9 +170,9 @@ const CustomerSegmentationProfilingPage = () => {
             </motion.p>
             <motion.div className={styles.heroCta} variants={fadeUp}>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link to="/contact" className={styles.heroBtn}>
+                <a href={orderUrl({ medium: "page-cta", content: "customersegmentationprofiling-1" })} className={styles.heroBtn}>
                   Start Segmenting <ArrowRight size={16} />
-                </Link>
+                </a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a href="#how-it-works" className={styles.heroBtnSecondary}>
@@ -443,9 +444,9 @@ const CustomerSegmentationProfilingPage = () => {
               improves marketing efficiency, and builds lasting customer relationships.
             </p>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-              <Link to="/contact" className={styles.ctaBtn}>
+              <a href={orderUrl({ medium: "page-cta", content: "customersegmentationprofiling-2" })} className={styles.ctaBtn}>
                 Get Started <ArrowRight size={18} />
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
         </div>

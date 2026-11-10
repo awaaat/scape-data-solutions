@@ -1,7 +1,7 @@
 // src/pages/PortfolioCategoryPage.jsx (rename to PortfolioBIPage.jsx, etc.)
 import { useEffect, useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+
 import { motion, useInView } from 'framer-motion';
 import {
   ArrowRight,
@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import styles from '../PortfolioCategory/PortfolioCategoryPage.module.css';
 import homeStyles from '../Home/HomePage.module.css';
+import { orderUrl } from "../../components/OrderPush/orderLinks";
 
 // ─── Floating Orbs (same as above) ─────────────────────────────
 const FloatingOrbs = () => { /* ... copy from PortfolioPage */ };
@@ -138,9 +139,9 @@ const PortfolioCategoryPage = () => {
           variants={fadeUp}
         >
           <h2>Ready to Start?</h2>
-          <Link to="/contact" className={styles.ctaBtn}>
-            Let’s Talk <ArrowRight size={18} />
-          </Link>
+          <a href={orderUrl({ medium: "page-cta", content: "portfoliocategory-1" })} className={styles.ctaBtn}>
+            Place an Order <ArrowRight size={18} />
+          </a>
         </motion.section>
       </main>
 

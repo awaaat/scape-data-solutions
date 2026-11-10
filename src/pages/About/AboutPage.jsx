@@ -11,6 +11,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
 import styles from "./AboutPage.module.css";
+import { orderUrl } from "../../components/OrderPush/orderLinks";
 
 const ACCENT = "#3b82f6";
 
@@ -153,9 +154,9 @@ export default function AboutPage() {
                   the power of their data.
                 </p>
                 <div className={styles.heroButtons}>
-                  <Link to="/contact" className={styles.btnPrimary}>
-                    Get In Touch <ArrowRight size={16} />
-                  </Link>
+                  <a href={orderUrl({ medium: "page-cta", content: "about-1" })} className={styles.btnPrimary}>
+                    Place an Order <ArrowRight size={16} />
+                  </a>
                   <Link to="/services" className={styles.btnSecondary}>
                     Our Services
                   </Link>
@@ -397,9 +398,9 @@ export default function AboutPage() {
             <div className={styles.ctaBox}>
               <h2 className={styles.ctaTitle}>Ready to build something great together?</h2>
               <p className={styles.ctaDesc}>Partner with a team that's committed to your success.</p>
-              <Link to="/contact" className={styles.btnPrimary}>
+              <a href={orderUrl({ medium: "page-cta", content: "about-2" })} className={styles.btnPrimary}>
                 Start Your Journey <ArrowRight size={16} />
-              </Link>
+              </a>
             </div>
           </div>
         </motion.section>

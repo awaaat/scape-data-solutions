@@ -1,6 +1,6 @@
 // src/pages/Services/DataVisualization/DataVisualizationPage.jsx
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import {
@@ -26,6 +26,7 @@ import hStyles from "../../Home/HomePage.module.css";
 import { apiService } from "../../../services/api";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 /* ─── Data ──────────────────────────────────────────────────────────── */
 const DELIVERABLES = [
@@ -130,8 +131,8 @@ export default function DataVisualizationPagePage() {
             and more confident.
           </motion.p>
           <motion.div variants={fadeUp}>
-            <Link
-              to="/contact"
+            <a
+              href={orderUrl({ medium: "page-cta", content: "datavisualizationpage-1" })}
               onClick={() =>
                 apiService.trackInteraction("conversion", "data_visualization_hero_cta", {
                   cta: "data_visualization_hero",
@@ -146,7 +147,7 @@ export default function DataVisualizationPagePage() {
               >
                 Talk to Us <ArrowRight size={20} />
               </motion.span>
-            </Link>
+            </a>
           </motion.div>
         </div>
       </motion.section>
@@ -260,8 +261,8 @@ export default function DataVisualizationPagePage() {
             Let's build dashboards that get used, not ignored.
           </motion.p>
           <motion.div variants={fadeUp}>
-            <Link
-              to="/contact"
+            <a
+              href={orderUrl({ medium: "page-cta", content: "datavisualizationpage-2" })}
               onClick={() =>
                 apiService.trackInteraction("conversion", "data_visualization_cta_click", {
                   cta: "data_visualization_bottom",
@@ -276,7 +277,7 @@ export default function DataVisualizationPagePage() {
               >
                 Start Your Journey <ArrowRight size={20} />
               </motion.span>
-            </Link>
+            </a>
           </motion.div>
         </div>
       </motion.section>

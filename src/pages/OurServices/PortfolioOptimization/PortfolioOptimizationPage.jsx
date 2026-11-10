@@ -1,6 +1,6 @@
 // src/pages/Services/PortfolioOptimization/PortfolioOptimizationPage.jsx
 import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -28,6 +28,7 @@ import { apiService } from "../../../services/api";
 import styles from "./PortfolioOptimizationPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 // ─── YOUR IMAGES - Using public path ────────────────────────────
 const introImage = "/Images/site-images/AM-IntroImage-TI-1220x1220-1.webp";
@@ -596,9 +597,9 @@ const PortfolioOptimizationPage = () => {
           <ScrollReveal direction="up" delay={0.1}>
             <div className={styles.ctaContent}>
               <h2>Start Protecting Your Portfolio Today</h2>
-              <Link to="/contact" className={styles.ctaBtn}>
+              <a href={orderUrl({ medium: "page-cta", content: "portfoliooptimization-1" })} className={styles.ctaBtn}>
                 Get Started <ArrowRight size={16} />
-              </Link>
+              </a>
             </div>
           </ScrollReveal>
         </div>

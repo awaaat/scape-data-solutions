@@ -15,7 +15,7 @@
 //   }
 
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, CheckCircle, ChevronDown, Users, Sparkles } from "lucide-react";
 import Navbar from "../Navbar/Navbar";
@@ -24,6 +24,7 @@ import SEO from "../SEO/SEO";
 import { fadeUp, staggerContainer, VIEW_ONCE } from "../../utils/animations";
 import { buildServiceSchema } from "../../utils/serviceSchema";
 import styles from "./ServiceContentPage.module.css";
+import { orderUrl } from "../OrderPush/orderLinks";
 
 const Reveal = ({ children, className }) => {
   const ref = useRef(null);
@@ -155,9 +156,9 @@ const ServiceContentPage = ({
               ))}
             </motion.div>
             <motion.div variants={fadeUp}>
-              <Link to="/contact" className={styles.ctaButton}>
+              <a href={orderUrl({ medium: "page-cta", content: "servicetemplate-1" })} className={styles.ctaButton}>
                 Get Started <ArrowRight size={16} />
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
         </section>
@@ -261,9 +262,9 @@ const ServiceContentPage = ({
           <div className={styles.finalCtaInner}>
             <h2>Ready to talk about {name.toLowerCase()}?</h2>
             <p>Tell us about your data and what you're trying to achieve — we'll take it from there.</p>
-            <Link to="/contact" className={styles.ctaButton}>
-              Contact Us <ArrowRight size={16} />
-            </Link>
+            <a href={orderUrl({ medium: "page-cta", content: "servicetemplate-2" })} className={styles.ctaButton}>
+              Place an Order <ArrowRight size={16} />
+            </a>
           </div>
         </section>
       </main>

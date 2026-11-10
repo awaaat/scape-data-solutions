@@ -9,6 +9,7 @@ import SEO from "../../components/SEO/SEO";
 import { getArticleBySlug, getAllArticles } from "../../services/articles";
 import quartoArticlesIndex from "../../data/quartoArticlesIndex";
 import styles from "./ArticlePage.module.css";
+import { orderUrl } from "../../components/OrderPush/orderLinks";
 
 const SITE_URL = "https://www.scapedatasolutions.com";
 
@@ -525,9 +526,9 @@ const ArticlePage = () => {
             <div className={styles.inlineCta}>
               <h3>Want This Tracked Automatically?</h3>
               <p>We build the dashboard so you never have to pull this data by hand.</p>
-              <Link to="/contact" className={styles.inlineCtaBtn}>
+              <a href={orderUrl({ medium: "page-cta", content: "resources-1" })} className={styles.inlineCtaBtn}>
                 See the Solution <ArrowRight size={16} />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -557,7 +558,7 @@ const ArticlePage = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2>Want This Tracked Automatically?</h2>
           <p>We build the dashboard so you never have to pull this data by hand.</p>
-          <Link to="/contact" className={styles.ctaBtn}>Book a Free Demo <ArrowRight size={16} /></Link>
+          <a href={orderUrl({ medium: "page-cta", content: "resources-2" })} className={styles.ctaBtn}>Book a Free Demo <ArrowRight size={16} /></a>
         </motion.div>
       </section>
 

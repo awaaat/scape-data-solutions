@@ -8,6 +8,7 @@ import Footer from "../../../components/Footer/Footer";
 import SEO from "../../../components/SEO/SEO";
 import { apiService } from "../../../services/api";
 import styles from "./CarrierPerformanceAnalyticsPage.module.css";
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 // ============================================================
 //  INLINE SVG IMAGES
@@ -513,11 +514,11 @@ export default function CarrierPerformanceAnalyticsPage() {
                     viewport={viewport}
                     transition={{ duration: 0.7, delay: 0.25 }}
                   >
-                    <Link to="/contact" className={`${styles.button} w-inline-block`}>
+                    <a href={orderUrl({ medium: "page-cta", content: "carrierperformanceanalytics-1" })} className={`${styles.button} w-inline-block`}>
                       <div className={styles["button-text"]}>Request a Demo</div>
                       <div className={styles["button-border"]} />
                       <div className={styles["button-hover-bg"]} />
-                    </Link>
+                    </a>
                     <a href="#process" className={`${styles.button} ${styles["is-secondary"]} w-inline-block`}>
                       <div className={styles["button-text"]}>How It Works</div>
                       <div className={`${styles["button-hover-bg"]} ${styles["is-secondary"]}`} />
@@ -1358,11 +1359,11 @@ export default function CarrierPerformanceAnalyticsPage() {
                     viewport={viewport}
                     transition={{ duration: 0.6, delay: 0.2 }}
                   >
-                    <Link to="/contact" className={`${styles.button} w-inline-block`}>
+                    <a href={orderUrl({ medium: "page-cta", content: "carrierperformanceanalytics-2" })} className={`${styles.button} w-inline-block`}>
                       <div className={styles["button-text"]}>Get Free Scorecard Preview</div>
                       <div className={styles["button-border"]} />
                       <div className={styles["button-hover-bg"]} />
-                    </Link>
+                    </a>
                   </motion.div>
                 </div>
               </div>

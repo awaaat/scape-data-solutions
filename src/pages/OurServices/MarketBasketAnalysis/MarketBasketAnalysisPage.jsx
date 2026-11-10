@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from './MarketBasketAnalysisPage.module.css';
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
+import { orderUrl } from "../../../components/OrderPush/orderLinks";
 
 const MarketBasketAnalysisPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -251,7 +252,7 @@ const MarketBasketAnalysisPage = () => {
               </div>
 
               <div className={styles.heroActions}>
-                <a href="/contact" className={`${styles.button} ${styles.buttonPrimary}`}>
+                <a href={orderUrl({ medium: "page-cta", content: "marketbasketanalysis-a1" })} className={`${styles.button} ${styles.buttonPrimary}`}>
                   Get This Service
                   <svg viewBox="0 0 11 11" fill="none">
                     <path d="M6.36482 0.293945L10.9998 4.92895V5.40895L6.33482 10.0889L5.46482 8.70895L8.10482 6.02395H0.694824V4.32895H8.11982L5.47982 1.64395L6.36482 0.293945Z" fill="currentColor" />
@@ -393,7 +394,7 @@ const MarketBasketAnalysisPage = () => {
                           </li>
                         ))}
                       </ul>
-                      <a href="/contact" className={styles.featureLink}>
+                      <a href={orderUrl({ medium: "page-cta", content: "marketbasketanalysis-a2" })} className={styles.featureLink}>
                         Learn More
                         <svg viewBox="0 0 11 11" fill="none">
                           <path d="M6.36482 0.293945L10.9998 4.92895V5.40895L6.33482 10.0889L5.46482 8.70895L8.10482 6.02395H0.694824V4.32895H8.11982L5.47982 1.64395L6.36482 0.293945Z" fill="currentColor" />
@@ -453,7 +454,7 @@ const MarketBasketAnalysisPage = () => {
               <h2>Ready to unlock hidden revenue?</h2>
               <p>Let's analyze your customer baskets and find the cross‑sell opportunities that drive growth.</p>
               <div className={styles.ctaActions}>
-                <a href="/contact" className={`${styles.button} ${styles.buttonLight}`}>
+                <a href={orderUrl({ medium: "page-cta", content: "marketbasketanalysis-a3" })} className={`${styles.button} ${styles.buttonLight}`}>
                   Get This Service
                   <svg viewBox="0 0 11 11" fill="none">
                     <path d="M6.36482 0.293945L10.9998 4.92895V5.40895L6.33482 10.0889L5.46482 8.70895L8.10482 6.02395H0.694824V4.32895H8.11982L5.47982 1.64395L6.36482 0.293945Z" fill="currentColor" />

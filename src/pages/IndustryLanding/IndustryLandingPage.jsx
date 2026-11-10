@@ -29,6 +29,7 @@ import SEO from "../../components/SEO/SEO";
 import industryLandingPages from "../../data/industryLandingPages";
 import { getArticlesBySlugs } from "../../services/articles";
 import styles from "./IndustryLandingPage.module.css";
+import { orderUrl } from "../../components/OrderPush/orderLinks";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -125,9 +126,9 @@ const IndustryLandingPage = ({ dataKey }) => {
                 {data.heroSubtitle}
               </motion.p>
               <motion.div className={styles.heroBtnRow} variants={fadeUp}>
-                <Link to="/contact" className={styles.heroBtn}>
+                <a href={orderUrl({ medium: "page-cta", content: "industrylanding-1" })} className={styles.heroBtn}>
                   Book a Free Demo <ArrowRight size={17} />
-                </Link>
+                </a>
                 <Link to="/services" className={styles.heroBtnGhost}>
                   See All Services
                 </Link>
@@ -504,9 +505,9 @@ const IndustryLandingPage = ({ dataKey }) => {
             <div className={styles.ctaInner}>
               <h2 className={styles.ctaHeading}>{data.ctaHeading}</h2>
               <p className={styles.ctaSub}>{data.ctaSub}</p>
-              <Link to="/contact" className={styles.ctaBtn}>
+              <a href={orderUrl({ medium: "page-cta", content: "industrylanding-2" })} className={styles.ctaBtn}>
                 Book a Free Demo <ArrowRight size={16} />
-              </Link>
+              </a>
             </div>
           </div>
         </motion.section>

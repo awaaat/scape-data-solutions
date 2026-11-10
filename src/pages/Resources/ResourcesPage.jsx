@@ -8,6 +8,7 @@ import SEO from "../../components/SEO/SEO";
 import { getAllArticles } from "../../services/articles";
 import { quartoArticlesList } from "../../data/quartoArticlesIndex";
 import styles from "./ResourcesPage.module.css";
+import { orderUrl } from "../../components/OrderPush/orderLinks";
 
 // ─── Animation variants ────────────────────────────────────────────
 const staggerGrid = {
@@ -588,7 +589,7 @@ const ResourcesPage = () => {
           <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem" }}>
             <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Ready to stop researching and start doing?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "560px" }}>Submit your project through the client portal and our team will follow up with a scoped plan.</p>
-            <Link to="/contact" className={styles.ctaBtn}>Submit a Project <ArrowRight size={16} /></Link>
+            <a href={orderUrl({ medium: "page-cta", content: "resources-1" })} className={styles.ctaBtn}>Submit a Project <ArrowRight size={16} /></a>
           </div>
         </section>
 
@@ -717,9 +718,9 @@ const ResourcesPage = () => {
                 These guides explain the metrics. We build the dashboard that tracks them
                 automatically.
               </p>
-              <Link to="/contact" className={styles.ctaBtn}>
+              <a href={orderUrl({ medium: "page-cta", content: "resources-2" })} className={styles.ctaBtn}>
                 Talk to Us <ArrowRight size={16} />
-              </Link>
+              </a>
             </div>
           </div>
         </motion.section>
