@@ -936,3 +936,61 @@
   border-radius: 4px !important; white-space: nowrap;
 }
 .navCta::after { display: none !important; content: none !important; }
+
+/* ═══ DROPDOWN FIX v1 — hover menus on desktop, in both top and scrolled states ═══ */
+@media (min-width: 1024px) {
+  /* 1. Nothing in the header may clip an absolutely-positioned dropdown */
+  .navbarFixed,
+  .navbarInner,
+  .navList { overflow: visible !important; }
+  .navbarFixed { z-index: 1100; }
+
+  /* 2. Each menu item anchors its own dropdown */
+  .navList > .hasDrop { position: relative; }
+
+  /* 3. Hidden by default, revealed on hover / keyboard focus */
+  .hasDrop > .drop {
+    display: block !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none;
+    transform: translateY(6px);
+    transition: opacity .16s ease, transform .16s ease, visibility 0s linear .16s;
+    z-index: 1200;
+  }
+  .hasDrop > .dropRight { left: auto !important; right: 0 !important; }
+  .hasDrop:hover > .drop,
+  .hasDrop:focus-within > .drop {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto;
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  /* 4. Invisible bridge so the menu doesn't vanish while the mouse crosses the gap */
+  .hasDrop > .drop::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: -14px; height: 14px;
+  }
+
+  /* 5. Low-priority look: only applies if your existing styles don't already set these */
+  :where(.drop) {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 12px 32px rgba(10, 15, 60, .18);
+    padding: 10px;
+  }
+  :where(.dropWide) { min-width: 480px; }
+  :where(.dropGrid)  { display: grid; grid-template-columns: repeat(2, minmax(220px, 1fr)); gap: 2px 14px; }
+  :where(.dropGrid1) { display: grid; min-width: 220px; }
+  :where(.dropLink) {
+    display: block; padding: 8px 12px; border-radius: 6px;
+    color: #1a2250; font-size: 14px; white-space: nowrap; text-decoration: none;
+  }
+  :where(.dropLink:hover) { background: #eef2ff; }
+}
