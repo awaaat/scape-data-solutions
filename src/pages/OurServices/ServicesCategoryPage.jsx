@@ -7,7 +7,7 @@ import PageLayout from '../../components/Layout/PageLayout';
 import { SERVICE_CARDS, categories } from '../../data/servicesData';
 import styles from './ServicesPage.module.css';
 import homeStyles from '../Home/HomePage.module.css';
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 const LABELS = {
   academic: 'Academic & Research',
@@ -60,9 +60,7 @@ export default function ServicesCategoryPage() {
               Explore our {label} services: expert analytics and AI solutions built around your goals.
             </p>
             <div className={styles.heroCta}>
-              <a href={orderUrl({ medium: "page-cta", content: "ourservices-1" })} className={styles.heroBtn}>
-                Get Started <ArrowRight size={16} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "ourservices-1" })} className={styles.heroBtn}>{orderLabel()} <ArrowRight size={16} /></a>
               <Link to="/services" className={styles.heroBtnSecondary}>
                 All Services
               </Link>

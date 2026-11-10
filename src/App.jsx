@@ -14,6 +14,7 @@ import { apiService } from './services/api';
 import HomePage from './pages/Home/HomePage';
 const AboutPage = lazy(() => import('./pages/About/AboutPage'));
 const ContactPage = lazy(() => import('./pages/Contact/ContactPage'));
+const OrderPage = lazy(() => import('./pages/Order/OrderPage'));
 const ServicesPage = lazy(() => import('./pages/OurServices/ServicesPage'));
 const ServicesCategoryPage = lazy(() => import('./pages/OurServices/ServicesCategoryPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFound/NotFoundPage'));
@@ -271,6 +272,7 @@ const AppContent = () => {
                             <Route path="/services/category/:categoryId" element={<ServicesCategoryPage />} />
                             <Route path="/about" element={<AboutPage />} />
                             <Route path="/contact" element={<ContactPage />} />
+                            <Route path="/order" element={<OrderPage />} />
 
                             <Route path="/business-intel/login" element={<BusinessIntelLoginPage />} />
                             <Route path="/business-intel/signup" element={<BusinessIntelSignupPage />} />

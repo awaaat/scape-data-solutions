@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import styles from '../PortfolioCategory/PortfolioCategoryPage.module.css';
 import homeStyles from '../Home/HomePage.module.css';
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 // ─── Floating Orbs (same as above) ─────────────────────────────
 const FloatingOrbs = () => { /* ... copy from PortfolioPage */ };
@@ -139,9 +139,7 @@ const PortfolioCategoryPage = () => {
           variants={fadeUp}
         >
           <h2>Ready to Start?</h2>
-          <a href={orderUrl({ medium: "page-cta", content: "portfoliocategory-1" })} className={styles.ctaBtn}>
-            Place an Order <ArrowRight size={18} />
-          </a>
+          <a href={orderUrl({ medium: "page-cta", content: "portfoliocategory-1" })} className={styles.ctaBtn}>{orderLabel()} <ArrowRight size={18} /></a>
         </motion.section>
       </main>
 

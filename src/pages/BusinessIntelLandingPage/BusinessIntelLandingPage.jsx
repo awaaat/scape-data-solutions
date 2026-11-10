@@ -26,7 +26,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
 import styles from "./BusinessIntelLandingPage.module.css";
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -141,9 +141,7 @@ export default function BusinessIntelLandingPage() {
               to open a branch is backed by data, not a gut feeling.
             </p>
             <div className={styles.heroActions}>
-              <a href={orderUrl({ medium: "page-cta", content: "businessintellandingpage-1" })} className={styles.primaryBtn}>
-                Place an Order <ArrowRight size={16} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "businessintellandingpage-1" })} className={styles.primaryBtn}>{orderLabel()} <ArrowRight size={16} /></a>
               <a href="mailto:info@scapedatasolutions.com" className={styles.secondaryBtn}>
                 <Mail size={15} /> info@scapedatasolutions.com
               </a>
@@ -333,9 +331,7 @@ export default function BusinessIntelLandingPage() {
         >
           <h2>Curious what a report would look like for your next location?</h2>
           <p>Get in touch and we'll walk you through it.</p>
-          <a href={orderUrl({ medium: "page-cta", content: "businessintellandingpage-2" })} className={styles.ctaBtn}>
-            Place an Order <ArrowRight size={16} />
-          </a>
+          <a href={orderUrl({ medium: "page-cta", content: "businessintellandingpage-2" })} className={styles.ctaBtn}>{orderLabel()} <ArrowRight size={16} /></a>
         </motion.section>
       </main>
 

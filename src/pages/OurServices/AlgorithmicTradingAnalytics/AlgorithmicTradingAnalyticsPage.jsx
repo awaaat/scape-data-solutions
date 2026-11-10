@@ -41,7 +41,7 @@ import styles from "./AlgorithmicTradingAnalyticsPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
 import { apiService } from '../../../services/api';
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ─── SCROLL‑REVEAL WRAPPER ──────────────────────────────────────
 const ScrollSection = ({ children, delay = 0, className = "" }) => {
@@ -221,9 +221,7 @@ const AlgorithmicTradingAnalyticsPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
                 >
-                  <a href={orderUrl({ medium: "page-cta", content: "algorithmictradinganalytics-1" })} className={styles.heroBtn}>
-                    Talk to Us <ArrowRight size={14} />
-                  </a>
+                  <a href={orderUrl({ medium: "page-cta", content: "algorithmictradinganalytics-1" })} className={styles.heroBtn}>{orderLabel()} <ArrowRight size={14} /></a>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}

@@ -11,7 +11,7 @@ import styles from "./ExcelDecisionModelingPage.module.css";
 import SEO from "../../../components/SEO/SEO";
 import { buildServiceSchema } from "../../../utils/serviceSchema";
 import { HeroSpreadsheet, ScenarioLab, MonteCarloViz, SolverPanel, FEATURE_VIZ } from "./ExcelVisuals";
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -89,7 +89,7 @@ const ExcelDecisionModelingPage = () => (
             that give you clarity, confidence, and control over your business choices.
           </motion.p>
           <motion.div className={styles.heroCta} variants={fadeUp}>
-            <a href={orderUrl({ medium: "page-cta", content: "exceldecisionmodeling-1" })} className={styles.heroBtn}>Build Your Model <ArrowRight size={16} /></a>
+            <a href={orderUrl({ medium: "page-cta", content: "exceldecisionmodeling-1" })} className={styles.heroBtn}>{orderLabel()} <ArrowRight size={16} /></a>
             <a href="#features" className={styles.heroBtnSecondary}>See Features <Calculator size={15} /></a>
           </motion.div>
           <motion.div className={styles.heroStats} variants={fadeUp}>
@@ -224,7 +224,7 @@ const ExcelDecisionModelingPage = () => (
             Let's build a model that gives you clarity, confidence, and control. Whether you need
             a financial forecast, an optimizer, or a full decision support system, we can help.
           </p>
-          <a href={orderUrl({ medium: "page-cta", content: "exceldecisionmodeling-2" })} className={styles.ctaBtn}>Start Your Project <ArrowRight size={18} /></a>
+          <a href={orderUrl({ medium: "page-cta", content: "exceldecisionmodeling-2" })} className={styles.ctaBtn}>{orderLabel()} <ArrowRight size={18} /></a>
         </motion.div>
       </div>
     </section>

@@ -29,7 +29,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./SalesForecastingDemandPlanningPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ─── Images ──────────────────────────────────────────────────────
 const forecast1 = "/Images/site-images/forecast-1.png";
@@ -234,9 +234,7 @@ const SalesForecastingDemandPlanningPage = () => {
 
             <motion.div className={styles.heroCta} variants={fadeUp}>
               <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.95 }}>
-                <a href={orderUrl({ medium: "page-cta", content: "salesforecastingdemandplanning-1" })} className={styles.heroBtn}>
-                  Start Forecasting <ArrowRight size={16} />
-                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "salesforecastingdemandplanning-1" })} className={styles.heroBtn}>{orderLabel()} <ArrowRight size={16} /></a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.95 }}>
                 <a href="#how-it-works" className={styles.heroBtnSecondary}>
@@ -723,9 +721,7 @@ const SalesForecastingDemandPlanningPage = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <a href={orderUrl({ medium: "page-cta", content: "salesforecastingdemandplanning-2" })} className={styles.ctaBtn}>
-                  Get Started <ArrowRight size={18} />
-                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "salesforecastingdemandplanning-2" })} className={styles.ctaBtn}>{orderLabel()} <ArrowRight size={18} /></a>
               </motion.div>
             </motion.div>
 

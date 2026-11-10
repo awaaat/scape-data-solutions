@@ -14,7 +14,7 @@ import Footer from "../../../components/Footer/Footer";
 import SEO from "../../../components/SEO/SEO";
 import { fadeUp, staggerContainer, VIEW_ONCE } from "../../../utils/animations";
 import styles from "./ResearchDataAnalysisPage.module.css";
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ─── Regression scatter+line animated break (specific to this page) ──
 const RegressionBreak = () => (
@@ -119,9 +119,7 @@ const ResearchDataAnalysisPage = () => {
               </div>
             </motion.div>
             <motion.div variants={fadeUp}>
-              <a href={orderUrl({ medium: "page-cta", content: "researchdataanalysis-1" })} className={styles.ctaButton}>
-                Get Started <ArrowRight size={16} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "researchdataanalysis-1" })} className={styles.ctaButton}>{orderLabel()} <ArrowRight size={16} /></a>
             </motion.div>
           </motion.div>
         </section>
@@ -284,9 +282,7 @@ const ResearchDataAnalysisPage = () => {
             <motion.h2 variants={fadeUp}>Have data sitting on your laptop?</motion.h2>
             <motion.p variants={fadeUp}>Send it over and we'll tell you exactly which tests it needs.</motion.p>
             <motion.div variants={fadeUp}>
-              <a href={orderUrl({ medium: "page-cta", content: "researchdataanalysis-2" })} className={styles.ctaButton}>
-                Talk To Us <ArrowRight size={16} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "researchdataanalysis-2" })} className={styles.ctaButton}>{orderLabel()} <ArrowRight size={16} /></a>
             </motion.div>
           </motion.div>
         </section>

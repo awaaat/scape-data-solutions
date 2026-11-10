@@ -17,7 +17,7 @@ import {
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import styles from './PortfolioAIPage.module.css';
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 // ─── 12 PROJECTS ───
 const projects = [
@@ -442,9 +442,7 @@ const PortfolioAIPage = () => {
             {/* CTAs */}
             <motion.div className={styles.heroCtas} variants={stagger}>
               <motion.div variants={scaleUp}>
-                <a href={orderUrl({ medium: "page-cta", content: "portfolioai-1" })} className={styles.ctaPrimary}>
-                  Talk to Our AI Experts <ArrowRight size={18} />
-                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "portfolioai-1" })} className={styles.ctaPrimary}>{orderLabel()} <ArrowRight size={18} /></a>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -492,9 +490,7 @@ const PortfolioAIPage = () => {
                 </motion.p>
                 <motion.div className={styles.approachCtas} variants={stagger}>
                   <motion.div variants={scaleUp}>
-                    <a href={orderUrl({ medium: "page-cta", content: "portfolioai-2" })} className={styles.approachCtaPrimary}>
-                      Get a Free Consultation
-                    </a>
+                    <a href={orderUrl({ medium: "page-cta", content: "portfolioai-2" })} className={styles.approachCtaPrimary}>{orderLabel()}</a>
                   </motion.div>
                   <motion.div variants={scaleUp}>
                     <Link to="/portfolio" className={styles.approachCtaSecondary}>
@@ -757,9 +753,7 @@ const PortfolioAIPage = () => {
               Let's discuss how we can build a custom AI solution for you.
             </motion.p>
             <motion.div className={styles.finalCtaButton} variants={scaleUp}>
-              <a href={orderUrl({ medium: "page-cta", content: "portfolioai-3" })} className={styles.ctaPrimary}>
-                Start a Project <ArrowRight size={18} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "portfolioai-3" })} className={styles.ctaPrimary}>{orderLabel()} <ArrowRight size={18} /></a>
             </motion.div>
           </motion.div>
         </motion.section>

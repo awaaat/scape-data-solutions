@@ -14,7 +14,7 @@ import styles from "../Home/HomePage.module.css";
 import { submitLead } from "../../services/api";
 import SEO from "../../components/SEO/SEO";
 import op from "../../components/OrderPush/OrderPush.module.css";
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 import { OrderDesk, SituationGrid } from "../../components/OrderPush/HomeOrder";
 
 const ACCENT = "#204ecf";
@@ -546,9 +546,7 @@ sales %>%
                   <a href={orderUrl({ medium: "home-hero" })} className={op.orderBtn}>
                     Place an Order <ArrowRight size={16} />
                   </a>
-                  <a href={orderUrl({ medium: "page-cta", content: "home-1" })} className={styles.btnSecondary}>
-                    Request a Consultation <ArrowRight size={16} />
-                  </a>
+                  <a href={orderUrl({ medium: "page-cta", content: "home-1" })} className={styles.btnSecondary}>{orderLabel()} <ArrowRight size={16} /></a>
                   <Link to="/portfolio" className={styles.btnSecondary}>
                     See Our Work
                   </Link>
@@ -656,7 +654,7 @@ sales %>%
               </li>
             </ol>
             <div className={styles.stepsCta}>
-              <a href={orderUrl({ medium: "page-cta", content: "home-2" })} className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></a>
+              <a href={orderUrl({ medium: "page-cta", content: "home-2" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
             </div>
           </div>
         </section>
@@ -671,7 +669,7 @@ sales %>%
                 <p className={styles.projectCtaDesc}>Send us your project brief and our team will scope it within one business day, no sales call required.</p>
               </div>
               <div className={styles.projectCtaActions}>
-                <a href={orderUrl({ medium: "page-cta", content: "home-3" })} className={styles.btnPrimary}>Submit a Project <ArrowRight size={16} /></a>
+                <a href={orderUrl({ medium: "page-cta", content: "home-3" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
               </div>
             </div>
           </div>
@@ -688,7 +686,7 @@ sales %>%
                   We handle the pipelines, the warehouse, and the dashboards, so your team works from one set of numbers.
                 </p>
                 <div className={styles.devActions}>
-                  <a href={orderUrl({ medium: "page-cta", content: "home-4" })} className={styles.btnPrimary}>Get Started</a>
+                  <a href={orderUrl({ medium: "page-cta", content: "home-4" })} className={styles.btnPrimary}>{orderLabel()}</a>
                   <Link to="/services" className={styles.btnSecondary}>View Services</Link>
                 </div>
                 <div className={styles.devStats}>
@@ -780,7 +778,7 @@ sales %>%
               <p className={styles.ctaBandText}>Tell us what you are trying to figure out. We will tell you honestly whether your data can answer it.</p>
               <div className={styles.ctaBandBtns}>
                 <a href={orderUrl({ medium: "home-cta-band" })} className={op.orderBtn}>Place an Order <ArrowRight size={16} /></a>
-                <a href={orderUrl({ medium: "page-cta", content: "home-5" })} className={styles.btnSecondary}>Request a Consultation</a>
+                <a href={orderUrl({ medium: "page-cta", content: "home-5" })} className={styles.btnSecondary}>{orderLabel()}</a>
               </div>
             </div>
           </div>
@@ -932,7 +930,7 @@ sales %>%
               <h2 className={styles.ctaBandTitle}>Ready to put your data to work?</h2>
               <p className={styles.ctaBandText}>Book a consultation and we will come back with a scoped plan within one business day.</p>
               <div className={styles.ctaBandBtns}>
-                <a href={orderUrl({ medium: "page-cta", content: "home-6" })} className={styles.btnPrimary}>Request a Consultation <ArrowRight size={16} /></a>
+                <a href={orderUrl({ medium: "page-cta", content: "home-6" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
               </div>
             </div>
           </div>
@@ -955,7 +953,7 @@ sales %>%
                   <li>Automated ETL pipelines</li>
                   <li>Comprehensive documentation</li>
                 </ul>
-                <a href={orderUrl({ medium: "page-cta", content: "home-7" })} className={styles.btnPrimary} style={{ justifyContent: "center" }}>Request a Consultation</a>
+                <a href={orderUrl({ medium: "page-cta", content: "home-7" })} className={styles.btnPrimary} style={{ justifyContent: "center" }}>{orderLabel()}</a>
               </div>
               <div className={styles.getStartedCard}>
                 <h3 className={styles.getStartedCardTitle}>Get extra support</h3>
@@ -967,7 +965,7 @@ sales %>%
                   <li>On-demand training</li>
                   <li>24/7 monitoring and alerts</li>
                 </ul>
-                <a href={orderUrl({ medium: "page-cta", content: "home-8" })} className={styles.btnSecondary} style={{ justifyContent: "center" }}>Talk to Our Team</a>
+                <a href={orderUrl({ medium: "page-cta", content: "home-8" })} className={styles.btnSecondary} style={{ justifyContent: "center" }}>{orderLabel()}</a>
               </div>
             </div>
           </div>

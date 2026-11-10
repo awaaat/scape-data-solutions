@@ -27,7 +27,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./RegulatoryComplianceAnalyticsPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ─── ANIMATED COUNTER (no box, just a number that counts up in view) ──
 const AnimatedNumber = ({ value, suffix = "", prefix = "", decimals = 0, duration = 1.4 }) => {
@@ -700,11 +700,7 @@ const RegulatoryComplianceAnalyticsPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.65 }}
             >
-              <a href={orderUrl({ medium: "page-cta", content: "regulatorycomplianceanalytics-1" })} className={styles.primaryBtn}>
-                <ShieldCheck size={18} />
-                Start Compliance Review
-                <ArrowRight size={16} className={styles.btnArrow} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "regulatorycomplianceanalytics-1" })} className={styles.primaryBtn}>{orderLabel()} <ShieldCheck size={18} /> <ArrowRight size={16} className={styles.btnArrow} /></a>
               <a href="#frameworks" className={styles.secondaryBtn}>
                 <BookOpen size={18} />
                 Learn More
@@ -905,11 +901,7 @@ const RegulatoryComplianceAnalyticsPage = () => {
               Join leading organizations using Scape to automate regulatory compliance, reduce risk, and build trust
               with regulators and stakeholders.
             </p>
-            <a href={orderUrl({ medium: "page-cta", content: "regulatorycomplianceanalytics-2" })} className={styles.ctaBtn}>
-              <ShieldCheck size={18} />
-              Start Compliance Review
-              <ArrowRight size={16} className={styles.btnArrow} />
-            </a>
+            <a href={orderUrl({ medium: "page-cta", content: "regulatorycomplianceanalytics-2" })} className={styles.ctaBtn}>{orderLabel()} <ShieldCheck size={18} /> <ArrowRight size={16} className={styles.btnArrow} /></a>
             <div className={styles.ctaTrust}>
               <span>
                 <Lock size={14} /> Enterprise Security

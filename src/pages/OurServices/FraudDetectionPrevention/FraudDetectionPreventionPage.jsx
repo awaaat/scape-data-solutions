@@ -41,7 +41,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./FraudDetectionPreventionPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ─── Custom Hook for Scroll Animations ──────────────────────────
 const useScrollAnimation = () => {
@@ -209,11 +209,7 @@ const FraudDetectionPreventionPage = () => {
               }}
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-1" })} className={styles.heroBtn}>
-                  <ShieldCheck size={18} />
-                  Start Protecting Now
-                  <ArrowRight size={16} className={styles.btnArrow} />
-                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-1" })} className={styles.heroBtn}>{orderLabel()} <ShieldCheck size={18} /> <ArrowRight size={16} className={styles.btnArrow} /></a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a href="#how-it-works" className={styles.heroBtnSecondary}>
@@ -701,17 +697,10 @@ const FraudDetectionPreventionPage = () => {
             </p>
             <div className={styles.ctaButtons}>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-2" })} className={styles.ctaBtn}>
-                  <ShieldCheck size={18} />
-                  Start Your Security Assessment
-                  <ArrowRight size={18} className={styles.btnArrow} />
-                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-2" })} className={styles.ctaBtn}>{orderLabel()} <ShieldCheck size={18} /> <ArrowRight size={18} className={styles.btnArrow} /></a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-3" })} className={styles.ctaBtnSecondary}>
-                  <Play size={18} />
-                  Watch Demo
-                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "frauddetectionprevention-3" })} className={styles.ctaBtnSecondary}>{orderLabel()} <Play size={18} /></a>
               </motion.div>
             </div>
             <div className={styles.ctaTrust}>

@@ -26,7 +26,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./FinancialStatementAnalysisPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ─── YOUR IMAGES - Using public path ────────────────────────────
 const heroImage = "/Images/site-images/finacial-5.png";
@@ -96,9 +96,7 @@ const FinancialStatementAnalysisPage = () => {
               </motion.p>
               <motion.div className={styles.heroCta} variants={fadeUp}>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <a href={orderUrl({ medium: "page-cta", content: "financialstatementanalysis-1" })} className={styles.heroBtn}>
-                    Analyze Your Statements <ArrowRight size={16} />
-                  </a>
+                  <a href={orderUrl({ medium: "page-cta", content: "financialstatementanalysis-1" })} className={styles.heroBtn}>{orderLabel()} <ArrowRight size={16} /></a>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <a href="#how-it-works" className={styles.heroBtnSecondary}>
@@ -465,9 +463,7 @@ const FinancialStatementAnalysisPage = () => {
               indicators — so you can move forward with clarity and confidence.
             </p>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-              <a href={orderUrl({ medium: "page-cta", content: "financialstatementanalysis-2" })} className={styles.ctaBtn}>
-                Get Started <ArrowRight size={18} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "financialstatementanalysis-2" })} className={styles.ctaBtn}>{orderLabel()} <ArrowRight size={18} /></a>
             </motion.div>
           </motion.div>
         </div>

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import styles from "./FAQPage.module.css";
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 // ─── FAQ data ──────────────────────────────────────────────────────
 const FAQS = [
@@ -103,7 +103,7 @@ export default function FAQPage() {
             <h2>Prefer to just get started?</h2>
             <p>If you already know what you need, skip the questions and submit your project directly through the client portal.</p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={orderUrl({ medium: "page-cta", content: "faq-1" })} className={styles.ctaBtn}>Submit a Project <ArrowRight size={16} /></a>
+              <a href={orderUrl({ medium: "page-cta", content: "faq-1" })} className={styles.ctaBtn}>{orderLabel()} <ArrowRight size={16} /></a>
             </div>
           </div>
         </section>
@@ -182,9 +182,7 @@ export default function FAQPage() {
                 Our data scientists and engineers are happy to discuss your specific problem —
                 no sales pitch, just honest advice.
               </p>
-              <a href={orderUrl({ medium: "page-cta", content: "faq-2" })} className={styles.ctaBtn}>
-                Talk To Our Team <ArrowRight size={16} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "faq-2" })} className={styles.ctaBtn}>{orderLabel()} <ArrowRight size={16} /></a>
             </motion.div>
           </div>
         </section>

@@ -6,7 +6,7 @@ import Navbar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import SEO from "../../../components/SEO/SEO";
 import styles from "./BigDataAssignmentHelpPage.module.css";
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // Shared color language across all diagrams — each role in a data
 // pipeline gets one consistent color everywhere it appears, so the
@@ -357,9 +357,7 @@ export default function BigDataAssignmentHelp() {
           <p className={styles.sub}>
             Plagiarism-free code. Affordable pricing. Experienced experts. Any deadline, any subject.
           </p>
-          <a href={orderUrl({ medium: "page-cta", content: "bigdataassignmenthelp-1" })} className={styles.ctaButton}>
-            Get A Price Quote
-          </a>
+          <a href={orderUrl({ medium: "page-cta", content: "bigdataassignmenthelp-1" })} className={styles.ctaButton}>{orderLabel()}</a>
           <div className={styles.heroViz}>
             <HeroDataFlowViz />
           </div>

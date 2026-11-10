@@ -48,7 +48,7 @@ import Navbar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import SEO from "../../../components/SEO/SEO";
 import styles from "./ClinicalDecisionSupportPage.module.css";
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ─── ROTATING WORDS ───
 const ROTATING_WORDS = [
@@ -830,9 +830,7 @@ export default function ClinicalDecisionSupportPage() {
                   throughout this page — not company-specific claims.
                 </p>
                 <div className={styles.heroBtnRow}>
-                  <a href={orderUrl({ medium: "page-cta", content: "clinicaldecisionsupport-1" })} className={styles.btnPrimary}>
-                    Get Started <ArrowRight size={16} />
-                  </a>
+                  <a href={orderUrl({ medium: "page-cta", content: "clinicaldecisionsupport-1" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
                   <button
                     className={styles.btnSecondary}
                     onClick={() => document.getElementById("interactive")?.scrollIntoView({ behavior: "smooth" })}

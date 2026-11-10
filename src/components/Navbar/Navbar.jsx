@@ -1,14 +1,13 @@
-// src/components/Navbar/Navbar.jsx
+// src/components/Navbar/Navbar.jsx - Toptal-style header: one clean white bar, mega-menu for Services,
+// a single blue order button that names the service on the page you are on.
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Mail } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import styles from "./Navbar.module.css";
 import useUniformNavGap from "./useUniformNavGap";
-import op from "../OrderPush/OrderPush.module.css";
-import { orderUrl } from "../OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../OrderPush/orderLinks";
 
-// Navigation data
 export const NAV_COMPANY = [
   { label: "Company", href: "/company" },
   { label: "Why Us?", href: "/why-us" },
@@ -69,304 +68,133 @@ export const NAV_RESOURCES_STUDENTS = [
 
 export const NAV_RESOURCES = NAV_RESOURCES_INDUSTRY;
 
-// Inline social icons (no external icon-package dependency)
-const FacebookIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M22 12.07C22 6.5 17.52 2 12 2S2 6.5 2 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.75 8.44-4.91 8.44-9.93z" />
-  </svg>
-);
-
-const LinkedinIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />
-  </svg>
-);
+function Drop({ title, to, items, wide, right, promo, active }) {
+  return (
+    <li className={styles.hasDrop}>
+      <Link to={to} className={`${styles.navLink}${active ? " " + styles.navActive : ""}`}>
+        {title} <ChevronDown size={14} />
+      </Link>
+      <div className={`${styles.drop}${wide ? " " + styles.dropWide : ""}${right ? " " + styles.dropRight : ""}`}>
+        <div className={styles.dropInner}>
+          <div className={`${styles.dropGrid}${wide ? " " + styles.dropGrid2 : ""}`}>
+            {items.map((x) => <Link key={x.href} to={x.href} className={styles.dropLink}>{x.label}</Link>)}
+          </div>
+          {promo && (
+            <div className={styles.promo}>
+              <p className={styles.promoKicker}>Ready when you are</p>
+              <p className={styles.promoTitle}>Know what you need?</p>
+              <p className={styles.promoText}>Pick a service, tell us the brief, get a fixed quote in 24 hours.</p>
+              <a className={styles.promoBtn} href={orderUrl({ service: null, medium: "nav-mega" })}>Place an order <ArrowRight size={15} /></a>
+            </div>
+          )}
+        </div>
+      </div>
+    </li>
+  );
+}
 
 export default function Navbar({ activeNav = "" }) {
   const location = useLocation();
   useUniformNavGap(location.pathname);
   const [navOpen, setNavOpen] = useState(false);
-  const [compOpen, setCompOpen] = useState(false);
-  const [servOpen, setServOpen] = useState(false);
-  const [portOpen, setPortOpen] = useState(false);
-  const [resOpen, setResOpen] = useState(false);
-
+  const [open, setOpen] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
-
-  // Measure the ACTUAL rendered height of the top bar + header (desktop)
-  // and the mobile header, so the spacer below always matches reality --
-  // no more hardcoded px guesses that drift out of sync after style edits.
-  const topBarRef = useRef(null);
   const headerRef = useRef(null);
-  const mobileHeaderRef = useRef(null);
-  const [desktopSpacerHeight, setDesktopSpacerHeight] = useState(0);
-  const [mobileSpacerHeight, setMobileSpacerHeight] = useState(0);
+  const mobileRef = useRef(null);
+  const [deskH, setDeskH] = useState(72);
+  const [mobH, setMobH] = useState(60);
 
   useEffect(() => {
     const measure = () => {
-      const headerH = headerRef.current ? headerRef.current.offsetHeight : 0;
-      const desk = 68 + headerH; setDesktopSpacerHeight(desk); const mob = mobileHeaderRef.current ? mobileHeaderRef.current.offsetHeight : 0; document.documentElement.style.setProperty("--nav-h", (window.innerWidth >= 1024 ? desk : mob) + "px");
-      setMobileSpacerHeight(mobileHeaderRef.current ? mobileHeaderRef.current.offsetHeight : 0);
+      const d = headerRef.current ? headerRef.current.offsetHeight : 72;
+      const m = mobileRef.current ? mobileRef.current.offsetHeight : 60;
+      setDeskH(d); setMobH(m);
+      document.documentElement.style.setProperty("--nav-h", (window.innerWidth >= 1024 ? d : m) + "px");
     };
-
     measure();
-
     const ro = new ResizeObserver(measure);
-    if (topBarRef.current) ro.observe(topBarRef.current);
     if (headerRef.current) ro.observe(headerRef.current);
-    if (mobileHeaderRef.current) ro.observe(mobileHeaderRef.current);
-
+    if (mobileRef.current) ro.observe(mobileRef.current);
     window.addEventListener("resize", measure);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, [isScrolled]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => { ro.disconnect(); window.removeEventListener("resize", measure); };
   }, []);
 
   useEffect(() => {
-    setNavOpen(false);
-  }, [location.pathname]);
+    const on = () => setIsScrolled(window.scrollY > 4);
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, []);
+
+  useEffect(() => { setNavOpen(false); }, [location.pathname]);
+
+  const orderText = orderLabel("Order now");
+  const close = () => setNavOpen(false);
+  const acc = (key, label, items) => (
+    <li>
+      <button className={styles.drawerAcc} onClick={() => setOpen(open === key ? "" : key)} aria-expanded={open === key}>
+        {label} <ChevronDown size={16} style={{ transform: open === key ? "rotate(180deg)" : "none" }} />
+      </button>
+      {open === key && <ul className={styles.drawerSub}>{items.map((x) => <li key={x.href}><Link to={x.href} onClick={close}>{x.label}</Link></li>)}</ul>}
+    </li>
+  );
 
   return (
     <>
-      <div
-        ref={topBarRef}
-        className={`${styles.navTopBar}${isScrolled ? " " + styles.navTopBarHidden : ""}`}
-      >
-        <div className={styles.navTopInner}>
-          <div className={styles.navTopLeft}>
-            <a href="mailto:info@scapedatasolutions.com" className={styles.navTopContact}>
-              <Mail size={18} />
-              info@scapedatasolutions.com
-            </a>
-          </div>
-          <div className={styles.navTopSocial}>
-            <a href={orderUrl({ medium: "nav-top" })} className={`${op.navOrderBtn} ${op.navOrderTop}`}>Order Now</a>
-            <Link to="/contact" className={styles.navTopCta}>Contact Us</Link>
-            <a
-              href="https://www.facebook.com/profile.php?id=61591435187674"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className={styles.navSocialIcon}
-            >
-              <FacebookIcon />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/scape-data-solutions/?viewAsMember=true"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className={styles.navSocialIcon}
-            >
-              <LinkedinIcon />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div ref={mobileHeaderRef} className={styles.mobileHeader}>
+      {/* mobile bar */}
+      <div ref={mobileRef} className={`${styles.mobileHeader}${isScrolled ? " " + styles.scrolled : ""}`}>
         <div className={styles.mContainer}>
-          <Link to="/" className={styles.mobileLogo}>
-            <img src="/Images/site-images/logo.svg" alt="Scape Technologies" />
-          </Link>
-          <button
-            className={`${styles.burger}${navOpen ? " " + styles.burgerOpen : ""}`}
-            onClick={() => setNavOpen(!navOpen)}
-            aria-label="Toggle menu"
-          >
-            <span /><span /><span />
-          </button>
+          <Link to="/" className={styles.mobileLogo}><img src="/Images/site-images/logo.svg" alt="Scape Data Solutions" /></Link>
+          <a className={styles.mobileOrder} href={orderUrl({ medium: "nav-mobile" })}>{orderText}</a>
+          <button className={`${styles.burger}${navOpen ? " " + styles.burgerOpen : ""}`} onClick={() => setNavOpen(!navOpen)} aria-label="Toggle menu"><span /><span /><span /></button>
         </div>
       </div>
 
       <AnimatePresence>
         {navOpen && (
           <>
-            <motion.div
-              className={styles.overlay}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setNavOpen(false)}
-            />
-            <motion.nav
-              className={styles.drawer}
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "tween", duration: 0.28, ease: "easeInOut" }}
-            >
-              <button className={styles.drawerClose} onClick={() => setNavOpen(false)}>✕</button>
+            <motion.div className={styles.overlay} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={close} />
+            <motion.nav className={styles.drawer} initial={{ x: "-100%" }} animate={{ x: 0 }} exit={{ x: "-100%" }} transition={{ type: "tween", duration: 0.25, ease: "easeInOut" }}>
+              <button className={styles.drawerClose} onClick={close} aria-label="Close menu">✕</button>
               <ul className={styles.drawerList}>
-                <li><Link to="/" onClick={() => setNavOpen(false)}>Home</Link></li>
-                <li><Link to="/business-intel" onClick={() => setNavOpen(false)}>Business Intel</Link></li>
-                <li>
-                  <button className={styles.drawerAcc} onClick={() => setCompOpen(!compOpen)}>
-                    Company <span>{compOpen ? "▲" : "▼"}</span>
-                  </button>
-                  {compOpen && (
-                    <ul className={styles.drawerSub}>
-                      {NAV_COMPANY.map((x, i) => (
-                        <li key={i}><Link to={x.href} onClick={() => setNavOpen(false)}>{x.label}</Link></li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-                <li>
-                  <button className={styles.drawerAcc} onClick={() => setServOpen(!servOpen)}>
-                    Services <span>{servOpen ? "▲" : "▼"}</span>
-                  </button>
-                  {servOpen && (
-                    <ul className={styles.drawerSub}>
-                      {NAV_SERVICES.map((x, i) => (
-                        <li key={i}><Link to={x.href} onClick={() => setNavOpen(false)}>{x.label}</Link></li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-                <li><Link to="/clients" onClick={() => setNavOpen(false)}>Our Clients</Link></li>
-                <li>
-                  <button className={styles.drawerAcc} onClick={() => setPortOpen(!portOpen)}>
-                    Portfolio <span>{portOpen ? "▲" : "▼"}</span>
-                  </button>
-                  {portOpen && (
-                    <ul className={styles.drawerSub}>
-                      {NAV_PORTFOLIO.map((x, i) => (
-                        <li key={i}><Link to={x.href} onClick={() => setNavOpen(false)}>{x.label}</Link></li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-                <li>
-                  <button className={styles.drawerAcc} onClick={() => setResOpen(!resOpen)}>
-                    Resources <span>{resOpen ? "▲" : "▼"}</span>
-                  </button>
-                  {resOpen && (
-                    <ul className={styles.drawerSub}>
-                      {NAV_RESOURCES_INDUSTRY.map((x, i) => (
-                        <li key={i}><Link to={x.href} onClick={() => setNavOpen(false)}>{x.label}</Link></li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-                <li><Link to="/testimonials" onClick={() => setNavOpen(false)}>Testimonials</Link></li>
-                <li><a href="https://portal.scapedatasolutions.com/" onClick={() => setNavOpen(false)}>Client Portal</a></li>
-                <li><Link to="/contact" onClick={() => setNavOpen(false)}>Contact</Link></li>
-                <li><a href={orderUrl({ medium: "nav-drawer" })} className={op.navOrderBtn} style={{ display: "flex", justifyContent: "center", padding: "14px 18px" }}>Order Now</a></li>
-                <li><Link to="/contact" className={styles.drawerCta} onClick={() => setNavOpen(false)}>Contact Us</Link></li>
+                {acc("serv", "Services", NAV_SERVICES)}
+                <li><Link to="/business-intel" onClick={close}>Business Intel</Link></li>
+                {acc("port", "Portfolio", NAV_PORTFOLIO)}
+                {acc("res", "Resources", NAV_RESOURCES_INDUSTRY)}
+                {acc("comp", "Company", NAV_COMPANY)}
+                <li><Link to="/clients" onClick={close}>Our Clients</Link></li>
+                <li><Link to="/testimonials" onClick={close}>Testimonials</Link></li>
+                <li><a href="https://portal.scapedatasolutions.com/" onClick={close}>Client Portal</a></li>
+                <li><Link to="/contact" onClick={close}>Contact</Link></li>
               </ul>
+              <a className={styles.drawerCta} href={orderUrl({ medium: "nav-drawer" })}>{orderText} <ArrowRight size={16} /></a>
+              <a className={styles.drawerMail} href="mailto:info@scapedatasolutions.com">info@scapedatasolutions.com</a>
             </motion.nav>
           </>
         )}
       </AnimatePresence>
 
-      <header
-        ref={headerRef}
-        className={`${styles.navbarFixed}${isScrolled ? " " + styles.navbarFixedTop : ""}`}
-      >
-        <div
-          className={styles.navbarBorder}
-          style={{
-            opacity: isScrolled ? 1 : 0,
-            transition: "opacity 0.2s ease",
-          }}
-        />
+      {/* desktop bar */}
+      <header ref={headerRef} className={`${styles.navbarFixed}${isScrolled ? " " + styles.scrolled : ""}`}>
         <div className={styles.navbarInner}>
-          <Link to="/" className={styles.navbarBrand}>
-            <img src="/Images/site-images/logo.svg" alt="Scape Technologies" />
-          </Link>
-
+          <Link to="/" className={styles.navbarBrand}><img src="/Images/site-images/logo.svg" alt="Scape Data Solutions" /></Link>
           <ul className={styles.navList}>
-            <li>
-              <Link to="/" className={`${styles.navLink}${activeNav === "home" ? " " + styles.navActive : ""}`}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/business-intel" className={`${styles.navLink}${activeNav === "business-intel" ? " " + styles.navActive : ""}`}>
-                Business Intel
-              </Link>
-            </li>
-            <li className={styles.hasDrop}>
-              <Link to="/company" className={`${styles.navLink}${activeNav === "company" ? " " + styles.navActive : ""}`}>
-                Company <ChevronDown size={12} />
-              </Link>
-              <div className={`${styles.drop} ${styles.dropWide}`}>
-                <div className={styles.dropGrid}>
-                  {NAV_COMPANY.map((x, i) => (
-                    <Link key={i} to={x.href} className={styles.dropLink}>{x.label}</Link>
-                  ))}
-                </div>
-              </div>
-            </li>
-            <li className={styles.hasDrop}>
-              <Link to="/services" className={`${styles.navLink}${activeNav === "services" ? " " + styles.navActive : ""}`}>
-                Services <ChevronDown size={12} />
-              </Link>
-              <div className={`${styles.drop} ${styles.dropWide}`}>
-                <div className={styles.dropGrid}>
-                  {NAV_SERVICES.map((x, i) => (
-                    <Link key={i} to={x.href} className={styles.dropLink}>{x.label}</Link>
-                  ))}
-                </div>
-              </div>
-            </li>
-            <li>
-              <Link to="/clients" className={`${styles.navLink}${activeNav === "clients" ? " " + styles.navActive : ""}`}>Our Clients</Link>
-            </li>
-            <li className={styles.hasDrop}>
-              <Link to="/portfolio" className={`${styles.navLink}${activeNav === "portfolio" ? " " + styles.navActive : ""}`}>
-                Portfolio <ChevronDown size={12} />
-              </Link>
-              <div className={`${styles.drop} ${styles.dropRight}`}>
-                <div className={styles.dropGrid1}>
-                  {NAV_PORTFOLIO.map((x, i) => (
-                    <Link key={i} to={x.href} className={styles.dropLink}>{x.label}</Link>
-                  ))}
-                </div>
-              </div>
-            </li>
-            <li className={styles.hasDrop}>
-              <Link to="/resources" className={`${styles.navLink}${activeNav === "resources" ? " " + styles.navActive : ""}`}>
-                Resources <ChevronDown size={12} />
-              </Link>
-              <div className={`${styles.drop} ${styles.dropWide} ${styles.dropRight}`}>
-                <div className={styles.dropGrid}>
-                  {NAV_RESOURCES_INDUSTRY.map((x, i) => (
-                    <Link key={i} to={x.href} className={styles.dropLink}>{x.label}</Link>
-                  ))}
-                </div>
-              </div>
-            </li>
-            <li>
-              <Link to="/testimonials" className={`${styles.navLink}${activeNav === "testimonials" ? " " + styles.navActive : ""}`}>Testimonials</Link>
-            </li>
-            {isScrolled ? (
-              <li>
-                <a href={orderUrl({ medium: "nav-sticky" })} className={styles.navCta}>Order Now</a>
-              </li>
-            ) : (
-              <li>
-                <Link to="/contact" className={`${styles.navLink}${activeNav === "contact" ? " " + styles.navActive : ""}`}>
-                  Contact
-                </Link>
-              </li>
-            )}
+            <Drop title="Services" to="/services" items={NAV_SERVICES} wide promo active={activeNav === "services"} />
+            <li><Link to="/business-intel" className={`${styles.navLink}${activeNav === "business-intel" ? " " + styles.navActive : ""}`}>Business Intel</Link></li>
+            <Drop title="Portfolio" to="/portfolio" items={NAV_PORTFOLIO} active={activeNav === "portfolio"} />
+            <Drop title="Resources" to="/resources" items={NAV_RESOURCES_INDUSTRY} wide right active={activeNav === "resources"} />
+            <Drop title="Company" to="/company" items={NAV_COMPANY} right active={activeNav === "company"} />
+            <li><Link to="/clients" className={`${styles.navLink}${activeNav === "clients" ? " " + styles.navActive : ""}`}>Clients</Link></li>
           </ul>
+          <div className={styles.navRight}>
+            <Link to="/contact" className={`${styles.navTextLink}${activeNav === "contact" ? " " + styles.navActive : ""}`}>Contact</Link>
+            <a href={orderUrl({ medium: "nav-top" })} className={styles.navOrder}>{orderText}</a>
+          </div>
         </div>
       </header>
 
-      <div className={styles.navSpacer} style={{ height: desktopSpacerHeight }} />
-      <div data-nav-end className={styles.navSpacerMobile} style={{ height: mobileSpacerHeight }} />
+      <div className={styles.navSpacer} style={{ height: deskH }} />
+      <div data-nav-end className={styles.navSpacerMobile} style={{ height: mobH }} />
     </>
   );
 }

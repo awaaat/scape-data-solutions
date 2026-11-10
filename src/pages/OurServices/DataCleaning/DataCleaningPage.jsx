@@ -11,7 +11,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./DataCleaningPage.module.css";
 import SEO from "../../../components/SEO/SEO";
 import { buildServiceSchema } from "../../../utils/serviceSchema";
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 const IMG = "/Images/site-images/data-cleaning/";
 const fadeUp = {
@@ -828,7 +828,7 @@ const DataCleaningPage = () => {
                 Power BI and Tableau Prep, so dashboards, forecasts and machine learning models run on data you can trust.
               </p>
               <div className={styles.heroCta}>
-                <a href={orderUrl({ medium: "page-cta", content: "datacleaning-1" })} className={styles.btnPrimary}>Get a Free Data Quality Audit <ArrowRight size={16} /></a>
+                <a href={orderUrl({ medium: "page-cta", content: "datacleaning-1" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
                 <a href="#demo" className={styles.btnSecondary}>Try the live demo</a>
               </div>
               <div className={styles.pills}>
@@ -1024,7 +1024,7 @@ const DataCleaningPage = () => {
             <motion.div initial="hidden" whileInView="visible" viewport={VP} variants={fadeUp}>
               <h2>Stop analysing dirty data</h2>
               <p>Send us a sample of your messiest dataset. We'll return a free data quality audit with the problems found, the fix plan and a fixed quote.</p>
-              <a href={orderUrl({ medium: "page-cta", content: "datacleaning-2" })} className={styles.btnPrimary}>Get Your Free Data Quality Audit <ArrowRight size={16} /></a>
+              <a href={orderUrl({ medium: "page-cta", content: "datacleaning-2" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
             </motion.div>
           </div>
         </section>

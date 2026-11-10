@@ -21,7 +21,7 @@ import SEO from '../../components/SEO/SEO';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import styles from './PortfolioPipelinesPage.module.css';
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 // ─── PROJECTS ───
 const projects = [
@@ -497,9 +497,7 @@ const PortfolioPipelinesPage = () => {
 
             <motion.div className={styles.heroCtas} variants={stagger}>
               <motion.div variants={scaleUp}>
-                <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-1" })} className={styles.ctaPrimary}>
-                  Talk to Our Data Engineers <ArrowRight size={18} />
-                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-1" })} className={styles.ctaPrimary}>{orderLabel()} <ArrowRight size={18} /></a>
               </motion.div>
               <motion.div variants={scaleUp}>
                 <a href="#work" className={styles.ctaSecondary}>
@@ -713,9 +711,7 @@ const PortfolioPipelinesPage = () => {
                   ))}
                 </div>
                 <div className={styles.engageCta}>
-                  <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-2" })} className={styles.ctaSecondary}>
-                    Get the Playbook <ArrowUpRight size={16} />
-                  </a>
+                  <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-2" })} className={styles.ctaSecondary}>{orderLabel()} <ArrowUpRight size={16} /></a>
                 </div>
               </motion.div>
 
@@ -738,9 +734,7 @@ const PortfolioPipelinesPage = () => {
                   ))}
                 </div>
                 <div className={styles.engageCta}>
-                  <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-3" })} className={styles.ctaPrimary}>
-                    Talk to Engineering <ArrowRight size={16} />
-                  </a>
+                  <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-3" })} className={styles.ctaPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
                 </div>
               </motion.div>
             </motion.div>
@@ -763,9 +757,7 @@ const PortfolioPipelinesPage = () => {
               Let's architect infrastructure that scales with your data, not against it.
             </motion.p>
             <motion.div className={styles.finalCtaButton} variants={scaleUp}>
-              <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-4" })} className={styles.ctaPrimary}>
-                Let's Architect It <ArrowRight size={18} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "portfoliopipelines-4" })} className={styles.ctaPrimary}>{orderLabel()} <ArrowRight size={18} /></a>
             </motion.div>
           </motion.div>
         </motion.section>

@@ -21,7 +21,7 @@ import styles from './PortfolioPage.module.css';
 import homeStyles from '../Home/HomePage.module.css';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 const PORTFOLIO_ITEMS = [
   {
@@ -371,7 +371,7 @@ const PortfolioPage = () => {
           <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem" }}>
             <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Like what you see in these engagements?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "560px" }}>Start one of your own. Submit your project through the client portal and we will scope it the same way.</p>
-            <a href={orderUrl({ medium: "page-cta", content: "portfolio-1" })} className={styles.ctaButton}>Submit a Project <ArrowRight size={16} /></a>
+            <a href={orderUrl({ medium: "page-cta", content: "portfolio-1" })} className={styles.ctaButton}>{orderLabel()} <ArrowRight size={16} /></a>
           </div>
         </section>
 
@@ -494,7 +494,7 @@ const PortfolioPage = () => {
                     <strong>Result: </strong>{selectedItem.result}
                   </motion.div>
                   <div className={styles.lightboxActions}>
-                    <a href={orderUrl({ medium: "page-cta", content: "portfolio-2" })} className={styles.lightboxBtn}>Start a Similar Project <ArrowRight size={14} /></a>
+                    <a href={orderUrl({ medium: "page-cta", content: "portfolio-2" })} className={styles.lightboxBtn}>{orderLabel()} <ArrowRight size={14} /></a>
                     <button className={styles.lightboxBtnGhost} onClick={() => setSelectedItem(null)}>Close</button>
                   </div>
                 </div>
@@ -528,9 +528,7 @@ const PortfolioPage = () => {
             <h2 className={styles.display}>Add Your Project to the Record</h2>
             <p>Tell us what you're working with, and we'll tell you what's possible.</p>
             <motion.div style={{ display: "inline-block" }} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <a href={orderUrl({ medium: "page-cta", content: "portfolio-3" })} className={styles.ctaButton}>
-                Place an Order <ArrowRight size={18} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "portfolio-3" })} className={styles.ctaButton}>{orderLabel()} <ArrowRight size={18} /></a>
             </motion.div>
           </div>
         </motion.section>

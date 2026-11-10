@@ -20,7 +20,7 @@ import SEO from '../../components/SEO/SEO';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import styles from './PortfolioMobilePage.module.css';
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 // ─── PROJECTS ──────────────────────────────────────────────
 const projects = [
@@ -457,9 +457,7 @@ const PortfolioMobilePage = () => {
                 </motion.p>
                 <motion.div className={styles.heroCtas} variants={stagger}>
                   <motion.div variants={scaleUp}>
-                    <a href={orderUrl({ medium: "page-cta", content: "portfoliomobile-1" })} className={styles.ctaPrimary}>
-                      Talk to Our Mobile Analysts <ArrowRight size={18} />
-                    </a>
+                    <a href={orderUrl({ medium: "page-cta", content: "portfoliomobile-1" })} className={styles.ctaPrimary}>{orderLabel()} <ArrowRight size={18} /></a>
                   </motion.div>
                   <motion.div variants={scaleUp}>
                     <a href="#projects" className={styles.ctaSecondary}>
@@ -620,9 +618,7 @@ const PortfolioMobilePage = () => {
               </motion.p>
               <motion.div className={styles.ctaButtons} variants={stagger}>
                 <motion.div variants={scaleUp}>
-                  <a href={orderUrl({ medium: "page-cta", content: "portfoliomobile-2" })} className={styles.ctaPrimary}>
-                    Start Now <ArrowRight size={18} />
-                  </a>
+                  <a href={orderUrl({ medium: "page-cta", content: "portfoliomobile-2" })} className={styles.ctaPrimary}>{orderLabel()} <ArrowRight size={18} /></a>
                 </motion.div>
                 <motion.div variants={scaleUp}>
                   <Link to="/contact" className={styles.ctaSecondary}>

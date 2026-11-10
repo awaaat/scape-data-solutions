@@ -25,7 +25,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./InsuranceClaimsAnalyticsPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ─── YOUR IMAGES ──────────────────────────────────────────────────
 const heroImage = "/Images/site-images/solutions-insurance-resource.webp";
@@ -91,9 +91,7 @@ const InsuranceClaimsAnalyticsPage = () => {
               </motion.p>
               <motion.div className={styles.heroCta} variants={fadeUp}>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <a href={orderUrl({ medium: "page-cta", content: "insuranceclaimsanalytics-1" })} className={styles.heroBtn}>
-                    Optimise Your Claims <ArrowRight size={16} />
-                  </a>
+                  <a href={orderUrl({ medium: "page-cta", content: "insuranceclaimsanalytics-1" })} className={styles.heroBtn}>{orderLabel()} <ArrowRight size={16} /></a>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <a href="#how-it-works" className={styles.heroBtnSecondary}>
@@ -434,9 +432,7 @@ const InsuranceClaimsAnalyticsPage = () => {
                 <li>If it's not listed here, we can build the integration.</li>
               </ul>
               <div className={styles.integrationsCta}>
-                <a href={orderUrl({ medium: "page-cta", content: "insuranceclaimsanalytics-2" })} className={styles.btnPrimary}>
-                  Schedule a Demo
-                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "insuranceclaimsanalytics-2" })} className={styles.btnPrimary}>{orderLabel()}</a>
               </div>
             </motion.div>
 
@@ -533,9 +529,7 @@ const InsuranceClaimsAnalyticsPage = () => {
               and frictionless claimant experience to make claims management truly manageable.
             </p>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-              <a href={orderUrl({ medium: "page-cta", content: "insuranceclaimsanalytics-3" })} className={styles.ctaBtn}>
-                Schedule a Demo
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "insuranceclaimsanalytics-3" })} className={styles.ctaBtn}>{orderLabel()}</a>
             </motion.div>
           </motion.div>
         </div>

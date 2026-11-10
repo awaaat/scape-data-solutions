@@ -16,7 +16,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import styles from './TestimonialsPage.module.css';
 import homeStyles from '../Home/HomePage.module.css';
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 // ─── 16 Testimonials ──────────────────────────────────────────────
 const TESTIMONIALS = [
@@ -324,7 +324,7 @@ const TestimonialsPage = () => {
           <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem", textAlign: "center" }}>
             <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Want a story like these about your own business?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75 }}>Submit your project in the client portal and let us get started.</p>
-            <a href={orderUrl({ medium: "page-cta", content: "testimonials-1" })} className={styles.ctaButton}>Submit a Project <ArrowRight size={16} /></a>
+            <a href={orderUrl({ medium: "page-cta", content: "testimonials-1" })} className={styles.ctaButton}>{orderLabel()} <ArrowRight size={16} /></a>
           </div>
         </section>
 
@@ -516,9 +516,7 @@ const TestimonialsPage = () => {
             <h2>Ready to Join Our Satisfied Clients?</h2>
             <p>Let's talk about how we can help your organization grow with data.</p>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <a href={orderUrl({ medium: "page-cta", content: "testimonials-2" })} className={styles.ctaButton}>
-                Start Your Project <ArrowRight size={18} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "testimonials-2" })} className={styles.ctaButton}>{orderLabel()} <ArrowRight size={18} /></a>
             </motion.div>
           </div>
         </motion.section>

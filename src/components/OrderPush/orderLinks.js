@@ -1,7 +1,9 @@
 // src/components/OrderPush/orderLinks.js
 // One place that decides where every "order" button on the site points, and WHICH SERVICE it orders.
 // Change ORDER_BASE and every button follows.
-export const ORDER_BASE = "https://thesis.scapedatasolutions.com/order-now";
+// Orders are placed on THIS site (/order), on a page that names the exact service. To use another wizard,
+// set this to its full URL (it receives ?service=<slug>&service_name=<name>).
+export const ORDER_BASE = "/order";
 
 // Words that need special casing when a slug is turned into a readable name.
 const WORDS = { ai: "AI", bi: "BI", spss: "SPSS", hr: "HR", sem: "SEM", amos: "AMOS", etl: "ETL", llm: "LLM", mlops: "MLOps",
@@ -64,9 +66,17 @@ export const isAcademicPath = (p = "") => ACADEMIC.test(p);
 export function hashStr(s = "") { let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
 
 // Pages where no order nudge should ever appear.
-export const QUIET = /^\/(business-intel\/(dashboard|login|signup|forgot-password))/;
+export const QUIET = /^\/(business-intel\/(dashboard|login|signup|forgot-password)|order\/?$)/;
 
 export const seen = {
   get(k) { try { return sessionStorage.getItem("op_" + k) === "1"; } catch { return false; } },
   set(k) { try { sessionStorage.setItem("op_" + k, "1"); } catch { /* private mode */ } },
 };
+
+// Button label that reflects what is on offer: "Order Hospital Analytics" on that service's page,
+// "Order this service" when the name is too long for a button, `fallback` on pages with no single service.
+export function orderLabel(fallback = "Place an order") {
+  const c = currentService();
+  if (!c) return fallback;
+  return c.name.length <= 26 ? `Order ${c.name}` : "Order this service";
+}

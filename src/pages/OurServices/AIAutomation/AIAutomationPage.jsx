@@ -22,7 +22,7 @@ import Footer from "../../../components/Footer/Footer";
 import styles from "./AIAutomationPage.module.css";
 import SEO from "../../../components/SEO/SEO";
 import { apiService } from "../../../services/api";
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ========== TYPEWRITER HOOK ==========
 const ROTATING_WORDS = [
@@ -595,8 +595,8 @@ export default function AIAutomationPage() {
                 <h2>Ready to see the difference?</h2>
                 <p>Get started with a free 14‑day trial of our AI automation platform. No credit card required.</p>
                 <div className={styles.promoButtons}>
-                  <a href={orderUrl({ medium: "page-cta", content: "aiautomation-1" })} className={styles.btnPrimary}>Start free trial</a>
-                  <a href={orderUrl({ medium: "page-cta", content: "aiautomation-2" })} className={styles.btnSecondary}>Schedule a demo</a>
+                  <a href={orderUrl({ medium: "page-cta", content: "aiautomation-1" })} className={styles.btnPrimary}>{orderLabel()}</a>
+                  <a href={orderUrl({ medium: "page-cta", content: "aiautomation-2" })} className={styles.btnSecondary}>{orderLabel()}</a>
                 </div>
               </div>
             </motion.div>

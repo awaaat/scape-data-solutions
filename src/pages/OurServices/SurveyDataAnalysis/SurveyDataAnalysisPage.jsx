@@ -11,7 +11,7 @@ import Footer from "../../../components/Footer/Footer";
 import SEO from "../../../components/SEO/SEO";
 import { fadeUp, staggerContainer, VIEW_ONCE } from "../../../utils/animations";
 import styles from "./SurveyDataAnalysisPage.module.css";
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ─── Messy → clean grid animated break (specific to this page) ──
 const MessyCleanBreak = () => (
@@ -136,9 +136,7 @@ const SurveyDataAnalysisPage = () => {
               </div>
             </motion.div>
             <motion.div variants={fadeUp}>
-              <a href={orderUrl({ medium: "page-cta", content: "surveydataanalysis-1" })} className={styles.ctaButton}>
-                Get Started <ArrowRight size={16} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "surveydataanalysis-1" })} className={styles.ctaButton}>{orderLabel()} <ArrowRight size={16} /></a>
             </motion.div>
           </motion.div>
         </section>
@@ -299,9 +297,7 @@ const SurveyDataAnalysisPage = () => {
             <motion.h2 variants={fadeUp}>Survey closed, data waiting?</motion.h2>
             <motion.p variants={fadeUp}>Send the export and we'll turn it into a report‑ready analysis.</motion.p>
             <motion.div variants={fadeUp}>
-              <a href={orderUrl({ medium: "page-cta", content: "surveydataanalysis-2" })} className={styles.ctaButton}>
-                Talk To Us <ArrowRight size={16} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "surveydataanalysis-2" })} className={styles.ctaButton}>{orderLabel()} <ArrowRight size={16} /></a>
             </motion.div>
           </motion.div>
         </section>

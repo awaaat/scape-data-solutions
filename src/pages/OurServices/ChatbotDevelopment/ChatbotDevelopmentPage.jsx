@@ -10,7 +10,7 @@ import {
 import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./ChatbotDevelopmentPage.module.css";
 import SEO from "../../../components/SEO/SEO";
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 /**
  * No stock photography anywhere on this page. Every visual is a generated
@@ -539,7 +539,7 @@ const ChatbotDevelopmentPage = () => {
                 instead of guessing, and knows exactly when to hand off to a human.
               </p>
               <div className={styles.heroBtnRow}>
-                <a href={orderUrl({ medium: "page-cta", content: "chatbotdevelopment-1" })} className={styles.btnPrimary}>Get a consultation <ArrowRight size={16} /></a>
+                <a href={orderUrl({ medium: "page-cta", content: "chatbotdevelopment-1" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
                 <a href="#services" className={styles.btnSecondary}>See how it works</a>
               </div>
             </div>
@@ -913,7 +913,7 @@ const ChatbotDevelopmentPage = () => {
               <h2>Start your digital transformation journey today</h2>
               <p>Drop us a line and our team will get back to you within one business day.</p>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} style={{ display: "inline-block" }}>
-                <a href={orderUrl({ medium: "page-cta", content: "chatbotdevelopment-2" })} className={styles.finalCtaBtn}>Place an Order <ArrowRight size={16} /></a>
+                <a href={orderUrl({ medium: "page-cta", content: "chatbotdevelopment-2" })} className={styles.finalCtaBtn}>{orderLabel()} <ArrowRight size={16} /></a>
               </motion.div>
             </div>
           </div>

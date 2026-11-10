@@ -1,7 +1,7 @@
 
 import SEO from '../../../components/SEO/SEO';
 import styles from './MATLABDataAnalysisPage.module.css';
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 export default function MATLABDataAnalysisPage() {
   return (
@@ -24,9 +24,7 @@ export default function MATLABDataAnalysisPage() {
           <li>{"Revision Support"}</li>
         </ul>
         <p>
-          <a href={orderUrl({ medium: "page-cta", content: "matlabdataanalysis-1" })} style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '2px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
-            Talk to our team about {"MATLAB Data Analysis"}
-          </a>
+          <a href={orderUrl({ medium: "page-cta", content: "matlabdataanalysis-1" })} style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '2px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>{orderLabel()}</a>
         </p>
       </section>
     </div>

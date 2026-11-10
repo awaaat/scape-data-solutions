@@ -11,7 +11,7 @@ import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
 import PortalCallout from "../../components/PortalCallout/PortalCallout";
 import styles from "./CompanyPage.module.css";
-import { orderUrl } from "../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 const ACCENT = "#204ecf";
 
@@ -154,9 +154,7 @@ export default function CompanyPage() {
                   the Globe.  
                 </motion.p>
                 <motion.div className={styles.heroButtons} variants={fadeUp}>
-                  <a href={orderUrl({ medium: "page-cta", content: "company-1" })} className={styles.btnPrimary}>
-                    Place an Order <ArrowRight size={16} />
-                  </a>
+                  <a href={orderUrl({ medium: "page-cta", content: "company-1" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
                   <Link to="/services" className={styles.btnSecondary}>
                     Our Services
                   </Link>
@@ -197,7 +195,7 @@ export default function CompanyPage() {
             <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Curious how we actually work?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "560px" }}>The clearest way to find out is to start. Submit a brief through the client portal and see our process firsthand.</p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <a href={orderUrl({ medium: "page-cta", content: "company-2" })} className={styles.btnPrimary}>Get Started in the Portal <ArrowRight size={16} /></a>
+              <a href={orderUrl({ medium: "page-cta", content: "company-2" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
               <Link to="/contact" className={styles.btnSecondary}>Talk to Us First</Link>
             </div>
           </div>

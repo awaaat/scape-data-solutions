@@ -27,7 +27,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import styles from "./AMOSSEMAnalysisPage.module.css";
 import SEO from '../../../components/SEO/SEO';
 import { buildServiceSchema } from '../../../utils/serviceSchema';
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 // ─── ScrollReveal ──────────────────────────────────────────────
 const ScrollReveal = ({ children, delay = 0, direction = "up" }) => {
@@ -470,9 +470,7 @@ const AMOSSEMAnalysisPage = () => {
                 <p className={styles.heroSubSmall}>
                   Elevate your research with professional statisticians who work in AMOS every day.
                 </p>
-                <a href={orderUrl({ medium: "page-cta", content: "amossemanalysis-1" })} className={styles.heroBtn}>
-                  Get a Free Quote Now! <ArrowRight size={14} />
-                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "amossemanalysis-1" })} className={styles.heroBtn}>{orderLabel()} <ArrowRight size={14} /></a>
               </div>
             </ScrollReveal>
             {/* ─── VISUAL 1: SEM Path Diagram ──────────────── */}
@@ -495,9 +493,7 @@ const AMOSSEMAnalysisPage = () => {
         <div className={styles.container}>
           <div className={styles.ribbon}>
             <h2>Looking for a Statistician to Run Your AMOS Analysis?</h2>
-            <a href={orderUrl({ medium: "page-cta", content: "amossemanalysis-2" })} className={styles.ribbonBtn}>
-              Get Help Now <ArrowRight size={13} />
-            </a>
+            <a href={orderUrl({ medium: "page-cta", content: "amossemanalysis-2" })} className={styles.ribbonBtn}>{orderLabel()} <ArrowRight size={13} /></a>
           </div>
         </div>
       </section>
@@ -590,9 +586,7 @@ const AMOSSEMAnalysisPage = () => {
         <div className={styles.container}>
           <div className={styles.ribbon}>
             <h2>Struggling with SEM in AMOS, R-Studio, or STATA?</h2>
-            <a href={orderUrl({ medium: "page-cta", content: "amossemanalysis-3" })} className={styles.ribbonBtn}>
-              Get Help Now <ArrowRight size={13} />
-            </a>
+            <a href={orderUrl({ medium: "page-cta", content: "amossemanalysis-3" })} className={styles.ribbonBtn}>{orderLabel()} <ArrowRight size={13} /></a>
           </div>
         </div>
       </section>
@@ -717,9 +711,7 @@ const AMOSSEMAnalysisPage = () => {
             <div className={styles.finalCta}>
               <h2>Seeking the Best AMOS &amp; SEM Help for Your Dissertation?</h2>
               <p>Get your free quote now — expect a prompt response by email within 5 minutes.</p>
-              <a href={orderUrl({ medium: "page-cta", content: "amossemanalysis-4" })} className={styles.finalCtaBtn}>
-                Get a Free Quote Today! <ArrowRight size={14} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "amossemanalysis-4" })} className={styles.finalCtaBtn}>{orderLabel()} <ArrowRight size={14} /></a>
             </div>
           </ScrollReveal>
         </div>

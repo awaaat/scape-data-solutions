@@ -23,7 +23,7 @@ import Footer from "../../../components/Footer/Footer";
 import SEO from "../../../components/SEO/SEO";
 import { fadeUp, staggerContainer, VIEW_ONCE } from "../../../utils/animations";
 import styles from "./Chapter4AnalysisPage.module.css";
-import { orderUrl } from "../../../components/OrderPush/orderLinks";
+import { orderUrl, orderLabel } from "../../../components/OrderPush/orderLinks";
 
 /* =========================================================================
    REVEAL WRAPPER
@@ -449,9 +449,7 @@ const Chapter4AnalysisPage = () => {
                 </div>
               </motion.div>
               <motion.div className={styles.heroActions} variants={fadeUp}>
-                <a href={orderUrl({ medium: "page-cta", content: "chapter4analysis-1" })} className={styles.ctaButton}>
-                  Get Started <ArrowRight size={16} />
-                </a>
+                <a href={orderUrl({ medium: "page-cta", content: "chapter4analysis-1" })} className={styles.ctaButton}>{orderLabel()} <ArrowRight size={16} /></a>
                 <a href="#how-it-works" className={styles.ctaGhost}>
                   See how it works
                 </a>
@@ -916,9 +914,7 @@ const Chapter4AnalysisPage = () => {
               what it'll take to get a defensible draft in your hands.
             </motion.p>
             <motion.div variants={fadeUp} className={styles.finalCtaActions}>
-              <a href={orderUrl({ medium: "page-cta", content: "chapter4analysis-2" })} className={styles.finalCtaButton}>
-                Talk To Us <ArrowRight size={16} />
-              </a>
+              <a href={orderUrl({ medium: "page-cta", content: "chapter4analysis-2" })} className={styles.finalCtaButton}>{orderLabel()} <ArrowRight size={16} /></a>
               <span className={styles.finalCtaNote}>Free initial review · 1 revision round included</span>
             </motion.div>
           </motion.div>
