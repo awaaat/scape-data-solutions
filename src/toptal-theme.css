@@ -1,0 +1,88 @@
+/* toptal-theme.css - site-wide Toptal design system (colours, type, corners, buttons, cards, nav, footer).
+   Imported LAST in main.jsx so it wins. Source tokens: toptal.com (blue #204ecf, navy #030a42, grays, 2-6px corners).
+   Font: Mulish (closest free match to Toptal's Proxima Nova). */
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
+
+:root {
+  --color-bg: #ffffff; --color-bg-card: #ffffff;
+  --color-text: #191e28; --color-text-secondary: #455065; --color-text-muted: #84888e;
+  --color-border: #e5e7ea; --color-border-hover: #c4c6ca;
+  --color-accent: #204ecf; --color-accent-hover: #183a9e;
+  --color-shadow: rgba(25, 30, 40, .06);
+  --tt-blue: #204ecf; --tt-blue-dark: #183a9e; --tt-blue-darker: #0f256e; --tt-blue-light: #25a9ef; --tt-blue-lighter: #edf1fd;
+  --tt-navy: #030a42; --tt-green: #00cc83; --tt-yellow: #e59c01;
+  --tt-gray-50: #fcfcfc; --tt-gray-100: #f3f4f6; --tt-gray-300: #e5e7ea; --tt-gray-600: #84888e; --tt-gray-700: #455065; --tt-gray-900: #191e28;
+  --font-sans: "Mulish", "Proxima Nova", Arial, sans-serif;
+  --font-display: "Mulish", "Proxima Nova", Arial, sans-serif;
+  --radius-sm: 2px; --radius: 4px; --radius-md: 4px; --radius-lg: 4px; --radius-xl: 6px; --radius-2xl: 6px; --radius-full: 4px;
+  --tt-r: 4px;
+}
+
+html, body { background: #fff; color: var(--tt-gray-900); font-family: var(--font-sans); }
+body { font-size: 16px; line-height: 1.6; }
+h1, h2, h3, h4, h5, h6 { color: var(--tt-gray-900); }
+h1 { font-weight: 800 !important; letter-spacing: -.025em !important; line-height: 1.08 !important; }
+h2 { font-weight: 800 !important; letter-spacing: -.02em !important; line-height: 1.15 !important; }
+h3 { font-weight: 700 !important; font-size: 1.1rem !important; letter-spacing: -.005em !important; }
+h4, h5, h6 { font-weight: 700 !important; }
+p { color: var(--tt-gray-700); }
+a { color: var(--tt-blue); }
+::selection { background: var(--tt-blue); color: #fff; }
+:focus-visible { outline: 3px solid rgba(32, 78, 207, .45); outline-offset: 2px; }
+
+/* corners: Toptal never goes above 6px, except round dots/avatars */
+input, select, textarea, button, [class*="_badge_"], [class*="_tag_"], [class*="_chip_"], [class*="_pill_"] { border-radius: var(--tt-r); }
+input:not([type="checkbox"]):not([type="radio"]), select, textarea {
+  border: 1px solid var(--tt-gray-300); background: #fff; color: var(--tt-gray-900); font-family: var(--font-sans);
+  transition: border-color .15s, box-shadow .15s;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--tt-blue); box-shadow: 0 0 0 3px rgba(32, 78, 207, .15); }
+
+/* primary buttons: flat Toptal blue, white bold text, hard hover */
+[class*="_btnPrimary_"], [class*="_primaryBtn_"], [class*="_primaryButton_"], [class*="_ctaBtn_"], [class*="_ctaButton_"], [class*="_heroBtn_"],
+[class*="_heroCta_"], [class*="_finalCtaBtn_"], [class*="_finalCtaButton_"], [class*="_ctaBtnPrimary_"], [class*="_ribbonBtn_"], [class*="_submitBtn_"],
+[class*="_submitButton_"], [class*="_navCta_"], [class*="_navTopCta_"], [class*="_drawerCta_"], [class*="_buttonPrimary_"], [class*="_testiBtn_"] {
+  background: var(--tt-blue) !important; color: #fff !important; border: 1px solid var(--tt-blue) !important; border-radius: var(--tt-r) !important;
+  font-family: var(--font-sans) !important; font-weight: 700 !important; letter-spacing: 0 !important; text-transform: none !important;
+  box-shadow: none !important; filter: none !important; transition: background .15s, border-color .15s, transform .15s !important;
+}
+[class*="_btnPrimary_"]:hover, [class*="_primaryBtn_"]:hover, [class*="_primaryButton_"]:hover, [class*="_ctaBtn_"]:hover, [class*="_ctaButton_"]:hover,
+[class*="_heroBtn_"]:hover, [class*="_heroCta_"]:hover, [class*="_finalCtaBtn_"]:hover, [class*="_finalCtaButton_"]:hover, [class*="_ctaBtnPrimary_"]:hover,
+[class*="_ribbonBtn_"]:hover, [class*="_submitBtn_"]:hover, [class*="_submitButton_"]:hover, [class*="_navCta_"]:hover, [class*="_navTopCta_"]:hover,
+[class*="_drawerCta_"]:hover, [class*="_buttonPrimary_"]:hover, [class*="_testiBtn_"]:hover {
+  background: var(--tt-blue-dark) !important; border-color: var(--tt-blue-dark) !important; transform: none !important; filter: none !important;
+}
+/* secondary buttons: white with blue outline */
+[class*="_btnSecondary_"], [class*="_secondaryBtn_"], [class*="_heroBtnSecondary_"], [class*="_ctaBtnSecondary_"], [class*="_ctaSecondary_"], [class*="_buttonLight_"] {
+  background: #fff !important; color: var(--tt-blue) !important; border: 1px solid var(--tt-blue) !important; border-radius: var(--tt-r) !important;
+  font-family: var(--font-sans) !important; font-weight: 700 !important; text-transform: none !important; box-shadow: none !important; transition: background .15s !important;
+}
+[class*="_btnSecondary_"]:hover, [class*="_secondaryBtn_"]:hover, [class*="_heroBtnSecondary_"]:hover, [class*="_ctaBtnSecondary_"]:hover,
+[class*="_ctaSecondary_"]:hover, [class*="_buttonLight_"]:hover { background: var(--tt-blue-lighter) !important; }
+
+/* cards: 1px border, 4px corners, no glow; a quiet lift on hover */
+[class*="_card_"], [class*="Card_"], [class*="_tile_"], [class*="_panel_"] {
+  border-radius: var(--tt-r) !important; border-color: var(--tt-gray-300) !important; box-shadow: none !important;
+  transition: box-shadow .2s, border-color .2s, transform .2s;
+}
+[class*="_card_"]:hover, [class*="Card_"]:hover { border-color: var(--tt-blue) !important; box-shadow: 0 8px 24px -12px rgba(32, 78, 207, .35) !important; }
+
+/* top bar + navbar */
+[class*="_navTopBar_"] { background: var(--tt-navy) !important; }
+[class*="_navbarFixed_"] { background: #fff !important; backdrop-filter: none !important; border-bottom: 1px solid var(--tt-gray-300); }
+[class*="_navLink_"] { color: var(--tt-gray-900) !important; font-weight: 700 !important; font-size: .95rem !important; }
+[class*="_navLink_"]:hover, [class*="_navActive_"] { color: var(--tt-blue) !important; }
+[class*="_drop_"], [class*="_drawer_"] { border-radius: var(--tt-r) !important; border: 1px solid var(--tt-gray-300); box-shadow: 0 16px 40px -16px rgba(25, 30, 40, .25) !important; }
+[class*="_dropLink_"]:hover { background: var(--tt-blue-lighter) !important; color: var(--tt-blue) !important; }
+
+/* footer: Toptal navy */
+[class*="_navyFooter_"] { background: var(--tt-navy) !important; color: #c4c6ca; }
+[class*="_navyFooter_"] a { color: #c4c6ca !important; transition: color .15s; }
+[class*="_navyFooter_"] a:hover { color: #fff !important; }
+[class*="_navyFooter_"] [class*="_navyFootH_"], [class*="_navyFooter_"] [class*="_navyFootHMt_"] { color: #fff !important; font-weight: 800 !important; }
+[class*="_navyOffStrip_"] { background: var(--tt-blue-darker) !important; }
+
+/* section rhythm: alternate soft Toptal blue-gray bands instead of mixed tints */
+[class*="_section_"]:nth-of-type(even) { background-color: var(--tt-gray-50); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

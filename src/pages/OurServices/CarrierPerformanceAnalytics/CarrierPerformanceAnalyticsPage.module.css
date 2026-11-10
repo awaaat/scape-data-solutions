@@ -252,7 +252,7 @@
   justify-content: center;
   gap: var(--space-2);
   padding: 0.7rem 2rem;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   font-weight: 500;
   font-size: 0.95rem;
   background-color: var(--color-text);
@@ -272,14 +272,14 @@
 .button .button-border {
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   border: 1.5px solid transparent;
   pointer-events: none;
 }
 .button .button-hover-bg {
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.08);
   opacity: 0;
   transition: opacity var(--transition);
@@ -361,7 +361,7 @@
   align-items: center;
   gap: var(--space-2);
   padding: 0.3rem 1.2rem 0.3rem 1rem;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 600;
   background: var(--color-bg-card);

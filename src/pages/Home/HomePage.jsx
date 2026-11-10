@@ -17,7 +17,7 @@ import op from "../../components/OrderPush/OrderPush.module.css";
 import { orderUrl } from "../../components/OrderPush/orderLinks";
 import { OrderDesk, SituationGrid } from "../../components/OrderPush/HomeOrder";
 
-const ACCENT = "#3b82f6";
+const ACCENT = "#204ecf";
 
 // Rotating hero words - tied to real services, not filler buzzwords
 const ROTATING_WORDS = ["Revenue Growth", "Predictive Analytics", "Real-Time Dashboards", "Lower Costs", "Faster Decisions"];
@@ -93,8 +93,8 @@ function DataAnalyticsViz() {
         <span className={styles.vizPanelBadge}>Live</span>
       </div>
       <svg viewBox="0 0 260 90" className={styles.vizChartSvg} preserveAspectRatio="none">
-        <polyline points="0,70 40,55 80,60 120,35 160,42 200,20 240,28" fill="none" stroke="#3b82f6" strokeWidth="2" />
-        <circle cx="200" cy="20" r="3" fill="#3b82f6" />
+        <polyline points="0,70 40,55 80,60 120,35 160,42 200,20 240,28" fill="none" stroke="#204ecf" strokeWidth="2" />
+        <circle cx="200" cy="20" r="3" fill="#204ecf" />
       </svg>
       <div className={styles.vizLegendRow}>
         <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
@@ -106,7 +106,7 @@ function DataAnalyticsViz() {
 function EtlViz() {
   const lines = [
     { c: "#22c55e", t: "extract → 3 sources connected" },
-    { c: "#3b82f6", t: "transform: dedup 12,402 rows" },
+    { c: "#204ecf", t: "transform: dedup 12,402 rows" },
     { c: "#eab308", t: "load → warehouse.sales" },
     { c: "#22c55e", t: "pipeline complete (4.2s)" },
   ];
@@ -204,16 +204,16 @@ function HeroDashboardViz() {
           <svg viewBox="0 0 300 130" className={styles.heroVizAreaSvg} preserveAspectRatio="none">
             <defs>
               <linearGradient id="heroAreaGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+                <stop offset="0%" stopColor="#204ecf" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="#204ecf" stopOpacity="0" />
               </linearGradient>
             </defs>
             <line x1="0" y1="28" x2="300" y2="28" stroke="var(--color-border)" strokeDasharray="3 4" />
             <line x1="0" y1="70" x2="300" y2="70" stroke="var(--color-border)" strokeDasharray="3 4" />
             <line x1="0" y1="112" x2="300" y2="112" stroke="var(--color-border)" strokeDasharray="3 4" />
             <path d="M0,95 L50,80 L100,88 L150,55 L200,64 L250,25 L300,14 L300,130 L0,130 Z" fill="url(#heroAreaGradient)" />
-            <polyline points="0,95 50,80 100,88 150,55 200,64 250,25 300,14" fill="none" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx="300" cy="14" r="4" fill="#3b82f6" />
+            <polyline points="0,95 50,80 100,88 150,55 200,64 250,25 300,14" fill="none" stroke="#204ecf" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="300" cy="14" r="4" fill="#204ecf" />
           </svg>
           <div className={styles.heroVizMonths}>
             <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span>
@@ -262,7 +262,7 @@ function HeroDashboardViz() {
               <svg viewBox="0 0 80 80" className={styles.heroVizRingSvg}>
                 <circle cx="40" cy="40" r="34" fill="none" stroke="var(--color-border)" strokeWidth="7" />
                 <circle
-                  cx="40" cy="40" r="34" fill="none" stroke="#3b82f6" strokeWidth="7"
+                  cx="40" cy="40" r="34" fill="none" stroke="#204ecf" strokeWidth="7"
                   strokeDasharray="213.6" strokeDashoffset="51.3" strokeLinecap="round"
                   transform="rotate(-90 40 40)"
                 />

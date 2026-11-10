@@ -55,7 +55,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.7rem 1.8rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   font-weight: 500;
   font-size: 0.95rem;
   background-color: var(--text-primary);
@@ -74,7 +74,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.7rem 1.8rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   font-weight: 500;
   font-size: 0.95rem;
   background: transparent;
@@ -174,7 +174,7 @@
 .quoteCard {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 4px;
   padding: 2.25rem;
 }
 .quoteMark {
@@ -225,7 +225,7 @@
 .serviceCard {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
@@ -324,7 +324,7 @@
 }
 .resultCard {
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 1.75rem;
 }
 .resultValue {
@@ -369,7 +369,7 @@
 }
 .videoFrame {
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 2.5rem 1.5rem;
   text-align: center;
   background: var(--card);
@@ -407,7 +407,7 @@
 .estimateBanner {
   margin-top: 3rem;
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 4px;
   padding: 2rem;
   display: flex;
   justify-content: space-between;
@@ -457,7 +457,7 @@
 }
 .expertiseTag {
   border: 1px solid var(--border);
-  border-radius: 9999px;
+  border-radius: 2px;
   padding: 0.5rem 1.1rem;
   font-size: 0.85rem;
   color: var(--text-secondary);
@@ -475,7 +475,7 @@
 }
 .industryCard {
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 1.75rem;
 }
 .industryCard h3 {
@@ -497,7 +497,7 @@
   font-size: 0.78rem;
   color: var(--text-muted);
   border: 1px solid var(--border);
-  border-radius: 9999px;
+  border-radius: 2px;
   padding: 0.3rem 0.7rem;
 }
 
@@ -534,7 +534,7 @@
 }
 .teamCard {
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 1.5rem;
   text-align: center;
 }
@@ -588,7 +588,7 @@
   font-size: 0.82rem;
   color: var(--text-secondary);
   border: 1px solid var(--border);
-  border-radius: 9999px;
+  border-radius: 2px;
   padding: 0.35rem 0.85rem;
 }
 
@@ -640,7 +640,7 @@
 .ctaBox {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 24px;
+  border-radius: 2px;
   padding: 2.5rem;
   max-width: 700px;
   margin: 0 auto;
@@ -682,7 +682,7 @@
 .formGroup textarea {
   padding: 0.7rem 1rem;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 4px;
   background: var(--background);
   color: var(--text-primary);
   font-family: inherit;

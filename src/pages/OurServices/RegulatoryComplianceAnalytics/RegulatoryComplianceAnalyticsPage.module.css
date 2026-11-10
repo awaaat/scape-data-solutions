@@ -355,7 +355,7 @@
 .ctaTitle { font-size: 36px; font-weight: 700; color: var(--color-bg); margin: 0 0 12px; line-height: 1.2; }
 .ctaHighlight { color: var(--color-accent); }
 .ctaDesc { font-size: 16px; color: #555; line-height: 1.8; margin: 0 auto 32px; }
-.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 .ctaBtn:hover { filter: brightness(0.85); }
 .ctaBtn .btnArrow { transition: transform 0.3s ease; }
 .ctaBtn:hover .btnArrow { transform: translateX(4px); }
@@ -391,7 +391,7 @@
   .heroTitle { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.1rem, 5.2vw, 3.1rem); line-height: 1.08; letter-spacing: -.03em; margin: 0; }
   .heroActions { flex-direction: column; }
   .primaryBtn, .secondaryBtn { justify-content: center; }
-  .ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+  .ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
   .statFlowItem { flex: 1 1 100%; }
   .violationTop { flex-wrap: wrap; }
 }

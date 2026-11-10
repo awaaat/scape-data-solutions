@@ -29,7 +29,7 @@
     background: var(--color-accent);
     color: #0f172a;
     padding: 1rem 2rem;
-    border-radius: 8px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 1.125rem;
     text-decoration: none;
@@ -63,13 +63,13 @@
 .deliverableCard {
     background: #f8fafc;
     padding: 2rem;
-    border-radius: 12px;
+    border-radius: 4px;
     border: 1px solid #e2e8f0;
     transition: all 0.3s ease;
 }
 
 .deliverableIcon {
-    color: #3b82f6;
+    color: #204ecf;
     margin-bottom: 1rem;
 }
 
@@ -101,7 +101,7 @@
 .processCard {
     background: white;
     padding: 2rem;
-    border-radius: 12px;
+    border-radius: 4px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
@@ -147,7 +147,7 @@
     background: #eff6ff;
     color: #1e40af;
     padding: 0.5rem 1rem;
-    border-radius: 999px;
+    border-radius: 2px;
     font-size: 0.875rem;
     font-weight: 600;
 }
@@ -184,7 +184,7 @@
     background: white;
     color: #1e40af;
     padding: 1rem 2rem;
-    border-radius: 8px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 1.125rem;
     text-decoration: none;

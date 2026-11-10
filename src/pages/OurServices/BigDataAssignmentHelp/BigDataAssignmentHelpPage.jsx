@@ -17,7 +17,7 @@ const DIAG = {
   cluster: { stroke: "#7c3aed", fill: "#f5f3ff", text: "#6d28d9" },
   compute: { stroke: "#ea580c", fill: "#fff7ed", text: "#c2410c" },
   cache: { stroke: "#d97706", fill: "#fffbeb", text: "#b45309" },
-  storage: { stroke: "#2563eb", fill: "#eff6ff", text: "#1d4ed8" },
+  storage: { stroke: "#183a9e", fill: "#eff6ff", text: "#183a9e" },
   spot: { stroke: "#e11d48", fill: "#fff1f2", text: "#be123c" },
   output: { stroke: "#059669", fill: "#ecfdf5", text: "#047857" },
   neutral: { stroke: "#64748b", fill: "#f8fafc", text: "#475569" },

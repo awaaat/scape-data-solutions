@@ -15,19 +15,19 @@
 @media (max-width: 1024px) { .heroGrid { grid-template-columns: 1fr; gap: var(--space-10); } }
 .hero::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 55% at 50% 0%, rgba(59,130,246,0.08), transparent 70%);
+  background: radial-gradient(ellipse 60% 55% at 50% 0%, rgba(32,78,207,0.08), transparent 70%);
   pointer-events: none; z-index: 0;
 }
 .heroContent { position: relative; z-index: 2; }
 .heroBadge {
   display: inline-flex; align-items: center; gap: var(--space-2); flex-wrap: wrap;
-  border: 1px solid var(--color-border); border-radius: var(--radius-full);
+  border: 1px solid var(--color-border); border-radius: 4px;
   padding: 6px 14px 6px 10px; font-size: .78rem; margin-bottom: var(--space-6);
   background: var(--color-bg-card); color: var(--color-text-secondary);
 }
 .heroBadgeMarket {
   border: 1px solid var(--color-accent); color: var(--color-accent);
-  border-radius: var(--radius-full); padding: 1px 9px; font-size: .64rem; font-weight: 700;
+  border-radius: 4px; padding: 1px 9px; font-size: .64rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: .05em;
 }
 .heroTitle {
@@ -47,13 +47,13 @@
 
 .btnPrimary {
   display: inline-flex; align-items: center; gap: var(--space-2);
-  padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem;
+  padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem;
   background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; cursor: pointer; transition: filter .15s;
 }
 .btnPrimary:hover { filter: brightness(0.85); }
 .btnSecondary {
   display: inline-flex; align-items: center; gap: var(--space-2);
-  padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem;
+  padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem;
   color: var(--color-text); border: 1px solid var(--color-border); background: transparent; cursor: pointer; transition: background .15s;
 }
 .btnSecondary:hover { background: var(--color-border); }
@@ -64,7 +64,7 @@
 .trustBadges span {
   display: inline-flex; align-items: center; gap: 5px;
   font-size: .68rem; font-weight: 600; letter-spacing: .03em; color: var(--color-text-muted);
-  padding: 4px 12px; border-radius: var(--radius-full); border: 1px solid var(--color-border);
+  padding: 4px 12px; border-radius: 4px; border: 1px solid var(--color-border);
 }
 
 /* ============ HERO DASHBOARD MOCKUP ============ */
@@ -80,7 +80,7 @@
 .dashboardAlert { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-4); background: var(--color-bg); }
 .alertBadge {
   display: inline-block; font-size: .66rem; font-weight: 700; letter-spacing: .04em;
-  color: #ef4444; background: rgba(239,68,68,.1); border-radius: var(--radius-full);
+  color: #ef4444; background: rgba(239,68,68,.1); border-radius: 4px;
   padding: 3px 10px; margin-bottom: var(--space-3);
 }
 .alertRow { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: baseline; font-size: .82rem; }
@@ -141,7 +141,7 @@
 .interactiveTabs { display: flex; justify-content: center; gap: var(--space-2); margin-bottom: var(--space-6); }
 .interactiveTab, .interactiveTabActive {
   display: inline-flex; align-items: center; gap: var(--space-2);
-  padding: 9px 18px; border-radius: var(--radius-full); font-size: .85rem; font-weight: 500;
+  padding: 9px 18px; border-radius: 4px; font-size: .85rem; font-weight: 500;
   border: 1px solid var(--color-border); background: transparent; color: var(--color-text-secondary); cursor: pointer; transition: all .15s;
 }
 .interactiveTabActive { background: var(--color-text); color: var(--color-bg); border-color: var(--color-text); }
@@ -154,7 +154,7 @@
 .simSliderLabel svg { color: var(--color-accent); flex-shrink: 0; }
 .simSliderValue { margin-left: auto; font-weight: 600; color: var(--color-text); font-family: var(--font-display); }
 .simRange {
-  width: 100%; height: 4px; border-radius: 999px; background: var(--color-border);
+  width: 100%; height: 4px; border-radius: 2px; background: var(--color-border);
   -webkit-appearance: none; appearance: none; cursor: pointer;
 }
 .simRange::-webkit-slider-thumb {
@@ -168,7 +168,7 @@
 @media (max-width: 768px) { .simResult { border-left: none; border-top: 1px dashed var(--color-border); padding-top: var(--space-6); } }
 .simGaugeWrap { position: relative; display: flex; align-items: center; justify-content: center; }
 .simGaugeNumber { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
-.simBand { display: inline-block; padding: 4px 14px; border-radius: var(--radius-full); border: 1px solid; font-size: .78rem; font-weight: 600; }
+.simBand { display: inline-block; padding: 4px 14px; border-radius: 4px; border: 1px solid; font-size: .78rem; font-weight: 600; }
 .simVerdict { font-size: .88rem; line-height: 1.5; color: var(--color-text-secondary); max-width: 260px; }
 .simDisclaimer { font-size: .68rem; color: var(--color-text-muted); max-width: 280px; line-height: 1.5; }
 
@@ -246,7 +246,7 @@
 
 /* ============ TOOLS ============ */
 .toolsGrid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); }
-.toolItem { padding: 8px 18px; border-radius: var(--radius-full); border: 1px solid var(--color-border); font-size: .82rem; font-weight: 500; color: var(--color-text-secondary); }
+.toolItem { padding: 8px 18px; border-radius: 4px; border: 1px solid var(--color-border); font-size: .82rem; font-weight: 500; color: var(--color-text-secondary); }
 
 /* ============ HOW IT WORKS / WORKFLOW ============ */
 .workflowPanel { border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-6); background: var(--color-bg-card); margin-bottom: var(--space-10); overflow-x: auto; }
@@ -317,13 +317,13 @@
 .formGroup input:focus, .formGroup textarea:focus { border-color: var(--color-accent); }
 .submitBtn {
   display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
-  padding: 12px 28px; border-radius: var(--radius-full); font-weight: 500; font-size: .88rem;
+  padding: 12px 28px; border-radius: 4px; font-weight: 500; font-size: .88rem;
   background: var(--color-text); color: var(--color-bg); border: none; cursor: pointer; margin-top: var(--space-2);
 }
 .submitBtn:disabled { opacity: .6; cursor: not-allowed; }
 .spinner { animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.formOk { display: flex; align-items: center; justify-content: center; gap: var(--space-3); padding: var(--space-6); border-radius: var(--radius-xl); background: rgba(59,130,246,.08); color: var(--color-accent); font-weight: 500; }
+.formOk { display: flex; align-items: center; justify-content: center; gap: var(--space-3); padding: var(--space-6); border-radius: var(--radius-xl); background: rgba(32,78,207,.08); color: var(--color-accent); font-weight: 500; }
 .privacy { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: .68rem; color: var(--color-text-muted); text-align: center; margin: var(--space-2) 0 0; }
 
 /* ============ SCROLL TOP ============ */

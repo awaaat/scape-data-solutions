@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5 {
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  border-radius: 100px;
+  border-radius: 2px;
   background: var(--black);
   color: var(--gold-light);
   font-size: 15px;
@@ -107,11 +107,11 @@ h1, h2, h3, h4, h5 {
   flex-wrap: wrap;
 }
 
-.heroBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.heroBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 
 .heroBtn:hover { filter: brightness(0.85); }
 
-.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
+.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
 
 .heroBtnSecondary:hover { background: var(--color-border); }
 
@@ -310,7 +310,7 @@ h1, h2, h3, h4, h5 {
   background: var(--black);
   color: var(--gold-light);
   padding: 11px 22px;
-  border-radius: 100px;
+  border-radius: 2px;
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 600;
@@ -563,7 +563,7 @@ h1, h2, h3, h4, h5 {
 
 .ctaContent h2 { font-size: 32px; color: var(--white); max-width: 340px; line-height: 1.2; }
 
-.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 
 .ctaBtn:hover { filter: brightness(0.85); }
 

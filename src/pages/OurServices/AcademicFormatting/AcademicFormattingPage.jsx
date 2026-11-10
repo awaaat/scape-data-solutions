@@ -158,7 +158,7 @@ export default function AcademicFormattingPage() {
 
   // --- Data (all formatting‑specific) ---
   const styleGuides = [
-    { name: "APA 7th", usage: "Psychology, Education, Social Sciences", color: "#3b82f6", example: "(Author, Year)" },
+    { name: "APA 7th", usage: "Psychology, Education, Social Sciences", color: "#204ecf", example: "(Author, Year)" },
     { name: "MLA 9th", usage: "Literature, Languages, Humanities", color: "#8b5cf6", example: "(Author Page)" },
     { name: "Chicago 17th", usage: "History, Arts, Publishing", color: "#f59e0b", example: "Footnotes / Author-Date" },
     { name: "Harvard", usage: "Business, Economics, Sciences", color: "#10b981", example: "(Author, Year, p. X)" },
@@ -167,7 +167,7 @@ export default function AcademicFormattingPage() {
   ];
 
   const styleSamples = [
-    { name: "APA 7th", desc: "Author-date citation with a detailed reference list. Used in 65% of social science journals.", icon: <BookCopy size={24} />, color: "#3b82f6" },
+    { name: "APA 7th", desc: "Author-date citation with a detailed reference list. Used in 65% of social science journals.", icon: <BookCopy size={24} />, color: "#204ecf" },
     { name: "MLA 9th", desc: "Author-page in-text citations. Standard for literary analysis and language studies.", icon: <Pen size={24} />, color: "#8b5cf6" },
     { name: "Chicago 17th", desc: "Two systems: notes-bibliography and author-date. Preferred in history and publishing.", icon: <BookOpen size={24} />, color: "#f59e0b" },
     { name: "IEEE", desc: "Numerical citations in brackets. Used in 80% of engineering and computer science papers.", icon: <Layout size={24} />, color: "#ef4444" },

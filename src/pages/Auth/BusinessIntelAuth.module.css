@@ -2,7 +2,7 @@
    Standalone styling for the business-intel signup/login/forgot/reset
    pages -- deliberately NOT sharing Auth.module.css (that's the client
    assignment-posting flow's look). Same accent blue as the rest of the
-   site (#3b82f6 == --color-accent) and same visual language as
+   site (#204ecf == --color-accent) and same visual language as
    BusinessIntelDashboardPage.module.css (system font stack, rem-based
    radius, flat #111/#555/#ddd palette) so the login door feels like
    part of the same product as the dashboard it leads into.
@@ -38,7 +38,7 @@
   max-width: 440px;
   background: #fff;
   border: 1px solid #eee;
-  border-radius: 1.5rem;
+  border-radius: 2px;
   padding: 2.75rem 2.25rem;
   box-shadow: 0 12px 40px rgba(17, 17, 17, 0.08), 0 2px 8px rgba(17, 17, 17, 0.04);
 }
@@ -51,7 +51,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #3b82f6;
+  color: #204ecf;
   margin-bottom: 0.75rem;
 }
 
@@ -101,14 +101,14 @@
   color: #111;
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.14);
+  border-color: #204ecf;
+  box-shadow: 0 0 0 3px rgba(32, 78, 207, 0.14);
 }
 
 .input.hasError {
@@ -140,7 +140,7 @@
   color: #dc2626;
   background: rgba(220, 38, 38, 0.08);
   border: 1px solid rgba(220, 38, 38, 0.2);
-  border-radius: 0.75rem;
+  border-radius: 4px;
   padding: 10px 12px;
 }
 
@@ -158,7 +158,7 @@
 }
 
 .checkboxRow a {
-  color: #3b82f6;
+  color: #204ecf;
   text-decoration: underline;
 }
 
@@ -175,7 +175,7 @@
   color: #fff;
   background: #111;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.1s ease;
 }
@@ -212,7 +212,7 @@
 }
 
 .footerLinks a {
-  color: #3b82f6;
+  color: #204ecf;
   font-weight: 600;
   text-decoration: none;
 }

@@ -107,7 +107,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(253, 184, 64, 0.15);
   padding: 8px 20px 8px 16px;
-  border-radius: 50px;
+  border-radius: 2px;
   font-size: 13px;
   font-weight: 500;
   color: var(--primary);
@@ -190,7 +190,7 @@
   margin-bottom: 48px;
 }
 
-.heroBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.heroBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 
 .heroBtn:hover { filter: brightness(0.85); }
 
@@ -202,7 +202,7 @@
   transform: translateX(4px);
 }
 
-.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
+.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
 
 .heroBtnSecondary:hover { background: var(--color-border); }
 
@@ -434,7 +434,7 @@
   padding: 8px 16px;
   background: rgba(10, 10, 26, 0.9);
   backdrop-filter: blur(10px);
-  border-radius: 50px;
+  border-radius: 2px;
   font-size: 13px;
   font-weight: 500;
   color: var(--white);
@@ -832,7 +832,7 @@
   font-weight: 500;
   background: rgba(253, 184, 64, 0.08);
   padding: 6px 16px 6px 12px;
-  border-radius: 50px;
+  border-radius: 2px;
   margin-bottom: 20px;
   border: 1px solid rgba(253, 184, 64, 0.08);
 }
@@ -860,7 +860,7 @@
   margin-bottom: 32px;
 }
 
-.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 
 .ctaBtn:hover { filter: brightness(0.85); }
 
@@ -981,7 +981,7 @@
   }
   
   .heroBtn,
-  .heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
+  .heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
   
   .sectionTitle {
     font-size: 28px;
@@ -1088,7 +1088,7 @@
     font-size: 22px;
   }
   
-  .ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+  .ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
   
   .ctaBtnSecondary {
     padding: 14px 24px;

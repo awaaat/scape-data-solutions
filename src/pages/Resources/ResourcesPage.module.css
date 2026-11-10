@@ -13,7 +13,7 @@
   --background: #ffffff;
   --card-bg: #f8f9fa;
   --card-border: #eaeaea;
-  --accent: #4a6cf7;
+  --accent: #204ecf;
   --accent-glow: rgba(74, 108, 247, 0.15);
   --accent-secondary: #6c5ce7;
   --font-display: "UniversalSans Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -176,7 +176,7 @@
   text-transform: uppercase;
   color: var(--primary-muted);
   padding: 6px 16px;
-  border-radius: 100px;
+  border-radius: 2px;
   border: 1px solid var(--card-border);
   background: var(--card-bg);
   margin-bottom: 24px;
@@ -236,7 +236,7 @@
 .heroImage {
   width: 100%;
   height: auto;
-  border-radius: 16px;
+  border-radius: 4px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.06);
 }
 
@@ -323,7 +323,7 @@
 
 .filterButton {
   padding: 8px 18px;
-  border-radius: 100px;
+  border-radius: 2px;
   font-size: 13px;
   font-weight: 450;
   color: var(--primary-muted);
@@ -527,7 +527,7 @@
   align-items: center;
   gap: 8px;
   padding: 14px 32px;
-  border-radius: 100px;
+  border-radius: 2px;
   font-size: 15px;
   font-weight: 500;
   font-family: var(--font-body);

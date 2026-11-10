@@ -19,7 +19,7 @@
   max-width: 520px;
   width: 100%;
   background: #fff;
-  border-radius: 1.5rem;
+  border-radius: 2px;
   padding: 2.5rem 2rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   text-align: center;
@@ -28,7 +28,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #3b82f6;
+  color: #204ecf;
   font-weight: 600;
 }
 .gateTitle {
@@ -51,20 +51,20 @@
 .gateInput {
   padding: 0.75rem 1rem;
   border: 1px solid #ddd;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   font-size: 1rem;
   outline: none;
   transition: border 0.2s;
 }
 .gateInput:focus {
-  border-color: #3b82f6;
+  border-color: #204ecf;
 }
 .gateButton {
   padding: 0.75rem;
   background: #111;
   color: #fff;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -77,7 +77,7 @@
   margin-top: 1rem;
   background: none;
   border: none;
-  color: #3b82f6;
+  color: #204ecf;
   font-size: 0.9rem;
   cursor: pointer;
   text-decoration: underline;
@@ -96,7 +96,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #3b82f6;
+  color: #204ecf;
   font-weight: 600;
 }
 .title {
@@ -114,14 +114,14 @@
 .emailPill {
   background: #f0f0f0;
   padding: 0.4rem 1rem;
-  border-radius: 2rem;
+  border-radius: 2px;
   font-size: 0.85rem;
   color: #333;
 }
 .linkButton {
   background: none;
   border: none;
-  color: #3b82f6;
+  color: #204ecf;
   font-size: 0.85rem;
   cursor: pointer;
   text-decoration: underline;
@@ -131,7 +131,7 @@
   background: #111;
   color: #fff;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -154,7 +154,7 @@
 }
 .statCard {
   background: #f8fafc;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   padding: 1rem;
   text-align: center;
   border: 1px solid #eee;
@@ -188,7 +188,7 @@
 .filterChip {
   padding: 0.4rem 1rem;
   border: 1px solid #ddd;
-  border-radius: 2rem;
+  border-radius: 2px;
   background: #fff;
   font-size: 0.85rem;
   cursor: pointer;
@@ -213,7 +213,7 @@
   background: #fee2e2;
   color: #991b1b;
   padding: 0.75rem 1rem;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   margin-bottom: 1rem;
 }
 .emptyState {
@@ -236,7 +236,7 @@
 .reportCard {
   background: #fff;
   border: 1px solid #eee;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   overflow: hidden;
 }
 .reportSummary {
@@ -278,7 +278,7 @@
 }
 .badge {
   padding: 0.2rem 0.6rem;
-  border-radius: 2rem;
+  border-radius: 2px;
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -292,7 +292,7 @@
 .badge.tone_avoid { background: #fee2e2; color: #991b1b; }
 .flagBadge {
   padding: 0.2rem 0.6rem;
-  border-radius: 2rem;
+  border-radius: 2px;
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -342,7 +342,7 @@
 .summaryText {
   background: #f8fafc;
   padding: 1rem;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   font-size: 0.95rem;
   line-height: 1.6;
   color: #333;
@@ -352,7 +352,7 @@
   background: #1e1e1e;
   color: #d4d4d4;
   padding: 1rem;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   font-size: 0.75rem;
   overflow-x: auto;
   max-height: 400px;
@@ -373,7 +373,7 @@
 }
 .modal {
   background: #fff;
-  border-radius: 1.5rem;
+  border-radius: 2px;
   max-width: 600px;
   width: 100%;
   max-height: 90vh;
@@ -405,14 +405,14 @@
 .field select {
   padding: 0.6rem 0.75rem;
   border: 1px solid #ddd;
-  border-radius: 0.5rem;
+  border-radius: 4px;
   font-size: 0.95rem;
   outline: none;
   transition: border 0.2s;
 }
 .field input:focus,
 .field select:focus {
-  border-color: #3b82f6;
+  border-color: #204ecf;
 }
 .fieldRow {
   display: grid;
@@ -442,7 +442,7 @@
   justify-content: center;
   width: 38px;
   height: 38px;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   border: 1px solid #eee;
   background: #fff;
   color: #333;
@@ -464,7 +464,7 @@
   width: 260px;
   background: #fff;
   border: 1px solid #eee;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
   z-index: 20;
   overflow: hidden;
@@ -493,7 +493,7 @@
   gap: 8px;
   padding: 0.35rem 0.75rem 0.35rem 0.35rem;
   border: 1px solid #eee;
-  border-radius: 2rem;
+  border-radius: 2px;
   background: #fff;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
@@ -530,7 +530,7 @@
   width: 240px;
   background: #fff;
   border: 1px solid #eee;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
   z-index: 20;
   overflow: hidden;
@@ -572,7 +572,7 @@
   background: #f8fafc;
 }
 .profileDropdownItemActive {
-  color: #3b82f6;
+  color: #204ecf;
   font-weight: 600;
 }
 .profileDropdownDanger {
@@ -620,7 +620,7 @@
 .sectionPanel {
   background: #fff;
   border: 1px solid #eee;
-  border-radius: 1rem;
+  border-radius: 4px;
   padding: 2rem;
   max-width: 640px;
 }
@@ -643,7 +643,7 @@
   gap: 0.75rem;
   padding: 2.5rem 1rem;
   border: 1px dashed #ddd;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   color: #888;
   text-align: center;
 }

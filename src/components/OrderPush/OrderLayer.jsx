@@ -8,7 +8,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ArrowRight, X, Sparkles, Zap } from "lucide-react";
 import s from "./OrderPush.module.css";
-import { orderUrl, SERVICES, isAcademicPath, hashStr, QUIET, seen } from "./orderLinks";
+import { orderUrl, SERVICES, isAcademicPath, hashStr, QUIET, seen, serviceFromPath } from "./orderLinks";
 
 const LINES_ACAD = [
   "Supervisor sent your stats back?",
@@ -25,8 +25,8 @@ const LINES_BIZ = [
   "Data you pay to store but never use?",
 ];
 
-function Dock({ academic, onDismiss }) {
-  const lines = academic ? LINES_ACAD : LINES_BIZ;
+function Dock({ academic, svc: here, onDismiss }) {
+  const lines = here ? [`Need ${here.name}?`, `${here.name}: free quote in 24h`, `Ready to order ${here.name}?`] : academic ? LINES_ACAD : LINES_BIZ;
   const [i, setI] = useState(() => hashStr(window.location.pathname) % lines.length);
   const [open, setOpen] = useState(false);
   const [pick, setPick] = useState(null);
@@ -36,20 +36,22 @@ function Dock({ academic, onDismiss }) {
     return () => clearInterval(t);
   }, [open, lines.length]);
   const svc = SERVICES.find((x) => x.key === pick);
+  const target = here && !svc ? { slug: here.slug, name: here.name } : svc ? { slug: svc.slug, name: svc.name } : null;
   return (
     <div className={s.dockWrap}>
       {open && (
         <div className={s.pocket} role="dialog" aria-label="Pocket quote">
           <button className={s.x} onClick={() => setOpen(false)} aria-label="Close"><X size={14} /></button>
-          <p className={s.pocketKicker}><Zap size={12} /> 20-second order</p>
-          <p className={s.pocketTitle}>What do you need done?</p>
+          <p className={s.pocketKicker}><Zap size={12} /> {here ? "Your service" : "20-second order"}</p>
+          <p className={s.pocketTitle}>{here ? `Order ${here.name}` : "What do you need done?"}</p>
+          {here && <p className={s.fine} style={{margin:"8px 0 0"}}>Wrong service? Pick another:</p>}
           <div className={s.chips}>
             {SERVICES.map((x) => (
               <button key={x.key} type="button" className={`${s.chip} ${pick === x.key ? s.chipOn : ""}`} onClick={() => setPick(x.key)}>{x.label}</button>
             ))}
           </div>
-          <a className={s.orderBtn} href={orderUrl({ service: svc?.slug, medium: "dock-pocket" })}>
-            {svc ? "Place my order" : "Start my order"} <ArrowRight size={16} />
+          <a className={s.orderBtn} href={orderUrl({ service: target ? target.slug : null, serviceName: target?.name, medium: "dock-pocket" })}>
+            {target ? "Place my order" : "Start my order"} <ArrowRight size={16} />
           </a>
           <p className={s.fine}>Free quote in 24 hours. You pay nothing until you agree.</p>
         </div>
@@ -59,7 +61,7 @@ function Dock({ academic, onDismiss }) {
         <button type="button" className={s.dockText} onClick={() => setOpen((o) => !o)} aria-expanded={open}>
           <span key={i} className={s.dockLine}>{lines[i]}</span>
         </button>
-        <a className={s.dockGo} href={orderUrl({ medium: "dock" })}>Order <ArrowRight size={14} /></a>
+        <a className={s.dockGo} href={orderUrl({ service: here ? undefined : null, medium: "dock" })}>Order <ArrowRight size={14} /></a>
         <button className={s.dockX} onClick={onDismiss} aria-label="Hide for this visit"><X size={13} /></button>
       </div>
     </div>
@@ -86,29 +88,32 @@ function ScrollToast({ pct, academic, onClose }) {
   );
 }
 
-function ExitModal({ academic, onClose }) {
+function ExitModal({ academic, svc, onClose }) {
   useEffect(() => {
     const k = (e) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
   }, [onClose]);
   const opts = academic
-    ? [["Fix my analysis", "Supervisor said redo it", "thesis-data-analysis-help"],
-       ["Explain my output", "I have results, not answers", "research-results-interpretation"],
-       ["Do it from scratch", "Raw dataset, blank page", "spss-data-analysis-help"]]
-    : [["Build the dashboard", "Numbers into one clear view", "other"],
-       ["Clean up the data", "One trusted source of truth", "research-data-cleaning-service"],
-       ["Answer a question", "A decision that needs evidence", "other"]];
+    ? [["Fix my analysis", "Supervisor said redo it", "dissertation-statistics-help"],
+       ["Explain my output", "I have results, not answers", "research-data-analysis"],
+       ["Do it from scratch", "Raw dataset, blank page", "spss-data-analysis"]]
+    : [["Build the dashboard", "Numbers into one clear view", "dashboard-development"],
+       ["Clean up the data", "One trusted source of truth", "data-cleaning"],
+       ["Answer a question", "A decision that needs evidence", "business-intelligence"]];
+  const SVC_OPTS = svc ? [[`Order ${svc.name}`, "Tell us what you need, we quote in 24h", false],
+       ["Send my data and brief", "Upload it with the order, no calls needed", false],
+       ["It's urgent", "Mark it rush and get a same-day reply", true]] : null;
   return (
     <div className={s.overlay} onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div className={s.modal} role="dialog" aria-modal="true" aria-label="Before you go">
         <button className={s.x} onClick={onClose} aria-label="Close"><X size={16} /></button>
         <p className={s.pocketKicker}><Sparkles size={12} /> One more thing</p>
-        <h3 className={s.modalTitle}>Leaving with the problem still unsolved?</h3>
+        <h3 className={s.modalTitle}>{svc ? `Still thinking about ${svc.name}?` : "Leaving with the problem still unsolved?"}</h3>
         <p className={s.modalSub}>Pick the closest match. We prefill the order form, you add details, and we reply with a free quote in 24 hours.</p>
         <div className={s.optGrid}>
-          {opts.map(([t, d, slug], n) => (
-            <a key={t} className={s.opt} href={orderUrl({ service: slug, medium: "exit-modal", content: `opt${n + 1}` })}>
+          {(SVC_OPTS || opts).map(([t, d, x], n) => (
+            <a key={t} className={s.opt} href={SVC_OPTS ? orderUrl({ urgent: x, medium: "exit-modal", content: `opt${n + 1}` }) : orderUrl({ service: x, medium: "exit-modal", content: `opt${n + 1}` })}>
               <span className={s.optNum}>0{n + 1}</span>
               <strong>{t}</strong><em>{d}</em>
               <ArrowRight size={16} className={s.optArrow} />
@@ -125,6 +130,7 @@ export default function OrderLayer() {
   const { pathname } = useLocation();
   const quiet = QUIET.test(pathname);
   const academic = useMemo(() => isAcademicPath(pathname), [pathname]);
+  const svc = useMemo(() => serviceFromPath(pathname), [pathname]);
   const [dockOn, setDockOn] = useState(false);
   const [toast, setToast] = useState(0);        // 0 = hidden, otherwise the pct to show
   const [modal, setModal] = useState(false);
@@ -167,9 +173,9 @@ export default function OrderLayer() {
   if (quiet) return null;
   return (
     <>
-      {dockOn && <Dock academic={academic} onDismiss={() => { seen.set("dock_x"); setDockOn(false); }} />}
+      {dockOn && <Dock academic={academic} svc={svc} onDismiss={() => { seen.set("dock_x"); setDockOn(false); }} />}
       {toast > 0 && !modal && <ScrollToast pct={toast} academic={academic} onClose={() => setToast(0)} />}
-      {modal && <ExitModal academic={academic} onClose={() => setModal(false)} />}
+      {modal && <ExitModal academic={academic} svc={svc} onClose={() => setModal(false)} />}
     </>
   );
 }

@@ -187,7 +187,7 @@
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4px);
   padding: 4px 12px;
-  border-radius: 100px;
+  border-radius: 2px;
 }
 
 .heroStamp {
@@ -196,7 +196,7 @@
   left: 10%;
   background: var(--bg-background);
   border: 1px solid var(--border-color);
-  border-radius: 100px;
+  border-radius: 2px;
   padding: 8px 20px;
   font-size: 0.75rem;
   font-weight: 500;
@@ -227,7 +227,7 @@
 
 .filterBtn {
   padding: 8px 20px;
-  border-radius: 100px;
+  border-radius: 2px;
   font-size: 0.9rem;
   font-weight: 450;
   color: var(--text-secondary);
@@ -313,7 +313,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 4px;
   background: rgba(0, 0, 0, 0.06); /* neutral light grey */
   color: var(--accent);
   margin-bottom: 16px;
@@ -357,7 +357,7 @@
 .ledgerTag {
   background: var(--bg-background);
   padding: 4px 10px;
-  border-radius: 100px;
+  border-radius: 2px;
   border: 1px solid var(--border-color);
 }
 
@@ -449,7 +449,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 4px;
   background: rgba(0, 0, 0, 0.06);
   color: var(--accent);
   font-size: 1.8rem;
@@ -481,7 +481,7 @@
 
 .lightboxMetaCell {
   background: var(--bg-card);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 12px 16px;
 }
 .lightboxMetaLabel {
@@ -507,7 +507,7 @@
 
 .lightboxResultBox {
   background: rgba(0, 0, 0, 0.04);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 16px 20px;
   border-left: 3px solid var(--accent);
   margin-bottom: 24px;
@@ -527,7 +527,7 @@
 .lightboxBtn,
 .lightboxBtnGhost {
   padding: 10px 24px;
-  border-radius: 100px;
+  border-radius: 2px;
   font-weight: 500;
   font-size: 0.9rem;
   border: none;
@@ -661,7 +661,7 @@
   align-items: center;
   gap: 8px;
   padding: 14px 36px;
-  border-radius: 100px;
+  border-radius: 2px;
   background: var(--accent);
   color: #fff;
   font-weight: 500;

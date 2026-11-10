@@ -108,7 +108,7 @@
   background: var(--greenpastel02);
   color: var(--greenblack);
   padding: 8px 20px 8px 12px;
-  border-radius: 130px;
+  border-radius: 2px;
   font-family: var(--font-display);
   font-size: 0.8rem;
   font-weight: 500;
@@ -142,7 +142,7 @@
 /* Pill buttons with the layered-circle hover mechanism */
 .heroBtn,
 .heroBtnSecondary,
-.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 
 .heroBtn::before,
 .heroBtn::after,
@@ -157,7 +157,7 @@
 }
 
 .heroBtn,
-.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 
 .heroBtn::before,
 .ctaBtn::before {
@@ -171,7 +171,7 @@
   transform: scale(1.15);
 }
 
-.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
+.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
 
 .heroBtnSecondary:hover { background: var(--color-border); }
 
@@ -208,7 +208,7 @@
 .heroImage img {
   width: 100%;
   max-width: 580px;
-  border-radius: 20px;
+  border-radius: 4px;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
   display: block;
 }
@@ -323,7 +323,7 @@
 
 .overviewImage img {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 4px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
@@ -410,7 +410,7 @@
   max-width: 280px;
   padding: 20px;
   background: rgba(249, 249, 248, 0.06);
-  border-radius: 16px;
+  border-radius: 4px;
   border: 0.99px solid rgba(249, 249, 248, 0.1);
 }
 
@@ -485,7 +485,7 @@
   align-items: flex-start;
   padding: 20px;
   background: var(--purewhite);
-  border-radius: 16px;
+  border-radius: 4px;
 }
 
 .howIcon {
@@ -547,7 +547,7 @@
   align-items: flex-start;
   padding: 24px;
   background: var(--greenpastel02);
-  border-radius: 16px;
+  border-radius: 4px;
   transition: transform 0.2s ease;
 }
 
@@ -675,7 +675,7 @@
   gap: 14px;
   align-items: flex-start;
   padding: 14px 16px;
-  border-radius: 12px;
+  border-radius: 4px;
   transition: background 0.2s ease;
 }
 
@@ -786,7 +786,7 @@
   text-align: center;
   padding: 60px 40px;
   background: rgba(249, 249, 248, 0.05);
-  border-radius: 30px;
+  border-radius: 2px;
   border: 0.99px solid rgba(249, 249, 248, 0.08);
   position: relative;
   overflow: hidden;

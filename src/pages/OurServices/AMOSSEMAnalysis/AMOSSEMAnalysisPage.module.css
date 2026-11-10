@@ -483,7 +483,7 @@
 }
 .pricingCard {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 30px 25px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.06);
   border: 1px solid #eaeaea;
@@ -508,7 +508,7 @@
   background: #fde428;
   color: #000;
   padding: 4px 16px;
-  border-radius: 20px;
+  border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -564,7 +564,7 @@
   padding: 10px 24px;
   background: #002e5b;
   color: #fff;
-  border-radius: 40px;
+  border-radius: 2px;
   font-weight: 600;
   font-size: 0.9rem;
   text-align: center;
@@ -604,7 +604,7 @@
 }
 .whyCard {
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 4px;
   border: 1px solid #eaeaea;
   text-align: center;
   transition: box-shadow 0.2s;
@@ -656,7 +656,7 @@
 }
 .whyCard {
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 4px;
   border: 1px solid #eaeaea;
   text-align: center;
   transition: box-shadow 0.2s;
@@ -704,7 +704,7 @@
 }
 .visualItem {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 4px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   padding: 16px;
   transition: transform 0.25s ease;
@@ -716,7 +716,7 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 .newsLink {
   color: #002e5b;
@@ -743,7 +743,7 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px;
+  border-radius: 4px;
   background: #ffffff;
   padding: 12px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
@@ -776,7 +776,7 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px;
+  border-radius: 4px;
   background: #ffffff;
   padding: 12px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);

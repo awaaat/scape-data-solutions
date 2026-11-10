@@ -195,7 +195,7 @@
   background: var(--btn-bg) !important;
   padding: 13px 28px;
   border: none;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   text-decoration: none !important;
   transition: background 0.2s ease;
 }

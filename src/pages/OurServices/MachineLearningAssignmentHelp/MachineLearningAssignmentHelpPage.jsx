@@ -24,7 +24,7 @@ export default function MachineLearningAssignmentHelpPage() {
           <li>{"Revision Support"}</li>
         </ul>
         <p>
-          <a href={orderUrl({ medium: "page-cta", content: "machinelearningassignmenthelp-1" })} style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '999px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
+          <a href={orderUrl({ medium: "page-cta", content: "machinelearningassignmenthelp-1" })} style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '2px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
             Talk to our team about {"Machine Learning Assignment Help"}
           </a>
         </p>

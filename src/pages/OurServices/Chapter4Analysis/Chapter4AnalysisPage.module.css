@@ -109,7 +109,7 @@ a { color: inherit; }
 .heroContent { display: flex; flex-direction: column; align-items: flex-start; }
 .heroBadge {
   display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid var(--paper-line); border-radius: 999px;
+  border: 1px solid var(--paper-line); border-radius: 2px;
   padding: 6px 14px; font-size: .76rem; color: var(--ink-soft);
   background: var(--paper-card); margin-bottom: 20px;
 }
@@ -187,7 +187,7 @@ a { color: inherit; }
 .audienceGrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .audienceChip {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 9px 18px; border-radius: 999px; border: 1px solid var(--paper-line);
+  padding: 9px 18px; border-radius: 2px; border: 1px solid var(--paper-line);
   font-size: .84rem; font-weight: 500; color: var(--ink-soft); background: var(--paper-card);
 }
 
@@ -217,8 +217,8 @@ a { color: inherit; }
 .docMockNum { font-family: var(--font-mono); font-size: .74rem; font-weight: 700; color: var(--amber-deep); }
 .docMockLines { display: flex; flex-direction: column; gap: 6px; }
 .docMockTitle { font-family: var(--font-display); font-size: .9rem; font-weight: 600; color: var(--ink); }
-.docMockBar { height: 5px; width: 90%; border-radius: 999px; background: var(--paper-line); }
-.docMockBarShort { height: 5px; width: 55%; border-radius: 999px; background: var(--paper-line); }
+.docMockBar { height: 5px; width: 90%; border-radius: 2px; background: var(--paper-line); }
+.docMockBarShort { height: 5px; width: 55%; border-radius: 2px; background: var(--paper-line); }
 .docMockNote { font-family: var(--font-note); font-style: italic; font-size: .74rem; line-height: 1.5; color: var(--ink-faint); }
 
 /* ============ BREAK SECTION (regression scatter) ============ */
@@ -254,7 +254,7 @@ a { color: inherit; }
 .offeringIcon { color: var(--amber-deep); flex-shrink: 0; margin-top: 1px; }
 .toolsRow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-top: 26px; }
 .toolsLabel { font-family: var(--font-mono); font-size: .72rem; color: var(--ink-faint); font-weight: 600; margin-right: 6px; text-transform: uppercase; letter-spacing: .06em; }
-.toolTag { font-size: .68rem; font-weight: 600; padding: 5px 12px; border-radius: 999px; background: var(--paper-line); color: var(--ink-soft); }
+.toolTag { font-size: .68rem; font-weight: 600; padding: 5px 12px; border-radius: 2px; background: var(--paper-line); color: var(--ink-soft); }
 
 /* ============ TRANSCRIPT ============ */
 .transcriptWrap {
@@ -269,7 +269,7 @@ a { color: inherit; }
 .transcriptText { font-size: .85rem; color: var(--ink-soft); line-height: 1.5; flex: 1; min-width: 200px; }
 .transcriptCode {
   font-size: .63rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em;
-  padding: 3px 9px; border-radius: 999px; background: var(--paper-line); color: var(--ink-soft); white-space: nowrap;
+  padding: 3px 9px; border-radius: 2px; background: var(--paper-line); color: var(--ink-soft); white-space: nowrap;
 }
 
 /* ============ MISTAKES REVIEW — sticky-note flags ============ */
@@ -278,9 +278,9 @@ a { color: inherit; }
   position: relative; width: 100%; max-width: 600px; min-height: 300px;
   border-radius: 4px; border: 1px solid var(--paper-line); background: var(--paper-card); padding: 30px;
 }
-.reviewLineTitle { height: 12px; width: 45%; border-radius: 999px; background: var(--ink-faint); opacity: .35; margin-bottom: 20px; }
-.reviewLine { height: 8px; width: 92%; border-radius: 999px; background: var(--paper-line); margin-bottom: 12px; }
-.reviewLineShort { height: 8px; width: 60%; border-radius: 999px; background: var(--paper-line); margin-bottom: 12px; }
+.reviewLineTitle { height: 12px; width: 45%; border-radius: 2px; background: var(--ink-faint); opacity: .35; margin-bottom: 20px; }
+.reviewLine { height: 8px; width: 92%; border-radius: 2px; background: var(--paper-line); margin-bottom: 12px; }
+.reviewLineShort { height: 8px; width: 60%; border-radius: 2px; background: var(--paper-line); margin-bottom: 12px; }
 .reviewFlag {
   position: absolute; display: flex; align-items: flex-start; gap: 8px;
   max-width: 220px; padding: 8px 12px 8px 10px;
@@ -317,7 +317,7 @@ a { color: inherit; }
 .pricingBadge {
   position: absolute; top: -11px; right: 16px;
   font-family: var(--font-mono); font-size: .62rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
-  background: var(--amber); color: var(--ink); padding: 4px 10px; border-radius: 999px;
+  background: var(--amber); color: var(--ink); padding: 4px 10px; border-radius: 2px;
   transform: rotate(3deg); box-shadow: 0 4px 10px -4px rgba(0,0,0,.3);
 }
 .pricingTier { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--ink); }

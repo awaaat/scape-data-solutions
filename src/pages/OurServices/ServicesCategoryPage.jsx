@@ -113,7 +113,7 @@ export default function ServicesCategoryPage() {
                   style={{
                     padding: '0.45rem 0.95rem',
                     border: '1px solid rgba(0,0,0,0.12)',
-                    borderRadius: '999px',
+                    borderRadius: '2px',
                     fontSize: '0.88rem',
                     color: 'inherit',
                     textDecoration: 'none',

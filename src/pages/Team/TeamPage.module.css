@@ -21,7 +21,7 @@
   background: #fff;
   padding: 2rem 1rem;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 .card img {
   width: 100px;
@@ -45,7 +45,7 @@
   background: #0f172a;
   color: #fff;
   padding: 0.8rem 2rem;
-  border-radius: 8px;
+  border-radius: 4px;
   font-weight: 600;
   text-decoration: none;
 }

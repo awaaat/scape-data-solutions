@@ -125,7 +125,7 @@ const ResourcesPage = () => {
               >
                 <defs>
                   <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#4a6cf7" stopOpacity="0.6">
+                    <stop offset="0%" stopColor="#204ecf" stopOpacity="0.6">
                       <animate
                         attributeName="stopOpacity"
                         values="0.6;0.1;0.6"
@@ -143,7 +143,7 @@ const ResourcesPage = () => {
                     </stop>
                   </linearGradient>
                   <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#4a6cf7" stopOpacity="0.3">
+                    <stop offset="0%" stopColor="#204ecf" stopOpacity="0.3">
                       <animate
                         attributeName="stopOpacity"
                         values="0.3;0.7;0.3"
@@ -169,7 +169,7 @@ const ResourcesPage = () => {
                         repeatCount="indefinite"
                       />
                     </stop>
-                    <stop offset="100%" stopColor="#4a6cf7" stopOpacity="0.1">
+                    <stop offset="100%" stopColor="#204ecf" stopOpacity="0.1">
                       <animate
                         attributeName="stopOpacity"
                         values="0.1;0.5;0.1"
@@ -301,7 +301,7 @@ const ResourcesPage = () => {
                   <animate attributeName="stroke-dasharray" values="300" dur="0.01s" fill="freeze" />
                 </path>
 
-                <circle cx="100" cy="300" r="6" fill="#4a6cf7">
+                <circle cx="100" cy="300" r="6" fill="#204ecf">
                   <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite" />
                 </circle>
@@ -309,7 +309,7 @@ const ResourcesPage = () => {
                   <animate attributeName="r" values="5;7;5" dur="2.5s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.5s" repeatCount="indefinite" />
                 </circle>
-                <circle cx="300" cy="200" r="4" fill="#4a6cf7">
+                <circle cx="300" cy="200" r="4" fill="#204ecf">
                   <animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite" />
                 </circle>
@@ -317,7 +317,7 @@ const ResourcesPage = () => {
                   <animate attributeName="r" values="5;7;5" dur="1.8s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.8s" repeatCount="indefinite" />
                 </circle>
-                <circle cx="400" cy="150" r="6" fill="#4a6cf7">
+                <circle cx="400" cy="150" r="6" fill="#204ecf">
                   <animate attributeName="r" values="6;8;6" dur="2.2s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.2s" repeatCount="indefinite" />
                 </circle>
@@ -325,7 +325,7 @@ const ResourcesPage = () => {
                   <animate attributeName="r" values="4;6;4" dur="2.8s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.7;0.4;0.7" dur="2.8s" repeatCount="indefinite" />
                 </circle>
-                <circle cx="550" cy="200" r="5" fill="#4a6cf7">
+                <circle cx="550" cy="200" r="5" fill="#204ecf">
                   <animate attributeName="r" values="5;7;5" dur="3.2s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.8;0.5;0.8" dur="3.2s" repeatCount="indefinite" />
                 </circle>
@@ -333,7 +333,7 @@ const ResourcesPage = () => {
                   <animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite" />
                 </circle>
-                <circle cx="700" cy="250" r="5" fill="#4a6cf7">
+                <circle cx="700" cy="250" r="5" fill="#204ecf">
                   <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2.5s" repeatCount="indefinite" />
                 </circle>
@@ -341,7 +341,7 @@ const ResourcesPage = () => {
                   <animate attributeName="r" values="4;6;4" dur="3.5s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3.5s" repeatCount="indefinite" />
                 </circle>
-                <circle cx="250" cy="350" r="5" fill="#4a6cf7">
+                <circle cx="250" cy="350" r="5" fill="#204ecf">
                   <animate attributeName="r" values="5;7;5" dur="2.2s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2.2s" repeatCount="indefinite" />
                 </circle>
@@ -349,7 +349,7 @@ const ResourcesPage = () => {
                   <animate attributeName="r" values="6;9;6" dur="2.8s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.8s" repeatCount="indefinite" />
                 </circle>
-                <circle cx="400" cy="400" r="5" fill="#4a6cf7">
+                <circle cx="400" cy="400" r="5" fill="#204ecf">
                   <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite" />
                 </circle>
@@ -357,7 +357,7 @@ const ResourcesPage = () => {
                   <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.5s" repeatCount="indefinite" />
                 </circle>
-                <circle cx="550" cy="450" r="5" fill="#4a6cf7">
+                <circle cx="550" cy="450" r="5" fill="#204ecf">
                   <animate attributeName="r" values="5;7;5" dur="3.2s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3.2s" repeatCount="indefinite" />
                 </circle>
@@ -365,7 +365,7 @@ const ResourcesPage = () => {
                   <animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite" />
                 </circle>
-                <circle cx="700" cy="450" r="5" fill="#4a6cf7">
+                <circle cx="700" cy="450" r="5" fill="#204ecf">
                   <animate attributeName="r" values="5;8;5" dur="2.8s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2.8s" repeatCount="indefinite" />
                 </circle>

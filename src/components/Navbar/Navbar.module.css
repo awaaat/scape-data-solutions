@@ -95,7 +95,7 @@
 }
 .navSocialIcon:hover {
   color: #fff;
-  background: #3b82f6;
+  background: #204ecf;
 }
 
 /* ================================================================
@@ -200,7 +200,7 @@
   left: 0.8rem;
   right: 0.8rem;
   height: 2px;
-  background: #3b82f6;
+  background: #204ecf;
   border-radius: 2px;
 }
 
@@ -234,7 +234,7 @@
 
 .drop > div {
   background: #fff;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   padding: 0.5rem 0;
   border: 1px solid #eee;
@@ -257,7 +257,7 @@
   font-size: 0.85rem;
   color: #444;
   text-decoration: none;
-  border-radius: 0.4rem;
+  border-radius: 4px;
   transition: background 0.15s, color 0.15s;
 }
 .dropLink:hover {
@@ -474,7 +474,7 @@
   align-items: center;
   white-space: nowrap;
   padding: 10px 20px;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   background: var(--color-text);
   color: var(--color-bg);
   font-size: .85rem;
@@ -488,7 +488,7 @@
   display: block;
   margin-top: 12px;
   padding: 14px 20px;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   background: var(--color-text);
   color: var(--color-bg) !important;
   text-align: center;
@@ -504,7 +504,7 @@
   white-space: nowrap;
   margin-right: 16px;
   padding: 6px 16px;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   background: var(--color-text);
   color: var(--color-bg);
   font-size: .78rem;
@@ -761,7 +761,7 @@
   height: 44px;
   padding: 0 8px 0 22px;
   gap: 14px;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   background: var(--color-text);
   color: var(--color-bg);
   font-size: .8rem;
@@ -841,7 +841,7 @@
 /* ---------- Dropdown fix: single clean border, light shadow ---------- */
 .drop {
   border: 1px solid var(--color-border) !important;
-  border-radius: var(--radius-lg) !important;
+  border-radius: var(--radius-lg)!important;
   background: var(--color-bg) !important;
   box-shadow: 0 8px 24px -12px rgba(0,0,0,.18) !important;
   outline: none !important;

@@ -21,7 +21,7 @@
 }
 
 .accent {
-  color: #3b82f6;
+  color: #204ecf;
 }
 
 /* ─── HERO ────────────────────────────────────────────────────────── */
@@ -171,7 +171,7 @@
 .clientCard {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 1rem;
+  border-radius: 4px;
   padding: 1.5rem;
   transition: all 0.2s ease;
   display: flex;
@@ -180,13 +180,13 @@
 }
 
 .clientCard:hover {
-  border-color: #3b82f6;
+  border-color: #204ecf;
 }
 
 .clientIcon {
   flex-shrink: 0;
   margin-top: 0.15rem;
-  color: #3b82f6;
+  color: #204ecf;
 }
 
 .clientInfo {
@@ -228,14 +228,14 @@
   font-weight: 600;
   text-transform: uppercase;
   padding: 0.1rem 0.5rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   border: 1px solid #ddd;
   color: #555;
 }
 
 .countryUSA {
-  border-color: #3b82f6;
-  color: #3b82f6;
+  border-color: #204ecf;
+  color: #204ecf;
 }
 
 .countryUK {
@@ -276,7 +276,7 @@
 }
 
 .quoteIcon {
-  color: #3b82f6;
+  color: #204ecf;
   opacity: 0.5;
 }
 
@@ -289,7 +289,7 @@
 .testimonialArrow {
   background: transparent;
   border: 1px solid #eee;
-  border-radius: 9999px;
+  border-radius: 2px;
   width: 2.8rem;
   height: 2.8rem;
   display: flex;
@@ -302,8 +302,8 @@
 }
 
 .testimonialArrow:hover {
-  background: #3b82f6;
-  border-color: #3b82f6;
+  background: #204ecf;
+  border-color: #204ecf;
   color: #fff;
 }
 
@@ -356,7 +356,7 @@
 .testimonialDot {
   width: 0.6rem;
   height: 0.6rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   background: #ddd;
   border: none;
   padding: 0;
@@ -365,7 +365,7 @@
 }
 
 .activeDot {
-  background: #3b82f6;
+  background: #204ecf;
   width: 1.8rem;
 }
 
@@ -403,14 +403,14 @@
 .breakdownItem {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 1rem;
+  border-radius: 4px;
   padding: 1.5rem 1rem;
   text-align: center;
   transition: all 0.2s;
 }
 
 .breakdownItem:hover {
-  border-color: #3b82f6;
+  border-color: #204ecf;
 }
 
 .breakdownFlag {
@@ -448,7 +448,7 @@
 .ctaCard {
   background: #fafafa;
   border: 1px solid #eee;
-  border-radius: 1.5rem;
+  border-radius: 2px;
   padding: 2.5rem 2rem;
   text-align: center;
   max-width: 48rem;
@@ -487,7 +487,7 @@
   background: #111;
   color: #fff;
   padding: 0.7rem 2rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   font-size: 0.95rem;
   font-weight: 500;
   text-decoration: none;
@@ -512,7 +512,7 @@
   color: #111;
   width: 2.8rem;
   height: 2.8rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -521,9 +521,9 @@
 }
 
 .scrollTop:hover {
-  background: #3b82f6;
+  background: #204ecf;
   color: #fff;
-  border-color: #3b82f6;
+  border-color: #204ecf;
 }
 
 /* ─── RESPONSIVE ──────────────────────────────────────────────────── */

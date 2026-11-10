@@ -81,7 +81,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   margin-bottom: 16px;
 }
 
@@ -121,7 +121,7 @@
   align-items: center;
   gap: var(--space-2);
   padding: 12px 22px;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   font-weight: 500;
   font-size: 0.92rem;
   background: var(--btn-bg);
@@ -139,7 +139,7 @@
   align-items: center;
   gap: var(--space-2);
   padding: 12px 22px;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   font-weight: 500;
   font-size: 0.92rem;
   color: var(--ink-70);
@@ -191,7 +191,7 @@
   color: var(--ink-50);
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   padding: 0.3rem 1rem;
 }
 
@@ -232,7 +232,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 4px 14px;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   margin-bottom: 12px;
 }
 
@@ -367,7 +367,7 @@ section {
   color: var(--ink-40);
   background: var(--border);
   padding: 0.2rem 0.8rem;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
 }
 .dashGauges {
   display: grid;
@@ -412,7 +412,7 @@ section {
   font-size: 0.7rem;
   background: var(--border);
   padding: 0.2rem 0.8rem;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   color: var(--ink-50);
 }
 
@@ -683,7 +683,7 @@ section {
   align-items: center;
   gap: 0.5rem;
   padding: 0.8rem 2.2rem;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   font-weight: 500;
   background: var(--btn-bg);
   color: var(--btn-text);
@@ -942,7 +942,7 @@ section {
 .relatedLink {
   padding: 0.5rem 1.2rem;
   border: 1px solid var(--border);
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   color: var(--ink-50);
   text-decoration: none;
   font-size: 0.9rem;

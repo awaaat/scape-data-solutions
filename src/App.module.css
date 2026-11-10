@@ -83,12 +83,12 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: #60a5fa;
+    background: #25a9ef;
     transition: width 0.3s ease;
 }
 
 .navLink:hover {
-    color: #60a5fa;
+    color: #25a9ef;
 }
 
 .navLink:hover::after {
@@ -134,7 +134,7 @@
 }
 
 .mobileNavLink:hover {
-    color: #60a5fa;
+    color: #25a9ef;
 }
 
 /* Footer Styles */
@@ -209,7 +209,7 @@
 }
 
 .footerLinks li a:hover {
-    color: #60a5fa;
+    color: #25a9ef;
 }
 
 .footerContact li {

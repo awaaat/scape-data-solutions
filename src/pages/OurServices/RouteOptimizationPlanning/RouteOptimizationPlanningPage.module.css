@@ -13,7 +13,7 @@
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(32, 78, 207, 0.06) 0%, transparent 70%);
   z-index: 0;
 }
 
@@ -29,15 +29,15 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(59, 130, 246, 0.10);
-  border: 1px solid rgba(59, 130, 246, 0.15);
+  background: rgba(32, 78, 207, 0.10);
+  border: 1px solid rgba(32, 78, 207, 0.15);
   color: var(--color-accent);
   padding: 6px 18px;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  border-radius: 30px;
+  border-radius: 2px;
   margin-bottom: 16px;
 }
 
@@ -57,10 +57,10 @@
   margin-bottom: 36px;
 }
 
-.heroBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.heroBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 .heroBtn:hover { filter: brightness(0.85); }
 
-.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
+.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
 .heroBtnSecondary:hover { background: var(--color-border); }
 
 .heroStats {
@@ -100,14 +100,14 @@
 
 .problemLabel {
   display: inline-block;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(32, 78, 207, 0.08);
   color: var(--color-accent);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 4px 14px;
-  border-radius: 20px;
+  border-radius: 4px;
   margin-bottom: 12px;
 }
 
@@ -132,7 +132,7 @@
 .problemStat {
   background: rgba(10, 10, 10, 0.02);
   padding: 24px 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 1px solid rgba(10, 10, 10, 0.04);
 }
 
@@ -194,8 +194,8 @@
   width: 100%;
   max-width: 400px;
   aspect-ratio: 16 / 10;
-  background: rgba(59, 130, 246, 0.04);
-  border: 2px solid rgba(59, 130, 246, 0.08);
+  background: rgba(32, 78, 207, 0.04);
+  border: 2px solid rgba(32, 78, 207, 0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -204,7 +204,7 @@
   color: rgba(10, 10, 10, 0.4);
   font-weight: 500;
   font-size: 15px;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 .visualPlaceholder svg {
   color: var(--color-accent);
@@ -234,12 +234,12 @@
   background: rgba(10, 10, 10, 0.02);
   padding: 28px 24px;
   border: 1px solid rgba(10, 10, 10, 0.04);
-  border-radius: 8px;
+  border-radius: 4px;
   transition: all 0.3s ease;
 }
 .howCard:hover {
-  border-color: rgba(59, 130, 246, 0.12);
-  background: rgba(59, 130, 246, 0.02);
+  border-color: rgba(32, 78, 207, 0.12);
+  background: rgba(32, 78, 207, 0.02);
 }
 
 .howIcon {
@@ -248,8 +248,8 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: rgba(59, 130, 246, 0.06);
-  border-radius: 8px;
+  background: rgba(32, 78, 207, 0.06);
+  border-radius: 4px;
   color: var(--color-accent);
   margin-bottom: 14px;
 }
@@ -332,12 +332,12 @@
   background: rgba(10, 10, 10, 0.02);
   padding: 26px 22px;
   border: 1px solid rgba(10, 10, 10, 0.04);
-  border-radius: 8px;
+  border-radius: 4px;
   transition: all 0.3s ease;
 }
 .featureCard:hover {
-  border-color: rgba(59, 130, 246, 0.12);
-  background: rgba(59, 130, 246, 0.02);
+  border-color: rgba(32, 78, 207, 0.12);
+  background: rgba(32, 78, 207, 0.02);
 }
 
 .featureIcon {
@@ -346,8 +346,8 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  background: rgba(59, 130, 246, 0.04);
-  border-radius: 8px;
+  background: rgba(32, 78, 207, 0.04);
+  border-radius: 4px;
   color: var(--color-accent);
   margin-bottom: 12px;
 }
@@ -397,7 +397,7 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: rgba(59, 130, 246, 0.06);
+  background: rgba(32, 78, 207, 0.06);
   border-radius: 50%;
   color: var(--color-accent);
 }
@@ -442,7 +442,7 @@
   margin: 0 0 28px;
 }
 
-.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 .ctaBtn:hover { filter: brightness(0.85); }
 
 @media (max-width: 1024px) {
@@ -465,7 +465,7 @@
   .benefitsGrid { grid-template-columns: 1fr; gap: 8px; }
   .ctaContent h2 { font-size: 28px; }
   .heroCta { flex-direction: column; align-items: center; }
-  .heroBtn, .heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
+  .heroBtn, .heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
   .sectionTitle { font-size: 28px; }
 }
 

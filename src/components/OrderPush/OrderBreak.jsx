@@ -5,16 +5,16 @@ import { useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ArrowRight, Check, Scissors } from "lucide-react";
 import s from "./OrderPush.module.css";
-import { orderUrl, isAcademicPath, hashStr, QUIET } from "./orderLinks";
+import { orderUrl, isAcademicPath, hashStr, QUIET, serviceFromPath } from "./orderLinks";
 
 /* 1 ── thermal receipt */
-function Receipt() {
+function Receipt({ svc }) {
   const rows = [["Test chosen for your question", "✓"], ["Assumptions checked", "✓"], ["Tables, charts, syntax", "✓"], ["Plain-English write-up", "✓"], ["Revisions in scope", "✓"]];
   return (
     <div className={s.receiptWrap}>
       <div className={s.receipt}>
         <p className={s.rHead}>SCAPE DATA SOLUTIONS</p>
-        <p className={s.rSub}>ORDER SLIP · NO. {String(1000 + (new Date().getDate() * 37) % 900)}</p>
+        <p className={s.rSub}>ORDER SLIP · {svc ? svc.name.toUpperCase() : `NO. ${1000 + (new Date().getDate() * 37) % 900}`}</p>
         <div className={s.rule} />
         {rows.map(([a, b]) => (<p key={a} className={s.rRow}><span>{a}</span><i /><b>{b}</b></p>))}
         <div className={s.rule} />
@@ -23,7 +23,7 @@ function Receipt() {
         <a className={s.tear} href={orderUrl({ medium: "break-receipt" })}><Scissors size={14} /> Tear off &amp; place this order</a>
       </div>
       <div className={s.receiptText}>
-        <h3>Here&apos;s exactly what you get.</h3>
+        <h3>{svc ? `Here’s exactly what you get with ${svc.name}.` : "Here’s exactly what you get."}</h3>
         <p>No mystery packages. Tell us what you need, and we send a fixed quote within 24 hours.</p>
       </div>
     </div>
@@ -56,10 +56,10 @@ function Deadline() {
 
 /* 3 ── which test do I need */
 const GOALS = [
-  ["Compare two or more groups", "t-test or ANOVA", "thesis-data-analysis-help"],
-  ["Find a relationship", "Pearson or Spearman correlation", "spss-data-analysis-help"],
-  ["Predict an outcome", "Linear or logistic regression", "regression-analysis-help"],
-  ["Check my survey is reliable", "Cronbach's alpha, factor analysis", "cronbach-alpha-reliability-analysis"],
+  ["Compare two or more groups", "t-test or ANOVA", "spss-data-analysis"],
+  ["Find a relationship", "Pearson or Spearman correlation", "spss-data-analysis"],
+  ["Predict an outcome", "Linear or logistic regression", "research-data-analysis"],
+  ["Check my survey is reliable", "Cronbach's alpha, factor analysis", "cronbach-alpha-analysis"],
 ];
 function TestPicker() {
   const [g, setG] = useState(null);
@@ -81,12 +81,12 @@ function TestPicker() {
 }
 
 /* 4 ── terminal */
-function Terminal() {
+function Terminal({ svc }) {
   return (
     <div className={s.term}>
       <div className={s.termBar}><i /><i /><i /><span>~/your-project</span></div>
       <pre className={s.termBody}>
-        <span className={s.tP}>$</span> scape order --start{"\n"}
+        <span className={s.tP}>$</span> scape order {svc ? `--service=${svc.slug}` : "--start"}{"\n"}
         <span className={s.tOk}>✔</span> dataset received (any format){"\n"}
         <span className={s.tOk}>✔</span> scope + fixed quote in 24h{"\n"}
         <span className={s.tOk}>✔</span> payment: nothing until you agree{"\n"}
@@ -121,8 +121,8 @@ function Pains({ academic }) {
 }
 
 /* 6 ── loud marquee */
-function Marquee() {
-  const txt = "ORDER NOW ✦ FREE QUOTE ✦ 24H REPLY ✦ NO PAYMENT UNTIL YOU AGREE ✦ ";
+function Marquee({ svc }) {
+  const txt = (svc ? `ORDER ${svc.name.toUpperCase()} ✦ ` : "ORDER NOW ✦ ") + "FREE QUOTE ✦ 24H REPLY ✦ NO PAYMENT UNTIL YOU AGREE ✦ ";
   return (
     <a className={s.marq} href={orderUrl({ medium: "break-marquee" })} aria-label="Place an order">
       <div className={s.marqRow}><span>{txt.repeat(4)}</span></div>
@@ -135,6 +135,7 @@ function Marquee() {
 export default function OrderBreak() {
   const { pathname } = useLocation();
   const academic = isAcademicPath(pathname);
+  const svc = serviceFromPath(pathname);
   const Pick = useMemo(() => {
     const pool = academic
       ? [Receipt, Deadline, TestPicker, Terminal, () => <Pains academic />, Marquee]
@@ -144,7 +145,7 @@ export default function OrderBreak() {
   if (QUIET.test(pathname)) return null;
   return (
     <section className={s.breakSec} aria-label="Place an order">
-      <div className={s.breakInner}><Pick /></div>
+      <div className={s.breakInner}><Pick svc={svc} /></div>
     </section>
   );
 }

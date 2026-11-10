@@ -54,7 +54,7 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.625rem 1.25rem;
-  border-radius: 999px;
+  border-radius: 2px;
   border: none;
   background: rgb(var(--accent)) !important;
   color: rgb(var(--background)) !important;
@@ -74,7 +74,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.625rem 1.25rem;
-  border-radius: 999px;
+  border-radius: 2px;
   border: 1px solid rgba(var(--border), 0.12);
   background: transparent;
   color: rgb(var(--primary));
@@ -111,7 +111,7 @@
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.75rem;
-  border-radius: 999px;
+  border-radius: 2px;
   background: rgba(var(--card), 0.95);
   border: 1px solid rgba(var(--border), 0.08);
   box-shadow: var(--shadow);
@@ -124,7 +124,7 @@
 .floatingBadgeDot {
   width: 0.375rem;
   height: 0.375rem;
-  border-radius: 999px;
+  border-radius: 2px;
   display: inline-block;
 }
 .floatingBadgeText { text-transform: uppercase; letter-spacing: 0.03em; }
@@ -134,7 +134,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.375rem 0.875rem;
-  border-radius: 999px;
+  border-radius: 2px;
   border: 1px solid rgba(var(--border), 0.08);
   background: rgba(var(--primary), 0.02);
   font-size: 0.8125rem;
@@ -250,7 +250,7 @@
   font-size: 0.8125rem;
   color: rgba(var(--primary), 0.35);
   border: 1px solid rgba(var(--border), 0.12);
-  border-radius: 999px;
+  border-radius: 2px;
   width: 2.25rem;
   height: 2.25rem;
   display: inline-flex;
@@ -286,7 +286,7 @@
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 999px;
+  border-radius: 2px;
   background: rgba(var(--primary), 0.05);
   color: rgb(var(--primary));
   margin-bottom: 0.875rem;
@@ -319,7 +319,7 @@
   justify-content: center;
   width: 2.25rem;
   height: 2.25rem;
-  border-radius: 999px;
+  border-radius: 2px;
   background: rgba(139, 92, 246, 0.1);
   color: #8b5cf6;
   margin-bottom: 0.75rem;
@@ -375,7 +375,7 @@
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  border-radius: 999px;
+  border-radius: 2px;
   background: rgba(var(--primary), 0.05);
   color: rgb(var(--primary));
   margin-top: 0.125rem;
@@ -415,7 +415,7 @@
   font-family: "Universal Sans Display", serif;
   font-size: 1.5rem;
   font-weight: 700;
-  border-radius: 999px;
+  border-radius: 2px;
   background: rgba(139, 92, 246, 0.1);
   color: #8b5cf6;
 }
@@ -449,7 +449,7 @@
   align-items: center;
   gap: 0.625rem;
   padding: 0.875rem 1.125rem;
-  border-radius: 999px;
+  border-radius: 2px;
   border: 1px solid rgba(var(--border), 0.08);
   background: rgb(var(--card));
   font-size: 0.875rem;
@@ -510,8 +510,8 @@
   margin-bottom: 1rem;
 }
 .beforeAfterLabel svg { color: rgba(var(--primary), 0.3); }
-.beforeAfterCount { margin-left: auto; color: #dc2626; background: rgba(220,38,38,0.1); padding: 0.125rem 0.5rem; border-radius: 999px; font-size: 0.65rem; }
-.beforeAfterClean { margin-left: auto; color: #16a34a; background: rgba(34,197,94,0.1); padding: 0.125rem 0.5rem; border-radius: 999px; font-size: 0.65rem; }
+.beforeAfterCount { margin-left: auto; color: #dc2626; background: rgba(220,38,38,0.1); padding: 0.125rem 0.5rem; border-radius: 2px; font-size: 0.65rem; }
+.beforeAfterClean { margin-left: auto; color: #16a34a; background: rgba(34,197,94,0.1); padding: 0.125rem 0.5rem; border-radius: 2px; font-size: 0.65rem; }
 
 .beforeAfterContent { display: flex; flex-direction: column; gap: 0.5rem; }
 .beforeAfterLine { font-size: 0.9375rem; line-height: 1.7; color: rgba(var(--primary), 0.7); }
@@ -527,7 +527,7 @@
 
 .turnaroundGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; max-width: 42rem; margin: 0 auto; }
 .turnaroundCard { text-align: center; padding: 1.75rem 1.5rem; background: rgb(var(--card)); border: 1px solid rgba(var(--border), 0.06); border-radius: var(--radius-sm); transition: all var(--transition); }
-.turnaroundIcon { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; background: rgba(var(--primary), 0.04); color: rgb(var(--primary)); margin-bottom: 0.75rem; }
+.turnaroundIcon { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 2px; background: rgba(var(--primary), 0.04); color: rgb(var(--primary)); margin-bottom: 0.75rem; }
 .turnaroundCard h3 { font-size: 1.1rem; font-weight: 550; }
 .turnaroundTime { display: block; font-family: "Universal Sans Display", sans-serif; font-size: 1.6rem; font-weight: 550; letter-spacing: -0.02em; margin: 0.25rem 0; }
 .turnaroundDesc { font-size: 0.8125rem; color: rgba(var(--primary), 0.4); }
@@ -563,7 +563,7 @@
 
 .whyGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
 .whyCard { padding: 1.5rem; border-radius: var(--radius-sm); border: 1px solid rgba(var(--border), 0.06); background: rgb(var(--card)); transition: all var(--transition); }
-.whyIcon { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; background: rgba(var(--primary), 0.04); color: rgb(var(--primary)); margin-bottom: 0.75rem; }
+.whyIcon { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 2px; background: rgba(var(--primary), 0.04); color: rgb(var(--primary)); margin-bottom: 0.75rem; }
 .whyCard h3 { font-size: 1rem; font-weight: 550; margin-bottom: 0.375rem; }
 .whyCard p { font-size: 0.875rem; color: rgba(var(--primary), 0.5); line-height: 1.6; }
 

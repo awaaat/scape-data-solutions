@@ -146,7 +146,7 @@ function ParticleBackground() {
         speedX: (Math.random() - 0.5) * 0.2,
         speedY: (Math.random() - 0.5) * 0.2,
         opacity: Math.random() * 0.3 + 0.1,
-        color: Math.random() > 0.5 ? "#3b82f6" : "#8b5cf6",
+        color: Math.random() > 0.5 ? "#204ecf" : "#8b5cf6",
       });
     }
 
@@ -174,7 +174,7 @@ function ParticleBackground() {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = "#3b82f6";
+            ctx.strokeStyle = "#204ecf";
             ctx.globalAlpha = 0.05 * (1 - dist / 150);
             ctx.lineWidth = 0.5;
             ctx.stroke();
@@ -232,7 +232,7 @@ function StatRing({ percent, size = 88, stroke = 6 }) {
       />
       <defs>
         <linearGradient id="statRingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3b82f6" />
+          <stop offset="0%" stopColor="#204ecf" />
           <stop offset="100%" stopColor="#8b5cf6" />
         </linearGradient>
       </defs>
@@ -313,7 +313,7 @@ function WorkflowDiagram() {
                 height={boxH}
                 rx="12"
                 fill="rgba(59,130,246,0.08)"
-                stroke="#3b82f6"
+                stroke="#204ecf"
                 strokeWidth="1.5"
               />
               <text x={x + boxW / 2} y={45} textAnchor="middle" fontSize="13" fontWeight="700" fill="#e2e8f0">
@@ -328,7 +328,7 @@ function WorkflowDiagram() {
                   y1={20 + boxH / 2}
                   x2={x + boxW + gap}
                   y2={20 + boxH / 2}
-                  stroke="#3b82f6"
+                  stroke="#204ecf"
                   strokeWidth="2"
                   markerEnd="url(#arrowHead)"
                 />
@@ -338,7 +338,7 @@ function WorkflowDiagram() {
         })}
         <defs>
           <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-            <path d="M0,0 L8,4 L0,8 Z" fill="#3b82f6" />
+            <path d="M0,0 L8,4 L0,8 Z" fill="#204ecf" />
           </marker>
         </defs>
       </svg>
@@ -646,7 +646,7 @@ const WHY_WORK_WITH_US = [
 
 const EVIDENCE = [
   {
-    icon: <Activity size={20} color="#3b82f6" />,
+    icon: <Activity size={20} color="#204ecf" />,
     title: "Sepsis Alerts and Mortality",
     finding:
       "A systematic review and meta-analysis of 22 studies covering 19,580 emergency department patients found that sepsis alert systems were associated with lower mortality, shorter hospital stays, and improved adherence to sepsis treatment bundles.",
@@ -654,7 +654,7 @@ const EVIDENCE = [
     url: "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2821277",
   },
   {
-    icon: <Gauge size={20} color="#3b82f6" />,
+    icon: <Gauge size={20} color="#204ecf" />,
     title: "Machine Learning Early Warning",
     finding:
       "Across five hospitals monitoring nearly 591,000 patients, sepsis alerts that a clinician acted on within three hours were linked to an 18.7% relative reduction in in-hospital mortality.",
@@ -662,7 +662,7 @@ const EVIDENCE = [
     url: "https://www.nature.com/articles/s41591-022-01894-0",
   },
   {
-    icon: <Shield size={20} color="#3b82f6" />,
+    icon: <Shield size={20} color="#204ecf" />,
     title: "Medication Safety",
     finding:
       "A multicenter randomized controlled trial of an AI-enhanced, EHR-integrated CDS system found a 49.2% reduction in medication error rates and a 47.2% reduction in adverse drug events, with clinician adoption rising from 42% to 89% over 12 months.",
@@ -1009,7 +1009,7 @@ export default function ClinicalDecisionSupportPage() {
                 </div>
               </div>
               <div className={`${styles.problemItem} ${styles.problemItemSolution}`}>
-                <Zap size={24} color="#3b82f6" />
+                <Zap size={24} color="#204ecf" />
                 <div>
                   <h4>Our Approach</h4>
                   <p>Surface the right information at the right moment — integrated directly into the EHR, tuned against override rates.</p>
@@ -1057,7 +1057,7 @@ export default function ClinicalDecisionSupportPage() {
                       className={styles.marketBar}
                       style={{
                         height: `${(b.value / b.max) * 100}%`,
-                        background: i === MARKET_BARS.length - 1 ? "#8b5cf6" : "#3b82f6",
+                        background: i === MARKET_BARS.length - 1 ? "#8b5cf6" : "#204ecf",
                       }}
                     >
                       <span>{b.year}</span>
@@ -1127,7 +1127,7 @@ export default function ClinicalDecisionSupportPage() {
             </div>
             <div className={styles.featureGrid}>
               <div className={styles.featureBlock}>
-                <Activity size={28} color="#3b82f6" />
+                <Activity size={28} color="#204ecf" />
                 <h3>Real-time Monitoring</h3>
                 <p>
                   Continuous analysis of patient vitals, labs, and clinical notes to detect early warning
@@ -1135,7 +1135,7 @@ export default function ClinicalDecisionSupportPage() {
                 </p>
               </div>
               <div className={styles.featureBlock}>
-                <TrendingUp size={28} color="#3b82f6" />
+                <TrendingUp size={28} color="#204ecf" />
                 <h3>Predictive Modeling</h3>
                 <p>
                   Machine learning models trained on historical patient records, validated against your
@@ -1143,7 +1143,7 @@ export default function ClinicalDecisionSupportPage() {
                 </p>
               </div>
               <div className={styles.featureBlock}>
-                <Brain size={28} color="#3b82f6" />
+                <Brain size={28} color="#204ecf" />
                 <h3>Integrated Decision Support</h3>
                 <p>
                   Guidelines and recommendations presented within the EHR, alongside patient context —
@@ -1151,7 +1151,7 @@ export default function ClinicalDecisionSupportPage() {
                 </p>
               </div>
               <div className={styles.featureBlock}>
-                <Gauge size={28} color="#3b82f6" />
+                <Gauge size={28} color="#204ecf" />
                 <h3>Outcome Tracking</h3>
                 <p>
                   Dashboards showing adoption rates, override rates, and response times for continuous
@@ -1171,27 +1171,27 @@ export default function ClinicalDecisionSupportPage() {
             </div>
             <div className={styles.rightsGrid}>
               <div className={styles.rightItem}>
-                <Info size={24} color="#3b82f6" />
+                <Info size={24} color="#204ecf" />
                 <h4>Right Information</h4>
                 <p>Evidence-based, patient-specific recommendations, not generic alerts.</p>
               </div>
               <div className={styles.rightItem}>
-                <User size={24} color="#3b82f6" />
+                <User size={24} color="#204ecf" />
                 <h4>Right Person</h4>
                 <p>Alerts go to the clinician responsible for the patient's care.</p>
               </div>
               <div className={styles.rightItem}>
-                <LayoutGrid size={24} color="#3b82f6" />
+                <LayoutGrid size={24} color="#204ecf" />
                 <h4>Right Format</h4>
                 <p>Clear, concise, and actionable recommendations with justification.</p>
               </div>
               <div className={styles.rightItem}>
-                <Monitor size={24} color="#3b82f6" />
+                <Monitor size={24} color="#204ecf" />
                 <h4>Right Channel</h4>
                 <p>Integrated directly into the EHR workflow, not a separate system.</p>
               </div>
               <div className={styles.rightItem}>
-                <Clock size={24} color="#3b82f6" />
+                <Clock size={24} color="#204ecf" />
                 <h4>Right Time</h4>
                 <p>Surfaced at the moment of decision, not before or after.</p>
               </div>

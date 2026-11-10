@@ -24,7 +24,7 @@ export default function PLSSEMAnalysisPage() {
           <li>{"Results Interpretation"}</li>
         </ul>
         <p>
-          <a href={orderUrl({ medium: "page-cta", content: "plssemanalysis-1" })} style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '999px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
+          <a href={orderUrl({ medium: "page-cta", content: "plssemanalysis-1" })} style={{ display: 'inline-block', padding: '.75rem 1.6rem', borderRadius: '2px', background: 'var(--color-text, #0a0a0a)', color: 'var(--color-bg, #fff)', textDecoration: 'none', fontWeight: 500 }}>
             Talk to our team about {"PLS-SEM Analysis"}
           </a>
         </p>

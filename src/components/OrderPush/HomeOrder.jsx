@@ -22,7 +22,7 @@ export function OrderDesk() {
           </span>{" "}
           and I want a quote <em>today</em>.
         </p>
-        <a className={s.orderBtnLg} href={orderUrl({ service: slug, medium: "home-desk" })}>Start my order <ArrowRight size={18} /></a>
+        <a className={s.orderBtnLg} href={orderUrl({ service: slug || null, medium: "home-desk" })}>Start my order <ArrowRight size={18} /></a>
         <ul className={s.deskPoints}>
           <li><b>2 min</b> to fill in</li>
           <li><b>24 h</b> to a fixed quote</li>
@@ -34,10 +34,10 @@ export function OrderDesk() {
 }
 
 const SCENES = [
-  { Icon: MessagesSquare, tag: "Scenario 01", t: "“My supervisor sent my stats back.”", d: "We redo the analysis properly and show you why each test was chosen.", slug: "thesis-data-analysis-help", c: "supervisor" },
-  { Icon: FileText, tag: "Scenario 02", t: "“I have survey data and no idea where to start.”", d: "Send the file. We clean it, run it, and hand back tables you can paste in.", slug: "questionnaire-data-analysis-help", c: "survey" },
-  { Icon: LayoutDashboard, tag: "Scenario 03", t: "“My team needs a dashboard by Friday.”", d: "One clear view of the numbers that matter, built around your data.", slug: "other", c: "dashboard" },
-  { Icon: Hourglass, tag: "Scenario 04", t: "“My deadline is this week.”", d: "Rush orders are what the 24-hour quote is for. Mark it urgent and go.", slug: undefined, c: "rush" },
+  { Icon: MessagesSquare, tag: "Scenario 01", t: "“My supervisor sent my stats back.”", d: "We redo the analysis properly and show you why each test was chosen.", slug: "dissertation-statistics-help", c: "supervisor" },
+  { Icon: FileText, tag: "Scenario 02", t: "“I have survey data and no idea where to start.”", d: "Send the file. We clean it, run it, and hand back tables you can paste in.", slug: "survey-data-analysis", c: "survey" },
+  { Icon: LayoutDashboard, tag: "Scenario 03", t: "“My team needs a dashboard by Friday.”", d: "One clear view of the numbers that matter, built around your data.", slug: "dashboard-development", c: "dashboard" },
+  { Icon: Hourglass, tag: "Scenario 04", t: "“My deadline is this week.”", d: "Rush orders are what the 24-hour quote is for. Mark it urgent and go.", slug: null, c: "rush" },
 ];
 export function SituationGrid() {
   return (

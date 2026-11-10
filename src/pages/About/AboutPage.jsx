@@ -13,7 +13,7 @@ import SEO from "../../components/SEO/SEO";
 import styles from "./AboutPage.module.css";
 import { orderUrl } from "../../components/OrderPush/orderLinks";
 
-const ACCENT = "#3b82f6";
+const ACCENT = "#204ecf";
 
 // ─── Animation variants ──────────────────────────────────────────────
 const fadeUp = {

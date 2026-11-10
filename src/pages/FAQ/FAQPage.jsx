@@ -47,13 +47,13 @@ const faqSchema = {
 // ─── SVG illustration: abstract question mark ──────────────────────
 const QuestionMarkSVG = () => (
   <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxWidth: "180px" }}>
-    <circle cx="100" cy="100" r="80" stroke="#3b82f6" strokeWidth="2" opacity="0.08" />
-    <circle cx="100" cy="100" r="60" stroke="#3b82f6" strokeWidth="2" opacity="0.12" />
-    <path d="M100 30 C70 30 50 50 50 80 C50 100 60 110 75 118 C85 124 90 132 90 142 L90 150" stroke="#3b82f6" strokeWidth="4" strokeLinecap="round" opacity="0.5" />
-    <circle cx="90" cy="168" r="10" fill="#3b82f6" opacity="0.3" />
-    <path d="M100 50 C120 50 135 65 135 85 C135 105 120 115 105 125 C95 132 90 142 90 150" stroke="#3b82f6" strokeWidth="4" strokeLinecap="round" opacity="0.9" />
-    <circle cx="90" cy="168" r="8" fill="#3b82f6" opacity="0.6" />
-    <circle cx="100" cy="100" r="30" fill="#3b82f6" opacity="0.04" />
+    <circle cx="100" cy="100" r="80" stroke="#204ecf" strokeWidth="2" opacity="0.08" />
+    <circle cx="100" cy="100" r="60" stroke="#204ecf" strokeWidth="2" opacity="0.12" />
+    <path d="M100 30 C70 30 50 50 50 80 C50 100 60 110 75 118 C85 124 90 132 90 142 L90 150" stroke="#204ecf" strokeWidth="4" strokeLinecap="round" opacity="0.5" />
+    <circle cx="90" cy="168" r="10" fill="#204ecf" opacity="0.3" />
+    <path d="M100 50 C120 50 135 65 135 85 C135 105 120 115 105 125 C95 132 90 142 90 150" stroke="#204ecf" strokeWidth="4" strokeLinecap="round" opacity="0.9" />
+    <circle cx="90" cy="168" r="8" fill="#204ecf" opacity="0.6" />
+    <circle cx="100" cy="100" r="30" fill="#204ecf" opacity="0.04" />
   </svg>
 );
 

@@ -175,7 +175,7 @@ export default function AcademicProofreadingPage() {
 
   // ===== UNIQUE DATA =====
   const errorTypes = [
-    { name: "Spelling", count: "1,200+", icon: <SpellCheck size={18} />, color: "#3b82f6" },
+    { name: "Spelling", count: "1,200+", icon: <SpellCheck size={18} />, color: "#204ecf" },
     { name: "Grammar", count: "800+", icon: <PenLine size={18} />, color: "#8b5cf6" },
     { name: "Punctuation", count: "600+", icon: <Type size={18} />, color: "#ec4899" },
     { name: "Style", count: "400+", icon: <AlignJustify size={18} />, color: "#f59e0b" }

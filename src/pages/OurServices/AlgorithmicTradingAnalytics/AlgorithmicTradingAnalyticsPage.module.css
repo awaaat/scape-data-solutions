@@ -80,7 +80,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   border: 1px solid var(--border);
-  border-radius: 9999px;
+  border-radius: 2px;
   padding: 0.35rem 0.9rem;
 }
 .heroTitle {
@@ -111,7 +111,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.7rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   font-weight: 500;
   font-size: 0.95rem;
   background: var(--text-primary);
@@ -125,7 +125,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.7rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   font-weight: 500;
   font-size: 0.95rem;
   border: 1px solid var(--border);
@@ -138,7 +138,7 @@
 .heroVideo { position: relative; }
 .videoWrapper {
   position: relative;
-  border-radius: 20px;
+  border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--border);
   aspect-ratio: 4 / 3;
@@ -203,7 +203,7 @@
 }
 .platformCard {
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 1.75rem;
   background: var(--card);
   transition: border-color 0.2s ease, transform 0.2s ease;
@@ -215,7 +215,7 @@
 .platformIcon {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,7 +268,7 @@
   display: flex;
   gap: 1rem;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 1.5rem;
   background: var(--card);
 }
@@ -276,7 +276,7 @@
   flex-shrink: 0;
   width: 42px;
   height: 42px;
-  border-radius: 10px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -336,7 +336,7 @@
   align-items: center;
   gap: 0.6rem;
   border: 1px solid var(--border);
-  border-radius: 9999px;
+  border-radius: 2px;
   padding: 0.6rem 1.25rem;
   color: var(--text-primary);
   background: var(--card);
@@ -414,7 +414,7 @@
 .faqInputGroup {
   display: flex;
   border: 1px solid var(--border);
-  border-radius: 9999px;
+  border-radius: 2px;
   overflow: hidden;
 }
 .faqInput {
@@ -513,7 +513,7 @@
 }
 .contactSection {
   border: 1px solid var(--border);
-  border-radius: 24px;
+  border-radius: 2px;
   padding: 2.5rem;
   max-width: 700px;
   margin: 0 auto;
@@ -538,7 +538,7 @@
 .contactInput, .contactTextarea {
   padding: 0.75rem 1rem;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 4px;
   background: var(--background);
   color: var(--text-primary);
   font-family: inherit;
@@ -552,7 +552,7 @@
   align-self: center;
   margin-top: 0.5rem;
   padding: 0.75rem 2.5rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   border: none;
   background: var(--text-primary);
   color: var(--background);
@@ -657,7 +657,7 @@
 .statBox {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -775,7 +775,7 @@
 }
 .barTrack {
   background: var(--border);
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
   height: 28px;
 }
@@ -789,7 +789,7 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: 0.8rem;
-  border-radius: 8px;
+  border-radius: 4px;
   transition: width 0.6s ease;
 }
 
@@ -858,7 +858,7 @@
 .caseStudyStats > div {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 4px;
   padding: 1.2rem;
   text-align: center;
 }

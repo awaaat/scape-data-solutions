@@ -13,7 +13,7 @@ import SEO from "../../components/SEO/SEO";
 import styles from "./WhyUsPage.module.css";
 import { orderUrl } from "../../components/OrderPush/orderLinks";
 
-const ACCENT = "#3b82f6";
+const ACCENT = "#204ecf";
 
 // ─── Animation variants ──────────────────────────────────────────────
 const fadeUp = {
@@ -134,11 +134,11 @@ const REASONS = [
 // ─── Generated SVG illustration (abstract shape) ─────────────────────
 const AbstractShape = () => (
   <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxWidth: "200px" }}>
-    <circle cx="100" cy="100" r="80" stroke="#3b82f6" strokeWidth="2" opacity="0.15" />
-    <circle cx="100" cy="100" r="60" stroke="#3b82f6" strokeWidth="2" opacity="0.25" />
-    <circle cx="100" cy="100" r="40" fill="#3b82f6" opacity="0.1" />
-    <path d="M100 20 L120 80 L180 80 L130 120 L150 180 L100 140 L50 180 L70 120 L20 80 L80 80 L100 20Z" fill="#3b82f6" opacity="0.15" />
-    <circle cx="100" cy="100" r="15" fill="#3b82f6" opacity="0.3" />
+    <circle cx="100" cy="100" r="80" stroke="#204ecf" strokeWidth="2" opacity="0.15" />
+    <circle cx="100" cy="100" r="60" stroke="#204ecf" strokeWidth="2" opacity="0.25" />
+    <circle cx="100" cy="100" r="40" fill="#204ecf" opacity="0.1" />
+    <path d="M100 20 L120 80 L180 80 L130 120 L150 180 L100 140 L50 180 L70 120 L20 80 L80 80 L100 20Z" fill="#204ecf" opacity="0.15" />
+    <circle cx="100" cy="100" r="15" fill="#204ecf" opacity="0.3" />
   </svg>
 );
 

@@ -22,7 +22,7 @@
 }
 .progressBar {
   height: 3px;
-  background: #1a3a8f;
+  background: #0f256e;
   transition: width 0.1s;
   width: 0%;
 }
@@ -47,7 +47,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  background: #1a3a8f;
+  background: #0f256e;
   color: #fff;
   padding: 2px 10px;
   border-radius: 0;
@@ -88,7 +88,7 @@
   display: inline-block;
   width: 6px;
   height: 6px;
-  background: #1a3a8f;
+  background: #0f256e;
   border-radius: 50%;
   margin-left: 4px;
   animation: pulse 1s infinite;
@@ -105,7 +105,7 @@
 }
 .fwBar {
   flex: 1;
-  background: #1a3a8f;
+  background: #0f256e;
   border-radius: 0;
   min-height: 2px;
   transition: height 0.3s;
@@ -116,7 +116,7 @@
   margin-top: 6px;
   font-size: 11px;
 }
-.fwVal { font-weight: 700; color: #1a3a8f; }
+.fwVal { font-weight: 700; color: #0f256e; }
 .fwLbl { color: #999; }
 
 /* -------- Metrics Ticker -------- */
@@ -125,7 +125,7 @@
   background: #f8f8f8;
   padding: 6px 0;
   overflow: hidden;
-  border-bottom: 2px solid #1a3a8f;
+  border-bottom: 2px solid #0f256e;
 }
 .metricsTrack {
   display: flex;
@@ -145,7 +145,7 @@
   font-size: 13px;
 }
 .metricsLabel { color: #777; font-weight: 300; }
-.metricsVal { font-weight: 600; color: #1a3a8f; }
+.metricsVal { font-weight: 600; color: #0f256e; }
 .metricsDelta { font-size: 11px; font-weight: 500; margin-left: 2px; }
 
 /* ================================================================
@@ -181,8 +181,8 @@
   font-size: 13px;
   transition: color 0.2s;
 }
-.navTopContact:hover { color: #1a3a8f; }
-.navTopContact svg { color: #1a3a8f; flex-shrink: 0; }
+.navTopContact:hover { color: #0f256e; }
+.navTopContact svg { color: #0f256e; flex-shrink: 0; }
 .navTopSep {
   width: 1px;
   height: 14px;
@@ -266,13 +266,13 @@
   left: 5px;
   right: 5px;
   height: 3px;
-  background: #1a3a8f;
+  background: #0f256e;
   transform: scaleX(0);
   transition: transform 0.25s ease;
 }
-.navLink:hover { color: #1a3a8f; }
+.navLink:hover { color: #0f256e; }
 .navLink:hover::after { transform: scaleX(1); }
-.navActive { color: #1a3a8f; }
+.navActive { color: #0f256e; }
 .navActive::after { transform: scaleX(1); }
 
 /* Dropdown */
@@ -320,7 +320,7 @@
   border-bottom: 1px solid #f0f0f0;
   display: block;
 }
-.dropLink:hover { color: #1a3a8f; padding-left: 6px; }
+.dropLink:hover { color: #0f256e; padding-left: 6px; }
 
 /* Resources dropdown: divider + section label between industry / student links */
 .dropDivider {
@@ -367,7 +367,7 @@
   display: block;
   width: 26px;
   height: 2px;
-  background: #1a3a8f;
+  background: #0f256e;
   transition: all 0.25s;
 }
 .burgerOpen span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -397,7 +397,7 @@
 .drawerClose {
   background: transparent;
   border: none;
-  color: #1a3a8f;
+  color: #0f256e;
   font-size: 24px;
   float: right;
   cursor: pointer;
@@ -680,7 +680,7 @@
   width: 56px;
   height: 56px;
   border-radius: 4px;
-  background: #1a3a8f;
+  background: #0f256e;
   color: #fff;
   border: none;
   font-size: 24px;
@@ -762,7 +762,7 @@
   line-height: 1.4;
 }
 .chatMsgBot { background: #fff; border: 1px solid #e0e6f4; align-self: flex-start; color: #333; }
-.chatMsgUser { background: #1a3a8f; color: #fff; align-self: flex-end; }
+.chatMsgUser { background: #0f256e; color: #fff; align-self: flex-end; }
 .chatInput {
   display: flex;
   gap: 8px;
@@ -778,9 +778,9 @@
   font-size: 14px;
   outline: none;
 }
-.chatInput input:focus { border-color: #1a3a8f; }
+.chatInput input:focus { border-color: #0f256e; }
 .chatInput button {
-  background: #1a3a8f;
+  background: #0f256e;
   border: none;
   border-radius: 4px;
   width: 38px;
@@ -840,7 +840,7 @@
   transition: all 0.2s;
   box-shadow: 0 4px 16px rgba(13,43,107,0.25);
 }
-.scrollTop:hover { background: #1a3a8f; }
+.scrollTop:hover { background: #0f256e; }
 
 /* -------- Main Content -------- */
 .mainContent { flex: 1; }

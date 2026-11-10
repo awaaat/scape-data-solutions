@@ -337,7 +337,7 @@ export default function AcademicWritingSupportPage() {
   ];
 
   const errorTypes = [
-    { icon: <SpellCheck size={22} />, title: "Spelling and Grammar", example: "examine to examines", color: "#3b82f6" },
+    { icon: <SpellCheck size={22} />, title: "Spelling and Grammar", example: "examine to examines", color: "#204ecf" },
     { icon: <PenLine size={22} />, title: "Sentence Clarity", example: "Tightened, unambiguous phrasing", color: "#8b5cf6" },
     { icon: <AlignJustify size={22} />, title: "Structure and Flow", example: "Paragraphs that build on each other", color: "#ec4899" },
     { icon: <Milestone size={22} />, title: "Argument Strength", example: "Claims backed by clear evidence", color: "#f59e0b" }
@@ -500,7 +500,7 @@ export default function AcademicWritingSupportPage() {
                 }}
               >
                 <FloatingBadge text="structure" color="#8b5cf6" delay={0} x="0%" y="6%" rotate={-8} />
-                <FloatingBadge text="clarity" color="#3b82f6" delay={0.8} x="66%" y="10%" rotate={6} />
+                <FloatingBadge text="clarity" color="#204ecf" delay={0.8} x="66%" y="10%" rotate={6} />
                 <FloatingBadge text="citations" color="#ec4899" delay={1.6} x="-4%" y="72%" rotate={5} />
                 <FloatingBadge text="cohesion" color="#f59e0b" delay={2.4} x="70%" y="78%" rotate={-6} />
                 <DocumentIllustration />

@@ -84,7 +84,7 @@
   background: rgba(253, 184, 64, 0.15);
   color: var(--color-accent);
   padding: 6px 14px;
-  border-radius: 100px;
+  border-radius: 2px;
   font-family: var(--font-satoshi);
   font-size: 12px;
   font-weight: 600;

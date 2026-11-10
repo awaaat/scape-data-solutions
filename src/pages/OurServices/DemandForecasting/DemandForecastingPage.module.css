@@ -37,7 +37,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  border-radius: 30px;
+  border-radius: 2px;
   margin-bottom: 16px;
 }
 
@@ -57,10 +57,10 @@
   margin-bottom: 36px;
 }
 
-.heroBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.heroBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 .heroBtn:hover { filter: brightness(0.85); }
 
-.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
+.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
 .heroBtnSecondary:hover { background: var(--color-border); }
 
 .heroStats {
@@ -107,7 +107,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 4px 14px;
-  border-radius: 20px;
+  border-radius: 4px;
   margin-bottom: 12px;
 }
 
@@ -132,7 +132,7 @@
 .problemStat {
   background: rgba(10, 10, 10, 0.02);
   padding: 24px 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 1px solid rgba(10, 10, 10, 0.04);
 }
 
@@ -204,7 +204,7 @@
   color: rgba(10, 10, 10, 0.4);
   font-weight: 500;
   font-size: 15px;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 .visualPlaceholder svg {
   color: #9600c8;
@@ -234,7 +234,7 @@
   background: rgba(10, 10, 10, 0.02);
   padding: 28px 24px;
   border: 1px solid rgba(10, 10, 10, 0.04);
-  border-radius: 8px;
+  border-radius: 4px;
   transition: all 0.3s ease;
 }
 .howCard:hover {
@@ -249,7 +249,7 @@
   width: 48px;
   height: 48px;
   background: rgba(150, 0, 200, 0.06);
-  border-radius: 8px;
+  border-radius: 4px;
   color: #9600c8;
   margin-bottom: 14px;
 }
@@ -332,7 +332,7 @@
   background: rgba(10, 10, 10, 0.02);
   padding: 26px 22px;
   border: 1px solid rgba(10, 10, 10, 0.04);
-  border-radius: 8px;
+  border-radius: 4px;
   transition: all 0.3s ease;
 }
 .featureCard:hover {
@@ -347,7 +347,7 @@
   width: 44px;
   height: 44px;
   background: rgba(150, 0, 200, 0.04);
-  border-radius: 8px;
+  border-radius: 4px;
   color: #9600c8;
   margin-bottom: 12px;
 }
@@ -442,7 +442,7 @@
   margin: 0 0 28px;
 }
 
-.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 .ctaBtn:hover { filter: brightness(0.85); }
 
 @media (max-width: 1024px) {
@@ -465,7 +465,7 @@
   .benefitsGrid { grid-template-columns: 1fr; gap: 8px; }
   .ctaContent h2 { font-size: 28px; }
   .heroCta { flex-direction: column; align-items: center; }
-  .heroBtn, .heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
+  .heroBtn, .heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
   .sectionTitle { font-size: 28px; }
 }
 

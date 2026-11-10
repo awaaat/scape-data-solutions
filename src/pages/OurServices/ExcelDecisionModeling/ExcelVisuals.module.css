@@ -1,6 +1,6 @@
 /* ============ HERO EXCEL WINDOW ============ */
 .heroWrap { position: relative; max-width: 1000px; margin: var(--space-12) auto 0; text-align: left; }
-.xl { border: 1px solid var(--color-border); border-radius: 10px; background: var(--color-bg-card); overflow: hidden; box-shadow: 0 40px 80px -40px rgba(0,0,0,.35); }
+.xl { border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg-card); overflow: hidden; box-shadow: 0 40px 80px -40px rgba(0,0,0,.35); }
 .titleBar { display: flex; align-items: center; gap: 6px; padding: 9px 14px; background: #1d6f42; color: #fff; font-size: .72rem; font-weight: 500; }
 .titleBar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.45); }
 .titleBar span { margin-left: 10px; }
@@ -40,7 +40,7 @@
 
 .chip {
   position: absolute; z-index: 2; padding: 6px 12px; font-family: var(--font-mono); font-size: .7rem; font-weight: 600;
-  color: #1d9a5c; background: var(--color-bg-card); border: 1px solid #21a366; border-radius: 999px;
+  color: #1d9a5c; background: var(--color-bg-card); border: 1px solid #21a366; border-radius: 2px;
   box-shadow: 0 10px 24px -12px rgba(0,0,0,.3); animation: floaty 5s ease-in-out infinite;
 }
 .chipA { top: -16px; left: 4%; }
@@ -77,7 +77,7 @@
 .vizSvg { width: 100%; height: 100%; display: block; }
 .vizCol { height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
 
-.band { fill: rgba(59,130,246,.15); animation: fadeLoop 5s ease-in-out infinite; }
+.band { fill: rgba(32,78,207,.15); animation: fadeLoop 5s ease-in-out infinite; }
 .lineSolid { fill: none; stroke: #21a366; stroke-width: 2; stroke-dasharray: 1; vector-effect: non-scaling-stroke; animation: drawLoop 5s ease-in-out infinite; }
 .lineDash { fill: none; stroke: var(--color-accent); stroke-width: 2; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; animation: fadeLoop 5s ease-in-out infinite; }
 .dotAcc { fill: var(--color-accent); }
@@ -89,7 +89,7 @@
 .badge { font-size: .62rem; font-weight: 600; color: #21a366; animation: blink 1.6s steps(1) infinite; }
 
 .pills { display: flex; gap: 6px; flex-wrap: wrap; }
-.pill { padding: 3px 10px; font-size: .64rem; font-weight: 600; border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-text-muted); transition: all .3s; }
+.pill { padding: 3px 10px; font-size: .64rem; font-weight: 600; border: 1px solid var(--color-border); border-radius: 2px; color: var(--color-text-muted); transition: all .3s; }
 .pillOn { color: #fff; background: #21a366; border-color: #21a366; }
 .bigNum { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--color-text); }
 

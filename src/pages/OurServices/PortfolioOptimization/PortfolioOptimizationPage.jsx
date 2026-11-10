@@ -333,7 +333,7 @@ const PortfolioOptimizationPage = () => {
                               color: "#b3261e",
                               background: "rgba(179,38,30,0.08)",
                               border: "1px solid rgba(179,38,30,0.25)",
-                              borderRadius: 8,
+                              borderRadius: 4,
                               padding: "10px 12px",
                               marginBottom: 12,
                             }}

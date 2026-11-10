@@ -38,7 +38,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  border-radius: 40px;
+  border-radius: 2px;
   margin-bottom: 18px;
   border: 1px solid rgba(16, 185, 129, 0.15);
 }
@@ -59,10 +59,10 @@
   margin-bottom: 40px;
 }
 
-.heroBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.heroBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 .heroBtn:hover { filter: brightness(0.85); }
 
-.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
+.heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
 .heroBtnSecondary:hover { background: var(--color-border); }
 
 .heroStats {
@@ -144,7 +144,7 @@
   color: #065f46;
   font-weight: 600;
   font-size: 16px;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 .visualPlaceholder svg {
   color: #10b981;
@@ -176,7 +176,7 @@
   background: var(--color-text);
   padding: 28px 22px;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 4px;
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
@@ -187,7 +187,7 @@
   width: 48px;
   height: 48px;
   background: rgba(16, 185, 129, 0.08);
-  border-radius: 10px;
+  border-radius: 4px;
   color: #10b981;
   margin-bottom: 14px;
 }
@@ -223,7 +223,7 @@
   background: #f8fafc;
   padding: 28px 24px;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 4px;
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
@@ -234,7 +234,7 @@
   width: 48px;
   height: 48px;
   background: rgba(16, 185, 129, 0.08);
-  border-radius: 10px;
+  border-radius: 4px;
   color: #10b981;
   margin-bottom: 14px;
 }
@@ -270,7 +270,7 @@
   background: var(--color-text);
   padding: 26px 22px;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 4px;
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
@@ -281,7 +281,7 @@
   width: 48px;
   height: 48px;
   background: rgba(16, 185, 129, 0.06);
-  border-radius: 10px;
+  border-radius: 4px;
   color: #10b981;
   margin-bottom: 14px;
 }
@@ -377,7 +377,7 @@
   margin: 0 0 30px;
 }
 
-.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
+.ctaBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; background: var(--color-text); color: var(--color-bg); border: none; text-decoration: none; transition: filter .15s; }
 .ctaBtn:hover { filter: brightness(0.85); }
 
 /* ===== Responsive ===== */
@@ -400,7 +400,7 @@
   .benefitsGrid { grid-template-columns: 1fr; gap: 6px; }
   .ctaContent h2 { font-size: 28px; }
   .heroCta { flex-direction: column; align-items: center; }
-  .heroBtn, .heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: var(--radius-full); font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
+  .heroBtn, .heroBtnSecondary { display: inline-flex; align-items: center; gap: var(--space-2); padding: 12px 22px; border-radius: 4px; font-weight: 500; font-size: .92rem; color: var(--color-text); border: 1px solid var(--color-border); background: transparent; text-decoration: none; transition: background .15s; }
   .sectionTitle { font-size: 26px; }
 }
 

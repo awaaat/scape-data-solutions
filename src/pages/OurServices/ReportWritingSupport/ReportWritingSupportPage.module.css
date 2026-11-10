@@ -44,7 +44,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  border-radius: 30px;
+  border-radius: 2px;
   margin-bottom: 16px;
 }
 
@@ -192,7 +192,7 @@
   color: #a0a5b0;
   font-weight: 500;
   font-size: 15px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 .visualPlaceholder svg {
   color: var(--color-accent);
@@ -234,7 +234,7 @@
   width: 48px;
   height: 48px;
   background: rgba(253, 184, 64, 0.1);
-  border-radius: 8px;
+  border-radius: 4px;
   color: var(--color-accent);
   margin-bottom: 14px;
 }

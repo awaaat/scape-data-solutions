@@ -55,9 +55,9 @@ const dashboardData = [
     methodology: `Our methodology combined agile development with a user‑centered design approach. We conducted 25+ interviews with stakeholders across operations, finance, and store management to understand their reporting needs. We then created low‑fidelity prototypes to validate the design before moving to development. The final dashboard includes interactive filtering, drill‑through capabilities, and export functionality for offline analysis.`,
     challenges: `The main challenges included data quality issues across different regional systems, varying definitions of key metrics, and the need to handle high volumes of transaction data. We addressed these by implementing data validation rules, establishing a common data dictionary, and using incremental data loading to manage performance.`,
     charts: [
-      { type: 'bar', title: 'Monthly Sales', data: [65, 78, 90, 85, 95, 88, 92, 78, 82, 94, 97, 101], color: '#4a6cf7' },
+      { type: 'bar', title: 'Monthly Sales', data: [65, 78, 90, 85, 95, 88, 92, 78, 82, 94, 97, 101], color: '#204ecf' },
       { type: 'line', title: 'Revenue Trend', data: [120, 145, 132, 168, 155, 190, 175, 210, 195, 230, 220, 250], color: '#fdb840' },
-      { type: 'donut', title: 'Revenue by Region', data: [45, 30, 15, 10], colors: ['#4a6cf7', '#fdb840', '#6c5ce7', '#e17055'] },
+      { type: 'donut', title: 'Revenue by Region', data: [45, 30, 15, 10], colors: ['#204ecf', '#fdb840', '#6c5ce7', '#e17055'] },
       { type: 'bar', title: 'Top Products', data: [85, 72, 68, 55, 42], color: '#00b894' },
     ],
     results: [
@@ -108,7 +108,7 @@ const dashboardData = [
     charts: [
       { type: 'bar', title: 'Admissions by Day', data: [42, 38, 45, 52, 48, 41, 36], color: '#e17055' },
       { type: 'line', title: 'Length of Stay Trend', data: [4.2, 4.0, 3.8, 3.5, 3.3, 3.2, 3.0], color: '#00b894' },
-      { type: 'gauge', title: 'Bed Occupancy', value: 78, max: 100, color: '#4a6cf7' },
+      { type: 'gauge', title: 'Bed Occupancy', value: 78, max: 100, color: '#204ecf' },
       { type: 'donut', title: 'Patient Acuity', data: [45, 30, 25], colors: ['#6c5ce7', '#fdcb6e', '#00b894'] },
     ],
     results: [
@@ -157,8 +157,8 @@ const dashboardData = [
     methodology: `We followed a model‑driven development approach, starting with building the risk model in Python using statistical and machine learning techniques. Once validated, we integrated the model into the data pipeline and built the dashboard around it. We conducted extensive testing with the advisory team to ensure the model accurately reflected their investment philosophy and provided actionable insights.`,
     challenges: `The biggest challenge was integrating data from multiple custodians with different data formats and APIs. We had to build custom connectors for each system and implement robust error handling to ensure data reliability. We also needed to balance model complexity with interpretability, as advisors needed to explain the risk scores to clients. We addressed this by providing detailed breakdowns of risk factors and allowing users to adjust model parameters.`,
     charts: [
-      { type: 'line', title: 'Portfolio Performance', data: [5, 8, 12, 15, 18, 22, 25, 28, 32, 35, 38, 42], color: '#4a6cf7' },
-      { type: 'donut', title: 'Asset Allocation', data: [35, 25, 20, 12, 8], colors: ['#4a6cf7', '#6c5ce7', '#fdb840', '#00b894', '#e17055'] },
+      { type: 'line', title: 'Portfolio Performance', data: [5, 8, 12, 15, 18, 22, 25, 28, 32, 35, 38, 42], color: '#204ecf' },
+      { type: 'donut', title: 'Asset Allocation', data: [35, 25, 20, 12, 8], colors: ['#204ecf', '#6c5ce7', '#fdb840', '#00b894', '#e17055'] },
       { type: 'bar', title: 'Risk Metrics', data: [12, 8, 15, 6, 10, 14], color: '#fdcb6e' },
       { type: 'bar', title: 'Sector Performance', data: [22, 18, 15, 12, 10, 8], color: '#6c5ce7' },
     ],
@@ -208,7 +208,7 @@ const dashboardData = [
     methodology: `We used a phased rollout approach, starting with two pilot plants to test and refine the solution before scaling to all 12 plants. We provided extensive training to operators and supervisors on how to use the dashboard and interpret the data. The OEE metrics were aligned with industry standards (OEE = Availability × Performance × Quality) to ensure consistency and comparability.`,
     challenges: `Data quality was the main challenge, as not all machines were equipped with the same sensors or data standards. We had to develop custom adapters for older machines and establish data quality rules to filter out noise. Network connectivity issues in some plants also posed challenges, which we addressed by implementing edge caching and offline data collection with automatic sync when connectivity was restored.`,
     charts: [
-      { type: 'gauge', title: 'OEE Score', value: 82, max: 100, color: '#4a6cf7' },
+      { type: 'gauge', title: 'OEE Score', value: 82, max: 100, color: '#204ecf' },
       { type: 'bar', title: 'Downtime by Cause', data: [32, 28, 20, 12, 8], color: '#e17055' },
       { type: 'line', title: 'Production Volume', data: [850, 920, 980, 1020, 1080, 1150, 1200], color: '#fdb840' },
       { type: 'donut', title: 'Quality Breakdown', data: [97, 3], colors: ['#00b894', '#e17055'] },
@@ -258,10 +258,10 @@ const dashboardData = [
     methodology: `We adopted a product‑led approach, involving the marketing, product, and data teams in regular sprint reviews. We started with a minimum viable dashboard that showed the top‑level funnel and iteratively added more detailed views based on user feedback. We also provided self‑service training so the marketing team could create their own ad‑hoc reports.`,
     challenges: `The main challenge was data consistency across different sources, as Google Analytics events and database entries used different time zones and attribution windows. We resolved this by standardising the time zone to UTC and creating a unified attribution model that accounts for multi‑touch journeys. We also needed to handle high volume of event data (over 500K events per day) while maintaining dashboard performance.`,
     charts: [
-      { type: 'funnel', title: 'Conversion Funnel', data: [100000, 45000, 32000, 18500], colors: ['#4a6cf7', '#6c5ce7', '#fdb840', '#00b894'] },
-      { type: 'bar', title: 'Conversion by Segment', data: [25, 18, 12, 8, 5], color: '#4a6cf7' },
+      { type: 'funnel', title: 'Conversion Funnel', data: [100000, 45000, 32000, 18500], colors: ['#204ecf', '#6c5ce7', '#fdb840', '#00b894'] },
+      { type: 'bar', title: 'Conversion by Segment', data: [25, 18, 12, 8, 5], color: '#204ecf' },
       { type: 'line', title: 'Revenue Trend', data: [120, 145, 132, 168, 155, 190, 175, 210, 195, 230, 220, 250], color: '#fdb840' },
-      { type: 'donut', title: 'Traffic Sources', data: [40, 30, 20, 10], colors: ['#4a6cf7', '#6c5ce7', '#00b894', '#fdcb6e'] },
+      { type: 'donut', title: 'Traffic Sources', data: [40, 30, 20, 10], colors: ['#204ecf', '#6c5ce7', '#00b894', '#fdcb6e'] },
     ],
     results: [
       `Mobile conversion improved 28% after UX changes guided by the dashboard`,
@@ -308,8 +308,8 @@ const dashboardData = [
     methodology: `We used a continuous improvement approach, starting with a baseline forecasting model and iteratively improving it with new data sources and model tuning. We established a data quality framework to ensure the reliability of weather and sensor data. The dashboard was designed with input from grid operators to ensure it met their operational needs.`,
     challenges: `Weather data variability was the biggest challenge, as forecasts could change significantly within hours. We addressed this by using multiple weather forecast providers and building an ensemble model that combines their predictions. Data latency from IoT sensors also posed issues, which we solved by implementing edge computing to aggregate data before sending it to the central system.`,
     charts: [
-      { type: 'line', title: 'Energy Usage', data: [320, 305, 290, 275, 260, 250, 240], color: '#4a6cf7' },
-      { type: 'donut', title: 'Consumption by Source', data: [45, 30, 20, 5], colors: ['#00b894', '#fdcb6e', '#4a6cf7', '#e17055'] },
+      { type: 'line', title: 'Energy Usage', data: [320, 305, 290, 275, 260, 250, 240], color: '#204ecf' },
+      { type: 'donut', title: 'Consumption by Source', data: [45, 30, 20, 5], colors: ['#00b894', '#fdcb6e', '#204ecf', '#e17055'] },
       { type: 'bar', title: 'Peak Demand by Day', data: [85, 82, 78, 75, 72, 68, 65], color: '#fdb840' },
       { type: 'gauge', title: 'Grid Stability', value: 99.2, max: 100, color: '#00b894' },
     ],
@@ -359,8 +359,8 @@ const dashboardData = [
     challenges: `Carrier API integration was challenging due to different data formats, update frequencies, and reliability. We built a universal data model that abstracts away carrier‑specific details and implemented error handling and retry logic to manage API failures. Data latency was another challenge, which we addressed by implementing webhooks where available and polling with smart frequency adjustments.`,
     charts: [
       { type: 'bar', title: 'On‑Time Delivery by Route', data: [98, 95, 92, 97, 94, 96], color: '#00b894' },
-      { type: 'line', title: 'Shipment Volume Trend', data: [3200, 3450, 3800, 4100, 3900, 4300, 4600], color: '#4a6cf7' },
-      { type: 'donut', title: 'Carrier Performance', data: [35, 28, 22, 15], colors: ['#4a6cf7', '#fdb840', '#6c5ce7', '#e17055'] },
+      { type: 'line', title: 'Shipment Volume Trend', data: [3200, 3450, 3800, 4100, 3900, 4300, 4600], color: '#204ecf' },
+      { type: 'donut', title: 'Carrier Performance', data: [35, 28, 22, 15], colors: ['#204ecf', '#fdb840', '#6c5ce7', '#e17055'] },
       { type: 'gauge', title: 'Overall Performance', value: 96, max: 100, color: '#00b894' },
     ],
     results: [
@@ -408,9 +408,9 @@ const dashboardData = [
     methodology: `We followed a customer‑centric design approach, focusing on the information needed by marketing teams to create targeted campaigns. We developed a data model that supports both historical analysis and real‑time personalisation. The system was designed to be extensible, allowing the company to incorporate additional data sources in the future.`,
     challenges: `The main challenge was data integration across multiple channels with different customer identifiers. We implemented a customer matching algorithm using deterministic and probabilistic matching to create a single customer view. Real‑time personalisation required optimising the model performance and implementing caching strategies. Data privacy was also a key concern, given the nature of luxury retail customer data.`,
     charts: [
-      { type: 'line', title: 'Customer Retention Trend', data: [78, 80, 82, 84, 86, 86], color: '#4a6cf7' },
+      { type: 'line', title: 'Customer Retention Trend', data: [78, 80, 82, 84, 86, 86], color: '#204ecf' },
       { type: 'bar', title: 'Customer Segments', data: [32, 25, 18, 15, 10], color: '#fdb840' },
-      { type: 'donut', title: 'Revenue by Segment', data: [40, 25, 20, 10, 5], colors: ['#4a6cf7', '#fdb840', '#6c5ce7', '#e17055', '#00b894'] },
+      { type: 'donut', title: 'Revenue by Segment', data: [40, 25, 20, 10, 5], colors: ['#204ecf', '#fdb840', '#6c5ce7', '#e17055', '#00b894'] },
       { type: 'gauge', title: 'LTV Score', value: 84, max: 100, color: '#00b894' },
     ],
     results: [

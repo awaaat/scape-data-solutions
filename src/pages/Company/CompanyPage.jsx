@@ -13,7 +13,7 @@ import PortalCallout from "../../components/PortalCallout/PortalCallout";
 import styles from "./CompanyPage.module.css";
 import { orderUrl } from "../../components/OrderPush/orderLinks";
 
-const ACCENT = "#3b82f6";
+const ACCENT = "#204ecf";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },

@@ -18,7 +18,7 @@
 }
 
 /* ─── Shared ────────────────────────────────────────────────────── */
-.accent { color: #3b82f6; }
+.accent { color: #204ecf; }
 
 /* Scroll-reveal animation — driven by useRevealOnScroll() in CareerPage.jsx.
    Without this pair of classes, sections mount fully visible with no reveal. */
@@ -58,7 +58,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 1.4rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.2s;
@@ -89,7 +89,7 @@
 .heroGrid {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(59,130,246,0.04) 0%, transparent 60%);
+  background: radial-gradient(circle at 50% 50%, rgba(32,78,207,0.04) 0%, transparent 60%);
   pointer-events: none;
 }
 .heroInner { position: relative; max-width: 48rem; margin: 0 auto; }
@@ -103,7 +103,7 @@
   color: #888;
   border: 1px solid #eee;
   padding: 0.3rem 0.8rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   margin-bottom: 1.5rem;
 }
 .heroTitle {
@@ -147,7 +147,7 @@
 .benefitCard {
   background: #fafafa;
   border: 1px solid #eee;
-  border-radius: 1rem;
+  border-radius: 4px;
   padding: 1.5rem;
   transition: border-color 0.2s, transform 0.2s;
 }
@@ -191,7 +191,7 @@
 }
 .filterSelect {
   padding: 0.4rem 0.8rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   border: 1px solid #eee;
   background: #fff;
   font-size: 0.8rem;
@@ -199,7 +199,7 @@
   outline: none;
   transition: border-color 0.2s;
 }
-.filterSelect:focus { border-color: #3b82f6; }
+.filterSelect:focus { border-color: #204ecf; }
 .clearFiltersBtn {
   background: none;
   border: none;
@@ -219,7 +219,7 @@
   cursor: pointer;
   transition: color 0.2s;
 }
-.jobRow:hover { color: #3b82f6; }
+.jobRow:hover { color: #204ecf; }
 .jobRow:hover .jobArrow { opacity: 1; transform: translateX(4px); }
 .jobInfo { display: flex; flex-direction: column; gap: 0.2rem; }
 .jobTitle { font-weight: 500; font-size: 0.95rem; }
@@ -230,7 +230,7 @@
   color: #888;
   border: 1px solid #eee;
   padding: 0.1rem 0.6rem;
-  border-radius: 9999px;
+  border-radius: 2px;
 }
 .jobArrow {
   flex-shrink: 0;
@@ -317,7 +317,7 @@
   aspect-ratio: 1;
 }
 .globeIcon {
-  color: #3b82f6;
+  color: #204ecf;
   opacity: 0.15;
 }
 .globeDots {
@@ -329,8 +329,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #3b82f6;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  background: #204ecf;
+  box-shadow: 0 0 0 4px rgba(32, 78, 207, 0.15);
   animation: pulseGlobe 2s ease-in-out infinite;
 }
 .globeDot:nth-child(2) { animation-delay: 0.5s; }
@@ -375,7 +375,7 @@
   font-size: 0.85rem;
   color: #888;
 }
-.detailSalary { font-weight: 500; color: #3b82f6; margin-top: 0.3rem; }
+.detailSalary { font-weight: 500; color: #204ecf; margin-top: 0.3rem; }
 
 .tabNav {
   display: flex;
@@ -397,7 +397,7 @@
 .tabButton:hover { color: #111; }
 .tabButtonActive {
   color: #111;
-  border-bottom-color: #3b82f6;
+  border-bottom-color: #204ecf;
 }
 
 .tabPanel {
@@ -424,7 +424,7 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: #3b82f6;
+  color: #204ecf;
   font-weight: 700;
 }
 
@@ -445,7 +445,7 @@
 .field label { font-size: 0.8rem; font-weight: 500; color: #555; }
 .field input, .field select, .field textarea {
   padding: 0.5rem 0.7rem;
-  border-radius: 0.5rem;
+  border-radius: 4px;
   border: 1px solid #ddd;
   font-size: 0.9rem;
   background: #fff;
@@ -454,7 +454,7 @@
 }
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: #204ecf;
 }
 .fieldError { font-size: 0.75rem; color: #e74c3c; margin-top: 0.2rem; }
 
@@ -469,7 +469,7 @@
 .checkboxRow input[type="checkbox"] {
   width: 16px;
   height: 16px;
-  accent-color: #3b82f6;
+  accent-color: #204ecf;
   flex-shrink: 0;
 }
 
@@ -479,18 +479,18 @@
   gap: 0.5rem;
   padding: 0.5rem 0.7rem;
   border: 1px dashed #ddd;
-  border-radius: 0.5rem;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 0.85rem;
   color: #888;
   transition: border-color 0.2s;
 }
-.fileInput:hover { border-color: #3b82f6; }
+.fileInput:hover { border-color: #204ecf; }
 
 .eeoToggle {
   background: none;
   border: none;
-  color: #3b82f6;
+  color: #204ecf;
   font-size: 0.85rem;
   cursor: pointer;
   padding: 0.5rem 0;
@@ -500,7 +500,7 @@
   margin: 0.5rem 0 1rem;
   padding: 1rem;
   background: #fafafa;
-  border-radius: 0.75rem;
+  border-radius: 4px;
 }
 .eeoNote { font-size: 0.8rem; color: #888; margin-bottom: 1rem; }
 
@@ -515,13 +515,13 @@
 
 .datePickerInput {
   padding: 0.5rem 0.7rem;
-  border-radius: 0.5rem;
+  border-radius: 4px;
   border: 1px solid #ddd;
   font-size: 0.9rem;
   background: #fff;
   width: 100%;
 }
-.datePickerInput:focus { outline: none; border-color: #3b82f6; }
+.datePickerInput:focus { outline: none; border-color: #204ecf; }
 .datePickerWrapper { width: 100%; }
 
 /* ─── SCROLL TO TOP ────────────────────────────────────────────── */
@@ -536,7 +536,7 @@
   color: #111;
   width: 2.8rem;
   height: 2.8rem;
-  border-radius: 9999px;
+  border-radius: 2px;
   display: flex;
   align-items: center;
   justify-content: center;

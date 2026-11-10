@@ -137,7 +137,7 @@
   max-width: 900px;
   width: 100%;
   background: #000;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   overflow: hidden;
   animation: scaleIn 0.3s ease-out;
 }
@@ -348,7 +348,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.8125rem 2rem;
-  border-radius: 8rem;
+  border-radius: 2px;
   font-weight: 500;
   font-size: 1rem;
   text-decoration: none;
@@ -434,7 +434,7 @@
   max-width: 480px;
   background: rgba(10, 10, 10, 0.04);
   border: 1px solid rgba(10, 10, 10, 0.08);
-  border-radius: 0.75rem;
+  border-radius: 4px;
   overflow: hidden;
   backdrop-filter: blur(8px);
 }
@@ -587,7 +587,7 @@
   margin-top: 0.5rem;
   padding: 1.5rem;
   background: var(--color-text);
-  border-radius: 0.75rem;
+  border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
@@ -612,7 +612,7 @@
 
 .overviewImage {
   position: relative;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   overflow: hidden;
   aspect-ratio: 4/3;
 }
@@ -633,7 +633,7 @@
   padding: 0.5rem 1rem;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
-  border-radius: 8rem;
+  border-radius: 2px;
   color: var(--color-text);
   font-weight: 600;
   font-size: 0.875rem;
@@ -655,7 +655,7 @@
 .featureCard {
   background: var(--color-text);
   padding: 1.5rem;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0.04);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -742,7 +742,7 @@
 .benefitCard {
   background: var(--color-text);
   padding: 1.5rem;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
@@ -789,7 +789,7 @@
 
 .faqItem {
   background: var(--color-text);
-  border-radius: 0.5rem;
+  border-radius: 4px;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.04);
 }
@@ -849,7 +849,7 @@
   display: grid;
   gap: 2rem;
   background: #004c3d;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   padding: 2rem 1.5rem;
   align-items: center;
   position: relative;
@@ -924,7 +924,7 @@
 
 .ctaImage {
   position: relative;
-  border-radius: 0.5rem;
+  border-radius: 4px;
   overflow: hidden;
   aspect-ratio: 16/9;
 }
@@ -950,7 +950,7 @@
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
   padding: 0.75rem 1.25rem;
-  border-radius: 0.5rem;
+  border-radius: 4px;
   border-left: 3px solid #a6ef7b;
 }
 

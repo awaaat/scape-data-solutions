@@ -98,24 +98,24 @@ const HeroChart = () => (
   <svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxWidth: "400px", height: "auto" }}>
     <defs>
       <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.25" />
-        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+        <stop offset="0%" stopColor="#204ecf" stopOpacity="0.25" />
+        <stop offset="100%" stopColor="#204ecf" stopOpacity="0" />
       </radialGradient>
     </defs>
 
     <circle cx="200" cy="160" r="120" fill="url(#hubGlow)" />
-    <circle cx="200" cy="160" r="95" stroke="#3b82f6" strokeWidth="1" strokeDasharray="2 6" opacity="0.25" />
-    <circle cx="200" cy="160" r="60" stroke="#3b82f6" strokeWidth="1" strokeDasharray="2 6" opacity="0.3" />
+    <circle cx="200" cy="160" r="95" stroke="#204ecf" strokeWidth="1" strokeDasharray="2 6" opacity="0.25" />
+    <circle cx="200" cy="160" r="60" stroke="#204ecf" strokeWidth="1" strokeDasharray="2 6" opacity="0.3" />
 
     {[
       [200, 55], [305, 100], [335, 195], [270, 275],
       [130, 275], [65, 195], [95, 100], [200, 265],
     ].map(([x, y], i) => (
-      <line key={`l${i}`} x1="200" y1="160" x2={x} y2={y} stroke="#3b82f6" strokeWidth="1.2" opacity="0.35" />
+      <line key={`l${i}`} x1="200" y1="160" x2={x} y2={y} stroke="#204ecf" strokeWidth="1.2" opacity="0.35" />
     ))}
 
-    <circle cx="200" cy="160" r="26" fill="#3b82f6" />
-    <circle cx="200" cy="160" r="26" fill="none" stroke="#3b82f6" strokeWidth="1.5" opacity="0.4">
+    <circle cx="200" cy="160" r="26" fill="#204ecf" />
+    <circle cx="200" cy="160" r="26" fill="none" stroke="#204ecf" strokeWidth="1.5" opacity="0.4">
       <animate attributeName="r" values="26;36;26" dur="2.8s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.4;0;0.4" dur="2.8s" repeatCount="indefinite" />
     </circle>
@@ -125,7 +125,7 @@ const HeroChart = () => (
       [200, 55, 5], [305, 100, 4], [335, 195, 5], [270, 275, 4],
       [130, 275, 5], [65, 195, 4], [95, 100, 5], [200, 265, 4],
     ].map(([x, y, r], i) => (
-      <circle key={`n${i}`} cx={x} cy={y} r={r} fill="#3b82f6" opacity="0.85">
+      <circle key={`n${i}`} cx={x} cy={y} r={r} fill="#204ecf" opacity="0.85">
         <animate attributeName="opacity" values="0.85;0.35;0.85" dur={`${2 + i * 0.3}s`} repeatCount="indefinite" />
       </circle>
     ))}
@@ -136,88 +136,88 @@ const HeroChart = () => (
 
 const GlobalMap = () => (
   <svg viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxWidth: "400px", height: "auto" }}>
-    <rect x="20" y="15" width="360" height="210" rx="12" stroke="#3b82f6" strokeWidth="1.5" opacity="0.1" />
-    <ellipse cx="100" cy="90" rx="60" ry="50" fill="#3b82f6" stroke="#3b82f6" strokeWidth="1" strokeDasharray="3 3" opacity="0.2" />
-    <ellipse cx="200" cy="80" rx="40" ry="35" fill="#3b82f6" stroke="#3b82f6" strokeWidth="1" strokeDasharray="3 3" opacity="0.2" />
-    <ellipse cx="280" cy="100" rx="50" ry="40" fill="#3b82f6" stroke="#3b82f6" strokeWidth="1" strokeDasharray="3 3" opacity="0.2" />
-    <ellipse cx="150" cy="150" rx="45" ry="30" fill="#3b82f6" stroke="#3b82f6" strokeWidth="1" strokeDasharray="3 3" opacity="0.2" />
-    <line x1="100" y1="90" x2="200" y2="80" stroke="#3b82f6" strokeWidth="0.5" opacity="0.15" />
-    <line x1="200" y1="80" x2="280" y2="100" stroke="#3b82f6" strokeWidth="0.5" opacity="0.15" />
-    <line x1="100" y1="90" x2="150" y2="150" stroke="#3b82f6" strokeWidth="0.5" opacity="0.15" />
-    <line x1="280" y1="100" x2="150" y2="150" stroke="#3b82f6" strokeWidth="0.5" opacity="0.15" />
-    <circle cx="80" cy="80" r="6" fill="#3b82f6" opacity="0.9">
+    <rect x="20" y="15" width="360" height="210" rx="12" stroke="#204ecf" strokeWidth="1.5" opacity="0.1" />
+    <ellipse cx="100" cy="90" rx="60" ry="50" fill="#204ecf" stroke="#204ecf" strokeWidth="1" strokeDasharray="3 3" opacity="0.2" />
+    <ellipse cx="200" cy="80" rx="40" ry="35" fill="#204ecf" stroke="#204ecf" strokeWidth="1" strokeDasharray="3 3" opacity="0.2" />
+    <ellipse cx="280" cy="100" rx="50" ry="40" fill="#204ecf" stroke="#204ecf" strokeWidth="1" strokeDasharray="3 3" opacity="0.2" />
+    <ellipse cx="150" cy="150" rx="45" ry="30" fill="#204ecf" stroke="#204ecf" strokeWidth="1" strokeDasharray="3 3" opacity="0.2" />
+    <line x1="100" y1="90" x2="200" y2="80" stroke="#204ecf" strokeWidth="0.5" opacity="0.15" />
+    <line x1="200" y1="80" x2="280" y2="100" stroke="#204ecf" strokeWidth="0.5" opacity="0.15" />
+    <line x1="100" y1="90" x2="150" y2="150" stroke="#204ecf" strokeWidth="0.5" opacity="0.15" />
+    <line x1="280" y1="100" x2="150" y2="150" stroke="#204ecf" strokeWidth="0.5" opacity="0.15" />
+    <circle cx="80" cy="80" r="6" fill="#204ecf" opacity="0.9">
       <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite" />
     </circle>
-    <circle cx="120" cy="100" r="5" fill="#3b82f6" opacity="0.8">
+    <circle cx="120" cy="100" r="5" fill="#204ecf" opacity="0.8">
       <animate attributeName="r" values="5;9;5" dur="2.5s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.5s" repeatCount="indefinite" />
     </circle>
-    <circle cx="180" cy="75" r="4" fill="#3b82f6" opacity="0.7">
+    <circle cx="180" cy="75" r="4" fill="#204ecf" opacity="0.7">
       <animate attributeName="r" values="4;8;4" dur="3s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite" />
     </circle>
-    <circle cx="220" cy="85" r="5" fill="#3b82f6" opacity="0.8">
+    <circle cx="220" cy="85" r="5" fill="#204ecf" opacity="0.8">
       <animate attributeName="r" values="5;9;5" dur="2.2s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.2s" repeatCount="indefinite" />
     </circle>
-    <circle cx="290" cy="95" r="4" fill="#3b82f6" opacity="0.7">
+    <circle cx="290" cy="95" r="4" fill="#204ecf" opacity="0.7">
       <animate attributeName="r" values="4;8;4" dur="2.8s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.8s" repeatCount="indefinite" />
     </circle>
-    <circle cx="310" cy="110" r="3" fill="#3b82f6" opacity="0.6">
+    <circle cx="310" cy="110" r="3" fill="#204ecf" opacity="0.6">
       <animate attributeName="r" values="3;7;3" dur="3.2s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.2s" repeatCount="indefinite" />
     </circle>
-    <circle cx="140" cy="140" r="4" fill="#3b82f6" opacity="0.7">
+    <circle cx="140" cy="140" r="4" fill="#204ecf" opacity="0.7">
       <animate attributeName="r" values="4;8;4" dur="2.4s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.4s" repeatCount="indefinite" />
     </circle>
-    <circle cx="170" cy="155" r="3" fill="#3b82f6" opacity="0.6">
+    <circle cx="170" cy="155" r="3" fill="#204ecf" opacity="0.6">
       <animate attributeName="r" values="3;7;3" dur="3.5s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.5s" repeatCount="indefinite" />
     </circle>
-    <circle cx="250" cy="145" r="4" fill="#3b82f6" opacity="0.7">
+    <circle cx="250" cy="145" r="4" fill="#204ecf" opacity="0.7">
       <animate attributeName="r" values="4;8;4" dur="2.6s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.6s" repeatCount="indefinite" />
     </circle>
-    <rect x="35" y="200" width="6" height="6" rx="1" fill="#3b82f6" opacity="0.6" />
+    <rect x="35" y="200" width="6" height="6" rx="1" fill="#204ecf" opacity="0.6" />
     <text x="46" y="206" fontSize="9" fill="#888" fontFamily="system-ui">Global client presence</text>
   </svg>
 );
 
 const DataPattern = () => (
   <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.03 }}>
-    <rect x="10" y="10" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="40" y="10" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="70" y="10" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="100" y="10" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="130" y="10" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="160" y="10" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="10" y="40" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="40" y="40" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="70" y="40" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="130" y="40" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="160" y="40" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="10" y="70" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="70" y="70" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="100" y="70" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="130" y="70" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="10" y="100" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="40" y="100" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="100" y="100" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="130" y="100" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="160" y="100" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="10" y="130" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="40" y="130" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="70" y="130" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="100" y="130" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="160" y="130" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="10" y="160" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="70" y="160" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="100" y="160" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="130" y="160" width="20" height="20" rx="4" fill="#3b82f6" />
-    <rect x="160" y="160" width="20" height="20" rx="4" fill="#3b82f6" />
+    <rect x="10" y="10" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="40" y="10" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="70" y="10" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="100" y="10" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="130" y="10" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="160" y="10" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="10" y="40" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="40" y="40" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="70" y="40" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="130" y="40" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="160" y="40" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="10" y="70" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="70" y="70" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="100" y="70" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="130" y="70" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="10" y="100" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="40" y="100" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="100" y="100" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="130" y="100" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="160" y="100" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="10" y="130" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="40" y="130" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="70" y="130" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="100" y="130" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="160" y="130" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="10" y="160" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="70" y="160" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="100" y="160" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="130" y="160" width="20" height="20" rx="4" fill="#204ecf" />
+    <rect x="160" y="160" width="20" height="20" rx="4" fill="#204ecf" />
   </svg>
 );
 
@@ -316,9 +316,9 @@ const ClientsPage = () => {
             <motion.div className={styles.clientGrid} variants={staggerContainer}>
               {CLIENTS.map((client, index) => (
                 <motion.div key={index} className={styles.clientCard} variants={cardVariants} custom={index}
-                  whileHover={{ y: -4, borderColor: '#3b82f6', boxShadow: '0 8px 24px rgba(0,0,0,0.04)' }}
+                  whileHover={{ y: -4, borderColor: '#204ecf', boxShadow: '0 8px 24px rgba(0,0,0,0.04)' }}
                   whileTap={{ scale: 0.98 }}>
-                  <div className={styles.clientIcon} style={{ color: INDUSTRY_COLORS[client.industry] || '#3b82f6' }}>
+                  <div className={styles.clientIcon} style={{ color: INDUSTRY_COLORS[client.industry] || '#204ecf' }}>
                     {client.icon}
                   </div>
                   <div className={styles.clientInfo}>
@@ -345,7 +345,7 @@ const ClientsPage = () => {
               </motion.div>
               <div className={styles.testimonialCarousel}>
                 <motion.button className={styles.testimonialArrow} onClick={prevTestimonial}
-                  whileHover={{ scale: 1.05, backgroundColor: '#3b82f6', color: '#fff' }} whileTap={{ scale: 0.95 }} aria-label="Previous">
+                  whileHover={{ scale: 1.05, backgroundColor: '#204ecf', color: '#fff' }} whileTap={{ scale: 0.95 }} aria-label="Previous">
                   <ChevronLeft size={20} />
                 </motion.button>
                 <AnimatePresence mode="wait">
@@ -362,7 +362,7 @@ const ClientsPage = () => {
                   </motion.div>
                 </AnimatePresence>
                 <motion.button className={styles.testimonialArrow} onClick={nextTestimonial}
-                  whileHover={{ scale: 1.05, backgroundColor: '#3b82f6', color: '#fff' }} whileTap={{ scale: 0.95 }} aria-label="Next">
+                  whileHover={{ scale: 1.05, backgroundColor: '#204ecf', color: '#fff' }} whileTap={{ scale: 0.95 }} aria-label="Next">
                   <ChevronRight size={20} />
                 </motion.button>
               </div>
@@ -391,7 +391,7 @@ const ClientsPage = () => {
                   { flag: '🌍', count: '60+', label: 'Countries Total' },
                 ].map((item, i) => (
                   <motion.div key={i} className={styles.breakdownItem} variants={spring}
-                    whileHover={{ y: -4, borderColor: '#3b82f6', boxShadow: '0 8px 24px rgba(0,0,0,0.04)' }}>
+                    whileHover={{ y: -4, borderColor: '#204ecf', boxShadow: '0 8px 24px rgba(0,0,0,0.04)' }}>
                     <span className={styles.breakdownFlag}>{item.flag}</span>
                     <span className={styles.breakdownNumber}>{item.count}</span>
                     <span className={styles.breakdownLabel}>{item.label}</span>
@@ -433,7 +433,7 @@ const ClientsPage = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             initial={{ opacity: 0, scale: 0.5, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 20 }}
-            whileHover={{ scale: 1.08, backgroundColor: '#3b82f6', color: '#fff' }}
+            whileHover={{ scale: 1.08, backgroundColor: '#204ecf', color: '#fff' }}
             transition={{ type: 'spring', stiffness: 350, damping: 25 }}>
             <ChevronLeft size={18} style={{ transform: 'rotate(90deg)' }} />
           </motion.button>
