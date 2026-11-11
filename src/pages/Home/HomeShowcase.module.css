@@ -1,0 +1,164 @@
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.in { opacity: 1; transform: none; }
+
+.kicker {
+  display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #204ecf; margin-bottom: 12px;
+}
+.h2 {
+  font-family: var(--font-display); font-weight: 600; letter-spacing: -.02em;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.15; margin: 0 0 16px; color: #0f1b3d;
+}
+.p { font-size: 1.05rem; line-height: 1.7; color: #4a5575; margin: 0 0 20px; }
+
+.btn, .btnLight {
+  display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px;
+  border-radius: 999px; font-size: .92rem; font-weight: 600; text-decoration: none;
+  transition: transform .2s ease, filter .2s ease;
+}
+.btn { background: #204ecf; color: #fff; box-shadow: 0 8px 22px rgba(32,78,207,.35); }
+.btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.btnLight { background: #fff; color: #204ecf; }
+.btnLight:hover { transform: translateY(-2px); }
+
+/* ---- intro ---- */
+.intro { background: #fff; padding: 96px 24px; }
+.introInner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.introImgWrap { position: relative; }
+.introImg {
+  width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; display: block;
+  border-radius: 24px 24px 120px 24px;
+  box-shadow: 0 24px 60px rgba(15,27,61,.22);
+}
+.introImgWrap::before {
+  content: ""; position: absolute; left: -18px; top: -18px; width: 45%; height: 45%;
+  border-radius: 24px; background: #204ecf; opacity: .12; z-index: -1;
+}
+.list { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
+.list li { display: flex; align-items: center; gap: 10px; color: #1b2a4e; font-weight: 500; }
+.list li svg { color: #fff; background: #204ecf; border-radius: 50%; padding: 3px; flex: none; }
+
+/* ---- cards ---- */
+.cards { background: #f3f6fd; padding: 96px 24px; }
+.cardsInner { max-width: 1180px; margin: 0 auto; }
+.head { text-align: center; margin-bottom: 48px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.card {
+  display: block; background: #fff; border-radius: 20px; overflow: hidden;
+  text-decoration: none; color: inherit; height: 100%;
+  box-shadow: 0 10px 30px rgba(15,27,61,.08); transition: transform .3s ease, box-shadow .3s ease;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 22px 46px rgba(15,27,61,.16); }
+.cardImgWrap { position: relative; height: 210px; overflow: hidden; border-radius: 0 0 60px 0; }
+.cardImg { width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
+.card:hover .cardImg { transform: scale(1.08); }
+.cardIcon {
+  position: absolute; left: 18px; bottom: 18px; width: 44px; height: 44px; border-radius: 50%;
+  background: #204ecf; color: #fff; display: flex; align-items: center; justify-content: center;
+}
+.cardBody { padding: 24px 26px 28px; }
+.cardBody h3 { margin: 0 0 8px; font-size: 1.2rem; color: #0f1b3d; }
+.cardBody p { margin: 0 0 16px; color: #4a5575; line-height: 1.6; font-size: .98rem; }
+.more { display: inline-flex; align-items: center; gap: 6px; color: #204ecf; font-weight: 600; font-size: .9rem; }
+
+/* ---- banner ---- */
+.banner {
+  position: relative; overflow: hidden; color: #fff; text-align: center;
+  padding: 110px 24px; background: #0b1530; isolation: isolate;
+  border-radius: 0 0 90px 0;
+}
+.bannerImg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.bannerShade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(7,14,38,.9), rgba(10,24,62,.7)); }
+.bannerContent { max-width: 720px; margin: 0 auto; }
+.bannerTitle { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.15; margin: 0 0 16px; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.5); }
+.bannerSub { color: #e6ecff; font-size: 1.1rem; line-height: 1.6; margin: 0 0 32px; }
+.bannerBtns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+/* ---- responsive ---- */
+@media (max-width: 900px) {
+  .introInner { grid-template-columns: 1fr; gap: 40px; }
+  .grid { grid-template-columns: 1fr; }
+  .intro, .cards { padding: 64px 20px; }
+  .banner { padding: 80px 20px; border-radius: 0 0 40px 0; }
+  .introImg { border-radius: 20px 20px 70px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .card, .cardImg { transition: none; }
+}
+
+/* =====================================================
+   PATTERN SYSTEM (Toptal style)
+   one image ratio, one radius, alternating sections
+   ===================================================== */
+.zSec { background: #fff; padding: 96px 24px; }
+.zTint { background: #f3f6fd; }
+.zInner { max-width: 1180px; margin: 0 auto; position: relative; }
+
+.zSplit { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.zFlip .zImgCol { order: 2; }
+.zFlip .zTextCol { order: 1; }
+
+.zImg {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  border-radius: 16px; box-shadow: 0 18px 44px rgba(15,27,61,.16);
+}
+/* the one signature corner, top of page only */
+.zImgHero { border-radius: 16px 16px 120px 16px; }
+
+.zLink { display: inline-flex; align-items: center; gap: 8px; color: #204ecf; font-weight: 600; text-decoration: none; }
+.zLink:hover { gap: 12px; }
+
+/* cards */
+.zCard {
+  display: block; height: 100%; background: #fff; border-radius: 16px; overflow: hidden;
+  text-decoration: none; color: inherit; border: 1px solid #e3e9f7;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.zCard:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(15,27,61,.14); }
+.zCardImgWrap { aspect-ratio: 4 / 3; overflow: hidden; }
+.zCardImg { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s ease; }
+.zCard:hover .zCardImg { transform: scale(1.06); }
+.zCardBody { padding: 22px 24px 26px; }
+.zCardIcon {
+  width: 38px; height: 38px; border-radius: 10px; background: #e8eefc; color: #204ecf;
+  display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px;
+}
+.zCardBody h3 { margin: 0 0 8px; font-size: 1.2rem; color: #0f1b3d; }
+.zCardBody p { margin: 0 0 14px; color: #4a5575; line-height: 1.6; font-size: .98rem; }
+
+/* dark stats band */
+.zBand { position: relative; isolation: isolate; overflow: hidden; background: #0b1530; padding: 96px 24px; color: #fff; }
+.zBandImg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.zBandShade { position: absolute; inset: 0; z-index: -1; background: rgba(8,18,48,.88); }
+.zBandHead { text-align: center; margin-bottom: 48px; }
+.kickerLight { color: #8fb0ff; }
+.h2Light { color: #fff; }
+.zStats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.zStat { text-align: center; padding: 28px 12px; border-top: 2px solid rgba(143,176,255,.5); }
+.zStat strong { display: block; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; color: #fff; }
+.zStat span { color: #c9d6ff; font-size: .95rem; }
+
+/* CTA, square corners */
+.zCta { position: relative; isolation: isolate; overflow: hidden; background: #204ecf; padding: 110px 24px; text-align: center; color: #fff; }
+.zCtaImg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.zCtaShade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(32,78,207,.92), rgba(11,21,48,.85)); }
+.zCtaContent { max-width: 720px; margin: 0 auto; }
+.zCtaSub { color: #e6ecff; font-size: 1.1rem; line-height: 1.6; margin: 0 0 32px; }
+.zCtaBtns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+.zCta .btn { background: #fff; color: #204ecf; box-shadow: none; }
+
+@media (max-width: 900px) {
+  .zSec, .zBand { padding: 64px 20px; }
+  .zCta { padding: 80px 20px; }
+  .zSplit { grid-template-columns: 1fr; gap: 32px; }
+  .zFlip .zImgCol, .zFlip .zTextCol { order: initial; }
+  .zImgHero { border-radius: 16px 16px 70px 16px; }
+  .zStats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zCard, .zCardImg { transition: none; }
+}

@@ -12,7 +12,6 @@ import {
   ShieldCheck,
   TrendingUp,
   Mail,
-  Phone,
   ArrowRight,
   Building2,
   Store,
@@ -27,6 +26,24 @@ import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
 import styles from "./BusinessIntelLandingPage.module.css";
 import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
+
+// Swap any path here if an image doesn't suit its slot.
+const IMG = {
+  hero: "/Images/business-intel/bi-hero.webp",
+  report: "/Images/business-intel/bi-report.webp",
+  steps: [
+    "/Images/business-intel/bi-step-1.webp",
+    "/Images/business-intel/bi-step-2.webp",
+    "/Images/business-intel/bi-step-3.webp",
+  ],
+  included: "/Images/business-intel/bi-included.webp",
+  audiences: [
+    "/Images/business-intel/bi-retail.webp",
+    "/Images/business-intel/bi-dental.webp",
+    "/Images/business-intel/bi-medical.webp",
+  ],
+  cta: "/Images/business-intel/bi-cta.webp",
+};
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -123,8 +140,15 @@ export default function BusinessIntelLandingPage() {
       <Navbar activeNav="business-intel" />
 
       <main className={styles.mainContent}>
-        {/* ── Hero ── */}
-        <section className={styles.hero}>
+        {/* ── Hero (image background) ── */}
+        <section className={`${styles.hero} ${styles.heroImage}`}>
+          <img
+            src={IMG.hero}
+            alt=""
+            className={styles.heroBgImg}
+            fetchPriority="high"
+          />
+          <div className={styles.heroOverlay} />
           <motion.div
             className={styles.heroInner}
             initial={{ opacity: 0, y: 16 }}
@@ -149,8 +173,8 @@ export default function BusinessIntelLandingPage() {
           </motion.div>
         </section>
 
-        <section className={styles.hero} style={{ paddingTop: 0 }}>
-          <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)", paddingTop: "2rem" }}>
+        <section className={styles.hero} style={{ paddingTop: "3rem" }}>
+          <div style={{ borderTop: "1px solid var(--color-border)", paddingTop: "2rem" }}>
             <h2 style={{ fontSize: "1.3rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Already working with us on something else?</h2>
             <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "540px" }}>Existing clients can check active projects, signed agreements, and payments in the client portal.</p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
@@ -159,44 +183,49 @@ export default function BusinessIntelLandingPage() {
           </div>
         </section>
 
-        {/* ── Mock report visual ── */}
+        {/* ── Mock report visual (photo + card) ── */}
         <section className={styles.reportSection}>
-          <motion.div className={styles.reportCard} {...fadeUp}>
-            <div className={styles.reportCardHead}>
-              <span className={styles.reportCardLabel}>Sample site score</span>
-              <span className={styles.reportCardBadge}>Illustrative</span>
-            </div>
-            <div className={styles.reportScoreRow}>
-              <div className={styles.reportScoreCircle}>
-                <span className={styles.reportScoreNum}>82</span>
-                <span className={styles.reportScoreMax}>/100</span>
+          <div className={styles.reportLayout}>
+            <motion.div className={styles.reportPhoto} {...fadeUp}>
+              <img src={IMG.report} alt="Analyst reviewing location data on a screen" loading="lazy" />
+            </motion.div>
+            <motion.div className={styles.reportCard} {...fadeUp}>
+              <div className={styles.reportCardHead}>
+                <span className={styles.reportCardLabel}>Sample site score</span>
+                <span className={styles.reportCardBadge}>Illustrative</span>
               </div>
-              <div className={styles.reportScoreBars}>
-                <div className={styles.reportBarRow}>
-                  <span>Demand</span>
-                  <div className={styles.reportBarTrack}>
-                    <div className={styles.reportBarFill} style={{ width: "88%" }} />
-                  </div>
+              <div className={styles.reportScoreRow}>
+                <div className={styles.reportScoreCircle}>
+                  <span className={styles.reportScoreNum}>82</span>
+                  <span className={styles.reportScoreMax}>/100</span>
                 </div>
-                <div className={styles.reportBarRow}>
-                  <span>Competition</span>
-                  <div className={styles.reportBarTrack}>
-                    <div className={styles.reportBarFill} style={{ width: "64%" }} />
+                <div className={styles.reportScoreBars}>
+                  <div className={styles.reportBarRow}>
+                    <span>Demand</span>
+                    <div className={styles.reportBarTrack}>
+                      <div className={styles.reportBarFill} style={{ width: "88%" }} />
+                    </div>
                   </div>
-                </div>
-                <div className={styles.reportBarRow}>
-                  <span>Demographic fit</span>
-                  <div className={styles.reportBarTrack}>
-                    <div className={styles.reportBarFill} style={{ width: "91%" }} />
+                  <div className={styles.reportBarRow}>
+                    <span>Competition</span>
+                    <div className={styles.reportBarTrack}>
+                      <div className={styles.reportBarFill} style={{ width: "64%" }} />
+                    </div>
+                  </div>
+                  <div className={styles.reportBarRow}>
+                    <span>Demographic fit</span>
+                    <div className={styles.reportBarTrack}>
+                      <div className={styles.reportBarFill} style={{ width: "91%" }} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <p className={styles.reportCardFoot}>
-              A preview of the kind of breakdown a finished report will include —
-              exact fields are still being finalized.
-            </p>
-          </motion.div>
+              <p className={styles.reportCardFoot}>
+                A preview of the kind of breakdown a finished report will include —
+                exact fields are still being finalized.
+              </p>
+            </motion.div>
+          </div>
         </section>
 
         {/* ── How it works ── */}
@@ -209,16 +238,21 @@ export default function BusinessIntelLandingPage() {
             {STEPS.map(({ icon: Icon, title, body }, i) => (
               <motion.div
                 key={title}
-                className={styles.stepCard}
+                className={`${styles.stepCard} ${styles.hasMedia}`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-60px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
               >
-                <div className={styles.stepNum}>{i + 1}</div>
-                <div className={styles.stepIcon}><Icon size={20} /></div>
-                <h3 className={styles.stepTitle}>{title}</h3>
-                <p className={styles.stepBody}>{body}</p>
+                <div className={styles.cardMedia}>
+                  <img src={IMG.steps[i]} alt="" loading="lazy" />
+                  <div className={styles.stepNum}>{i + 1}</div>
+                </div>
+                <div className={styles.cardBody}>
+                  <div className={styles.stepIcon}><Icon size={20} /></div>
+                  <h3 className={styles.stepTitle}>{title}</h3>
+                  <p className={styles.stepBody}>{body}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -258,6 +292,9 @@ export default function BusinessIntelLandingPage() {
                 Not just a single number — the reasoning behind it, so you can
                 defend the decision to a lender, a partner, or your own team.
               </p>
+              <div className={styles.includedPhoto}>
+                <img src={IMG.included} alt="Team discussing a site-selection report" loading="lazy" />
+              </div>
             </motion.div>
             <motion.ul
               className={styles.includedList}
@@ -285,15 +322,20 @@ export default function BusinessIntelLandingPage() {
             {AUDIENCES.map(({ icon: Icon, title, body }, i) => (
               <motion.div
                 key={title}
-                className={styles.audienceCard}
+                className={`${styles.audienceCard} ${styles.hasMedia}`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-60px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
               >
-                <div className={styles.audienceIcon}><Icon size={20} /></div>
-                <h3 className={styles.audienceTitle}>{title}</h3>
-                <p className={styles.audienceBody}>{body}</p>
+                <div className={styles.cardMedia}>
+                  <img src={IMG.audiences[i]} alt="" loading="lazy" />
+                </div>
+                <div className={styles.cardBody}>
+                  <div className={styles.audienceIcon}><Icon size={20} /></div>
+                  <h3 className={styles.audienceTitle}>{title}</h3>
+                  <p className={styles.audienceBody}>{body}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -322,16 +364,20 @@ export default function BusinessIntelLandingPage() {
           </div>
         </section>
 
-        {/* ── CTA ── */}
+        {/* ── CTA (image background) ── */}
         <motion.section
-          className={styles.cta}
+          className={`${styles.cta} ${styles.ctaImage}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
         >
-          <h2>Curious what a report would look like for your next location?</h2>
-          <p>Get in touch and we'll walk you through it.</p>
-          <a href={orderUrl({ medium: "page-cta", content: "businessintellandingpage-2" })} className={styles.ctaBtn}>{orderLabel()} <ArrowRight size={16} /></a>
+          <img src={IMG.cta} alt="" className={styles.ctaBgImg} loading="lazy" />
+          <div className={styles.ctaOverlay} />
+          <div className={styles.ctaContent}>
+            <h2>Curious what a report would look like for your next location?</h2>
+            <p>Get in touch and we'll walk you through it.</p>
+            <a href={orderUrl({ medium: "page-cta", content: "businessintellandingpage-2" })} className={styles.ctaBtn}>{orderLabel()} <ArrowRight size={16} /></a>
+          </div>
         </motion.section>
       </main>
 

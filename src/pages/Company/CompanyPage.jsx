@@ -15,6 +15,14 @@ import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 
 const ACCENT = "#204ecf";
 
+// Swap any path here if an image doesn't suit its slot.
+const IMG = {
+  hero: "/Images/company/company-hero.webp",
+  story: "/Images/company/company-story.webp",
+  team: "/Images/company/company-team.webp",
+  cta: "/Images/company/company-cta.webp",
+};
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
@@ -76,38 +84,36 @@ const QUICK_LINKS = [
   { title: "Careers", desc: "Join the team.", href: "/careers" },
 ];
 
-
-// Milestones – sentence case labels, proper descriptions, no all caps
 const MILESTONES = [
-  { 
-    date: "2017", 
-    label: "Founded with a mission", 
-    desc: "Scape Technologies launched to help businesses unlock the value hidden in their data, starting with a small team of 4." 
+  {
+    date: "2017",
+    label: "Founded with a mission",
+    desc: "Scape Technologies launched to help businesses unlock the value hidden in their data, starting with a small team of 4."
   },
-  { 
-    date: "2018", 
-    label: "First enterprise trust", 
-    desc: "A Fortune 500 retailer chose us to build their first unified analytics platform, delivering 6x ROI in year one." 
+  {
+    date: "2018",
+    label: "First enterprise trust",
+    desc: "A Fortune 500 retailer chose us to build their first unified analytics platform, delivering 6x ROI in year one."
   },
-  { 
-    date: "2020", 
-    label: "Growing client base", 
-    desc: "Expanded our team and client base out of Nairobi, taking on larger engagements across multiple industries." 
+  {
+    date: "2020",
+    label: "Growing client base",
+    desc: "Expanded our team and client base out of Nairobi, taking on larger engagements across multiple industries."
   },
-  { 
-    date: "2022", 
-    label: "AI innovation breakthrough", 
-    desc: "Launched our predictive analytics practice, helping healthcare clients reduce patient wait times by 45% using machine learning." 
+  {
+    date: "2022",
+    label: "AI innovation breakthrough",
+    desc: "Launched our predictive analytics practice, helping healthcare clients reduce patient wait times by 45% using machine learning."
   },
-  { 
-    date: "2024", 
-    label: "Global footprint", 
-    desc: "Opened delivery centers in Lahore, Nairobi, and London, and now serve clients in 60+ countries with over 200 projects delivered." 
+  {
+    date: "2024",
+    label: "Global footprint",
+    desc: "Opened delivery centers in Lahore, Nairobi, and London, and now serve clients in 60+ countries with over 200 projects delivered."
   },
-  { 
-    date: "2026", 
-    label: "Industry leader", 
-    desc: "Recognized as a top-10 data analytics firm by TechReview, a testament to our team's expertise and client-first approach." 
+  {
+    date: "2026",
+    label: "Industry leader",
+    desc: "Recognized as a top-10 data analytics firm by TechReview, a testament to our team's expertise and client-first approach."
   },
 ];
 
@@ -151,7 +157,7 @@ export default function CompanyPage() {
                 </motion.h1>
                 <motion.p className={styles.heroDesc} variants={fadeUp}>
                   A premier data analytics firm founded in 2017, driving measurable results for businesses across
-                  the Globe.  
+                  the Globe.
                 </motion.p>
                 <motion.div className={styles.heroButtons} variants={fadeUp}>
                   <a href={orderUrl({ medium: "page-cta", content: "company-1" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
@@ -167,6 +173,9 @@ export default function CompanyPage() {
               </motion.div>
 
               <motion.div className={styles.heroRight} variants={fadeUp}>
+                <div className={styles.heroPhoto}>
+                  <img src={IMG.hero} alt="The Scape Technologies team at work" fetchPriority="high" />
+                </div>
                 <div className={styles.heroQuickLinks}>
                   {QUICK_LINKS.map((item, i) => (
                     <motion.div
@@ -223,7 +232,7 @@ export default function CompanyPage() {
           </div>
         </motion.section>
 
-        {/* ─── MISSION ────────────────────────────────────────────── */}
+        {/* ─── MISSION (photo + text) ─────────────────────────────── */}
         <motion.section
           className={styles.missionSection}
           initial="hidden"
@@ -232,33 +241,38 @@ export default function CompanyPage() {
           variants={staggerContainer}
         >
           <div className={styles.container}>
-            <div className={styles.missionBlock}>
-              <motion.p className={styles.sectionLabel} variants={fadeUp}>Our story</motion.p>
-              <motion.h2 className={styles.sectionTitle} variants={fadeUp}>
-                Scape Technologies was founded with a vision to make data work for you
-              </motion.h2>
-              <motion.p className={styles.missionDesc} variants={fadeUp}>
-                With a driving vision to provide excellent solutions to enhance efficiency
-                and competitive benefit to companies by enabling data technologies into their business.
-              </motion.p>
-              <motion.p className={styles.missionDesc} variants={fadeUp}>
-                Our company is made up of an exclusive and talented collection of professionals
-                from varied technical and creative backgrounds. Our constant drive towards
-                technological innovation, quick response time and quality service has propelled
-                us into a premium position in the data analytics space.
-              </motion.p>
-              <motion.p className={styles.missionDesc} variants={fadeUp}>
-                Scape Technologies pivots on client satisfaction with an area of expertise
-                that covers today's latest data technologies. When our clients are happy, we are successful.
-              </motion.p>
-              <motion.div variants={fadeUp}>
-                <PortalCallout variant={0} />
+            <div className={styles.missionGrid}>
+              <motion.div className={styles.missionPhoto} variants={fadeUp}>
+                <img src={IMG.story} alt="Our people collaborating" loading="lazy" />
               </motion.div>
+              <div className={styles.missionBlock}>
+                <motion.p className={styles.sectionLabel} variants={fadeUp}>Our story</motion.p>
+                <motion.h2 className={styles.sectionTitle} variants={fadeUp}>
+                  Scape Technologies was founded with a vision to make data work for you
+                </motion.h2>
+                <motion.p className={styles.missionDesc} variants={fadeUp}>
+                  With a driving vision to provide excellent solutions to enhance efficiency
+                  and competitive benefit to companies by enabling data technologies into their business.
+                </motion.p>
+                <motion.p className={styles.missionDesc} variants={fadeUp}>
+                  Our company is made up of an exclusive and talented collection of professionals
+                  from varied technical and creative backgrounds. Our constant drive towards
+                  technological innovation, quick response time and quality service has propelled
+                  us into a premium position in the data analytics space.
+                </motion.p>
+                <motion.p className={styles.missionDesc} variants={fadeUp}>
+                  Scape Technologies pivots on client satisfaction with an area of expertise
+                  that covers today's latest data technologies. When our clients are happy, we are successful.
+                </motion.p>
+                <motion.div variants={fadeUp}>
+                  <PortalCallout variant={0} />
+                </motion.div>
+              </div>
             </div>
           </div>
         </motion.section>
 
-        {/* ─── REASONS ────────────────────────────────────────────── */}
+        {/* ─── REASONS (banner + cards) ───────────────────────────── */}
         <motion.section
           className={styles.coreSection}
           initial="hidden"
@@ -270,6 +284,9 @@ export default function CompanyPage() {
             <div className={styles.coreHead}>
               <motion.h2 className={styles.coreTitle} variants={fadeUp}>Reasons to Partner With Us</motion.h2>
             </div>
+            <motion.div className={styles.coreBanner} variants={fadeUp}>
+              <img src={IMG.team} alt="Our team and delivery culture" loading="lazy" />
+            </motion.div>
             <div className={styles.coreGrid}>
               {REASONS.map((item, i) => (
                 <motion.div key={i} className={styles.coreCard} variants={fadeUp} transition={{ delay: i * 0.04 }}>
@@ -281,8 +298,6 @@ export default function CompanyPage() {
             </div>
           </div>
         </motion.section>
-
-        
 
         {/* ─── TIMELINE WITH TOOLTIPS ────────────────────────────── */}
         <motion.section
@@ -344,7 +359,7 @@ export default function CompanyPage() {
           </div>
         </motion.section>
 
-        {/* ─── CTA ──────────────────────────────────────────────────── */}
+        {/* ─── CTA (image background) ─────────────────────────────── */}
         <motion.section
           className={styles.ctaSection}
           initial="hidden"
@@ -353,9 +368,11 @@ export default function CompanyPage() {
           variants={fadeUp}
         >
           <div className={styles.container}>
-            <div className={styles.ctaBox}>
+            <div className={`${styles.ctaBox} ${styles.ctaImage}`}>
+              <img src={IMG.cta} alt="" className={styles.ctaBgImg} loading="lazy" />
+              <div className={styles.ctaOverlay} />
               <p>
-                Please <Link to="/contact" style={{ color: ACCENT, fontWeight: 500 }}>contact us</Link>{" "}
+                Please <Link to="/contact">contact us</Link>{" "}
                 and find out more about Scape Technologies and how we can help you in your data-driven business.
               </p>
             </div>

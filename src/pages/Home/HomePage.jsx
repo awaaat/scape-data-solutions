@@ -16,8 +16,12 @@ import SEO from "../../components/SEO/SEO";
 import op from "../../components/OrderPush/OrderPush.module.css";
 import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
 import { OrderDesk, SituationGrid } from "../../components/OrderPush/HomeOrder";
+import HeroSlider from "./HeroSlider";
+import HomeShowcase from "./HomeShowcase";
 
 const ACCENT = "#204ecf";
+const P = "/Images/site-images/home/";
+const PHOTOS = { start: P + "mix-2.webp", why: P + "mix-5.webp", contact: P + "mix-9.webp" };
 
 // Rotating hero words - tied to real services, not filler buzzwords
 const ROTATING_WORDS = ["Revenue Growth", "Predictive Analytics", "Real-Time Dashboards", "Lower Costs", "Faster Decisions"];
@@ -420,8 +424,6 @@ export default function HomePage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [counters, setCounters] = useState({ clients: 0, projects: 0, satisfaction: 0, countries: 0 });
   const [codeTab, setCodeTab] = useState("python");
-
-  const { text: typedHeadline, holding } = useTypewriter(ROTATING_WORDS);
   const counterRef = useRef(null);
   const isCounterInView = useInView(counterRef, { once: false, amount: 0.4 });
 
@@ -520,51 +522,12 @@ sales %>%
       <Navbar activeNav="home" />
 
       <main>
-        {/* ═══ HERO ═══ */}
+        <HeroSlider />
+        <HomeShowcase />
+
+        {/* ═══ HERO (what-we-do remains) ═══ */}
         <section className={styles.hero}>
           <div className={styles.container}>
-            <div className={styles.heroTop}>
-              <div className={styles.heroInner}>
-                <h1 className={styles.heroTitleRow}>
-                  <span className={styles.heroTitle}>Turn Data Into</span>
-                  <div className={styles.typeBox}>
-                    <span className={styles.heroTitle}>
-                      <span className={styles.typeText}>
-                        {typedHeadline}
-                        {!holding && <span className={styles.typeCaret}>|</span>}
-                      </span>
-                    </span>
-                  </div>
-                </h1>
-                <p className={styles.heroSub}>
-                  We help businesses use the data they already have to cut costs, find new revenue, and make decisions with real numbers behind them.
-                </p>
-                <span className={styles.visuallyHidden}>
-                  Turn Data Into Revenue Growth, Predictive Analytics, Real-Time Dashboards, Lower Costs, Faster Decisions.
-                </span>
-                <div className={styles.heroBtnRow}>
-                  <a href={orderUrl({ medium: "home-hero" })} className={op.orderBtn}>
-                    Place an Order <ArrowRight size={16} />
-                  </a>
-                  <Link to="/contact" className={styles.btnSecondary}>Request a Consultation <ArrowRight size={16} /></Link>
-                  <Link to="/portfolio" className={styles.btnSecondary}>
-                    See Our Work
-                  </Link>
-                </div>
-                <p className={styles.heroNote}>No-obligation consultation. We reply within one business day.</p>
-                <div className={styles.trustRow}>
-                  {["GDPR", "HIPAA", "SOC 2", "ISO 27001"].map((b) => (
-                    <span key={b} className={styles.trustBadge}>{b}</span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Hero visual */}
-              <div className={styles.heroImageWrap}>
-                <HeroDashboardViz />
-              </div>
-            </div>
-
             {/* ── What We Do: written intro + ordered breakdown, then the visual tiles ── */}
             <motion.div
               className={styles.whatWeDo}
@@ -630,31 +593,40 @@ sales %>%
         {/* ═══ HOW IT WORKS ═══ */}
         <section className={styles.sec}>
           <div className={styles.container}>
-            <div className={styles.secHead} style={{ textAlign: "center" }}>
-              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>How we get started</h2>
-              <p className={`${styles.secSubtitle} ${styles.secSubtitleCenter}`}>
-                Three steps from first conversation to working results.
-              </p>
-            </div>
-            <ol className={styles.stepsList}>
-              <li className={styles.stepItem}>
-                <span className={styles.stepNum}>01</span>
-                <h3 className={styles.stepTitle}>Tell us the problem</h3>
-                <p className={styles.stepDesc}>Book a consultation. We look at what data you have and tell you plainly whether we can help.</p>
-              </li>
-              <li className={styles.stepItem}>
-                <span className={styles.stepNum}>02</span>
-                <h3 className={styles.stepTitle}>Get a scoped plan</h3>
-                <p className={styles.stepDesc}>Scoping starts within one business day. You see the plan, timeline, and price before any work begins.</p>
-              </li>
-              <li className={styles.stepItem}>
-                <span className={styles.stepNum}>03</span>
-                <h3 className={styles.stepTitle}>See results fast</h3>
-                <p className={styles.stepDesc}>A first working dashboard typically ships in 2 to 4 weeks, then we refine it with your feedback.</p>
-              </li>
-            </ol>
-            <div className={styles.stepsCta}>
-              <a href={orderUrl({ medium: "page-cta", content: "home-2" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
+            <div className={`${styles.split} ${styles.splitFit}`}>
+              <div className={styles.splitMedia}>
+                <img src={PHOTOS.start} alt="" className={styles.splitImg} loading="lazy" />
+              </div>
+              <div className={styles.splitBody}>
+                <h2 className={styles.secTitle}>How we get started</h2>
+                <p className={styles.secSubtitle}>Three steps from first conversation to working results.</p>
+                <ol className={styles.stepsStack}>
+                  <li>
+                    <span className={styles.stepNum}>01</span>
+                    <div>
+                      <h3 className={styles.stepTitle}>Tell us the problem</h3>
+                      <p className={styles.stepDesc}>Book a consultation. We look at what data you have and tell you plainly whether we can help.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span className={styles.stepNum}>02</span>
+                    <div>
+                      <h3 className={styles.stepTitle}>Get a scoped plan</h3>
+                      <p className={styles.stepDesc}>Scoping starts within one business day. You see the plan, timeline, and price before any work begins.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span className={styles.stepNum}>03</span>
+                    <div>
+                      <h3 className={styles.stepTitle}>See results fast</h3>
+                      <p className={styles.stepDesc}>A first working dashboard typically ships in 2 to 4 weeks, then we refine it with your feedback.</p>
+                    </div>
+                  </li>
+                </ol>
+                <div className={styles.stepsCtaLeft}>
+                  <a href={orderUrl({ medium: "page-cta", content: "home-2" })} className={styles.btnPrimary}>{orderLabel()} <ArrowRight size={16} /></a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -837,22 +809,17 @@ sales %>%
         </motion.section>
 
         {/* ═══ WHY CHOOSE US ═══ */}
-        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+        <motion.section className={styles.whyCols} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
           <div className={styles.container}>
-            <div className={styles.secHead} style={{ textAlign: "center" }}>
-              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Why Choose Us</h2>
-            </div>
-            <dl className={styles.whyDefList}>
+            <h2 className={styles.secTitle}>Why Choose Us</h2>
+            <div className={styles.whyColsGrid}>
               {WHY_CHOOSE.map((item, i) => (
-                <div key={i} className={styles.whyDefRow}>
-                  <dt className={styles.whyDefTerm}>
-                    <span style={{ color: ACCENT }}>{item.icon}</span>
-                    {item.title}
-                  </dt>
-                  <dd className={styles.whyDefDesc}>{item.desc}</dd>
+                <div key={i} className={styles.whyColsItem}>
+                  <h3 className={styles.whyColsTitle}>{item.title}</h3>
+                  <p className={styles.whyColsDesc}>{item.desc}</p>
                 </div>
               ))}
-            </dl>
+            </div>
           </div>
         </motion.section>
 
@@ -989,40 +956,46 @@ sales %>%
         </motion.section>
 
         {/* ═══ CONTACT ═══ */}
-        <motion.section className={styles.sec} initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}>
+        <motion.section
+          className={styles.contactFull}
+          style={{ backgroundImage: `url(${PHOTOS.contact})` }}
+          initial="hidden" whileInView="visible" viewport={VIEWPORT} variants={fadeUp}
+        >
           <div className={styles.container}>
-            <div className={styles.secHead} style={{ textAlign: "center" }}>
-              <h2 className={`${styles.secTitle} ${styles.secTitleCenter}`}>Get In Touch</h2>
-              <p className={`${styles.secSubtitle} ${styles.secSubtitleCenter}`}>
-                Have a data challenge? Reach out and we'll get back to you within one business day.
-              </p>
+            <div className={styles.contactInner}>
+              <div className={styles.contactText}>
+                <h2 className={styles.secTitle}>Get In Touch</h2>
+                <p className={styles.secSubtitle}>Have a data challenge? Reach out and we'll get back to you within one business day.</p>
+              </div>
+              <div className={styles.contactCard}>
+                {submitted ? (
+                  <div className={styles.formOk} style={{ margin: 32 }}><CheckCircle size={20} /> Thank you, our data team will be in touch shortly.</div>
+                ) : (
+                  <form className={styles.cForm} onSubmit={handleSubmit} noValidate>
+                    {submitError && <div style={{ color: "#e74c3c", fontSize: 14 }}>{submitError}</div>}
+                    <div className={styles.fGroup}>
+                      <label className={styles.fLabel}>Your Name *</label>
+                      <input type="text" value={formData.name} onChange={(e) => change("name", e.target.value)} />
+                      {formErrors.name && <span className={styles.fErr}>{formErrors.name}</span>}
+                    </div>
+                    <div className={styles.fGroup}>
+                      <label className={styles.fLabel}>Email Address *</label>
+                      <input type="email" value={formData.email} onChange={(e) => change("email", e.target.value)} />
+                      {formErrors.email && <span className={styles.fErr}>{formErrors.email}</span>}
+                    </div>
+                    <div className={styles.fGroup}>
+                      <label className={styles.fLabel}>Message *</label>
+                      <textarea rows={4} value={formData.message} onChange={(e) => change("message", e.target.value)} />
+                      {formErrors.message && <span className={styles.fErr}>{formErrors.message}</span>}
+                    </div>
+                    <button type="submit" className={styles.submitBtn} disabled={loading}>
+                      {loading ? <><Loader2 size={16} className={styles.spinner} /> Sending…</> : <><Send size={14} /> Send Message</>}
+                    </button>
+                    <p className={styles.privacy}>By submitting this form, you agree to our privacy policy.</p>
+                  </form>
+                )}
+              </div>
             </div>
-            {submitted ? (
-              <div className={styles.formOk}><CheckCircle size={20} /> Thank you, our data team will be in touch shortly.</div>
-            ) : (
-              <form className={styles.cForm} onSubmit={handleSubmit} noValidate>
-                {submitError && <div style={{ color: "#e74c3c", fontSize: 14 }}>{submitError}</div>}
-                <div className={styles.fGroup}>
-                  <label className={styles.fLabel}>Your Name *</label>
-                  <input type="text" value={formData.name} onChange={(e) => change("name", e.target.value)} />
-                  {formErrors.name && <span className={styles.fErr}>{formErrors.name}</span>}
-                </div>
-                <div className={styles.fGroup}>
-                  <label className={styles.fLabel}>Email Address *</label>
-                  <input type="email" value={formData.email} onChange={(e) => change("email", e.target.value)} />
-                  {formErrors.email && <span className={styles.fErr}>{formErrors.email}</span>}
-                </div>
-                <div className={styles.fGroup}>
-                  <label className={styles.fLabel}>Message *</label>
-                  <textarea rows={4} value={formData.message} onChange={(e) => change("message", e.target.value)} />
-                  {formErrors.message && <span className={styles.fErr}>{formErrors.message}</span>}
-                </div>
-                <button type="submit" className={styles.submitBtn} disabled={loading}>
-                  {loading ? <><Loader2 size={16} className={styles.spinner} /> Sending…</> : <><Send size={14} /> Send Message</>}
-                </button>
-                <p className={styles.privacy}>By submitting this form, you agree to our privacy policy.</p>
-              </form>
-            )}
           </div>
         </motion.section>
       </main>

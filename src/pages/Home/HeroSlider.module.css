@@ -1,0 +1,289 @@
+.hero {
+  --hero-offset: 0px; /* raise this if your fixed navbar overlaps the text */
+  position: relative;
+  width: 100%;
+  min-height: min(82vh, 720px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #0b1530;
+  color: #fff;
+  isolation: isolate;
+}
+
+/* ---- animated images ---- */
+.slides { position: absolute; inset: 0; z-index: 0; }
+.slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.slideOn { opacity: 1; }
+.slideImg {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+}
+.slideOn .slideImg { animation: kenBurns 9s ease-out forwards; }
+@keyframes kenBurns {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to   { transform: scale(1.14) translate3d(-1.5%, -1%, 0); }
+}
+.shade {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8,16,40,.82) 0%, rgba(8,16,40,.55) 45%, rgba(8,16,40,.15) 100%),
+    linear-gradient(to top, rgba(8,16,40,.45), transparent 40%);
+}
+
+/* ---- content ---- */
+.content {
+  position: relative; z-index: 2;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: calc(72px + var(--hero-offset)) 72px 96px;
+}
+.badge {
+  display: inline-block;
+  background: #204ecf;
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  line-height: 1.08;
+  letter-spacing: -.03em;
+  margin: 22px 0 0;
+  max-width: 760px;
+  color: #fff;
+}
+.sub {
+  margin: 22px 0 0;
+  max-width: 560px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,.82);
+}
+.btnRow { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+.btnPrimary, .btnLight {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 30px;
+  border-radius: 999px;
+  font-size: .92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .2s ease, filter .2s ease, background .2s ease;
+}
+.btnPrimary { background: #204ecf; color: #fff; }
+.btnPrimary:hover { transform: translateY(-2px); filter: brightness(1.12); }
+.btnLight { background: #fff; color: #204ecf; }
+.btnLight:hover { transform: translateY(-2px); background: #eef2ff; }
+
+/* staggered text animation on every slide change */
+.rise1, .rise2, .rise3, .rise4 {
+  opacity: 0;
+  transform: translateY(26px);
+  animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards;
+}
+.rise1 { animation-delay: .15s; }
+.rise2 { animation-delay: .3s; }
+.rise3 { animation-delay: .45s; }
+.rise4 { animation-delay: .6s; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+/* ---- controls ---- */
+.arrow {
+  position: absolute; top: 50%; z-index: 3;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,.18);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.arrow:hover { background: rgba(255,255,255,.35); }
+.arrowL { left: 20px; }
+.arrowR { right: 20px; }
+
+.dots {
+  position: absolute; right: 40px; bottom: 36px; z-index: 3;
+  display: flex; gap: 10px;
+}
+.dot {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,.85);
+  color: #1b2a4e;
+  font-size: .78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.dot:hover { transform: translateY(-2px); }
+.dotOn { background: #204ecf; color: #fff; }
+
+.progress {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+  height: 3px;
+  background: rgba(255,255,255,.15);
+}
+.progress span {
+  display: block; height: 100%; width: 100%;
+  background: #204ecf;
+  transform-origin: left;
+  animation-name: fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ---- responsive ---- */
+@media (max-width: 900px) {
+  .content { padding: 56px 28px 120px; }
+  .arrow { display: none; }
+  .dots { right: auto; left: 28px; bottom: 28px; }
+  .dot { width: 34px; height: 34px; }
+}
+@media (max-width: 560px) {
+  .sub { font-size: 1rem; }
+  .btnPrimary, .btnLight { padding: 13px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slideOn .slideImg, .rise1, .rise2, .rise3, .rise4, .progress span { animation: none; opacity: 1; transform: none; }
+  .slide { transition: none; }
+}
+
+/* =====================================================
+   READABILITY + SHAPE OVERRIDES
+   ===================================================== */
+
+/* --- rounded corner like Arvington (lower right) --- */
+.hero {
+  --hero-radius: 90px;                 /* change size here */
+  border-radius: 0 0 var(--hero-radius) 0;   /* bottom-right only */
+  /* all four bottom corners instead? use: 0 0 var(--hero-radius) var(--hero-radius) */
+}
+@media (max-width: 900px) { .hero { --hero-radius: 40px; } }
+
+/* --- images: calmer, so they never fight the text --- */
+.slideImg { filter: brightness(.82) saturate(.9) contrast(1.05); }
+
+/* --- stronger, brand-tinted shade: dark navy on the text side,
+       fading to clear image on the right --- */
+.shade {
+  background:
+    linear-gradient(90deg,
+      rgba(7, 14, 38, .94) 0%,
+      rgba(8, 18, 48, .84) 35%,
+      rgba(10, 24, 62, .50) 65%,
+      rgba(10, 24, 62, .18) 100%),
+    linear-gradient(to top, rgba(7,14,38,.55) 0%, transparent 45%),
+    linear-gradient(to bottom, rgba(7,14,38,.35) 0%, transparent 25%);
+}
+
+/* --- text: crisp colours + soft shadow for separation --- */
+.title {
+  color: #ffffff;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .45);
+}
+.sub {
+  color: #e6ecff;                       /* brighter than before */
+  text-shadow: 0 1px 10px rgba(0, 0, 0, .5);
+  font-weight: 450;
+}
+
+/* --- badge: solid brand blue with a thin light edge --- */
+.badge {
+  background: #204ecf;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.25), 0 6px 18px rgba(32,78,207,.45);
+}
+
+/* --- buttons: lift them off the image --- */
+.btnPrimary { box-shadow: 0 8px 22px rgba(32, 78, 207, .5); }
+.btnLight   { box-shadow: 0 8px 22px rgba(0, 0, 0, .25); }
+
+/* --- arrows + dots: readable on both light and dark photos --- */
+.arrow { background: rgba(8, 18, 48, .55); }
+.arrow:hover { background: rgba(32, 78, 207, .85); }
+.dot { box-shadow: 0 4px 12px rgba(0,0,0,.3); }
+
+/* --- mobile: text spans the full width, so shade the whole image --- */
+@media (max-width: 900px) {
+  .shade {
+    background:
+      linear-gradient(to bottom, rgba(7,14,38,.80) 0%, rgba(8,18,48,.78) 100%);
+  }
+}
+
+/* =====================================================
+   RESTORE VISIBLE IMAGE ANIMATION + KEEP TEXT READABLE
+   ===================================================== */
+
+/* lighter image treatment so motion and detail show */
+.slideImg {
+  filter: brightness(.95) saturate(1) contrast(1.03);
+  will-change: transform;
+}
+
+/* stronger, clearly visible Ken Burns zoom + drift */
+.slideOn .slideImg { animation: kenBurns2 8s ease-out forwards; }
+@keyframes kenBurns2 {
+  from { transform: scale(1.0)  translate3d(0, 0, 0); }
+  to   { transform: scale(1.22) translate3d(-3%, -2%, 0); }
+}
+
+/* shade only where the text sits; the right side is nearly clear */
+.shade {
+  background:
+    linear-gradient(90deg,
+      rgba(7, 14, 38, .88) 0%,
+      rgba(8, 18, 48, .72) 30%,
+      rgba(10, 24, 62, .28) 58%,
+      rgba(10, 24, 62, 0)   80%),
+    linear-gradient(to top, rgba(7,14,38,.40) 0%, transparent 35%);
+}
+
+/* text keeps its own separation through shadow, not a heavy overlay */
+.title { text-shadow: 0 2px 22px rgba(0,0,0,.6); }
+.sub   { text-shadow: 0 1px 14px rgba(0,0,0,.65); }
+
+/* mobile: text spans the width, so a lighter full shade is still needed */
+@media (max-width: 900px) {
+  .shade {
+    background: linear-gradient(to bottom, rgba(7,14,38,.72) 0%, rgba(8,18,48,.62) 100%);
+  }
+}
+
+/* =====================================================
+   AUTO-SWITCH: 10s per slide, no progress line
+   ===================================================== */
+.progress { display: none !important; }
+
+/* keep the image moving for the whole 10 seconds */
+.slideOn .slideImg { animation: kenBurns3 11s ease-out forwards; }
+@keyframes kenBurns3 {
+  from { transform: scale(1.0)  translate3d(0, 0, 0); }
+  to   { transform: scale(1.22) translate3d(-3%, -2%, 0); }
+}
+
+/* =====================================================
+   15-SECOND SLIDES: zoom runs the full duration
+   ===================================================== */
+.slideOn .slideImg { animation: kenBurns4 16s ease-out forwards; }
+@keyframes kenBurns4 {
+  from { transform: scale(1.0)  translate3d(0, 0, 0); }
+  to   { transform: scale(1.22) translate3d(-3%, -2%, 0); }
+}

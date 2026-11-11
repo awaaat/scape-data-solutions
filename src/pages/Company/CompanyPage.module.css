@@ -474,3 +474,123 @@
 
 /* ---------- Section identifiers removed ---------- */
 .sectionLabel { display: none !important; }
+
+/* ============ IMAGE ADDITIONS ============ */
+
+/* Hero photo above quick links */
+.heroPhoto {
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border: 1px solid #eee;
+  margin-bottom: 1.25rem;
+}
+.heroPhoto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Story: photo + text */
+.missionGrid { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 1024px) {
+  .missionGrid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+}
+.missionGrid .missionBlock { max-width: none; margin: 0; }
+.missionPhoto {
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid #eee;
+}
+.missionPhoto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 1023px) {
+  .missionPhoto { aspect-ratio: 16 / 10; }
+}
+
+/* Reasons banner */
+.coreBanner {
+  border-radius: 2px;
+  overflow: hidden;
+  height: 280px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #eee;
+}
+.coreBanner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 639px) {
+  .coreBanner { height: 180px; }
+}
+
+/* CTA with photo background */
+.ctaImage { position: relative; overflow: hidden; border: none; padding: 4rem 2rem; background: #0f172a; }
+.ctaBgImg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.ctaOverlay { position: absolute; inset: 0; z-index: 1; background: rgba(15, 23, 42, 0.78); }
+.ctaImage p { position: relative; z-index: 2; margin: 0 auto; max-width: 40rem; color: rgba(255,255,255,0.92); }
+.ctaImage a { color: #fff; text-decoration: underline; font-weight: 600; }
+.ctaImage a:hover { text-decoration: none; }
+
+/* ============ IMAGE POLISH ============ */
+.heroPhoto, .missionPhoto, .coreBanner { background: #e9eef8; }
+.heroPhoto img, .missionPhoto img, .coreBanner img {
+  animation: imgFadeIn .7s ease both;
+  transition: transform .8s ease;
+}
+.heroPhoto:hover img, .missionPhoto:hover img, .coreBanner:hover img { transform: scale(1.03); }
+@keyframes imgFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============ STORY ALIGN FIX ============ */
+.missionGrid { align-items: stretch; }
+.missionPhoto {
+  position: relative;
+  aspect-ratio: auto;
+  min-height: 420px;
+}
+.missionPhoto img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+}
+.missionGrid .missionBlock { display: flex; flex-direction: column; justify-content: center; }
+@media (max-width: 1023px) {
+  .missionPhoto { aspect-ratio: 16 / 10; min-height: 0; }
+}
+
+/* ============ RADIUS RESTORE ============ */
+.missionPhoto { border-radius: 2px; overflow: hidden; }
+.missionPhoto img { border-radius: inherit; }
+
+/* ============ HERO RADIUS ============ */
+.heroPhoto {
+  position: relative;
+  overflow: hidden;
+  border-radius: 72px 20px 20px 20px;
+  box-shadow:
+    0 30px 60px -24px rgba(15, 35, 90, 0.35),
+    -14px 14px 0 0 rgba(37, 76, 214, 0.10);
+  transition: box-shadow .4s ease;
+}
+.heroPhoto img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.heroPhoto:hover img { transform: scale(1.04); }
+@media (max-width: 1023px) {
+  .heroPhoto { border-radius: 40px 16px 16px 16px; box-shadow: 0 20px 40px -20px rgba(15,35,90,.3); }
+}
+.missionPhoto {
+  position: relative;
+  overflow: hidden;
+  border-radius: 72px 20px 20px 20px;
+  box-shadow:
+    0 30px 60px -24px rgba(15, 35, 90, 0.35),
+    -14px 14px 0 0 rgba(37, 76, 214, 0.10);
+  transition: box-shadow .4s ease;
+}
+.missionPhoto img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.missionPhoto:hover img { transform: scale(1.04); }
+@media (max-width: 1023px) {
+  .missionPhoto { border-radius: 40px 16px 16px 16px; box-shadow: 0 20px 40px -20px rgba(15,35,90,.3); }
+}

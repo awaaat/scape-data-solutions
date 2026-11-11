@@ -25,3 +25,4 @@ dist-ssr
 dist/
 .seo-*-fix-backup-*/
 *.bak*
+*.bak

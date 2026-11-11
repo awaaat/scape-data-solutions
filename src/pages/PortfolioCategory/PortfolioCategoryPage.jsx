@@ -71,7 +71,7 @@ const PortfolioCategoryPage = () => {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          style={{ backgroundImage: 'url(/Images/site-images/bi-hero.jpg)', position: 'relative', overflow: 'hidden' }}
+          style={{ backgroundImage: 'url(/Images/site-images/bi-hero.webp)', position: 'relative', overflow: 'hidden' }}
         >
           <FloatingOrbs />
           <div className={styles.heroOverlay} />
