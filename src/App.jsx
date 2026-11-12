@@ -432,7 +432,7 @@ const AppContent = () => {
                             <Route path="/services/machine-learning-consulting" element={<MachineLearningConsultingPage />} />
                             <Route path="/services/manufacturing-analytics" element={<ManufacturingAnalyticsPage />} />
                             <Route path="/services/manufacturing-forecasting" element={<ManufacturingForecastingPage />} />
-                            <Route path="/services/manufacturing-kp-is" element={<PageLayout activeNav="services"><ManufacturingKPIsPage /></PageLayout>} />
+                            <Route path="/services/manufacturing-kpis" element={<PageLayout activeNav="services"><ManufacturingKPIsPage /></PageLayout>} />
                             <Route path="/services/medical-claims-analytics" element={<MedicalClaimsAnalyticsPage />} />
                             <Route path="/services/meta-analysis-data-analysis" element={<PageLayout activeNav="services"><MetaAnalysisDataAnalysisPage /></PageLayout>} />
                             <Route path="/services/meta-analysis-services" element={<PageLayout activeNav="services"><MetaAnalysisServicesPage /></PageLayout>} />

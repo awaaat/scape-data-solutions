@@ -1,0 +1,279 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "scapedatasolutions.com"
+        }
+      ],
+      "destination": "https://www.scapedatasolutions.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/services/demand-forecasting-inventory-planning",
+      "destination": "/services/demand-forecasting",
+      "permanent": true
+    },
+    {
+      "source": "/services/pricing-analytics-optimization",
+      "destination": "/services/pricing-optimization",
+      "permanent": true
+    },
+    {
+      "source": "/resources/dental-kpi-dashboard",
+      "destination": "/resources/dental-kpi-dashboard-metrics-every-practice-should-track",
+      "permanent": true
+    },
+    {
+      "source": "/resources/reduce-dental-no-shows",
+      "destination": "/resources/how-to-reduce-patient-no-shows-in-dental-clinics",
+      "permanent": true
+    },
+    {
+      "source": "/resources/patient-retention-dental-clinic",
+      "destination": "/resources/patient-retention-strategies-for-dental-practices",
+      "permanent": true
+    },
+    {
+      "source": "/resources/veterinary-client-retention",
+      "destination": "/resources/veterinary-client-retention-a-data-driven-guide",
+      "permanent": true
+    },
+    {
+      "source": "/resources/veterinary-kpi-dashboard",
+      "destination": "/veterinary-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/resources/medical-practice-revenue-cycle-analytics",
+      "destination": "/medical-practice-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/resources/reduce-patient-no-shows-predictive-analytics",
+      "destination": "/medical-practice-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/services/technical-report-writing",
+      "destination": "/services/report-writing-support",
+      "permanent": true
+    },
+    {
+      "source": "/services/customer-lifetime-value-analytics",
+      "destination": "/services/customer-churn-lifetime-value",
+      "permanent": true
+    },
+    {
+      "source": "/services/research-methodology-support",
+      "destination": "/services/research-methodology-consulting",
+      "permanent": true
+    },
+    {
+      "source": "/services/statistical-analysis-consulting",
+      "destination": "/services/statistical-consulting",
+      "permanent": true
+    },
+    {
+      "source": "/services/carrier-performance-analytics",
+      "destination": "/services/carrier-performance-freight-cost-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/clinical-decision-support",
+      "destination": "/services/clinical-decision-support",
+      "permanent": true
+    },
+    {
+      "source": "/services/ai-agents",
+      "destination": "/services/llm-development",
+      "permanent": true
+    },
+    {
+      "source": "/services/workflow-automation",
+      "destination": "/services/chatbot-development",
+      "permanent": true
+    },
+    {
+      "source": "/services/intelligent-analytics",
+      "destination": "/services/predictive-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/services/digital-twin-process-simulation",
+      "destination": "/services/predictive-maintenance",
+      "permanent": true
+    },
+    {
+      "source": "/services/quality-assurance-defect-detection",
+      "destination": "/services/quality-control-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/services/bed-utilization-analytics",
+      "destination": "/services/hospital-operations-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/services/social-media-analytics",
+      "destination": "/services/market-sentiment-analysis",
+      "permanent": true
+    },
+    {
+      "source": "/services/competitive-intelligence",
+      "destination": "/services/market-sentiment-analysis",
+      "permanent": true
+    },
+    {
+      "source": "/services/customer-experience-analytics",
+      "destination": "/services/customer-journey-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/services/marketing-analytics",
+      "destination": "/services/marketing-mix-modeling",
+      "permanent": true
+    },
+    {
+      "source": "/services/brand-tracking",
+      "destination": "/services/brand-health-reputation-monitoring",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/acme-corp",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/brand-monitoring",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/resources/brand-tracking-research",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/ai-workflow-guide",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/automation-roadmap-webinar",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/ai-roi-whitepaper",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/solutions",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/career",
+      "destination": "/careers",
+      "permanent": true
+    },
+    {
+      "source": "/expertise",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/blog/saas-churn-dashboard-wrong-story",
+      "destination": "/resources/why-your-saas-churn-dashboard-is-telling-you-the-wrong-story",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/resources/:slug",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/business-intel",
+      "destination": "/app-shell.html"
+    },
+    {
+      "source": "/business-intel/:path*",
+      "destination": "/app-shell.html"
+    },
+    {
+      "source": "/resources/:slug",
+      "destination": "/app-shell.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/business-intel/(login|signup|forgot-password|dashboard)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
+  ],
+  "installCommand": "npm install --legacy-peer-deps"
+}

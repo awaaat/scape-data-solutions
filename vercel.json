@@ -197,6 +197,61 @@
       "permanent": true
     },
     {
+      "source": "/services/manufacturing-kp-is",
+      "destination": "/services/manufacturing-kpis",
+      "permanent": true
+    },
+    {
+      "source": "/resources/how-to-structure-chapter-4",
+      "destination": "/services/chapter-4-analysis",
+      "permanent": true
+    },
+    {
+      "source": "/resources/chi-square-tests-survey-data",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/interpreting-regression-results",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/aligning-objectives-hypotheses-results",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/reporting-effect-sizes",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/cross-tabulation-explained",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/coding-open-ended-survey-responses",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/cleaning-kobo-odk-survey-exports",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/services/category/custom-dev",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/services/category/governance",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
       "source": "/blog",
       "destination": "/resources",
       "permanent": true
