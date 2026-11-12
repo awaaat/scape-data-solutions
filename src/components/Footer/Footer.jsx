@@ -141,7 +141,25 @@ export default function Footer() {
           </div>
         </div>
 
-      </footer>
+      
+      {/* TechBehemoths verification badge (follow link, no nofollow) */}
+      <div style={{ textAlign: 'center', padding: '12px 0' }}>
+        <a
+          href="https://techbehemoths.com/company/scape-data-solutions"
+          target="_blank"
+          rel="noopener"
+          data-techbehemoths-verification
+        >
+          <img
+            src="https://cdn.techbehemoths.com/public/static/validation/tb-verified-logo.svg"
+            alt="TechBehemoths Verification"
+            width="120"
+            height="40"
+            loading="lazy"
+          />
+        </a>
+      </div>
+    </footer>
     </>
   );
 }
