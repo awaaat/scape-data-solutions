@@ -25,8 +25,15 @@ import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import { SERVICE_CARDS, categories, SLUG_MAP } from '../../data/servicesData';
 import styles from './ServicesPage.module.css';
+import ServicesHeroSlider from './ServicesHeroSlider';
 import homeStyles from '../Home/HomePage.module.css';
 import { orderUrl, orderLabel } from "../../components/OrderPush/orderLinks";
+
+const IMG = {
+  hero:  "/Images/services/services-hero-1.webp",
+  brief: "/Images/services/services-hero-2.webp",
+  cta:   "/Images/services/services-hero-3.webp",
+};
 
 const categoryMap = {
   academic:   { icon: <GraduationCap size={16} />, label: 'Academic & Research' },
@@ -169,37 +176,19 @@ const ServicesPage = () => {
       <Navbar activeNav="services" />
 
       <main className={homeStyles.mainContent}>
-        {/* ─── HERO ──────────────────────────────────────────────── */}
-        <section className={`${styles.heroSection} ${styles.animateOnScroll}`}>
-          <div className={styles.heroGradient} />
-          <div className={homeStyles.container}>
-            <div className={styles.heroContent}>
-              <div className={styles.heroBadge}>
-                <span>{availableCards.length}+ Industry-Focused Services</span>
-              </div>
-              <h1 className={styles.heroTitle}>
-                Services That <span className={styles.highlight}>Transform</span> Every Industry
-              </h1>
-              <p className={styles.heroSub}>
-                From Academic Research to Retail – we deliver AI and analytics solutions that solve
-                real‑world problems with measurable results.
-              </p>
-              <div className={styles.heroCta}>
-                <a href={orderUrl({ medium: "page-cta", content: "ourservices-1" })} className={styles.heroBtn}>{orderLabel()} <ArrowRight size={16} /></a>
-                <Link to="/portfolio" className={styles.heroBtnSecondary}>
-                  See Our Work
-                </Link>
+        <ServicesHeroSlider />
+
+        <section className={`${homeStyles.container} ${styles.briefSection}`}>
+          <div className={styles.briefBanner}>
+            <div className={styles.briefText}>
+              <h2 className={styles.briefTitle}>Found the service you need?</h2>
+              <p className={styles.briefSub}>Send us your project brief and our team will scope it within one business day, no sales call required.</p>
+              <div>
+                <a href={orderUrl({ medium: "page-cta", content: "ourservices-2" })} className={styles.heroBtn}>{orderLabel()} <ArrowRight size={16} /></a>
               </div>
             </div>
-          </div>
-        </section>
-
-        <section className={homeStyles.container} style={{ padding: "2.5rem 1.5rem" }}>
-          <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem" }}>
-            <h2 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 0.4rem" }}>Found the service you need?</h2>
-            <p style={{ margin: "0 0 1.2rem", opacity: 0.75, maxWidth: "560px" }}>Send us your project brief and our team will scope it within one business day, no sales call required.</p>
-            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <a href={orderUrl({ medium: "page-cta", content: "ourservices-2" })} className={styles.heroBtn}>{orderLabel()} <ArrowRight size={16} /></a>
+            <div className={styles.briefPhoto}>
+              <img src={IMG.brief} alt="" loading="lazy" />
             </div>
           </div>
         </section>
@@ -362,7 +351,9 @@ const ServicesPage = () => {
         </section>
 
         {/* ─── CTA ────────────────────────────────────────────────── */}
-        <section className={`${styles.ctaSection} ${styles.animateOnScroll}`}>
+        <section className={`${styles.ctaSection} ${styles.ctaImage} ${styles.animateOnScroll}`}>
+          <img src={IMG.cta} alt="" className={styles.ctaBgImg} loading="lazy" />
+          <div className={styles.ctaOverlay} />
           <div className={homeStyles.container}>
             <div className={styles.ctaContent}>
               <h2 className={styles.ctaHeading}>Ready to get started?</h2>

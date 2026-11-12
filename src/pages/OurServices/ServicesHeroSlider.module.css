@@ -1,0 +1,196 @@
+.hero {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #0b1220;
+  color: #fff;
+  isolation: isolate;
+  border-bottom-right-radius: 160px;
+}
+
+.slides { position: absolute; inset: 0; z-index: 0; }
+.slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.1s ease; }
+.slideOn { opacity: 1; }
+.slideImg {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 68% 35%;
+  transform: scale(1.02);
+}
+.slideOn .slideImg { animation: kenburns 12s ease-out forwards; }
+@keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.1); } }
+
+.shade {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8,13,26,.92) 0%, rgba(8,13,26,.78) 38%, rgba(8,13,26,.3) 70%, rgba(8,13,26,.12) 100%),
+    linear-gradient(180deg, rgba(8,13,26,0) 60%, rgba(8,13,26,.65) 100%);
+}
+.glow {
+  position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+  background:
+    radial-gradient(520px 340px at 82% 25%, rgba(32,78,207,.32), transparent 70%),
+    radial-gradient(420px 300px at 6% 100%, rgba(32,78,207,.22), transparent 70%);
+}
+
+.content {
+  position: relative; z-index: 2;
+  width: 100%; max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 88px 96px;
+  box-sizing: border-box;
+}
+.badge {
+  display: inline-block;
+  padding: 7px 14px;
+  margin-bottom: 22px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: #fff;
+  background: #204ecf;
+  border-radius: 3px;
+  box-shadow: 0 6px 24px rgba(32,78,207,.5);
+}
+.title {
+  margin: 0;
+  max-width: 17ch;
+  font-size: clamp(2.2rem, 4.8vw, 3.8rem);
+  font-weight: 700; line-height: 1.06; letter-spacing: -0.03em;
+  color: #fff;
+  text-shadow: 0 2px 28px rgba(0,0,0,.4);
+}
+.sub {
+  margin: 20px 0 0;
+  max-width: 540px;
+  font-size: 1.1rem; line-height: 1.65;
+  color: rgba(255,255,255,.88);
+}
+.btnRow { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+.btnPrimary, .btnGlass {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px;
+  border-radius: 4px;
+  font-size: .95rem; font-weight: 600;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s, background .2s;
+}
+.btnPrimary {
+  background: #204ecf !important; color: #fff !important;
+  box-shadow: 0 8px 30px rgba(32,78,207,.55);
+}
+.btnPrimary:hover { transform: translateY(-2px); box-shadow: 0 12px 38px rgba(32,78,207,.7); }
+.btnGlass {
+  background: rgba(255,255,255,.1) !important; color: #fff !important;
+  border: 1px solid rgba(255,255,255,.5) !important;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.btnGlass:hover { background: rgba(255,255,255,.2) !important; border-color: #fff !important; }
+
+/* text rise on every slide change */
+.rise1, .rise2, .rise3, .rise4 { opacity: 0; animation: rise .8s cubic-bezier(.2,.8,.2,1) forwards; }
+.rise1 { animation-delay: .05s; }
+.rise2 { animation-delay: .18s; }
+.rise3 { animation-delay: .32s; }
+.rise4 { animation-delay: .46s; }
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+.arrow {
+  position: absolute; top: 50%; z-index: 3;
+  width: 44px; height: 44px; margin-top: -22px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.25) !important;
+  background: rgba(11,18,32,.55) !important; color: #fff !important;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.arrow:hover { background: #204ecf !important; transform: scale(1.06); }
+.arrowL { left: 20px; }
+.arrowR { right: 20px; }
+
+.dots { position: absolute; z-index: 3; right: 72px; bottom: 36px; display: flex; gap: 10px; }
+.dot {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: none !important;
+  background: rgba(255,255,255,.88) !important; color: #0b1220 !important;
+  font-size: .82rem; font-weight: 700; cursor: pointer;
+  transition: background .2s, color .2s, transform .2s;
+}
+.dot:hover { transform: scale(1.08); }
+.dotOn { background: #204ecf !important; color: #fff !important; }
+
+.progress {
+  position: absolute; left: 0; bottom: 0; z-index: 3;
+  height: 3px; width: 100%;
+  background: #204ecf;
+  transform-origin: left;
+  animation-name: fill; animation-timing-function: linear; animation-fill-mode: forwards;
+}
+@keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@media (max-width: 1024px) {
+  .hero { border-bottom-right-radius: 110px; }
+  .content { padding: 72px 72px 88px; }
+}
+@media (max-width: 768px) {
+  .hero { min-height: 480px; border-bottom-right-radius: 64px; }
+  .content { padding: 56px 24px 84px; }
+  .shade { background: linear-gradient(180deg, rgba(8,13,26,.8) 0%, rgba(8,13,26,.68) 50%, rgba(8,13,26,.9) 100%); }
+  .arrow { display: none; }
+  .dots { right: 20px; bottom: 22px; }
+  .dot { width: 32px; height: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slideOn .slideImg, .rise1, .rise2, .rise3, .rise4, .progress { animation: none; opacity: 1; }
+  .progress { display: none; }
+}
+
+/* ============ SMOOTH FIX ============ */
+.slideOn .slideImg { animation: none; }
+.slideImg {
+  transform: scale(1);
+  transition: transform 0s linear 1.2s;      /* reset only after the fade-out finishes */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.slideOn .slideImg {
+  transform: scale(1.05);
+  transition: transform 10s ease-out 0s;     /* slow zoom while visible */
+}
+.slide { transition: opacity 1.2s ease-in-out; }
+
+.dots { gap: 8px; align-items: center; }
+.dot {
+  width: 10px; height: 10px; padding: 0;
+  font-size: 0; line-height: 0;
+  background: rgba(255,255,255,.55) !important;
+  border-radius: 999px;
+  transition: width .3s ease, background .3s ease;
+}
+.dot:hover { transform: none; background: #fff !important; }
+.dotOn { width: 30px; background: #204ecf !important; }
+
+@media (max-width: 768px) {
+  .dot { width: 9px; height: 9px; }
+  .dotOn { width: 26px; }
+}
+
+/* ============ GLITCH FIX 2 ============ */
+/* hard clip that follows the rounded corner, even for composited layers */
+.hero { clip-path: inset(0 round 0 0 160px 0); }
+.slides { overflow: hidden; }
+
+/* drop the layer hints that caused corner bleed */
+.slideImg { will-change: auto; backface-visibility: visible; }
+
+/* the bottom progress bar flashed through the curve */
+.progress { display: none !important; }
+
+/* reset zoom only after the slide is fully invisible */
+.slide { transition: opacity 1.2s ease-in-out, visibility 0s linear 1.2s; visibility: hidden; }
+.slideOn { visibility: visible; transition: opacity 1.2s ease-in-out, visibility 0s; }
+
+@media (max-width: 1024px) { .hero { clip-path: inset(0 round 0 0 110px 0); } }
+@media (max-width: 768px)  { .hero { clip-path: inset(0 round 0 0 64px 0); } }
